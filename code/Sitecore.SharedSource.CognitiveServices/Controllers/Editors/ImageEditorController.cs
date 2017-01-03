@@ -9,6 +9,7 @@ using Sitecore.Diagnostics;
 using Sitecore.Mvc.Controllers;
 using Sitecore.SharedSource.CognitiveServices.Api;
 using Sitecore.SharedSource.CognitiveServices.Controllers.Editors;
+using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models;
 
 namespace Sitecore.SharedSource.CognitiveServices.Controllers
@@ -16,7 +17,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
     public class ImageEditorController : BaseEditorController
     {
         public ImageEditorController(
-            ICognitiveContext cognitiveContext) : base(cognitiveContext)
+            ICognitiveContext cognitiveContext,
+            IWebUtilWrapper webUtil) : base(cognitiveContext, webUtil)
         {
         }
 

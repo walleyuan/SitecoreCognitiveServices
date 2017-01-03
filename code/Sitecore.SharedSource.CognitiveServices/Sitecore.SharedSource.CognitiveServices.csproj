@@ -197,10 +197,14 @@
   <ItemGroup>
     <Compile Include="Api\CognitiveContext.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Configurator\CognitiveConfigurator.cs" />
     <Compile Include="Controllers\Editors\AudioEditorController.cs" />
     <Compile Include="Controllers\Editors\BaseEditorController.cs" />
     <Compile Include="Controllers\Editors\ImageEditorController.cs" />
     <Compile Include="Controllers\Editors\VideoEditorController.cs" />
+    <Compile Include="Foundation\IWebUtilWrapper.cs" />
+    <Compile Include="Foundation\ServiceCollectionExtensions.cs" />
+    <Compile Include="Foundation\WebUtilWrapper.cs" />
     <Compile Include="Models\CognitiveImage.cs" />
     <Compile Include="Models\ICognitiveImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
