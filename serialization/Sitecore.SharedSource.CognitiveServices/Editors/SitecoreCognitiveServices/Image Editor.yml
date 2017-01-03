@@ -7,7 +7,7 @@ DB: core
 SharedFields:
 - ID: "6f371c74-5bd5-4ebd-b10a-fc54716021ae"
   Hint: Url
-  Value: /sccogsvcs/index
+  Value: /sccogsvcs/imageeditor/index
 - ID: "ab8d0102-91f3-43b6-90aa-5a0641dc8521"
   Hint: Icon
   Value: Apps/32x32/Options.png

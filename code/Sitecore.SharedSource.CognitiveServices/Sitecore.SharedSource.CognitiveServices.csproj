@@ -195,35 +195,60 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\CognitiveContext.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\SitecoreCognitiveServicesController.cs" />
+    <Compile Include="Controllers\Editors\AudioEditorController.cs" />
+    <Compile Include="Controllers\Editors\BaseEditorController.cs" />
+    <Compile Include="Controllers\Editors\ImageEditorController.cs" />
+    <Compile Include="Controllers\Editors\VideoEditorController.cs" />
+    <Compile Include="Models\CognitiveImage.cs" />
+    <Compile Include="Models\ICognitiveImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ApiKeys.cs" />
-    <Compile Include="Services\Common\IServiceUtil.cs" />
-    <Compile Include="Services\Common\ServiceUtil.cs" />
-    <Compile Include="Services\IApiKeys.cs" />
-    <Compile Include="Services\Knowledge\EntityLinkingApi.cs" />
-    <Compile Include="Services\Knowledge\IEntityLinkingApi.cs" />
-    <Compile Include="Services\Knowledge\IEntityLinkingServiceClient.cs" />
-    <Compile Include="Services\Language\ILanguageApi.cs" />
-    <Compile Include="Services\Language\ILanguageClient.cs" />
-    <Compile Include="Services\Language\ISentimentApi.cs" />
-    <Compile Include="Services\Language\ISentimentClient.cs" />
-    <Compile Include="Services\Language\LanguageApi.cs" />
-    <Compile Include="Services\Language\SentimentApi.cs" />
-    <Compile Include="Services\Speech\ISpeakerIdentificationApi.cs" />
-    <Compile Include="Services\Speech\ISpeakerVerificationApi.cs" />
-    <Compile Include="Services\Speech\SpeakerIdentificationApi.cs" />
-    <Compile Include="Services\Speech\SpeakerVerificationApi.cs" />
-    <Compile Include="Services\Video\IVideoApi.cs" />
-    <Compile Include="Services\Video\VideoApi.cs" />
-    <Compile Include="Services\Vision\EmotionApi.cs" />
-    <Compile Include="Services\Vision\FaceApi.cs" />
-    <Compile Include="Services\Vision\IEmotionApi.cs" />
-    <Compile Include="Services\Vision\IEmotionServiceClient.cs" />
-    <Compile Include="Services\Vision\IFaceApi.cs" />
-    <Compile Include="Services\Vision\IVisionApi.cs" />
-    <Compile Include="Services\Vision\VisionApi.cs" />
+    <Compile Include="Search\CognitiveFieldService.cs" />
+    <Compile Include="Search\CognitiveSearchContext.cs" />
+    <Compile Include="Search\CognitiveSearchResult.cs" />
+    <Compile Include="Search\ComputedFields\Image\CumulativeImageFieldAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Presentation\CumulativePresentationFieldAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Text\CumulativeTextFieldAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Image\ICumulativeImageFieldAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Presentation\ICumulativePresentationFieldAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Text\ICumulativeTextFieldAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Image\IIndividualImageFieldAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Presentation\IIndividualPresentationFieldAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Text\IIndividualTextFieldAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Image\IndividualImageFieldAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Presentation\IndividualPresentationFieldAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Text\IndividualTextFieldAnalysis.cs" />
+    <Compile Include="Search\ICognitiveFieldService.cs" />
+    <Compile Include="Search\ICognitiveSearchContext.cs" />
+    <Compile Include="Search\ICognitiveSearchResult.cs" />
+    <Compile Include="Api\ApiKeys.cs" />
+    <Compile Include="Api\Common\IApiService.cs" />
+    <Compile Include="Api\Common\ApiService.cs" />
+    <Compile Include="Api\IApiKeys.cs" />
+    <Compile Include="Api\ICognitiveContext.cs" />
+    <Compile Include="Api\Knowledge\EntityLinkingApi.cs" />
+    <Compile Include="Api\Knowledge\IEntityLinkingApi.cs" />
+    <Compile Include="Api\Knowledge\IEntityLinkingServiceClient.cs" />
+    <Compile Include="Api\Language\ILanguageApi.cs" />
+    <Compile Include="Api\Language\ILanguageClient.cs" />
+    <Compile Include="Api\Language\ISentimentApi.cs" />
+    <Compile Include="Api\Language\ISentimentClient.cs" />
+    <Compile Include="Api\Language\LanguageApi.cs" />
+    <Compile Include="Api\Language\SentimentApi.cs" />
+    <Compile Include="Api\Speech\ISpeakerIdentificationApi.cs" />
+    <Compile Include="Api\Speech\ISpeakerVerificationApi.cs" />
+    <Compile Include="Api\Speech\SpeakerIdentificationApi.cs" />
+    <Compile Include="Api\Speech\SpeakerVerificationApi.cs" />
+    <Compile Include="Api\Video\IVideoApi.cs" />
+    <Compile Include="Api\Video\VideoApi.cs" />
+    <Compile Include="Api\Vision\EmotionApi.cs" />
+    <Compile Include="Api\Vision\FaceApi.cs" />
+    <Compile Include="Api\Vision\IEmotionApi.cs" />
+    <Compile Include="Api\Vision\IEmotionServiceClient.cs" />
+    <Compile Include="Api\Vision\IFaceApi.cs" />
+    <Compile Include="Api\Vision\IVisionApi.cs" />
+    <Compile Include="Api\Vision\VisionApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.config" />
@@ -239,17 +264,17 @@
     <Content Include="App_Config\Include\Unicorn\Unicorn.Configs.Default.example" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.AutoPublish.config" />
-    <None Include="App_Config\Include\SitecoreCognitiveServices\Unicorn.Configs.SitecoreCognitiveServices.config" />
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\Unicorn.Configs.SitecoreCognitiveServices.config" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
-    <Content Include="Views\SitecoreCognitiveServices\Index.cshtml" />
+    <Content Include="Views\ImageEditor\Index.cshtml" />
     <None Include="Web.config" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\Sitecore.SharedSource.CognitiveServices.css" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\jquery-1.10.2.min.js" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Services\Search\" />
+    <Folder Include="Views\AudioEditor\" />
+    <Folder Include="Views\VideoEditor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

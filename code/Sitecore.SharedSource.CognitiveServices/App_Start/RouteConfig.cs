@@ -16,8 +16,7 @@ namespace Sitecore.SharedSource.CognitiveServices.App_Start
         {
             routes.MapRoute(
                 name: "CognitiveServices", 
-                url: "sccogsvcs/{action}", 
-                defaults: new { controller = "SitecoreCognitiveServices" }
+                url: "sccogsvcs/{controller}/{action}"
             );
         }
     }
