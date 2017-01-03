@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.ProjectOxford.Vision.Contract;
+using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.Mvc.Controllers;
@@ -28,13 +29,21 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
             return View(cImage);
         }
 
-        public ActionResult Analyze()
+        public ActionResult Analyze(string database, string itemId, string language)
         {
             ICognitiveImage cImage = GetEmptyCognitiveImage();
 
-            MediaItem m = Sitecore.Context.ContentDatabase.GetItem(ItemId);
+            Sitecore.Data.ID mID = ID.Null;
+            if (!ID.TryParse(itemId, out mID))
+                return View("Index", cImage);
+
+            Database db = Sitecore.Configuration.Factory.GetDatabase(database);
+            if (db == null)
+                return View("Index", cImage);
+
+            MediaItem m = db.GetItem(mID);
             if (m == null)
-                return View("Index");
+                return View("Index", cImage);
 
             cImage.Analysis = CognitiveContext.VisionApi.GetFullAnalysis(m);
             return View("Index", cImage);
