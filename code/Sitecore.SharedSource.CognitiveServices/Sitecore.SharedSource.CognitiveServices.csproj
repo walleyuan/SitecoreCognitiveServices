@@ -202,10 +202,8 @@
     <Compile Include="Repositories\CognitiveRepositoryContext.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Configurator\CognitiveConfigurator.cs" />
-    <Compile Include="Controllers\Editors\AudioEditorController.cs" />
     <Compile Include="Controllers\Editors\BaseEditorController.cs" />
     <Compile Include="Controllers\Editors\ImageEditorController.cs" />
-    <Compile Include="Controllers\Editors\VideoEditorController.cs" />
     <Compile Include="Foundation\IWebUtilWrapper.cs" />
     <Compile Include="Foundation\ServiceCollectionExtensions.cs" />
     <Compile Include="Foundation\WebUtilWrapper.cs" />
@@ -296,10 +294,7 @@
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\jquery-1.10.2.min.js" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\AudioEditor\" />
-    <Folder Include="Views\VideoEditor\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
