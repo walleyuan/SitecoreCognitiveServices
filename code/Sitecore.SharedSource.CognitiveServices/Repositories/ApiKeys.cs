@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sitecore.Configuration;
 
-namespace Sitecore.SharedSource.CognitiveServices.Api
+namespace Sitecore.SharedSource.CognitiveServices.Repository
 {
     public class ApiKeys : IApiKeys
     {

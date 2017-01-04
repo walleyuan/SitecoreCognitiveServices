@@ -5,7 +5,7 @@ using Microsoft.ProjectOxford.Emotion.Contract;
 using Sitecore.Diagnostics;
 using Sitecore.Data.Items;
 
-namespace Sitecore.SharedSource.CognitiveServices.Api.Vision
+namespace Sitecore.SharedSource.CognitiveServices.Repository.Vision
 {
     public class EmotionApi : EmotionServiceClient, IEmotionApi
     {

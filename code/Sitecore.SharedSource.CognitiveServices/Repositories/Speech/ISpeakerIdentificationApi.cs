@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sitecore.SharedSource.CognitiveServices.Api.Speech
+namespace Sitecore.SharedSource.CognitiveServices.Repository.Speech
 {
     public interface ISpeakerIdentificationApi : ISpeakerIdentificationServiceClient
     {

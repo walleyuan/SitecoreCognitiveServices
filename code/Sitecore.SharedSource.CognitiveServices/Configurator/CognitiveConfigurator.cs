@@ -6,12 +6,12 @@ using System.Web.Services.Description;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.DependencyInjection;
 using Sitecore.Foundation.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.Api;
-using Sitecore.SharedSource.CognitiveServices.Api.Knowledge;
-using Sitecore.SharedSource.CognitiveServices.Api.Language;
-using Sitecore.SharedSource.CognitiveServices.Api.Speech;
-using Sitecore.SharedSource.CognitiveServices.Api.Video;
-using Sitecore.SharedSource.CognitiveServices.Api.Vision;
+using Sitecore.SharedSource.CognitiveServices.Repository;
+using Sitecore.SharedSource.CognitiveServices.Repository.Knowledge;
+using Sitecore.SharedSource.CognitiveServices.Repository.Language;
+using Sitecore.SharedSource.CognitiveServices.Repository.Speech;
+using Sitecore.SharedSource.CognitiveServices.Repository.Video;
+using Sitecore.SharedSource.CognitiveServices.Repository.Vision;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Services;
 using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
@@ -27,7 +27,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
         public void Configure(IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton<IApiKeys, ApiKeys>();
-            serviceCollection.AddSingleton<ICognitiveApiContext, CognitiveApiContext>();
+            serviceCollection.AddSingleton<ICognitiveRepositoryContext, CognitiveRepositoryContext>();
             serviceCollection.AddSingleton<IEmotionApi, EmotionApi>();
             serviceCollection.AddSingleton<IEntityLinkingApi, EntityLinkingApi>();
             serviceCollection.AddSingleton<IFaceApi, FaceApi>();

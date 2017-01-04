@@ -8,7 +8,7 @@ using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using Sitecore.SharedSource.CognitiveServices.Api.Vision;
+using Sitecore.SharedSource.CognitiveServices.Repository.Vision;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {

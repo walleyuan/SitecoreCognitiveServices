@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Video;
 
-namespace Sitecore.SharedSource.CognitiveServices.Api.Video
+namespace Sitecore.SharedSource.CognitiveServices.Repository.Video
 {
     public interface IVideoApi : IVideoServiceClient
     {

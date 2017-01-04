@@ -9,7 +9,7 @@ using Microsoft.ProjectOxford.Face.Contract;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 
-namespace Sitecore.SharedSource.CognitiveServices.Api.Vision
+namespace Sitecore.SharedSource.CognitiveServices.Repository.Vision
 {
     public class FaceApi : FaceServiceClient, IFaceApi
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Text.Sentiment;
 
-namespace Sitecore.SharedSource.CognitiveServices.Api.Language
+namespace Sitecore.SharedSource.CognitiveServices.Repository.Language
 {
     public class SentimentApi : SentimentClient, ISentimentApi
     {

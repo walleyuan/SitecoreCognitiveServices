@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.ProjectOxford.SpeakerRecognition.Contract.Identification;
 using Microsoft.ProjectOxford.Video;
 
-namespace Sitecore.SharedSource.CognitiveServices.Api.Video
+namespace Sitecore.SharedSource.CognitiveServices.Repository.Video
 {
     public class VideoApi : VideoServiceClient, IVideoApi
     {

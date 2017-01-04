@@ -9,7 +9,7 @@ using Microsoft.ProjectOxford.Common.Contract;
 using Microsoft.ProjectOxford.Emotion.Contract;
 using Microsoft.ProjectOxford.Vision.Contract;
 
-namespace Sitecore.SharedSource.CognitiveServices.Api.Vision
+namespace Sitecore.SharedSource.CognitiveServices.Repository.Vision
 {
     /// <summary>
     /// Stubs out the internal interface that Microsoft.ProjectOxford.Emotion.IEmotionServiceClient implements

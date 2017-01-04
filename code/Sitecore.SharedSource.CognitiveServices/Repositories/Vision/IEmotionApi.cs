@@ -9,7 +9,7 @@ using Microsoft.ProjectOxford.Emotion.Contract;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.Data.Items;
 
-namespace Sitecore.SharedSource.CognitiveServices.Api.Vision
+namespace Sitecore.SharedSource.CognitiveServices.Repository.Vision
 {
     public interface IEmotionApi : IEmotionServiceClient
     {

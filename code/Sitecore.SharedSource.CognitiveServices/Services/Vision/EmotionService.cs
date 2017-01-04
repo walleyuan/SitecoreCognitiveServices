@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.ProjectOxford.Emotion.Contract;
-using Sitecore.SharedSource.CognitiveServices.Api.Vision;
+using Sitecore.SharedSource.CognitiveServices.Repository.Vision;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using System.IO;

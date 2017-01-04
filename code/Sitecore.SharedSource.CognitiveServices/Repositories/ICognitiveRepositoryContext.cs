@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Sitecore.SharedSource.CognitiveServices.Api.Knowledge;
-using Sitecore.SharedSource.CognitiveServices.Api.Language;
-using Sitecore.SharedSource.CognitiveServices.Api.Speech;
-using Sitecore.SharedSource.CognitiveServices.Api.Video;
-using Sitecore.SharedSource.CognitiveServices.Api.Vision;
+using Sitecore.SharedSource.CognitiveServices.Repository.Knowledge;
+using Sitecore.SharedSource.CognitiveServices.Repository.Language;
+using Sitecore.SharedSource.CognitiveServices.Repository.Speech;
+using Sitecore.SharedSource.CognitiveServices.Repository.Video;
+using Sitecore.SharedSource.CognitiveServices.Repository.Vision;
 
-namespace Sitecore.SharedSource.CognitiveServices.Api
+namespace Sitecore.SharedSource.CognitiveServices.Repository
 {
-    public interface ICognitiveApiContext
+    public interface ICognitiveRepositoryContext
     {
         IEmotionApi EmotionApi { get; set; }
         IEntityLinkingApi EntityLinkingApi { get; set; }
