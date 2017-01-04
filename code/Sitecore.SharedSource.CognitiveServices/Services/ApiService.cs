@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sitecore.Data.Items;
 
-namespace Sitecore.SharedSource.CognitiveServices.Api.Common
+namespace Sitecore.SharedSource.CognitiveServices.Services
 {
     public class ApiService : IApiService
     { 

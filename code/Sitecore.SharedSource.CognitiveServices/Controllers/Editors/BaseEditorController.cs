@@ -5,14 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using Sitecore.Data;
 using Sitecore.Diagnostics;
-using Sitecore.SharedSource.CognitiveServices.Api;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Services;
 
 namespace Sitecore.SharedSource.CognitiveServices.Controllers.Editors
 {
     public class BaseEditorController : Controller
     {
-        public ICognitiveContext CognitiveContext { get; set; }
+        public ICognitiveServiceContext CognitiveServiceContext { get; set; }
         public IWebUtilWrapper WebUtil { get; set; }
 
         #region Querystring Params
@@ -26,11 +26,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers.Editors
         #endregion Querystring Params
 
         public BaseEditorController(
-            ICognitiveContext cognitiveContext,
+            ICognitiveServiceContext cognitiveServiceContext,
             IWebUtilWrapper webUtil)
         {
             
-            CognitiveContext = cognitiveContext;
+            CognitiveServiceContext = cognitiveServiceContext;
             WebUtil = webUtil;
 
             /* Querystring Params available

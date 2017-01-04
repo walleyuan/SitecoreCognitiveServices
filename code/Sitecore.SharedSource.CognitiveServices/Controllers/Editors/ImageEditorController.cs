@@ -8,18 +8,18 @@ using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.Mvc.Controllers;
-using Sitecore.SharedSource.CognitiveServices.Api;
 using Sitecore.SharedSource.CognitiveServices.Controllers.Editors;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models;
+using Sitecore.SharedSource.CognitiveServices.Services;
 
 namespace Sitecore.SharedSource.CognitiveServices.Controllers
 {
     public class ImageEditorController : BaseEditorController
     {
         public ImageEditorController(
-            ICognitiveContext cognitiveContext,
-            IWebUtilWrapper webUtil) : base(cognitiveContext, webUtil)
+            ICognitiveServiceContext cognitiveServiceContext,
+            IWebUtilWrapper webUtil) : base(cognitiveServiceContext, webUtil)
         {
         }
 
@@ -29,7 +29,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
             return View(cImage);
         }
 
-        public ActionResult Analyze(string database, string itemId, string language)
+        public ActionResult Analyze(string database, string itemId, string language) 
         {
             ICognitiveImage cImage = GetEmptyCognitiveImage();
 

@@ -10,7 +10,7 @@ using Sitecore.SharedSource.CognitiveServices.Api.Vision;
 
 namespace Sitecore.SharedSource.CognitiveServices.Api
 {
-    public interface ICognitiveContext
+    public interface ICognitiveApiContext
     {
         IEmotionApi EmotionApi { get; set; }
         IEntityLinkingApi EntityLinkingApi { get; set; }

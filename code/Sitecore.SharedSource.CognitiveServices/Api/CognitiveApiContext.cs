@@ -10,7 +10,7 @@ using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Api
 {
-    public class CognitiveContext : ICognitiveContext
+    public class CognitiveApiContext : ICognitiveApiContext
     {
         public IEmotionApi EmotionApi { get; set; }
         public IEntityLinkingApi EntityLinkingApi { get; set; }
@@ -22,7 +22,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Api
         public IVideoApi VideoApi { get; set; }
         public IVisionApi VisionApi { get; set; }
 
-        public CognitiveContext(
+        public CognitiveApiContext(
             IEmotionApi emotionApi,
             IEntityLinkingApi entityLinkingApi,
             IFaceApi faceApi,

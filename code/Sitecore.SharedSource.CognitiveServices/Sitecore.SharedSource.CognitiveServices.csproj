@@ -114,6 +114,10 @@
       <HintPath>..\..\packages\Rainbow.Storage.Yaml.1.4.1\lib\net452\Rainbow.Storage.Yaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Sitecore.ContentSearch, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sitecore.ContentSearch.NoReferences.8.2.161221\lib\NET452\Sitecore.ContentSearch.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Sitecore.Kernel, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Sitecore.Kernel.NoReferences.8.2.160729\lib\NET452\Sitecore.Kernel.dll</HintPath>
       <Private>True</Private>
@@ -195,7 +199,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\CognitiveContext.cs" />
+    <Compile Include="Api\CognitiveApiContext.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Configurator\CognitiveConfigurator.cs" />
     <Compile Include="Controllers\Editors\AudioEditorController.cs" />
@@ -211,15 +215,11 @@
     <Compile Include="Search\CognitiveFieldService.cs" />
     <Compile Include="Search\CognitiveSearchContext.cs" />
     <Compile Include="Search\CognitiveSearchResult.cs" />
+    <Compile Include="Search\ComputedFields\BaseComputedField.cs" />
     <Compile Include="Search\ComputedFields\Image\CumulativeImageFieldAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Image\ImageItemAnalysis.cs" />
     <Compile Include="Search\ComputedFields\Presentation\CumulativePresentationFieldAnalysis.cs" />
     <Compile Include="Search\ComputedFields\Text\CumulativeTextFieldAnalysis.cs" />
-    <Compile Include="Search\ComputedFields\Image\ICumulativeImageFieldAnalysis.cs" />
-    <Compile Include="Search\ComputedFields\Presentation\ICumulativePresentationFieldAnalysis.cs" />
-    <Compile Include="Search\ComputedFields\Text\ICumulativeTextFieldAnalysis.cs" />
-    <Compile Include="Search\ComputedFields\Image\IIndividualImageFieldAnalysis.cs" />
-    <Compile Include="Search\ComputedFields\Presentation\IIndividualPresentationFieldAnalysis.cs" />
-    <Compile Include="Search\ComputedFields\Text\IIndividualTextFieldAnalysis.cs" />
     <Compile Include="Search\ComputedFields\Image\IndividualImageFieldAnalysis.cs" />
     <Compile Include="Search\ComputedFields\Presentation\IndividualPresentationFieldAnalysis.cs" />
     <Compile Include="Search\ComputedFields\Text\IndividualTextFieldAnalysis.cs" />
@@ -227,10 +227,14 @@
     <Compile Include="Search\ICognitiveSearchContext.cs" />
     <Compile Include="Search\ICognitiveSearchResult.cs" />
     <Compile Include="Api\ApiKeys.cs" />
-    <Compile Include="Api\Common\IApiService.cs" />
-    <Compile Include="Api\Common\ApiService.cs" />
+    <Compile Include="Services\CognitiveServiceContext.cs" />
+    <Compile Include="Services\EmotionService.cs" />
+    <Compile Include="Services\EntityLinkingService.cs" />
+    <Compile Include="Services\FaceService.cs" />
+    <Compile Include="Services\IApiService.cs" />
+    <Compile Include="Services\ApiService.cs" />
     <Compile Include="Api\IApiKeys.cs" />
-    <Compile Include="Api\ICognitiveContext.cs" />
+    <Compile Include="Api\ICognitiveApiContext.cs" />
     <Compile Include="Api\Knowledge\EntityLinkingApi.cs" />
     <Compile Include="Api\Knowledge\IEntityLinkingApi.cs" />
     <Compile Include="Api\Knowledge\IEntityLinkingServiceClient.cs" />
@@ -253,6 +257,22 @@
     <Compile Include="Api\Vision\IFaceApi.cs" />
     <Compile Include="Api\Vision\IVisionApi.cs" />
     <Compile Include="Api\Vision\VisionApi.cs" />
+    <Compile Include="Services\ICognitiveServiceContext.cs" />
+    <Compile Include="Services\IEmotionService.cs" />
+    <Compile Include="Services\IEntityLinkingService.cs" />
+    <Compile Include="Services\IFaceService.cs" />
+    <Compile Include="Services\ILanguageService.cs" />
+    <Compile Include="Services\ISentimentService.cs" />
+    <Compile Include="Services\ISpeakerIdentificationService.cs" />
+    <Compile Include="Services\ISpeakerVerificationService.cs" />
+    <Compile Include="Services\IVideoService.cs" />
+    <Compile Include="Services\IVisionService.cs" />
+    <Compile Include="Services\LanguageService.cs" />
+    <Compile Include="Services\SentimentService.cs" />
+    <Compile Include="Services\SpeakerIdentificationService.cs" />
+    <Compile Include="Services\SpeakerVerificationService.cs" />
+    <Compile Include="Services\VideoService.cs" />
+    <Compile Include="Services\VisionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.config" />
