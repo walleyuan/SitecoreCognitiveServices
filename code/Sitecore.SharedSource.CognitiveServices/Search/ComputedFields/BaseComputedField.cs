@@ -27,19 +27,16 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields
             if (indexItem?.Database?.Name == "core")
                 return false;
 
-            if (indexItem.Paths.IsMediaItem)
-                return indexItem.TemplateID != TemplateIDs.MediaFolder && indexItem.ID != ItemIDs.MediaLibraryRoot;
-
-            if (!indexItem.Paths.IsContentItem)
+            if (indexItem.TemplateID == TemplateIDs.MediaFolder || indexItem.ID == ItemIDs.MediaLibraryRoot)
                 return false;
+
+            //if (!indexItem.Paths.IsContentItem)
+            //    return false;
             
-            try
-            {
+            try {
                 return GetFieldValue(indexItem);
-            }
-            catch (Exception e)
-            {
-                Sitecore.Diagnostics.Log.Error($"Error indexing field: {FieldName}, Item Path: {indexItem.Paths.FullPath}", e, GetType());
+            } catch (Exception e) {
+                Log.Error($"Error indexing field: {FieldName}, Item Path: {indexItem.Paths.FullPath}", e, GetType());
             }
 
             return false;
