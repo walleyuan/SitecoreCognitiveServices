@@ -11,7 +11,7 @@ using Sitecore.Diagnostics;
 using Sitecore.SecurityModel;
 using Sitecore.SharedSource.CognitiveServices.Api.Vision;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services
+namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {
     public class VisionService : IVisionService
     {

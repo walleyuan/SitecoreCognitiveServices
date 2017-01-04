@@ -14,6 +14,11 @@ using Sitecore.SharedSource.CognitiveServices.Api.Video;
 using Sitecore.SharedSource.CognitiveServices.Api.Vision;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Services;
+using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
+using Sitecore.SharedSource.CognitiveServices.Services.Language;
+using Sitecore.SharedSource.CognitiveServices.Services.Speech;
+using Sitecore.SharedSource.CognitiveServices.Services.Video;
+using Sitecore.SharedSource.CognitiveServices.Services.Vision;
 
 namespace Sitecore.SharedSource.CognitiveServices.Configurator
 {

@@ -6,7 +6,7 @@ using System.Web;
 using Microsoft.ProjectOxford.Emotion.Contract;
 using Sitecore.Data.Items;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services
+namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {
     public interface IEmotionService
     {

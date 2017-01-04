@@ -7,7 +7,7 @@ using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
 using Sitecore.Data.Items;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services
+namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {
     public interface IFaceService
     {

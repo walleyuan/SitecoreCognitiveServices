@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
+using Sitecore.SharedSource.CognitiveServices.Services.Language;
+using Sitecore.SharedSource.CognitiveServices.Services.Speech;
+using Sitecore.SharedSource.CognitiveServices.Services.Video;
+using Sitecore.SharedSource.CognitiveServices.Services.Vision;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services
 {

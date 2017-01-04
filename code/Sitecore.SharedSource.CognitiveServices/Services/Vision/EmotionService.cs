@@ -9,7 +9,7 @@ using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using System.IO;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services
+namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {
     public class EmotionService : IEmotionService
     {

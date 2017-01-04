@@ -10,7 +10,7 @@ using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.SharedSource.CognitiveServices.Api.Vision;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services
+namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {
     public class FaceService : IFaceService
     {
