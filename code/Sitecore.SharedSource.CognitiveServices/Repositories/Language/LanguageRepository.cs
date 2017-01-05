@@ -11,7 +11,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
     {
         public LanguageRepository(
             IApiKeys apiKeys)
-            : base(apiKeys.LinguisticAnalysis)
+            : base(apiKeys.TextAnalytics)
         {
         }
     }
