@@ -2,11 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using Microsoft.ProjectOxford.Text.Core;
+using Microsoft.ProjectOxford.Text.Language;
+using Microsoft.ProjectOxford.Text.Sentiment;
+using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
+using Sitecore.SharedSource.CognitiveServices.Factories;
+using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.SharedSource.CognitiveServices.Repositories;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
@@ -17,28 +25,45 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
         {
             if (!indexItem.Paths.IsContentItem)
                 return false;
-            
+
             var crContext = DependencyResolver.Current.GetService<ICognitiveRepositoryContext>();
             if (crContext == null)
                 return false;
+            
+            var ctaFactory = DependencyResolver.Current.GetService<ICognitiveTextAnalysisFactory>();
+            if (ctaFactory == null)
+                return false;
+            
+            string fieldValues = indexItem.Fields
+                .Where(f => !f.Name.StartsWith("__"))
+                .Select(f => f.Value)
+                .Aggregate((a, b) => $"{a} {b}");
 
-            try
-            {
-                var r = crContext.VisionRepository.GetFullAnalysis(indexItem);
-                var json = new JavaScriptSerializer().Serialize(r);
-                return json;
-            }
-            catch (Exception ex)
-            {
-                MicrosoftProjectOxfordCommon::Microsoft.ProjectOxford.Common.ClientException exception = ex.InnerException as MicrosoftProjectOxfordCommon::Microsoft.ProjectOxford.Common.ClientException;
+            Document d = new Document();
+            d.Text = fieldValues;
+            d.Id = indexItem.ID.ToString();
 
-                if (exception != null)
-                    Log.Error($"CumulativeTextFieldAnalysis failed to index {indexItem.Paths.Path}: {exception.Error.Message}", exception, GetType());
-                else
-                    Log.Error(ex.Message, ex, GetType());
-            }
+            ICognitiveTextAnalysis cta = ctaFactory.Create();
 
-            return false;
+            try {
+                cta.LinkAnalysis = Task.Run(async () => await crContext.EntityLinkingRepository.LinkAsync(fieldValues)).Result;
+            } catch (Exception ex) { LogError(ex, indexItem); }
+
+            try {
+                SentimentRequest sr = new SentimentRequest();
+                sr.Documents.Add(d);
+                cta.SentimentAnalysis = Task.Run(async () => await crContext.SentimentRepository.GetSentimentAsync(sr)).Result;
+            } catch (Exception ex) { LogError(ex, indexItem); }
+
+            try {
+                LanguageRequest lr = new LanguageRequest();
+                lr.Documents.Add(d);
+                cta.LanguageAnalysis = Task.Run(async () => await crContext.LanguageRepository.GetLanguagesAsync(lr)).Result;
+            } catch (Exception ex) { LogError(ex, indexItem); }
+
+            var json = new JavaScriptSerializer().Serialize(cta);
+
+            return json;
         }
     }
 }

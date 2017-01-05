@@ -1,4 +1,5 @@
-﻿using System;
+﻿extern alias MicrosoftProjectOxfordCommon;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -42,6 +43,16 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields
         protected virtual object GetFieldValue(Item indexItem)
         {
             return string.Empty;
+        }
+
+        protected void LogError(Exception ex, Item indexItem)
+        {
+            MicrosoftProjectOxfordCommon::Microsoft.ProjectOxford.Common.ClientException exception = ex.InnerException as MicrosoftProjectOxfordCommon::Microsoft.ProjectOxford.Common.ClientException;
+
+            if (exception != null)
+                Log.Error($"ImageItemAnalysis failed to index {indexItem.Paths.Path}: {exception.Error.Message}", exception, GetType());
+            else
+                Log.Error(ex.Message, ex, GetType());
         }
     }
 }

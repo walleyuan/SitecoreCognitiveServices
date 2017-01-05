@@ -202,10 +202,14 @@
   <ItemGroup>
     <Compile Include="Factories\CognitiveImageAnalysisFactory.cs" />
     <Compile Include="Factories\CognitiveImageFactory.cs" />
+    <Compile Include="Factories\CognitiveTextAnalysisFactory.cs" />
     <Compile Include="Factories\ICognitiveImageAnalysisFactory.cs" />
     <Compile Include="Factories\ICognitiveImageFactory.cs" />
+    <Compile Include="Factories\ICognitiveTextAnalysisFactory.cs" />
     <Compile Include="Models\CognitiveImageAnalysis.cs" />
+    <Compile Include="Models\CognitiveTextAnalysis.cs" />
     <Compile Include="Models\ICognitiveImageAnalysis.cs" />
+    <Compile Include="Models\ICognitiveTextAnalysis.cs" />
     <Compile Include="Repositories\CognitiveRepositoryContext.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Configurator\CognitiveConfigurator.cs" />

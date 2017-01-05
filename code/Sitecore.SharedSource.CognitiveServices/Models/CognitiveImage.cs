@@ -10,13 +10,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Models
     {
         public CognitiveImage(string database = "", string language = "", string itemId = "")
         {
-            Analysis = new AnalysisResult();
             Database = database;
             Language = language;
             ItemId = itemId;
         }
 
-        public AnalysisResult Analysis { get; set; }
+        public ICognitiveImageAnalysis Analysis { get; set; }
         public string ItemId { get; set; }
         public string Language { get; set; }
         public string Database { get; set; }

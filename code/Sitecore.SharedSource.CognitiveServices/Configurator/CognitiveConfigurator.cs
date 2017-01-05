@@ -55,6 +55,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
 
             serviceCollection.AddSingleton<ICognitiveImageFactory, CognitiveImageFactory>();
             serviceCollection.AddSingleton<ICognitiveImageAnalysisFactory, CognitiveImageAnalysisFactory>();
+            serviceCollection.AddSingleton<ICognitiveTextAnalysisFactory, CognitiveTextAnalysisFactory>();
 
             serviceCollection.AddMvcControllersInCurrentAssembly();
         }

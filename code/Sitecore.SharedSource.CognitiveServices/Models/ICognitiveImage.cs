@@ -8,7 +8,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Models
 {
     public interface ICognitiveImage
     {
-        AnalysisResult Analysis { get; set; }
+        ICognitiveImageAnalysis Analysis { get; set; }
         string ItemId { get; set; }
         string Language { get; set; }
         string Database { get; set; }
