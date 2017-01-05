@@ -9,44 +9,24 @@ using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.SecurityModel;
-using Sitecore.SharedSource.CognitiveServices.Repository.Vision;
+using Sitecore.SharedSource.CognitiveServices.Repositories.Vision;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {
     public class VisionService : IVisionService
     {
-        public IVisionApi VisionApi;
-        public IApiService ApiService;
-
-        public VisionService(
-            IVisionApi visionApi,
-            IApiService apiService)
+        public IVisionRepository VisionRepository;
+        
+        public VisionService(IVisionRepository visionRepository)
         {
-            VisionApi = visionApi;
-            ApiService = apiService;
-        }
-
-        #region DescribeAsync
-
-        public virtual AnalysisResult DescribeAsync(MediaItem mediaItem)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            using (MemoryStream stream = ApiService.GetStream(mediaItem))
-            {
-                var result = VisionApi.DescribeAsync(stream);
-
-                return result.Result;
-            }
+            VisionRepository = visionRepository;
         }
 
         public virtual Description GetDescription(MediaItem mediaItem)
         {
             Assert.IsNotNull(mediaItem, GetType());
-
-            var result = DescribeAsync(mediaItem);
-
-            return result.Description;
+            
+            return Task.Run(async () => await VisionRepository.DescribeAsync(mediaItem)).Result.Description;
         }
 
         public virtual void SetImageAlt(MediaItem mediaItem)
@@ -76,233 +56,5 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
                 }
             }
         }
-
-        #endregion DescribeAsync
-
-        #region AnalyzeImageAsync
-
-        public virtual AnalysisResult AnalyzeImageAsync(MediaItem mediaItem, IEnumerable<VisualFeature> features)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            using (MemoryStream stream = ApiService.GetStream(mediaItem))
-            {
-                var result = Task.Run(async () => await VisionApi.AnalyzeImageAsync(stream, features)).Result;
-
-                return result;
-            }
-        }
-
-        public virtual AnalysisResult GetFullAnalysis(MediaItem mediaItem)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            var result = AnalyzeImageAsync(mediaItem, new List<VisualFeature>() {
-                VisualFeature.Adult,
-                VisualFeature.Categories,
-                VisualFeature.Color,
-                VisualFeature.Description,
-                VisualFeature.Faces,
-                VisualFeature.ImageType,
-                VisualFeature.Tags });
-
-            return result;
-        }
-
-        public virtual AnalysisResult GetFullAnalysis(string imageUrl)
-        {
-            Assert.IsNotNullOrEmpty(imageUrl, "GetFullAnalysis: image url must be provided but was empty");
-
-            var result = VisionApi.AnalyzeImageAsync(imageUrl, new List<VisualFeature>() {
-                VisualFeature.Adult,
-                VisualFeature.Categories,
-                VisualFeature.Color,
-                VisualFeature.Description,
-                VisualFeature.Faces,
-                VisualFeature.ImageType,
-                VisualFeature.Tags });
-
-            return result.Result;
-        }
-
-        public virtual Adult GetAdultAnalysis(MediaItem mediaItem)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            var result = AnalyzeImageAsync(mediaItem, new List<VisualFeature>() { VisualFeature.Adult });
-            return result.Adult;
-        }
-
-        public virtual Adult GetAdultAnalysis(string imageUrl)
-        {
-            Assert.IsNotNullOrEmpty(imageUrl, "GetFullAnalysis: image url must be provided but was empty");
-
-            var result = VisionApi.AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.Adult });
-            return result.Result.Adult;
-        }
-
-        public virtual Category[] GetCategoryAnalysis(MediaItem mediaItem)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            var result = AnalyzeImageAsync(mediaItem, new List<VisualFeature>() { VisualFeature.Categories });
-            return result.Categories;
-        }
-
-        public virtual Category[] GetCategoryAnalysis(string imageUrl)
-        {
-            Assert.IsNotNullOrEmpty(imageUrl, "GetFullAnalysis: image url must be provided but was empty");
-
-            var result = VisionApi.AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.Categories });
-            return result.Result.Categories;
-        }
-
-        public virtual Microsoft.ProjectOxford.Vision.Contract.Color GetColorAnalysis(MediaItem mediaItem)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            var result = AnalyzeImageAsync(mediaItem, new List<VisualFeature>() { VisualFeature.Color });
-            return result.Color;
-        }
-
-        public virtual Microsoft.ProjectOxford.Vision.Contract.Color GetColorAnalysis(string imageUrl)
-        {
-            Assert.IsNotNullOrEmpty(imageUrl, "GetFullAnalysis: image url must be provided but was empty");
-
-            var result = VisionApi.AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.Color });
-            return result.Result.Color;
-        }
-
-        public virtual Description GetDescriptionAnalysis(MediaItem mediaItem)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            var result = AnalyzeImageAsync(mediaItem, new List<VisualFeature>() { VisualFeature.Description });
-            return result.Description;
-        }
-
-        public virtual Description GetDescriptionAnalysis(string imageUrl)
-        {
-            Assert.IsNotNullOrEmpty(imageUrl, "GetFullAnalysis: image url must be provided but was empty");
-
-            var result = VisionApi.AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.Description });
-            return result.Result.Description;
-        }
-
-        public virtual Face[] GetFaceAnalysis(MediaItem mediaItem)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            var result = AnalyzeImageAsync(mediaItem, new List<VisualFeature>() { VisualFeature.Faces });
-            return result.Faces;
-        }
-
-        public virtual Face[] GetFaceAnalysis(string imageUrl)
-        {
-            Assert.IsNotNullOrEmpty(imageUrl, "GetFullAnalysis: image url must be provided but was empty");
-
-            var result = VisionApi.AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.Faces });
-            return result.Result.Faces;
-        }
-
-        public virtual ImageType GetImageTypeAnalysis(MediaItem mediaItem)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            var result = AnalyzeImageAsync(mediaItem, new List<VisualFeature>() { VisualFeature.ImageType });
-            return result.ImageType;
-        }
-
-        public virtual ImageType GetImageTypeAnalysis(string imageUrl)
-        {
-            Assert.IsNotNullOrEmpty(imageUrl, "GetFullAnalysis: image url must be provided but was empty");
-
-            var result = VisionApi.AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.ImageType });
-            return result.Result.ImageType;
-        }
-
-        public virtual Tag[] GetTagsAnalysis(MediaItem mediaItem)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            var result = AnalyzeImageAsync(mediaItem, new List<VisualFeature>() { VisualFeature.Tags });
-            return result.Tags;
-        }
-
-        public virtual Tag[] GetTagsAnalysis(string imageUrl)
-        {
-            Assert.IsNotNullOrEmpty(imageUrl, "GetFullAnalysis: image url must be provided but was empty");
-
-            var result = VisionApi.AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.Tags });
-            return result.Result.Tags;
-        }
-
-        #endregion AnalyzeImageAsync
-
-        #region AnalyzeImageInDomainAsync
-
-        public virtual Task<AnalysisInDomainResult> AnalyzeImageInDomainAsync(MediaItem mediaItem, Model model)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-            Assert.IsNotNull(model, GetType());
-
-            using (MemoryStream stream = ApiService.GetStream(mediaItem))
-            {
-                var result = VisionApi.AnalyzeImageInDomainAsync(stream, model);
-
-                return result;
-            }
-        }
-
-        #endregion AnalyzeImageInDomainAsync
-
-        #region GetTagsAsync
-
-        public virtual Task<AnalysisResult> GetTagsAsync(MediaItem mediaItem)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            using (MemoryStream stream = ApiService.GetStream(mediaItem))
-            {
-                var result = VisionApi.GetTagsAsync(stream);
-
-                return result;
-            }
-        }
-
-        #endregion GetTagsAsync
-
-        #region GetThumbnailAsync
-
-        public virtual Task<byte[]> GetThumbnailAsync(MediaItem mediaItem, int height, int width, bool smartCrop)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            using (MemoryStream stream = ApiService.GetStream(mediaItem))
-            {
-                var result = VisionApi.GetThumbnailAsync(stream, height, width, smartCrop);
-
-                return result;
-            }
-        }
-
-        #endregion GetThumbnailAsync
-
-        #region RecognizeTextAsync
-
-        public virtual Task<OcrResults> RecognizeTextAsync(MediaItem mediaItem, string languageCode, bool detectOrientation)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-            Assert.IsNotNullOrEmpty(languageCode, "RecognizeTextAsync: The language code must be provided but was empty");
-
-            using (MemoryStream stream = ApiService.GetStream(mediaItem))
-            {
-                var result = VisionApi.RecognizeTextAsync(stream, languageCode, detectOrientation);
-
-                return result;
-            }
-        }
-
-        #endregion RecognizeTextAsync
     }
 }

@@ -2,46 +2,46 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
- using Sitecore.SharedSource.CognitiveServices.Repository.Knowledge;
- using Sitecore.SharedSource.CognitiveServices.Repository.Language;
- using Sitecore.SharedSource.CognitiveServices.Repository.Speech;
- using Sitecore.SharedSource.CognitiveServices.Repository.Video;
- using Sitecore.SharedSource.CognitiveServices.Repository.Vision;
+ using Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge;
+ using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
+ using Sitecore.SharedSource.CognitiveServices.Repositories.Speech;
+ using Sitecore.SharedSource.CognitiveServices.Repositories.Video;
+ using Sitecore.SharedSource.CognitiveServices.Repositories.Vision;
 
-namespace Sitecore.SharedSource.CognitiveServices.Repository
+namespace Sitecore.SharedSource.CognitiveServices.Repositories
 {
     public class CognitiveRepositoryContext : ICognitiveRepositoryContext
     {
-        public IEmotionApi EmotionApi { get; set; }
-        public IEntityLinkingApi EntityLinkingApi { get; set; }
-        public IFaceApi FaceApi { get; set; }
-        public ILanguageApi LanguageApi { get; set; }
-        public ISentimentApi SentimentApi { get; set; }
-        public ISpeakerIdentificationApi SpeakerIdentificationApi { get; set; }
-        public ISpeakerVerificationApi SpeakerVerificationApi { get; set; }
-        public IVideoApi VideoApi { get; set; }
-        public IVisionApi VisionApi { get; set; }
+        public IEmotionRepository EmotionRepository { get; set; }
+        public IEntityLinkingRepository EntityLinkingRepository { get; set; }
+        public IFaceRepository FaceRepository { get; set; }
+        public ILanguageRepository LanguageRepository { get; set; }
+        public ISentimentRepository SentimentRepository { get; set; }
+        public ISpeakerIdentificationRepository SpeakerIdentificationRepository { get; set; }
+        public ISpeakerVerificationRepository SpeakerVerificationRepository { get; set; }
+        public IVideoRepository VideoRepository { get; set; }
+        public IVisionRepository VisionRepository { get; set; }
 
         public CognitiveRepositoryContext(
-            IEmotionApi emotionApi,
-            IEntityLinkingApi entityLinkingApi,
-            IFaceApi faceApi,
-            ILanguageApi languageApi,
-            ISentimentApi sentimentApi,
-            ISpeakerIdentificationApi speakerIdentificationApi,
-            ISpeakerVerificationApi speakerVerificationApi,
-            IVideoApi videoApi, 
-            IVisionApi visionApi)
+            IEmotionRepository emotionRepository,
+            IEntityLinkingRepository entityLinkingRepository,
+            IFaceRepository faceRepository,
+            ILanguageRepository languageRepository,
+            ISentimentRepository sentimentRepository,
+            ISpeakerIdentificationRepository speakerIdentificationRepository,
+            ISpeakerVerificationRepository speakerVerificationRepository,
+            IVideoRepository videoRepository, 
+            IVisionRepository visionRepository)
         {
-            EmotionApi = emotionApi;
-            EntityLinkingApi = entityLinkingApi;
-            FaceApi = faceApi;
-            LanguageApi = languageApi;
-            SentimentApi = sentimentApi;
-            SpeakerIdentificationApi = speakerIdentificationApi;
-            SpeakerVerificationApi = speakerVerificationApi;
-            VideoApi = videoApi;
-            VisionApi = visionApi;
+            EmotionRepository = emotionRepository;
+            EntityLinkingRepository = entityLinkingRepository;
+            FaceRepository = faceRepository;
+            LanguageRepository = languageRepository;
+            SentimentRepository = sentimentRepository;
+            SpeakerIdentificationRepository = speakerIdentificationRepository;
+            SpeakerVerificationRepository = speakerVerificationRepository;
+            VideoRepository = videoRepository;
+            VisionRepository = visionRepository;
         }
     }
 }

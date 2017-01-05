@@ -2,24 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Sitecore.SharedSource.CognitiveServices.Repository.Knowledge;
-using Sitecore.SharedSource.CognitiveServices.Repository.Language;
-using Sitecore.SharedSource.CognitiveServices.Repository.Speech;
-using Sitecore.SharedSource.CognitiveServices.Repository.Video;
-using Sitecore.SharedSource.CognitiveServices.Repository.Vision;
+using Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge;
+using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
+using Sitecore.SharedSource.CognitiveServices.Repositories.Speech;
+using Sitecore.SharedSource.CognitiveServices.Repositories.Video;
+using Sitecore.SharedSource.CognitiveServices.Repositories.Vision;
 
-namespace Sitecore.SharedSource.CognitiveServices.Repository
+namespace Sitecore.SharedSource.CognitiveServices.Repositories
 {
     public interface ICognitiveRepositoryContext
     {
-        IEmotionApi EmotionApi { get; set; }
-        IEntityLinkingApi EntityLinkingApi { get; set; }
-        IFaceApi FaceApi { get; set; }
-        ILanguageApi LanguageApi { get; set; }
-        ISentimentApi SentimentApi { get; set; }
-        ISpeakerIdentificationApi SpeakerIdentificationApi { get; set; }
-        ISpeakerVerificationApi SpeakerVerificationApi { get; set; }
-        IVideoApi VideoApi { get; set; }
-        IVisionApi VisionApi { get; set; }
+        IEmotionRepository EmotionRepository { get; set; }
+        IEntityLinkingRepository EntityLinkingRepository { get; set; }
+        IFaceRepository FaceRepository { get; set; }
+        ILanguageRepository LanguageRepository { get; set; }
+        ISentimentRepository SentimentRepository { get; set; }
+        ISpeakerIdentificationRepository SpeakerIdentificationRepository { get; set; }
+        ISpeakerVerificationRepository SpeakerVerificationRepository { get; set; }
+        IVideoRepository VideoRepository { get; set; }
+        IVisionRepository VisionRepository { get; set; }
     }
 }

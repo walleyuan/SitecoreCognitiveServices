@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Text.Language;
 
-namespace Sitecore.SharedSource.CognitiveServices.Repository.Language
+namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
 {
     /// <summary>
     /// Stubs out the internal interface that Microsoft.ProjectOxford.Text.Language.LanguageClient implements

@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Text.Language;
 
-namespace Sitecore.SharedSource.CognitiveServices.Repository.Language
+namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
 {
-    public class LanguageApi : LanguageClient, ILanguageApi
+    public class LanguageRepository : LanguageClient, ILanguageRepository
     {
-        public LanguageApi(
+        public LanguageRepository(
             IApiKeys apiKeys)
             : base(apiKeys.LinguisticAnalysis)
         {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sitecore.SharedSource.CognitiveServices.Repository.Language
+namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
 {
-    public interface ILanguageApi : ILanguageClient
+    public interface ILanguageRepository : ILanguageClient
     {
     }
 }

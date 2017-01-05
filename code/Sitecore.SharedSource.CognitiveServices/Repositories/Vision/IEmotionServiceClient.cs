@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Common;
-using Microsoft.ProjectOxford.Common.Contract;
 using Microsoft.ProjectOxford.Emotion.Contract;
 using Microsoft.ProjectOxford.Vision.Contract;
 
-namespace Sitecore.SharedSource.CognitiveServices.Repository.Vision
+namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
 {
+    extern alias MicrosoftProjectOxfordCommon;
+
     /// <summary>
     /// Stubs out the internal interface that Microsoft.ProjectOxford.Emotion.IEmotionServiceClient implements
     /// </summary>
@@ -18,11 +19,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repository.Vision
     {
         Task<Microsoft.ProjectOxford.Emotion.Contract.Emotion[]> RecognizeAsync(string imageUrl);
 
-        Task<Microsoft.ProjectOxford.Emotion.Contract.Emotion[]> RecognizeAsync(string imageUrl, Microsoft.ProjectOxford.Common.Rectangle[] faceRectangles);
+        Task<Microsoft.ProjectOxford.Emotion.Contract.Emotion[]> RecognizeAsync(string imageUrl, MicrosoftProjectOxfordCommon::Microsoft.ProjectOxford.Common.Rectangle[] faceRectangles);
 
         Task<Microsoft.ProjectOxford.Emotion.Contract.Emotion[]> RecognizeAsync(Stream imageStream);
 
-        Task<Microsoft.ProjectOxford.Emotion.Contract.Emotion[]> RecognizeAsync(Stream imageStream, Microsoft.ProjectOxford.Common.Rectangle[] faceRectangles);
+        Task<Microsoft.ProjectOxford.Emotion.Contract.Emotion[]> RecognizeAsync(Stream imageStream, MicrosoftProjectOxfordCommon::Microsoft.ProjectOxford.Common.Rectangle[] faceRectangles);
 
         Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(Stream videoStream);
 
@@ -30,6 +31,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Repository.Vision
 
         Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(string videoUrl);
 
-        Task<VideoOperationResult> GetOperationResultAsync(VideoEmotionRecognitionOperation operation);
+        Task<MicrosoftProjectOxfordCommon::Microsoft.ProjectOxford.Common.Contract.VideoOperationResult> GetOperationResultAsync(VideoEmotionRecognitionOperation operation);
     }
 }

@@ -69,6 +69,7 @@
     <Reference Include="Microsoft.ProjectOxford.Common, Version=1.0.308.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.ProjectOxford.Common.1.0.308\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Common.dll</HintPath>
       <Private>True</Private>
+      <Aliases>MicrosoftProjectOxfordCommon</Aliases>
     </Reference>
     <Reference Include="Microsoft.ProjectOxford.Emotion, Version=1.0.331.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.ProjectOxford.Emotion.1.0.331.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Emotion.dll</HintPath>
@@ -233,28 +234,28 @@
     <Compile Include="Services\ApiService.cs" />
     <Compile Include="Repositories\IApiKeys.cs" />
     <Compile Include="Repositories\ICognitiveRepositoryContext.cs" />
-    <Compile Include="Repositories\Knowledge\EntityLinkingApi.cs" />
-    <Compile Include="Repositories\Knowledge\IEntityLinkingApi.cs" />
+    <Compile Include="Repositories\Knowledge\EntityLinkingRepository.cs" />
+    <Compile Include="Repositories\Knowledge\IEntityLinkingRepository.cs" />
     <Compile Include="Repositories\Knowledge\IEntityLinkingServiceClient.cs" />
-    <Compile Include="Repositories\Language\ILanguageApi.cs" />
+    <Compile Include="Repositories\Language\ILanguageRepository.cs" />
     <Compile Include="Repositories\Language\ILanguageClient.cs" />
-    <Compile Include="Repositories\Language\ISentimentApi.cs" />
+    <Compile Include="Repositories\Language\ISentimentRepository.cs" />
     <Compile Include="Repositories\Language\ISentimentClient.cs" />
-    <Compile Include="Repositories\Language\LanguageApi.cs" />
-    <Compile Include="Repositories\Language\SentimentApi.cs" />
-    <Compile Include="Repositories\Speech\ISpeakerIdentificationApi.cs" />
-    <Compile Include="Repositories\Speech\ISpeakerVerificationApi.cs" />
-    <Compile Include="Repositories\Speech\SpeakerIdentificationApi.cs" />
-    <Compile Include="Repositories\Speech\SpeakerVerificationApi.cs" />
-    <Compile Include="Repositories\Video\IVideoApi.cs" />
-    <Compile Include="Repositories\Video\VideoApi.cs" />
-    <Compile Include="Repositories\Vision\EmotionApi.cs" />
-    <Compile Include="Repositories\Vision\FaceApi.cs" />
-    <Compile Include="Repositories\Vision\IEmotionApi.cs" />
+    <Compile Include="Repositories\Language\LanguageRepository.cs" />
+    <Compile Include="Repositories\Language\SentimentRepository.cs" />
+    <Compile Include="Repositories\Speech\ISpeakerIdentificationRepository.cs" />
+    <Compile Include="Repositories\Speech\ISpeakerVerificationRepository.cs" />
+    <Compile Include="Repositories\Speech\SpeakerIdentificationRepository.cs" />
+    <Compile Include="Repositories\Speech\SpeakerVerificationRepository.cs" />
+    <Compile Include="Repositories\Video\IVideoRepository.cs" />
+    <Compile Include="Repositories\Video\VideoRepository.cs" />
+    <Compile Include="Repositories\Vision\EmotionRepository.cs" />
+    <Compile Include="Repositories\Vision\FaceRepository.cs" />
+    <Compile Include="Repositories\Vision\IEmotionRepository.cs" />
     <Compile Include="Repositories\Vision\IEmotionServiceClient.cs" />
-    <Compile Include="Repositories\Vision\IFaceApi.cs" />
-    <Compile Include="Repositories\Vision\IVisionApi.cs" />
-    <Compile Include="Repositories\Vision\VisionApi.cs" />
+    <Compile Include="Repositories\Vision\IFaceRepository.cs" />
+    <Compile Include="Repositories\Vision\IVisionRepository.cs" />
+    <Compile Include="Repositories\Vision\VisionRepository.cs" />
     <Compile Include="Services\ICognitiveServiceContext.cs" />
     <Compile Include="Services\Vision\IEmotionService.cs" />
     <Compile Include="Services\Knowledge\IEntityLinkingService.cs" />

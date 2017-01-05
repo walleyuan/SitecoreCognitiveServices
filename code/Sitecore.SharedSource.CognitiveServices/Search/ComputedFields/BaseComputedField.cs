@@ -29,9 +29,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields
 
             if (indexItem.TemplateID == TemplateIDs.MediaFolder || indexItem.ID == ItemIDs.MediaLibraryRoot)
                 return false;
-
-            //if (!indexItem.Paths.IsContentItem)
-            //    return false;
             
             try {
                 return GetFieldValue(indexItem);

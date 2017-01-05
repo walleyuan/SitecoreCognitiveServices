@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ProjectOxford.EntityLinking;
 
-namespace Sitecore.SharedSource.CognitiveServices.Repository.Knowledge
+namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge
 {
-    public class EntityLinkingApi : EntityLinkingServiceClient, IEntityLinkingApi
+    public class EntityLinkingRepository : EntityLinkingServiceClient, IEntityLinkingRepository
     {
-        public EntityLinkingApi(
+        public EntityLinkingRepository(
             IApiKeys apiKeys)
             : base(apiKeys.EntityLinking)
         {

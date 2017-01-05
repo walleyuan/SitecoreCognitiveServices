@@ -10,8 +10,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {
     public interface IEmotionService
     {
-        Task<Emotion[]> RecognizeAsync(MediaItem mediaItem);
-        Task<Emotion[]> RecognizeAsync(MediaItem mediaItem, Microsoft.ProjectOxford.Common.Rectangle[] faceRectangles);
-        Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(MediaItem mediaItem);
+        
     }
 }
