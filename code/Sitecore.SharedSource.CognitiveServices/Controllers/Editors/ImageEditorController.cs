@@ -9,6 +9,7 @@ using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.Mvc.Controllers;
 using Sitecore.SharedSource.CognitiveServices.Controllers.Editors;
+using Sitecore.SharedSource.CognitiveServices.Factories;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.SharedSource.CognitiveServices.Services;
@@ -17,21 +18,25 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
 {
     public class ImageEditorController : BaseEditorController
     {
+        public ICognitiveImageFactory CognitiveImageFactory;
+
         public ImageEditorController(
             ICognitiveServiceContext cognitiveServiceContext,
-            IWebUtilWrapper webUtil) : base(cognitiveServiceContext, webUtil)
+            IWebUtilWrapper webUtil,
+            ICognitiveImageFactory cognitiveImageFactory) : base(cognitiveServiceContext, webUtil)
         {
+            CognitiveImageFactory = cognitiveImageFactory;
         }
 
         public ActionResult Index()
         {
-            ICognitiveImage cImage = GetEmptyCognitiveImage();
+            ICognitiveImage cImage = GetCognitiveImage();
             return View(cImage);
         }
 
         public ActionResult Analyze(string database, string itemId, string language) 
         {
-            ICognitiveImage cImage = GetEmptyCognitiveImage();
+            ICognitiveImage cImage = CognitiveImageFactory.Create();
 
             Sitecore.Data.ID mID = ID.Null;
             if (!ID.TryParse(itemId, out mID))
@@ -45,16 +50,16 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
             if (m == null)
                 return View("Index", cImage);
 
-            cImage.Analysis = CognitiveContext.VisionApi.GetFullAnalysis(m);
+            //AnalysisResult r = CognitiveServiceContext.VisionService.GetFullAnalysis(m);
+            //cImage.DominantColorForeground = r.Color.DominantColorForeground;
             return View("Index", cImage);
         }
 
-        protected ICognitiveImage GetEmptyCognitiveImage()
+        public ICognitiveImage GetCognitiveImage()
         {
-            ICognitiveImage cImage = new CognitiveImage();
-            cImage.Analysis = new AnalysisResult();
-            cImage.Database = this.Database;
+            ICognitiveImage cImage = CognitiveImageFactory.Create();
             cImage.Language = this.Language;
+            cImage.Database = this.Database;
             cImage.ItemId = this.ItemIdValue;
 
             return cImage;

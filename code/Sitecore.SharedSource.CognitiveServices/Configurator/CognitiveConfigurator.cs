@@ -6,6 +6,7 @@ using System.Web.Services.Description;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.DependencyInjection;
 using Sitecore.Foundation.DependencyInjection;
+using Sitecore.SharedSource.CognitiveServices.Factories;
 using Sitecore.SharedSource.CognitiveServices.Repositories;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
@@ -13,6 +14,7 @@ using Sitecore.SharedSource.CognitiveServices.Repositories.Speech;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Video;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Vision;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.SharedSource.CognitiveServices.Services;
 using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
@@ -50,6 +52,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddSingleton<ISpeakerVerificationService, SpeakerVerificationService>();
             serviceCollection.AddSingleton<IVideoService, VideoService>();
             serviceCollection.AddSingleton<IVisionService, VisionService>();
+
+            serviceCollection.AddSingleton<ICognitiveImageFactory, CognitiveImageFactory>();
+            serviceCollection.AddSingleton<ICognitiveImageAnalysisFactory, CognitiveImageAnalysisFactory>();
 
             serviceCollection.AddMvcControllersInCurrentAssembly();
         }

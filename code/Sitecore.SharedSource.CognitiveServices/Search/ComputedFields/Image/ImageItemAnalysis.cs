@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -9,6 +10,8 @@ using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.ComputedFields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
+using Sitecore.SharedSource.CognitiveServices.Factories;
+using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.SharedSource.CognitiveServices.Services;
 using Sitecore.SharedSource.CognitiveServices.Repositories;
 
@@ -31,15 +34,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
             var apiService = DependencyResolver.Current.GetService<IApiService>();
             if (apiService == null)
                 return false;
-            
-            try { 
-                var r1 = crContext.VisionRepository.GetFullAnalysis(m);
-                var r2 = crContext.VisionRepository.RecognizeTextAsync(m, "en");
-                var r3 = crContext.EmotionRepository.RecognizeAsync(m);
-                var r4 = crContext.FaceRepository.DetectAsync(m);
 
-                var srlzr = new JavaScriptSerializer();
-                var json = srlzr.Serialize(r1);
+            var ciaFactory = DependencyResolver.Current.GetService<ICognitiveImageAnalysisFactory>();
+            if (ciaFactory == null)
+                return false;
+
+            try {
+                ICognitiveImageAnalysis cia = ciaFactory.Create();
+                cia.VisionAnalysis = Task.Run(async() => await crContext.VisionRepository.GetFullAnalysis(m)).Result;
+                cia.TextAnalysis = Task.Run(async () => await crContext.VisionRepository.RecognizeTextAsync(m, "en")).Result;
+                cia.EmotionAnalysis = Task.Run(async () => await crContext.EmotionRepository.RecognizeAsync(m)).Result;
+                cia.FacialAnalysis = Task.Run(async () => await crContext.FaceRepository.DetectAsync(m)).Result;
+                
+                var json = new JavaScriptSerializer().Serialize(cia);
                 return json;
             }
             catch (Exception ex)
