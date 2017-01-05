@@ -36,7 +36,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
 
         public ActionResult Analyze(string database, string itemId, string language) 
         {
-            ICognitiveImage cImage = CognitiveImageFactory.Create();
+            ICognitiveImage cImage = GetCognitiveImage();
 
             Sitecore.Data.ID mID = ID.Null;
             if (!ID.TryParse(itemId, out mID))
@@ -57,10 +57,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
 
         public ICognitiveImage GetCognitiveImage()
         {
-            ICognitiveImage cImage = CognitiveImageFactory.Create();
-            cImage.Language = this.Language;
-            cImage.Database = this.Database;
-            cImage.ItemId = this.ItemIdValue;
+            ICognitiveImage cImage = CognitiveImageFactory.Create(this.Database, this.Language, this.ItemIdValue);
 
             return cImage;
         }

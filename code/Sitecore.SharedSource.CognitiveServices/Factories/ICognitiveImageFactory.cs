@@ -8,6 +8,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
     public interface ICognitiveImageFactory
     {
-        ICognitiveImage Create();
+        ICognitiveImage Create(string database = "", string language = "", string itemId = "");
     }
 }

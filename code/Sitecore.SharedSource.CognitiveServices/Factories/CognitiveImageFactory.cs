@@ -8,14 +8,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
     public class CognitiveImageFactory : ICognitiveImageFactory
     {
-        public ICognitiveImage Create()
+        public ICognitiveImage Create(string database = "", string language = "", string itemId = "")
         {
-            ICognitiveImage cImage = new CognitiveImage();
-            cImage.Database = string.Empty;
-            cImage.Language = string.Empty;
-            cImage.ItemId = string.Empty;
-
-            return cImage;
+            return new CognitiveImage(database, language, itemId);
         }
     }
 }
