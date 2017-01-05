@@ -27,7 +27,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
             MediaItem m = indexItem;
 
             var crContext = DependencyResolver.Current.GetService<ICognitiveRepositoryContext>();
-
             if (crContext == null)
                 return false;
 

@@ -221,13 +221,9 @@
     <Compile Include="Search\CognitiveSearchContext.cs" />
     <Compile Include="Search\CognitiveSearchResult.cs" />
     <Compile Include="Search\ComputedFields\BaseComputedField.cs" />
-    <Compile Include="Search\ComputedFields\Image\CumulativeImageFieldAnalysis.cs" />
     <Compile Include="Search\ComputedFields\Image\ImageItemAnalysis.cs" />
     <Compile Include="Search\ComputedFields\Presentation\CumulativePresentationFieldAnalysis.cs" />
     <Compile Include="Search\ComputedFields\Text\CumulativeTextFieldAnalysis.cs" />
-    <Compile Include="Search\ComputedFields\Image\IndividualImageFieldAnalysis.cs" />
-    <Compile Include="Search\ComputedFields\Presentation\IndividualPresentationFieldAnalysis.cs" />
-    <Compile Include="Search\ComputedFields\Text\IndividualTextFieldAnalysis.cs" />
     <Compile Include="Search\ICognitiveFieldService.cs" />
     <Compile Include="Search\ICognitiveSearchContext.cs" />
     <Compile Include="Search\ICognitiveSearchResult.cs" />
