@@ -34,7 +34,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers.Modals
             string langCode = WebUtil.GetQueryString(langParam, "en");
             ICognitiveSearchResult csr = Searcher.GetAnalysis(idValue, langCode);
             
-            var model = new JavaScriptSerializer().Deserialize<ICognitiveImageAnalysis>(csr.ImageItemAnalysis);
+            var model = new JavaScriptSerializer().Deserialize<CognitiveImageAnalysis>(csr.ImageItemAnalysis);
 
             return View("ImageAnalysis", model);
         }
@@ -45,7 +45,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers.Modals
             string langCode = WebUtil.GetQueryString(langParam, "en");
             ICognitiveSearchResult csr = Searcher.GetAnalysis(idValue, langCode);
 
-            var model = new JavaScriptSerializer().Deserialize<ICognitiveTextAnalysis>(csr.TextFieldAnalysis);
+            var model = new JavaScriptSerializer().Deserialize<CognitiveTextAnalysis>(csr.TextFieldAnalysis);
 
             return View("TextAnalysis", model);
         }
