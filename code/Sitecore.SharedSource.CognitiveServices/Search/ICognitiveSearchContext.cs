@@ -7,5 +7,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
 {
     public interface ICognitiveSearchContext
     {
+        ICognitiveSearchResult GetAnalysis(string itemId, string languageCode);
     }
 }

@@ -21,6 +21,7 @@ using Sitecore.SharedSource.CognitiveServices.Services.Language;
 using Sitecore.SharedSource.CognitiveServices.Services.Speech;
 using Sitecore.SharedSource.CognitiveServices.Services.Video;
 using Sitecore.SharedSource.CognitiveServices.Services.Vision;
+using Sitecore.SharedSource.CognitiveServices.Search;
 
 namespace Sitecore.SharedSource.CognitiveServices.Configurator
 {
@@ -56,6 +57,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddSingleton<ICognitiveImageFactory, CognitiveImageFactory>();
             serviceCollection.AddSingleton<ICognitiveImageAnalysisFactory, CognitiveImageAnalysisFactory>();
             serviceCollection.AddSingleton<ICognitiveTextAnalysisFactory, CognitiveTextAnalysisFactory>();
+
+            serviceCollection.AddSingleton<ICognitiveSearchContext, CognitiveSearchContext>();
+            serviceCollection.AddTransient<ICognitiveSearchResult, CognitiveSearchResult>();
 
             serviceCollection.AddMvcControllersInCurrentAssembly();
         }

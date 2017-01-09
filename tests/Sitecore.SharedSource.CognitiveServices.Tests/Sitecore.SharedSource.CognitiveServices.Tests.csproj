@@ -106,6 +106,10 @@
       <HintPath>..\..\packages\Sitecore.ContentSearch.NoReferences.8.2.161221\lib\NET452\Sitecore.ContentSearch.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Sitecore.ContentSearch.Linq, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sitecore.ContentSearch.Linq.NoReferences.8.2.160729\lib\NET452\Sitecore.ContentSearch.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Sitecore.Kernel, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Sitecore.Kernel.NoReferences.8.2.160729\lib\NET452\Sitecore.Kernel.dll</HintPath>
       <Private>True</Private>
