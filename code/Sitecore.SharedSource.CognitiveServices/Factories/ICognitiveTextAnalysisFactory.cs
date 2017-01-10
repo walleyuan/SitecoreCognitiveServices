@@ -9,5 +9,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
     public interface ICognitiveTextAnalysisFactory
     {
         ICognitiveTextAnalysis Create();
+        ICognitiveTextAnalysis Create(string json);
     }
 }

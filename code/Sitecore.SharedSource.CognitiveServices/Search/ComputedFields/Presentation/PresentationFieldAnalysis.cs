@@ -6,7 +6,7 @@ using Sitecore.Data.Items;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Presentation
 {
-    public class CumulativePresentationFieldAnalysis : BaseComputedField
+    public class PresentationFieldAnalysis : BaseComputedField
     {
         protected override object GetFieldValue(Item indexItem)
         {

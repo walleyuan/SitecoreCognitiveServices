@@ -1,25 +1,20 @@
 ﻿extern alias MicrosoftProjectOxfordCommon;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Microsoft.ProjectOxford.Text.Core;
 using Microsoft.ProjectOxford.Text.Language;
 using Microsoft.ProjectOxford.Text.Sentiment;
-using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
-using Sitecore.Diagnostics;
 using Sitecore.SharedSource.CognitiveServices.Factories;
 using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.SharedSource.CognitiveServices.Repositories;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
 {
-    public class CumulativeTextFieldAnalysis : BaseComputedField
+    public class TextFieldAnalysis : BaseComputedField
     {
         protected override object GetFieldValue(Item indexItem)
         {

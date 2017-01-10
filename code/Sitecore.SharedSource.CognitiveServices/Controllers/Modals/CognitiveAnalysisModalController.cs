@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.Data;
-using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.Search;
-using System.Web.Script.Serialization;
-using Sitecore.SharedSource.CognitiveServices.Models;
+using Sitecore.SharedSource.CognitiveServices.Factories;
 
 namespace Sitecore.SharedSource.CognitiveServices.Controllers.Modals
 {
@@ -16,38 +9,48 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers.Modals
     {
         public IWebUtilWrapper WebUtil;
         public ICognitiveSearchContext Searcher;
-
-        public static readonly string idParam = "id";
-        public static readonly string langParam = "lang";
+        public ICognitiveImageAnalysisFactory ImageAnalysisFactory;
+        public ICognitiveTextAnalysisFactory TextAnalysisFactory;
+        
+        public string IdParameter
+        {
+            get
+            {
+                return WebUtil.GetQueryString("id", string.Empty);
+            }
+        }
+        public string LanguageParameter
+        {
+            get
+            {
+                return WebUtil.GetQueryString("lang", "en");
+            }
+        }
 
         public CognitiveAnalysisModalController(
             IWebUtilWrapper webUtil,
-            ICognitiveSearchContext searcher)
+            ICognitiveSearchContext searcher,
+            ICognitiveImageAnalysisFactory iaFactory,
+            ICognitiveTextAnalysisFactory taFactory)
         {
             WebUtil = webUtil;
             Searcher = searcher;
+            ImageAnalysisFactory = iaFactory;
+            TextAnalysisFactory = taFactory;
         }
 
         public ActionResult ImageAnalysis()
         {
-            string idValue = WebUtil.GetQueryString(idParam, string.Empty);
-            string langCode = WebUtil.GetQueryString(langParam, "en");
-            ICognitiveSearchResult csr = Searcher.GetAnalysis(idValue, langCode);
+            ICognitiveSearchResult csr = Searcher.GetAnalysis(IdParameter, LanguageParameter);
             
-            var model = new JavaScriptSerializer().Deserialize<CognitiveImageAnalysis>(csr.ImageItemAnalysis);
-
-            return View("ImageAnalysis", model);
+            return View("ImageAnalysis", ImageAnalysisFactory.Create(csr.ImageItemAnalysis));
         }
 
         public ActionResult TextAnalysis()
         {
-            string idValue = WebUtil.GetQueryString(idParam, string.Empty);
-            string langCode = WebUtil.GetQueryString(langParam, "en");
-            ICognitiveSearchResult csr = Searcher.GetAnalysis(idValue, langCode);
-
-            var model = new JavaScriptSerializer().Deserialize<CognitiveTextAnalysis>(csr.TextFieldAnalysis);
-
-            return View("TextAnalysis", model);
+            ICognitiveSearchResult csr = Searcher.GetAnalysis(IdParameter, LanguageParameter);
+            
+            return View("TextAnalysis", TextAnalysisFactory.Create(csr.TextFieldAnalysis));
         }
     }
 }

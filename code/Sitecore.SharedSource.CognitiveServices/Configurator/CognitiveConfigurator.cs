@@ -53,8 +53,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddSingleton<ISpeakerVerificationService, SpeakerVerificationService>();
             serviceCollection.AddSingleton<IVideoService, VideoService>();
             serviceCollection.AddSingleton<IVisionService, VisionService>();
-
-            serviceCollection.AddSingleton<ICognitiveImageFactory, CognitiveImageFactory>();
+            
             serviceCollection.AddSingleton<ICognitiveImageAnalysisFactory, CognitiveImageAnalysisFactory>();
             serviceCollection.AddSingleton<ICognitiveTextAnalysisFactory, CognitiveTextAnalysisFactory>();
 

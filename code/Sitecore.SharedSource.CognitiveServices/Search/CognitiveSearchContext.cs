@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using System.Linq;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.Security;
-using Sitecore.Data;
-using Sitecore.Data.Items;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search
 {

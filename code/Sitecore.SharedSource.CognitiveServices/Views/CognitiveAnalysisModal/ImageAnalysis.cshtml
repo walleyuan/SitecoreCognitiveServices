@@ -14,7 +14,249 @@
 </head>
 <body>
     <h1>Image Editor</h1>
-    
+    <div>
+        <h2>Emotion Analysis</h2>
+        @foreach(var ea in Model.EmotionAnalysis)
+        {
+            <div>
+                <h3>Face Rectangle</h3>
+                <div>
+                    <label>Height: </label>
+                    <span>@ea.FaceRectangle.Height</span>
+                </div>
+                <div>
+                    <label>Width: </label>
+                    <span>@ea.FaceRectangle.Width</span>
+                </div>
+                <div>
+                    <label>Top: </label>
+                    <span>@ea.FaceRectangle.Top</span>
+                </div>
+                <div>
+                    <label>Left: </label>
+                    <span>@ea.FaceRectangle.Left</span>
+                </div>
+            </div>
+            <div>
+                <h3>Scores</h3>
+                <div>
+                    <label>Anger: </label>
+                    <span>@ea.Scores.Anger</span>
+                </div>
+                <div>
+                    <label>Contempt: </label>
+                    <span>@ea.Scores.Contempt</span>
+                </div>
+                <div>
+                    <label>Disgust: </label>
+                    <span>@ea.Scores.Disgust</span>
+                </div>
+                <div>
+                    <label>Fear: </label>
+                    <span>@ea.Scores.Fear</span>
+                </div>
+                <div>
+                    <label>Happiness: </label>
+                    <span>@ea.Scores.Happiness</span>
+                </div>
+                <div>
+                    <label>Neutral: </label>
+                    <span>@ea.Scores.Neutral</span>
+                </div>
+                <div>
+                    <label>Sadness: </label>
+                    <span>@ea.Scores.Sadness</span>
+                </div>
+                <div>
+                    <label>Surprise: </label>
+                    <span>@ea.Scores.Surprise</span>
+                </div>
+            </div>
+        }
+    </div>
+    <div>
+        <h2>Facial Analysis</h2>
+        @foreach (var fa in Model.FacialAnalysis)
+        {
+            <div>
+                <h3>Face Attributes</h3>
+                <div>
+                    <label>Age: </label>
+                    <span>@fa.FaceAttributes.Age</span>
+                </div>
+                <div>
+                    <label>FacialHair: </label>
+                    <span>@fa.FaceAttributes.FacialHair</span>
+                </div>
+                <div>
+                    <label>Gender: </label>
+                    <span>@fa.FaceAttributes.Gender</span>
+                </div>
+                <div>
+                    <label>Glasses: </label>
+                    <span>@fa.FaceAttributes.Glasses</span>
+                </div>
+                <div>
+                    <label>HeadPose: </label>
+                    <span>@fa.FaceAttributes.HeadPose</span>
+                </div>
+                <div>
+                    <label>Smile: </label>
+                    <span>@fa.FaceAttributes.Smile</span>
+                </div>
+            </div>
+            <div>
+                <h3>Face Id:</h3>
+                @*<div>
+                    <span>@fa.FaceId</span>
+                </div>*@
+            </div>
+            <div>
+                <h3>Face Landmarks</h3>
+                <div>
+                    <label>EyebrowLeftInner: </label>
+                    <span>@fa.FaceLandmarks.EyebrowLeftInner</span>
+                </div>
+                <div>
+                    <label>EyebrowLeftOuter: </label>
+                    <span>@fa.FaceLandmarks.EyebrowLeftOuter</span>
+                </div>
+                <div>
+                    <label>EyebrowRightInner: </label>
+                    <span>@fa.FaceLandmarks.EyebrowRightInner</span>
+                </div>
+                <div>
+                    <label>EyebrowRightOuter: </label>
+                    <span>@fa.FaceLandmarks.EyebrowRightOuter</span>
+                </div>
+                <div>
+                    <label>EyeLeftBottom: </label>
+                    <span>@fa.FaceLandmarks.EyeLeftBottom</span>
+                </div>
+                <div>
+                    <label>EyeLeftInner: </label>
+                    <span>@fa.FaceLandmarks.EyeLeftInner</span>
+                </div>
+                <div>
+                    <label>EyeLeftOuter: </label>
+                    <span>@fa.FaceLandmarks.EyeLeftOuter</span>
+                </div>
+                <div>
+                    <label>EyeLeftTop: </label>
+                    <span>@fa.FaceLandmarks.EyeLeftTop</span>
+                </div>
+                <div>
+                    <label>EyeRightBottom: </label>
+                    <span>@fa.FaceLandmarks.EyeRightBottom</span>
+                </div>
+                <div>
+                    <label>EyeRightInner: </label>
+                    <span>@fa.FaceLandmarks.EyeRightInner</span>
+                </div>
+                <div>
+                    <label>EyeRightOuter: </label>
+                    <span>@fa.FaceLandmarks.EyeRightOuter</span>
+                </div>
+                <div>
+                    <label>EyeRightTop: </label>
+                    <span>@fa.FaceLandmarks.EyeRightTop</span>
+                </div>
+                <div>
+                    <label>MouthLeft: </label>
+                    <span>@fa.FaceLandmarks.MouthLeft</span>
+                </div>
+                <div>
+                    <label>MouthRight: </label>
+                    <span>@fa.FaceLandmarks.MouthRight</span>
+                </div>
+                <div>
+                    <label>NoseLeftAlarOutTip: </label>
+                    <span>@fa.FaceLandmarks.NoseLeftAlarOutTip</span>
+                </div>
+                <div>
+                    <label>NoseLeftAlarTop: </label>
+                    <span>@fa.FaceLandmarks.NoseLeftAlarTop</span>
+                </div>
+                <div>
+                    <label>NoseRightAlarOutTip: </label>
+                    <span>@fa.FaceLandmarks.NoseRightAlarOutTip</span>
+                </div>
+                <div>
+                    <label>NoseRightAlarTop: </label>
+                    <span>@fa.FaceLandmarks.NoseRightAlarTop</span>
+                </div>
+                <div>
+                    <label>NoseRootLeft: </label>
+                    <span>@fa.FaceLandmarks.NoseRootLeft</span>
+                </div>
+                <div>
+                    <label>NoseRootRight: </label>
+                    <span>@fa.FaceLandmarks.NoseRootRight</span>
+                </div>
+                <div>
+                    <label>NoseTip: </label>
+                    <span>@fa.FaceLandmarks.NoseTip</span>
+                </div>
+                <div>
+                    <label>PupilLeft: </label>
+                    <span>@fa.FaceLandmarks.PupilLeft</span>
+                </div>
+                <div>
+                    <label>PupilRight: </label>
+                    <span>@fa.FaceLandmarks.PupilRight</span>
+                </div>
+                <div>
+                    <label>UnderLipBottom: </label>
+                    <span>@fa.FaceLandmarks.UnderLipBottom</span>
+                </div>
+                <div>
+                    <label>UnderLipTop: </label>
+                    <span>@fa.FaceLandmarks.UnderLipTop</span>
+                </div>
+                <div>
+                    <label>UpperLipBottom: </label>
+                    <span>@fa.FaceLandmarks.UpperLipBottom</span>
+                </div>
+                <div>
+                    <label>UpperLipTop: </label>
+                    <span>@fa.FaceLandmarks.UpperLipTop</span>
+                </div>
+            </div>
+            <div>
+                <h3>Face Rectangle</h3>
+                <div>
+                    <label>Height: </label>
+                    <span>@fa.FaceRectangle.Height</span>
+                </div>
+                <div>
+                    <label>Width: </label>
+                    <span>@fa.FaceRectangle.Width</span>
+                </div>
+                <div>
+                    <label>Top: </label>
+                    <span>@fa.FaceRectangle.Left</span>
+                </div>
+                <div>
+                    <label>Left: </label>
+                    <span>@fa.FaceRectangle.Left</span>
+                </div>
+            </div>
+        }
+    </div>
+    <div>
+        <h2>Text Analysis</h2>
+        @*@foreach (var ta in Model.TextAnalysis)
+        {
+            
+        }*@
+    </div>
+    <div>
+        <h2>Vision Analysis</h2>
+        @*@foreach (var va in Model.VisionAnalysis)
+        {
+
+        }*@
+    </div>
     <script src="~/sitecore modules/Web/SitecoreCognitiveServices/jquery-1.10.2.min.js"></script>
 </body>
 </html>
