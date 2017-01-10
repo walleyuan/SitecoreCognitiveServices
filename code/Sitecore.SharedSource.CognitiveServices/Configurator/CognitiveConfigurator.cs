@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Services.Description;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Sitecore.DependencyInjection;
 using Sitecore.Foundation.DependencyInjection;
 using Sitecore.SharedSource.CognitiveServices.Factories;
@@ -14,7 +9,6 @@ using Sitecore.SharedSource.CognitiveServices.Repositories.Speech;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Video;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Vision;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.SharedSource.CognitiveServices.Services;
 using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
