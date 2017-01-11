@@ -21,75 +21,20 @@
     <link href="~/sitecore modules/Web/SitecoreCognitiveServices/Sitecore.SharedSource.CognitiveServices.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <h1>Image Editor</h1>
-    @if(Model == null)
-    {
-        <span>It's Null</span>
-    } else
+    <h1>Text Analysis</h1>
+    @if(Model != null)
     {
         <div>
             <h2>Language Analysis</h2>
-            @foreach(var d in Model.LanguageAnalysis.Documents)
-            {
-                <div>
-                    <label>ID: </label>
-                    <span>@d.Id</span>
-                </div>
-                foreach(var l in d.DetectedLanguages)
-                {
-                    <div>
-                        <label>ISO: </label>
-                        <span>@l.Iso639Name</span>
-                    </div>
-                    <div>
-                        <label>Name: </label>
-                        <span>@l.Name</span>
-                    </div>
-                    <div>
-                        <label>Score: </label>
-                        <span>@l.Score</span>
-                    </div>
-                }
-            }
+            @Html.Partial("Text/LanguageDocuments", Model.LanguageAnalysis.Documents)
         </div>
         <div>
             <h2>Link Analysis</h2>
-            @foreach(var la in Model.LinkAnalysis)
-            {
-                <div>
-                    <label>Name: </label>
-                    <span>@la.Name</span>
-                </div>
-                <div>
-                    <label>Score: </label>
-                    <span>@la.Score</span>
-                </div>
-                <div>
-                    <label>Wikipedia ID: </label>
-                    <span>@la.WikipediaID</span>
-                </div>
-                @*foreach (var m in la.Matches.ToList())
-                {
-                    <div>
-                        <label></label>
-                        <span>@m.</span>
-                    </div>
-                }*@
-            }
+            @Html.Partial("EntityLinking/LinkAnalysis", Model.LinkAnalysis)
         </div>
         <div>
-            <h2></h2>
-            @foreach(var sa in Model.SentimentAnalysis.Documents)
-            {
-                <div>
-                    <label>ID: </label>
-                    <span>@sa.Id</span>
-                </div>
-                <div>
-                    <label>Score: </label>
-                    <span>@sa.Score</span>
-                </div>
-            }
+            <h2>Sentiment Analysis</h2>
+            @Html.Partial("Text/SentimentDocuments", Model.SentimentAnalysis.Documents)
         </div>
     }
     <script src="~/sitecore modules/Web/SitecoreCognitiveServices/jquery-1.10.2.min.js"></script>

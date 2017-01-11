@@ -1,0 +1,31 @@
+﻿@model Microsoft.ProjectOxford.Face.Contract.FaceAttributes
+
+@if(Model != null) {
+<div>
+    <h3>Face Attributes</h3>
+    <div>
+        <label>Age: </label>
+        <span>@Model.Age</span>
+    </div>
+    <div>
+        <label>Facial Hair: </label>
+        <span>@Model.FacialHair</span>
+    </div>
+    <div>
+        <label>Gender: </label>
+        <span>@Model.Gender</span>
+    </div>
+    <div>
+        <label>Glasses: </label>
+        <span>@Model.Glasses</span>
+    </div>
+    <div>
+        <label>Head Pose: </label>
+        <span>@Model.HeadPose</span>
+    </div>
+    <div>
+        <label>Smile: </label>
+        <span>@Model.Smile</span>
+    </div>
+</div>
+}

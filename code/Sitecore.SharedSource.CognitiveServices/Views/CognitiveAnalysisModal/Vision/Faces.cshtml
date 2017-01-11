@@ -1,0 +1,22 @@
+﻿@model Microsoft.ProjectOxford.Vision.Contract.Face[]
+
+@if (Model != null)
+{
+    <div>
+        <h3>Faces</h3>
+        @foreach (var f in Model)
+        {
+            <div>
+                <div>
+                    <label>Age: </label>
+                    <span>@f.Age</span>
+                </div>
+                @Html.Partial("Vision/FaceRectangle", f.FaceRectangle)
+                <div>
+                    <label>Gender: </label>
+                    <span>@f.Gender</span>
+                </div>
+            </div>
+        }
+    </div>
+}

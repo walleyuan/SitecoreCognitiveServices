@@ -1,0 +1,22 @@
+﻿@model Microsoft.ProjectOxford.Vision.Contract.Word[]
+
+@if (Model != null)
+{
+    <div>
+        <h3>Words</h3>
+        @foreach (var w in Model)
+        {
+            <div>
+                <div>
+                    <label>Text: </label>
+                    <span>@w.Text</span>
+                </div>
+                <div>
+                    <label>Bounding Box: </label>
+                    <span>@w.BoundingBox</span>
+                </div>
+                @Html.Partial("Vision/Rectangle", w.Rectangle)
+            </div>
+        }
+    </div>
+}

@@ -1,0 +1,25 @@
+﻿@model Microsoft.ProjectOxford.Vision.Contract.Tag[]
+
+@if (Model != null)
+{
+    <div>
+        <h3>Tags</h3>
+        @foreach (var t in Model)
+        {
+            <div>
+                <div>
+                    <label>Name: </label>
+                    <span>@t.Name</span>
+                </div>
+                <div>
+                    <label>Confidence: </label>
+                    <span>@t.Confidence</span>
+                </div>
+                <div>
+                    <label>Hint: </label>
+                    <span>@t.Hint</span>
+                </div>
+            </div>
+        }
+    </div>
+}

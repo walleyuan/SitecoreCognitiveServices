@@ -1,0 +1,24 @@
+﻿@model Microsoft.ProjectOxford.Vision.Contract.Adult
+
+@if (Model != null)
+{
+    <div>
+        <h3>Adult</h3>
+        <div>
+            <label>Adult Score: </label>
+            <span>@Model.AdultScore</span>
+        </div>
+        <div>
+            <label>Is Adult Content: </label>
+            <span>@Model.IsAdultContent</span>
+        </div>
+        <div>
+            <label>Is Racy Content: </label>
+            <span>@Model.IsRacyContent</span>
+        </div>
+        <div>
+            <label>Racy Score: </label>
+            <span>@Model.RacyScore</span>
+        </div>
+    </div>
+}

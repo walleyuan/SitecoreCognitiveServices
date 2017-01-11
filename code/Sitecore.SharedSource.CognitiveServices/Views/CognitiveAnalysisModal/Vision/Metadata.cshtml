@@ -1,0 +1,20 @@
+﻿@model Microsoft.ProjectOxford.Vision.Contract.Metadata
+
+@if (Model != null)
+{
+    <div>
+        <h3>Metadata</h3>
+        <div>
+            <label>Format: </label>
+            <span>@Model.Format</span>
+        </div>
+        <div>
+            <label>Height: </label>
+            <span>@Model.Height</span>
+        </div>
+        <div>
+            <label>Width: </label>
+            <span>@Model.Width</span>
+        </div>
+    </div>
+}

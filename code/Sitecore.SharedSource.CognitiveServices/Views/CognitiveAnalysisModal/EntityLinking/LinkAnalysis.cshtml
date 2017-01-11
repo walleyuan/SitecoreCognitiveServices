@@ -1,0 +1,49 @@
+﻿@model Microsoft.ProjectOxford.EntityLinking.Contract.EntityLink[]
+
+@if (Model != null)
+{
+    <div>
+        <h3>Entity Links</h3>
+        @foreach (var l in Model)
+        {
+            <div>
+                <div>
+                    <label>Name: </label>
+                    <span>@l.Name</span>
+                </div>
+                <div>
+                    <label>Score: </label>
+                    <span>@l.Score</span>
+                </div>
+                <div>
+                    <label>Wikipedia ID: </label>
+                    <span>@l.WikipediaID</span>
+                </div>
+                <h4>Matches</h4>
+                @foreach (var m in l.Matches)
+                {
+                    <div>
+                        <div>
+                            <label>Text: </label>
+                            <span>@m.Text</span>
+                        </div>
+                        <h5>Entries</h5>
+                        @foreach (var e in m.Entries)
+                        {
+                            <div>
+                                <div>
+                                    <label>Offset: </label>
+                                    <span>@e.Offset</span>
+                                </div>
+                                <div>
+                                    <label>Score: </label>
+                                    <span>@e.Score</span>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        }
+    </div>
+}

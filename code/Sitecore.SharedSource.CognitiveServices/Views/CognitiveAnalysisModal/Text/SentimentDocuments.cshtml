@@ -1,0 +1,21 @@
+﻿@model List<Microsoft.ProjectOxford.Text.Sentiment.SentimentDocumentResult>
+
+@if (Model != null)
+{
+    <div>
+        <h3>Sentiment Documents</h3>
+        @foreach (var d in Model)
+        {
+            <div>
+                <div>
+                    <label>ID: </label>
+                    <span>@d.Id</span>
+                </div>
+                <div>
+                    <label>Score: </label>
+                    <span>@d.Score</span>
+                </div>
+            </div>
+        }
+    </div>
+}

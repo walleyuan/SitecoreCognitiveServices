@@ -1,0 +1,35 @@
+﻿@model List<Microsoft.ProjectOxford.Text.Language.LanguageResponseDocument>
+
+@if (Model != null)
+{
+    <div>
+        <h3>Language Documents</h3>
+        @foreach (var d in Model)
+        {
+            <div>
+                <div>
+                    <label>ID: </label>
+                    <span>@d.Id</span>
+                </div>
+                <h4>Detected Languages</h4>
+                @foreach (var l in d.DetectedLanguages)
+                {
+                    <div>
+                        <div>
+                            <label>Name</label>
+                            <span>@l.Name</span>
+                        </div>
+                        <div>
+                            <label>ISO 639 Name</label>
+                            <span>@l.Iso639Name</span>
+                        </div>
+                        <div>
+                            <label>Score: </label>
+                            <span>@l.Score</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+}

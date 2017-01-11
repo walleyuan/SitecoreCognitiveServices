@@ -1,0 +1,16 @@
+﻿@model Microsoft.ProjectOxford.Vision.Contract.ImageType
+
+@if (Model != null)
+{
+    <div>
+        <h3>Image Type</h3>
+        <div>
+            <label>Clip Art Type</label>
+            <span>@Model.ClipArtType</span>
+        </div>
+        <div>
+            <label>Line Drawing Type: </label>
+            <span>@Model.LineDrawingType</span>
+        </div>
+    </div>
+}

@@ -1,0 +1,24 @@
+﻿@model Microsoft.ProjectOxford.Vision.Contract.Rectangle
+
+@if (Model != null)
+{
+<div>
+    <h3>Rectangle</h3>
+    <div>
+        <label>Height: </label>
+        <span>@Model.Height</span>
+    </div>
+    <div>
+        <label>Width: </label>
+        <span>@Model.Width</span>
+    </div>
+    <div>
+        <label>Top: </label>
+        <span>@Model.Top</span>
+    </div>
+    <div>
+        <label>Left: </label>
+        <span>@Model.Left</span>
+    </div>
+</div>
+}

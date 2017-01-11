@@ -1,0 +1,33 @@
+﻿@model Microsoft.ProjectOxford.Vision.Contract.Description
+
+@if (Model != null)
+{
+    <div>
+        <h3>Description</h3>
+        <div>
+            <h4>Captions</h4>
+            @foreach (var cp in Model.Captions)
+            {
+                <div>
+                    <div>
+                        <label>Confidence: </label>
+                        <span>@cp.Confidence</span>
+                    </div>
+                    <div>
+                        <label>Text: </label>
+                        <span>@cp.Text</span>
+                    </div>
+                </div>
+            }
+        </div>
+        <div>
+            <h4>Tags</h4>
+            <div>
+                @foreach (var t in Model.Tags)
+                {
+                    <span>@t</span>
+                }
+            </div>
+        </div>
+    </div>
+}
