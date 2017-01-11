@@ -1,5 +1,6 @@
 ﻿extern alias MicrosoftProjectOxfordCommon;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -29,8 +30,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
             if (ctaFactory == null)
                 return false;
             
+            List<string> fieldTypes = new List<string>() { "Rich Text", "Single-Line Text", "Multi-Line Text", "html", "text", "memo" };
+
             string fieldValues = indexItem.Fields
-                .Where(f => !f.Name.StartsWith("__"))
+                .Where(f => !f.Name.StartsWith("__") && fieldTypes.Contains(f.Type))
                 .Select(f => f.Value)
                 .Aggregate((a, b) => $"{a} {b}");
 

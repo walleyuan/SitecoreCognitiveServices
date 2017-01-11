@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Sitecore.SharedSource.CognitiveServices.Models;
 using System.Web.Script.Serialization;
+using Sitecore.SharedSource.CognitiveServices.Search;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
@@ -14,11 +15,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
             return new CognitiveImageAnalysis();
         }
 
-        public ICognitiveImageAnalysis Create(string json) {
+        public ICognitiveImageAnalysis Create(ICognitiveSearchResult result) {
+
+            var json = (result != null) ? result.ImageItemAnalysis : string.Empty;
+
             var obj = new JavaScriptSerializer().Deserialize<CognitiveImageAnalysis>(json);
-            return (obj != null)
-                ? obj
-                : Create();
+            return obj ?? Create();
         }
     }
 }

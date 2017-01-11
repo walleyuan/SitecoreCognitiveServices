@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Sitecore.SharedSource.CognitiveServices.Models;
 using System.Web.Script.Serialization;
+using Sitecore.SharedSource.CognitiveServices.Search;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
@@ -14,12 +15,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
             return new CognitiveTextAnalysis();
         }
 
-        public ICognitiveTextAnalysis Create(string json)
+        public ICognitiveTextAnalysis Create(ICognitiveSearchResult result)
         {
+            var json = (result != null) ? result.TextFieldAnalysis : string.Empty;
+
             var obj = new JavaScriptSerializer().Deserialize<CognitiveTextAnalysis>(json);
-            return (obj != null)
-                ? obj
-                : Create();
+            return obj ?? Create();
         }
     }
 }

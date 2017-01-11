@@ -52,14 +52,14 @@
     </div>
     <div>
         <h2>Vision Analysis</h2>
-        @Html.Partial("Vision/Adult", Model.VisionAnalysis.Adult)
-        @Html.Partial("Vision/Categories", Model.VisionAnalysis.Categories)
-        @Html.Partial("Vision/Color", Model.VisionAnalysis.Color)
-        @Html.Partial("Vision/Description", Model.VisionAnalysis.Description)
-        @Html.Partial("Vision/Faces", Model.VisionAnalysis.Faces)
-        @Html.Partial("Vision/ImageType", Model.VisionAnalysis.ImageType)
-        @Html.Partial("Vision/Metadata", Model.VisionAnalysis.Metadata)
-        @Html.Partial("Vision/Tags", Model.VisionAnalysis.Tags)
+        @Html.Partial("Vision/Adult", Model.VisionAnalysis.Adult, new ViewDataDictionary(Model.VisionAnalysis.Adult))
+        @Html.Partial("Vision/Categories", Model.VisionAnalysis.Categories, new ViewDataDictionary(Model.VisionAnalysis.Categories))
+        @Html.Partial("Vision/Color", Model.VisionAnalysis.Color, new ViewDataDictionary(Model.VisionAnalysis.Color))
+        @Html.Partial("Vision/Description", Model.VisionAnalysis.Description, new ViewDataDictionary(Model.VisionAnalysis.Description))
+        @Html.Partial("Vision/Faces", Model.VisionAnalysis.Faces, new ViewDataDictionary(Model.VisionAnalysis.Faces))
+        @Html.Partial("Vision/ImageType", Model.VisionAnalysis.ImageType, new ViewDataDictionary(Model.VisionAnalysis.ImageType))
+        @Html.Partial("Vision/Metadata", Model.VisionAnalysis.Metadata, new ViewDataDictionary(Model.VisionAnalysis.Metadata))
+        @Html.Partial("Vision/Tags", Model.VisionAnalysis.Tags, new ViewDataDictionary(Model.VisionAnalysis.Tags))
     </div>
     <script src="~/sitecore modules/Web/SitecoreCognitiveServices/jquery-1.10.2.min.js"></script>
 </body>
