@@ -42,15 +42,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers.Modals
         public ActionResult ImageAnalysis()
         {
             ICognitiveSearchResult csr = Searcher.GetAnalysis(IdParameter, LanguageParameter);
-            
-            return View("ImageAnalysis", ImageAnalysisFactory.Create(csr.ImageItemAnalysis));
+
+            var model = ImageAnalysisFactory.Create(csr.ImageItemAnalysis);
+
+            return View("ImageAnalysis", model);
         }
 
         public ActionResult TextAnalysis()
         {
             ICognitiveSearchResult csr = Searcher.GetAnalysis(IdParameter, LanguageParameter);
-            
-            return View("TextAnalysis", TextAnalysisFactory.Create(csr.TextFieldAnalysis));
+
+            var model = TextAnalysisFactory.Create(csr.TextFieldAnalysis);
+
+            return View("TextAnalysis", model);
         }
     }
 }

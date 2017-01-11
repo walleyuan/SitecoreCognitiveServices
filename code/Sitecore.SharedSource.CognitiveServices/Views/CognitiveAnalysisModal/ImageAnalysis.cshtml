@@ -18,25 +18,8 @@
         <h2>Emotion Analysis</h2>
         @foreach(var ea in Model.EmotionAnalysis)
         {
-            <div>
-                <h3>Face Rectangle</h3>
-                <div>
-                    <label>Height: </label>
-                    <span>@ea.FaceRectangle.Height</span>
-                </div>
-                <div>
-                    <label>Width: </label>
-                    <span>@ea.FaceRectangle.Width</span>
-                </div>
-                <div>
-                    <label>Top: </label>
-                    <span>@ea.FaceRectangle.Top</span>
-                </div>
-                <div>
-                    <label>Left: </label>
-                    <span>@ea.FaceRectangle.Left</span>
-                </div>
-            </div>
+            @Html.Partial("Partials/Rectangle", ea.FaceRectangle)
+            if(ea.Scores != null) { 
             <div>
                 <h3>Scores</h3>
                 <div>
@@ -72,12 +55,14 @@
                     <span>@ea.Scores.Surprise</span>
                 </div>
             </div>
+            }
         }
     </div>
     <div>
         <h2>Facial Analysis</h2>
         @foreach (var fa in Model.FacialAnalysis)
         {
+            if(fa.FaceAttributes != null) { 
             <div>
                 <h3>Face Attributes</h3>
                 <div>
@@ -105,12 +90,16 @@
                     <span>@fa.FaceAttributes.Smile</span>
                 </div>
             </div>
+            }
+            if(fa.FaceId != null) {
             <div>
                 <h3>Face Id:</h3>
-                @*<div>
+                <div>
                     <span>@fa.FaceId</span>
-                </div>*@
+                </div>
             </div>
+            }
+            if(fa.FaceLandmarks != null) { 
             <div>
                 <h3>Face Landmarks</h3>
                 <div>
@@ -222,40 +211,153 @@
                     <span>@fa.FaceLandmarks.UpperLipTop</span>
                 </div>
             </div>
-            <div>
-                <h3>Face Rectangle</h3>
-                <div>
-                    <label>Height: </label>
-                    <span>@fa.FaceRectangle.Height</span>
-                </div>
-                <div>
-                    <label>Width: </label>
-                    <span>@fa.FaceRectangle.Width</span>
-                </div>
-                <div>
-                    <label>Top: </label>
-                    <span>@fa.FaceRectangle.Left</span>
-                </div>
-                <div>
-                    <label>Left: </label>
-                    <span>@fa.FaceRectangle.Left</span>
-                </div>
-            </div>
+            }
+            @Html.Partial("Partials/FaceRectangle", fa.FaceRectangle)
         }
     </div>
     <div>
         <h2>Text Analysis</h2>
-        @*@foreach (var ta in Model.TextAnalysis)
-        {
-            
-        }*@
+        <div>
+            <label>Language: </label>
+            <span>@Model.TextAnalysis.Language</span>
+        </div>
+        <div>
+            <label>Orientation: </label>
+            <span>@Model.TextAnalysis.Orientation</span>
+        </div>
+        @if(Model.TextAnalysis.Regions != null) { 
+            foreach (var r in Model.TextAnalysis.Regions)
+            {
+                <div>
+                    <h3>Regions</h3>
+                    @if(r.BoundingBox != null) {
+                    <div>
+                        <label>Bounding Box: </label>
+                        <span>@r.BoundingBox</span>
+                    </div>
+                    }
+                    @if (r.Lines != null)
+                    {
+                    <div>
+                        <h4>Lines: </h4>
+                        @foreach (var l in r.Lines)
+                        {
+                        <div>
+                            <label></label>
+                            <span>@l.BoundingBox</span>
+                        </div>
+                        @Html.Partial("Partials/Rectangle", l.Rectangle)
+                        @*<div>
+                            <label></label>
+                            <span>@l.Words</span>
+                        </div>*@
+                        }
+                    </div>
+                    }
+                    @Html.Partial("Partials/Rectangle", r.Rectangle)
+                </div>
+            }
+        }
+        @if (Model.TextAnalysis.TextAngle != null) {
+        <div>
+            <label>Text Angle: </label>
+            <span>@Model.TextAnalysis.TextAngle</span>
+        </div>
+        }
     </div>
     <div>
         <h2>Vision Analysis</h2>
-        @*@foreach (var va in Model.VisionAnalysis)
+        @if (Model.VisionAnalysis.Adult != null)
+        {
+        <div>
+            <h3>Adult</h3>
+            <div>
+                <label></label>
+                <span>@Model.VisionAnalysis.Adult.AdultScore</span>
+            </div>
+            <div>
+                <label></label>
+                <span>@Model.VisionAnalysis.Adult.IsAdultContent</span>
+            </div>
+            <div>
+                <label></label>
+                <span>@Model.VisionAnalysis.Adult.IsRacyContent</span>
+            </div>
+            <div>
+                <label></label>
+                <span>@Model.VisionAnalysis.Adult.RacyScore</span>
+            </div>
+        </div>
+        }
+        @foreach(var c in Model.VisionAnalysis.Categories)
         {
 
-        }*@
+        }
+        @if(Model.VisionAnalysis.Color != null) {
+        <div>
+            <h3>Color</h3>
+            <div>
+                <label>AccentColor: </label>
+                <span>@Model.VisionAnalysis.Color.AccentColor</span>
+            </div>
+            <div>
+                <label>DominantColorBackground: </label>
+                <span>@Model.VisionAnalysis.Color.DominantColorBackground</span>
+            </div>
+            <div>
+                <label>DominantColorForeground: </label>
+                <span>@Model.VisionAnalysis.Color.DominantColorForeground</span>
+            </div>
+            <div>
+                <h4>Dominant Colors</h4>
+                @foreach (var c2 in @Model.VisionAnalysis.Color.DominantColors)
+                {
+                    <div>
+                        <span>@c2</span>
+                    </div>
+                }
+            </div>
+            <div>
+                <label>Is Black White Image: </label>
+                <span>@Model.VisionAnalysis.Color.IsBWImg</span>
+            </div>
+        </div>
+        }
+        @if(Model.VisionAnalysis.Description != null) {
+            <h3>Description</h3>
+            <div>
+                <h4>Captions</h4>
+                @foreach (var cp in Model.VisionAnalysis.Description.Captions)
+                {
+                    <div>
+                        <label>Confidence: </label>
+                        <span>@cp.Confidence</span>
+                    </div>
+                    <div>
+                        <label>Text: </label>
+                        <span>@cp.Text</span>
+                    </div>
+                }
+            </div>
+            <div>
+                <h4>Tags</h4>
+                @foreach (var t in Model.VisionAnalysis.Description.Tags)
+                {
+                    <div>
+                        <span>@t</span>
+                    </div>
+                }
+            </div>
+        }
+        @*@Model.VisionAnalysis.Faces
+        @Model.VisionAnalysis.ImageType
+        @Model.VisionAnalysis.Metadata
+        @Model.VisionAnalysis.RequestId
+        @Model.VisionAnalysis.Tags
+        <div>
+            <label></label>
+            <span></span>
+        </div>*@
     </div>
     <script src="~/sitecore modules/Web/SitecoreCognitiveServices/jquery-1.10.2.min.js"></script>
 </body>
