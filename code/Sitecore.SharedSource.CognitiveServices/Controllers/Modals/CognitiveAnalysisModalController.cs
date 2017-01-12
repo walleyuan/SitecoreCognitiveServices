@@ -56,15 +56,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers.Modals
 
         public ActionResult Reanalyze()
         {
-            Item item = Sitecore.Context.ContentDatabase.GetItem(IdParameter);
+            Item item = Sitecore.Configuration.Factory.GetDatabase("master").GetItem(IdParameter);
             if(item == null)
-                return View("TextAnalysis", TextAnalysisFactory.Create());
+                return View("TextAnalysis", null);
 
             item.Database.Engines.HistoryEngine.RegisterItemSaved(item, new ItemChanges(item));
-
+            item.Database.Engines.HistoryEngine.RegisterItemCreated(item);
+            item.Database.Engines.HistoryEngine.RegisterItemMoved(item, item.ParentID);
+            
             ICognitiveSearchResult csr = Searcher.GetAnalysis(IdParameter, LanguageParameter);
 
-            return View("TextAnalysis", TextAnalysisFactory.Create(csr));
+            return (item.Paths.IsMediaItem)
+                ? View("ImageAnalysis", ImageAnalysisFactory.Create(csr))
+                : View("TextAnalysis", TextAnalysisFactory.Create(csr));
         }
     }
 }
