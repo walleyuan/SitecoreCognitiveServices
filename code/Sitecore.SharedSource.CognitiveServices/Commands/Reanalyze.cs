@@ -10,7 +10,7 @@ using Sitecore.Data.Items;
 namespace Sitecore.SharedSource.CognitiveServices.Commands
 {
     [Serializable]
-    public class ViewAnalysis : Command
+    public class Reanalyze : Command
     {
         private static readonly string paramName = "idValue";
 
@@ -32,11 +32,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
 
             string idValue = args.Parameters[paramName];
             string langCode = args.Parameters["language"];
-            Item i = Sitecore.Context.ContentDatabase.GetItem(idValue);
-
-            string action = (i.Paths.IsMediaItem) ? "ImageAnalysis" : "TextAnalysis";
-
-            UrlString urlString = new UrlString($"/sccogsvcs/CognitiveAnalysisModal/{action}?id={idValue}&lang={langCode}");
+            
+            UrlString urlString = new UrlString($"/sccogsvcs/CognitiveAnalysisModal/Reanalyze?id={idValue}&lang={langCode}");
             SheerResponse.ShowModalDialog(urlString.ToString(), "810", "500", "", true);
             args.WaitForPostBack();
         }

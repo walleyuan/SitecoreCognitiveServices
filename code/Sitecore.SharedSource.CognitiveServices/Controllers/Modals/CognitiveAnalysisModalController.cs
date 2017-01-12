@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Search;
 using Sitecore.SharedSource.CognitiveServices.Factories;
@@ -50,6 +51,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers.Modals
         {
             ICognitiveSearchResult csr = Searcher.GetAnalysis(IdParameter, LanguageParameter);
             
+            return View("TextAnalysis", TextAnalysisFactory.Create(csr));
+        }
+
+        public ActionResult Reanalyze()
+        {
+            Item item = Sitecore.Context.ContentDatabase.GetItem(IdParameter);
+            if(item == null)
+                return View("TextAnalysis", TextAnalysisFactory.Create());
+
+            item.Database.Engines.HistoryEngine.RegisterItemSaved(item, new ItemChanges(item));
+
+            ICognitiveSearchResult csr = Searcher.GetAnalysis(IdParameter, LanguageParameter);
+
             return View("TextAnalysis", TextAnalysisFactory.Create(csr));
         }
     }

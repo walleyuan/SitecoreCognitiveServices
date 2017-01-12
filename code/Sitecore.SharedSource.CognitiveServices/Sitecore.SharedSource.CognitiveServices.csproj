@@ -204,6 +204,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Reanalyze.cs" />
     <Compile Include="Commands\ViewAnalysis.cs" />
     <Compile Include="Controllers\Modals\CognitiveAnalysisModalController.cs" />
     <Compile Include="Factories\CognitiveImageAnalysisFactory.cs" />
