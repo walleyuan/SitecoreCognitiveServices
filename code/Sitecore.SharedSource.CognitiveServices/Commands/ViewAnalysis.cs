@@ -31,12 +31,13 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
                 return;
 
             string idValue = args.Parameters[paramName];
-            string langCode = args.Parameters["language"];
+            string langCode = Sitecore.Context.Language.Name;
+            string db = Sitecore.Context.ContentDatabase.Name;
             Item i = Sitecore.Context.ContentDatabase.GetItem(idValue);
 
             string action = (i.Paths.IsMediaItem) ? "ImageAnalysis" : "TextAnalysis";
 
-            UrlString urlString = new UrlString($"/sccogsvcs/CognitiveAnalysisModal/{action}?id={idValue}&lang={langCode}");
+            UrlString urlString = new UrlString($"/sccogsvcs/CognitiveAnalysisModal/{action}?id={idValue}&lang={langCode}&db={db}");
             SheerResponse.ShowModalDialog(urlString.ToString(), "810", "500", "", true);
             args.WaitForPostBack();
         }

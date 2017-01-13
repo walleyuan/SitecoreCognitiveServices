@@ -10,27 +10,21 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
 {
     public class CognitiveSearchContext : ICognitiveSearchContext
     {
-        protected readonly ISitecoreContextDatabase ContextDatabase;
-
+        protected readonly ISitecoreDataService DataService;
+        
         protected static readonly string IndexNameFormat = "cognitive_{0}_index";
         
         public CognitiveSearchContext(
-            ISitecoreContextDatabase contextDatabase)
+            ISitecoreDataService dataService)
         {
-            Assert.IsNotNull(contextDatabase, typeof(ISitecoreContextDatabase));
-
-            ContextDatabase = contextDatabase;
+            DataService = dataService;
         }
 
-        public ICognitiveSearchResult GetAnalysis(string itemId, string languageCode)
+        public ICognitiveSearchResult GetAnalysis(string itemId, string languageCode, string dbName)
         {
-            var index = ContentSearchManager.GetIndex(GetIndexName());
+            var index = ContentSearchManager.GetIndex(GetIndexName(dbName));
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
             {
-                var results = context.GetQueryable<CognitiveSearchResult>().ToList();
-
-                var result = results.First();
-
                 return context.GetQueryable<CognitiveSearchResult>()
                     .FirstOrDefault(a => 
                         a.UniqueID.Contains(itemId) 
@@ -38,37 +32,53 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             }
         }
         
-        public void AddItemToIndex(string itemId)
+        public void AddItemToIndex(string itemId, string dbName)
         {
-            AddItemToIndex(ContextDatabase.GetItemById(itemId));
+            ID id = DataService.GetID(itemId);
+            if (id.IsNull)
+                return;
+
+            Item i = DataService.GetDatabase(dbName).GetItem(id);
+            if (i == null)
+                return;
+
+            AddItemToIndex(i, dbName);
         }
 
-        public void AddItemToIndex(Item item)
+        public void AddItemToIndex(Item item, string dbName)
         {
             if (item == null)
                 return;
 
             var tempItem = (SitecoreIndexableItem)item;
-            ContentSearchManager.GetIndex(GetIndexName()).Refresh(tempItem);
+            ContentSearchManager.GetIndex(GetIndexName(dbName)).Refresh(tempItem);
         }
 
-        public void UpdateItemInIndex(string itemId)
+        public void UpdateItemInIndex(string itemId, string dbName)
         {
-            UpdateItemInIndex(ContextDatabase.GetItemById(itemId));
+            ID id = DataService.GetID(itemId);
+            if (id.IsNull)
+                return;
+
+            Item i = DataService.GetDatabase(dbName).GetItem(id);
+            if (i == null)
+                return;
+
+            UpdateItemInIndex(i, dbName);
         }
 
-        public void UpdateItemInIndex(Item item)
+        public void UpdateItemInIndex(Item item, string dbName)
         {
             if (item == null)
                 return;
 
             var tempItem = (SitecoreIndexableItem)item;
-            ContentSearchManager.GetIndex(GetIndexName()).Update(tempItem.UniqueId);
+            ContentSearchManager.GetIndex(GetIndexName(dbName)).Update(tempItem.UniqueId);
         }
 
-        protected string GetIndexName()
+        protected string GetIndexName(string dbName)
         {
-            return string.Format(IndexNameFormat, ContextDatabase.Name());
+            return string.Format(IndexNameFormat, dbName);
         }
     }
 }

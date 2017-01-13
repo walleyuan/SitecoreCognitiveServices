@@ -8,14 +8,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
 {
     public interface ICognitiveSearchContext
     {
-        ICognitiveSearchResult GetAnalysis(string itemId, string languageCode);
+        ICognitiveSearchResult GetAnalysis(string itemId, string languageCode, string dbName);
 
-        void AddItemToIndex(string itemId);
+        void AddItemToIndex(string itemId, string dbName);
 
-        void AddItemToIndex(Item item);
+        void AddItemToIndex(Item item, string dbName);
 
-        void UpdateItemInIndex(string itemId);
+        void UpdateItemInIndex(string itemId, string dbName);
 
-        void UpdateItemInIndex(Item item);
+        void UpdateItemInIndex(Item item, string dbName);
     }
 }

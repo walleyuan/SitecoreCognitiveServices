@@ -211,10 +211,8 @@
     <Compile Include="Factories\CognitiveTextAnalysisFactory.cs" />
     <Compile Include="Factories\ICognitiveImageAnalysisFactory.cs" />
     <Compile Include="Factories\ICognitiveTextAnalysisFactory.cs" />
-    <Compile Include="Foundation\ISitecoreContentDatabase.cs" />
-    <Compile Include="Foundation\ISitecoreContextDatabase.cs" />
-    <Compile Include="Foundation\SitecoreContentDatabase.cs" />
-    <Compile Include="Foundation\SitecoreContextDatabase.cs" />
+    <Compile Include="Foundation\ISitecoreDataService.cs" />
+    <Compile Include="Foundation\SitecoreDataService.cs" />
     <Compile Include="Models\CognitiveImageAnalysis.cs" />
     <Compile Include="Models\CognitiveTextAnalysis.cs" />
     <Compile Include="Models\ICognitiveImageAnalysis.cs" />

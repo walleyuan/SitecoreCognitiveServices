@@ -7,11 +7,9 @@ using Sitecore.Data.Items;
 
 namespace Sitecore.SharedSource.CognitiveServices.Foundation
 {
-    public interface ISitecoreContextDatabase
+    public interface ISitecoreDataService
     {
-        Item GetItemById(string itemId);
-        Item GetItem(string itemPath);
-        Item GetItem(ID itemId);
-        string Name();
+        Database GetDatabase(string dbName);
+        ID GetID(string itemId);
     }
 }

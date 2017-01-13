@@ -53,9 +53,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
 
             serviceCollection.AddTransient<ICognitiveSearchContext, CognitiveSearchContext>();
             serviceCollection.AddTransient<ICognitiveSearchResult, CognitiveSearchResult>();
-
-            serviceCollection.AddTransient<ISitecoreContextDatabase, SitecoreContextDatabase>();
-            serviceCollection.AddTransient<ISitecoreContentDatabase, SitecoreContentDatabase>();
+            
+            serviceCollection.AddTransient<ISitecoreDataService, SitecoreDataService>();
 
             serviceCollection.AddMvcControllersInCurrentAssembly();
         }
