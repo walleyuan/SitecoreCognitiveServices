@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
+using Sitecore.ContentSearch;
 using Sitecore.Data.Items;
+using Sitecore.Diagnostics;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Search;
 using Sitecore.SharedSource.CognitiveServices.Factories;
@@ -12,6 +14,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers.Modals
         public ICognitiveSearchContext Searcher;
         public ICognitiveImageAnalysisFactory ImageAnalysisFactory;
         public ICognitiveTextAnalysisFactory TextAnalysisFactory;
+        public ISitecoreContextDatabase ContextDatabase;
         
         public string IdParameter
         {
@@ -32,12 +35,20 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers.Modals
             IWebUtilWrapper webUtil,
             ICognitiveSearchContext searcher,
             ICognitiveImageAnalysisFactory iaFactory,
-            ICognitiveTextAnalysisFactory taFactory)
+            ICognitiveTextAnalysisFactory taFactory,
+            ISitecoreContextDatabase contextDatabase)
         {
+            Assert.IsNotNull(webUtil, typeof(IWebUtilWrapper));
+            Assert.IsNotNull(searcher, typeof(ICognitiveSearchContext));
+            Assert.IsNotNull(iaFactory, typeof(ICognitiveImageAnalysisFactory));
+            Assert.IsNotNull(taFactory, typeof(ICognitiveTextAnalysisFactory));
+            Assert.IsNotNull(contextDatabase, typeof(ISitecoreContextDatabase));
+
             WebUtil = webUtil;
             Searcher = searcher;
             ImageAnalysisFactory = iaFactory;
             TextAnalysisFactory = taFactory;
+            ContextDatabase = contextDatabase;
         }
 
         public ActionResult ImageAnalysis()
@@ -56,13 +67,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers.Modals
 
         public ActionResult Reanalyze()
         {
-            Item item = Sitecore.Configuration.Factory.GetDatabase("master").GetItem(IdParameter);
+            Item item = ContextDatabase.GetItemById(IdParameter);
             if(item == null)
                 return View("TextAnalysis", null);
-
-            item.Database.Engines.HistoryEngine.RegisterItemSaved(item, new ItemChanges(item));
-            item.Database.Engines.HistoryEngine.RegisterItemCreated(item);
-            item.Database.Engines.HistoryEngine.RegisterItemMoved(item, item.ParentID);
+            
+            Searcher.UpdateItemInIndex(item);
             
             ICognitiveSearchResult csr = Searcher.GetAnalysis(IdParameter, LanguageParameter);
 
