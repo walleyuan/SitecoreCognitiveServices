@@ -11,17 +11,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <link href="~/sitecore modules/Web/SitecoreCognitiveServices/Sitecore.SharedSource.CognitiveServices.css" rel="stylesheet" type="text/css" />
+    <link href="/sitecore modules/Web/SitecoreCognitiveServices/css/Sitecore.SharedSource.CognitiveServices.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <h1>Image Analysis</h1>
     <div>
         <h2>Emotion Analysis</h2>
-        @foreach(var ea in Model.EmotionAnalysis)
-        {
-            @Html.Partial("Common/Rectangle", ea.FaceRectangle)
-            @Html.Partial("Emotion/Scores", ea.Scores)
-        }
+        <div class="image-wrapper">
+            <img src="@Model.ImageUrl" />
+            @foreach (var ea in Model.EmotionAnalysis)
+            {
+
+                @Html.Partial("Common/Rectangle", ea.FaceRectangle)
+                @Html.Partial("Emotion/Scores", ea.Scores)
+            }
+        </div>
+
     </div>
     <div>
         <h2>Facial Analysis</h2>

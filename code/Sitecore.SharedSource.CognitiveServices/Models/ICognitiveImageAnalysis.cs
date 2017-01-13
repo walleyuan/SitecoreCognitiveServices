@@ -13,5 +13,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Models
         OcrResults TextAnalysis { get; set; }
         Emotion[] EmotionAnalysis { get; set; }
         Microsoft.ProjectOxford.Face.Contract.Face[] FacialAnalysis { get; set; }
+        string ImageUrl { get; set; }
     }
 }

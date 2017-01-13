@@ -11,5 +11,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
     {
         Database GetDatabase(string dbName);
         ID GetID(string itemId);
+        Item GetItemByUri(string itemUri);
     }
 }

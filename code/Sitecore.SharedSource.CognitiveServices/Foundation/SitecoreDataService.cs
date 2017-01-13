@@ -17,5 +17,25 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
                 ? idObj
                 : ID.Null;
         }
+
+        public Item GetItemByUri(string itemUri)
+        {
+            //item uri format: sitecore://master/{04dad0fd-db66-4070-881f-17264ca257e1}?lang=en&ver=1
+            string[] parts = itemUri
+                .Replace("sitecore://", string.Empty)
+                .Split(new string[] { "/" }, StringSplitOptions.RemoveEmptyEntries) ?? new string[0];
+
+            if (parts.Length < 1)
+                return null;
+
+            if (parts.Length < 2)
+                return null;
+
+            var guidParts = parts[1].Split(new string[] { "?" }, StringSplitOptions.RemoveEmptyEntries);
+            if (guidParts.Length < 1)
+                return null;
+            
+            return GetDatabase(parts[0]).GetItem(GetID(guidParts[0]));
+        }
     }
 }
