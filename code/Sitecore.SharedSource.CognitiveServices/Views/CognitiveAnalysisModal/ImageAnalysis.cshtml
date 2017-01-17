@@ -42,9 +42,10 @@
             <div class="tab-content emotional selected">
                 @foreach (var ea in Model.EmotionAnalysis)
                 {
-
-                    @Html.Partial("Common/Rectangle", ea.FaceRectangle)
-                    @Html.Partial("Emotion/Scores", ea.Scores)
+                    <div class="emotion-block">
+                        @Html.Partial("Common/Rectangle", ea.FaceRectangle)
+                        @Html.Partial("Emotion/Scores", ea.Scores)
+                    </div>
                 }
             </div>
             <div class="tab-content facial">

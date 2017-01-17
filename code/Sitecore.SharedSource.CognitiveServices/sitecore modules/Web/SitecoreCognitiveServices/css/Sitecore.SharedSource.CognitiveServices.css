@@ -6,7 +6,12 @@ h1 {}
 .nav-btn.selected { border: 1px solid #ccc; }
 .nav-btn img { display: block; }
 .nav-btn span { display: none; }
-.tab-content { display: none; }
+.tab-content { display: none;position: absolute;top: 0;left: 0; }
 .tab-content.selected { display: block; }
 .image-wrapper { position: relative; }
 .rectangle { border: 2px solid #444; position: absolute;border-radius: 5px; }
+.emotion-block{ position: relative;}
+.scores { position: absolute;padding: 8px;width: 150px; }
+.scores .bg-layer { background-color: #000;opacity: 0.2;position: absolute;top: 0;right: 0;left: 0;bottom: 0;}
+.scores label { }
+.scores span { font-weight: bold;}
