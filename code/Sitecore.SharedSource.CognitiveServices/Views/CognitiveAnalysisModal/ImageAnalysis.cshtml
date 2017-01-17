@@ -16,7 +16,6 @@
 </head>
 <body>
     <div class="frame">
-        <h1>Image Analysis</h1>
         <div class="tabbed-nav">
             <div class="nav-btn selected" rel="emotional" title="Emotion Analysis">
                 @*@Html.Raw(ThemeManager.GetImage("Office/32x32/heartbeat.png", 32, 32))*@
@@ -44,7 +43,9 @@
                 {
                     <div class="emotion-block">
                         @Html.Partial("Common/Rectangle", ea.FaceRectangle)
-                        @Html.Partial("Emotion/Scores", ea.Scores)
+                        <div class="scores" style="top:@{@ea.FaceRectangle.Top}px;left:@{@(ea.FaceRectangle.Left + ea.FaceRectangle.Width + 10)}px">
+                            @Html.Partial("Emotion/Scores", ea.Scores)
+                        </div>
                     </div>
                 }
             </div>

@@ -1,39 +1,37 @@
 ﻿@model Microsoft.ProjectOxford.Emotion.Contract.Scores
 
 @if(Model != null) {
-    <div class="scores">
-        <div class="bg-layer"></div>
-        <div>
-            <label>Anger: </label>
-            <span>@Model.Anger</span>
-        </div>
-        <div>
-            <label>Contempt: </label>
-            <span>@Model.Contempt</span>
-        </div>
-        <div>
-            <label>Disgust: </label>
-            <span>@Model.Disgust</span>
-        </div>
-        <div>
-            <label>Fear: </label>
-            <span>@Model.Fear</span>
-        </div>
-        <div>
-            <label>Happiness: </label>
-            <span>@Model.Happiness</span>
-        </div>
-        <div>
-            <label>Neutral: </label>
-            <span>@Model.Neutral</span>
-        </div>
-        <div>
-            <label>Sadness: </label>
-            <span>@Model.Sadness</span>
-        </div>
-        <div>
-            <label>Surprise: </label>
-            <span>@Model.Surprise</span>
-        </div>
+    <div class="bg-layer"></div>
+    <div class="score-set">
+        <label>Anger: </label>
+        <span>@Model.Anger</span>
+    </div>
+    <div class="score-set">
+        <label>Contempt: </label>
+        <span>@Model.Contempt</span>
+    </div>
+    <div class="score-set">
+        <label>Disgust: </label>
+        <span>@Model.Disgust</span>
+    </div>
+    <div class="score-set">
+        <label>Fear: </label>
+        <span>@Model.Fear</span>
+    </div>
+    <div class="score-set">
+        <label>Happiness: </label>
+        <span>@Model.Happiness</span>
+    </div>
+    <div class="score-set">
+        <label>Neutral: </label>
+        <span>@Model.Neutral</span>
+    </div>
+    <div class="score-set">
+        <label>Sadness: </label>
+        <span>@Model.Sadness</span>
+    </div>
+    <div class="score-set">
+        <label>Surprise: </label>
+        <span>@Model.Surprise</span>
     </div>
 }
