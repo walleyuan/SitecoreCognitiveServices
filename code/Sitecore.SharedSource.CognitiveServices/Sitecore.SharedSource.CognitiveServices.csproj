@@ -298,6 +298,7 @@
     <Content Include="App_Config\Include\Unicorn\Unicorn.AutoPublish.config" />
     <Content Include="App_Config\Include\SitecoreCognitiveServices\Unicorn.Configs.SitecoreCognitiveServices.config" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
+    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Sitecore.SharedSource.CognitiveServices.js" />
     <Content Include="Views\CognitiveAnalysisModal\ImageAnalysis.cshtml" />
     <Content Include="Views\CognitiveAnalysisModal\TextAnalysis.cshtml" />
     <Content Include="Views\CognitiveAnalysisModal\Common\Rectangle.cshtml" />

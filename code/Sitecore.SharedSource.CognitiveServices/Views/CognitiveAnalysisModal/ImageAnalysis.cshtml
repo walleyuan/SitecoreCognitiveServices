@@ -1,4 +1,5 @@
 ﻿@using Sitecore.Shell.Framework.Commands.Masters
+@using Sitecore.Data.Managers
 @model Sitecore.SharedSource.CognitiveServices.Models.ICognitiveImageAnalysis
 
 @{
@@ -14,58 +15,77 @@
     <link href="/sitecore modules/Web/SitecoreCognitiveServices/css/Sitecore.SharedSource.CognitiveServices.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <h1>Image Analysis</h1>
-    <div>
-        <h2>Emotion Analysis</h2>
+    <div class="frame">
+        <h1>Image Analysis</h1>
+        <div class="tabbed-nav">
+            <div class="nav-btn selected" rel="emotional" title="Emotion Analysis">
+                @*@Html.Raw(ThemeManager.GetImage("Office/32x32/heartbeat.png", 32, 32))*@
+                @Html.Raw(ThemeManager.GetImage("Office/32x32/masks.png", 32, 32))
+                <span>Emotion Analysis</span>
+            </div>
+            <div class="nav-btn" rel="facial" title="Facial Analysis">
+                @Html.Raw(ThemeManager.GetImage("Office/32x32/face_scan.png", 32, 32))
+                <span>Facial Analysis</span>
+            </div>
+            <div class="nav-btn" rel="textual" title="Text Analysis">
+                @*@Html.Raw(ThemeManager.GetImage("Office/32x32/sort_az_descending.png", 32, 32))*@
+                @Html.Raw(ThemeManager.GetImage("Office/32x32/text.png", 32, 32))
+                <span>Text Analysis</span>
+            </div>
+            <div class="nav-btn" rel="visual" title="Vision Analysis">
+                @Html.Raw(ThemeManager.GetImage("Office/32x32/eye.png", 32, 32))
+                <span>Vision Analysis</span>
+            </div>
+        </div>
         <div class="image-wrapper">
             <img src="@Model.ImageUrl" />
-            @foreach (var ea in Model.EmotionAnalysis)
-            {
+            <div class="tab-content emotional selected">
+                @foreach (var ea in Model.EmotionAnalysis)
+                {
 
-                @Html.Partial("Common/Rectangle", ea.FaceRectangle)
-                @Html.Partial("Emotion/Scores", ea.Scores)
-            }
+                    @Html.Partial("Common/Rectangle", ea.FaceRectangle)
+                    @Html.Partial("Emotion/Scores", ea.Scores)
+                }
+            </div>
+            <div class="tab-content facial">
+                @foreach (var fa in Model.FacialAnalysis)
+                {
+                    @Html.Partial("Face/Attributes", fa.FaceAttributes, new ViewDataDictionary(fa.FaceAttributes))
+                    @Html.Partial("Face/Landmarks", fa.FaceLandmarks, new ViewDataDictionary(fa.FaceLandmarks))
+                    @Html.Partial("Face/Rectangle", fa.FaceRectangle)
+                }
+            </div>
+            <div class="tab-content textual">
+                <div>
+                    <label>Language: </label>
+                    <span>@Model.TextAnalysis.Language</span>
+                </div>
+                <div>
+                    <label>Orientation: </label>
+                    <span>@Model.TextAnalysis.Orientation</span>
+                </div>
+                @Html.Partial("Vision/Regions", Model.TextAnalysis.Regions, new ViewDataDictionary(Model.TextAnalysis.Regions))
+                @if (Model.TextAnalysis.TextAngle != null)
+                {
+                    <div>
+                        <label>Text Angle: </label>
+                        <span>@Model.TextAnalysis.TextAngle</span>
+                    </div>
+                }
+            </div>
+            <div class="tab-content visual">
+                @Html.Partial("Vision/Adult", Model.VisionAnalysis.Adult, new ViewDataDictionary(Model.VisionAnalysis.Adult))
+                @Html.Partial("Vision/Categories", Model.VisionAnalysis.Categories, new ViewDataDictionary(Model.VisionAnalysis.Categories))
+                @Html.Partial("Vision/Color", Model.VisionAnalysis.Color, new ViewDataDictionary(Model.VisionAnalysis.Color))
+                @Html.Partial("Vision/Description", Model.VisionAnalysis.Description, new ViewDataDictionary(Model.VisionAnalysis.Description))
+                @Html.Partial("Vision/Faces", Model.VisionAnalysis.Faces, new ViewDataDictionary(Model.VisionAnalysis.Faces))
+                @Html.Partial("Vision/ImageType", Model.VisionAnalysis.ImageType, new ViewDataDictionary(Model.VisionAnalysis.ImageType))
+                @Html.Partial("Vision/Metadata", Model.VisionAnalysis.Metadata, new ViewDataDictionary(Model.VisionAnalysis.Metadata))
+                @Html.Partial("Vision/Tags", Model.VisionAnalysis.Tags, new ViewDataDictionary(Model.VisionAnalysis.Tags))
+            </div>
+            <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/jquery-1.10.2.min.js"></script>
+            <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/Sitecore.SharedSource.CognitiveServices.js"></script>
         </div>
-
     </div>
-    <div>
-        <h2>Facial Analysis</h2>
-        @foreach (var fa in Model.FacialAnalysis)
-        {
-            @Html.Partial("Face/Attributes", fa.FaceAttributes, new ViewDataDictionary(fa.FaceAttributes))
-            @Html.Partial("Face/Landmarks", fa.FaceLandmarks, new ViewDataDictionary(fa.FaceLandmarks))
-            @Html.Partial("Face/Rectangle", fa.FaceRectangle)
-        }
-    </div>
-    <div>
-        <h2>Text Analysis</h2>
-        <div>
-            <label>Language: </label>
-            <span>@Model.TextAnalysis.Language</span>
-        </div>
-        <div>
-            <label>Orientation: </label>
-            <span>@Model.TextAnalysis.Orientation</span>
-        </div>
-        @Html.Partial("Vision/Regions", Model.TextAnalysis.Regions, new ViewDataDictionary(Model.TextAnalysis.Regions))
-        @if (Model.TextAnalysis.TextAngle != null) {
-        <div>
-            <label>Text Angle: </label>
-            <span>@Model.TextAnalysis.TextAngle</span>
-        </div>
-        }
-    </div>
-    <div>
-        <h2>Vision Analysis</h2>
-        @Html.Partial("Vision/Adult", Model.VisionAnalysis.Adult, new ViewDataDictionary(Model.VisionAnalysis.Adult))
-        @Html.Partial("Vision/Categories", Model.VisionAnalysis.Categories, new ViewDataDictionary(Model.VisionAnalysis.Categories))
-        @Html.Partial("Vision/Color", Model.VisionAnalysis.Color, new ViewDataDictionary(Model.VisionAnalysis.Color))
-        @Html.Partial("Vision/Description", Model.VisionAnalysis.Description, new ViewDataDictionary(Model.VisionAnalysis.Description))
-        @Html.Partial("Vision/Faces", Model.VisionAnalysis.Faces, new ViewDataDictionary(Model.VisionAnalysis.Faces))
-        @Html.Partial("Vision/ImageType", Model.VisionAnalysis.ImageType, new ViewDataDictionary(Model.VisionAnalysis.ImageType))
-        @Html.Partial("Vision/Metadata", Model.VisionAnalysis.Metadata, new ViewDataDictionary(Model.VisionAnalysis.Metadata))
-        @Html.Partial("Vision/Tags", Model.VisionAnalysis.Tags, new ViewDataDictionary(Model.VisionAnalysis.Tags))
-    </div>
-    <script src="~/sitecore modules/Web/SitecoreCognitiveServices/jquery-1.10.2.min.js"></script>
 </body>
 </html>

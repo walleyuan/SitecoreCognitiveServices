@@ -1,3 +1,12 @@
-﻿
+﻿body { color: #131313; font-family: "Open Sans",Arial,sans-serif; font-size: 12px; }
+.frame {}
+h1 {}
+.tabbed-nav {}
+.nav-btn { display: inline-block; }
+.nav-btn.selected { border: 1px solid #ccc; }
+.nav-btn img { display: block; }
+.nav-btn span { display: none; }
+.tab-content { display: none; }
+.tab-content.selected { display: block; }
 .image-wrapper { position: relative; }
-.rectangle { border: 1px solid #444;position: absolute; }
+.rectangle { border: 2px solid #444; position: absolute;border-radius: 5px; }
