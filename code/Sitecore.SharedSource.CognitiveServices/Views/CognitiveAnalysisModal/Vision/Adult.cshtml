@@ -6,7 +6,7 @@
         <h3>Adult</h3>
         <div>
             <label>Adult Score: </label>
-            <span>@Model.AdultScore</span>
+            <span>@Model.AdultScore.ToString("0.00")</span>
         </div>
         <div>
             <label>Is Adult Content: </label>
@@ -18,7 +18,7 @@
         </div>
         <div>
             <label>Racy Score: </label>
-            <span>@Model.RacyScore</span>
+            <span>@Model.RacyScore.ToString("0.00")</span>
         </div>
     </div>
 }

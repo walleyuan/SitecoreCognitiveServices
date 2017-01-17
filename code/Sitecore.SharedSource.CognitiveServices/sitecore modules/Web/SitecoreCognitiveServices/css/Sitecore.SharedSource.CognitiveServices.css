@@ -9,11 +9,11 @@ h1 {}
 .tab-content { display: none;position: absolute;top: 0;left: 0; }
 .tab-content.selected { display: block; }
 .image-wrapper { position: relative;border-top: 2px solid #474747; }
-.rectangle { border: 2px solid #444; position: absolute;border-radius: 5px; }
+.rectangle { border: 4px solid #dc291e; position: absolute;border-radius: 10px; }
 .emotion-block{ position: relative;}
 .emotion-block:hover .scores { display: block; }
-.scores {display: none; position: absolute;padding: 8px;width: 150px; }
+.scores {display: none; position: absolute;padding: 8px;width: 100px; }
 .scores .bg-layer { background-color: #fff;opacity: 0.6;position: absolute;top: 0;right: 0;left: 0;bottom: 0;z-index: 0;border-radius: 5px;}
 .score-set { position: relative;z-index: 1;margin-bottom: 2px;}
-.score-set label { }
+.score-set label { display: inline-block; text-align: right; width: 65px; }
 .score-set span { font-weight: bold;}

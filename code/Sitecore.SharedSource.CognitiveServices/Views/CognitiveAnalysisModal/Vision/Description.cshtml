@@ -10,12 +10,8 @@
             {
                 <div>
                     <div>
-                        <label>Confidence: </label>
-                        <span>@cp.Confidence</span>
-                    </div>
-                    <div>
-                        <label>Text: </label>
-                        <span>@cp.Text</span>
+                        <label>@cp.Text: </label>
+                        <span>@cp.Confidence.ToString("0.00") Confident</span>
                     </div>
                 </div>
             }
@@ -23,10 +19,9 @@
         <div>
             <h4>Tags</h4>
             <div>
-                @foreach (var t in Model.Tags)
-                {
-                    <span>@t</span>
-                }
+                <span>
+                    @Html.Raw(string.Join("</span>, <span>", Model.Tags))
+                </span>
             </div>
         </div>
     </div>
