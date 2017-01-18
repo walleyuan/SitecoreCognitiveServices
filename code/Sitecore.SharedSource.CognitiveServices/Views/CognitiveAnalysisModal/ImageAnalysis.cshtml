@@ -77,7 +77,7 @@
             </div>
             <div class="tab-content visual">
                 @Html.Partial("Vision/Faces", Model.VisionAnalysis.Faces, new ViewDataDictionary(Model.VisionAnalysis.Faces))
-                <div style="top: @{@Model.ImageHeight}px">
+                <div class="visual-block" style="top: @{@Model.ImageHeight}px">
                     @Html.Partial("Vision/Adult", Model.VisionAnalysis.Adult, new ViewDataDictionary(Model.VisionAnalysis.Adult))
                     @Html.Partial("Vision/Categories", Model.VisionAnalysis.Categories, new ViewDataDictionary(Model.VisionAnalysis.Categories))
                     @Html.Partial("Vision/Color", Model.VisionAnalysis.Color, new ViewDataDictionary(Model.VisionAnalysis.Color))

@@ -19,6 +19,7 @@ h1 {}
 .face-set { position: relative;z-index: 1;margin-bottom: 2px; }
 .face-set label { display: inline-block; text-align: right; width: 45px; }
 .face-set span { font-weight: bold;}
+.visual-block { position: relative; }
 .emotion-block{ position: relative;}
 .emotion-block:hover .scores { display: block; }
 .scores {display: none; position: absolute;padding: 8px;width: 100px; }
