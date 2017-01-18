@@ -17,27 +17,27 @@
 <body>
     <div class="frame">
         <div class="tabbed-nav">
-            <div class="nav-btn selected" rel="emotional" title="Emotion Analysis">
-                @*@Html.Raw(ThemeManager.GetImage("Office/32x32/heartbeat.png", 32, 32))*@
+            <div class="nav-btn selected" rel="emotional" title="Emotional Analysis">
                 @Html.Raw(ThemeManager.GetImage("Office/32x32/masks.png", 32, 32))
-                <span>Emotion Analysis</span>
+                <span>Emotional Analysis</span>
             </div>
             <div class="nav-btn" rel="facial" title="Facial Analysis">
                 @Html.Raw(ThemeManager.GetImage("Office/32x32/face_scan.png", 32, 32))
                 <span>Facial Analysis</span>
             </div>
-            <div class="nav-btn" rel="textual" title="Text Analysis">
-                @*@Html.Raw(ThemeManager.GetImage("Office/32x32/sort_az_descending.png", 32, 32))*@
+            <div class="nav-btn" rel="textual" title="Textual Analysis">
                 @Html.Raw(ThemeManager.GetImage("Office/32x32/text.png", 32, 32))
-                <span>Text Analysis</span>
+                <span>Textual Analysis</span>
             </div>
-            <div class="nav-btn" rel="visual" title="Vision Analysis">
+            <div class="nav-btn" rel="visual" title="Visual Analysis">
                 @Html.Raw(ThemeManager.GetImage("Office/32x32/eye.png", 32, 32))
-                <span>Vision Analysis</span>
+                <span>Visual Analysis</span>
             </div>
         </div>
-        <div class="image-wrapper">
-            <img src="@Model.ImageUrl" />
+        <div class="analysis-wrapper">
+            <div class="image-wrapper">
+                <img src="@Model.ImageUrl" /> 
+            </div>
             <div class="tab-content emotional selected">
                 @foreach (var ea in Model.EmotionAnalysis)
                 {

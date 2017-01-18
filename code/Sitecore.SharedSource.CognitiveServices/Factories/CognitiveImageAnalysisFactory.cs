@@ -4,11 +4,14 @@ using System.Linq;
 using System.Web;
 using Sitecore.SharedSource.CognitiveServices.Models;
 using System.Web.Script.Serialization;
+using Microsoft.ProjectOxford.Emotion.Contract;
+using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Resources.Media;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Search;
+using Face = Microsoft.ProjectOxford.Face.Contract.Face;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
@@ -28,18 +31,50 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
 
         public ICognitiveImageAnalysis Create(ICognitiveSearchResult result)
         {
-            var json = (result != null) ? result.ImageItemAnalysis : string.Empty;
+            var jsd = new JavaScriptSerializer();
 
-            var obj = new JavaScriptSerializer().Deserialize<CognitiveImageAnalysis>(json);
-            if(obj == null)
-                return Create();
+            var analysis = Create();
+            
+            try {
+                var eJson = (result != null) ? result.EmotionAnalysis : string.Empty;
+                analysis.EmotionAnalysis = jsd.Deserialize<Emotion[]>(eJson);
+            } catch { }
 
-            Item i = DataService.GetItemByUri(result?.UniqueID ?? string.Empty);
+            try {
+                var fJson = (result != null) ? result.FacialAnalysis : string.Empty;
+                analysis.FacialAnalysis = jsd.Deserialize<Face[]>(fJson);
+            } catch { }
+
+            try {
+                var tJson = (result != null) ? result.TextAnalysis : string.Empty;
+                analysis.TextAnalysis = jsd.Deserialize<OcrResults>(tJson);
+            } catch { }
+
+            try {
+                var vJson = (result != null) ? result.VisionAnalysis : string.Empty;
+                analysis.VisionAnalysis = jsd.Deserialize<AnalysisResult>(vJson);
+            } catch { }
+            
+            Item i = DataService.GetItemByUri(result?.UniqueId ?? string.Empty);
             if (i == null)
-                return obj;
+                return analysis;
 
-            obj.ImageUrl = MediaManager.GetMediaUrl(i);
-            return obj;
+            analysis.ImageHeight = GetNumber(i, "height", 0);
+            analysis.ImageWidth = GetNumber(i, "width", 0);
+            analysis.ImageUrl = MediaManager.GetMediaUrl(i);
+
+            return analysis;
+        }
+
+        private int GetNumber(Item i, string field, int fallback)
+        {
+            if (i.Fields[field] == null) 
+                return fallback;
+
+            int value = 0;
+            return (!int.TryParse(i[field], out value))
+                ? fallback
+                : value;
         }
     }
 }

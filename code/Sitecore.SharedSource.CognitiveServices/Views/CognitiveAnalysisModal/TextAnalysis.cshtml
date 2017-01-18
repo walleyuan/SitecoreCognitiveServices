@@ -21,7 +21,6 @@
     <link href="~/sitecore modules/Web/SitecoreCognitiveServices/Sitecore.SharedSource.CognitiveServices.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <h1>Text Analysis</h1>
     @if(Model != null)
     {
         <div>
@@ -37,6 +36,7 @@
             @Html.Partial("Text/SentimentDocuments", Model.SentimentAnalysis.Documents)
         </div>
     }
+    <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/jquery-1.10.2.min.js"></script>
     <script src="~/sitecore modules/Web/SitecoreCognitiveServices/jquery-1.10.2.min.js"></script>
 </body>
 </html>

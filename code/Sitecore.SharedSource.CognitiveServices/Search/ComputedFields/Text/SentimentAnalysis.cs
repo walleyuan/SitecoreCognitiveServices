@@ -16,7 +16,7 @@ using Sitecore.SharedSource.CognitiveServices.Repositories;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
 {
-    public class TextFieldAnalysis : BaseComputedField
+    public class SentimentAnalysis : BaseComputedField
     {
         protected override object GetFieldValue(Item indexItem)
         {
@@ -25,10 +25,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
 
             var crContext = DependencyResolver.Current.GetService<ICognitiveRepositoryContext>();
             if (crContext == null)
-                return false;
-            
-            var ctaFactory = DependencyResolver.Current.GetService<ICognitiveTextAnalysisFactory>();
-            if (ctaFactory == null)
                 return false;
             
             List<string> fieldTypes = new List<string>() { "Rich Text", "Single-Line Text", "Multi-Line Text", "html", "text", "memo" };
@@ -44,28 +40,15 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
             Document d = new Document();
             d.Text = fieldValues;
             d.Id = indexItem.ID.ToString();
-
-            ICognitiveTextAnalysis cta = ctaFactory.Create();
-
-            try {
-                cta.LinkAnalysis = Task.Run(async () => await crContext.EntityLinkingRepository.LinkAsync(fieldValues)).Result;
-            } catch (Exception ex) { LogError(ex, indexItem); }
-
+            
             try {
                 SentimentRequest sr = new SentimentRequest();
                 sr.Documents.Add(d);
-                cta.SentimentAnalysis = Task.Run(async () => await crContext.SentimentRepository.GetSentimentAsync(sr)).Result;
+                var result = Task.Run(async () => await crContext.SentimentRepository.GetSentimentAsync(sr)).Result;
+                return new JavaScriptSerializer().Serialize(result);
             } catch (Exception ex) { LogError(ex, indexItem); }
-
-            try {
-                LanguageRequest lr = new LanguageRequest();
-                lr.Documents.Add(d);
-                cta.LanguageAnalysis = Task.Run(async () => await crContext.LanguageRepository.GetLanguagesAsync(lr)).Result;
-            } catch (Exception ex) { LogError(ex, indexItem); }
-
-            var json = new JavaScriptSerializer().Serialize(cta);
-
-            return json;
+            
+            return false;
         }
     }
 }

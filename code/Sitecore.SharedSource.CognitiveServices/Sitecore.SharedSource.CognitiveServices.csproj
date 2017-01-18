@@ -227,9 +227,13 @@
     <Compile Include="Search\CognitiveSearchContext.cs" />
     <Compile Include="Search\CognitiveSearchResult.cs" />
     <Compile Include="Search\ComputedFields\BaseComputedField.cs" />
-    <Compile Include="Search\ComputedFields\Image\ImageItemAnalysis.cs" />
-    <Compile Include="Search\ComputedFields\Presentation\PresentationFieldAnalysis.cs" />
-    <Compile Include="Search\ComputedFields\Text\TextFieldAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Image\VisionAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Image\EmotionAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Image\TextAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Image\FacialAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Text\LinkAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Text\SentimentAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Text\LanguageAnalysis.cs" />
     <Compile Include="Search\ICognitiveSearchContext.cs" />
     <Compile Include="Search\ICognitiveSearchResult.cs" />
     <Compile Include="Repositories\ApiKeys.cs" />

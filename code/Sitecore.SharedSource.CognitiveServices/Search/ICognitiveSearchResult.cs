@@ -9,8 +9,13 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
 {
     public interface ICognitiveSearchResult : ISearchResult
     {
-        string ImageItemAnalysis { get; set; }
-        string TextFieldAnalysis { get; set; }
-        string UniqueID { get; set; }
+        string EmotionAnalysis { get; set; }
+        string FacialAnalysis { get; set; }
+        string TextAnalysis { get; set; }
+        string VisionAnalysis { get; set; }
+        string LanguageAnalysis { get; set; }
+        string LinkAnalysis { get; set; }
+        string SentimentAnalysis { get; set; }
+        string UniqueId { get; set; }
     }
 }
