@@ -2,21 +2,21 @@
 
 @if (Model != null)
 {
-    <div>
-        <h3>Faces</h3>
+    <div class="face-block">
         @foreach (var f in Model)
         {
-            <div>
-                <div>
+            @Html.Partial("Vision/FaceRectangle", f.FaceRectangle)
+            <div class="faces" style="top:@{@f.FaceRectangle.Top}px;left:@{@(f.FaceRectangle.Left + f.FaceRectangle.Width + 10)}px">
+                <div class="bg-layer"></div>
+                <div class="face-set">
                     <label>Age: </label>
                     <span>@f.Age</span>
                 </div>
-                @Html.Partial("Vision/FaceRectangle", f.FaceRectangle)
-                <div>
+                <div class="face-set">
                     <label>Gender: </label>
                     <span>@f.Gender</span>
                 </div>
             </div>
-        }
-    </div>
-}
+            }
+        </div>
+    }

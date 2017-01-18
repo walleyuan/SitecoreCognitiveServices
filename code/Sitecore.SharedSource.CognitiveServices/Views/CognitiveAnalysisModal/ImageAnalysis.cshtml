@@ -76,14 +76,16 @@
                 }
             </div>
             <div class="tab-content visual">
-                @Html.Partial("Vision/Adult", Model.VisionAnalysis.Adult, new ViewDataDictionary(Model.VisionAnalysis.Adult))
-                @Html.Partial("Vision/Categories", Model.VisionAnalysis.Categories, new ViewDataDictionary(Model.VisionAnalysis.Categories))
-                @Html.Partial("Vision/Color", Model.VisionAnalysis.Color, new ViewDataDictionary(Model.VisionAnalysis.Color))
-                @Html.Partial("Vision/Description", Model.VisionAnalysis.Description, new ViewDataDictionary(Model.VisionAnalysis.Description))
                 @Html.Partial("Vision/Faces", Model.VisionAnalysis.Faces, new ViewDataDictionary(Model.VisionAnalysis.Faces))
-                @Html.Partial("Vision/ImageType", Model.VisionAnalysis.ImageType, new ViewDataDictionary(Model.VisionAnalysis.ImageType))
-                @Html.Partial("Vision/Metadata", Model.VisionAnalysis.Metadata, new ViewDataDictionary(Model.VisionAnalysis.Metadata))
-                @Html.Partial("Vision/Tags", Model.VisionAnalysis.Tags, new ViewDataDictionary(Model.VisionAnalysis.Tags))
+                <div style="top: @{@Model.ImageHeight}px">
+                    @Html.Partial("Vision/Adult", Model.VisionAnalysis.Adult, new ViewDataDictionary(Model.VisionAnalysis.Adult))
+                    @Html.Partial("Vision/Categories", Model.VisionAnalysis.Categories, new ViewDataDictionary(Model.VisionAnalysis.Categories))
+                    @Html.Partial("Vision/Color", Model.VisionAnalysis.Color, new ViewDataDictionary(Model.VisionAnalysis.Color))
+                    @Html.Partial("Vision/Description", Model.VisionAnalysis.Description, new ViewDataDictionary(Model.VisionAnalysis.Description))
+                    @Html.Partial("Vision/ImageType", Model.VisionAnalysis.ImageType, new ViewDataDictionary(Model.VisionAnalysis.ImageType))
+                    @Html.Partial("Vision/Metadata", Model.VisionAnalysis.Metadata, new ViewDataDictionary(Model.VisionAnalysis.Metadata))
+                    @Html.Partial("Vision/Tags", Model.VisionAnalysis.Tags, new ViewDataDictionary(Model.VisionAnalysis.Tags))
+                </div>
             </div>
             <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/jquery-1.10.2.min.js"></script>
             <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/Sitecore.SharedSource.CognitiveServices.js"></script>
