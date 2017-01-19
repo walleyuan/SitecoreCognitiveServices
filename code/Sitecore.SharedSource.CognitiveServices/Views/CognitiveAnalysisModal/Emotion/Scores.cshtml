@@ -1,37 +1,56 @@
 ﻿@model Microsoft.ProjectOxford.Emotion.Contract.Scores
 
-@if(Model != null) {
-    <div class="bg-layer"></div>
-    <div class="score-set">
-        <label>Anger: </label>
-        <span>@Model.Anger.ToString("0.00")</span>
-    </div>
-    <div class="score-set">
-        <label>Contempt: </label>
-        <span>@Model.Contempt.ToString("0.00")</span>
-    </div>
-    <div class="score-set">
-        <label>Disgust: </label>
-        <span>@Model.Disgust.ToString("0.00")</span>
-    </div>
-    <div class="score-set">
-        <label>Fear: </label>
-        <span>@Model.Fear.ToString("0.00")</span>
-    </div>
-    <div class="score-set">
-        <label>Happiness: </label>
-        <span>@Model.Happiness.ToString("0.00")</span>
-    </div>
-    <div class="score-set">
-        <label>Neutral: </label>
-        <span>@Model.Neutral.ToString("0.00")</span>
-    </div>
-    <div class="score-set">
-        <label>Sadness: </label>
-        <span>@Model.Sadness.ToString("0.00")</span>
-    </div>
-    <div class="score-set">
-        <label>Surprise: </label>
-        <span>@Model.Surprise.ToString("0.00")</span>
+@if (Model != null)
+{
+    <div class="scores">
+        <div class="bg-layer"></div>
+        <div class="score-set">
+            <label>Anger: </label>
+            <span class="bar-box">
+                <div class="bar-value bar-@Model.Anger.ToString("0.0").Replace(".", "")"></div>
+            </span>
+        </div>
+        <div class="score-set">
+            <label>Contempt: </label>
+            <span class="bar-box">
+                <div class="bar-value bar-@Model.Contempt.ToString("0.0").Replace(".", "")"></div>
+            </span>
+        </div>
+        <div class="score-set">
+            <label>Disgust: </label>
+            <span class="bar-box">
+                <div class="bar-value bar-@Model.Disgust.ToString("0.0").Replace(".", "")"></div>
+            </span>
+        </div>
+        <div class="score-set">
+            <label>Fear: </label>
+            <span class="bar-box">
+                <div class="bar-value bar-@Model.Fear.ToString("0.0".Replace(".", ""))"></div>
+            </span>
+        </div>
+        <div class="score-set">
+            <label>Happiness: </label>
+            <span class="bar-box">
+                <div class="bar-value bar-@Model.Happiness.ToString("0.0").Replace(".", "")"></div>
+            </span>
+        </div>
+        <div class="score-set">
+            <label>Neutral: </label>
+            <span class="bar-box">
+                <div class="bar-value bar-@Model.Neutral.ToString("0.0").Replace(".", "")"></div>
+            </span>
+        </div>
+        <div class="score-set">
+            <label>Sadness: </label>
+            <span class="bar-box">
+                <div class="bar-value bar-@Model.Sadness.ToString("0.0").Replace(".", "")"></div>
+            </span>
+        </div>
+        <div class="score-set">
+            <label>Surprise: </label>
+            <span class="bar-box">
+                <div class="bar-value bar-@Model.Surprise.ToString("0.0").Replace(".", "")"></div>
+            </span>
+        </div>
     </div>
 }

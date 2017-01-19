@@ -43,7 +43,7 @@
                 {
                     <div class="emotion-block">
                         @Html.Partial("Common/Rectangle", ea.FaceRectangle)
-                        <div class="scores" style="top:@{@ea.FaceRectangle.Top}px;left:@{@(ea.FaceRectangle.Left + ea.FaceRectangle.Width + 10)}px">
+                        <div class="score-wrap" style="top: @{@ea.FaceRectangle.Top}px; left: @{@(ea.FaceRectangle.Left + ea.FaceRectangle.Width + 10)}px">
                             @Html.Partial("Emotion/Scores", ea.Scores)
                         </div>
                     </div>

@@ -12,17 +12,42 @@ h1 {}
 .image-wrapper { border: 2px solid #2b2b2b; }
 .image-wrapper img { display: block; }
 .rectangle { border: 4px solid #dc291e; position: absolute;border-radius: 10px; }
-.bg-layer { background-color: #fff;opacity: 0.6;position: absolute;top: 0;right: 0;left: 0;bottom: 0;z-index: 0;border-radius: 5px;}
+.bg-layer { background-color: #fff;opacity: 0.9;position: absolute;top: 0;right: 0;left: 0;bottom: 0;z-index: 0;border-radius: 5px;}
 .face-block{ position: relative;}
-.face-block:hover .faces { display: block; }
-.faces {display: none; position: absolute;padding: 8px;width: 94px; }
+.face-block:hover .face-wrap { opacity: 1;width: 94px; }
+.face-wrap {z-index: 1; position: absolute;padding: 8px;width:0px;overflow: hidden;
+         opacity: 0; 
+         transition: opacity .25s ease-in-out, width .25s ease-in-out; 
+         -moz-transition: opacity .25s ease-in-out, width .25s ease-in-out; 
+         -webkit-transition: opacity .25s ease-in-out, width .25s ease-in-out;}
+.faces { width: 94px;}
 .face-set { position: relative;z-index: 1;margin-bottom: 2px; }
 .face-set label { display: inline-block; text-align: right; width: 45px; }
 .face-set span { font-weight: bold;}
 .visual-block { position: relative; }
 .emotion-block{ position: relative;}
-.emotion-block:hover .scores { display: block; }
-.scores {display: none; position: absolute;padding: 8px;width: 100px; }
+.emotion-block:hover .score-wrap { opacity: 1;width: 175px; }
+.score-wrap {z-index: 1; position: absolute;padding: 8px;width: 0px; overflow: hidden;
+             opacity: 0; 
+             transition: opacity .25s ease-in-out, width .25s ease-in-out; 
+             -moz-transition: opacity .25s ease-in-out, width .25s ease-in-out; 
+             -webkit-transition: opacity .25s ease-in-out, width .25s ease-in-out; }
+.scores { width: 175px; }
 .score-set { position: relative;z-index: 1;margin-bottom: 2px;}
 .score-set label { display: inline-block; text-align: right; width: 65px; }
 .score-set span { font-weight: bold;}
+.detail-box { background: #2b2b2b;border-radius: 10px;color: #fff;margin-bottom: 10px;}
+
+.bar-box { background: #ccc;width: 100px;display: inline-block; height: 8px; width: 100px;}
+.bar-value { background: #dc291e;height: 8px;}
+.bar-00 { width: 0px;}
+.bar-01 { width: 10px; }
+.bar-02 { width: 20px; }
+.bar-03 { width: 30px; }
+.bar-04 { width: 40px; }
+.bar-05 { width: 50px; }
+.bar-06 { width: 60px; }
+.bar-07 { width: 70px; }
+.bar-08 { width: 80px; }
+.bar-09 { width: 90px; }
+.bar-10 { width: 100px; }
