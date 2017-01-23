@@ -5,10 +5,6 @@
     <div class="detail-box">
         <h3>Adult</h3>
         <div>
-            <label>Adult Score: </label>
-            <span>@Model.AdultScore.ToString("0.00")</span>
-        </div>
-        <div>
             <label>Is Adult Content: </label>
             <span>@Model.IsAdultContent</span>
         </div>
@@ -17,8 +13,16 @@
             <span>@Model.IsRacyContent</span>
         </div>
         <div>
+            <label>Adult Score: </label>
+            <span class="bar-box">
+                <div class="bar-value bar-@Model.AdultScore.ToString("0.0").Replace(".", "")"></div>
+            </span>
+        </div>
+        <div>
             <label>Racy Score: </label>
-            <span>@Model.RacyScore.ToString("0.00")</span>
+            <span class="bar-box">
+                <div class="bar-value bar-@Model.RacyScore.ToString("0.0").Replace(".", "")"></div>
+            </span>
         </div>
     </div>
 }

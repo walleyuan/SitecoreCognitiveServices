@@ -7,9 +7,11 @@
         @foreach (var t in Model)
         {
             <div>
-                <div>
+                <div class="tag-set">
                     <label>@t.Name: </label>
-                    <span>@t.Confidence.ToString("0.00") Confident</span>
+                    <span class="bar-box">
+                        <div class="bar-value bar-@t.Confidence.ToString("0.0").Replace(".", "")"></div>
+                    </span>
                 </div>
             </div>
         }

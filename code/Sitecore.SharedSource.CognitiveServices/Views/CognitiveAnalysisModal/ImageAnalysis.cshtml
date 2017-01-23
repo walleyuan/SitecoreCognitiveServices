@@ -18,19 +18,19 @@
     <div class="frame">
         <div class="tabbed-nav">
             <div class="nav-btn selected" rel="emotional" title="Emotional Analysis">
-                @Html.Raw(ThemeManager.GetImage("Office/32x32/masks.png", 32, 32))
+                @*@Html.Raw(ThemeManager.GetImage("Office/32x32/masks.png", 32, 32))*@
                 <span>Emotional Analysis</span>
             </div>
             <div class="nav-btn" rel="facial" title="Facial Analysis">
-                @Html.Raw(ThemeManager.GetImage("Office/32x32/face_scan.png", 32, 32))
+                @*@Html.Raw(ThemeManager.GetImage("Office/32x32/face_scan.png", 32, 32))*@
                 <span>Facial Analysis</span>
             </div>
             <div class="nav-btn" rel="textual" title="Textual Analysis">
-                @Html.Raw(ThemeManager.GetImage("Office/32x32/text.png", 32, 32))
+                @*@Html.Raw(ThemeManager.GetImage("Office/32x32/text.png", 32, 32))*@
                 <span>Textual Analysis</span>
             </div>
             <div class="nav-btn" rel="visual" title="Visual Analysis">
-                @Html.Raw(ThemeManager.GetImage("Office/32x32/eye.png", 32, 32))
+                @*@Html.Raw(ThemeManager.GetImage("Office/32x32/eye.png", 32, 32))*@
                 <span>Visual Analysis</span>
             </div>
         </div>
@@ -82,9 +82,9 @@
                     @Html.Partial("Vision/Categories", Model.VisionAnalysis.Categories, new ViewDataDictionary(Model.VisionAnalysis.Categories))
                     @Html.Partial("Vision/Color", Model.VisionAnalysis.Color, new ViewDataDictionary(Model.VisionAnalysis.Color))
                     @Html.Partial("Vision/Description", Model.VisionAnalysis.Description, new ViewDataDictionary(Model.VisionAnalysis.Description))
-                    @Html.Partial("Vision/ImageType", Model.VisionAnalysis.ImageType, new ViewDataDictionary(Model.VisionAnalysis.ImageType))
-                    @Html.Partial("Vision/Metadata", Model.VisionAnalysis.Metadata, new ViewDataDictionary(Model.VisionAnalysis.Metadata))
                     @Html.Partial("Vision/Tags", Model.VisionAnalysis.Tags, new ViewDataDictionary(Model.VisionAnalysis.Tags))
+                    @*@Html.Partial("Vision/Metadata", Model.VisionAnalysis.Metadata, new ViewDataDictionary(Model.VisionAnalysis.Metadata))
+                    @Html.Partial("Vision/ImageType", Model.VisionAnalysis.ImageType, new ViewDataDictionary(Model.VisionAnalysis.ImageType))*@
                 </div>
             </div>
             <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/jquery-1.10.2.min.js"></script>

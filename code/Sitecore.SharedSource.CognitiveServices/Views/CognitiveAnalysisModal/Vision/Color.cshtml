@@ -2,32 +2,38 @@
 
 @if (Model != null)
 {
-    <div>
-        <h3>Color</h3>
-        <div>
-            <label>Accent Color: </label>
-            <span>@Model.AccentColor</span>
+    <div class="colors">
+        <h3>Colors</h3>
+        <div class="color-group">
+            <label>Accent: </label>
+            <div class="color-set">
+                <div class="color-box" style="background-color: @Model.AccentColor"></div>
+            </div>
         </div>
-        <div>
-            <label>Dominant Color Background: </label>
-            <span>@Model.DominantColorBackground</span>
+        <div class="color-group">
+            <label>Background: </label>
+            <div class="color-set">
+                <div class="color-box" style="background-color: @Model.DominantColorBackground"></div>
+            </div>
         </div>
-        <div>
-            <label>Dominant Color Foreground: </label>
-            <span>@Model.DominantColorForeground</span>
+        <div class="color-group">
+            <label>Foreground: </label>
+            <div class="color-set">
+                <div class="color-box" style="background-color: @Model.DominantColorForeground"></div>
+            </div>
         </div>
-        <div>
-            <h4>Dominant Colors</h4>
-            <div>
+        <div class="color-group">
+            <label>Dominant: </label>
+            <div class="color-set">
                 @foreach (var c2 in @Model.DominantColors)
                 {
-                    <span>@c2</span>
+                    <div class="color-box" style="background-color: @c2"></div>
                 }
             </div>
         </div>
-        <div>
+        @*<div>
             <label>Is Black White Image: </label>
             <span>@Model.IsBWImg</span>
-        </div>
+        </div>*@
     </div>
 }
