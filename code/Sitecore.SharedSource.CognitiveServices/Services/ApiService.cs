@@ -12,27 +12,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Services
 {
     public class ApiService : IApiService
     { 
-        public virtual MemoryStream GetStream(MediaItem mediaItem)
-        {
-            Stream mediaStream = mediaItem.GetMediaStream();
-            if (mediaStream == null || mediaStream.Length == 0)
-                return null;
-
-            using (Image oldImage = Image.FromStream(mediaStream))
-            {
-                Size newSize = CalculateDimensions(oldImage.Size, 2048);
-
-                using (Bitmap bitmap = new Bitmap(oldImage, newSize))
-                {
-                    MemoryStream outputStream = new MemoryStream();
-                    bitmap.Save(outputStream, ImageFormat.Jpeg);
-                    outputStream.Position = 0;
-
-                    return outputStream;
-                }
-            }
-        }
-
         public virtual Size CalculateDimensions(Size oldSize, int maxSize)
         {
             Size newSize = new Size(oldSize.Width, oldSize.Height);

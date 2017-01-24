@@ -21,43 +21,5 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
         {
             ApiService = apiService;
         }
-        
-        #region RecognizeAsync
-
-        public virtual async Task<Emotion[]> RecognizeAsync(MediaItem mediaItem)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            using (MemoryStream stream = ApiService.GetStream(mediaItem))
-            {
-                return await RecognizeAsync(stream);
-            }
-        }
-        
-        public virtual async Task<Emotion[]> RecognizeAsync(MediaItem mediaItem, MicrosoftProjectOxfordCommon::Microsoft.ProjectOxford.Common.Rectangle[] faceRectangles)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            using (MemoryStream stream = ApiService.GetStream(mediaItem))
-            {
-                return await RecognizeAsync(stream, faceRectangles);
-            }
-        }
-
-        #endregion RecognizeAsync
-
-        #region RecognizeInVideoAsync
-
-        public virtual async Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(MediaItem mediaItem)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            using (MemoryStream stream = ApiService.GetStream(mediaItem))
-            {
-                return await RecognizeInVideoAsync(stream);
-            }
-        }
-        
-        #endregion #region RecognizeInVideoAsync
     }
 }

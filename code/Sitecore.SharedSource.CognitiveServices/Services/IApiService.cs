@@ -11,7 +11,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Services
 {
     public interface IApiService
     {
-        MemoryStream GetStream(MediaItem mediaItem);
         Size CalculateDimensions(Size oldSize, int maxSize);
     }
 }

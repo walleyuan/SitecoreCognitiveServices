@@ -26,7 +26,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             Assert.IsNotNull(mediaItem, GetType());
             
-            return Task.Run(async () => await VisionRepository.DescribeAsync(mediaItem)).Result.Description;
+            return Task.Run(async () => await VisionRepository.DescribeAsync(mediaItem.GetMediaStream())).Result.Description;
         }
 
         public virtual void SetImageAlt(MediaItem mediaItem)

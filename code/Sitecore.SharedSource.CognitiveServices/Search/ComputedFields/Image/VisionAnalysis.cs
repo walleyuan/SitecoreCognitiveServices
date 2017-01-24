@@ -1,17 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using Sitecore.ContentSearch;
-using Sitecore.ContentSearch.ComputedFields;
+using Microsoft.ProjectOxford.SpeakerRecognition.Contract.Verification;
+using Microsoft.ProjectOxford.Vision;
 using Sitecore.Data.Items;
-using Sitecore.Diagnostics;
-using Sitecore.SharedSource.CognitiveServices.Factories;
-using Sitecore.SharedSource.CognitiveServices.Models;
-using Sitecore.SharedSource.CognitiveServices.Services;
 using Sitecore.SharedSource.CognitiveServices.Repositories;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
@@ -30,8 +24,18 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
                 return false;
             
             try {
-                var result = Task.Run(async() => await crContext.VisionRepository.GetFullAnalysis(m)).Result;
-                return new JavaScriptSerializer().Serialize(result);
+                var result = Task.Run(async() => await crContext.VisionRepository.AnalyzeImageAsync(m.GetMediaStream(), new List<VisualFeature>() {
+                    VisualFeature.Adult,
+                    VisualFeature.Categories,
+                    VisualFeature.Color,
+                    VisualFeature.Description,
+                    VisualFeature.Faces,
+                    VisualFeature.ImageType,
+                    VisualFeature.Tags }))
+                .Result;
+                var json = new JavaScriptSerializer().Serialize(result);
+
+                return json;
             } catch (Exception ex) { LogError(ex, indexItem); }
             
             return false;

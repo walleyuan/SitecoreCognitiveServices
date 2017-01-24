@@ -22,38 +22,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
         {
             ApiService = apiService;
         }
-
-        #region DescribeAsync
-
-        public virtual async Task<AnalysisResult> DescribeAsync(MediaItem mediaItem)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            using (MemoryStream stream = ApiService.GetStream(mediaItem))
-            {
-                return await DescribeAsync(stream);
-            }
-        }
-
-        #endregion DescribeAsync
-
+        
         #region AnalyzeImageAsync
-
-        public virtual async Task<AnalysisResult> AnalyzeImageAsync(MediaItem mediaItem, IEnumerable<VisualFeature> features)
+        
+        public virtual async Task<AnalysisResult> GetFullAnalysis(Stream stream)
         {
-            Assert.IsNotNull(mediaItem, GetType());
+            Assert.IsNotNull(stream, GetType());
 
-            using (MemoryStream stream = ApiService.GetStream(mediaItem))
-            {
-                return await AnalyzeImageAsync(stream, features);
-            }
-        }
-
-        public virtual async Task<AnalysisResult> GetFullAnalysis(MediaItem mediaItem)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            return await AnalyzeImageAsync(mediaItem, new List<VisualFeature>() {
+            return await AnalyzeImageAsync(stream, new List<VisualFeature>() {
                 VisualFeature.Adult,
                 VisualFeature.Categories,
                 VisualFeature.Color,
@@ -77,11 +53,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
                 VisualFeature.Tags });
         }
 
-        public virtual async Task<Adult> GetAdultAnalysis(MediaItem mediaItem)
+        public virtual async Task<Adult> GetAdultAnalysis(Stream stream)
         {
-            Assert.IsNotNull(mediaItem, GetType());
+            Assert.IsNotNull(stream, GetType());
 
-            var result = await AnalyzeImageAsync(mediaItem, new List<VisualFeature>() { VisualFeature.Adult });
+            var result = await AnalyzeImageAsync(stream, new List<VisualFeature>() { VisualFeature.Adult });
             return result.Adult;
         }
 
@@ -93,11 +69,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
             return result.Adult;
         }
 
-        public virtual async Task<Category[]> GetCategoryAnalysis(MediaItem mediaItem)
+        public virtual async Task<Category[]> GetCategoryAnalysis(Stream stream)
         {
-            Assert.IsNotNull(mediaItem, GetType());
+            Assert.IsNotNull(stream, GetType());
 
-            var result = await AnalyzeImageAsync(mediaItem, new List<VisualFeature>() { VisualFeature.Categories });
+            var result = await AnalyzeImageAsync(stream, new List<VisualFeature>() { VisualFeature.Categories });
             return result.Categories;
         }
 
@@ -109,11 +85,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
             return result.Categories;
         }
 
-        public virtual async Task<Microsoft.ProjectOxford.Vision.Contract.Color> GetColorAnalysis(MediaItem mediaItem)
+        public virtual async Task<Microsoft.ProjectOxford.Vision.Contract.Color> GetColorAnalysis(Stream stream)
         {
-            Assert.IsNotNull(mediaItem, GetType());
+            Assert.IsNotNull(stream, GetType());
 
-            var result = await AnalyzeImageAsync(mediaItem, new List<VisualFeature>() { VisualFeature.Color });
+            var result = await AnalyzeImageAsync(stream, new List<VisualFeature>() { VisualFeature.Color });
             return result.Color;
         }
 
@@ -125,11 +101,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
             return result.Color;
         }
 
-        public virtual async Task<Description> GetDescriptionAnalysis(MediaItem mediaItem)
+        public virtual async Task<Description> GetDescriptionAnalysis(Stream stream)
         {
-            Assert.IsNotNull(mediaItem, GetType());
+            Assert.IsNotNull(stream, GetType());
 
-            var result = await AnalyzeImageAsync(mediaItem, new List<VisualFeature>() { VisualFeature.Description });
+            var result = await AnalyzeImageAsync(stream, new List<VisualFeature>() { VisualFeature.Description });
             return result.Description;
         }
 
@@ -141,11 +117,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
             return result.Description;
         }
 
-        public virtual async Task<Face[]> GetFaceAnalysis(MediaItem mediaItem)
+        public virtual async Task<Face[]> GetFaceAnalysis(Stream stream)
         {
-            Assert.IsNotNull(mediaItem, GetType());
+            Assert.IsNotNull(stream, GetType());
 
-            var result = await AnalyzeImageAsync(mediaItem, new List<VisualFeature>() { VisualFeature.Faces });
+            var result = await AnalyzeImageAsync(stream, new List<VisualFeature>() { VisualFeature.Faces });
             return result.Faces;
         }
 
@@ -157,11 +133,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
             return result.Faces;
         }
 
-        public virtual async Task<ImageType> GetImageTypeAnalysis(MediaItem mediaItem)
+        public virtual async Task<ImageType> GetImageTypeAnalysis(Stream stream)
         {
-            Assert.IsNotNull(mediaItem, GetType());
+            Assert.IsNotNull(stream, GetType());
 
-            var result = await AnalyzeImageAsync(mediaItem, new List<VisualFeature>() { VisualFeature.ImageType });
+            var result = await AnalyzeImageAsync(stream, new List<VisualFeature>() { VisualFeature.ImageType });
             return result.ImageType;
         }
 
@@ -173,11 +149,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
             return result.ImageType;
         }
 
-        public virtual async Task<Tag[]> GetTagsAnalysis(MediaItem mediaItem)
+        public virtual async Task<Tag[]> GetTagsAnalysis(Stream stream)
         {
-            Assert.IsNotNull(mediaItem, GetType());
+            Assert.IsNotNull(stream, GetType());
 
-            var result = await AnalyzeImageAsync(mediaItem, new List<VisualFeature>() { VisualFeature.Tags });
+            var result = await AnalyzeImageAsync(stream, new List<VisualFeature>() { VisualFeature.Tags });
             return result.Tags;
         }
 
@@ -190,67 +166,5 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
         }
 
         #endregion AnalyzeImageAsync
-
-        #region AnalyzeImageInDomainAsync
-
-        public virtual Task<AnalysisInDomainResult> AnalyzeImageInDomainAsync(MediaItem mediaItem, Model model)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-            Assert.IsNotNull(model, GetType());
-
-            using (MemoryStream stream = ApiService.GetStream(mediaItem))
-            {
-                return AnalyzeImageInDomainAsync(stream, model);
-            }
-        }
-
-        #endregion AnalyzeImageInDomainAsync
-
-        #region GetTagsAsync
-
-        public virtual Task<AnalysisResult> GetTagsAsync(MediaItem mediaItem)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            using (MemoryStream stream = ApiService.GetStream(mediaItem))
-            {
-                return GetTagsAsync(stream);
-            }
-        }
-
-        #endregion GetTagsAsync
-
-        #region GetThumbnailAsync
-
-        public virtual Task<byte[]> GetThumbnailAsync(MediaItem mediaItem, int height, int width, bool smartCrop)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            using (MemoryStream stream = ApiService.GetStream(mediaItem))
-            {
-                var result = GetThumbnailAsync(stream, height, width, smartCrop);
-
-                return result;
-            }
-        }
-
-        #endregion GetThumbnailAsync
-
-        #region RecognizeTextAsync
-
-        public virtual Task<OcrResults> RecognizeTextAsync(MediaItem mediaItem, string languageCode, bool detectOrientation = true)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-            Assert.IsNotNullOrEmpty(languageCode, "RecognizeTextAsync: The language code must be provided but was empty");
-
-            using (MemoryStream stream = ApiService.GetStream(mediaItem))
-            {
-                var result = RecognizeTextAsync(stream, languageCode, detectOrientation);
-
-                return result;
-            }
-        }
-
-        #endregion RecognizeTextAsync
     }
 }

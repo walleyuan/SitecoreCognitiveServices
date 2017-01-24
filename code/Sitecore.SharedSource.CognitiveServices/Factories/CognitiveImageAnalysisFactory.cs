@@ -61,7 +61,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
 
             analysis.ImageHeight = GetNumber(i, "height", 0);
             analysis.ImageWidth = GetNumber(i, "width", 0);
-            analysis.ImageUrl = MediaManager.GetMediaUrl(i);
+            analysis.ImageUrl = $"/sitecore/shell/Applications/-/media/{i.ID.Guid:N}.ashx?db=master";
 
             return analysis;
         }
