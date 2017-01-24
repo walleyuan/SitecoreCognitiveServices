@@ -23,7 +23,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
                 return false;
             
             try {
-                var result = Task.Run(async () => await crContext.VisionRepository.RecognizeTextAsync(m.GetMediaStream(), "en")).Result;
+                var result = Task.Run(async () => await crContext.VisionRepository.RecognizeTextAsync(m.GetMediaStream(), "en", true)).Result;
                 var json = new JavaScriptSerializer().Serialize(result);
 
                 return json;
