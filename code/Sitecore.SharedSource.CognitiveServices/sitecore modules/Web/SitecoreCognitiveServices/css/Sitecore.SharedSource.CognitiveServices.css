@@ -45,7 +45,7 @@ h1 {}
 .attr-set label { display: inline-block; text-align: right; width: 65px; }
 .attr-set span { font-weight: bold;}
 .landmark-wrap {
-    z-index: 1;
+    z-index: 0;
     position: absolute;
 }
 .landmark {background: #dc291e none repeat scroll 0 0; height: 7px; position: absolute; width: 7px; }
