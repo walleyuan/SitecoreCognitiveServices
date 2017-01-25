@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Threading.Tasks;
-using Microsoft.ProjectOxford.Common;
 using Microsoft.ProjectOxford.Emotion.Contract;
-using Microsoft.ProjectOxford.Vision.Contract;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
 {

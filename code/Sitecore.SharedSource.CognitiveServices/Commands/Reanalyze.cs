@@ -1,9 +1,7 @@
-﻿using Sitecore.Diagnostics;
-using Sitecore.Text;
+﻿using Sitecore.Text;
 using System;
 using System.Linq;
 using Sitecore.Shell.Framework.Commands;
-using Sitecore.Shell.Applications.Dialogs.ProgressBoxes;
 using Sitecore.Web.UI.Sheer;
 using Sitecore.Data.Items;
 

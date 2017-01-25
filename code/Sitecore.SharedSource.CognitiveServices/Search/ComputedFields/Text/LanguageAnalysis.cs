@@ -8,10 +8,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Microsoft.ProjectOxford.Text.Core;
 using Microsoft.ProjectOxford.Text.Language;
-using Microsoft.ProjectOxford.Text.Sentiment;
 using Sitecore.Data.Items;
-using Sitecore.SharedSource.CognitiveServices.Factories;
-using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.SharedSource.CognitiveServices.Repositories;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
@@ -45,7 +42,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
                 LanguageRequest lr = new LanguageRequest();
                 lr.Documents.Add(d);
                 var result = Task.Run(async () => await crContext.LanguageRepository.GetLanguagesAsync(lr)).Result;
-                return new JavaScriptSerializer().Serialize(result);
+                var json = new JavaScriptSerializer().Serialize(result);
+
+                return json;
             } catch (Exception ex) { LogError(ex, indexItem); }
             
             return false;

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.ProjectOxford.Emotion.Contract;
-using Microsoft.ProjectOxford.Face.Contract;
+﻿using Microsoft.ProjectOxford.Emotion.Contract;
 using Microsoft.ProjectOxford.Vision.Contract;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models

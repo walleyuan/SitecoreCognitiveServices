@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Sitecore.SharedSource.CognitiveServices.Models;
+﻿using Sitecore.SharedSource.CognitiveServices.Models;
 using System.Web.Script.Serialization;
 using Microsoft.ProjectOxford.EntityLinking.Contract;
 using Microsoft.ProjectOxford.Text.Language;

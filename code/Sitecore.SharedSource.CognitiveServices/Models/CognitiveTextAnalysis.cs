@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.ProjectOxford.EntityLinking.Contract;
+﻿using Microsoft.ProjectOxford.EntityLinking.Contract;
 using Microsoft.ProjectOxford.Text.Language;
 using Microsoft.ProjectOxford.Text.Sentiment;
 

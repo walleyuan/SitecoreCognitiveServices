@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Sitecore.SharedSource.CognitiveServices.Models;
+﻿using Sitecore.SharedSource.CognitiveServices.Models;
 using System.Web.Script.Serialization;
 using Microsoft.ProjectOxford.Emotion.Contract;
 using Microsoft.ProjectOxford.Vision.Contract;
-using Sitecore.Data;
 using Sitecore.Data.Items;
-using Sitecore.Resources.Media;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Search;
 using Face = Microsoft.ProjectOxford.Face.Contract.Face;

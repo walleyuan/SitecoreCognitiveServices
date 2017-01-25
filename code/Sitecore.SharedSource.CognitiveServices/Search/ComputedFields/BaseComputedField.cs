@@ -1,14 +1,9 @@
 ﻿extern alias MicrosoftProjectOxfordCommon;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Sitecore.Configuration;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.ComputedFields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using Sitecore.Sites;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields
 {

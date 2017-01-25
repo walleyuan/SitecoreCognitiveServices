@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using Microsoft.ProjectOxford.SpeakerRecognition.Contract.Verification;
 using Microsoft.ProjectOxford.Vision;
 using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.Repositories;

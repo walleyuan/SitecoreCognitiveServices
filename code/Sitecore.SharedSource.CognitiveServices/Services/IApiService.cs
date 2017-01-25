@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sitecore.Data.Items;
+﻿using System.Drawing;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services
 {
