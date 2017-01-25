@@ -2,14 +2,16 @@
 
 @if (Model != null)
 {
-    <div>
+    <div class="detail-box">
         <h3>Categories</h3>
         @foreach (var c in Model)
         {
             <div>
                 <div>
-                    <label>@c.Name</label>
-                    <span>@c.Score</span>
+                    <label>@c.Name.Replace("_", " ")</label>
+                    <span class="bar-box">
+                        <div class="bar-value bar-@c.Score.ToString("0.0").Replace(".", "")"></div>
+                    </span>
                 </div>
             </div>
         }

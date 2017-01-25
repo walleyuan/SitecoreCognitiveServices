@@ -10,8 +10,11 @@
                 @if (r.BoundingBox != null)
                 {
                     <div>
-                        <label>Bounding Box: </label>
-                        <span>@r.BoundingBox</span>
+                        <div>
+                            <label>Bounding Box: </label>
+                            <span>@r.BoundingBox</span>
+                        </div>
+                        @Html.Partial("Vision/Rectangle", r.Rectangle)
                     </div>
                 }
                 @if (r.Lines != null)
@@ -21,15 +24,16 @@
                         @foreach (var l in r.Lines)
                         {
                             <div>
-                                <label>Bounding Box: </label>
-                                <span>@l.BoundingBox</span>
+                                <div>
+                                    <label>Bounding Box: </label>
+                                    <span>@l.BoundingBox</span>
+                                </div>
+                                @Html.Partial("Vision/Rectangle", l.Rectangle)
+                                @Html.Partial("Vision/Words", l.Words)
                             </div>
-                            @Html.Partial("Vision/Rectangle", l.Rectangle)
-                            @Html.Partial("Vision/Words", l.Words)
                         }
                     </div>
                 }
-                @Html.Partial("Vision/Rectangle", r.Rectangle)
             </div>
         }
     </div>

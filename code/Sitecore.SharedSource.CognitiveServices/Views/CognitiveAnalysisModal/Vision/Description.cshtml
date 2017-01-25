@@ -2,7 +2,7 @@
 
 @if (Model != null)
 {
-    <div>
+    <div class="detail-box">
         <h3>Description</h3>
         <div>
             <h4>Captions</h4>
@@ -11,14 +11,16 @@
                 <div>
                     <div>
                         <label>@cp.Text: </label>
-                        <span>@cp.Confidence.ToString("0.00") Confident</span>
+                        <span class="bar-box">
+                            <div class="bar-value bar-@cp.Confidence.ToString("0.0").Replace(".", "")"></div>
+                        </span>
                     </div>
                 </div>
             }
         </div>
         <div>
             <h4>Tags</h4>
-            <div>
+            <div class="tag-list">
                 <span>
                     @Html.Raw(string.Join("</span>, <span>", Model.Tags))
                 </span>

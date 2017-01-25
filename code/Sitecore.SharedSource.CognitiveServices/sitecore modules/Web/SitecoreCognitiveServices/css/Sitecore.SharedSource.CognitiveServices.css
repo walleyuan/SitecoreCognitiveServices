@@ -25,6 +25,7 @@ h1 {}
 .face-set label { display: inline-block; text-align: right; width: 45px; }
 .face-set span { font-weight: bold;}
 .visual-block { position: relative; }
+.textual-block { position: relative;}
 .emotion-block{ position: relative;}
 .emotion-block:hover .score-wrap { opacity: 1;width: 175px; }
 .score-wrap {z-index: 1; position: absolute;padding: 8px;width: 0px; overflow: hidden;
@@ -39,7 +40,8 @@ h1 {}
 .tag-set { position: relative;z-index: 1;margin-bottom: 2px;}
 .tag-set label { display: inline-block; text-align: right; width: 65px; }
 .tag-set span { font-weight: bold;}
-.detail-box { background: #2b2b2b;border-radius: 10px;color: #fff;margin-bottom: 10px;}
+.detail-box { width: 200px;display: inline-block;margin-right: 10px;vertical-align: top; }
+.detail-box h3 { background: #2b2b2b; color: #fff; margin-bottom: 10px;padding: 10px 15px;font-weight: bold; }
 .bar-box { background: #ccc;width: 100px;display: inline-block; height: 8px; width: 100px;}
 .bar-value { background: #dc291e;height: 8px;}
 .bar-00 { width: 0px;}
@@ -54,8 +56,11 @@ h1 {}
 .bar-09 { width: 90px; }
 .bar-10 { width: 100px; }
 
-.colors {}
 .color-group { }
 .color-group label { display: inline-block;width: 75px;text-align: right;}
 .color-set { display: inline-block;vertical-align: middle;}
 .color-box { display: inline-block; height:20px;width: 20px;margin-right: 5px;border: 1px solid #ccc;border-radius: 2px;}
+
+.tf-icon { margin-left: 2px;}
+.tf-icon img { height: 8px;width: 8px; }
+.tag-list span { background: #dc291e;border-radius: 3px;padding: 4px 6px;margin-bottom: 3px;display: inline-block;font-weight: normal;color: #fff;}

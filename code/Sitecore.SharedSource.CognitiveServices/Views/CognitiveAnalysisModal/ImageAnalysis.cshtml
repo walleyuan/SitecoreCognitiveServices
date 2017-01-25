@@ -12,25 +12,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <link href="/sitecore modules/Web/SitecoreCognitiveServices/css/Sitecore.SharedSource.CognitiveServices.css" rel="stylesheet" type="text/css" />
+    <link href="/sitecore modules/Web/SitecoreCognitiveServices/css/Sitecore.SharedSource.CognitiveServices.css?x=@(new System.Random().Next())" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div class="frame">
         <div class="tabbed-nav">
             <div class="nav-btn selected" rel="emotional" title="Emotional Analysis">
-                @*@Html.Raw(ThemeManager.GetImage("Office/32x32/masks.png", 32, 32))*@
                 <span>Emotional Analysis</span>
             </div>
             <div class="nav-btn" rel="facial" title="Facial Analysis">
-                @*@Html.Raw(ThemeManager.GetImage("Office/32x32/face_scan.png", 32, 32))*@
                 <span>Facial Analysis</span>
             </div>
             <div class="nav-btn" rel="textual" title="Textual Analysis">
-                @*@Html.Raw(ThemeManager.GetImage("Office/32x32/text.png", 32, 32))*@
                 <span>Textual Analysis</span>
             </div>
             <div class="nav-btn" rel="visual" title="Visual Analysis">
-                @*@Html.Raw(ThemeManager.GetImage("Office/32x32/eye.png", 32, 32))*@
                 <span>Visual Analysis</span>
             </div>
         </div>
@@ -58,22 +54,24 @@
                 }
             </div>
             <div class="tab-content textual">
-                <div>
-                    <label>Language: </label>
-                    <span>@Model.TextAnalysis.Language</span>
-                </div>
-                <div>
-                    <label>Orientation: </label>
-                    <span>@Model.TextAnalysis.Orientation</span>
-                </div>
                 @Html.Partial("Vision/Regions", Model.TextAnalysis.Regions, new ViewDataDictionary(Model.TextAnalysis.Regions))
-                @if (Model.TextAnalysis.TextAngle != null)
-                {
+                <div class="textual-block" style="top: @{@Model.ImageHeight}px">
                     <div>
-                        <label>Text Angle: </label>
-                        <span>@Model.TextAnalysis.TextAngle</span>
+                        <label>Language: </label>
+                        <span>@Model.TextAnalysis.Language</span>
                     </div>
-                }
+                    <div>
+                        <label>Orientation: </label>
+                        <span>@Model.TextAnalysis.Orientation</span>
+                    </div>
+                    @if (Model.TextAnalysis.TextAngle != null)
+                    {
+                        <div>
+                            <label>Text Angle: </label>
+                            <span>@Model.TextAnalysis.TextAngle</span>
+                        </div>
+                    }
+                </div>
             </div>
             <div class="tab-content visual">
                 @Html.Partial("Vision/Faces", Model.VisionAnalysis.Faces, new ViewDataDictionary(Model.VisionAnalysis.Faces))
