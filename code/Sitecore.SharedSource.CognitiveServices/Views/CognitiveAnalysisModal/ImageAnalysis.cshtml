@@ -55,19 +55,20 @@
             </div>
             <div class="tab-content textual">
                 @Html.Partial("Vision/Regions", Model.TextAnalysis.Regions, new ViewDataDictionary(Model.TextAnalysis.Regions))
-                <div class="textual-block" style="top: @{@Model.ImageHeight}px">
-                    <div>
+                <div class="textual-block detail-box" style="top: @{@Model.ImageHeight}px">
+                    <h3>Text</h3>                                                    
+                    <div class="detail-row">
                         <label>Language: </label>
                         <span>@Model.TextAnalysis.Language</span>
                     </div>
-                    <div>
+                    <div class="detail-row">
                         <label>Orientation: </label>
                         <span>@Model.TextAnalysis.Orientation</span>
                     </div>
                     @if (Model.TextAnalysis.TextAngle != null)
                     {
-                        <div>
-                            <label>Text Angle: </label>
+                        <div class="detail-row">
+                            <label>Angle: </label>
                             <span>@Model.TextAnalysis.TextAngle</span>
                         </div>
                     }
