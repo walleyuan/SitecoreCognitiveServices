@@ -7,9 +7,7 @@
         <h3>Adult</h3>
         <div>
             <label>Adult: </label>
-            <span class="bar-box">
-                <div class="bar-value bar-@Model.AdultScore.ToString("0.0").Replace(".", "")"></div>
-            </span>            
+            @Html.Partial("Common/MeasureBar", (float)Model.AdultScore)
             <span class="tf-icon">
                 @if (Model.IsAdultContent)
                 {
@@ -23,9 +21,7 @@
         </div>
         <div>
             <label>Racy: </label>
-            <span class="bar-box">
-                <div class="bar-value bar-@Model.RacyScore.ToString("0.0").Replace(".", "")"></div>
-            </span>
+            @Html.Partial("Common/MeasureBar", (float)Model.RacyScore)
             <span class="tf-icon">
                 @if (Model.IsRacyContent)
                 {

@@ -6,51 +6,35 @@
         <div class="bg-layer"></div>
         <div class="score-set">
             <label>Anger: </label>
-            <span class="bar-box">
-                <div class="bar-value bar-@Model.Anger.ToString("0.0").Replace(".", "")"></div>
-            </span>
+            @Html.Partial("Common/MeasureBar", Model.Anger)
         </div>
         <div class="score-set">
             <label>Contempt: </label>
-            <span class="bar-box">
-                <div class="bar-value bar-@Model.Contempt.ToString("0.0").Replace(".", "")"></div>
-            </span>
+            @Html.Partial("Common/MeasureBar", Model.Contempt)
         </div>
         <div class="score-set">
             <label>Disgust: </label>
-            <span class="bar-box">
-                <div class="bar-value bar-@Model.Disgust.ToString("0.0").Replace(".", "")"></div>
-            </span>
+            @Html.Partial("Common/MeasureBar", Model.Disgust)
         </div>
         <div class="score-set">
             <label>Fear: </label>
-            <span class="bar-box">
-                <div class="bar-value bar-@Model.Fear.ToString("0.0".Replace(".", ""))"></div>
-            </span>
+            @Html.Partial("Common/MeasureBar", Model.Fear)
         </div>
         <div class="score-set">
             <label>Happiness: </label>
-            <span class="bar-box">
-                <div class="bar-value bar-@Model.Happiness.ToString("0.0").Replace(".", "")"></div>
-            </span>
+            @Html.Partial("Common/MeasureBar", Model.Happiness)
         </div>
         <div class="score-set">
             <label>Neutral: </label>
-            <span class="bar-box">
-                <div class="bar-value bar-@Model.Neutral.ToString("0.0").Replace(".", "")"></div>
-            </span>
+            @Html.Partial("Common/MeasureBar", Model.Neutral)
         </div>
         <div class="score-set">
             <label>Sadness: </label>
-            <span class="bar-box">
-                <div class="bar-value bar-@Model.Sadness.ToString("0.0").Replace(".", "")"></div>
-            </span>
+            @Html.Partial("Common/MeasureBar", Model.Sadness)
         </div>
         <div class="score-set">
             <label>Surprise: </label>
-            <span class="bar-box">
-                <div class="bar-value bar-@Model.Surprise.ToString("0.0").Replace(".", "")"></div>
-            </span>
+            @Html.Partial("Common/MeasureBar", Model.Surprise)
         </div>
     </div>
 }

@@ -12,12 +12,12 @@
                     <span>@l.Name</span>
                 </div>
                 <div>
-                    <label>Score: </label>
-                    <span>@l.Score</span>
-                </div>
-                <div>
                     <label>Wikipedia ID: </label>
                     <span>@l.WikipediaID</span>
+                </div>
+                <div>
+                    <label>Score: </label>
+                    @Html.Partial("Common/MeasureBar", (float)l.Score)
                 </div>
                 <h4>Matches</h4>
                 @foreach (var m in l.Matches)
@@ -37,7 +37,7 @@
                                 </div>
                                 <div>
                                     <label>Score: </label>
-                                    <span>@e.Score</span>
+                                    @Html.Partial("Common/MeasureBar", (float)e.Score)
                                 </div>
                             </div>
                         }

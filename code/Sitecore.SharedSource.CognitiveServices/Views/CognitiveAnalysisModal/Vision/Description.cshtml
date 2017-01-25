@@ -6,17 +6,15 @@
         <h3>Description</h3>
         <div>
             <h4>Captions</h4>
-            @foreach (var cp in Model.Captions)
-            {
-                <div>
+            <div>
+                @foreach (var cp in Model.Captions)
+                {
                     <div>
                         <label>@cp.Text: </label>
-                        <span class="bar-box">
-                            <div class="bar-value bar-@cp.Confidence.ToString("0.0").Replace(".", "")"></div>
-                        </span>
+                        @Html.Partial("Common/MeasureBar", (float)cp.Confidence)
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
         <div>
             <h4>Tags</h4>

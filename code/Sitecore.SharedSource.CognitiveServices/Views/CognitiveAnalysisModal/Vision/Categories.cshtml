@@ -9,9 +9,7 @@
             <div>
                 <div>
                     <label>@c.Name.Replace("_", " "): </label>
-                    <span class="bar-box">
-                        <div class="bar-value bar-@c.Score.ToString("0.0").Replace(".", "")"></div>
-                    </span>
+                    @Html.Partial("Common/MeasureBar", (float)c.Score)
                 </div>
             </div>
         }

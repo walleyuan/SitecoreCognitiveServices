@@ -18,50 +18,36 @@
         </div>
         <div class="attr-set">
             <label>Smile: </label>
-            <span class="bar-box">
-                <div class="bar-value bar-@Model.Smile.ToString("0.0").Replace(".", "")"></div>
-            </span>
+            @Html.Partial("Common/MeasureBar", (float)Model.Smile)
         </div>
         <div class="bar-list">
             <h4>Head Pose</h4>
             <div class="attr-set">
                 <label>Pitch</label>
-                <span class="bar-box">
-                    <div class="bar-value bar-@Model.HeadPose.Pitch.ToString("0.0").Replace(".", "")"></div>
-                </span>
+                @Html.Partial("Common/MeasureBar", (float)Model.HeadPose.Pitch)
             </div>
             <div class="attr-set">
                 <label>Roll</label>
-                <span class="bar-box">
-                    <div class="bar-value bar-@Model.HeadPose.Roll.ToString("0.0").Replace(".", "")"></div>
-                </span>
+                @Html.Partial("Common/MeasureBar", (float)Model.HeadPose.Roll)
             </div>
             <div class="attr-set">
                 <label>Yaw</label>
-                <span class="bar-box">
-                    <div class="bar-value bar-@Model.HeadPose.Yaw.ToString("0.0").Replace(".", "")"></div>
-                </span>
+                @Html.Partial("Common/MeasureBar", (float)Model.HeadPose.Yaw)
             </div>
         </div>
         <div class="bar-list">
             <h4>Facial Hair</h4>
             <div class="attr-set">
                 <label>Beard</label>
-                <span class="bar-box">
-                    <div class="bar-value bar-@Model.FacialHair.Beard.ToString("0.0").Replace(".", "")"></div>
-                </span>
+                @Html.Partial("Common/MeasureBar", (float)Model.FacialHair.Beard)
             </div>
             <div class="attr-set">
                 <label>Moustache</label>
-                <span class="bar-box">
-                    <div class="bar-value bar-@Model.FacialHair.Moustache.ToString("0.0").Replace(".", "")"></div>
-                </span>
+                @Html.Partial("Common/MeasureBar", (float)Model.FacialHair.Moustache)
             </div>
             <div class="attr-set">
                 <label>Sideburns</label>
-                <span class="bar-box">
-                    <div class="bar-value bar-@Model.FacialHair.Sideburns.ToString("0.0").Replace(".", "")"></div>
-                </span>
+                @Html.Partial("Common/MeasureBar", (float)Model.FacialHair.Sideburns)
             </div>
         </div>
     </div>
