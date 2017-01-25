@@ -1,31 +1,68 @@
 ﻿@model Microsoft.ProjectOxford.Face.Contract.FaceAttributes
 
-@if(Model != null) {
-<div>
-    <h3>Face Attributes</h3>
-    <div>
-        <label>Age: </label>
-        <span>@Model.Age</span>
+@if (Model != null)
+{
+    <div class="attributes">
+        <div class="bg-layer"></div>
+        <div class="attr-set">
+            <label>Age: </label>
+            <span>@Model.Age</span>
+        </div>
+        <div class="attr-set">
+            <label>Gender: </label>
+            <span>@Model.Gender</span>
+        </div>
+        <div class="attr-set">
+            <label>Glasses: </label>
+            <span>@Model.Glasses</span>
+        </div>
+        <div class="attr-set">
+            <label>Smile: </label>
+            <span class="bar-box">
+                <div class="bar-value bar-@Model.Smile.ToString("0.0").Replace(".", "")"></div>
+            </span>
+        </div>
+        <div class="bar-list">
+            <h4>Head Pose</h4>
+            <div class="attr-set">
+                <label>Pitch</label>
+                <span class="bar-box">
+                    <div class="bar-value bar-@Model.HeadPose.Pitch.ToString("0.0").Replace(".", "")"></div>
+                </span>
+            </div>
+            <div class="attr-set">
+                <label>Roll</label>
+                <span class="bar-box">
+                    <div class="bar-value bar-@Model.HeadPose.Roll.ToString("0.0").Replace(".", "")"></div>
+                </span>
+            </div>
+            <div class="attr-set">
+                <label>Yaw</label>
+                <span class="bar-box">
+                    <div class="bar-value bar-@Model.HeadPose.Yaw.ToString("0.0").Replace(".", "")"></div>
+                </span>
+            </div>
+        </div>
+        <div class="bar-list">
+            <h4>Facial Hair</h4>
+            <div class="attr-set">
+                <label>Beard</label>
+                <span class="bar-box">
+                    <div class="bar-value bar-@Model.FacialHair.Beard.ToString("0.0").Replace(".", "")"></div>
+                </span>
+            </div>
+            <div class="attr-set">
+                <label>Moustache</label>
+                <span class="bar-box">
+                    <div class="bar-value bar-@Model.FacialHair.Moustache.ToString("0.0").Replace(".", "")"></div>
+                </span>
+            </div>
+            <div class="attr-set">
+                <label>Sideburns</label>
+                <span class="bar-box">
+                    <div class="bar-value bar-@Model.FacialHair.Sideburns.ToString("0.0").Replace(".", "")"></div>
+                </span>
+            </div>
+        </div>
     </div>
-    <div>
-        <label>Facial Hair: </label>
-        <span>@Model.FacialHair</span>
-    </div>
-    <div>
-        <label>Gender: </label>
-        <span>@Model.Gender</span>
-    </div>
-    <div>
-        <label>Glasses: </label>
-        <span>@Model.Glasses</span>
-    </div>
-    <div>
-        <label>Head Pose: </label>
-        <span>@Model.HeadPose</span>
-    </div>
-    <div>
-        <label>Smile: </label>
-        <span>@Model.Smile</span>
-    </div>
-</div>
 }

@@ -48,9 +48,15 @@
             <div class="tab-content facial">
                 @foreach (var fa in Model.FacialAnalysis)
                 {
-                    @Html.Partial("Face/Attributes", fa.FaceAttributes, new ViewDataDictionary(fa.FaceAttributes))
-                    @Html.Partial("Face/Landmarks", fa.FaceLandmarks, new ViewDataDictionary(fa.FaceLandmarks))
-                    @Html.Partial("Face/Rectangle", fa.FaceRectangle)
+                    <div class="facial-block">
+                        <div class="attribute-wrap" style="top: @{@fa.FaceRectangle.Top}px; left: @{@(fa.FaceRectangle.Left + fa.FaceRectangle.Width + 10)}px">
+                            @Html.Partial("Face/Attributes", fa.FaceAttributes, new ViewDataDictionary(fa.FaceAttributes))
+                        </div>
+                        <div class="landmark-wrap">
+                            @Html.Partial("Face/Landmarks", fa.FaceLandmarks, new ViewDataDictionary(fa.FaceLandmarks))
+                        </div>
+                        @Html.Partial("Face/Rectangle", fa.FaceRectangle)
+                    </div>
                 }
             </div>
             <div class="tab-content textual">
