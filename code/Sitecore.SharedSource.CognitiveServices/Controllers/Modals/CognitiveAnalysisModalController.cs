@@ -10,11 +10,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers.Modals
 {
     public class CognitiveAnalysisModalController : Controller
     {
-        public IWebUtilWrapper WebUtil;
-        public ICognitiveSearchContext Searcher;
-        public ICognitiveImageAnalysisFactory ImageAnalysisFactory;
-        public ICognitiveTextAnalysisFactory TextAnalysisFactory;
-        public ISitecoreDataService DataService;
+        protected readonly IWebUtilWrapper WebUtil;
+        protected readonly ICognitiveSearchContext Searcher;
+        protected readonly ICognitiveImageAnalysisFactory ImageAnalysisFactory;
+        protected readonly ICognitiveTextAnalysisFactory TextAnalysisFactory;
+        protected readonly ISitecoreDataService DataService;
         
         public string IdParameter => WebUtil.GetQueryString("id", string.Empty);
         public string LanguageParameter => WebUtil.GetQueryString("lang", "en");
