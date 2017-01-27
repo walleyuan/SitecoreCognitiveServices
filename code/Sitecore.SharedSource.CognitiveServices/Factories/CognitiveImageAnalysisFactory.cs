@@ -1,11 +1,8 @@
 ﻿using Sitecore.SharedSource.CognitiveServices.Models;
 using System.Web.Script.Serialization;
-using Microsoft.ProjectOxford.Emotion.Contract;
-using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Search;
-using Face = Microsoft.ProjectOxford.Face.Contract.Face;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
@@ -28,26 +25,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
             var jsd = new JavaScriptSerializer();
 
             var analysis = Create();
-            
-            try {
-                var eJson = (result != null) ? result.EmotionAnalysis : string.Empty;
-                analysis.EmotionAnalysis = jsd.Deserialize<Emotion[]>(eJson);
-            } catch { }
-
-            try {
-                var fJson = (result != null) ? result.FacialAnalysis : string.Empty;
-                analysis.FacialAnalysis = jsd.Deserialize<Face[]>(fJson);
-            } catch { }
-
-            try {
-                var tJson = (result != null) ? result.TextAnalysis : string.Empty;
-                analysis.TextAnalysis = jsd.Deserialize<OcrResults>(tJson);
-            } catch { }
-
-            try {
-                var vJson = (result != null) ? result.VisionAnalysis : string.Empty;
-                analysis.VisionAnalysis = jsd.Deserialize<AnalysisResult>(vJson);
-            } catch { }
+            analysis.EmotionAnalysis = result.EmotionAnalysis;
+            analysis.FacialAnalysis = result.FacialAnalysis;
+            analysis.TextAnalysis = result.TextAnalysis;
+            analysis.VisionAnalysis = result.VisionAnalysis;
             
             Item i = DataService.GetItemByUri(result?.UniqueId ?? string.Empty);
             if (i == null)
