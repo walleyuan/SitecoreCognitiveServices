@@ -4,14 +4,14 @@
 {
     <div class="detail-box detail-tags">
         <h3>Tags</h3>
-        @foreach (var t in Model)
-        {
-            <div>
+        <div class="detail-row">
+            @foreach (var t in Model)
+            {
                 <div class="tag-set">
                     <label>@t.Name: </label>
                     @Html.Partial("Common/MeasureBar", (float)t.Confidence)
                 </div>
-            </div>
-        }
+            }
+        </div>
     </div>
 }

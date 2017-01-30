@@ -14,7 +14,7 @@ h1 {}
 .image-wrapper { border: 2px solid #2b2b2b; }
 .image-wrapper img { display: block; }
 .rectangle { border: 4px solid #dc291e; position: absolute;border-radius: 10px; }
-.bg-layer { background-color: #fff;opacity: 0.9;position: absolute;top: 0;right: 0;left: 0;bottom: 0;z-index: 0;border-radius: 5px;border: 2px solid #ccc;}
+.bg-layer { background-color: #fff;opacity: 0.9;position: absolute;top: 0;right: 0;left: 0;bottom: 0;z-index: 0;border-radius: 5px;border: 1px solid #ccc;}
 .face-block{ position: relative;}
 .face-block:hover .face-wrap { opacity: 1;width: 94px; }
 .face-wrap {z-index: 1; position: absolute;padding: 8px;width:0px;overflow: hidden;
@@ -80,25 +80,24 @@ h1 {}
     z-index: 2;
 }
 .detail-wrap { display: inline-block;}
-.detail-box {opacity: 0; width: 200px;display: inline-block;margin-right: 10px;vertical-align: top;
+.detail-box {opacity: 0; width: 0;display: inline-block;margin-right: 10px;vertical-align: top;
     position: absolute;
     top: 39px;
     left: 10px;
     border: 1px solid #cccccc;
     padding: 5px;
     background: #fff;
-    transition: opacity .25s ease-in-out; 
-    -moz-transition: opacity .25s ease-in-out; 
-    -webkit-transition: opacity .25s ease-in-out;
+    transition: opacity .25s ease-in-out, width .25s ease-in-out; 
+    -moz-transition: opacity .25s ease-in-out, width .25s ease-in-out; 
+    -webkit-transition: opacity .25s ease-in-out, width .25s ease-in-out;
 }
-.detail-wrap.selected .detail-box,
-.detail-wrap:hover .detail-box { opacity: 1;}
+.detail-wrap:hover .detail-box { opacity: 1; width: 200px;}
 .detail-box h3 { background: #2b2b2b; color: #fff; margin-bottom: 10px;padding: 10px 15px;font-weight: bold;margin-top: 0px; }
-.detail-row { margin-bottom: 5px;padding: 0px 5px;}
+.detail-row { margin-bottom: 5px;padding: 0px 5px;width:200px;}
 .detail-row span { font-weight: bold;}
 .detail-btn {
     background-color: #fff;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     display: inline-block;
     margin-right: 10px;
     vertical-align: middle;
@@ -107,7 +106,7 @@ h1 {}
     -moz-transition: background-color .25s ease-in-out, border-radius .25s ease-in-out; 
     -webkit-transition: background-color .25s ease-in-out, border-radius .25s ease-in-out;
 }
-.detail-btn:hover { border-radius: 20px;background-color: #2b2b2b; border: 2px solid #2b2b2b;}
+.detail-btn:hover { border-radius: 20px;background-color: #2b2b2b; border: 1px solid #2b2b2b;}
 .detail-btn img {
     display: block;
     transition: opacity .25s ease-in-out; 

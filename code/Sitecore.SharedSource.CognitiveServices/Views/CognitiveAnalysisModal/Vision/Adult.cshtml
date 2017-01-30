@@ -5,7 +5,7 @@
 {
     <div class="detail-box detail-adult">
         <h3>Adult</h3>
-        <div>
+        <div class="detail-row">
             <label>Adult: </label>
             @Html.Partial("Common/MeasureBar", (float)Model.AdultScore)
             <span class="tf-icon">
@@ -19,7 +19,7 @@
                 }
             </span>
         </div>
-        <div>
+        <div class="detail-row">
             <label>Racy: </label>
             @Html.Partial("Common/MeasureBar", (float)Model.RacyScore)
             <span class="tf-icon">

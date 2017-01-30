@@ -4,14 +4,14 @@
 {
     <div class="detail-box detail-categories">
         <h3>Categories</h3>
-        @foreach (var c in Model)
-        {
-            <div>
+        <div class="detail-row">
+            @foreach (var c in Model)
+            {
                 <div>
                     <label>@c.Name.Replace("_", " "): </label>
                     @Html.Partial("Common/MeasureBar", (float)c.Score)
                 </div>
-            </div>
-        }
+            }
+        </div>
     </div>
 }
