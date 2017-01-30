@@ -23,11 +23,11 @@
             <div class="nav-btn" rel="facial" title="Facial Analysis">
                 <span>Facial Analysis</span>
             </div>
-            <div class="nav-btn" rel="textual" title="Textual Analysis">
-                <span>Textual Analysis</span>
-            </div>
             <div class="nav-btn" rel="visual" title="Visual Analysis">
                 <span>Visual Analysis</span>
+            </div>
+            <div class="nav-btn" rel="textual" title="Textual Analysis">
+                <span>Textual Analysis</span>
             </div>
         </div>
         <div class="image-analysis-wrapper">
@@ -59,38 +59,70 @@
                     </div>
                 }
             </div>
-            <div class="tab-content textual">
-                @Html.Partial("Vision/Regions", Model.TextAnalysis.Regions, new ViewDataDictionary(Model.TextAnalysis.Regions))
-                <div class="textual-block detail-box" style="top: @{@Model.ImageHeight}px">
-                    <h3>Text</h3>                                                    
-                    <div class="detail-row">
-                        <label>Language: </label>
-                        <span>@Model.TextAnalysis.Language</span>
-                    </div>
-                    <div class="detail-row">
-                        <label>Orientation: </label>
-                        <span>@Model.TextAnalysis.Orientation</span>
-                    </div>
-                    @if (Model.TextAnalysis.TextAngle != null)
-                    {
-                        <div class="detail-row">
-                            <label>Angle: </label>
-                            <span>@Model.TextAnalysis.TextAngle</span>
-                        </div>
-                    }
-                </div>
-            </div>
             <div class="tab-content visual">
                 @Html.Partial("Vision/Faces", Model.VisionAnalysis.Faces, new ViewDataDictionary(Model.VisionAnalysis.Faces))
-                <div class="visual-block" style="top: @{@Model.ImageHeight}px">
-                    @Html.Partial("Vision/Adult", Model.VisionAnalysis.Adult, new ViewDataDictionary(Model.VisionAnalysis.Adult))
-                    @Html.Partial("Vision/Categories", Model.VisionAnalysis.Categories, new ViewDataDictionary(Model.VisionAnalysis.Categories))
-                    @Html.Partial("Vision/Color", Model.VisionAnalysis.Color, new ViewDataDictionary(Model.VisionAnalysis.Color))
-                    @Html.Partial("Vision/Description", Model.VisionAnalysis.Description, new ViewDataDictionary(Model.VisionAnalysis.Description))
-                    @Html.Partial("Vision/Tags", Model.VisionAnalysis.Tags, new ViewDataDictionary(Model.VisionAnalysis.Tags))
-                    @*@Html.Partial("Vision/Metadata", Model.VisionAnalysis.Metadata, new ViewDataDictionary(Model.VisionAnalysis.Metadata))
-                    @Html.Partial("Vision/ImageType", Model.VisionAnalysis.ImageType, new ViewDataDictionary(Model.VisionAnalysis.ImageType))*@
-                </div>
+                <nav class="subnav-detail">
+                    <div class="detail-wrap">
+                        <div class="detail-btn">
+                            @Html.Raw(ThemeManager.GetImage("Office/16x16/sign_warning.png", 16, 16))
+                        </div>
+                        @Html.Partial("Vision/Adult", Model.VisionAnalysis.Adult, new ViewDataDictionary(Model.VisionAnalysis.Adult))
+                    </div>
+                    <div class="detail-wrap">
+                        <div class="detail-btn">
+                            @Html.Raw(ThemeManager.GetImage("Office/16x16/elements_hierarchy.png", 16, 16))
+                        </div>
+                        @Html.Partial("Vision/Categories", Model.VisionAnalysis.Categories, new ViewDataDictionary(Model.VisionAnalysis.Categories))
+                    </div>
+                    <div class="detail-wrap">
+                        <div class="detail-btn">
+                            @Html.Raw(ThemeManager.GetImage("Office/16x16/painters_palette.png", 16, 16))
+                        </div>
+                        @Html.Partial("Vision/Color", Model.VisionAnalysis.Color, new ViewDataDictionary(Model.VisionAnalysis.Color))
+                    </div>
+                    <div class="detail-wrap">
+                        <div class="detail-btn">
+                            @Html.Raw(ThemeManager.GetImage("Office/16x16/message.png", 16, 16))
+                        </div>
+                        @Html.Partial("Vision/Description", Model.VisionAnalysis.Description, new ViewDataDictionary(Model.VisionAnalysis.Description))
+                    </div>
+                    <div class="detail-wrap">
+                        <div class="detail-btn">
+                            @Html.Raw(ThemeManager.GetImage("Office/16x16/tags.png", 16, 16))
+                        </div>
+                        @Html.Partial("Vision/Tags", Model.VisionAnalysis.Tags, new ViewDataDictionary(Model.VisionAnalysis.Tags))
+                    </div>
+                    @*@Html.Partial("Vision/Metadata", Model.VisionAnalysis.Metadata, new ViewDataDictionary(Model.VisionAnalysis.Metadata))*@
+                    @*@Html.Partial("Vision/ImageType", Model.VisionAnalysis.ImageType, new ViewDataDictionary(Model.VisionAnalysis.ImageType))*@
+                </nav>
+            </div>
+            <div class="tab-content textual">
+                @Html.Partial("Vision/Regions", Model.TextAnalysis.Regions, new ViewDataDictionary(Model.TextAnalysis.Regions))
+                <nav class="subnav-detail">
+                    <div class="detail-wrap">
+                        <div class="detail-btn">
+                            @Html.Raw(ThemeManager.GetImage("Office/16x16/font.png", 16, 16))
+                        </div>
+                        <div class="detail-box">
+                            <h3>Text</h3>
+                            <div class="detail-row">
+                                <label>Language: </label>
+                                <span>@Model.TextAnalysis.Language</span>
+                            </div>
+                            <div class="detail-row">
+                                <label>Orientation: </label>
+                                <span>@Model.TextAnalysis.Orientation</span>
+                            </div>
+                            @if (Model.TextAnalysis.TextAngle != null)
+                            {
+                                <div class="detail-row">
+                                    <label>Angle: </label>
+                                    <span>@Model.TextAnalysis.TextAngle</span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </nav>
             </div>
             <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/jquery-1.10.2.min.js"></script>
             <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/Sitecore.SharedSource.CognitiveServices.js"></script>
