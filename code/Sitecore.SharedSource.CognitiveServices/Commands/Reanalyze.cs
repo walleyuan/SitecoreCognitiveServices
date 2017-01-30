@@ -23,8 +23,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             {
                 Item ctxItem = context.Items[0];
                 context.Parameters.Add(idParam, ctxItem.ID.ToString());
-                context.Parameters.Add(heightParam, GetFieldDimension(ctxItem, "height", 500));
-                context.Parameters.Add(widthParam, GetFieldDimension(ctxItem, "width", 810));
+                context.Parameters.Add(heightParam, GetFieldDimension(ctxItem, "height", 500, 56));
+                context.Parameters.Add(widthParam, GetFieldDimension(ctxItem, "width", 810, 20));
             }
 
             Sitecore.Context.ClientPage.Start(this, "Run", context.Parameters);
@@ -50,17 +50,17 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             return CommandState.Enabled;
         }
 
-        protected string GetFieldDimension(Item i, string fieldName, int minimum)
+        protected string GetFieldDimension(Item i, string fieldName, int minimum, int offset)
         {
             if (i.Fields[fieldName] == null)
                 return minimum.ToString();
-            
+
             int size = minimum;
             if (!int.TryParse(i[fieldName], out size))
                 return minimum.ToString();
-            
+
             return (size > minimum)
-                ? size.ToString()
+                ? (size + offset).ToString()
                 : minimum.ToString();
         }
     }

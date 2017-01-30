@@ -23,7 +23,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             {
                 Item ctxItem = context.Items[0];
                 context.Parameters.Add(idParam, ctxItem.ID.ToString());
-                context.Parameters.Add(heightParam, GetFieldDimension(ctxItem, "height", 500, 100));
+                context.Parameters.Add(heightParam, GetFieldDimension(ctxItem, "height", 500, 56));
                 context.Parameters.Add(widthParam, GetFieldDimension(ctxItem, "width", 810, 20));
             }
 
