@@ -11,7 +11,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
     {
         protected readonly ISitecoreDataService DataService;
         
-        protected static readonly string IndexNameFormat = "cognitive_{0}_index";
+        protected static readonly string IndexNameFormat = Sitecore.Configuration.Settings.GetSetting("CognitiveService.Search.IndexNameFormat");
         
         public CognitiveSearchContext(
             ISitecoreDataService dataService)

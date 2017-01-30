@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Microsoft.ProjectOxford.Face;
 using Sitecore.Data.Items;
+using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Repositories;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
@@ -13,7 +14,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
     {
         protected override object GetFieldValue(Item indexItem)
         {
-            if (!indexItem.Paths.IsMediaItem)
+            var dataService = DependencyResolver.Current.GetService<ISitecoreDataService>();
+            if (dataService == null)
+                return false;
+
+            if (!dataService.IsMediaItem(indexItem))
                 return false;
 
             MediaItem m = indexItem;
