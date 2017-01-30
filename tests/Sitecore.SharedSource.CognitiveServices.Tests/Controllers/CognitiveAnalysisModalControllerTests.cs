@@ -44,19 +44,39 @@ namespace Sitecore.SharedSource.CognitiveServices.Tests.Controllers
         }
 
         [Test]
-        public void ProjectId_NullOrEmpty_NoChoices()
+        public void ID_Empty_Returns_NullModel()
         {
             //arrange
+            WebUtil.GetQueryString("id", string.Empty).Returns(string.Empty);
+            WebUtil.GetQueryString("lang", "en").Returns("en");
+            WebUtil.GetQueryString("db", "master").Returns("master");
+
             CognitiveAnalysisModalController controller = new CognitiveAnalysisModalController(WebUtil, Searcher, ImageAnalysisFactory, TextAnalysisFactory, DataService);
 
             //act
             var result = controller.Reanalyze() as ViewResult;
-            
-            ////assert
-            //var model1 = result.Model as VariantSelectionViewModel;
-            //Assert.IsNotNull(result1);
-            //Assert.IsNotNull(model1);
-            //Assert.AreEqual(model1.ChoiceNames.Count, 0);
+
+            //assert
+            Assert.IsNotNull(result);
+            Assert.IsNull(result.Model);
+        }
+
+        [Test]
+        public void ValidID_Returns_NoChoices()
+        {
+            //arrange
+            WebUtil.GetQueryString("id", string.Empty).Returns(string.Empty);
+            WebUtil.GetQueryString("lang", "en").Returns("en");
+            WebUtil.GetQueryString("db", "master").Returns("master");
+
+            CognitiveAnalysisModalController controller = new CognitiveAnalysisModalController(WebUtil, Searcher, ImageAnalysisFactory, TextAnalysisFactory, DataService);
+
+            //act
+            var result = controller.Reanalyze() as ViewResult;
+
+            //assert
+            Assert.IsNotNull(result);
+            Assert.IsNull(result.Model);
         }
     }
 }
