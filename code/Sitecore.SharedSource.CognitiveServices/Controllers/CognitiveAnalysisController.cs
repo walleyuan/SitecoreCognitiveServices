@@ -6,9 +6,9 @@ using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Search;
 using Sitecore.SharedSource.CognitiveServices.Factories;
 
-namespace Sitecore.SharedSource.CognitiveServices.Controllers.Modals
+namespace Sitecore.SharedSource.CognitiveServices.Controllers
 {
-    public class CognitiveAnalysisModalController : Controller
+    public class CognitiveAnalysisController : Controller
     {
         protected readonly IWebUtilWrapper WebUtil;
         protected readonly ICognitiveSearchContext Searcher;
@@ -20,7 +20,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers.Modals
         public string LanguageParameter => WebUtil.GetQueryString("lang", "en");
         public string DbParameter => WebUtil.GetQueryString("db", "master");
         
-        public CognitiveAnalysisModalController(
+        public CognitiveAnalysisController(
             IWebUtilWrapper webUtil,
             ICognitiveSearchContext searcher,
             ICognitiveImageAnalysisFactory iaFactory,

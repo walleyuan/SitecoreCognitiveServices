@@ -1,0 +1,45 @@
+﻿@using Sitecore.Shell.Framework.Commands.Masters
+@using Sitecore.Data.Managers
+@model Sitecore.SharedSource.CognitiveServices.Models.IImageDescription
+
+@{
+    ViewBag.Title = "Cognitive Services: Image Description";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="/sitecore modules/Web/SitecoreCognitiveServices/css/Sitecore.SharedSource.CognitiveServices.css?x=@(new System.Random().Next())" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="frame">
+        @if (Model != null) {
+            <form class="form" method="post" action="/sccogsvcs/CognitiveUtility/UpdateImageDescription">
+                <h2>Current Description</h2>
+                <div class="info-row">@(string.IsNullOrEmpty(Model.AltDescription) ? "The alt description is empty." : Model.AltDescription)</div>
+                <h2>Options</h2>
+                <div class="form-row">
+                    @foreach (var cp in Model.CognitiveDescription.Captions)
+                    {
+                        <div>
+                            <input type="radio" id="descriptionOption" name="descriptionOption" value="@cp.Text"/>
+                            <label for="descriptionOption">@cp.Text</label>
+                        </div>
+                    }
+                </div>
+                <div class="form-row">
+                    <input type="hidden" name="itemId" value="@Model.ItemId" />
+                    <input type="hidden" name="database" value="@Model.Database" />
+                    <input type="hidden" name="language" value="@Model.Language" />
+                    <input class="form-submit" type="submit" value="Update Alt Description" />
+                </div>
+            </form>
+        }
+        <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/jquery-1.10.2.min.js"></script>
+        <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/Sitecore.SharedSource.CognitiveServices.js"></script>
+    </div>
+</body>
+</html>

@@ -50,6 +50,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             
             serviceCollection.AddSingleton<ICognitiveImageAnalysisFactory, CognitiveImageAnalysisFactory>();
             serviceCollection.AddSingleton<ICognitiveTextAnalysisFactory, CognitiveTextAnalysisFactory>();
+            serviceCollection.AddSingleton<IImageDescriptionFactory, ImageDescriptionFactory>();
 
             serviceCollection.AddTransient<ICognitiveSearchContext, CognitiveSearchContext>();
             serviceCollection.AddTransient<ICognitiveSearchResult, CognitiveSearchResult>();

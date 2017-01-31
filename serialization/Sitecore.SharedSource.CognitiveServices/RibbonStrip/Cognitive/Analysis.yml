@@ -2,7 +2,7 @@
 ID: "bb7cb173-2878-4a38-878a-cddb32b7683d"
 Parent: "ba403dc2-d8ee-49ba-96a0-a841596fa221"
 Template: "ef295cd8-19d4-4e02-9438-94c926ef5284"
-Path: /sitecore/content/Applications/Content Editor/Ribbons/Strips/Cognitive Analysis/Analysis
+Path: /sitecore/content/Applications/Content Editor/Ribbons/Strips/Cognitive/Analysis
 DB: core
 SharedFields:
 - ID: "c9ce97fb-3e8e-4384-9430-7dba75b275dd"

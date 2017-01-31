@@ -1,9 +1,11 @@
 ﻿using Sitecore.Text;
 using System;
 using System.Linq;
+using System.Web.Mvc;
 using Sitecore.Shell.Framework.Commands;
 using Sitecore.Web.UI.Sheer;
 using Sitecore.Data.Items;
+using Sitecore.SharedSource.CognitiveServices.Foundation;
 
 namespace Sitecore.SharedSource.CognitiveServices.Commands
 {
@@ -40,14 +42,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             string width = args.Parameters[widthParam];
             string langCode = args.Parameters["language"];
             
-            UrlString urlString = new UrlString($"/sccogsvcs/CognitiveAnalysisModal/Reanalyze?id={id}&lang={langCode}");
+            UrlString urlString = new UrlString($"/sccogsvcs/CognitiveAnalysis/Reanalyze?id={id}&lang={langCode}");
             SheerResponse.ShowModalDialog(urlString.ToString(), width, height, "", true);
             args.WaitForPostBack();
         }
 
         public override CommandState QueryState(CommandContext context)
         {
-            return CommandState.Enabled;
+            var dataService = DependencyResolver.Current.GetService<ISitecoreDataService>();
+            Item ctxItem = dataService?.ExtractItem(context);
+
+            return (ctxItem != null && dataService.IsMediaItem(ctxItem))
+                ? CommandState.Enabled
+                : CommandState.Hidden;
         }
 
         protected string GetFieldDimension(Item i, string fieldName, int minimum, int offset)

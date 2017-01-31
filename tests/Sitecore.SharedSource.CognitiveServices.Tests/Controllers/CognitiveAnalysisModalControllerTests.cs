@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using NSubstitute;
 using NUnit.Framework;
-using Sitecore.Data;
-using Sitecore.SharedSource.CognitiveServices.Controllers.Modals;
+using Sitecore.SharedSource.CognitiveServices.Controllers;
 using Sitecore.SharedSource.CognitiveServices.Factories;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Search;
@@ -15,7 +10,7 @@ using Sitecore.SharedSource.CognitiveServices.Search;
 namespace Sitecore.SharedSource.CognitiveServices.Tests.Controllers
 {
     [TestFixture]
-    public class CognitiveAnalysisModalControllerTests
+    public class CognitiveAnalysisControllerTests
     {
         private IWebUtilWrapper WebUtil;
         private ICognitiveSearchContext Searcher;
@@ -36,11 +31,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Tests.Controllers
         [Test]
         public void Constructor_NullParameters_Throws()
         {
-            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisModalController(null, Searcher, ImageAnalysisFactory, TextAnalysisFactory, DataService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisModalController(WebUtil, null, ImageAnalysisFactory, TextAnalysisFactory,DataService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisModalController(WebUtil, Searcher, null, TextAnalysisFactory, DataService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisModalController(WebUtil, Searcher, ImageAnalysisFactory, null, DataService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisModalController(WebUtil, Searcher, ImageAnalysisFactory, TextAnalysisFactory, null));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(null, Searcher, ImageAnalysisFactory, TextAnalysisFactory, DataService));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(WebUtil, null, ImageAnalysisFactory, TextAnalysisFactory,DataService));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(WebUtil, Searcher, null, TextAnalysisFactory, DataService));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(WebUtil, Searcher, ImageAnalysisFactory, null, DataService));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(WebUtil, Searcher, ImageAnalysisFactory, TextAnalysisFactory, null));
         }
 
         [Test]
@@ -51,7 +46,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Tests.Controllers
             WebUtil.GetQueryString("lang", "en").Returns("en");
             WebUtil.GetQueryString("db", "master").Returns("master");
 
-            CognitiveAnalysisModalController controller = new CognitiveAnalysisModalController(WebUtil, Searcher, ImageAnalysisFactory, TextAnalysisFactory, DataService);
+            CognitiveAnalysisController controller = new CognitiveAnalysisController(WebUtil, Searcher, ImageAnalysisFactory, TextAnalysisFactory, DataService);
 
             //act
             var result = controller.Reanalyze() as ViewResult;
@@ -69,7 +64,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Tests.Controllers
             WebUtil.GetQueryString("lang", "en").Returns("en");
             WebUtil.GetQueryString("db", "master").Returns("master");
 
-            CognitiveAnalysisModalController controller = new CognitiveAnalysisModalController(WebUtil, Searcher, ImageAnalysisFactory, TextAnalysisFactory, DataService);
+            CognitiveAnalysisController controller = new CognitiveAnalysisController(WebUtil, Searcher, ImageAnalysisFactory, TextAnalysisFactory, DataService);
 
             //act
             var result = controller.Reanalyze() as ViewResult;

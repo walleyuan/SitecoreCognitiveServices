@@ -25,8 +25,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             
             return Task.Run(async () => await VisionRepository.DescribeAsync(mediaItem.GetMediaStream())).Result.Description;
         }
-
-        public virtual void SetImageAlt(MediaItem mediaItem)
+        
+        public virtual void SetImageDescription(MediaItem mediaItem, string altDescription)
         {
             Assert.IsNotNull(mediaItem, GetType());
 
@@ -36,11 +36,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
                 {
                     try
                     {
-                        var result = GetDescription(mediaItem);
-
-                        mediaItem.Alt = (result.Captions != null && result.Captions.Any())
-                            ? result.Captions.First().Text
-                            : string.Empty;
+                        mediaItem.Alt = altDescription;
                     }
                     catch (Exception ex)
                     {

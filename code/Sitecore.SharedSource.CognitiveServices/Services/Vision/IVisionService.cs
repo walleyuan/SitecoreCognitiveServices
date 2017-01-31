@@ -6,6 +6,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
     public interface IVisionService
     {
         Description GetDescription(MediaItem mediaItem);
-        void SetImageAlt(MediaItem mediaItem);
+        void SetImageDescription(MediaItem mediaItem, string altDescription);
     }
 }

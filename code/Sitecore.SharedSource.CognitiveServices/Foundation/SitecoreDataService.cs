@@ -2,6 +2,7 @@
 using System.Linq;
 using Sitecore.Data;
 using Sitecore.Data.Items;
+using Sitecore.Shell.Framework.Commands;
 
 namespace Sitecore.SharedSource.CognitiveServices.Foundation
 {
@@ -38,6 +39,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
             return GetDatabase(parts[0]).GetItem(GetID(guidParts[0]));
         }
 
+        public Item GetItemByIdValue(string itemId, string database)
+        {
+            ID id = GetID(itemId);
+            return id.IsNull ? null : GetDatabase(database)?.GetItem(id);
+        }
+
         /// <summary>
         /// Checks if both in the media library and not a folder
         /// </summary>
@@ -46,6 +53,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
         public bool IsMediaItem(Item i)
         {
             return i.Paths.IsMediaItem && !i.Template.ID.Guid.Equals(MediaFolderID);
+        }
+
+        public Item ExtractItem(CommandContext context)
+        {
+            if (!context.Items.Any())
+                return null;
+
+            return context.Items[0];
         }
     }
 }
