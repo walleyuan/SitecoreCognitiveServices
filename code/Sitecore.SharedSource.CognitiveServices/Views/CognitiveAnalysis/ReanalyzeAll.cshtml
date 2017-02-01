@@ -1,0 +1,43 @@
+﻿
+@model Sitecore.SharedSource.CognitiveServices.Models.IProcessResult
+
+@{
+    ViewBag.Title = "Cognitive Services: Reanalyze All";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="/sitecore modules/Web/SitecoreCognitiveServices/css/Sitecore.SharedSource.CognitiveServices.css?x=@(new System.Random().Next())" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="frame">
+        @if (Model != null)
+        {
+            <form class="form reanalyze-all-form" method="get" action="/sccogsvcs/CognitiveAnalysis/ReanalyzeAll">
+                <h2>Reanalyze All Descendents</h2>
+                <div class="form-row">
+                    This will reanalyze all the descendant items below this folder
+                </div>
+                <div class="form-row">
+                    <input type="hidden" name="id" value="@Model.ItemId" />
+                    <input type="hidden" name="database" value="@Model.Database" />
+                    <input type="hidden" name="language" value="@Model.Language" />
+                    <input class="form-submit" type="submit" value="Update Alt Description" />
+                </div>
+            </form>
+            <div class="progress-indicator">
+                <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
+            </div>
+            <div class="result-display">
+                There were @Model.ItemCount items updated.
+            </div>
+        }
+    </div>
+    <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/jquery-1.10.2.min.js"></script>
+    <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/Sitecore.SharedSource.CognitiveServices.js"></script>
+</body>
+</html>

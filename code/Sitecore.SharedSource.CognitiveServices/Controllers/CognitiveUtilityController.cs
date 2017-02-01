@@ -1,9 +1,7 @@
 ﻿using System.Web.Mvc;
 using Microsoft.ProjectOxford.Vision.Contract;
-using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using Sitecore.Resources.Media;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Search;
 using Sitecore.SharedSource.CognitiveServices.Factories;
@@ -14,57 +12,52 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
 {
     public class CognitiveUtilityController : Controller
     {
-        protected readonly IWebUtilWrapper WebUtil;
         protected readonly ICognitiveSearchContext Searcher;
         protected readonly ICognitiveImageAnalysisFactory ImageAnalysisFactory;
         protected readonly IImageDescriptionFactory ImageDescriptionFactory;
         protected readonly ISitecoreDataService DataService;
         protected readonly IVisionService VisionService;
         
-        public string IdParameter => WebUtil.GetQueryString("id", string.Empty);
-        public string LanguageParameter => WebUtil.GetQueryString("lang", "en");
-        public string DbParameter => WebUtil.GetQueryString("db", "master");
-        
         public CognitiveUtilityController(
-            IWebUtilWrapper webUtil,
             ICognitiveSearchContext searcher,
             ICognitiveImageAnalysisFactory iaFactory,
             IImageDescriptionFactory dFactory,
             ISitecoreDataService dataService,
             IVisionService visionService)
         {
-            Assert.IsNotNull(webUtil, typeof(IWebUtilWrapper));
             Assert.IsNotNull(searcher, typeof(ICognitiveSearchContext));
             Assert.IsNotNull(iaFactory, typeof(ICognitiveImageAnalysisFactory));
             Assert.IsNotNull(dFactory, typeof(IImageDescriptionFactory));
             Assert.IsNotNull(dataService, typeof(ISitecoreDataService));
             Assert.IsNotNull(visionService, typeof(IVisionService));
 
-            WebUtil = webUtil;
             Searcher = searcher;
             ImageAnalysisFactory = iaFactory;
             ImageDescriptionFactory = dFactory;
             DataService = dataService;
             VisionService = visionService;
         }
-        
-        public ActionResult ViewImageDescription()
+
+        #region Set Alt Tags
+
+        public ActionResult ViewImageDescription(string id, string language, string db)
         {
-            Item item = DataService.GetItemByIdValue(IdParameter, DbParameter);
+            Item item = DataService.GetItemByIdValue(id, db);
             if (item == null)
                 return View("ImageDescription");
 
             MediaItem m = item;
             
-            return View("ImageDescription", BuildImageDescription(m, LanguageParameter));
+            return View("ImageDescription", BuildImageDescription(m, language));
         }
-
-        public ActionResult UpdateImageDescription(string descriptionOption, string itemId, string database, string language)
+        
+        [HttpPost]
+        public ActionResult UpdateImageDescription(string descriptionOption, string id, string database, string language)
         {
             if (string.IsNullOrEmpty(descriptionOption))
                 return View("ImageDescription");
 
-            Item item = DataService.GetItemByIdValue(itemId, database);
+            Item item = DataService.GetItemByIdValue(id, database);
             if (item == null)
                 return View("ImageDescription");
 
@@ -88,5 +81,32 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
             return ImageDescriptionFactory
                 .Create(d, m.Alt, m.ID.ToString(), m.Database.Name, language);
         }
+
+        #endregion Set Alt Tags
+
+        #region Set Alt Tags All Descendants
+
+        public ActionResult ViewImageDescriptionThreshold(string id, string language, string db)
+        {
+            Item item = DataService.GetItemByIdValue(id, db);
+            if (item == null)
+                return View("ImageDescriptionThreshold");
+
+            MediaItem m = item;
+
+            return View("ImageDescriptionThreshold");
+        }
+
+        [HttpPost]
+        public ActionResult UpdateImageDescriptionAll(string id, string database, string language)
+        {
+            Item item = DataService.GetItemByIdValue(id, database);
+            if (item == null)
+                return View("ImageDescriptionThreshold");
+            
+            return View("ImageDescriptionThreshold");
+        }
+
+        #endregion Set Alt Tags All Descendants
     }
 }

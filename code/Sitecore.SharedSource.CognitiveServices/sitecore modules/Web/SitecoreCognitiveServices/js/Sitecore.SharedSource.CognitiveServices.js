@@ -7,4 +7,10 @@ $(document).ready(function () {
         $(".tab-content." + tab).addClass(selected);
         $(this).addClass(selected);
     });
+
+    $(".reanalyze-all-form")
+        .submit(function(event) {
+            event.preventDefault();
+            alert("Handler for .submit() called.");
+        });
 });

@@ -12,5 +12,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
         Item GetItemByIdValue(string itemId, string database);
         bool IsMediaItem(Item i);
         Item ExtractItem(CommandContext context);
+        string GetFieldDimension(Item i, string fieldName, int minimum, int offset);
     }
 }

@@ -7,7 +7,7 @@ using Sitecore.Data.Items;
 namespace Sitecore.SharedSource.CognitiveServices.Commands
 {
     [Serializable]
-    public class ViewAnalysis : BaseCommand
+    public class SetAltTags : BaseCommand
     {
         public override void Execute(CommandContext context)
         {
@@ -16,9 +16,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
                 return;
 
             context.Parameters.Add(idParam, ctxItem.ID.ToString());
-            context.Parameters.Add(heightParam, DataService.GetFieldDimension(ctxItem, "height", 500, 56));
-            context.Parameters.Add(widthParam, DataService.GetFieldDimension(ctxItem, "width", 810, 20));
-            
             Sitecore.Context.ClientPage.Start(this, "Run", context.Parameters);
         }
 
@@ -28,15 +25,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
                 return;
 
             string id = args.Parameters[idParam];
-            string height = args.Parameters[heightParam];
-            string width = args.Parameters[widthParam];
             string langCode = args.Parameters[languageParam];
             string db = Sitecore.Context.ContentDatabase.Name;
-            Item i = Sitecore.Configuration.Factory.GetDatabase(db).GetItem(id);
-            string action = (i.Paths.IsMediaItem) ? "ImageAnalysis" : "TextAnalysis";
-
-            UrlString urlString = new UrlString($"/sccogsvcs/CognitiveAnalysis/{action}?id={id}&language={langCode}&db={db}");
-            SheerResponse.ShowModalDialog(urlString.ToString(), width, height, "", true);
+            
+            UrlString urlString = new UrlString($"/sccogsvcs/CognitiveUtility/ViewImageDescription?id={id}&language={langCode}&db={db}");
+            SheerResponse.ShowModalDialog(urlString.ToString(), "400", "250", "", true);
             args.WaitForPostBack();
         }
 

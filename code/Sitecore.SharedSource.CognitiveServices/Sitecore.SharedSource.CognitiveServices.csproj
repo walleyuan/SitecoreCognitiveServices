@@ -204,8 +204,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\ReanalyzeAll.cs" />
     <Compile Include="Commands\Reanalyze.cs" />
-    <Compile Include="Commands\PopulateAltTags.cs" />
+    <Compile Include="Commands\SetAltTagsAll.cs" />
+    <Compile Include="Commands\SetAltTags.cs" />
     <Compile Include="Commands\ViewAnalysis.cs" />
     <Compile Include="Controllers\CognitiveUtilityController.cs" />
     <Compile Include="Controllers\CognitiveAnalysisController.cs" />
@@ -333,6 +336,8 @@
     <Content Include="Views\CognitiveAnalysis\Text\SentimentDocuments.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Common\MeasureBar.cshtml" />
     <Content Include="Views\CognitiveUtility\ImageDescription.cshtml" />
+    <Content Include="Views\CognitiveUtility\ImageDescriptionThreshold.cshtml" />
+    <Content Include="Views\CognitiveAnalysis\AnalyzeAll.cshtml" />
     <None Include="Web.config" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\Sitecore.SharedSource.CognitiveServices.css" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\jquery-1.10.2.min.js" />

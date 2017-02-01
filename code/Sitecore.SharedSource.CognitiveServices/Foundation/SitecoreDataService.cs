@@ -57,10 +57,27 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
 
         public Item ExtractItem(CommandContext context)
         {
+            if (context == null)
+                return null;
+
             if (!context.Items.Any())
                 return null;
 
             return context.Items[0];
+        }
+
+        public string GetFieldDimension(Item i, string fieldName, int minimum, int offset)
+        {
+            if (i.Fields[fieldName] == null)
+                return minimum.ToString();
+
+            int size = minimum;
+            if (!int.TryParse(i[fieldName], out size))
+                return minimum.ToString();
+
+            return (size > minimum)
+                ? (size + offset).ToString()
+                : minimum.ToString();
         }
     }
 }

@@ -12,7 +12,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Tests.Controllers
     [TestFixture]
     public class CognitiveAnalysisControllerTests
     {
-        private IWebUtilWrapper WebUtil;
         private ICognitiveSearchContext Searcher;
         private ICognitiveImageAnalysisFactory ImageAnalysisFactory;
         private ICognitiveTextAnalysisFactory TextAnalysisFactory;
@@ -21,7 +20,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Tests.Controllers
         [SetUp]
         public void Setup()
         {
-            WebUtil = Substitute.For<IWebUtilWrapper>();
             Searcher = Substitute.For<ICognitiveSearchContext>();
             ImageAnalysisFactory = Substitute.For<ICognitiveImageAnalysisFactory>();
             TextAnalysisFactory = Substitute.For<ICognitiveTextAnalysisFactory>();
@@ -31,25 +29,20 @@ namespace Sitecore.SharedSource.CognitiveServices.Tests.Controllers
         [Test]
         public void Constructor_NullParameters_Throws()
         {
-            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(null, Searcher, ImageAnalysisFactory, TextAnalysisFactory, DataService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(WebUtil, null, ImageAnalysisFactory, TextAnalysisFactory,DataService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(WebUtil, Searcher, null, TextAnalysisFactory, DataService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(WebUtil, Searcher, ImageAnalysisFactory, null, DataService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(WebUtil, Searcher, ImageAnalysisFactory, TextAnalysisFactory, null));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(null, ImageAnalysisFactory, TextAnalysisFactory,DataService));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(Searcher, null, TextAnalysisFactory, DataService));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(Searcher, ImageAnalysisFactory, null, DataService));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(Searcher, ImageAnalysisFactory, TextAnalysisFactory, null));
         }
 
         [Test]
         public void ID_Empty_Returns_NullModel()
         {
             //arrange
-            WebUtil.GetQueryString("id", string.Empty).Returns(string.Empty);
-            WebUtil.GetQueryString("lang", "en").Returns("en");
-            WebUtil.GetQueryString("db", "master").Returns("master");
-
-            CognitiveAnalysisController controller = new CognitiveAnalysisController(WebUtil, Searcher, ImageAnalysisFactory, TextAnalysisFactory, DataService);
+            CognitiveAnalysisController controller = new CognitiveAnalysisController(Searcher, ImageAnalysisFactory, TextAnalysisFactory, DataService);
 
             //act
-            var result = controller.Reanalyze() as ViewResult;
+            var result = controller.Reanalyze(string.Empty, "en", "master") as ViewResult;
 
             //assert
             Assert.IsNotNull(result);
@@ -60,14 +53,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Tests.Controllers
         public void ValidID_Returns_NoChoices()
         {
             //arrange
-            WebUtil.GetQueryString("id", string.Empty).Returns(string.Empty);
-            WebUtil.GetQueryString("lang", "en").Returns("en");
-            WebUtil.GetQueryString("db", "master").Returns("master");
-
-            CognitiveAnalysisController controller = new CognitiveAnalysisController(WebUtil, Searcher, ImageAnalysisFactory, TextAnalysisFactory, DataService);
+            CognitiveAnalysisController controller = new CognitiveAnalysisController(Searcher, ImageAnalysisFactory, TextAnalysisFactory, DataService);
 
             //act
-            var result = controller.Reanalyze() as ViewResult;
+            var result = controller.Reanalyze(string.Empty, "en", "master") as ViewResult;
 
             //assert
             Assert.IsNotNull(result);

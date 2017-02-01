@@ -10,67 +10,73 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
 {
     public class CognitiveAnalysisController : Controller
     {
-        protected readonly IWebUtilWrapper WebUtil;
         protected readonly ICognitiveSearchContext Searcher;
         protected readonly ICognitiveImageAnalysisFactory ImageAnalysisFactory;
         protected readonly ICognitiveTextAnalysisFactory TextAnalysisFactory;
         protected readonly ISitecoreDataService DataService;
         
-        public string IdParameter => WebUtil.GetQueryString("id", string.Empty);
-        public string LanguageParameter => WebUtil.GetQueryString("lang", "en");
-        public string DbParameter => WebUtil.GetQueryString("db", "master");
-        
         public CognitiveAnalysisController(
-            IWebUtilWrapper webUtil,
             ICognitiveSearchContext searcher,
             ICognitiveImageAnalysisFactory iaFactory,
             ICognitiveTextAnalysisFactory taFactory,
             ISitecoreDataService dataService)
         {
-            Assert.IsNotNull(webUtil, typeof(IWebUtilWrapper));
             Assert.IsNotNull(searcher, typeof(ICognitiveSearchContext));
             Assert.IsNotNull(iaFactory, typeof(ICognitiveImageAnalysisFactory));
             Assert.IsNotNull(taFactory, typeof(ICognitiveTextAnalysisFactory));
             Assert.IsNotNull(dataService, typeof(ISitecoreDataService));
 
-            WebUtil = webUtil;
             Searcher = searcher;
             ImageAnalysisFactory = iaFactory;
             TextAnalysisFactory = taFactory;
             DataService = dataService;
         }
 
-        public ActionResult ImageAnalysis()
+        public ActionResult ImageAnalysis(string id, string language, string db)
         {
-            ICognitiveSearchResult csr = Searcher.GetAnalysis(IdParameter, LanguageParameter, DbParameter);
+            ICognitiveSearchResult csr = Searcher.GetAnalysis(id, language, db);
 
             return View("ImageAnalysis", ImageAnalysisFactory.Create(csr));
         }
 
-        public ActionResult TextAnalysis()
+        public ActionResult TextAnalysis(string id, string language, string db)
         {
-            ICognitiveSearchResult csr = Searcher.GetAnalysis(IdParameter, LanguageParameter, DbParameter);
+            ICognitiveSearchResult csr = Searcher.GetAnalysis(id, language, db);
             
             return View("TextAnalysis", TextAnalysisFactory.Create(csr));
         }
 
-        public ActionResult Reanalyze()
+        public ActionResult Reanalyze(string id, string language, string db)
         {
-            ID id = DataService.GetID(IdParameter);
-            if (id.IsNull)
+            ID itemID = DataService.GetID(id);
+            if (itemID.IsNull)
                 return View("TextAnalysis", null);
 
-            Item item = DataService.GetDatabase(DbParameter).GetItem(id);
+            Item item = DataService.GetDatabase(db).GetItem(itemID);
             if(item == null)
                 return View("TextAnalysis", null);
 
-            Searcher.UpdateItemInIndex(item, DbParameter);
+            Searcher.UpdateItemInIndex(item, db);
             
-            ICognitiveSearchResult csr = Searcher.GetAnalysis(IdParameter, LanguageParameter, DbParameter);
+            ICognitiveSearchResult csr = Searcher.GetAnalysis(id, language, db);
 
             return (item.Paths.IsMediaItem)
                 ? View("ImageAnalysis", ImageAnalysisFactory.Create(csr))
                 : View("TextAnalysis", TextAnalysisFactory.Create(csr));
+        }
+
+        public ActionResult ViewReanalyzeAll(string id, string language, string db)
+        {
+            return View("ReanalyzeAll");
+        }
+
+        public ActionResult ReanalyzeAll(string id, string language, string db)
+        {
+            ID itemID = DataService.GetID(id);
+            if (itemID.IsNull)
+                return View("ReanalyzeAll", null);
+            
+            return View("ReanalyzeAll");
         }
     }
 }
