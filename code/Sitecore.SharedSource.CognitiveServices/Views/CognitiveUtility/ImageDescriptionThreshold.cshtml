@@ -11,6 +11,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
+    <link href="/sitecore/shell/themes/standard/default/Default.css" rel="stylesheet" type="text/css" />
     <link href="/sitecore modules/Web/SitecoreCognitiveServices/css/Sitecore.SharedSource.CognitiveServices.css?x=@(new System.Random().Next())" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -18,20 +19,26 @@
         @if (Model != null)
         {
             <form class="form" method="get" action="/sccogsvcs/CognitiveUtility/UpdateImageDescriptionAll">
-                <h2>Update Alt Description For All Descendents</h2>
-                <div class="form-row">
-                    This will update all the alt tag descriptions for all descendant items below this folder
-                </div>
-                <h2>Threshold</h2>
-                <div class="form-row">
-                    0-1 scale
-                </div>
-                <div class="form-row">
-                    <input type="hidden" name="id" value="@Model.ItemId" />
-                    <input type="hidden" name="database" value="@Model.Database" />
-                    <input type="hidden" name="language" value="@Model.Language" />
-                    <input class="form-submit" type="submit" value="Update Alt Description" />
-                </div>
+                <fieldset>
+                    <legend>Update Alt Description For All Descendents</legend>
+                    <div class="form-row">
+                        This will update all the alt tag descriptions for all descendant items below this folder
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Threshold</legend>
+                    <div class="form-row">
+                        0-1 scale
+                    </div>
+                    <div>
+                        <input type="hidden" name="id" value="@Model.ItemId" />
+                        <input type="hidden" name="database" value="@Model.Database" />
+                        <input type="hidden" name="language" value="@Model.Language" />
+                    </div>
+                </fieldset>
+                <div class="scWizardButtons">
+                    <button class="form-submit scButton scButtonPrimary">Update Alt Description</button>
+                </div>                
             </form>
             <div class="progress-indicator">
                 <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />

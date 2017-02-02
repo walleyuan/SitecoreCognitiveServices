@@ -35,8 +35,15 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             string width = args.Parameters[widthParam];
             string action = (i.Paths.IsMediaItem) ? "ImageAnalysis" : "TextAnalysis";
 
-            UrlString urlString = new UrlString($"/sccogsvcs/CognitiveAnalysis/{action}?id={id}&language={langCode}&db={db}");
-            SheerResponse.ShowModalDialog(urlString.ToString(), width, height, "", true);
+            ModalDialogOptions mdo = new ModalDialogOptions($"/sccogsvcs/CognitiveAnalysis/{action}?id={id}&language={langCode}&db={db}")
+            {
+                Header = "Cognitive Analysis",
+                Height = height,
+                Width = width,
+                Message = "View the cognitive analysis of the current item",
+                Response = true
+            };
+            SheerResponse.ShowModalDialog(mdo);
             args.WaitForPostBack();
         }
 

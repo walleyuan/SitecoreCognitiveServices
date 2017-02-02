@@ -30,8 +30,15 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             Item i = DataService.GetItemByIdValue(id, db);
             string langCode = i.Language.Name;
             
-            UrlString urlString = new UrlString($"/sccogsvcs/CognitiveAnalysis/ViewReanalyzeAll?id={id}&language={langCode}&db={db}");
-            SheerResponse.ShowModalDialog(urlString.ToString(), "400", "250", "", true);
+            ModalDialogOptions mdo = new ModalDialogOptions($"/sccogsvcs/CognitiveAnalysis/ViewReanalyzeAll?id={id}&language={langCode}&db={db}")
+            {
+                Header = "Reanalyze Descendents",
+                Height = "200",
+                Width = "350",
+                Message = "",
+                Response = true
+            };
+            SheerResponse.ShowModalDialog(mdo);
             args.WaitForPostBack();
         }
 

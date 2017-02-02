@@ -28,9 +28,16 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             string db = Sitecore.Context.ContentDatabase.Name;
             Item i = DataService.GetItemByIdValue(id, db);
             string langCode = i.Language.Name;
-
-            UrlString urlString = new UrlString($"/sccogsvcs/CognitiveUtility/ViewImageDescriptionThreshold?id={id}&language={langCode}&db={db}");
-            SheerResponse.ShowModalDialog(urlString.ToString(), "400", "250", "", true);
+            
+            ModalDialogOptions mdo = new ModalDialogOptions($"/sccogsvcs/CognitiveUtility/ViewImageDescriptionThreshold?id={id}&language={langCode}&db={db}")
+            {
+                Header = "Set Alt Tags On All Descendents",
+                Height = "400",
+                Width = "250",
+                Message = "",
+                Response = true
+            };
+            SheerResponse.ShowModalDialog(mdo);
             args.WaitForPostBack();
         }
 

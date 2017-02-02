@@ -12,29 +12,36 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
+    <link href="/sitecore/shell/themes/standard/default/Default.css" rel="stylesheet" type="text/css"/>
     <link href="/sitecore modules/Web/SitecoreCognitiveServices/css/Sitecore.SharedSource.CognitiveServices.css?x=@(new System.Random().Next())" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div class="frame">
         @if (Model != null) {
             <form class="form" method="post" action="/sccogsvcs/CognitiveUtility/UpdateImageDescription">
-                <h2>Current Description</h2>
-                <div class="info-row">@(string.IsNullOrEmpty(Model.AltDescription) ? "The alt description is empty." : Model.AltDescription)</div>
-                <h2>Options</h2>
-                <div class="form-row">
-                    @foreach (var cp in Model.CognitiveDescription.Captions)
-                    {
-                        <div>
-                            <input type="radio" id="descriptionOption" name="descriptionOption" value="@cp.Text"/>
-                            <label for="descriptionOption">@cp.Text</label>
-                        </div>
-                    }
-                </div>
-                <div class="form-row">
-                    <input type="hidden" name="id" value="@Model.ItemId" />
-                    <input type="hidden" name="database" value="@Model.Database" />
-                    <input type="hidden" name="language" value="@Model.Language" />
-                    <input class="form-submit" type="submit" value="Update Alt Description" />
+                <fieldset>
+                    <legend>Current Description</legend>
+                    <div class="info-row">@(string.IsNullOrEmpty(Model.AltDescription) ? "The alt description is empty." : Model.AltDescription)</div>
+                </fieldset>
+                <fieldset>
+                    <legend>Options</legend>
+                    <div class="form-row">
+                        @foreach (var cp in Model.CognitiveDescription.Captions)
+                        {
+                            <div>
+                                <input type="radio" id="descriptionOption" name="descriptionOption" value="@cp.Text" />
+                                <label for="descriptionOption">@cp.Text</label>
+                            </div>
+                        }
+                    </div>
+                    <div>
+                        <input type="hidden" name="id" value="@Model.ItemId" />
+                        <input type="hidden" name="database" value="@Model.Database" />
+                        <input type="hidden" name="language" value="@Model.Language" />
+                    </div>
+                </fieldset>
+                <div class="scWizardButtons">
+                    <button class="form-submit scButton scButtonPrimary">Update Alt Description</button>
                 </div>
             </form>
         }

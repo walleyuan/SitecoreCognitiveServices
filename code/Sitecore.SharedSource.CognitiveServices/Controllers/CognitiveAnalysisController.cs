@@ -1,7 +1,5 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using Sitecore.ContentSearch.Utilities;
-using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
@@ -69,7 +67,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
 
         public ActionResult ViewReanalyzeAll(string id, string language, string db)
         {
-            return View("ReanalyzeAll", ProcessResultFactory.Create(0, id, db, language));
+            var result = ProcessResultFactory.Create(0, id, db, language);
+
+            return View("ReanalyzeAll", result);
         }
 
         public ActionResult ReanalyzeAll(string id, string language, string db)
@@ -84,7 +84,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
             
             list.ForEach(b => Searcher.UpdateItemInIndex(b, db));
 
-            return View("ReanalyzeAll", ProcessResultFactory.Create(list.Count, id, db, language));
+            var result = ProcessResultFactory.Create(list.Count, id, db, language);
+
+            return Json(result);
         }
     }
 }

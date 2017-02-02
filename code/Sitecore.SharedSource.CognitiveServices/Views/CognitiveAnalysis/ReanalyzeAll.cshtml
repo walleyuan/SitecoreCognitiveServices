@@ -11,6 +11,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
+    <link href="/sitecore/shell/themes/standard/default/Default.css" rel="stylesheet" type="text/css" />
     <link href="/sitecore modules/Web/SitecoreCognitiveServices/css/Sitecore.SharedSource.CognitiveServices.css?x=@(new System.Random().Next())" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -18,22 +19,25 @@
         @if (Model != null)
         {
             <form class="form reanalyze-all-form" method="get" action="/sccogsvcs/CognitiveAnalysis/ReanalyzeAll">
-                <h2>Reanalyze All Descendents</h2>
-                <div class="form-row">
-                    This will reanalyze all the descendant items below this folder
-                </div>
-                <div class="form-row">
-                    <input type="hidden" name="id" value="@Model.ItemId" />
-                    <input type="hidden" name="database" value="@Model.Database" />
-                    <input type="hidden" name="language" value="@Model.Language" />
-                    <input class="form-submit" type="submit" value="Update Alt Description" />
+                <fieldset>
+                    <div class="form-row">
+                        This will reanalyze all the descendant media items
+                    </div>
+                    <div>
+                        <input type="hidden" id="id" name="id" value="@Model.ItemId" />
+                        <input type="hidden" id="database" name="database" value="@Model.Database" />
+                        <input type="hidden" id="language" name="language" value="@Model.Language" />    
+                    </div>
+                </fieldset>
+                <div class="scWizardButtons">
+                    <button class="form-submit scButton scButtonPrimary">Reanalyze Descendents</button>
                 </div>
             </form>
             <div class="progress-indicator">
                 <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
             </div>
             <div class="result-display">
-                There were @Model.ItemCount items updated.
+                There were <span class="resultCount">@Model.ItemCount</span> items updated.
             </div>
         }
     </div>
