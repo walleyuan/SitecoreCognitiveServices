@@ -19,15 +19,16 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             Sitecore.Context.ClientPage.Start(this, "Run", context.Parameters);
         }
 
-        protected static void Run(ClientPipelineArgs args)
+        protected void Run(ClientPipelineArgs args)
         {
             if (args.IsPostBack)
                 return;
 
             string id = args.Parameters[idParam];
-            string langCode = args.Parameters[languageParam];
             string db = Sitecore.Context.ContentDatabase.Name;
-            
+            Item i = DataService.GetItemByIdValue(id, db);
+            string langCode = i.Language.Name;
+
             UrlString urlString = new UrlString($"/sccogsvcs/CognitiveUtility/ViewImageDescription?id={id}&language={langCode}&db={db}");
             SheerResponse.ShowModalDialog(urlString.ToString(), "400", "250", "", true);
             args.WaitForPostBack();

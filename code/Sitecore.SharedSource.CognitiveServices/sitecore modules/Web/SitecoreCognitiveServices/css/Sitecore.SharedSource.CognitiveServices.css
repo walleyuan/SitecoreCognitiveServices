@@ -82,7 +82,7 @@ h1 {}
 .detail-wrap { display: inline-block;}
 .detail-box {opacity: 0; width: 0;display: inline-block;vertical-align: top;overflow: hidden;
     position: absolute;
-    top: 39px;
+    top: 58px;
     left: 10px;
     border: 1px solid #cccccc;
     background: #fff;
@@ -101,6 +101,7 @@ h1 {}
     display: inline-block;
     margin-right: 10px;
     vertical-align: middle;
+    box-shadow: 2px 2px 3px #aaa;
     padding: 2px;
     transition: background-color .25s ease-in-out, border-radius .25s ease-in-out; 
     -moz-transition: background-color .25s ease-in-out, border-radius .25s ease-in-out; 

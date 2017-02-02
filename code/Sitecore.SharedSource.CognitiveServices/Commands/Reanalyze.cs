@@ -3,6 +3,7 @@ using System;
 using Sitecore.Shell.Framework.Commands;
 using Sitecore.Web.UI.Sheer;
 using Sitecore.Data.Items;
+using Sitecore.SharedSource.CognitiveServices.Foundation;
 
 namespace Sitecore.SharedSource.CognitiveServices.Commands
 {
@@ -22,16 +23,17 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             Sitecore.Context.ClientPage.Start(this, "Run", context.Parameters);
         }
         
-        protected static void Run(ClientPipelineArgs args)
+        protected void Run(ClientPipelineArgs args)
         {
             if (args.IsPostBack)
                 return;
 
             string id = args.Parameters[idParam];
+            string db = Sitecore.Context.ContentDatabase.Name;
+            Item i = DataService.GetItemByIdValue(id, db);
+            string langCode = i.Language.Name;
             string height = args.Parameters[heightParam];
             string width = args.Parameters[widthParam];
-            string langCode = args.Parameters[languageParam];
-            string db = Sitecore.Context.ContentDatabase.Name;
             
             UrlString urlString = new UrlString($"/sccogsvcs/CognitiveAnalysis/Reanalyze?id={id}&language={langCode}&db={db}");
             SheerResponse.ShowModalDialog(urlString.ToString(), width, height, "", true);

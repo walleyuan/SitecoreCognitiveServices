@@ -215,6 +215,8 @@
     <Compile Include="Factories\CognitiveImageAnalysisFactory.cs" />
     <Compile Include="Factories\CognitiveTextAnalysisFactory.cs" />
     <Compile Include="Factories\ICognitiveImageAnalysisFactory.cs" />
+    <Compile Include="Factories\IProcessResultFactory.cs" />
+    <Compile Include="Factories\ProcessResultFactory.cs" />
     <Compile Include="Factories\ImageDescriptionFactory.cs" />
     <Compile Include="Factories\IImageDescriptionFactory.cs" />
     <Compile Include="Factories\ICognitiveTextAnalysisFactory.cs" />
@@ -223,6 +225,8 @@
     <Compile Include="Models\CognitiveImageAnalysis.cs" />
     <Compile Include="Models\CognitiveTextAnalysis.cs" />
     <Compile Include="Models\ICognitiveImageAnalysis.cs" />
+    <Compile Include="Models\IProcessResult.cs" />
+    <Compile Include="Models\ProcessResult.cs" />
     <Compile Include="Models\ImageDescription.cs" />
     <Compile Include="Models\IImageDescription.cs" />
     <Compile Include="Models\ICognitiveTextAnalysis.cs" />
@@ -337,7 +341,7 @@
     <Content Include="Views\CognitiveAnalysis\Common\MeasureBar.cshtml" />
     <Content Include="Views\CognitiveUtility\ImageDescription.cshtml" />
     <Content Include="Views\CognitiveUtility\ImageDescriptionThreshold.cshtml" />
-    <Content Include="Views\CognitiveAnalysis\AnalyzeAll.cshtml" />
+    <Content Include="Views\CognitiveAnalysis\ReanalyzeAll.cshtml" />
     <None Include="Web.config" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\Sitecore.SharedSource.CognitiveServices.css" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\jquery-1.10.2.min.js" />

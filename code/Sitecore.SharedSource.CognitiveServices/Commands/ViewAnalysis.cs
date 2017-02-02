@@ -22,17 +22,17 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             Sitecore.Context.ClientPage.Start(this, "Run", context.Parameters);
         }
 
-        protected static void Run(ClientPipelineArgs args)
+        protected void Run(ClientPipelineArgs args)
         {
             if (args.IsPostBack)
                 return;
 
             string id = args.Parameters[idParam];
+            string db = Sitecore.Context.ContentDatabase.Name;
+            Item i = DataService.GetItemByIdValue(id, db);
+            string langCode = i.Language.Name;
             string height = args.Parameters[heightParam];
             string width = args.Parameters[widthParam];
-            string langCode = args.Parameters[languageParam];
-            string db = Sitecore.Context.ContentDatabase.Name;
-            Item i = Sitecore.Configuration.Factory.GetDatabase(db).GetItem(id);
             string action = (i.Paths.IsMediaItem) ? "ImageAnalysis" : "TextAnalysis";
 
             UrlString urlString = new UrlString($"/sccogsvcs/CognitiveAnalysis/{action}?id={id}&language={langCode}&db={db}");
