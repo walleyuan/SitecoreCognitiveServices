@@ -13,26 +13,26 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
         protected readonly ICognitiveSearchContext Searcher;
         protected readonly ICognitiveImageAnalysisFactory ImageAnalysisFactory;
         protected readonly ICognitiveTextAnalysisFactory TextAnalysisFactory;
-        protected readonly IProcessResultFactory ProcessResultFactory;
+        protected readonly IReanalyzeAllFactory ReanalyzeAllFactory;
         protected readonly ISitecoreDataService DataService;
         
         public CognitiveAnalysisController(
             ICognitiveSearchContext searcher,
             ICognitiveImageAnalysisFactory iaFactory,
             ICognitiveTextAnalysisFactory taFactory,
-            IProcessResultFactory pFactory,
+            IReanalyzeAllFactory pFactory,
             ISitecoreDataService dataService)
         {
             Assert.IsNotNull(searcher, typeof(ICognitiveSearchContext));
             Assert.IsNotNull(iaFactory, typeof(ICognitiveImageAnalysisFactory));
             Assert.IsNotNull(taFactory, typeof(ICognitiveTextAnalysisFactory));
-            Assert.IsNotNull(pFactory, typeof(IProcessResultFactory));
+            Assert.IsNotNull(pFactory, typeof(IReanalyzeAllFactory));
             Assert.IsNotNull(dataService, typeof(ISitecoreDataService));
 
             Searcher = searcher;
             ImageAnalysisFactory = iaFactory;
             TextAnalysisFactory = taFactory;
-            ProcessResultFactory = pFactory;
+            ReanalyzeAllFactory = pFactory;
             DataService = dataService;
         }
 
@@ -67,7 +67,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
 
         public ActionResult ViewReanalyzeAll(string id, string language, string db)
         {
-            var result = ProcessResultFactory.Create(0, id, db, language);
+            var result = ReanalyzeAllFactory.Create();
 
             return View("ReanalyzeAll", result);
         }
@@ -76,7 +76,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
         {
             Item item = DataService.GetItemByIdValue(id, db);
             if (item == null)
-                return View("ReanalyzeAll", null);
+                return View("ReanalyzeAll", ReanalyzeAllFactory.Create());
 
             var list = item.Axes.GetDescendants()
                 .Where(a => !a.TemplateID.Guid.Equals(Sitecore.TemplateIDs.MediaFolder.Guid))
@@ -84,7 +84,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
             
             list.ForEach(b => Searcher.UpdateItemInIndex(b, db));
 
-            var result = ProcessResultFactory.Create(list.Count, id, db, language);
+            var result = ReanalyzeAllFactory.Create(list.Count, db, language, id);
 
             return Json(result);
         }

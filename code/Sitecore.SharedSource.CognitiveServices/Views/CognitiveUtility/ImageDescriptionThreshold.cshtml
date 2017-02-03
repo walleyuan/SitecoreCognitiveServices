@@ -1,5 +1,5 @@
 ﻿
-@model Sitecore.SharedSource.CognitiveServices.Models.IProcessResult
+@model Sitecore.SharedSource.CognitiveServices.Models.ISetAltTagsAll
 
 @{
     ViewBag.Title = "Cognitive Services: Image Description Descendants";
@@ -22,18 +22,20 @@
                 <fieldset>
                     <legend>Update Alt Description For All Descendents</legend>
                     <div class="form-row">
-                        This will update all the alt tag descriptions for all descendant items below this folder
+                        <p>This will update all the alt tag descriptions for all descendant items below this folder using the cognitive analysis description. </p>
+                        <p>You can use the threshold to specify the confidence level required to set the alt tag (0 would be always and 100 would have to be absolutely certain)</p>
                     </div>
                 </fieldset>
                 <fieldset>
-                    <legend>Threshold</legend>
+                    <legend>Confidence Threshold</legend>
                     <div class="form-row">
-                        0-1 scale
+                        <input class="threshold-range" type="range" min="0" max="100" id="threshold" name="threshold" oninput="thresholdOutput.value = threshold.value"/>
+                        <output class="threshold-range-output" name="thresholdOutput" id="thresholdOutput">50</output>
                     </div>
                     <div>
-                        <input type="hidden" name="id" value="@Model.ItemId" />
-                        <input type="hidden" name="database" value="@Model.Database" />
-                        <input type="hidden" name="language" value="@Model.Language" />
+                        <input type="hidden" id="id" name="id" value="@Model.ItemId" />
+                        <input type="hidden" id="database" name="database" value="@Model.Database" />
+                        <input type="hidden" id="language" name="language" value="@Model.Language" />
                     </div>
                 </fieldset>
                 <div class="scWizardButtons">
@@ -44,7 +46,7 @@
                 <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
             </div>
             <div class="result-display">
-                There were @Model.ItemCount items updated.
+                There were @Model.ItemsModified items updated out of @Model.ItemCount.
             </div>
         }
         <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/jquery-1.10.2.min.js"></script>

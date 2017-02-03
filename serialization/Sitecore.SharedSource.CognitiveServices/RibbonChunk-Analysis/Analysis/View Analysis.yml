@@ -5,6 +5,9 @@ Template: "1db34c92-03b0-4475-9a39-da14e4d9d8fc"
 Path: /sitecore/content/Applications/Content Editor/Ribbons/Chunks/Analysis/View Analysis
 DB: core
 SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 50
 - ID: "d47ed548-84d5-4622-9886-5cc164727507"
   Hint: Icon
   Value: Apps/32x32/Investigation.png

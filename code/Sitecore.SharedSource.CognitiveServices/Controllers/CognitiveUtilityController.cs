@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using System.Linq;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
@@ -15,6 +16,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
         protected readonly ICognitiveSearchContext Searcher;
         protected readonly ICognitiveImageAnalysisFactory ImageAnalysisFactory;
         protected readonly IImageDescriptionFactory ImageDescriptionFactory;
+        protected readonly ISetAltTagsAllFactory SetAltTagsAllFactory;
         protected readonly ISitecoreDataService DataService;
         protected readonly IVisionService VisionService;
         
@@ -22,18 +24,21 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
             ICognitiveSearchContext searcher,
             ICognitiveImageAnalysisFactory iaFactory,
             IImageDescriptionFactory dFactory,
+            ISetAltTagsAllFactory satarFactory,
             ISitecoreDataService dataService,
             IVisionService visionService)
         {
             Assert.IsNotNull(searcher, typeof(ICognitiveSearchContext));
             Assert.IsNotNull(iaFactory, typeof(ICognitiveImageAnalysisFactory));
             Assert.IsNotNull(dFactory, typeof(IImageDescriptionFactory));
+            Assert.IsNotNull(satarFactory, typeof(ISetAltTagsAllFactory));
             Assert.IsNotNull(dataService, typeof(ISitecoreDataService));
             Assert.IsNotNull(visionService, typeof(IVisionService));
 
             Searcher = searcher;
             ImageAnalysisFactory = iaFactory;
             ImageDescriptionFactory = dFactory;
+            SetAltTagsAllFactory = satarFactory;
             DataService = dataService;
             VisionService = visionService;
         }
@@ -88,23 +93,43 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
 
         public ActionResult ViewImageDescriptionThreshold(string id, string language, string db)
         {
-            Item item = DataService.GetItemByIdValue(id, db);
-            if (item == null)
-                return View("ImageDescriptionThreshold");
-
-            MediaItem m = item;
-
-            return View("ImageDescriptionThreshold");
+            var result = SetAltTagsAllFactory.Create();
+            
+            return View("ImageDescriptionThreshold", result);
         }
 
         [HttpPost]
-        public ActionResult UpdateImageDescriptionAll(string id, string database, string language)
+        public ActionResult UpdateImageDescriptionAll(string id, string language, string db, int threshold)
         {
-            Item item = DataService.GetItemByIdValue(id, database);
+            Item item = DataService.GetItemByIdValue(id, db);
             if (item == null)
-                return View("ImageDescriptionThreshold");
-            
-            return View("ImageDescriptionThreshold");
+                return Json(SetAltTagsAllFactory.Create());
+
+            var list = item.Axes.GetDescendants()
+                .Where(a => !a.TemplateID.Guid.Equals(Sitecore.TemplateIDs.MediaFolder.Guid))
+                .ToList();
+
+            int modCount = 0;
+            foreach (var m in list)
+            {
+                ICognitiveSearchResult csr = Searcher.GetAnalysis(m.ID.ToString(), language, m.Database.Name);
+                Caption cap = ImageAnalysisFactory
+                    .Create(csr)?
+                    .VisionAnalysis?
+                    .Description?
+                    .Captions.FirstOrDefault(c => c.Confidence > threshold);
+
+                if (cap == null)
+                    break;
+
+                MediaItem mediaItem = m;
+                VisionService.SetImageDescription(mediaItem, cap.Text);
+                modCount++;
+            }
+
+            var result = SetAltTagsAllFactory.Create(list.Count, modCount, db, language, id);
+
+            return Json(result);
         }
 
         #endregion Set Alt Tags All Descendants
