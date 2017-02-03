@@ -93,41 +93,47 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
 
         public ActionResult ViewImageDescriptionThreshold(string id, string language, string db)
         {
-            var result = SetAltTagsAllFactory.Create();
+            var result = SetAltTagsAllFactory.Create(id, db, language, 0, 0, 50, false);
             
             return View("ImageDescriptionThreshold", result);
         }
 
         [HttpPost]
-        public ActionResult UpdateImageDescriptionAll(string id, string language, string db, int threshold)
+        public ActionResult UpdateImageDescriptionAll(string id, string language, string db, int threshold, bool overwrite)
         {
+            var thresholdDecimal = (double)threshold/100;
+
             Item item = DataService.GetItemByIdValue(id, db);
             if (item == null)
-                return Json(SetAltTagsAllFactory.Create());
+                return Json(SetAltTagsAllFactory.Create(id, db, language, 0, 0, 50, false));
 
             var list = item.Axes.GetDescendants()
                 .Where(a => !a.TemplateID.Guid.Equals(Sitecore.TemplateIDs.MediaFolder.Guid))
                 .ToList();
-
+            
             int modCount = 0;
             foreach (var m in list)
             {
+                MediaItem mediaItem = m;
+                if (!string.IsNullOrEmpty(mediaItem.Alt) && !overwrite)
+                    continue;
+
                 ICognitiveSearchResult csr = Searcher.GetAnalysis(m.ID.ToString(), language, m.Database.Name);
                 Caption cap = ImageAnalysisFactory
                     .Create(csr)?
                     .VisionAnalysis?
                     .Description?
-                    .Captions.FirstOrDefault(c => c.Confidence > threshold);
+                    .Captions.OrderByDescending(a => a.Confidence)
+                    .FirstOrDefault(c => c.Confidence >= thresholdDecimal);
 
                 if (cap == null)
-                    break;
-
-                MediaItem mediaItem = m;
+                    continue;
+                
                 VisionService.SetImageDescription(mediaItem, cap.Text);
                 modCount++;
             }
 
-            var result = SetAltTagsAllFactory.Create(list.Count, modCount, db, language, id);
+            var result = SetAltTagsAllFactory.Create(id, db, language, list.Count, modCount, threshold, overwrite);
 
             return Json(result);
         }

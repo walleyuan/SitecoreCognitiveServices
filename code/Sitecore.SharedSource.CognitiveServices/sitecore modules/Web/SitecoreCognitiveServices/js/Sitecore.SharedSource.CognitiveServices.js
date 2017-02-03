@@ -10,7 +10,7 @@ $(document).ready(function () {
     });
 
     var reanlyzeAllForm = ".reanalyze-all-form";
-    $(reanlyzeAllForm + "button")
+    $(reanlyzeAllForm + " button")
         .click(function(event) {
             event.preventDefault();
             
@@ -35,16 +35,16 @@ $(document).ready(function () {
             });
         });
 
-    var setAltsAllForm = ".reanalyze-all-form";
-
-    $(setAltsAllForm + "button")
+    var setAltsAllForm = ".set-alt-all-form";
+    $(setAltsAllForm + " button")
         .click(function (event) {
             event.preventDefault();
 
-            var thresholdValue = $(setAltsAllForm + " #threshold").attr("value");
             var idValue = $(setAltsAllForm + " #id").attr("value");
             var langValue = $(setAltsAllForm + " #language").attr("value");
             var dbValue = $(setAltsAllForm + " #database").attr("value");
+            var thresholdValue = $(setAltsAllForm + " #threshold").val();
+            var overwriteValue = $(setAltsAllForm + " #overwrite").is(':checked');
 
             $(".form").hide();
             $(".progress-indicator").show();
@@ -55,9 +55,11 @@ $(document).ready(function () {
                     id: idValue,
                     language: langValue,
                     db: dbValue,
-                    threshold: thresholdValue
+                    threshold: thresholdValue,
+                    overwrite: overwriteValue
                 }
             ).done(function (r) {
+                $(".resultModified").text(r.ItemsModified);
                 $(".resultCount").text(r.ItemCount);
                 $(".progress-indicator").hide();
                 $(".result-display").show();

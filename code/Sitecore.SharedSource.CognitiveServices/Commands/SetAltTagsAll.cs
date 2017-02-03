@@ -32,7 +32,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             ModalDialogOptions mdo = new ModalDialogOptions($"/sccogsvcs/CognitiveUtility/ViewImageDescriptionThreshold?id={id}&language={langCode}&db={db}")
             {
                 Header = "Set Alt On Descendents",
-                Height = "320",
+                Height = "380",
                 Width = "350",
                 Message = "",
                 Response = true

@@ -4,18 +4,13 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
     public class ReanalyzeAllFactory : IReanalyzeAllFactory
     {
-        public IReanalyzeAll Create()
+        public IReanalyzeAll Create(string itemId, string db, string language, int itemCount)
         {
             return new ReanalyzeAll()
             {
-                ItemCount = 0
-            };
-        }
-
-        public IReanalyzeAll Create(int itemCount, string db, string language, string itemId)
-        {
-            return new ReanalyzeAll()
-            {
+                ItemId = itemId,
+                Database = db,
+                Language = language,
                 ItemCount = itemCount
             };
         }

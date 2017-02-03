@@ -3,10 +3,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Models
 {
     public interface ISetAltTagsAll
     {
-        int ItemCount { get; set; }
-        int ItemsModified { get; set; }
+        string ItemId { get; set; }
         string Database { get; set; }
         string Language { get; set; }
-        string ItemId { get; set; }
+        int ItemCount { get; set; }
+        int ItemsModified { get; set; }
+        int Threshold { get; set; }
+        bool Overwrite { get; set; }
     }
 }

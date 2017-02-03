@@ -4,8 +4,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
     public interface ISetAltTagsAllFactory
     {
-        ISetAltTagsAll Create();
-
-        ISetAltTagsAll Create(int itemCount, int itemsModified, string db, string language, string itemId);
+        ISetAltTagsAll Create(string itemId, string db, string language, int itemCount, int itemsModified, int threshold, bool overwrite);
     }
 }

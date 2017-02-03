@@ -67,7 +67,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
 
         public ActionResult ViewReanalyzeAll(string id, string language, string db)
         {
-            var result = ReanalyzeAllFactory.Create();
+            var result = ReanalyzeAllFactory.Create(id, db, language, 0);
 
             return View("ReanalyzeAll", result);
         }
@@ -76,7 +76,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
         {
             Item item = DataService.GetItemByIdValue(id, db);
             if (item == null)
-                return View("ReanalyzeAll", ReanalyzeAllFactory.Create());
+                return View("ReanalyzeAll", ReanalyzeAllFactory.Create(id, language, db, 0));
 
             var list = item.Axes.GetDescendants()
                 .Where(a => !a.TemplateID.Guid.Equals(Sitecore.TemplateIDs.MediaFolder.Guid))
@@ -84,7 +84,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
             
             list.ForEach(b => Searcher.UpdateItemInIndex(b, db));
 
-            var result = ReanalyzeAllFactory.Create(list.Count, db, language, id);
+            var result = ReanalyzeAllFactory.Create(id, db, language, list.Count);
 
             return Json(result);
         }

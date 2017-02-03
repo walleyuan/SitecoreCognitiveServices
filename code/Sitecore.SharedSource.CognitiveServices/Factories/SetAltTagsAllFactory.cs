@@ -4,27 +4,17 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
     public class SetAltTagsAllFactory : ISetAltTagsAllFactory
     {
-        public ISetAltTagsAll Create()
+        public ISetAltTagsAll Create(string itemId, string db, string language, int itemCount, int itemsModified, int threshold, bool overwrite)
         {
             return new SetAltTagsAll()
             {
-                ItemCount = 0,
-                ItemsModified = 0,
-                Database = string.Empty,
-                Language = string.Empty,
-                ItemId = string.Empty
-            };
-        }
-
-        public ISetAltTagsAll Create(int itemCount, int itemsModified, string db, string language, string itemId)
-        {
-            return new SetAltTagsAll()
-            {
-                ItemCount = itemCount,
-                ItemsModified = itemsModified,
+                ItemId = itemId,
                 Database = db,
                 Language = language,
-                ItemId = itemId
+                ItemCount = itemCount,
+                ItemsModified = itemsModified,
+                Threshold = threshold,
+                Overwrite = overwrite
             };
         }
     }
