@@ -22,24 +22,18 @@
 <body>
     <div class="frame">
         <div class="tabbed-nav">
-            <div class="nav-btn selected" rel="language" title="Language Analysis">
-                <span>Language Analysis</span>
-            </div>
-            <div class="nav-btn" rel="links" title="Link Analysis">
+            <div class="nav-btn selected" rel="links" title="Link Analysis">
                 <span>Link Analysis</span>
             </div>
             <div class="nav-btn" rel="sentiment" title="Sentiment Analysis">
                 <span>Sentiment Analysis</span>
             </div>
+            <div class="nav-btn" rel="language" title="Language Analysis">
+                <span>Language Analysis</span>
+            </div>
         </div>
         <div class="text-analysis-wrapper">
-            <div class="tab-content language selected">
-                @if (Model.LanguageAnalysis != null)
-                {
-                    @Html.Partial("Text/LanguageDocuments", Model.LanguageAnalysis.Documents)
-                }
-            </div>
-            <div class="tab-content links">
+            <div class="tab-content links selected">
                 @if (Model.LinkAnalysis != null)
                 {
                     @Html.Partial("EntityLinking/LinkAnalysis", Model.LinkAnalysis)
@@ -49,6 +43,12 @@
                 @if (Model.SentimentAnalysis != null)
                 {
                     @Html.Partial("Text/SentimentDocuments", Model.SentimentAnalysis.Documents)
+                }
+            </div>
+            <div class="tab-content language">
+                @if (Model.LanguageAnalysis != null)
+                {
+                    @Html.Partial("Text/LanguageDocuments", Model.LanguageAnalysis.Documents)
                 }
             </div>
         </div>

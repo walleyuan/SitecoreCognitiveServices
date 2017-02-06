@@ -12,7 +12,10 @@
                     @f.FieldName
                 </h3>
                 <div class="entity-list">
-                    <h4>Links</h4>
+                    @if (@f.EntityAnalysis.Any(a => a.Score > 0.5))
+                    {
+                        <h4>Links</h4>
+                    }
                     @foreach (var l in @f.EntityAnalysis.Where(a => a.Score > 0.5).OrderByDescending(a => a.Score))
                     {
                         <div class="entity-subject">
@@ -27,7 +30,9 @@
                 </div>
                 <div class="entity-content">
                     <h4>Content</h4>
-                    @Html.Raw(f.HighlightLinks("span", "entity-match", 0.5))
+                    <div class="entity-content-wrap">
+                        @Html.Raw(f.HighlightLinks("span", "entity-match", 0.5))
+                    </div>
                 </div>
             </div>
         }
