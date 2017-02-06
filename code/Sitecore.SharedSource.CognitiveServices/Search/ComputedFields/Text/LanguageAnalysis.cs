@@ -24,13 +24,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
             var crContext = DependencyResolver.Current.GetService<ICognitiveRepositoryContext>();
             if (crContext == null)
                 return false;
-
-            IEnumerable<Field> fields = indexItem.Fields
-                .Where(f => !f.Name.StartsWith("__") && TextualFieldTypes.Contains(f.Type));
             
             try {
                 LanguageRequest lr = new LanguageRequest();
 
+                IEnumerable<Field> fields = GetTextualFields(indexItem);
                 foreach (Field f in fields)
                 {
                     Document d = new Document();

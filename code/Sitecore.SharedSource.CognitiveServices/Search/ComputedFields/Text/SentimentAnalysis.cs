@@ -25,12 +25,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
             if (crContext == null)
                 return false;
             
-            IEnumerable<Field> fields = indexItem.Fields
-                .Where(f => !f.Name.StartsWith("__") && TextualFieldTypes.Contains(f.Type));
-            
             try {
                 SentimentRequest sr = new SentimentRequest();
 
+                IEnumerable<Field> fields = GetTextualFields(indexItem);
                 foreach (Field f in fields)
                 {
                     Document d = new Document();

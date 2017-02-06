@@ -1,48 +1,34 @@
-﻿@model Microsoft.ProjectOxford.EntityLinking.Contract.EntityLink[]
+﻿@model List<Sitecore.SharedSource.CognitiveServices.Models.LinkAnalysisResult>
+    
+@using System.Linq
 
 @if (Model != null)
 {
-    <div>
-        <h3>Entity Links</h3>
-        @foreach (var l in Model)
+    <div class="entity-links-wrap">
+        @foreach (var f in Model)
         {
-            <div>
-                <div>
-                    <label>Name: </label>
-                    <span>@l.Name</span>
-                </div>
-                <div>
-                    <label>Wikipedia ID: </label>
-                    <span>@l.WikipediaID</span>
-                </div>
-                <div>
-                    <label>Score: </label>
-                    @Html.Partial("Common/MeasureBar", (float)l.Score)
-                </div>
-                <h4>Matches</h4>
-                @foreach (var m in l.Matches)
-                {
-                    <div>
-                        <div>
-                            <label>Text: </label>
-                            <span>@m.Text</span>
+            <div class="entity-link">
+                <h3>
+                    @f.FieldName
+                </h3>
+                <div class="entity-list">
+                    <h4>Links</h4>
+                    @foreach (var l in @f.EntityAnalysis.Where(a => a.Score > 0.5).OrderByDescending(a => a.Score))
+                    {
+                        <div class="entity-subject">
+                            <span>
+                                @l.Name: 
+                            </span>
+                            <span>
+                                @Html.Partial("Common/MeasureBar", (float) l.Score)
+                            </span>
                         </div>
-                        <h5>Entries</h5>
-                        @foreach (var e in m.Entries)
-                        {
-                            <div>
-                                <div>
-                                    <label>Offset: </label>
-                                    <span>@e.Offset</span>
-                                </div>
-                                <div>
-                                    <label>Score: </label>
-                                    @Html.Partial("Common/MeasureBar", (float)e.Score)
-                                </div>
-                            </div>
-                        }
-                    </div>
-                }
+                    }
+                </div>
+                <div class="entity-content">
+                    <h4>Content</h4>
+                    @Html.Raw(f.HighlightLinks("span", "entity-match", 0.5))
+                </div>
             </div>
         }
     </div>

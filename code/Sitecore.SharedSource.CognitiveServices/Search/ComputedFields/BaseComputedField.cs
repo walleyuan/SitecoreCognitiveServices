@@ -1,8 +1,10 @@
 ﻿extern alias MicrosoftProjectOxfordCommon;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.ComputedFields;
+using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 
@@ -51,6 +53,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields
                 Log.Error($"ImageItemAnalysis failed to index {indexItem.Paths.Path}: {exception.Error.Message}", exception, GetType());
             else
                 Log.Error(ex.Message, ex, GetType());
+        }
+
+        /// <summary>
+        /// This will get all text based content fields (as opposed to system fields) from the provided item
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public IEnumerable<Field> GetTextualFields(Item item)
+        {
+            IEnumerable<Field> fields = item.Fields
+                    .Where(f => !f.Name.StartsWith("__") && TextualFieldTypes.Contains(f.Type));
+
+            return fields;
         }
     }
 }

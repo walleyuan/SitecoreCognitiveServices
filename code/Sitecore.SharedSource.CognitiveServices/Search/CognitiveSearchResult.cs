@@ -1,4 +1,5 @@
-﻿using System.Web.Script.Serialization;
+﻿using System.Collections.Generic;
+using System.Web.Script.Serialization;
 using Microsoft.ProjectOxford.Emotion.Contract;
 using Microsoft.ProjectOxford.EntityLinking.Contract;
 using Microsoft.ProjectOxford.Text.Language;
@@ -6,6 +7,7 @@ using Microsoft.ProjectOxford.Text.Sentiment;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.SearchTypes;
+using Sitecore.SharedSource.CognitiveServices.Models;
 using Face = Microsoft.ProjectOxford.Face.Contract.Face;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search
@@ -42,7 +44,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
         [IndexField("LinkAnalysis")]
         public string LinkAnalysisValue { get; set; }
 
-        public EntityLink[] LinkAnalysis => SaturateValue<EntityLink[]>(LinkAnalysisValue) ?? new EntityLink[0];
+        public List<LinkAnalysisResult> LinkAnalysis => SaturateValue<List<LinkAnalysisResult>>(LinkAnalysisValue) ?? new List<LinkAnalysisResult>();
         
         [IndexField("SentimentAnalysis")]
         public string SentimentAnalysisValue { get; set; }

@@ -228,6 +228,8 @@
     <Compile Include="Models\CognitiveTextAnalysis.cs" />
     <Compile Include="Models\ICognitiveImageAnalysis.cs" />
     <Compile Include="Models\IReanalyzeAll.cs" />
+    <Compile Include="Models\ILinkAnalysisResult.cs" />
+    <Compile Include="Models\LinkAnalysisResult.cs" />
     <Compile Include="Models\SetAltTagsAll.cs" />
     <Compile Include="Models\ISetAltTagsAll.cs" />
     <Compile Include="Models\ReanalyzeAll.cs" />

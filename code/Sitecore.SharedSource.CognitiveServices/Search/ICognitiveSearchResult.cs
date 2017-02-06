@@ -1,9 +1,11 @@
-﻿using Microsoft.ProjectOxford.Emotion.Contract;
+﻿using System.Collections.Generic;
+using Microsoft.ProjectOxford.Emotion.Contract;
 using Microsoft.ProjectOxford.EntityLinking.Contract;
 using Microsoft.ProjectOxford.Text.Language;
 using Microsoft.ProjectOxford.Text.Sentiment;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.ContentSearch;
+using Sitecore.SharedSource.CognitiveServices.Models;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search
 {
@@ -20,7 +22,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
         string LanguageAnalysisValue { get; set; }
         LanguageResponse LanguageAnalysis { get; }
         string LinkAnalysisValue { get; set; }
-        EntityLink[] LinkAnalysis { get; }
+        List<LinkAnalysisResult> LinkAnalysis { get; }
         string SentimentAnalysisValue { get; set; }
         SentimentResponse SentimentAnalysis { get; }
         string UniqueId { get; set; }
