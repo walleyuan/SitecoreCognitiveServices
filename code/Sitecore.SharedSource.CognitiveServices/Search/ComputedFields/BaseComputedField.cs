@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.ComputedFields;
 using Sitecore.Data.Fields;
@@ -66,6 +68,27 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields
                     .Where(f => !f.Name.StartsWith("__") && TextualFieldTypes.Contains(f.Type));
 
             return fields;
+        }
+
+        protected string GetFormattedString(string value, int sizeLimit)
+        {
+            string plainString = Regex.Replace(value, "<.*?>", string.Empty);
+
+            var contentSize = Encoding.Unicode.GetByteCount(plainString);
+            if (contentSize < sizeLimit)
+                return plainString;
+
+            string[] sentences = plainString.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries);
+            StringBuilder sb = new StringBuilder();
+            foreach (string s in sentences)
+            {
+                if (Encoding.Unicode.GetByteCount($"{sb} {s}.") > sizeLimit)
+                    break;
+
+                sb.Append(sb.Length == 0 ? $"{s}." : $" {s}");
+            }
+
+            return sb.ToString();
         }
     }
 }

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -31,10 +30,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
                 IEnumerable<Field> fields = GetTextualFields(indexItem);
                 foreach (Field f in fields)
                 {
-                    Document d = new Document();
-                    d.Text = Regex.Replace(f.Value, "<.*?>", string.Empty);
-                    d.Id = f.DisplayName;
-                    sr.Documents.Add(d);
+                    sr.Documents.Add(new Document()
+                    {
+                        Text = GetFormattedString(f.Value, 10240),
+                        Id = f.DisplayName
+                    });
                 }
                 
                 var result = Task.Run(async () => await crContext.SentimentRepository.GetSentimentAsync(sr)).Result;
