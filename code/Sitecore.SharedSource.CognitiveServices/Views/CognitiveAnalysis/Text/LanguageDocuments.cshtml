@@ -2,31 +2,22 @@
 
 @if (Model != null)
 {
-    <div>
-        <h3>Language Documents</h3>
+    <div class="language-wrap">
         @foreach (var d in Model)
         {
-            <div>
-                <div>
-                    <label>ID: </label>
-                    <span>@d.Id</span>
-                </div>
-                <h4>Detected Languages</h4>
+            <div class="language-detail">
+                <h4>
+                    @d.Id: 
+                </h4>
                 @foreach (var l in d.DetectedLanguages)
                 {
-                    <div>
-                        <div>
-                            <label>Name</label>
-                            <span>@l.Name</span>
-                        </div>
-                        <div>
-                            <label>ISO 639 Name</label>
-                            <span>@l.Iso639Name</span>
-                        </div>
-                        <div>
-                            <label>Score: </label>
+                    <div class="language-set">
+                        <label>
+                            @l.Name (@l.Iso639Name)
+                        </label>
+                        <span>
                             @Html.Partial("Common/MeasureBar", l.Score)
-                        </div>
+                        </span>
                     </div>
                 }
             </div>

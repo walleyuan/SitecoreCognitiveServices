@@ -1,20 +1,29 @@
-﻿@model List<Microsoft.ProjectOxford.Text.Sentiment.SentimentDocumentResult>
+﻿@using Sitecore.Data.Managers
+@model List<Microsoft.ProjectOxford.Text.Sentiment.SentimentDocumentResult>
 
 @if (Model != null)
 {
-    <div>
-        <h3>Sentiment Documents</h3>
+    <div class="sentiment-wrap">
         @foreach (var d in Model)
         {
-            <div>
-                <div>
-                    <label>ID: </label>
-                    <span>@d.Id</span>
-                </div>
-                <div>
-                    <label>Score: </label>
-                    @Html.Partial("Common/MeasureBar", d.Score)
-                </div>
+            <div class="sentiment-detail">
+                <h4>@d.Id: </h4>
+                <span class="sentiment-box" title="@((d.Score*100).ToString("0"))%">
+                    <div class="bar-value bar-@d.Score.ToString("0.0").Replace(".", "")"></div>
+                </span>
+                <span>
+                    @if(d.Score > 0.8){
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/emoticon_grin.png", 32, 32))
+                    } else if(d.Score <= 0.8 && d.Score > 0.6){
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/emoticon_smile.png", 32, 32))
+                    } else if(d.Score <= 0.6 && d.Score > 0.4){
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/emoticon_straight_face.png", 32, 32))
+                    } else if(d.Score <= 0.4 && d.Score > 0.2){
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/emoticon_frown.png", 32, 32))
+                    } else if(d.Score <= 0.2){
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/emoticon_angry.png", 32, 32))
+                    }
+                </span>
             </div>
         }
     </div>

@@ -1,5 +1,6 @@
 ﻿extern alias MicrosoftProjectOxfordCommon;
 using System;
+using System.Collections.Generic;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.ComputedFields;
 using Sitecore.Data.Items;
@@ -11,6 +12,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields
     {
         public virtual string FieldName { get; set; }
         public virtual string ReturnType { get; set; }
+
+        public List<string> TextualFieldTypes = new List<string>() { "Rich Text", "Single-Line Text", "Multi-Line Text", "html", "text", "memo" };
 
         public object ComputeFieldValue(IIndexable indexable)
         {

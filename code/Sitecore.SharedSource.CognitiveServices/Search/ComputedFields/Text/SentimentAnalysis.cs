@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Microsoft.ProjectOxford.Text.Core;
 using Microsoft.ProjectOxford.Text.Sentiment;
+using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.Repositories;
 
@@ -24,23 +25,20 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
             if (crContext == null)
                 return false;
             
-            List<string> fieldTypes = new List<string>() { "Rich Text", "Single-Line Text", "Multi-Line Text", "html", "text", "memo" };
-            
-            string fieldValues = Regex.Replace(
-                indexItem.Fields
-                    .Where(f => !f.Name.StartsWith("__") && fieldTypes.Contains(f.Type))
-                    .Select(f => f.Value)
-                    .Aggregate((a, b) => $"{a} {b}")
-                , "<.*?>"
-                , string.Empty);
-
-            Document d = new Document();
-            d.Text = fieldValues;
-            d.Id = indexItem.ID.ToString();
+            IEnumerable<Field> fields = indexItem.Fields
+                .Where(f => !f.Name.StartsWith("__") && TextualFieldTypes.Contains(f.Type));
             
             try {
                 SentimentRequest sr = new SentimentRequest();
-                sr.Documents.Add(d);
+
+                foreach (Field f in fields)
+                {
+                    Document d = new Document();
+                    d.Text = Regex.Replace(f.Value, "<.*?>", string.Empty);
+                    d.Id = f.DisplayName;
+                    sr.Documents.Add(d);
+                }
+                
                 var result = Task.Run(async () => await crContext.SentimentRepository.GetSentimentAsync(sr)).Result;
                 var json = new JavaScriptSerializer().Serialize(result);
 

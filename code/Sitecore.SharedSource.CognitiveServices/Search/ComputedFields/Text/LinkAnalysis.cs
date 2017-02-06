@@ -22,11 +22,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
             if (crContext == null)
                 return false;
             
-            List<string> fieldTypes = new List<string>() { "Rich Text", "Single-Line Text", "Multi-Line Text", "html", "text", "memo" };
-            
             string fieldValues = Regex.Replace(
                 indexItem.Fields
-                    .Where(f => !f.Name.StartsWith("__") && fieldTypes.Contains(f.Type))
+                    .Where(f => !f.Name.StartsWith("__") && TextualFieldTypes.Contains(f.Type))
                     .Select(f => f.Value)
                     .Aggregate((a, b) => $"{a} {b}")
                 , "<.*?>"
