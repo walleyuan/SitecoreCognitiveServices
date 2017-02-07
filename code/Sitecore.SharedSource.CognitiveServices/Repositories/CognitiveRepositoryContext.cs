@@ -12,6 +12,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
         public IEntityLinkingRepository EntityLinkingRepository { get; set; }
         public IFaceRepository FaceRepository { get; set; }
         public ILanguageRepository LanguageRepository { get; set; }
+        public ILinguisticRepository LinguisticRepository { get; set; }
         public ISentimentRepository SentimentRepository { get; set; }
         public ISpeakerIdentificationRepository SpeakerIdentificationRepository { get; set; }
         public ISpeakerVerificationRepository SpeakerVerificationRepository { get; set; }
@@ -23,6 +24,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             IEntityLinkingRepository entityLinkingRepository,
             IFaceRepository faceRepository,
             ILanguageRepository languageRepository,
+            ILinguisticRepository linguisticRepository,
             ISentimentRepository sentimentRepository,
             ISpeakerIdentificationRepository speakerIdentificationRepository,
             ISpeakerVerificationRepository speakerVerificationRepository,
@@ -33,6 +35,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             EntityLinkingRepository = entityLinkingRepository;
             FaceRepository = faceRepository;
             LanguageRepository = languageRepository;
+            LinguisticRepository = linguisticRepository;
             SentimentRepository = sentimentRepository;
             SpeakerIdentificationRepository = speakerIdentificationRepository;
             SpeakerVerificationRepository = speakerVerificationRepository;

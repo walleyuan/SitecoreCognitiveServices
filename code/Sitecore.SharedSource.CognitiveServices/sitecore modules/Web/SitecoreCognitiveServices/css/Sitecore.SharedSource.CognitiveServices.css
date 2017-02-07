@@ -170,6 +170,14 @@ h1 {}
 .entity-subject { border: 1px solid #ccc; border-radius: 2px; display: inline-block; margin: 0 4px 10px 0; padding: 5px; }
 .entity-link h4 { margin: 0 0 5px;font-size: 13px; }
 
+.key-phrase-wrap { padding: 10px;}
+.phrase-link {}
+.phrase-link h3 { background-color: #ddd; border-left: 3px solid #ff0000; color: #000; font-size: 11px; font-weight: normal; padding: 8px 10px;}
+.phrase-content { line-height: 22px; margin-bottom: 10px;padding: 0px 10px;}
+.phrase-content h4 {margin: 0 0 5px;font-size: 13px; }
+.phrase-content-wrap { max-height: 200px;overflow: auto;border: 1px solid #ccc;padding: 5px;} 
+.phrase-entity { background-color:#dc291e;color: #fff;padding: 2px 3px;border-radius: 2px; }
+
 .color-group { }
 .color-group label { display: inline-block;width: 75px;text-align: right;}
 .color-set { display: inline-block;vertical-align: middle;}

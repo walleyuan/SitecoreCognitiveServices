@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Microsoft.ProjectOxford.Emotion.Contract;
-using Microsoft.ProjectOxford.EntityLinking.Contract;
 using Microsoft.ProjectOxford.Text.Language;
 using Microsoft.ProjectOxford.Text.Sentiment;
 using Microsoft.ProjectOxford.Vision.Contract;
@@ -25,6 +24,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
         List<LinkAnalysisResult> LinkAnalysis { get; }
         string SentimentAnalysisValue { get; set; }
         SentimentResponse SentimentAnalysis { get; }
+        string KeyPhraseAnalysisValue { get; set; }
+        List<KeyPhraseAnalysisResult> KeyPhraseAnalysis { get; }
+        string LinguisticAnalysisValue { get; set; }
+        List<LinguisticAnalysisResult> LinguisticAnalysis { get; }
         string UniqueId { get; set; }
     }
 }

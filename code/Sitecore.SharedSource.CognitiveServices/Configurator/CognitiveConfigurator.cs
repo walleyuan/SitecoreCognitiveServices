@@ -29,6 +29,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddSingleton<IEntityLinkingRepository, EntityLinkingRepository>();
             serviceCollection.AddSingleton<IFaceRepository, FaceRepository>();
             serviceCollection.AddSingleton<ILanguageRepository, LanguageRepository>();
+            serviceCollection.AddSingleton<ILinguisticRepository, LinguisticRepository>();
             serviceCollection.AddSingleton<ISentimentRepository, SentimentRepository>();
             serviceCollection.AddSingleton<ISpeakerIdentificationRepository, SpeakerIdentificationRepository>();
             serviceCollection.AddSingleton<ISpeakerVerificationRepository, SpeakerVerificationRepository>();
@@ -42,6 +43,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddSingleton<IEntityLinkingService, EntityLinkingService>();
             serviceCollection.AddSingleton<IFaceService, FaceService>();
             serviceCollection.AddSingleton<ILanguageService, LanguageService>();
+            serviceCollection.AddSingleton<ILinguisticService, LinguisticService>();
             serviceCollection.AddSingleton<ISentimentService, SentimentService>();
             serviceCollection.AddSingleton<ISpeakerIdentificationService, SpeakerIdentificationService>();
             serviceCollection.AddSingleton<ISpeakerVerificationService, SpeakerVerificationService>();

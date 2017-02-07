@@ -16,6 +16,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
             analysis.LanguageAnalysis = result.LanguageAnalysis;
             analysis.LinkAnalysis = result.LinkAnalysis;
             analysis.SentimentAnalysis = result.SentimentAnalysis;
+            analysis.KeyPhraseAnalysis = result.KeyPhraseAnalysis;
+            analysis.LinguisticAnalysis = result.LinguisticAnalysis;
             
             return analysis;
         }

@@ -1,0 +1,41 @@
+﻿@using System.Web.Mvc.Html
+@model List<Sitecore.SharedSource.CognitiveServices.Models.LinguisticAnalysisResult>
+
+@if (Model != null)
+{
+    <div>
+        <h4>Linguistic Analysis</h4>
+        @foreach (var d in Model)
+        {
+
+        }
+    </div>
+
+    <div class="linguistic-wrap">
+        @foreach (var l in Model)
+        {
+            @l.ConstituencyTreeAnalysis
+            @l.POSTagsAnalysis
+            @l.TokensAnalysis
+
+            @*foreach (var a in l)
+            {
+                foreach (var r in a.Result)
+                {
+                    <span>result:  @r</span>
+                }
+            }
+            <div class="linguistic-link">
+                <h3>
+                    @l.FieldName
+                </h3>
+                <div class="linguistic-content">
+                    <h4>Content</h4>
+                    <div class="linguistic-content-wrap">
+                        @Html.Raw(l.HighlightTextParts("span", "phrase"))
+                    </div>
+                </div>
+            </div>*@
+        }
+    </div>
+}

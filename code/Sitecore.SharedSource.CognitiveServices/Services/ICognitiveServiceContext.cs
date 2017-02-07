@@ -12,6 +12,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services
         IEntityLinkingService EntityLinkingService { get; set; }
         IFaceService FaceService { get; set; }
         ILanguageService LanguageService { get; set; }
+        ILinguisticService LinguisticService { get; set; }
         ISentimentService SentimentService { get; set; }
         ISpeakerIdentificationService SpeakerIdentificationService { get; set; }
         ISpeakerVerificationService SpeakerVerificationService { get; set; }

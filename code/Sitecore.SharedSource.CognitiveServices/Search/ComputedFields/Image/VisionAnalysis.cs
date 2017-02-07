@@ -16,16 +16,16 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
         {
             var dataService = DependencyResolver.Current.GetService<ISitecoreDataService>();
             if (dataService == null)
-                return false;
+                return string.Empty;
 
             if (!dataService.IsMediaItem(indexItem))
-                return false;
+                return string.Empty;
 
             MediaItem m = indexItem;
 
             var crContext = DependencyResolver.Current.GetService<ICognitiveRepositoryContext>();
             if (crContext == null)
-                return false;
+                return string.Empty;
             
             try {
                 var result = Task.Run(async() => await crContext.VisionRepository.AnalyzeImageAsync(m.GetMediaStream(), new List<VisualFeature>() {
@@ -42,7 +42,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
                 return json;
             } catch (Exception ex) { LogError(ex, indexItem); }
             
-            return false;
+            return string.Empty;
         }
     }
 }

@@ -19,11 +19,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
         protected override object GetFieldValue(Item indexItem)
         {
             if (!indexItem.Paths.IsContentItem)
-                return false;
+                return string.Empty;
 
             var crContext = DependencyResolver.Current.GetService<ICognitiveRepositoryContext>();
             if (crContext == null)
-                return false;
+                return string.Empty;
 
             List<LinkAnalysisResult> fieldResults = new List<LinkAnalysisResult>();
             IEnumerable<Field> fields = GetTextualFields(indexItem);

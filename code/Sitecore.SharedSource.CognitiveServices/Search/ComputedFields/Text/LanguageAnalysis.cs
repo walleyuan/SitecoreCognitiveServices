@@ -18,11 +18,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
         protected override object GetFieldValue(Item indexItem)
         {
             if (!indexItem.Paths.IsContentItem)
-                return false;
+                return string.Empty;
 
             var crContext = DependencyResolver.Current.GetService<ICognitiveRepositoryContext>();
             if (crContext == null)
-                return false;
+                return string.Empty;
             
             try {
                 LanguageRequest lr = new LanguageRequest();
@@ -43,7 +43,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
                 return json;
             } catch (Exception ex) { LogError(ex, indexItem); }
             
-            return false;
+            return string.Empty;
         }
     }
 }

@@ -25,13 +25,13 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields
 
             Item indexItem = indexable as SitecoreIndexableItem;
             if (indexItem == null)
-                return false;
+                return string.Empty;
 
             if (indexItem?.Database?.Name == "core")
-                return false;
+                return string.Empty;
 
             if (indexItem.TemplateID == TemplateIDs.MediaFolder || indexItem.ID == ItemIDs.MediaLibraryRoot)
-                return false;
+                return string.Empty;
             
             try {
                 return GetFieldValue(indexItem);
@@ -39,7 +39,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields
                 Log.Error($"Error indexing field: {FieldName}, Item Path: {indexItem.Paths.FullPath}", e, GetType());
             }
 
-            return false;
+            return string.Empty;
         }
 
         protected virtual object GetFieldValue(Item indexItem)
@@ -70,9 +70,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields
             return fields;
         }
 
+        protected string RemoveHtmlMarkup(string value)
+        {
+            return Regex.Replace(value, "<.*?>", string.Empty);
+        }
+
         protected string GetFormattedString(string value, int sizeLimit)
         {
-            string plainString = Regex.Replace(value, "<.*?>", string.Empty);
+            string plainString = RemoveHtmlMarkup(value);
 
             var contentSize = Encoding.Unicode.GetByteCount(plainString);
             if (contentSize < sizeLimit)
