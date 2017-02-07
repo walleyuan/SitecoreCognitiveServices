@@ -3,39 +3,32 @@
 
 @if (Model != null)
 {
-    <div>
-        <h4>Linguistic Analysis</h4>
-        @foreach (var d in Model)
-        {
-
-        }
-    </div>
-
     <div class="linguistic-wrap">
         @foreach (var l in Model)
         {
-            @l.ConstituencyTreeAnalysis
-            @l.POSTagsAnalysis
-            @l.TokensAnalysis
-
-            @*foreach (var a in l)
-            {
-                foreach (var r in a.Result)
-                {
-                    <span>result:  @r</span>
-                }
-            }
             <div class="linguistic-link">
                 <h3>
                     @l.FieldName
                 </h3>
                 <div class="linguistic-content">
-                    <h4>Content</h4>
+                    <h4>Parts of Speech Analysis</h4>
                     <div class="linguistic-content-wrap">
-                        @Html.Raw(l.HighlightTextParts("span", "phrase"))
+                        @Html.Raw(l.HighlightPOSTags("span", "linguistic-entity"))
                     </div>
                 </div>
-            </div>*@
+                <div class="linguistic-content">
+                    <h4>Constituency Tree Analysis</h4>
+                    <div class="linguistic-content-wrap">
+                        @Html.Raw(l.HighlightConstituencyTree("span", "linguistic-entity"))
+                    </div>
+                </div>
+                @*<div class="linguistic-content">
+                    <h4>Token Analysis</h4>
+                    <div class="linguistic-content-wrap">
+                        @Html.Raw(l.HighlightTokens("span", "linguistic-entity"))
+                    </div>
+                </div>*@
+            </div>
         }
     </div>
 }

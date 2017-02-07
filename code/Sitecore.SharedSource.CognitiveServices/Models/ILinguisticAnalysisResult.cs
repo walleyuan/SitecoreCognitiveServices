@@ -12,6 +12,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Models
         POSTagsTextAnalysisResponse POSTagsAnalysis { get; set; }
         ConstituencyTreeTextAnalysisResponse ConstituencyTreeAnalysis { get; set; }
         TokensTextAnalysisResponse TokensAnalysis { get; set; }
-        string HighlightTextParts(string htmlEntity, string cssClass);
+        string HighlightPOSTags(string htmlEntity, string cssClass);
+        string HighlightConstituencyTree(string htmlEntity, string cssClass);
+        string HighlightTokens(string htmlEntity, string cssClass);
     }
 }

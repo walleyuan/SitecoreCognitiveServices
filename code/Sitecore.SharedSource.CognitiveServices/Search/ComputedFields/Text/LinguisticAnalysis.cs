@@ -36,7 +36,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
                 try {
                     var result1 = Task.Run(async () => await crContext.LinguisticRepository.GetPOSTagsTextAnalysisAsync(tar)).Result;
                     var result2 = Task.Run(async () => await crContext.LinguisticRepository.GetConstituencyTreeTextAnalysisAsync(tar)).Result;
-                    var result3 = Task.Run(async () => await crContext.LinguisticRepository.GetTokensTextAnalysisAsync(tar)).Result;
+                    //var result3 = Task.Run(async () => await crContext.LinguisticRepository.GetTokensTextAnalysisAsync(tar)).Result;
 
                     fieldResults.Add(new LinguisticAnalysisResult()
                     {
@@ -44,7 +44,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
                         FieldValue = value,
                         POSTagsAnalysis = result1,
                         ConstituencyTreeAnalysis = result2,
-                        TokensAnalysis = result3
+                        TokensAnalysis = null
                     });
                 } catch (Exception ex) { LogError(ex, indexItem); }
             }
