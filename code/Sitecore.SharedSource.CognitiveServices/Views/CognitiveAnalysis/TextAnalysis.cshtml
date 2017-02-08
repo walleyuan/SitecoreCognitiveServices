@@ -9,69 +9,55 @@
 
 @{
     ViewBag.Title = "Cognitive Services: Text Analysis";
-    Layout = null;
+    Layout = "~/Views/CognitiveCommon/CognitiveLayout.cshtml";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
-    <link href="/sitecore modules/Web/SitecoreCognitiveServices/css/Sitecore.SharedSource.CognitiveServices.css?x=@(new System.Random().Next())" rel="stylesheet" type="text/css" />
-</head>
-<body>
-    <div class="frame">
-        <div class="tabbed-nav">
-            <div class="nav-btn selected" rel="links" title="Link Analysis">
-                <span>Link Analysis</span>
-            </div>
-            <div class="nav-btn" rel="phrase" title="Key Phrase Analysis">
-                <span>Key Phrase Analysis</span>
-            </div>
-            <div class="nav-btn" rel="linguistic" title="Linguistic Analysis">
-                <span>Linguistic Analysis</span>
-            </div>
-            <div class="nav-btn" rel="sentiment" title="Sentiment Analysis">
-                <span>Sentiment Analysis</span>
-            </div>
-            <div class="nav-btn" rel="language" title="Language Analysis">
-                <span>Language Analysis</span>
-            </div>
-        </div>
-        <div class="text-analysis-wrapper">
-            <div class="tab-content links selected">
-                @if (Model.LinkAnalysis != null)
-                {
-                    @Html.Partial("EntityLinking/LinkAnalysis", Model.LinkAnalysis)
-                }
-            </div>
-            <div class="tab-content phrase">
-                @if (Model.KeyPhraseAnalysis != null)
-                {
-                    @Html.Partial("Text/KeyPhrases", Model.KeyPhraseAnalysis)
-                }
-            </div>
-            <div class="tab-content linguistic">
-                @if (Model.LinguisticAnalysis != null)
-                {
-                    @Html.Partial("Text/LinguisticAnalysis", Model.LinguisticAnalysis)
-                }
-            </div>
-            <div class="tab-content sentiment">
-                @if (Model.SentimentAnalysis != null)
-                {
-                    @Html.Partial("Text/SentimentDocuments", Model.SentimentAnalysis.Documents)
-                }
-            </div>
-            <div class="tab-content language">
-                @if (Model.LanguageAnalysis != null)
-                {
-                    @Html.Partial("Text/LanguageDocuments", Model.LanguageAnalysis.Documents)
-                }
-            </div>
-        </div>
+
+<div class="tabbed-nav">
+    <div class="nav-btn selected" rel="links" title="Link Analysis">
+        <span>Link Analysis</span>
     </div>
-    <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/jquery-1.10.2.min.js"></script>
-    <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/Sitecore.SharedSource.CognitiveServices.js"></script>
-</body>
-</html>
+    <div class="nav-btn" rel="phrase" title="Key Phrase Analysis">
+        <span>Key Phrase Analysis</span>
+    </div>
+    <div class="nav-btn" rel="linguistic" title="Linguistic Analysis">
+        <span>Linguistic Analysis</span>
+    </div>
+    <div class="nav-btn" rel="sentiment" title="Sentiment Analysis">
+        <span>Sentiment Analysis</span>
+    </div>
+    <div class="nav-btn" rel="language" title="Language Analysis">
+        <span>Language Analysis</span>
+    </div>
+</div>
+<div class="text-analysis-wrapper">
+    <div class="tab-content links selected">
+        @if (Model.LinkAnalysis != null)
+        {
+            @Html.Partial("EntityLinking/LinkAnalysis", Model.LinkAnalysis)
+        }
+    </div>
+    <div class="tab-content phrase">
+        @if (Model.KeyPhraseAnalysis != null)
+        {
+            @Html.Partial("Text/KeyPhrases", Model.KeyPhraseAnalysis)
+        }
+    </div>
+    <div class="tab-content linguistic">
+        @if (Model.LinguisticAnalysis != null)
+        {
+            @Html.Partial("Text/LinguisticAnalysis", Model.LinguisticAnalysis)
+        }
+    </div>
+    <div class="tab-content sentiment">
+        @if (Model.SentimentAnalysis != null)
+        {
+            @Html.Partial("Text/SentimentDocuments", Model.SentimentAnalysis.Documents)
+        }
+    </div>
+    <div class="tab-content language">
+        @if (Model.LanguageAnalysis != null)
+        {
+            @Html.Partial("Text/LanguageDocuments", Model.LanguageAnalysis.Documents)
+        }
+    </div>
+</div>

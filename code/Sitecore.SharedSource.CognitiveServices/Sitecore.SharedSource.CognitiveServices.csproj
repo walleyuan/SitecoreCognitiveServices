@@ -363,6 +363,7 @@
     <Content Include="Views\CognitiveAnalysis\ReanalyzeAll.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Text\KeyPhrases.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Text\LinguisticAnalysis.cshtml" />
+    <Content Include="Views\CognitiveCommon\CognitiveLayout.cshtml" />
     <None Include="Web.config" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\Sitecore.SharedSource.CognitiveServices.css" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\jquery-1.10.2.min.js" />

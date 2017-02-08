@@ -3,45 +3,30 @@
 
 @{
     ViewBag.Title = "Cognitive Services: Reanalyze All";
-    Layout = null;
+    Layout = "~/Views/CognitiveCommon/CognitiveLayout.cshtml";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
-    <link href="/sitecore/shell/themes/standard/default/Default.css" rel="stylesheet" type="text/css" />
-    <link href="/sitecore modules/Web/SitecoreCognitiveServices/css/Sitecore.SharedSource.CognitiveServices.css?x=@(new System.Random().Next())" rel="stylesheet" type="text/css" />
-</head>
-<body>
-    <div class="frame">
-        @if (Model != null)
-        {
-            <form class="form reanalyze-all-form" method="post" action="/sccogsvcs/CognitiveAnalysis/ReanalyzeAll">
-                <fieldset>
-                    <div class="form-row">
-                        This will reanalyze all the descendant media items
-                    </div>
-                    <div>
-                        <input type="hidden" id="id" name="id" value="@Model.ItemId" />
-                        <input type="hidden" id="database" name="database" value="@Model.Database" />
-                        <input type="hidden" id="language" name="language" value="@Model.Language" />    
-                    </div>
-                </fieldset>
-                <div class="scWizardButtons">
-                    <button class="form-submit scButton scButtonPrimary">Reanalyze Descendents</button>
-                </div>
-            </form>
-            <div class="progress-indicator">
-                <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
+
+@if (Model != null)
+{
+    <form class="form reanalyze-all-form" method="post" action="/SitecoreCognitiveServices/CognitiveAnalysis/ReanalyzeAll">
+        <fieldset>
+            <div class="form-row">
+                This will reanalyze all the descendant media items
             </div>
-            <div class="result-display">
-                There were <span class="resultCount">@Model.ItemCount</span> items updated.
+            <div>
+                <input type="hidden" id="id" name="id" value="@Model.ItemId" />
+                <input type="hidden" id="database" name="database" value="@Model.Database" />
+                <input type="hidden" id="language" name="language" value="@Model.Language" />    
             </div>
-        }
+        </fieldset>
+        <div class="scWizardButtons">
+            <button class="form-submit scButton scButtonPrimary">Reanalyze Descendents</button>
+        </div>
+    </form>
+    <div class="progress-indicator">
+        <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
     </div>
-    <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/jquery-1.10.2.min.js"></script>
-    <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/Sitecore.SharedSource.CognitiveServices.js"></script>
-</body>
-</html>
+    <div class="result-display">
+        There were <span class="resultCount">@Model.ItemCount</span> items updated.
+    </div>
+}
