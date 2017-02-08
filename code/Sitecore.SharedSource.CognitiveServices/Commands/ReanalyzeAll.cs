@@ -30,7 +30,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             Item i = DataService.GetItemByIdValue(id, db);
             string langCode = i.Language.Name;
             
-            ModalDialogOptions mdo = new ModalDialogOptions($"/sccogsvcs/CognitiveAnalysis/ViewReanalyzeAll?id={id}&language={langCode}&db={db}")
+            ModalDialogOptions mdo = new ModalDialogOptions($"/SitecoreCognitiveServices/CognitiveAnalysis/ViewReanalyzeAll?id={id}&language={langCode}&db={db}")
             {
                 Header = "Reanalyze Descendents",
                 Height = "200",

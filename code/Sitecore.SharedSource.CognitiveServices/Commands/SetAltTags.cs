@@ -29,7 +29,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             Item i = DataService.GetItemByIdValue(id, db);
             string langCode = i.Language.Name;
 
-            ModalDialogOptions mdo = new ModalDialogOptions($"/sccogsvcs/CognitiveUtility/ViewImageDescription?id={id}&language={langCode}&db={db}")
+            ModalDialogOptions mdo = new ModalDialogOptions($"/SitecoreCognitiveServices/CognitiveUtility/ViewImageDescription?id={id}&language={langCode}&db={db}")
             {
                 Header = "Set Alt Tag",
                 Height = "200",

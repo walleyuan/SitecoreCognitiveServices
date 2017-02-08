@@ -35,7 +35,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             string height = args.Parameters[heightParam];
             string width = args.Parameters[widthParam];
             
-            ModalDialogOptions mdo = new ModalDialogOptions($"/sccogsvcs/CognitiveAnalysis/Reanalyze?id={id}&language={langCode}&db={db}")
+            ModalDialogOptions mdo = new ModalDialogOptions($"/SitecoreCognitiveServices/CognitiveAnalysis/Reanalyze?id={id}&language={langCode}&db={db}")
             {
                 Header = "Cognitive Analysis",
                 Height = height,

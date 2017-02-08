@@ -35,7 +35,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             string width = args.Parameters[widthParam];
             string action = (i.Paths.IsMediaItem) ? "ImageAnalysis" : "TextAnalysis";
 
-            ModalDialogOptions mdo = new ModalDialogOptions($"/sccogsvcs/CognitiveAnalysis/{action}?id={id}&language={langCode}&db={db}")
+            ModalDialogOptions mdo = new ModalDialogOptions($"/SitecoreCognitiveServices/CognitiveAnalysis/{action}?id={id}&language={langCode}&db={db}")
             {
                 Header = "Cognitive Analysis",
                 Height = height,
