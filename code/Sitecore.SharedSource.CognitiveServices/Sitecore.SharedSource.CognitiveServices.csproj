@@ -210,9 +210,12 @@
     <Compile Include="Commands\SetAltTagsAll.cs" />
     <Compile Include="Commands\SetAltTags.cs" />
     <Compile Include="Commands\ViewAnalysis.cs" />
+    <Compile Include="Controllers\CognitiveMediaSearchController.cs" />
     <Compile Include="Controllers\CognitiveUtilityController.cs" />
     <Compile Include="Controllers\CognitiveAnalysisController.cs" />
     <Compile Include="Factories\CognitiveImageAnalysisFactory.cs" />
+    <Compile Include="Factories\ICognitiveSearchResultSetFactory.cs" />
+    <Compile Include="Factories\CognitiveSearchResultSetFactory.cs" />
     <Compile Include="Factories\CognitiveTextAnalysisFactory.cs" />
     <Compile Include="Factories\ICognitiveImageAnalysisFactory.cs" />
     <Compile Include="Factories\SetAltTagsAllFactory.cs" />
@@ -227,6 +230,8 @@
     <Compile Include="Models\CognitiveImageAnalysis.cs" />
     <Compile Include="Models\CognitiveTextAnalysis.cs" />
     <Compile Include="Models\ICognitiveImageAnalysis.cs" />
+    <Compile Include="Models\CognitiveSearchResultSet.cs" />
+    <Compile Include="Models\ICognitiveSearchResultSet.cs" />
     <Compile Include="Models\IKeyPhraseAnalysisResult.cs" />
     <Compile Include="Models\ILinguisticAnalysisResult.cs" />
     <Compile Include="Models\IReanalyzeAll.cs" />
@@ -335,6 +340,7 @@
     <Content Include="App_Config\Include\SitecoreCognitiveServices\Unicorn.Configs.SitecoreCognitiveServices.config" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Sitecore.SharedSource.CognitiveServices.js" />
+    <Content Include="sitecore\shell\Controls\Rich Text Editor\RichText Commands.js" />
     <Content Include="Views\CognitiveAnalysis\ImageAnalysis.cshtml" />
     <Content Include="Views\CognitiveAnalysis\TextAnalysis.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Common\Rectangle.cshtml" />
@@ -363,6 +369,7 @@
     <Content Include="Views\CognitiveAnalysis\ReanalyzeAll.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Text\KeyPhrases.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Text\LinguisticAnalysis.cshtml" />
+    <Content Include="Views\CognitiveMediaSearch\RTESearch.cshtml" />
     <Content Include="Views\CognitiveCommon\CognitiveLayout.cshtml" />
     <None Include="Web.config" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\Sitecore.SharedSource.CognitiveServices.css" />

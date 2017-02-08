@@ -1,10 +1,13 @@
-﻿using Sitecore.Data.Items;
+﻿using System.Collections.Generic;
+using Sitecore.Data.Items;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search
 {
     public interface ICognitiveSearchContext
     {
         ICognitiveSearchResult GetAnalysis(string itemId, string languageCode, string dbName);
+
+        List<ICognitiveSearchResult> GetMediaResults(string query, string languageCode, string dbName);
 
         void AddItemToIndex(string itemId, string dbName);
 

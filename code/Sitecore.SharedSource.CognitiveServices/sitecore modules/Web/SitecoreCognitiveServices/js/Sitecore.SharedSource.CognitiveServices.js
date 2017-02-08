@@ -65,4 +65,9 @@ $(document).ready(function () {
                 $(".result-display").show();
             });
         });
+
+    $(".rte-search-input")
+        .change(function(e) {
+            console.log($(this).val());
+        });
 });

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.Security;
 using Sitecore.Data;
@@ -30,7 +31,28 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
                         && a.Language == languageCode);
             }
         }
-        
+
+        public List<ICognitiveSearchResult> GetMediaResults(string query, string languageCode, string dbName)
+        {
+            var index = ContentSearchManager.GetIndex(GetIndexName(dbName));
+            using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
+            {
+                return context.GetQueryable<CognitiveSearchResult>()
+                    .Where(a => a.Language == languageCode && 
+                    (a.EmotionAnalysisValue.Contains(query) 
+                    || a.FacialAnalysisValue.Contains(query)
+                    || a.KeyPhraseAnalysisValue.Contains(query)
+                    || a.LanguageAnalysisValue.Contains(query)
+                    || a.LinguisticAnalysisValue.Contains(query)
+                    || a.LinkAnalysisValue.Contains(query)
+                    || a.SentimentAnalysisValue.Contains(query)
+                    || a.TextAnalysisValue.Contains(query)
+                    || a.VisionAnalysisValue.Contains(query)
+                    ))
+                    .ToList<ICognitiveSearchResult>();
+            }
+        }
+
         public void AddItemToIndex(string itemId, string dbName)
         {
             ID id = DataService.GetID(itemId);

@@ -55,6 +55,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddSingleton<IImageDescriptionFactory, ImageDescriptionFactory>();
             serviceCollection.AddSingleton<IReanalyzeAllFactory, ReanalyzeAllFactory>();
             serviceCollection.AddSingleton<ISetAltTagsAllFactory, SetAltTagsAllFactory>();
+            serviceCollection.AddSingleton<ICognitiveSearchResultSetFactory, CognitiveSearchResultSetFactory>();
 
             serviceCollection.AddTransient<ICognitiveSearchContext, CognitiveSearchContext>();
             serviceCollection.AddTransient<ICognitiveSearchResult, CognitiveSearchResult>();
