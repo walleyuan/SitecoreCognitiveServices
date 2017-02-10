@@ -24,7 +24,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
             //item uri format: sitecore://master/{04dad0fd-db66-4070-881f-17264ca257e1}?lang=en&ver=1
             string[] parts = itemUri
                 .Replace("sitecore://", string.Empty)
-                .Split(new string[] { "/" }, StringSplitOptions.RemoveEmptyEntries) ?? new string[0];
+                .Split(new [] { "/" }, StringSplitOptions.RemoveEmptyEntries);
 
             if (parts.Length < 1)
                 return null;
@@ -32,7 +32,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
             if (parts.Length < 2)
                 return null;
 
-            var guidParts = parts[1].Split(new string[] { "?" }, StringSplitOptions.RemoveEmptyEntries);
+            var guidParts = parts[1].Split(new [] { "?" }, StringSplitOptions.RemoveEmptyEntries);
             if (guidParts.Length < 1)
                 return null;
             

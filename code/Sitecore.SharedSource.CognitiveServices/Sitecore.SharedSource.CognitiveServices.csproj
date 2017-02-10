@@ -214,8 +214,8 @@
     <Compile Include="Controllers\CognitiveUtilityController.cs" />
     <Compile Include="Controllers\CognitiveAnalysisController.cs" />
     <Compile Include="Factories\CognitiveImageAnalysisFactory.cs" />
-    <Compile Include="Factories\ICognitiveSearchResultSetFactory.cs" />
-    <Compile Include="Factories\CognitiveSearchResultSetFactory.cs" />
+    <Compile Include="Factories\ICognitiveMediaSearchFactory.cs" />
+    <Compile Include="Factories\CognitiveMediaSearchFactory.cs" />
     <Compile Include="Factories\CognitiveTextAnalysisFactory.cs" />
     <Compile Include="Factories\ICognitiveImageAnalysisFactory.cs" />
     <Compile Include="Factories\SetAltTagsAllFactory.cs" />
@@ -230,8 +230,8 @@
     <Compile Include="Models\CognitiveImageAnalysis.cs" />
     <Compile Include="Models\CognitiveTextAnalysis.cs" />
     <Compile Include="Models\ICognitiveImageAnalysis.cs" />
-    <Compile Include="Models\CognitiveSearchResultSet.cs" />
-    <Compile Include="Models\ICognitiveSearchResultSet.cs" />
+    <Compile Include="Models\CognitiveMediaSearch.cs" />
+    <Compile Include="Models\ICognitiveMediaSearch.cs" />
     <Compile Include="Models\IKeyPhraseAnalysisResult.cs" />
     <Compile Include="Models\ILinguisticAnalysisResult.cs" />
     <Compile Include="Models\IReanalyzeAll.cs" />

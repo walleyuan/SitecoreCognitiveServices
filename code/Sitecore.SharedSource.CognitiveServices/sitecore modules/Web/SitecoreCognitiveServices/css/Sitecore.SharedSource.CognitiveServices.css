@@ -211,3 +211,9 @@ fieldset legend { margin-bottom: 10px;}
 .result-display { display: none; position: relative; text-align: center; top: 75px; }
 .threshold-range { margin: 0 20px 0 0; vertical-align: middle; width: 250px; }
 .threshold-range-output { color: #2b2b2b; font-size: 25px; font-weight: bold; vertical-align: middle; }
+
+.search-results { }
+.result-label { font-weight: bold;text-align: center;margin: 10px 0;}
+.result-count {  }
+.result-items { }
+.result-items img { height: 50px;border: 1px solid #dc291e;margin: 3px; }

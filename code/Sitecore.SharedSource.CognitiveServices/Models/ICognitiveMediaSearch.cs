@@ -6,8 +6,9 @@ using Sitecore.SharedSource.CognitiveServices.Search;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models
 {
-    public class CognitiveSearchResultSet : ICognitiveSearchResultSet
+    public interface ICognitiveMediaSearch
     {
-        public List<ICognitiveSearchResult> Results { get; set; }
+        string Database { get; set; }
+        string Language { get; set; }
     }
 }
