@@ -5,7 +5,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
     {
         public string GetQueryString(string key, string defaultValue = "")
         {
-            return Sitecore.Web.WebUtil.GetQueryString(key, defaultValue);
+            string value = Sitecore.Web.WebUtil.GetQueryString(key, defaultValue);
+            return (string.IsNullOrEmpty(value))
+                ? defaultValue
+                : value;
         }
     }
 }

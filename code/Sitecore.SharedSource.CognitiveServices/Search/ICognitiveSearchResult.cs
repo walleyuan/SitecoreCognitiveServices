@@ -4,6 +4,8 @@ using Microsoft.ProjectOxford.Text.Language;
 using Microsoft.ProjectOxford.Text.Sentiment;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.ContentSearch;
+using Sitecore.ContentSearch.Converters;
+using Sitecore.Data;
 using Sitecore.SharedSource.CognitiveServices.Models;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search
@@ -29,5 +31,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
         string LinguisticAnalysisValue { get; set; }
         List<LinguisticAnalysisResult> LinguisticAnalysis { get; }
         string UniqueId { get; set; }
+        string Language { get; set; }
+        string Path { get; set; }
+        string TemplateName { get; set; }
+        string DatabaseName { get; set; }
     }
 }

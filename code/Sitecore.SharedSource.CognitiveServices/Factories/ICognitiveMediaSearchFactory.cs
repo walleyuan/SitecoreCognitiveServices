@@ -8,9 +8,9 @@ using Sitecore.Shell.Framework.Commands;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
-    public interface ICognitiveSearchResultSetFactory
+    public interface ICognitiveMediaSearchFactory
     {
-        ICognitiveSearchResultSet Create();
-        ICognitiveSearchResultSet Create(List<ICognitiveSearchResult> results);
+        ICognitiveMediaSearch Create();
+        ICognitiveMediaSearch Create(string db, string language);
     }
 }

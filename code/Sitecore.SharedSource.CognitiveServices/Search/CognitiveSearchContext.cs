@@ -38,14 +38,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
             {
                 return context.GetQueryable<CognitiveSearchResult>()
-                    .Where(a => a.Language == languageCode && 
+                    .Where(a => a.Language == languageCode &&
                     (a.EmotionAnalysisValue.Contains(query) 
                     || a.FacialAnalysisValue.Contains(query)
-                    || a.KeyPhraseAnalysisValue.Contains(query)
-                    || a.LanguageAnalysisValue.Contains(query)
-                    || a.LinguisticAnalysisValue.Contains(query)
-                    || a.LinkAnalysisValue.Contains(query)
-                    || a.SentimentAnalysisValue.Contains(query)
                     || a.TextAnalysisValue.Contains(query)
                     || a.VisionAnalysisValue.Contains(query)
                     ))

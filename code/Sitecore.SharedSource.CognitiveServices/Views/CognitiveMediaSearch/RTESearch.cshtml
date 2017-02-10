@@ -1,17 +1,36 @@
-﻿@using Sitecore.Shell.Framework.Commands.Masters
-@using Sitecore.Data.Managers
-@model Sitecore.SharedSource.CognitiveServices.Models.ICognitiveSearchResultSet
+﻿@model Sitecore.SharedSource.CognitiveServices.Models.ICognitiveMediaSearch
 
 @{
-    ViewBag.Title = "Cognitive Services: Image Description";
+    ViewBag.Title = "Cognitive Services: Image Search";
     Layout = "~/Views/CognitiveCommon/CognitiveLayout.cshtml";
 }
 
 <div class="rte-search-form">
-    <div>
-        <input class="rte-search-input" type="text"/>
+    <form class="form image-search-form" method="post" action="/SitecoreCognitiveServices/CognitiveMediaSearch/RTESearchQuery">
+        <fieldset>
+            <legend>Image Search</legend>
+            <div class="form-row">
+                <input class="rte-search-input" type="text" />
+            </div>
+            <div>
+                <input type="hidden" id="database" name="database" value="@Model.Database" />
+                <input type="hidden" id="language" name="language" value="@Model.Language" />
+            </div>
+        </fieldset>
+        <div class="search-results">
+            <div class="result-label">There are <span class="result-count"></span> results</div>
+            <div class="result-items"></div>
+        </div>
+        <div class="scWizardButtons">
+            <button class="form-cancel scButton">Cancel</button>
+            <button class="form-submit scButton scButtonPrimary">Update Alt Tags</button>
+        </div>
+    </form>
+    <div class="progress-indicator">
+        <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
     </div>
 </div>
-@if (Model != null) {
-    
-} 
+
+<script src="/sitecore/shell/controls/lib/prototype/prototype.js" type="text/javascript"></script>
+<script src="/sitecore/shell/controls/Browser.js" type="text/javascript"></script>
+<script src="/sitecore/shell/controls/Sitecore.js" type="text/javascript"></script>

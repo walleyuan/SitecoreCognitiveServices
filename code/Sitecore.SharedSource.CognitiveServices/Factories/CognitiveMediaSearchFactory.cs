@@ -8,17 +8,18 @@ using Sitecore.Shell.Framework.Commands;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
-    public class CognitiveSearchResultSetFactory : ICognitiveSearchResultSetFactory
+    public class CognitiveMediaSearchFactory : ICognitiveMediaSearchFactory
     {
-        public ICognitiveSearchResultSet Create()
+        public ICognitiveMediaSearch Create()
         {
-            return new CognitiveSearchResultSet();
+            return new CognitiveMediaSearch();
         }
 
-        public ICognitiveSearchResultSet Create(List<ICognitiveSearchResult> results)
+        public ICognitiveMediaSearch Create(string db, string language)
         {
             var r = Create();
-            r.Results = results;
+            r.Database = db;
+            r.Language = language;
 
             return r;
         }
