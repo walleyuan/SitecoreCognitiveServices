@@ -76,15 +76,15 @@ jQuery(document).ready(function () {
         .click(function (event) {
             event.preventDefault();
 
-            alert("image search form");
+            var idVal = jQuery(".result-items .selected img").data("id");
+            CloseRadWindow(idVal);
         });
 
     jQuery(imageSearchForm + " .form-cancel")
         .click(function (event) {
             event.preventDefault();
 
-            alert("cancelling image search form");
-            scCancel();
+            CloseRadWindow();
         });
 
     var imageSearchInput = ".rte-search-input";
@@ -116,7 +116,7 @@ jQuery(document).ready(function () {
                 jQuery(".search-results").show();
                 for (var i = 0; i < r.Results.length; i++) {
                     var d = r.Results[i];
-                    jQuery(".result-items").append("<div class='result-img-wrap'><img src=" + d.url + " data-id=" + d.id + "/></div>");
+                    jQuery(".result-items").append("<div class='result-img-wrap'><img src=" + d.url + " data-id=" + d.id + " /></div>");
                 }
 
                 jQuery(".result-img-wrap")
@@ -133,39 +133,16 @@ jQuery(document).ready(function () {
     RunQuery();
 });
 
-function getRadWindow() {
-    
-    if (window.parent.radWindow) 
-        return window.parent.radWindow;
-    
-    if (window.parent.frameElement && window.parent.frameElement.radWindow) 
-        return window.parent.frameElement.radWindow;
-   
-    return null;
-}
+function CloseRadWindow(value) {
 
-var isRadWindow = true;
-var radWindow = getRadWindow();
+    var radWindow;
 
-function scClose(image) {
-    if (radWindow != null)
-        radWindow.close({ imageTag: image });
-    else 
-        scCloseWebEdit(image);
-}
+    if (window.radWindow)
+        radWindow = window.radWindow;
+    else if (window.frameElement && window.frameElement.radWindow)
+        radWindow = window.frameElement.radWindow;
+    else
+        window.close();
 
-function scCloseNoLink() {
-    window.parent.close();
-}
-
-function scCancel() {
-    radWindow.close();
-}
-
-function scCloseWebEdit(image) {
-    window.parent.returnValue = image;
-}
-
-if (window.parent.focus && Prototype.Browser.Gecko) {
-    window.parent.focus();
+    radWindow.Close(value);
 }

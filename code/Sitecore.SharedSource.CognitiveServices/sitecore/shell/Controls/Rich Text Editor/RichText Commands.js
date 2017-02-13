@@ -27,7 +27,8 @@ Telerik.Web.UI.Editor.CommandList["InsertCognitiveSitecoreMedia"] = function (co
 
 function scInsertCognitiveSitecoreMedia(sender, returnValue) {
     if (returnValue) {
-        scEditor.pasteHtml(returnValue.media);
+        alert(returnValue);
+        scEditor.pasteHtml(returnValue);
     }
 }
 
