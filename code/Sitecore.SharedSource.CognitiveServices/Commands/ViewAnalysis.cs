@@ -16,8 +16,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
                 return;
 
             context.Parameters.Add(idParam, ctxItem.ID.ToString());
-            context.Parameters.Add(heightParam, DataService.GetFieldDimension(ctxItem, "height", 500, 56));
-            context.Parameters.Add(widthParam, DataService.GetFieldDimension(ctxItem, "width", 810, 20));
+            context.Parameters.Add(heightParam, DataService.GetFieldDimension(ctxItem, "height", 500, 60));
+            context.Parameters.Add(widthParam, DataService.GetFieldDimension(ctxItem, "width", 810, 41));
             
             Sitecore.Context.ClientPage.Start(this, "Run", context.Parameters);
         }

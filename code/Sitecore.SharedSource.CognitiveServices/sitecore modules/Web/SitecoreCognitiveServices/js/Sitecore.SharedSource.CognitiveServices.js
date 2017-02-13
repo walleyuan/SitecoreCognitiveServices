@@ -1,14 +1,15 @@
 jQuery.noConflict();
 jQuery(document).ready(function () {
     
-    jQuery(".nav-btn").click(function () {
-        var selected = "selected";
-        var tab = jQuery(this).attr("rel");
-        jQuery(".nav-btn").removeClass(selected);
-        jQuery(".tab-content").removeClass(selected);
-        jQuery(".tab-content." + tab).addClass(selected);
-        jQuery(this).addClass(selected);
-    });
+    jQuery(".nav-btn")
+        .click(function () {
+            var selected = "selected";
+            var tab = jQuery(this).attr("rel");
+            jQuery(".nav-btn").removeClass(selected);
+            jQuery(".tab-content").removeClass(selected);
+            jQuery(".tab-content." + tab).addClass(selected);
+            jQuery(this).addClass(selected);
+        });
 
     var reanlyzeAllForm = ".reanalyze-all-form";
     jQuery(reanlyzeAllForm + " button")
@@ -87,10 +88,11 @@ jQuery(document).ready(function () {
         });
 
     var imageSearchInput = ".rte-search-input";
-    jQuery(imageSearchInput).on('input', function (e) {
-        clearTimeout(queryObj);
-        queryObj = setTimeout(RunQuery, 500);
-    });
+    jQuery(imageSearchInput)
+        .on('input', function (e) {
+            clearTimeout(queryObj);
+            queryObj = setTimeout(RunQuery, 500);
+        });
 
     function RunQuery() {
 
@@ -114,12 +116,21 @@ jQuery(document).ready(function () {
                 jQuery(".search-results").show();
                 for (var i = 0; i < r.Results.length; i++) {
                     var d = r.Results[i];
-                    jQuery(".result-items").append("<img src=" + d.url + " data-id=" + d.id + "/>");
+                    jQuery(".result-items").append("<div class='result-img-wrap'><img src=" + d.url + " data-id=" + d.id + "/></div>");
                 }
+
+                jQuery(".result-img-wrap")
+                    .on("click", function () {
+                        jQuery(".result-items .selected").removeClass("selected");
+                        jQuery(this).addClass("selected");
+                    });
             }).always(function () {
                 jQuery(".progress-indicator").hide();
             });
     }
+
+    //get results for the first load
+    RunQuery();
 });
 
 function getRadWindow() {
