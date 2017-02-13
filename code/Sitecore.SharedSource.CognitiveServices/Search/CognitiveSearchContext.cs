@@ -26,9 +26,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
             {
                 return context.GetQueryable<CognitiveSearchResult>()
-                    .FirstOrDefault(a => 
+                    .Where(a => 
                         a.UniqueId.Contains(itemId) 
-                        && a.Language == languageCode);
+                        && a.Language == languageCode)
+                    .Take(1)
+                    .FirstOrDefault();
             }
         }
 
