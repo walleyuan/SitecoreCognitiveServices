@@ -222,5 +222,5 @@ fieldset legend { margin-bottom: 10px;}
 .result-img-wrap { height: 80px;border: 1px solid #2b2b2b;text-align: center;overflow: hidden; margin: 2px 4px;display: inline-block;}
 .result-img-wrap.selected { border: 2px solid #dc291e;margin: 1px 3px;}
 .result-img-wrap img { height: 80px;display: block;}
-
+.search-submit { display: none;}
 .scWizardButtons { left: 0px;}

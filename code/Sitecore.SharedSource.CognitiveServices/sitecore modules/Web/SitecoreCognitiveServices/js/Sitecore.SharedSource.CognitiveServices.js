@@ -97,6 +97,14 @@ jQuery(document).ready(function () {
             queryObj = setTimeout(RunQuery, 500);
         });
 
+    jQuery(imageSearchForm + " .search-submit")
+        .click(function (event) {
+            event.preventDefault();
+
+            clearTimeout(queryObj);
+            RunQuery();
+        });
+
     function RunQuery() {
 
         var queryText = jQuery(imageSearchInput).val();
