@@ -284,11 +284,8 @@
     <Compile Include="Repositories\ICognitiveRepositoryContext.cs" />
     <Compile Include="Repositories\Knowledge\EntityLinkingRepository.cs" />
     <Compile Include="Repositories\Knowledge\IEntityLinkingRepository.cs" />
-    <Compile Include="Repositories\Knowledge\IEntityLinkingServiceClient.cs" />
     <Compile Include="Repositories\Language\ILanguageRepository.cs" />
-    <Compile Include="Repositories\Language\ILanguageClient.cs" />
     <Compile Include="Repositories\Language\ISentimentRepository.cs" />
-    <Compile Include="Repositories\Language\ISentimentClient.cs" />
     <Compile Include="Repositories\Language\LanguageRepository.cs" />
     <Compile Include="Repositories\Language\SentimentRepository.cs" />
     <Compile Include="Repositories\Speech\ISpeakerIdentificationRepository.cs" />
@@ -300,7 +297,6 @@
     <Compile Include="Repositories\Vision\EmotionRepository.cs" />
     <Compile Include="Repositories\Vision\FaceRepository.cs" />
     <Compile Include="Repositories\Vision\IEmotionRepository.cs" />
-    <Compile Include="Repositories\Vision\IEmotionServiceClient.cs" />
     <Compile Include="Repositories\Vision\IFaceRepository.cs" />
     <Compile Include="Repositories\Vision\IVisionRepository.cs" />
     <Compile Include="Repositories\Vision\VisionRepository.cs" />
