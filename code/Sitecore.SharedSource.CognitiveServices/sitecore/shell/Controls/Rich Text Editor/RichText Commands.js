@@ -1,13 +1,6 @@
 /* This file is shared between older developer center rich text editor and the new EditorPage, that is used exclusively by Content Editor */
 Telerik.Web.UI.Editor.CommandList["InsertCognitiveSitecoreMedia"] = function (commandName, editor, args) {
-    var html = editor.getSelectionHtml();
-    var id;
-
-    // inserted media in form of <img src="-/media/CC2393E7CA004EADB4A155BE4761086B.ashx" />
-    if (!id) {
-        id = GetMediaID(html);
-    }
-
+    
     scEditor = editor;
 
     editor.showExternalDialog(

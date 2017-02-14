@@ -1,6 +1,7 @@
 jQuery.noConflict();
 jQuery(document).ready(function () {
     
+    //toggles tabs based on nav clicks
     jQuery(".nav-btn")
         .click(function () {
             var selected = "selected";
@@ -11,6 +12,7 @@ jQuery(document).ready(function () {
             jQuery(this).addClass(selected);
         });
 
+    //handles reanalyze all form
     var reanlyzeAllForm = ".reanalyze-all-form";
     jQuery(reanlyzeAllForm + " button")
         .click(function(event) {
@@ -37,6 +39,7 @@ jQuery(document).ready(function () {
             });
         });
 
+    //handles the submit on the set all alts form
     var setAltsAllForm = ".set-alt-all-form";
     jQuery(setAltsAllForm + " button")
         .click(function (event) {
@@ -70,6 +73,7 @@ jQuery(document).ready(function () {
             });
         });
 
+    //closes modal and send selected image back to RTE
     var queryObj;
     var imageSearchForm = ".image-search-form";
     jQuery(imageSearchForm + " .form-submit")
@@ -83,6 +87,7 @@ jQuery(document).ready(function () {
                 alert("You need to select an image.");
         });
 
+    //closes modal on cancel press
     jQuery(imageSearchForm + " .form-cancel")
         .click(function (event) {
             event.preventDefault();
@@ -90,6 +95,7 @@ jQuery(document).ready(function () {
             CloseRadWindow();
         });
 
+    //will perform search if you type and wait
     var imageSearchInput = ".rte-search-input";
     jQuery(imageSearchInput)
         .on('input', function (e) {
@@ -97,6 +103,7 @@ jQuery(document).ready(function () {
             queryObj = setTimeout(RunQuery, 500);
         });
 
+    //performs search on 'enter-press' on the form
     jQuery(imageSearchForm + " .search-submit")
         .click(function (event) {
             event.preventDefault();
@@ -105,6 +112,7 @@ jQuery(document).ready(function () {
             RunQuery();
         });
 
+    //performs image search
     function RunQuery() {
 
         var queryText = jQuery(imageSearchInput).val();
@@ -144,6 +152,7 @@ jQuery(document).ready(function () {
     RunQuery();
 });
 
+//closes the search modal and passes value back to the RTE
 function CloseRadWindow(value) {
 
     var radWindow;
