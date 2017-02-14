@@ -334,6 +334,7 @@
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Sitecore.SharedSource.CognitiveServices.js" />
     <Content Include="sitecore\shell\Controls\Rich Text Editor\RichText Commands.js" />
+    <Content Include="sitecore\shell\Themes\Standard\Default\Content Manager.css" />
     <Content Include="Views\CognitiveAnalysis\ImageAnalysis.cshtml" />
     <Content Include="Views\CognitiveAnalysis\TextAnalysis.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Common\Rectangle.cshtml" />
