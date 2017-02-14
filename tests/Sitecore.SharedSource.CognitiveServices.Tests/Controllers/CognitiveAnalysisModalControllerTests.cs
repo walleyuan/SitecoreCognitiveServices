@@ -15,6 +15,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Tests.Controllers
         private ICognitiveSearchContext Searcher;
         private ICognitiveImageAnalysisFactory ImageAnalysisFactory;
         private ICognitiveTextAnalysisFactory TextAnalysisFactory;
+        private IReanalyzeAllFactory ReanalyzeAllFactory;
         private ISitecoreDataService DataService;
 
         [SetUp]
@@ -23,23 +24,25 @@ namespace Sitecore.SharedSource.CognitiveServices.Tests.Controllers
             Searcher = Substitute.For<ICognitiveSearchContext>();
             ImageAnalysisFactory = Substitute.For<ICognitiveImageAnalysisFactory>();
             TextAnalysisFactory = Substitute.For<ICognitiveTextAnalysisFactory>();
+            ReanalyzeAllFactory = Substitute.For<IReanalyzeAllFactory>();
             DataService = Substitute.For<ISitecoreDataService>();
         }
 
         [Test]
         public void Constructor_NullParameters_Throws()
         {
-            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(null, ImageAnalysisFactory, TextAnalysisFactory,DataService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(Searcher, null, TextAnalysisFactory, DataService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(Searcher, ImageAnalysisFactory, null, DataService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(Searcher, ImageAnalysisFactory, TextAnalysisFactory, null));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(null, ImageAnalysisFactory, TextAnalysisFactory, ReanalyzeAllFactory, DataService));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(Searcher, null, TextAnalysisFactory, ReanalyzeAllFactory, DataService));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(Searcher, ImageAnalysisFactory, null, ReanalyzeAllFactory, DataService));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(Searcher, ImageAnalysisFactory, TextAnalysisFactory, null, DataService));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveAnalysisController(Searcher, ImageAnalysisFactory, TextAnalysisFactory, ReanalyzeAllFactory, null));
         }
 
         [Test]
         public void ID_Empty_Returns_NullModel()
         {
             //arrange
-            CognitiveAnalysisController controller = new CognitiveAnalysisController(Searcher, ImageAnalysisFactory, TextAnalysisFactory, DataService);
+            CognitiveAnalysisController controller = new CognitiveAnalysisController(Searcher, ImageAnalysisFactory, TextAnalysisFactory, ReanalyzeAllFactory, DataService);
 
             //act
             var result = controller.Reanalyze(string.Empty, "en", "master") as ViewResult;
@@ -53,7 +56,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Tests.Controllers
         public void ValidID_Returns_NoChoices()
         {
             //arrange
-            CognitiveAnalysisController controller = new CognitiveAnalysisController(Searcher, ImageAnalysisFactory, TextAnalysisFactory, DataService);
+            CognitiveAnalysisController controller = new CognitiveAnalysisController(Searcher, ImageAnalysisFactory, TextAnalysisFactory, ReanalyzeAllFactory, DataService);
 
             //act
             var result = controller.Reanalyze(string.Empty, "en", "master") as ViewResult;
