@@ -76,8 +76,11 @@ jQuery(document).ready(function () {
         .click(function (event) {
             event.preventDefault();
 
-            var idVal = jQuery(".result-items .selected img").data("id");
-            CloseRadWindow(idVal);
+            var img = jQuery(".result-items .selected");
+            if (img.length)
+                CloseRadWindow(jQuery(".result-items .selected").html());
+            else
+                alert("You need to select an image.");
         });
 
     jQuery(imageSearchForm + " .form-cancel")
@@ -116,7 +119,7 @@ jQuery(document).ready(function () {
                 jQuery(".search-results").show();
                 for (var i = 0; i < r.Results.length; i++) {
                     var d = r.Results[i];
-                    jQuery(".result-items").append("<div class='result-img-wrap'><img src=" + d.url + " data-id=" + d.id + " /></div>");
+                    jQuery(".result-items").append("<div class='result-img-wrap'><img src=\"" + d.url + "\" alt=\"" + d.alt + "\" /></div>");
                 }
 
                 jQuery(".result-img-wrap")

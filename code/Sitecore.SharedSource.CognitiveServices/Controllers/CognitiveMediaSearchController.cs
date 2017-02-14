@@ -56,28 +56,20 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
                 Results = csr.Select(r => new JsonResult(DataService, r)),
                 ResultCount = csr.Count
             });
-            
-            //SheerResponse.Eval("scCancel()");
-            //SheerResponse.Eval("scClose('helloworld')");
-
-            /*{"commands":[{"command":"Eval","value":"scClose(\"<img height=\\\"550\\\" Alt=\\\"a woman holding a cell
-             phone\\\" width=\\\"1600\\\" _languageInserted=\\\"true\\\" Src=\\\"-/media/04dad0fddb664070881f17264ca257e1
-            .ashx?la=en\\\"/>\")"},{"command":"RegisterKey","value":"javascript:scForm.browser.getControl('OK').click
-            ()","keycode":"13","group":""},{"command":"RegisterKey","value":"javascript:scForm.browser.getControl
-            ('Cancel').click()","keycode":"27","group":""}]}*/
         }
         
         public class JsonResult
         {
             public string url;
-            public string path;
-            public string id;
+            public string alt;
 
             public JsonResult(ISitecoreDataService dataService, ICognitiveSearchResult result)
             {
+                MediaItem m = dataService.GetItemByUri(result.UniqueId);
+
                 try
                 {
-                    url = MediaManager.GetMediaUrl(dataService.GetItemByUri(result.UniqueId));
+                    url = MediaManager.GetMediaUrl(m);
                 }
                 catch (Exception ex)
                 {
@@ -85,19 +77,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
                 }
                 try
                 {
-                    path = result.Path;
+                    alt = m.Alt;
                 }
                 catch (Exception ex)
                 {
-                    path = string.Empty;
-                }
-                try
-                {
-                    id = ItemUri.Parse(result.UniqueId).ItemID.ToString();
-                }
-                catch (Exception ex)
-                {
-                    id = string.Empty;
+                    alt = string.Empty;
                 }
             }
         }
