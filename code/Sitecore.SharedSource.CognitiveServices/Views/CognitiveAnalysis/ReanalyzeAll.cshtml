@@ -6,27 +6,29 @@
     Layout = "~/Views/CognitiveCommon/CognitiveLayout.cshtml";
 }
 
-@if (Model != null)
-{
-    <form class="form reanalyze-all-form" method="post" action="/SitecoreCognitiveServices/CognitiveAnalysis/ReanalyzeAll">
-        <fieldset>
-            <div class="form-row">
-                This will reanalyze all the descendant media items
+<div class="frame">
+    @if (Model != null)
+    {
+        <form class="form reanalyze-all-form" method="post" action="/SitecoreCognitiveServices/CognitiveAnalysis/ReanalyzeAll">
+            <fieldset>
+                <div class="form-row">
+                    This will reanalyze all the descendant media items
+                </div>
+                <div>
+                    <input type="hidden" id="id" name="id" value="@Model.ItemId" />
+                    <input type="hidden" id="database" name="database" value="@Model.Database" />
+                    <input type="hidden" id="language" name="language" value="@Model.Language" />
+                </div>
+            </fieldset>
+            <div class="scWizardButtons">
+                <button class="form-submit scButton scButtonPrimary">Reanalyze Descendents</button>
             </div>
-            <div>
-                <input type="hidden" id="id" name="id" value="@Model.ItemId" />
-                <input type="hidden" id="database" name="database" value="@Model.Database" />
-                <input type="hidden" id="language" name="language" value="@Model.Language" />    
-            </div>
-        </fieldset>
-        <div class="scWizardButtons">
-            <button class="form-submit scButton scButtonPrimary">Reanalyze Descendents</button>
+        </form>
+        <div class="progress-indicator">
+            <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
         </div>
-    </form>
-    <div class="progress-indicator">
-        <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
-    </div>
-    <div class="result-display">
-        There were <span class="result-count">@Model.ItemCount</span> items updated.
-    </div>
-}
+        <div class="result-display">
+            There were <span class="result-count">@Model.ItemCount</span> items updated.
+        </div>
+    }
+</div>

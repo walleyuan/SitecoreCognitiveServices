@@ -103,7 +103,7 @@ jQuery(document).ready(function () {
         var langValue = jQuery(imageSearchForm + " #language").attr("value");
         var dbValue = jQuery(imageSearchForm + " #database").attr("value");
 
-        jQuery(".progress-indicator").show();
+        jQuery(imageSearchForm + " .progress-indicator").show();
         jQuery(".search-results").hide();
 
         jQuery.post(
@@ -128,7 +128,7 @@ jQuery(document).ready(function () {
                         jQuery(this).addClass("selected");
                     });
             }).always(function () {
-                jQuery(".progress-indicator").hide();
+                jQuery(imageSearchForm + " .progress-indicator").hide();
             });
     }
 
