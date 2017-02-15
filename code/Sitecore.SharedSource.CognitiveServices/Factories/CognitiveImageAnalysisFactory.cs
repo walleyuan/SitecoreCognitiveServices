@@ -9,15 +9,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
     public class CognitiveImageAnalysisFactory : ICognitiveImageAnalysisFactory
     {
         protected readonly ISitecoreDataService DataService;
+        protected readonly IReflectionUtilWrapper ReflectionUtil;
 
-        public CognitiveImageAnalysisFactory(ISitecoreDataService dataService)
+        public CognitiveImageAnalysisFactory(
+            ISitecoreDataService dataService,
+            IReflectionUtilWrapper reflectionUtil)
         {
             DataService = dataService;
+            ReflectionUtil = reflectionUtil;
         }
 
         public ICognitiveImageAnalysis Create()
         {
-            return new CognitiveImageAnalysis();
+            return ReflectionUtil.CreateObjectFromSettings<ICognitiveImageAnalysis>("CognitiveService.Types.ICognitiveImageAnalysis");
         }
 
         public ICognitiveImageAnalysis Create(ICognitiveSearchResult result)

@@ -225,7 +225,11 @@
     <Compile Include="Factories\ImageDescriptionFactory.cs" />
     <Compile Include="Factories\IImageDescriptionFactory.cs" />
     <Compile Include="Factories\ICognitiveTextAnalysisFactory.cs" />
+    <Compile Include="Foundation\SettingsWrapper.cs" />
+    <Compile Include="Foundation\ISettingsWrapper.cs" />
+    <Compile Include="Foundation\ReflectionUtilWrapper.cs" />
     <Compile Include="Foundation\ISitecoreDataService.cs" />
+    <Compile Include="Foundation\IReflectionUtilWrapper.cs" />
     <Compile Include="Foundation\SitecoreDataService.cs" />
     <Compile Include="Models\CognitiveImageAnalysis.cs" />
     <Compile Include="Models\CognitiveTextAnalysis.cs" />

@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models;
-using Sitecore.SharedSource.CognitiveServices.Search;
-using Sitecore.Shell.Framework.Commands;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
     public class CognitiveMediaSearchFactory : ICognitiveMediaSearchFactory
     {
+        protected readonly IReflectionUtilWrapper ReflectionUtil;
+
+        public CognitiveMediaSearchFactory(IReflectionUtilWrapper reflectionUtil)
+        {
+            ReflectionUtil = reflectionUtil;
+        }
+
         public ICognitiveMediaSearch Create()
         {
-            return new CognitiveMediaSearch();
+            return ReflectionUtil.CreateObjectFromSettings<ICognitiveMediaSearch>("CognitiveService.Types.ICognitiveMediaSearch");
         }
 
         public ICognitiveMediaSearch Create(string db, string language)

@@ -1,13 +1,21 @@
-﻿using Sitecore.SharedSource.CognitiveServices.Models;
+﻿using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.SharedSource.CognitiveServices.Search;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
     public class CognitiveTextAnalysisFactory : ICognitiveTextAnalysisFactory
     {
+        protected readonly IReflectionUtilWrapper ReflectionUtil;
+
+        public CognitiveTextAnalysisFactory(IReflectionUtilWrapper reflectionUtil)
+        {
+            ReflectionUtil = reflectionUtil;
+        }
+
         public ICognitiveTextAnalysis Create()
         {
-            return new CognitiveTextAnalysis();
+            return ReflectionUtil.CreateObjectFromSettings<ICognitiveTextAnalysis>("CognitiveService.Types.ICognitiveTextAnalysis");
         }
 
         public ICognitiveTextAnalysis Create(ICognitiveSearchResult result)
