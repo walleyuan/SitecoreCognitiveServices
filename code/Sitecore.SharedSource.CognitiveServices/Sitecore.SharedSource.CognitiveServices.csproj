@@ -232,6 +232,7 @@
     <Compile Include="Foundation\IReflectionUtilWrapper.cs" />
     <Compile Include="Foundation\SitecoreDataService.cs" />
     <Compile Include="Models\CognitiveImageAnalysis.cs" />
+    <Compile Include="Models\ICognitiveMediaSearchJsonResult.cs" />
     <Compile Include="Models\CognitiveTextAnalysis.cs" />
     <Compile Include="Models\ICognitiveImageAnalysis.cs" />
     <Compile Include="Models\CognitiveMediaSearch.cs" />
@@ -243,6 +244,7 @@
     <Compile Include="Models\KeyPhraseAnalysisResult.cs" />
     <Compile Include="Models\LinguisticAnalysisResult.cs" />
     <Compile Include="Models\LinkAnalysisResult.cs" />
+    <Compile Include="Models\CognitiveMediaSearchJsonResult.cs" />
     <Compile Include="Models\SetAltTagsAll.cs" />
     <Compile Include="Models\ISetAltTagsAll.cs" />
     <Compile Include="Models\ReanalyzeAll.cs" />

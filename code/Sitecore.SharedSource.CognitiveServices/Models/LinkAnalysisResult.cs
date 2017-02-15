@@ -13,7 +13,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Models
         public string HighlightLinks(string htmlEntity, string cssClass, double scoreThreshold)
         {
             string s = FieldValue;
-            foreach (EntityLink l in EntityAnalysis.Where(a => a.Score > scoreThreshold))
+            foreach (EntityLink l in EntityAnalysis.Where(a => a.Score >= scoreThreshold))
             {
                 foreach (Match m in l.Matches)
                 {
