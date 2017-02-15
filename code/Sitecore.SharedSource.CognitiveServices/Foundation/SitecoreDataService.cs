@@ -8,8 +8,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
 {
     public class SitecoreDataService : ISitecoreDataService
     {
-        public static readonly Guid MediaFolderID = new Guid("{FE5DD826-48C6-436D-B87A-7C4210C7413B}");
-
         public Database GetDatabase(string dbName) => Sitecore.Configuration.Factory.GetDatabase(dbName);
         public ID GetID(string itemId)
         {
@@ -52,12 +50,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
         /// <returns></returns>
         public bool IsMediaItem(Item i)
         {
-            return i.Paths.IsMediaItem && !i.Template.ID.Guid.Equals(MediaFolderID);
+            return i.Paths.IsMediaItem && !i.Template.ID.Guid.Equals(TemplateIDs.MediaFolder.Guid);
         }
 
         public bool IsMediaFolder(Item i)
         {
-            return i.Template.ID.Guid.Equals(MediaFolderID);
+            return i.Template.ID.Guid.Equals(TemplateIDs.MediaFolder.Guid) || i.ID.Guid.Equals(ItemIDs.MediaLibraryRoot.Guid);
         }
 
         public Item ExtractItem(CommandContext context)
