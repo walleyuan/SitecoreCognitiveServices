@@ -278,8 +278,6 @@
     <Compile Include="Services\Vision\EmotionService.cs" />
     <Compile Include="Services\Knowledge\EntityLinkingService.cs" />
     <Compile Include="Services\Vision\FaceService.cs" />
-    <Compile Include="Services\IApiService.cs" />
-    <Compile Include="Services\ApiService.cs" />
     <Compile Include="Repositories\IApiKeys.cs" />
     <Compile Include="Repositories\ICognitiveRepositoryContext.cs" />
     <Compile Include="Repositories\Knowledge\EntityLinkingRepository.cs" />

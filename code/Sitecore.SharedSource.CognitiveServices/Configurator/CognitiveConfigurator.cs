@@ -23,45 +23,49 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
     {
         public void Configure(IServiceCollection serviceCollection)
         {
+            //system
             serviceCollection.AddSingleton<IApiKeys, ApiKeys>();
-            serviceCollection.AddSingleton<ICognitiveRepositoryContext, CognitiveRepositoryContext>();
-            serviceCollection.AddSingleton<IEmotionRepository, EmotionRepository>();
-            serviceCollection.AddSingleton<IEntityLinkingRepository, EntityLinkingRepository>();
-            serviceCollection.AddSingleton<IFaceRepository, FaceRepository>();
-            serviceCollection.AddSingleton<ILanguageRepository, LanguageRepository>();
-            serviceCollection.AddSingleton<ILinguisticRepository, LinguisticRepository>();
-            serviceCollection.AddSingleton<ISentimentRepository, SentimentRepository>();
-            serviceCollection.AddSingleton<ISpeakerIdentificationRepository, SpeakerIdentificationRepository>();
-            serviceCollection.AddSingleton<ISpeakerVerificationRepository, SpeakerVerificationRepository>();
-            serviceCollection.AddSingleton<IVideoRepository, VideoRepository>();
-            serviceCollection.AddSingleton<IVisionRepository, VisionRepository>();
-            serviceCollection.AddSingleton<IWebUtilWrapper, WebUtilWrapper>();
-
-            serviceCollection.AddSingleton<IApiService, ApiService>();
-            serviceCollection.AddSingleton<ICognitiveServiceContext, CognitiveServiceContext>();
-            serviceCollection.AddSingleton<IEmotionService, EmotionService>();
-            serviceCollection.AddSingleton<IEntityLinkingService, EntityLinkingService>();
-            serviceCollection.AddSingleton<IFaceService, FaceService>();
-            serviceCollection.AddSingleton<ILanguageService, LanguageService>();
-            serviceCollection.AddSingleton<ILinguisticService, LinguisticService>();
-            serviceCollection.AddSingleton<ISentimentService, SentimentService>();
-            serviceCollection.AddSingleton<ISpeakerIdentificationService, SpeakerIdentificationService>();
-            serviceCollection.AddSingleton<ISpeakerVerificationService, SpeakerVerificationService>();
-            serviceCollection.AddSingleton<IVideoService, VideoService>();
-            serviceCollection.AddSingleton<IVisionService, VisionService>();
+            serviceCollection.AddTransient<ISitecoreDataService, SitecoreDataService>();
+            serviceCollection.AddTransient<IWebUtilWrapper, WebUtilWrapper>();
             
-            serviceCollection.AddSingleton<ICognitiveImageAnalysisFactory, CognitiveImageAnalysisFactory>();
-            serviceCollection.AddSingleton<ICognitiveTextAnalysisFactory, CognitiveTextAnalysisFactory>();
-            serviceCollection.AddSingleton<IImageDescriptionFactory, ImageDescriptionFactory>();
-            serviceCollection.AddSingleton<IReanalyzeAllFactory, ReanalyzeAllFactory>();
-            serviceCollection.AddSingleton<ISetAltTagsAllFactory, SetAltTagsAllFactory>();
-            serviceCollection.AddSingleton<ICognitiveMediaSearchFactory, CognitiveMediaSearchFactory>();
+            //repositories
+            serviceCollection.AddTransient<ICognitiveRepositoryContext, CognitiveRepositoryContext>();
+            serviceCollection.AddTransient<IEmotionRepository, EmotionRepository>();
+            serviceCollection.AddTransient<IEntityLinkingRepository, EntityLinkingRepository>();
+            serviceCollection.AddTransient<IFaceRepository, FaceRepository>();
+            serviceCollection.AddTransient<ILanguageRepository, LanguageRepository>();
+            serviceCollection.AddTransient<ILinguisticRepository, LinguisticRepository>();
+            serviceCollection.AddTransient<ISentimentRepository, SentimentRepository>();
+            serviceCollection.AddTransient<ISpeakerIdentificationRepository, SpeakerIdentificationRepository>();
+            serviceCollection.AddTransient<ISpeakerVerificationRepository, SpeakerVerificationRepository>();
+            serviceCollection.AddTransient<IVideoRepository, VideoRepository>();
+            serviceCollection.AddTransient<IVisionRepository, VisionRepository>();
 
+            //services
+            serviceCollection.AddTransient<ICognitiveServiceContext, CognitiveServiceContext>();
+            serviceCollection.AddTransient<IEmotionService, EmotionService>();
+            serviceCollection.AddTransient<IEntityLinkingService, EntityLinkingService>();
+            serviceCollection.AddTransient<IFaceService, FaceService>();
+            serviceCollection.AddTransient<ILanguageService, LanguageService>();
+            serviceCollection.AddTransient<ILinguisticService, LinguisticService>();
+            serviceCollection.AddTransient<ISentimentService, SentimentService>();
+            serviceCollection.AddTransient<ISpeakerIdentificationService, SpeakerIdentificationService>();
+            serviceCollection.AddTransient<ISpeakerVerificationService, SpeakerVerificationService>();
+            serviceCollection.AddTransient<IVideoService, VideoService>();
+            serviceCollection.AddTransient<IVisionService, VisionService>();
+            
+            //factories
+            serviceCollection.AddTransient<ICognitiveImageAnalysisFactory, CognitiveImageAnalysisFactory>();
+            serviceCollection.AddTransient<ICognitiveTextAnalysisFactory, CognitiveTextAnalysisFactory>();
+            serviceCollection.AddTransient<IImageDescriptionFactory, ImageDescriptionFactory>();
+            serviceCollection.AddTransient<IReanalyzeAllFactory, ReanalyzeAllFactory>();
+            serviceCollection.AddTransient<ISetAltTagsAllFactory, SetAltTagsAllFactory>();
+            serviceCollection.AddTransient<ICognitiveMediaSearchFactory, CognitiveMediaSearchFactory>();
+
+            //search
             serviceCollection.AddTransient<ICognitiveSearchContext, CognitiveSearchContext>();
             serviceCollection.AddTransient<ICognitiveSearchResult, CognitiveSearchResult>();
             
-            serviceCollection.AddTransient<ISitecoreDataService, SitecoreDataService>();
-
             serviceCollection.AddMvcControllersInCurrentAssembly();
         }
     }

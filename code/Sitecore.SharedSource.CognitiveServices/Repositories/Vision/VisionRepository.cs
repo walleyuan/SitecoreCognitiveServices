@@ -4,19 +4,14 @@ using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Vision;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.Diagnostics;
-using Sitecore.SharedSource.CognitiveServices.Services;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
 {
     public class VisionRepository : VisionServiceClient, IVisionRepository
     {
-        public IApiService ApiService;
-
         public VisionRepository(
-            IApiKeys apiKeys,
-            IApiService apiService) : base(apiKeys.ComputerVision)
+            IApiKeys apiKeys) : base(apiKeys.ComputerVision)
         {
-            ApiService = apiService;
         }
         
         #region AnalyzeImageAsync
