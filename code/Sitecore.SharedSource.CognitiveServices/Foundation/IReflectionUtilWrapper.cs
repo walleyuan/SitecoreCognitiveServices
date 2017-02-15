@@ -10,5 +10,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
         T CreateObject<T>(string name);
         T CreateObject<T>(string assembly, string classType, object[] constructorParams);
         T CreateObjectFromSettings<T>(string settingsTypeKey);
+        T CreateObjectFromSettings<T>(string settingsTypeKey, object[] constructorParams);
     }
 }

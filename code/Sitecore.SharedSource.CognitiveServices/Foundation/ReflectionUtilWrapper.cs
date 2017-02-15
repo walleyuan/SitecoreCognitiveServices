@@ -37,5 +37,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
         {
             return (T)ReflectionUtil.CreateObject(Settings.GetSetting(settingsTypeKey));
         }
+
+        public T CreateObjectFromSettings<T>(string settingsTypeKey, object[] constructorParams)
+        {
+            string[] assemblyClass = Settings.GetSetting(settingsTypeKey).Split(new[] {","}, StringSplitOptions.RemoveEmptyEntries);
+            if (assemblyClass.Length < 2)
+                return default(T);
+
+            return (T)ReflectionUtil.CreateObject(assemblyClass[1], assemblyClass[0], constructorParams);
+        }
     }
 }
