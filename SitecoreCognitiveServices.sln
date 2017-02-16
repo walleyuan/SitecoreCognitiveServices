@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.Cogni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.Tests", "tests\Sitecore.SharedSource.CognitiveServices.Tests\Sitecore.SharedSource.CognitiveServices.Tests.csproj", "{C0B780DF-9D25-4EDF-89BE-76177B6BF498}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.LaunchDemo", "code\Sitecore.SharedSource.CognitiveServices.LaunchDemo\Sitecore.SharedSource.CognitiveServices.LaunchDemo.csproj", "{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C0B780DF-9D25-4EDF-89BE-76177B6BF498}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0B780DF-9D25-4EDF-89BE-76177B6BF498}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0B780DF-9D25-4EDF-89BE-76177B6BF498}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
