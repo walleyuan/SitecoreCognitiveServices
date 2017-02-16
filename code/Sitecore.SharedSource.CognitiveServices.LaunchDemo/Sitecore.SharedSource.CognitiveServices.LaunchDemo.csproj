@@ -150,6 +150,12 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sitecore.SharedSource.CognitiveServices\Sitecore.SharedSource.CognitiveServices.csproj">
+      <Project>{fdc8d88e-569d-45df-b1d9-0f0a75b640cc}</Project>
+      <Name>Sitecore.SharedSource.CognitiveServices</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
