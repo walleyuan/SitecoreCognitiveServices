@@ -209,7 +209,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\CognitiveAnalysisModalControllerTests.cs" />
+    <Compile Include="Controllers\CognitiveAnalysisControllerTests.cs" />
     <Compile Include="Models\KeyPhraseAnalysisResultTests.cs" />
     <Compile Include="Models\LinguisticAnalysisResultTests.cs" />
     <Compile Include="Models\LinkAnalysisResultTests.cs" />
