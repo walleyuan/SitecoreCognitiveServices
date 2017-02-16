@@ -15,8 +15,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.App_Start
 
         {
             routes.MapRoute(
-                name: "SitecoreCognitiveServices.LaunchDemo", 
-                url: "LaunchCognitiveServices/{controller}/{action}"
+                name: "CognitiveLaunchDemo", 
+                url: "CognitiveLaunchDemo/{controller}/{action}"
             );
         }
     }
@@ -25,7 +25,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.App_Start
     {
         public void Process(PipelineArgs args)
         {
-            Log.Info("Sitecore is loading Launch Cognitive Services Routes", this);
+            Log.Info("Sitecore is loading Cognitive Launch Demo Routes", this);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }
