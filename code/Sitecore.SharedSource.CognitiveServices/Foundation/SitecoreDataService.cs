@@ -55,7 +55,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
 
         public bool IsMediaFolder(Item i)
         {
-            return i.Template.ID.Guid.Equals(TemplateIDs.MediaFolder.Guid) || i.ID.Guid.Equals(ItemIDs.MediaLibraryRoot.Guid);
+            return i.Template.ID.Guid.Equals(TemplateIDs.MediaFolder.Guid) || i.ID.Guid.Equals(ItemIDs.MediaLibraryRoot.Guid) || i.TemplateID.Guid.Equals(TemplateIDs.Node);
         }
 
         public Item ExtractItem(CommandContext context)
