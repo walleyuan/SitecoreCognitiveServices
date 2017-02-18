@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Repositories;
+using Sitecore.SharedSource.CognitiveServices.Services.Vision;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
 {
@@ -21,12 +20,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
 
             MediaItem m = indexItem;
 
-            var crContext = DependencyResolver.Current.GetService<ICognitiveRepositoryContext>();
-            if (crContext == null)
+            var visionService = DependencyResolver.Current.GetService<IVisionService>();
+            if (visionService == null)
                 return string.Empty;
             
             try {
-                var result = Task.Run(async () => await crContext.VisionRepository.RecognizeTextAsync(m.GetMediaStream(), "en", true)).Result;
+                var result = visionService.RecognizeText(m.GetMediaStream(), "en", true);
                 var json = new JavaScriptSerializer().Serialize(result);
 
                 return json;

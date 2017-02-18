@@ -1,14 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Web.Script.Serialization;
 using Microsoft.ProjectOxford.Emotion.Contract;
-using Microsoft.ProjectOxford.EntityLinking.Contract;
 using Microsoft.ProjectOxford.Text.Language;
 using Microsoft.ProjectOxford.Text.Sentiment;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.SharedSource.CognitiveServices.Models;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
 using Face = Microsoft.ProjectOxford.Face.Contract.Face;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search

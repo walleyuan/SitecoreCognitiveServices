@@ -29,9 +29,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<IWebUtilWrapper, WebUtilWrapper>();
             serviceCollection.AddTransient<ISettingsWrapper, SettingsWrapper>();
             serviceCollection.AddTransient<IReflectionUtilWrapper, ReflectionUtilWrapper>();
+            serviceCollection.AddTransient<ILogWrapper, LogWrapper>();
 
             //repositories
-            serviceCollection.AddTransient<ICognitiveRepositoryContext, CognitiveRepositoryContext>();
             serviceCollection.AddTransient<IEmotionRepository, EmotionRepository>();
             serviceCollection.AddTransient<IEntityLinkingRepository, EntityLinkingRepository>();
             serviceCollection.AddTransient<IFaceRepository, FaceRepository>();

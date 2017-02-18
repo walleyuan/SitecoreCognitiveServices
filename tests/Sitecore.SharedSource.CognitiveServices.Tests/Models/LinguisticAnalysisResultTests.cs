@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using Sitecore.SharedSource.CognitiveServices.Models;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Tests.Models
 {

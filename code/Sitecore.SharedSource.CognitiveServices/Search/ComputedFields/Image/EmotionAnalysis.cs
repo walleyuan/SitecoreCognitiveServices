@@ -1,10 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Repositories;
+using Sitecore.SharedSource.CognitiveServices.Services.Vision;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
 {
@@ -21,18 +19,17 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
 
             MediaItem m = indexItem;
 
-            var crContext = DependencyResolver.Current.GetService<ICognitiveRepositoryContext>();
-            if (crContext == null)
+            var emotionService = DependencyResolver.Current.GetService<IEmotionService>();
+            if (emotionService == null)
                 return string.Empty;
             
-            try {
-                var result = Task.Run(async () => await crContext.EmotionRepository.RecognizeAsync(m.GetMediaStream())).Result;
-                var json = new JavaScriptSerializer().Serialize(result);
-
-                return json;
-            } catch (Exception ex) { LogError(ex, indexItem); }
+            var result = emotionService.Recognize(m.GetMediaStream());
+            if(result == null)
+                return string.Empty;
             
-            return string.Empty;
+            var json = new JavaScriptSerializer().Serialize(result);
+
+            return json;
         }
     }
 }

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
-{
+namespace Sitecore.SharedSource.CognitiveServices.Models {
     public class TextAnalysisRequest
     {
         [JsonProperty("language")]

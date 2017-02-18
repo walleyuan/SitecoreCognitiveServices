@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using Microsoft.ProjectOxford.Text.Core;
-using Microsoft.ProjectOxford.Text.Sentiment;
 using Newtonsoft.Json;
 
-namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
-{
+namespace Sitecore.SharedSource.CognitiveServices.Models {
     public class KeyPhraseSentimentResponse
     {
         [JsonProperty("documents")]
@@ -21,14 +16,5 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
             this.Documents = new List<SentimentDocumentResult>();
             this.Errors = new List<DocumentError>();
         }
-    }
-
-    public class SentimentDocumentResult
-    {
-        [JsonProperty("keyPhrases")]
-        public string[] KeyPhrases { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
     }
 }

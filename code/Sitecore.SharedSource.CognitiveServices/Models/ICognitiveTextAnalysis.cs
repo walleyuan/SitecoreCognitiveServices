@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using Microsoft.ProjectOxford.EntityLinking.Contract;
 using Microsoft.ProjectOxford.Text.Language;
 using Microsoft.ProjectOxford.Text.Sentiment;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models
 {

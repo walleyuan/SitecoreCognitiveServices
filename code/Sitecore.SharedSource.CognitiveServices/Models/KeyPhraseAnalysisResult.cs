@@ -1,5 +1,4 @@
-﻿using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
-
+﻿
 namespace Sitecore.SharedSource.CognitiveServices.Models
 {
     public class KeyPhraseAnalysisResult : IKeyPhraseAnalysisResult

@@ -4,9 +4,11 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Microsoft.ProjectOxford.Face;
+using Microsoft.ProjectOxford.SpeakerRecognition.Contract.Verification;
 using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Repositories;
+using Sitecore.SharedSource.CognitiveServices.Services;
+using Sitecore.SharedSource.CognitiveServices.Services.Vision;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
 {
@@ -23,26 +25,26 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
 
             MediaItem m = indexItem;
 
-            var crContext = DependencyResolver.Current.GetService<ICognitiveRepositoryContext>();
-            if (crContext == null)
+            var faceService = DependencyResolver.Current.GetService<IFaceService>();
+            if (faceService == null)
                 return string.Empty;
             
-            try {
-                var result = Task.Run(async () => await crContext.FaceRepository.DetectAsync(m.GetMediaStream(), true, true, new List<FaceAttributeType>()
-                {
-                    FaceAttributeType.Age,
-                    FaceAttributeType.FacialHair,
-                    FaceAttributeType.Gender,
-                    FaceAttributeType.Glasses,
-                    FaceAttributeType.HeadPose,
-                    FaceAttributeType.Smile
-                })).Result;
-                var json = new JavaScriptSerializer().Serialize(result);
+            var result = faceService.Detect(m.GetMediaStream(), true, true, new List<FaceAttributeType>()
+            {
+                FaceAttributeType.Age,
+                FaceAttributeType.FacialHair,
+                FaceAttributeType.Gender,
+                FaceAttributeType.Glasses,
+                FaceAttributeType.HeadPose,
+                FaceAttributeType.Smile
+            });
 
-                return json;
-            } catch (Exception ex) { LogError(ex, indexItem); }
+            if (result == null)
+                return string.Empty;
             
-            return string.Empty;
+            var json = new JavaScriptSerializer().Serialize(result);
+
+            return json;
         }
     }
 }

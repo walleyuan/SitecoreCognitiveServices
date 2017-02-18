@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Text.Sentiment;
 using Newtonsoft.Json;
+using Sitecore.SharedSource.CognitiveServices.Models;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
 {

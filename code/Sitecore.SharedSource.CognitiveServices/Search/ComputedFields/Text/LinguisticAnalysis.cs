@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.Models;
-using Sitecore.SharedSource.CognitiveServices.Repositories;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
+using Sitecore.SharedSource.CognitiveServices.Services.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
 {
@@ -19,8 +16,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
             if (!indexItem.Paths.IsContentItem)
                 return string.Empty;
 
-            var crContext = DependencyResolver.Current.GetService<ICognitiveRepositoryContext>();
-            if (crContext == null)
+            var linguisticService = DependencyResolver.Current.GetService<ILinguisticService>();
+            if (linguisticService == null)
                 return string.Empty;
             
             List<LinguisticAnalysisResult> fieldResults = new List<LinguisticAnalysisResult>();
@@ -33,20 +30,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text
                     Language = indexItem.Language.Name,
                     Text = value
                 };
-                try {
-                    var result1 = Task.Run(async () => await crContext.LinguisticRepository.GetPOSTagsTextAnalysisAsync(tar)).Result;
-                    var result2 = Task.Run(async () => await crContext.LinguisticRepository.GetConstituencyTreeTextAnalysisAsync(tar)).Result;
-                    //var result3 = Task.Run(async () => await crContext.LinguisticRepository.GetTokensTextAnalysisAsync(tar)).Result;
-
-                    fieldResults.Add(new LinguisticAnalysisResult()
-                    {
-                        FieldName = f.DisplayName,
-                        FieldValue = value,
-                        POSTagsAnalysis = result1,
-                        ConstituencyTreeAnalysis = result2,
-                        TokensAnalysis = null
-                    });
-                } catch (Exception ex) { LogError(ex, indexItem); }
+                
+                var result1 = linguisticService.GetPOSTagsTextAnalysis(tar) ?? new POSTagsTextAnalysisResponse();
+                var result2 = linguisticService.GetConstituencyTreeTextAnalysis(tar) ?? new ConstituencyTreeTextAnalysisResponse();
+                //var result3 = linguisticService.GetTokensTextAnalysis(tar) ?? new TokensTextAnalysisResponse();
+                
+                fieldResults.Add(new LinguisticAnalysisResult()
+                {
+                    FieldName = f.DisplayName,
+                    FieldValue = value,
+                    POSTagsAnalysis = result1,
+                    ConstituencyTreeAnalysis = result2,
+                    TokensAnalysis = null
+                });
             }
 
             var json = new JavaScriptSerializer().Serialize(fieldResults);
