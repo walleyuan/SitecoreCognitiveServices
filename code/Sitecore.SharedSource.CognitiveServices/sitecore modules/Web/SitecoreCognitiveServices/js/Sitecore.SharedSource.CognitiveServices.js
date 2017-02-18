@@ -135,7 +135,7 @@ jQuery(document).ready(function () {
                 jQuery(".search-results").show();
                 for (var i = 0; i < r.Results.length; i++) {
                     var d = r.Results[i];
-                    jQuery(".result-items").append("<div class='result-img-wrap'><img src=\"" + d.url + "\" alt=\"" + d.alt + "\" /></div>");
+                    jQuery(".result-items").append("<div class='result-img-wrap'><img src=\"" + d.Url + "\" alt=\"" + d.Alt + "\" /></div>");
                 }
 
                 jQuery(".result-img-wrap")
