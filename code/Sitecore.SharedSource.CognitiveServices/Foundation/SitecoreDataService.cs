@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Shell.Framework.Commands;
@@ -48,16 +50,21 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        public bool IsMediaItem(Item i)
+        public bool IsMediaFile(Item i)
         {
-            return i.Paths.IsMediaItem && !i.Template.ID.Guid.Equals(TemplateIDs.MediaFolder.Guid);
+            var bases = GetBaseTemplates(i).ToList();
+
+            return bases
+                .Any(a => 
+                    a.ID.Guid.Equals(TemplateIDs.UnversionedFile.Guid) 
+                    || a.ID.Guid.Equals(TemplateIDs.VersionedFile.Guid));
         }
 
         public bool IsMediaFolder(Item i)
         {
-            return i.Template.ID.Guid.Equals(TemplateIDs.MediaFolder.Guid) || i.ID.Guid.Equals(ItemIDs.MediaLibraryRoot.Guid) || i.TemplateID.Guid.Equals(TemplateIDs.Node);
+            return i.ID.Guid.Equals(Sitecore.ItemIDs.MediaLibraryRoot.Guid) || (i.Paths.IsMediaItem && !IsMediaFile(i));
         }
-
+        
         public Item ExtractItem(CommandContext context)
         {
             if (context == null)
@@ -81,6 +88,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
             return (size > minimum)
                 ? (size + offset).ToString()
                 : minimum.ToString();
+        }
+
+        public IEnumerable<TemplateItem> GetBaseTemplates(Item i) {
+            return i.Template.BaseTemplates.SelectMany(a => GetBaseTemplates(a));
+        }
+
+        public IEnumerable<TemplateItem> GetBaseTemplates(TemplateItem t) {
+
+            if (t.ID.Guid.Equals(TemplateIDs.StandardTemplate.Guid))
+                return new TemplateItem[0];
+
+            return new[] { t }
+                    .Concat(t.BaseTemplates.SelectMany(a => GetBaseTemplates(a)));
         }
     }
 }

@@ -45,7 +45,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
         {
             Item ctxItem = DataService?.ExtractItem(context);
 
-            return (ctxItem != null && DataService.IsMediaItem(ctxItem))
+            return (ctxItem != null && DataService.IsMediaFile(ctxItem))
                 ? CommandState.Enabled
                 : CommandState.Hidden;
         }

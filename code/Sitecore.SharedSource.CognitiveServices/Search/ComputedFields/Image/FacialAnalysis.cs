@@ -18,7 +18,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
             if (dataService == null)
                 return string.Empty;
 
-            if (!dataService.IsMediaItem(indexItem))
+            if (!dataService.IsMediaFile(indexItem))
                 return string.Empty;
 
             MediaItem m = indexItem;
