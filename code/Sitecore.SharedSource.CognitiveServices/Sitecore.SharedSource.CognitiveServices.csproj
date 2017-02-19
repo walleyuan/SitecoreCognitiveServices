@@ -284,7 +284,8 @@
     <Compile Include="Search\ICognitiveSearchContext.cs" />
     <Compile Include="Search\ICognitiveSearchResult.cs" />
     <Compile Include="Repositories\ApiKeys.cs" />
-    <Compile Include="Services\CognitiveServiceContext.cs" />
+    <Compile Include="Services\Search\SearchService.cs" />
+    <Compile Include="Services\Search\ISearchService.cs" />
     <Compile Include="Services\Language\ILinguisticService.cs" />
     <Compile Include="Services\Language\LinguisticService.cs" />
     <Compile Include="Services\Vision\EmotionService.cs" />
@@ -309,7 +310,6 @@
     <Compile Include="Repositories\Vision\IFaceRepository.cs" />
     <Compile Include="Repositories\Vision\IVisionRepository.cs" />
     <Compile Include="Repositories\Vision\VisionRepository.cs" />
-    <Compile Include="Services\ICognitiveServiceContext.cs" />
     <Compile Include="Services\Vision\IEmotionService.cs" />
     <Compile Include="Services\Knowledge\IEntityLinkingService.cs" />
     <Compile Include="Services\Vision\IFaceService.cs" />

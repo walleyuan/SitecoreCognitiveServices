@@ -5,9 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Vision;
 using Microsoft.ProjectOxford.Vision.Contract;
-using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using Sitecore.SecurityModel;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Vision;
 
@@ -26,14 +24,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             Logger = logger;
         }
 
-        public virtual Description GetDescription(MediaItem mediaItem)
+        public virtual Description GetDescription(Stream stream)
         {
-            Assert.IsNotNull(mediaItem, GetType());
+            Assert.IsNotNull(stream, GetType());
 
             try
             {
                 var result =
-                    Task.Run(async () => await VisionRepository.DescribeAsync(mediaItem.GetMediaStream()))
+                    Task.Run(async () => await VisionRepository.DescribeAsync(stream))
                         .Result.Description;
 
                 return result;
@@ -45,31 +43,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 
             return null;
         }
-
-        public virtual void SetImageDescription(MediaItem mediaItem, string altDescription)
-        {
-            Assert.IsNotNull(mediaItem, GetType());
-
-            using (new SecurityDisabler())
-            {
-                using (new EditContext(mediaItem))
-                {
-                    try
-                    {
-                        mediaItem.Alt = altDescription;
-                    }
-                    catch (Exception ex)
-                    {
-                        var exception = ex.InnerException as ClientException;
-                        if (exception != null)
-                            Log.Error("Set Image Description: " + exception.Error.Message, exception, GetType());
-                        else
-                            Log.Error("Set Image Description: " + ex.Message, ex, GetType());
-                    }
-                }
-            }
-        }
-
+        
         public virtual OcrResults RecognizeText(Stream stream, string language = "unk", bool detectOrientation = true)
         {
             try

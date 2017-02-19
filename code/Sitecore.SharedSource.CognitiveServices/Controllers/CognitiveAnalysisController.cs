@@ -5,31 +5,32 @@ using Sitecore.Diagnostics;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Search;
 using Sitecore.SharedSource.CognitiveServices.Factories;
+using Sitecore.SharedSource.CognitiveServices.Services.Search;
 
 namespace Sitecore.SharedSource.CognitiveServices.Controllers
 {
     public class CognitiveAnalysisController : Controller
     {
-        protected readonly ICognitiveSearchContext Searcher;
+        protected readonly ISearchService SearchService;
         protected readonly ICognitiveImageAnalysisFactory ImageAnalysisFactory;
         protected readonly ICognitiveTextAnalysisFactory TextAnalysisFactory;
         protected readonly IReanalyzeAllFactory ReanalyzeAllFactory;
         protected readonly ISitecoreDataService DataService;
         
         public CognitiveAnalysisController(
-            ICognitiveSearchContext searcher,
+            ISearchService searchService,
             ICognitiveImageAnalysisFactory iaFactory,
             ICognitiveTextAnalysisFactory taFactory,
             IReanalyzeAllFactory pFactory,
             ISitecoreDataService dataService)
         {
-            Assert.IsNotNull(searcher, typeof(ICognitiveSearchContext));
+            Assert.IsNotNull(searchService, typeof(ISearchService));
             Assert.IsNotNull(iaFactory, typeof(ICognitiveImageAnalysisFactory));
             Assert.IsNotNull(taFactory, typeof(ICognitiveTextAnalysisFactory));
             Assert.IsNotNull(pFactory, typeof(IReanalyzeAllFactory));
             Assert.IsNotNull(dataService, typeof(ISitecoreDataService));
 
-            Searcher = searcher;
+            SearchService = searchService;
             ImageAnalysisFactory = iaFactory;
             TextAnalysisFactory = taFactory;
             ReanalyzeAllFactory = pFactory;
@@ -38,14 +39,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
 
         public ActionResult ImageAnalysis(string id, string language, string db)
         {
-            ICognitiveSearchResult csr = Searcher.GetAnalysis(id, language, db);
+            ICognitiveSearchResult csr = SearchService.GetCognitiveSearchResult(id, language, db);
 
             return View("ImageAnalysis", ImageAnalysisFactory.Create(csr));
         }
 
         public ActionResult TextAnalysis(string id, string language, string db)
         {
-            ICognitiveSearchResult csr = Searcher.GetAnalysis(id, language, db);
+            ICognitiveSearchResult csr = SearchService.GetCognitiveSearchResult(id, language, db);
             
             return View("TextAnalysis", TextAnalysisFactory.Create(csr));
         }
@@ -56,13 +57,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
             if(item == null)
                 return View("TextAnalysis", null);
 
-            Searcher.UpdateItemInIndex(item, db);
+            SearchService.UpdateItemInIndex(item, db);
             
-            ICognitiveSearchResult csr = Searcher.GetAnalysis(id, language, db);
-
             return (item.Paths.IsMediaItem)
-                ? View("ImageAnalysis", ImageAnalysisFactory.Create(csr))
-                : View("TextAnalysis", TextAnalysisFactory.Create(csr));
+                ? View("ImageAnalysis", SearchService.GetImageAnalysis(id, language, db))
+                : View("TextAnalysis", SearchService.GetTextAnalysis(id, language, db));
         }
 
         public ActionResult ViewReanalyzeAll(string id, string language, string db)
@@ -76,15 +75,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
         {
             Item item = DataService.GetItemByIdValue(id, db);
             if (item == null)
-                return View("ReanalyzeAll", ReanalyzeAllFactory.Create(id, language, db, 0));
-
-            var list = item.Axes.GetDescendants()
-                .Where(a => !a.TemplateID.Guid.Equals(Sitecore.TemplateIDs.MediaFolder.Guid))
-                .ToList();
+                return ViewReanalyzeAll(id, language, db);
             
-            list.ForEach(b => Searcher.UpdateItemInIndex(b, db));
+            var count = SearchService.UpdateItemInIndexRecursively(item, db);
 
-            var result = ReanalyzeAllFactory.Create(id, db, language, list.Count);
+            var result = ReanalyzeAllFactory.Create(id, db, language, count);
 
             return Json(result);
         }

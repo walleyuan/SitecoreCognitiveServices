@@ -13,12 +13,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
             ReflectionUtil = reflectionUtil;
         }
 
-        public ICognitiveTextAnalysis Create()
+        public virtual ICognitiveTextAnalysis Create()
         {
             return ReflectionUtil.CreateObjectFromSettings<ICognitiveTextAnalysis>("CognitiveService.Types.ICognitiveTextAnalysis");
         }
 
-        public ICognitiveTextAnalysis Create(ICognitiveSearchResult result)
+        public virtual ICognitiveTextAnalysis Create(ICognitiveSearchResult result)
         {
             var analysis = Create();
             analysis.LanguageAnalysis = result.LanguageAnalysis;

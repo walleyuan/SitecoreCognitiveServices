@@ -16,6 +16,7 @@ using Sitecore.SharedSource.CognitiveServices.Services.Speech;
 using Sitecore.SharedSource.CognitiveServices.Services.Video;
 using Sitecore.SharedSource.CognitiveServices.Services.Vision;
 using Sitecore.SharedSource.CognitiveServices.Search;
+using Sitecore.SharedSource.CognitiveServices.Services.Search;
 
 namespace Sitecore.SharedSource.CognitiveServices.Configurator
 {
@@ -44,7 +45,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<IVisionRepository, VisionRepository>();
 
             //services
-            serviceCollection.AddTransient<ICognitiveServiceContext, CognitiveServiceContext>();
+            serviceCollection.AddTransient<ISearchService, SearchService>();
             serviceCollection.AddTransient<IEmotionService, EmotionService>();
             serviceCollection.AddTransient<IEntityLinkingService, EntityLinkingService>();
             serviceCollection.AddTransient<IFaceService, FaceService>();

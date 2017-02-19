@@ -20,7 +20,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             DataService = dataService;
         }
 
-        public ICognitiveSearchResult GetAnalysis(string itemId, string languageCode, string dbName)
+        public virtual ICognitiveSearchResult GetAnalysis(string itemId, string languageCode, string dbName)
         {
             var index = ContentSearchManager.GetIndex(GetIndexName(dbName));
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
@@ -34,7 +34,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             }
         }
 
-        public List<ICognitiveSearchResult> GetMediaResults(string query, string languageCode, string dbName)
+        public virtual List<ICognitiveSearchResult> GetMediaResults(string query, string languageCode, string dbName)
         {
             var index = ContentSearchManager.GetIndex(GetIndexName(dbName));
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
@@ -51,7 +51,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             }
         }
 
-        public void AddItemToIndex(string itemId, string dbName)
+        public virtual void AddItemToIndex(string itemId, string dbName)
         {
             ID id = DataService.GetID(itemId);
             if (id.IsNull)
@@ -64,7 +64,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             AddItemToIndex(i, dbName);
         }
 
-        public void AddItemToIndex(Item item, string dbName)
+        public virtual void AddItemToIndex(Item item, string dbName)
         {
             if (item == null)
                 return;
@@ -73,7 +73,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             ContentSearchManager.GetIndex(GetIndexName(dbName)).Refresh(tempItem);
         }
 
-        public void UpdateItemInIndex(string itemId, string dbName)
+        public virtual void UpdateItemInIndex(string itemId, string dbName)
         {
             ID id = DataService.GetID(itemId);
             if (id.IsNull)
@@ -86,7 +86,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             UpdateItemInIndex(i, dbName);
         }
 
-        public void UpdateItemInIndex(Item item, string dbName)
+        public virtual void UpdateItemInIndex(Item item, string dbName)
         {
             if (item == null)
                 return;

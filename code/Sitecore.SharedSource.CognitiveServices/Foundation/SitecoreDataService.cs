@@ -1,16 +1,26 @@
-﻿using System;
+﻿extern alias MicrosoftProjectOxfordCommon;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using Sitecore.Data;
 using Sitecore.Data.Items;
+using Sitecore.Diagnostics;
+using Sitecore.SecurityModel;
 using Sitecore.Shell.Framework.Commands;
 
 namespace Sitecore.SharedSource.CognitiveServices.Foundation
 {
     public class SitecoreDataService : ISitecoreDataService
     {
-        public Database GetDatabase(string dbName) => Sitecore.Configuration.Factory.GetDatabase(dbName);
-        public ID GetID(string itemId)
+        protected readonly ILogWrapper Logger;
+
+        public SitecoreDataService(ILogWrapper logger)
+        {
+            Logger = logger;
+        }
+
+        public virtual Database GetDatabase(string dbName) => Sitecore.Configuration.Factory.GetDatabase(dbName);
+        public virtual ID GetID(string itemId)
         {
             ID idObj;
             return (ID.TryParse(itemId, out idObj))
@@ -18,7 +28,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
                 : ID.Null;
         }
 
-        public Item GetItemByUri(string itemUri)
+        public virtual Item GetItemByUri(string itemUri)
         {
             //item uri format: sitecore://master/{04dad0fd-db66-4070-881f-17264ca257e1}?lang=en&ver=1
             string[] parts = itemUri
@@ -38,7 +48,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
             return GetDatabase(parts[0]).GetItem(GetID(guidParts[0]));
         }
 
-        public Item GetItemByIdValue(string itemId, string database)
+        public virtual Item GetItemByIdValue(string itemId, string database)
         {
             ID id = GetID(itemId);
             return id.IsNull ? null : GetDatabase(database)?.GetItem(id);
@@ -49,7 +59,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        public bool IsMediaFile(Item i)
+        public virtual bool IsMediaFile(Item i)
         {
             var bases = GetBaseTemplates(i).ToList();
 
@@ -59,12 +69,26 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
                     || a.ID.Guid.Equals(TemplateIDs.VersionedFile.Guid));
         }
 
-        public bool IsMediaFolder(Item i)
+        public virtual bool IsMediaFolder(Item i)
         {
             return i.ID.Guid.Equals(Sitecore.ItemIDs.MediaLibraryRoot.Guid) || (i.Paths.IsMediaItem && !IsMediaFile(i));
         }
-        
-        public Item ExtractItem(CommandContext context)
+
+        public virtual IEnumerable<MediaItem> GetMediaFileDescendents(string id, string db) {
+
+            Item item = GetItemByIdValue(id, db);
+            if (item == null)
+                return new MediaItem[0];
+
+            return item
+                .Axes
+                .GetDescendants()
+                .Where(IsMediaFile)
+                .Select(a => new MediaItem(a))
+                .ToList();
+        }
+
+        public virtual Item ExtractItem(CommandContext context)
         {
             if (context == null)
                 return null;
@@ -75,7 +99,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
             return context.Items[0];
         }
 
-        public string GetFieldDimension(Item i, string fieldName, int minimum, int offset)
+        public virtual string GetFieldDimension(Item i, string fieldName, int minimum, int offset)
         {
             if (i.Fields[fieldName] == null)
                 return minimum.ToString();
@@ -89,17 +113,31 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
                 : minimum.ToString();
         }
 
-        public IEnumerable<TemplateItem> GetBaseTemplates(Item i) {
+        public virtual IEnumerable<TemplateItem> GetBaseTemplates(Item i) {
             return i.Template.BaseTemplates.SelectMany(a => GetBaseTemplates(a));
         }
 
-        public IEnumerable<TemplateItem> GetBaseTemplates(TemplateItem t) {
+        public virtual IEnumerable<TemplateItem> GetBaseTemplates(TemplateItem t) {
 
             if (t.ID.Guid.Equals(TemplateIDs.StandardTemplate.Guid))
                 return new TemplateItem[0];
 
             return new[] { t }
                     .Concat(t.BaseTemplates.SelectMany(a => GetBaseTemplates(a)));
+        }
+
+        public virtual void SetImageDescription(MediaItem mediaItem, string altDescription) {
+            Assert.IsNotNull(mediaItem, GetType());
+
+            using (new SecurityDisabler()) {
+                using (new EditContext(mediaItem)) {
+                    try {
+                        mediaItem.Alt = altDescription;
+                    } catch (Exception ex) {
+                        Logger.Error("Set Image Description: " + ex.Message, this, ex);
+                    }
+                }
+            }
         }
     }
 }

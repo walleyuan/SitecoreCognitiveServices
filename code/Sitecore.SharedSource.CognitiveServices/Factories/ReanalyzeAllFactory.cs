@@ -12,7 +12,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
             ReflectionUtil = reflectionUtil;
         }
 
-        public IReanalyzeAll Create(string itemId, string db, string language, int itemCount)
+        public virtual IReanalyzeAll Create(string itemId, string db, string language, int itemCount)
         {
             var obj = ReflectionUtil.CreateObjectFromSettings<IReanalyzeAll>("CognitiveService.Types.IReanalyzeAll");
 

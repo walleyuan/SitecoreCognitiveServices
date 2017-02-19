@@ -13,7 +13,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
             ReflectionUtil = reflectionUtil;
         }
 
-        public IImageDescription Create()
+        public virtual IImageDescription Create()
         {
             var obj = ReflectionUtil.CreateObjectFromSettings<IImageDescription>("CognitiveService.Types.IImageDescription");
 
@@ -26,7 +26,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
             return obj;
         }
 
-        public IImageDescription Create(Description cognitiveDescription, string altDescription, string itemId, string database, string language)
+        public virtual IImageDescription Create(Description cognitiveDescription, string altDescription, string itemId, string database, string language)
         {
             var obj = Create();
 

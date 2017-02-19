@@ -8,8 +8,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {
     public interface IVisionService
     {
-        Description GetDescription(MediaItem mediaItem);
-        void SetImageDescription(MediaItem mediaItem, string altDescription);
+        Description GetDescription(Stream stream);
         OcrResults RecognizeText(Stream stream, string language = "unk", bool detectOrientation = true);
         OcrResults RecognizeText(string imageUrl, string language = "unk", bool detectOrientation = true);
         AnalysisResult AnalyzeImage(Stream stream, List<VisualFeature> features = null, IEnumerable<string> details = null);

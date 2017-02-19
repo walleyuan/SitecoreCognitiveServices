@@ -12,7 +12,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
             ReflectionUtil = reflectionUtil;
         }
 
-        public ISetAltTagsAll Create(string itemId, string db, string language, int itemCount, int itemsModified, int threshold, bool overwrite)
+        public virtual ISetAltTagsAll Create(string itemId, string db, string language, int itemCount, int itemsModified, int threshold, bool overwrite)
         {
             var obj = ReflectionUtil.CreateObjectFromSettings<ISetAltTagsAll>("CognitiveService.Types.ISetAltTagsAll");
 

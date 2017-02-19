@@ -15,12 +15,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
             ReflectionUtil = reflectionUtil;
         }
 
-        public ICognitiveMediaSearch CreateMediaSearch()
+        public virtual ICognitiveMediaSearch CreateMediaSearch()
         {
             return ReflectionUtil.CreateObjectFromSettings<ICognitiveMediaSearch>("CognitiveService.Types.ICognitiveMediaSearch");
         }
 
-        public ICognitiveMediaSearch CreateMediaSearch(string db, string language)
+        public virtual ICognitiveMediaSearch CreateMediaSearch(string db, string language)
         {
             var r = CreateMediaSearch();
             r.Database = db;
@@ -28,8 +28,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
 
             return r;
         }
-        
-        public ICognitiveMediaSearchJsonResult CreateMediaSearchJsonResult(ISitecoreDataService dataService, ICognitiveSearchResult searchResult)
+
+        public virtual ICognitiveMediaSearchJsonResult CreateMediaSearchJsonResult(ISitecoreDataService dataService, ICognitiveSearchResult searchResult)
         {
             var obj = ReflectionUtil.CreateObjectFromSettings<ICognitiveMediaSearchJsonResult>("CognitiveService.Types.ICognitiveMediaSearchJsonResult");
             

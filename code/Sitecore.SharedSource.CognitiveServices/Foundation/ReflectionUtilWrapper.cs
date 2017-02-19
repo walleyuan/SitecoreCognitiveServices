@@ -13,32 +13,32 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
             Settings = settings;
         }
 
-        public T CreateObject<T>(Type t)
+        public virtual T CreateObject<T>(Type t)
         {
             return (T)ReflectionUtil.CreateObject(t);
         }
 
-        public T CreateObject<T>(Type t, object[] constructorParams)
+        public virtual T CreateObject<T>(Type t, object[] constructorParams)
         {
             return (T)ReflectionUtil.CreateObject(t, constructorParams);
         }
 
-        public T CreateObject<T>(string name)
+        public virtual T CreateObject<T>(string name)
         {
             return (T)ReflectionUtil.CreateObject(name);
         }
 
-        public T CreateObject<T>(string assembly, string classType, object[] constructorParams)
+        public virtual T CreateObject<T>(string assembly, string classType, object[] constructorParams)
         {
             return (T)ReflectionUtil.CreateObject(assembly, classType, constructorParams);
         }
 
-        public T CreateObjectFromSettings<T>(string settingsTypeKey)
+        public virtual T CreateObjectFromSettings<T>(string settingsTypeKey)
         {
             return (T)ReflectionUtil.CreateObject(Settings.GetSetting(settingsTypeKey));
         }
 
-        public T CreateObjectFromSettings<T>(string settingsTypeKey, object[] constructorParams)
+        public virtual T CreateObjectFromSettings<T>(string settingsTypeKey, object[] constructorParams)
         {
             string[] assemblyClass = Settings.GetSetting(settingsTypeKey).Split(new[] {","}, StringSplitOptions.RemoveEmptyEntries);
             if (assemblyClass.Length < 2)
