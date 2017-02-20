@@ -15,14 +15,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
             ReflectionUtil = reflectionUtil;
         }
 
-        public virtual ICognitiveMediaSearch CreateMediaSearch()
+        public virtual ICognitiveMediaSearch Create()
         {
             return ReflectionUtil.CreateObjectFromSettings<ICognitiveMediaSearch>("CognitiveService.Types.ICognitiveMediaSearch");
         }
 
-        public virtual ICognitiveMediaSearch CreateMediaSearch(string db, string language)
+        public virtual ICognitiveMediaSearch Create(string db, string language)
         {
-            var r = CreateMediaSearch();
+            var r = Create();
             r.Database = db;
             r.Language = language;
 

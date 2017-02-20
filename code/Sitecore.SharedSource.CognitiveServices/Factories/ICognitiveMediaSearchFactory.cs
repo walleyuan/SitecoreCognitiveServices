@@ -6,8 +6,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
     public interface ICognitiveMediaSearchFactory
     {
-        ICognitiveMediaSearch CreateMediaSearch();
-        ICognitiveMediaSearch CreateMediaSearch(string db, string language);
+        ICognitiveMediaSearch Create();
+        ICognitiveMediaSearch Create(string db, string language);
         ICognitiveMediaSearchJsonResult CreateMediaSearchJsonResult(ISitecoreDataService dataService, ICognitiveSearchResult searchResult);
     }
 }

@@ -37,7 +37,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
             var lang = WebUtil.GetQueryString("lang");
             var db = WebUtil.GetQueryString("db", "master");
 
-            var ms = MediaSearchFactory.CreateMediaSearch(db, lang);
+            var ms = MediaSearchFactory.Create(db, lang);
 
             return View("RTESearch", ms);
         }
