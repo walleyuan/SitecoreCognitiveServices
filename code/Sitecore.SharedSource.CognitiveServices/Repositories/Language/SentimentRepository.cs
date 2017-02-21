@@ -43,28 +43,31 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
         }
 
         protected async Task<string> SendTopicsPostAsync(string url, string data) {
+
             if (string.IsNullOrWhiteSpace(url))
                 throw new ArgumentException("url");
             if (string.IsNullOrWhiteSpace(this.ApiKey))
                 throw new ArgumentException("ApiKey");
             if (string.IsNullOrWhiteSpace(data))
                 throw new ArgumentException("data");
+
             byte[] reqData = Encoding.UTF8.GetBytes(data);
+
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Headers.Add("Ocp-Apim-Subscription-Key", this.ApiKey);
             request.ContentType = "application/json";
             request.Accept = "application/json";
             request.ContentLength = (long)reqData.Length;
             request.Method = "POST";
+
             Stream requestStreamAsync = await request.GetRequestStreamAsync();
-            byte[] buffer = reqData;
-            int offset = 0;
-            int length = reqData.Length;
-            requestStreamAsync.Write(buffer, offset, length);
+            requestStreamAsync.Write(reqData, 0, reqData.Length);
             requestStreamAsync.Close();
+
             HttpWebResponse responseAsync = (HttpWebResponse)await request.GetResponseAsync();
             var opLocation = responseAsync.GetResponseHeader("operation-location");
             responseAsync.Close();
+
             return opLocation;
         }
 
