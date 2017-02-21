@@ -286,6 +286,7 @@
     <Compile Include="Repositories\Language\LinguisticRepository.cs" />
     <Compile Include="Models\TextAnalysisRequest.cs" />
     <Compile Include="Models\TokenResult.cs" />
+    <Compile Include="Repositories\Moderator\ContentModeratorRepository.cs" />
     <Compile Include="Repositories\Moderator\IContentModeratorRepository.cs" />
     <Compile Include="Repositories\Speech\ICustomSpeechRepository.cs" />
     <Compile Include="Repositories\Language\ILuisRepository.cs" />
