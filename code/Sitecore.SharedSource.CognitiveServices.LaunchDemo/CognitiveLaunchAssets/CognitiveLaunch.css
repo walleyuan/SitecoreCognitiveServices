@@ -1,5 +1,14 @@
-﻿body {}
-.wrapper {}
-header {}
-.frame {}
-footer {}
+﻿.form  {}
+.form fieldset { margin-bottom: 20px;}
+.image-results .list {padding: 0 5px;border: 1px solid #ccc;max-height: 600px;overflow-y: auto;overflow-x: hidden;}
+.image-wrapper {margin: 5px 0; position: relative;}
+.image-wrapper div {  background: #008998 none repeat scroll 0 0; color: #fff; display: inline-block; font-weight: bold; margin: 0 5px; padding: 4px 13px; width: 106px;}
+.image-wrapper .left,
+.image-wrapper .right  { position: absolute;bottom: 0px;}
+.image-wrapper .left { left: 0px;}
+.image-wrapper .right { right: 0px; }
+.image-results img { width: 253px;}
+.acceptable,
+.racy,
+.adult { display: inline-block;width: 265px;vertical-align: top;margin-right: 10px;}
+.progress-indicator { display: none; }

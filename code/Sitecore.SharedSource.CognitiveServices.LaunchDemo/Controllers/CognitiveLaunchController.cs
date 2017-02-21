@@ -11,8 +11,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
     {
         protected readonly IVisionService VisionService;
         
-        public CognitiveLaunchController(
-            IVisionService visionService)
+        public CognitiveLaunchController(IVisionService visionService)
         {
             VisionService = visionService;
         }

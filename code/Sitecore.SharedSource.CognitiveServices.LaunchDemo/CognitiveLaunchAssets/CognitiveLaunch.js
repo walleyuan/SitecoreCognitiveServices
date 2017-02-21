@@ -5,9 +5,7 @@ jQuery(document).ready(function () {
         e.preventDefault();
 
         jQuery(".progress-indicator").show();
-        jQuery(".image-result").hide();
-        jQuery(".text-result").hide();
-
+        
         jQuery.getJSON("//api.giphy.com/v1/gifs/random?tag=" + jQuery(".moderator-query").val() + "&api_key=dc6zaTOxFJmzC")
         .success(data => {
             if (data.data.length < 1)
@@ -21,18 +19,22 @@ jQuery(document).ready(function () {
                     url: giphyUrl
                 }
             ).done(function (r) {
-                jQuery(".image-result .image-file").html("<img src=\"" + giphyUrl + "\" />");
-                jQuery(".image-details .adult span").text(r.IsAdultContent + " (" + Math.round(100 * r.AdultScore) + "%)");
-                jQuery(".image-details .racy span").text(r.IsRacyContent + " (" + Math.round(100 * r.RacyScore) + "%)");
-                jQuery(".image-result").show();
+                var loc = "acceptable";
+                var inner = "";
+                if (r.IsAdultContent) {
+                    loc = "adult";
+                    inner = "<div class='left'>" + Math.round(100 * r.AdultScore) + "%</div>";
+                } else if (r.IsRacyContent) {
+                    loc = "racy";
+                    inner = "<div class='left'>" + Math.round(100 * r.RacyScore) + "%</div>";
+                } else {
+                    inner = "<div class='left'>" + Math.round(100 * r.RacyScore) + "% Racy</div><div class='right'>" + Math.round(100 * r.AdultScore) + "% Adult</div>";
+                }
+
+                jQuery(".image-results ." + loc + " .list").prepend("<div class='image-wrapper'>" + inner + "<img src=\"" + giphyUrl + "\" /></div>");
             });
         });
 
         jQuery(".progress-indicator").hide();
-    });
-
-    jQuery(".form-submit-text").click(function (e) {
-        e.preventDefault();
-
     });
 });

@@ -145,7 +145,7 @@
     <Content Include="Views\CognitiveLaunch\CognitiveLaunchLayout.cshtml" />
     <Content Include="Views\CognitiveLaunch\Moderator.cshtml" />
     <None Include="Web.config" />
-    <Content Include="Views\Web.config" />
+    <None Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

@@ -10,6 +10,7 @@ namespace Sitecore.SharedSource.CognitiveServices
         string BingSearch { get; }
         string ComputerVision { get; }
         string ContentModerator { get; }
+        string ContentModeratorClientId { get; }
         string EntityLinking { get; }
         string Emotion { get; }
         string Face { get; }

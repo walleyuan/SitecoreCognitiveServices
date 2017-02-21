@@ -248,6 +248,7 @@
     <Compile Include="Models\LinguisticAnalysisResult.cs" />
     <Compile Include="Models\LinkAnalysisResult.cs" />
     <Compile Include="Models\CognitiveMediaSearchJsonResult.cs" />
+    <Compile Include="Models\ModeratorTokenResponse.cs" />
     <Compile Include="Models\OperationProcessingResult.cs" />
     <Compile Include="Models\OperationResponse.cs" />
     <Compile Include="Models\POSTagsTextAnalysisResponse.cs" />
@@ -395,7 +396,7 @@
     <None Include="Web.config" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\Sitecore.SharedSource.CognitiveServices.css" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\jquery-1.10.2.min.js" />
-    <Content Include="Views\Web.config" />
+    <None Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

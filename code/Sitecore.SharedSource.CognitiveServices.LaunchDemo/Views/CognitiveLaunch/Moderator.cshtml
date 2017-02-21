@@ -1,13 +1,6 @@
-﻿@model object
-   
-@{
+﻿@{
     ViewBag.Title = "Content Moderator";
     Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
-}
-
-@if (Model != null)
-{
-
 }
 
 <div class="frame">
@@ -17,27 +10,23 @@
             <div class="form-row">
                 <input class="moderator-query" type="text" />
             </div>
-        </fieldset>
-        <div class="image-result">
-            <div class="image-file"></div>
-            <div class="image-details">
-                <div class="adult">
-                    <label>Is Adult:</label>
-                    <span></span>    
-                </div>
-                <div class="racy">
-                    <label>Is Racy:</label>
-                    <span></span>
-                </div>
-                <br/>
+            <div class="scWizardButtons">
+                <button class="form-submit-image">Get Image</button>
             </div>
-        </div>
-        <div class="text-result">
-            <div class="text-details"></div>
-        </div>
-        <div class="scWizardButtons">
-            <button class="form-submit-image">Moderate Image</button>
-            <button class="form-submit-text">Moderate Text</button>
+        </fieldset>
+        <div class="image-results">
+            <div class="acceptable">
+                <h2>Acceptable</h2>
+                <div class="list"></div>
+            </div>
+            <div class="racy">
+                <h2>Racy</h2>
+                <div class="list"></div>
+            </div>
+            <div class="adult">
+                <h2>Adult</h2>
+                <div class="list"></div>
+            </div>
         </div>
     </form>
     <div class="progress-indicator">
