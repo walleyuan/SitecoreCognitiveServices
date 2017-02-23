@@ -144,6 +144,7 @@
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <Content Include="Views\CognitiveLaunch\CognitiveLaunchLayout.cshtml" />
     <Content Include="Views\CognitiveLaunch\Moderator.cshtml" />
+    <Content Include="Views\CognitiveLaunch\Suggestions.cshtml" />
     <None Include="Web.config" />
     <None Include="Views\Web.config" />
   </ItemGroup>

@@ -193,10 +193,6 @@
       <HintPath>..\..\packages\Unicorn.Core.3.3.2\lib\net452\Unicorn.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -233,6 +229,10 @@
     <Compile Include="Foundation\ISitecoreDataService.cs" />
     <Compile Include="Foundation\IReflectionUtilWrapper.cs" />
     <Compile Include="Foundation\SitecoreDataService.cs" />
+    <Compile Include="Models\Bing\AutoSuggestEntry.cs" />
+    <Compile Include="Models\Bing\AutoSuggestGroup.cs" />
+    <Compile Include="Models\Bing\AutoSuggestQuery.cs" />
+    <Compile Include="Models\Bing\AutoSuggestResponse.cs" />
     <Compile Include="Models\CognitiveImageAnalysis.cs" />
     <Compile Include="Models\ConstituencyTreeTextAnalysisResponse.cs" />
     <Compile Include="Models\ICognitiveMediaSearchJsonResult.cs" />
@@ -271,6 +271,7 @@
     <Compile Include="Models\TokensTextAnalysisResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AcademicSearch\IAcademicSearchRepository.cs" />
+    <Compile Include="Repositories\Bing\AutoSuggestRepository.cs" />
     <Compile Include="Repositories\Bing\IAutoSuggestRepository.cs" />
     <Compile Include="Repositories\Bing\IImageSearchRepository.cs" />
     <Compile Include="Repositories\Bing\INewsSearchRepository.cs" />
@@ -307,6 +308,8 @@
     <Compile Include="Search\ICognitiveSearchContext.cs" />
     <Compile Include="Search\ICognitiveSearchResult.cs" />
     <Compile Include="Repositories\ApiKeys.cs" />
+    <Compile Include="Services\Bing\AutoSuggestService.cs" />
+    <Compile Include="Services\Bing\IAutoSuggestService.cs" />
     <Compile Include="Services\Search\SearchService.cs" />
     <Compile Include="Services\Search\ISearchService.cs" />
     <Compile Include="Services\Language\ILinguisticService.cs" />

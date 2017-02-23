@@ -9,6 +9,7 @@ using Sitecore.SharedSource.CognitiveServices.Repositories.Speech;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Video;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Vision;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Repositories.Bing;
 using Sitecore.SharedSource.CognitiveServices.Services;
 using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
@@ -16,6 +17,7 @@ using Sitecore.SharedSource.CognitiveServices.Services.Speech;
 using Sitecore.SharedSource.CognitiveServices.Services.Video;
 using Sitecore.SharedSource.CognitiveServices.Services.Vision;
 using Sitecore.SharedSource.CognitiveServices.Search;
+using Sitecore.SharedSource.CognitiveServices.Services.Bing;
 using Sitecore.SharedSource.CognitiveServices.Services.Search;
 
 namespace Sitecore.SharedSource.CognitiveServices.Configurator
@@ -43,6 +45,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<ISpeakerVerificationRepository, SpeakerVerificationRepository>();
             serviceCollection.AddTransient<IVideoRepository, VideoRepository>();
             serviceCollection.AddTransient<IVisionRepository, VisionRepository>();
+            serviceCollection.AddTransient<IAutoSuggestRepository, AutoSuggestRepository>();
 
             //services
             serviceCollection.AddTransient<ISearchService, SearchService>();
@@ -56,6 +59,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<ISpeakerVerificationService, SpeakerVerificationService>();
             serviceCollection.AddTransient<IVideoService, VideoService>();
             serviceCollection.AddTransient<IVisionService, VisionService>();
+            serviceCollection.AddTransient<IAutoSuggestService, AutoSuggestService>();
             
             //factories
             serviceCollection.AddTransient<ICognitiveImageAnalysisFactory, CognitiveImageAnalysisFactory>();

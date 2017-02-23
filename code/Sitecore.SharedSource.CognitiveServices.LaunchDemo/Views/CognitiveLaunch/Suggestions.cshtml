@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Auto Suggest";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form suggest-search-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/GetSuggestions">
+        <fieldset>
+            <legend>Auto Suggest</legend>
+            <div class="form-row">
+                <input class="moderator-query" type="text" name="text" id="text" />
+                <div class="suggest-list"></div>
+            </div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Get Suggestions</button>
+            </div>
+        </fieldset>
+    </form>
+</div>

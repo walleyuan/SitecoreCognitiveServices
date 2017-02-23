@@ -37,4 +37,47 @@ jQuery(document).ready(function () {
 
         jQuery(".progress-indicator").hide();
     });
+
+    var queryObj;
+    var suggestForm = ".suggest-search-form";
+    //will search if you push the button
+    jQuery(suggestForm + " .form-submit")
+        .click(function (event) {
+            event.preventDefault();
+
+            clearTimeout(queryObj);
+            RunSuggestQuery();
+        });
+
+    //will search if you type and wait
+    jQuery(suggestForm)
+        .on('input', function (e) {
+            clearTimeout(queryObj);
+            queryObj = setTimeout(RunSuggestQuery, 500);
+        });
+
+    //performs image search
+    function RunSuggestQuery() {
+
+        var queryText = jQuery(suggestForm + " #text").val();
+        
+        jQuery(".suggest-list").hide();
+        jQuery(".suggest-list").html("");
+
+        jQuery.post(
+            jQuery(suggestForm).attr("action"),
+                {
+                    text: queryText
+                }
+            ).done(function (r) {
+                if (r.length == 0)
+                    return;
+
+                for (var i = 0; i < r.length; i++) {
+                    var d = r[i];
+                    jQuery(".suggest-list").append("<div class='suggest-result'><a href=\"" + d.Url + "\">"+ d.DisplayText + "</a>");
+                }
+                jQuery(".suggest-list").show();
+            });
+    }
 });

@@ -12,3 +12,6 @@
 .racy,
 .adult { display: inline-block;width: 265px;vertical-align: top;margin-right: 10px;}
 .progress-indicator { display: none; }
+
+.suggest-list {position: absolute;border: 1px solid #008998;padding: 5px;background-color: #fff;display: none;z-index: 2;top: 95px;}
+.suggest-result { margin-bottom: 2px;}
