@@ -10,5 +10,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation
                 ? defaultValue
                 : value;
         }
+
+        public virtual string UrlEncode(string value)
+        {
+            return Sitecore.Web.WebUtil.UrlEncode(value);
+        }
     }
 }

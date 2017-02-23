@@ -46,7 +46,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<IVideoRepository, VideoRepository>();
             serviceCollection.AddTransient<IVisionRepository, VisionRepository>();
             serviceCollection.AddTransient<IAutoSuggestRepository, AutoSuggestRepository>();
-
+            serviceCollection.AddTransient<IImageSearchRepository, ImageSearchRepository>();
+            
             //services
             serviceCollection.AddTransient<ISearchService, SearchService>();
             serviceCollection.AddTransient<IEmotionService, EmotionService>();
@@ -60,7 +61,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<IVideoService, VideoService>();
             serviceCollection.AddTransient<IVisionService, VisionService>();
             serviceCollection.AddTransient<IAutoSuggestService, AutoSuggestService>();
-            
+            serviceCollection.AddTransient<IImageSearchService, ImageSearchService>();
+
             //factories
             serviceCollection.AddTransient<ICognitiveImageAnalysisFactory, CognitiveImageAnalysisFactory>();
             serviceCollection.AddTransient<ICognitiveTextAnalysisFactory, CognitiveTextAnalysisFactory>();

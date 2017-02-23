@@ -37,7 +37,7 @@ jQuery(document).ready(function () {
 
         jQuery(".progress-indicator").hide();
     });
-
+    
     var queryObj;
     var suggestForm = ".suggest-search-form";
     //will search if you push the button
@@ -70,7 +70,7 @@ jQuery(document).ready(function () {
                     text: queryText
                 }
             ).done(function (r) {
-                if (r.length == 0)
+                if (r.length === 0)
                     return;
 
                 for (var i = 0; i < r.length; i++) {
@@ -80,4 +80,77 @@ jQuery(document).ready(function () {
                 jQuery(".suggest-list").show();
             });
     }
+
+    var imageForm = ".image-form";
+    jQuery(imageForm + " .form-submit")
+        .click(function (e) {
+            e.preventDefault();
+
+            jQuery(imageForm + " .results").html("");
+            
+            jQuery.post(
+                jQuery(imageForm).attr("action"),
+                {
+                    query: jQuery(imageForm + " #text").val()
+                }
+            ).done(function (r) {
+                if (r.length === 0)
+                    return;
+
+                for (var i = 0; i < r.length; i++) {
+                    var d = r[i];
+                    jQuery(imageForm + " .results").append("<img height='50' src=\"" + d.ThumbnailUrl + "\" />");
+                }
+            });
+        });
+
+    var trendForm = ".trend-form";
+    jQuery(trendForm + " .form-submit")
+        .click(function (e) {
+            e.preventDefault();
+
+            jQuery(trendForm + " .results").html("");
+
+            jQuery.post(
+                jQuery(trendForm).attr("action"), { }
+            ).done(function (r) {
+                if (r.length === 0)
+                    return;
+
+                for (var i = 0; i < r.length; i++) {
+                    var d = r[i];
+                    
+                    jQuery(trendForm + " .results").append("<div class='result'><div>" + d.Title + "</div><div>");
+                    for (var j = 0; j < d.Tiles.length; j++) {
+                        var t = d.Tiles[j];
+                        jQuery(trendForm + " .results").append("<img height='50' src=\"" + t.Image.ThumbnailUrl + "\" />");
+                    }
+                    jQuery(trendForm + " .results").append("</div></div>");
+                    
+                }
+            });
+        });
+
+    var insightForm = ".insight-form";
+    jQuery(insightForm + " .form-submit")
+        .click(function (e) {
+            e.preventDefault();
+
+            jQuery(insightForm + " .results").html("");
+
+            jQuery.post(
+                jQuery(insightForm).attr("action"),
+                {
+                    url: jQuery(insightForm + " #text").val()
+                }
+            ).done(function (r) {
+                if (r.length === 0)
+                    return;
+
+                for (var i = 0; i < r.length; i++) {
+                    var d = r[i];
+                    jQuery(insightForm + " .results").append("<img height='50' src=\"" + d.ThumbnailUrl + "\" />");
+                }
+            });
+        });
 });

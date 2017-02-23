@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Microsoft.ProjectOxford.Vision;
 using Microsoft.ProjectOxford.Vision.Contract;
+using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Services.Bing;
 using Sitecore.SharedSource.CognitiveServices.Services.Vision;
 
@@ -12,13 +13,16 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
     {
         protected readonly IVisionService VisionService;
         protected readonly IAutoSuggestService AutoSuggestService;
+        protected readonly IImageSearchService ImageSearchService;
 
         public CognitiveLaunchController(
             IVisionService visionService,
-            IAutoSuggestService autoSuggestService)
+            IAutoSuggestService autoSuggestService,
+            IImageSearchService imageSearchService)
         {
             VisionService = visionService;
             AutoSuggestService = autoSuggestService;
+            ImageSearchService = imageSearchService;
         }
         
         #region Moderator
@@ -52,5 +56,36 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         }
 
         #endregion Auto Suggest
+
+        #region Image Search
+
+        public ActionResult ImageSearch()
+        {
+            return View();
+        }
+
+        public ActionResult GetImages(string query)
+        {
+            var results = ImageSearchService.GetImages(query);
+
+            return Json(results.value);
+        }
+
+        public ActionResult GetTrendingImages(string query)
+        {
+            var results = ImageSearchService.GetTrendingImages();
+
+            return Json(results.Categories);
+        }
+
+        public ActionResult GetImageInsights(string url)
+        {
+            var modules = new List<ModulesRequestedOptions> {ModulesRequestedOptions.All};
+            var results = ImageSearchService.GetImageInsights(imgUrl:url, modulesRequested:modules);
+
+            return Json(results.VisuallySimilarImages);
+        }
+
+        #endregion Image Search
     }
 }

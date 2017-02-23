@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Auto Suggest";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form image-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/GetImages">
+        <fieldset>
+            <legend>Image Search</legend>
+            <div class="form-row">
+                <input type="text" name="text" id="text" />
+            </div>
+            <div class="results"></div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Get Images</button>
+            </div>
+        </fieldset>
+    </form>
+    <form class="form trend-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/GetTrendingImages">
+        <fieldset>
+            <legend>Get Trending Images</legend>
+            <div class="results"></div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Get Trending Images</button>
+            </div>
+        </fieldset>
+    </form>
+    <form class="form insight-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/GetImageInsights">
+        <fieldset>
+            <legend>Auto Suggest</legend>
+            <div class="form-row">
+                <input type="text" name="text" id="text" />
+            </div>
+            <div class="results"></div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Get Image Insights</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
