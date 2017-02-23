@@ -1,6 +1,7 @@
 ﻿using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models;
+using Sitecore.SharedSource.CognitiveServices.Models.Utility;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories
 {

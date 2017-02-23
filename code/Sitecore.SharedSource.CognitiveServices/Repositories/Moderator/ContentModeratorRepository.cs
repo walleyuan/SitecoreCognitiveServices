@@ -7,6 +7,7 @@ using System.Text;
 using System.Web;
 using System.Web.Script.Serialization;
 using Sitecore.SharedSource.CognitiveServices.Models;
+using Sitecore.SharedSource.CognitiveServices.Models.Moderator;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Moderator {
     public class ContentModeratorRepository : IContentModeratorRepository

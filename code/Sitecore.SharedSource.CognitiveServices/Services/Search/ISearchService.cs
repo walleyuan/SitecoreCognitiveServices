@@ -5,6 +5,8 @@ using System.Web;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.Models;
+using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
+using Sitecore.SharedSource.CognitiveServices.Models.Utility;
 using Sitecore.SharedSource.CognitiveServices.Search;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Search {

@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Sitecore.SharedSource.CognitiveServices.Models;
+using Sitecore.SharedSource.CognitiveServices.Models.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Tests.Models
 {

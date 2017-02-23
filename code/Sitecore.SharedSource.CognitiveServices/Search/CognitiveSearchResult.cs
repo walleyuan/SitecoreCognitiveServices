@@ -7,6 +7,7 @@ using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.SharedSource.CognitiveServices.Models;
+using Sitecore.SharedSource.CognitiveServices.Models.Language;
 using Face = Microsoft.ProjectOxford.Face.Contract.Face;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search

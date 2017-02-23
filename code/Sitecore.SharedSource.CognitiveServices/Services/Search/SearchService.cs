@@ -8,6 +8,8 @@ using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.SharedSource.CognitiveServices.Factories;
 using Sitecore.SharedSource.CognitiveServices.Models;
+using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
+using Sitecore.SharedSource.CognitiveServices.Models.Utility;
 using Sitecore.SharedSource.CognitiveServices.Search;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Search {

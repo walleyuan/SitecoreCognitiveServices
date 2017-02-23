@@ -1,6 +1,7 @@
 ﻿using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
 using Sitecore.SharedSource.CognitiveServices.Search;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories

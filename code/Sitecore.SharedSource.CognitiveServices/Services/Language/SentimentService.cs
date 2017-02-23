@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Text.Sentiment;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models;
+using Sitecore.SharedSource.CognitiveServices.Models.Language;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Language

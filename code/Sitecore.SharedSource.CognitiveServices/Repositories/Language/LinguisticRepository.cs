@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Text.Core;
 using Newtonsoft.Json;
 using Sitecore.SharedSource.CognitiveServices.Models;
+using Sitecore.SharedSource.CognitiveServices.Models.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
 {

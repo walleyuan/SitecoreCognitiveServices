@@ -5,6 +5,7 @@ using System.Web.Script.Serialization;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.Models;
+using Sitecore.SharedSource.CognitiveServices.Models.Language;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text

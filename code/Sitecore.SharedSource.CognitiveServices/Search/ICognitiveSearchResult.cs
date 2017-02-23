@@ -7,6 +7,7 @@ using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.Converters;
 using Sitecore.Data;
 using Sitecore.SharedSource.CognitiveServices.Models;
+using Sitecore.SharedSource.CognitiveServices.Models.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search
 {
