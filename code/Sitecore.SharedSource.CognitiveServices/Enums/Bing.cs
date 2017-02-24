@@ -14,4 +14,5 @@ namespace Sitecore.SharedSource.CognitiveServices.Enums
     public enum LicenseOptions { Public, Share, ShareCommercially, Modify, ModifyCommercially, All }
     public enum SizeOptions { Small, Medium, Large, Wallpaper, All }
     public enum ModulesRequestedOptions { All, Annotations, BRQ, Caption, Collections, Recipes, PagesIncluding, RecognizedEntities, RelatedSearches, ShoppingSources, SimilarImages, SimilarProducts }
+    public enum SpellCheckModeOptions { Proof, Spell, None }
 }

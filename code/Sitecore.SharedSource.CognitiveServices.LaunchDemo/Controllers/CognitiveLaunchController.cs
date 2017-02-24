@@ -14,15 +14,18 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         protected readonly IVisionService VisionService;
         protected readonly IAutoSuggestService AutoSuggestService;
         protected readonly IImageSearchService ImageSearchService;
+        protected readonly ISpellCheckService SpellCheckService;
 
         public CognitiveLaunchController(
             IVisionService visionService,
             IAutoSuggestService autoSuggestService,
-            IImageSearchService imageSearchService)
+            IImageSearchService imageSearchService,
+            ISpellCheckService spellCheckService)
         {
             VisionService = visionService;
             AutoSuggestService = autoSuggestService;
             ImageSearchService = imageSearchService;
+            SpellCheckService = spellCheckService;
         }
         
         #region Moderator
@@ -87,5 +90,21 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         }
 
         #endregion Image Search
+
+        #region Spell Check
+
+        public ActionResult SpellCheck()
+        {
+            return View();
+        }
+
+        public ActionResult CheckSpelling(string text)
+        {
+            var results = SpellCheckService.SpellCheck(text);
+
+            return Json(results.FlaggedTokens);
+        }
+
+        #endregion Spell Check
     }
 }

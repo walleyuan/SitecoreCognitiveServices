@@ -15,3 +15,7 @@
 
 .suggest-list {position: absolute;border: 1px solid #008998;padding: 5px;background-color: #fff;display: none;z-index: 2;top: 95px;}
 .suggest-result { margin-bottom: 2px;}
+
+.spell-check-result { margin-bottom: 4px; }
+.token { font-weight: bold;color: #008998;}
+.suggestion { font-style: italic;margin-right: 5px;}

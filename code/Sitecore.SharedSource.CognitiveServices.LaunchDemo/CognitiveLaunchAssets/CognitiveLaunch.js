@@ -1,6 +1,8 @@
 ﻿jQuery.noConflict();
 jQuery(document).ready(function () {
     
+    /*** GIPHY MODERATOR ***/
+
     jQuery(".form-submit-image").click(function(e) {
         e.preventDefault();
 
@@ -38,10 +40,12 @@ jQuery(document).ready(function () {
         jQuery(".progress-indicator").hide();
     });
     
+    /*** BING AUTO SUGGEST ***/
+
     var queryObj;
     var suggestForm = ".suggest-search-form";
-    //will search if you push the button
-    jQuery(suggestForm + " .form-submit")
+    
+    jQuery(suggestForm + " .form-submit") //will search if you push the button
         .click(function (event) {
             event.preventDefault();
 
@@ -49,15 +53,14 @@ jQuery(document).ready(function () {
             RunSuggestQuery();
         });
 
-    //will search if you type and wait
-    jQuery(suggestForm)
+    jQuery(suggestForm) //will search if you type and wait
         .on('input', function (e) {
             clearTimeout(queryObj);
             queryObj = setTimeout(RunSuggestQuery, 500);
         });
 
-    //performs image search
-    function RunSuggestQuery() {
+    
+    function RunSuggestQuery() { //performs image search
 
         var queryText = jQuery(suggestForm + " #text").val();
         
@@ -80,6 +83,8 @@ jQuery(document).ready(function () {
                 jQuery(".suggest-list").show();
             });
     }
+
+    /*** BING IMAGE SEARCH ***/
 
     var imageForm = ".image-form";
     jQuery(imageForm + " .form-submit")
@@ -150,6 +155,35 @@ jQuery(document).ready(function () {
                 for (var i = 0; i < r.length; i++) {
                     var d = r[i];
                     jQuery(insightForm + " .results").append("<img height='50' src=\"" + d.ThumbnailUrl + "\" />");
+                }
+            });
+        });
+
+    /*** BING SPELL CHECK ***/
+
+    var spellCheckForm = ".spell-check-form";
+    jQuery(spellCheckForm + " .form-submit")
+        .click(function (e) {
+            e.preventDefault();
+
+            jQuery(spellCheckForm + " .suggestions").html("");
+
+            jQuery.post(
+                jQuery(spellCheckForm).attr("action"), { text: jQuery(spellCheckForm + " #text").val() }
+            ).done(function (r) {
+                for (var i = 0; i < r.length; i++) {
+                    var token = r[i];
+                    
+                    var tokenLine = "<span class='token'>" + token.Token + ": </span>";
+                    for (var j = 0; j < token.Suggestions.length; j++) {
+                        var suggestion = token.Suggestions[j];
+
+                        if (suggestion == undefined)
+                            continue;
+
+                        tokenLine += "<span class='suggestion'>" + suggestion.Suggestion + "</span>";   
+                    }
+                    jQuery(spellCheckForm + " .suggestions").append("<div class='spell-check-result'>" + tokenLine + "</div>");
                 }
             });
         });

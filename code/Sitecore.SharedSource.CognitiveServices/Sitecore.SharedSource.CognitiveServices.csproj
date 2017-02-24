@@ -252,6 +252,9 @@
     <Compile Include="Models\Bing\ImageSearchThumbnailUrl.cs" />
     <Compile Include="Models\Bing\ImageSearchTile.cs" />
     <Compile Include="Models\Bing\NameValues.cs" />
+    <Compile Include="Models\Bing\SpellCheckResponse.cs" />
+    <Compile Include="Models\Bing\SpellCheckSuggestion.cs" />
+    <Compile Include="Models\Bing\SpellCheckToken.cs" />
     <Compile Include="Models\Bing\TrendSearchResponse.cs" />
     <Compile Include="Models\Analysis\CognitiveImageAnalysis.cs" />
     <Compile Include="Models\Language\ConstituencyTreeTextAnalysisResponse.cs" />
@@ -297,6 +300,7 @@
     <Compile Include="Repositories\Bing\ImageSearchRepository.cs" />
     <Compile Include="Repositories\Bing\INewsSearchRepository.cs" />
     <Compile Include="Repositories\Bing\ISpeechRepository.cs" />
+    <Compile Include="Repositories\Bing\SpellCheckRepository.cs" />
     <Compile Include="Repositories\Bing\ISpellCheckRepository.cs" />
     <Compile Include="Repositories\Bing\IVideoSearchRepository.cs" />
     <Compile Include="Repositories\Bing\IWebSearchRepository.cs" />
@@ -329,6 +333,8 @@
     <Compile Include="Search\ICognitiveSearchContext.cs" />
     <Compile Include="Search\ICognitiveSearchResult.cs" />
     <Compile Include="Repositories\ApiKeys.cs" />
+    <Compile Include="Services\Bing\ISpellCheckService.cs" />
+    <Compile Include="Services\Bing\SpellCheckService.cs" />
     <Compile Include="Services\Bing\AutoSuggestService.cs" />
     <Compile Include="Services\Bing\IAutoSuggestService.cs" />
     <Compile Include="Services\Bing\ImageSearchService.cs" />
