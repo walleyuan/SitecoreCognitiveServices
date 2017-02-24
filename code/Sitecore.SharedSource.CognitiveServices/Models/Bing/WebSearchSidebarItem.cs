@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Bing
 {
-    public class ImageSearchTile
+    public class WebSearchSidebarItem
     {
-        public SimpleSearchResult Result { get; set; }
-        public ImageSearchImage Image { get; set; }
+        public string AnswerType { get; set; }
+        public IdValue Id { get; set; }
     }
 }

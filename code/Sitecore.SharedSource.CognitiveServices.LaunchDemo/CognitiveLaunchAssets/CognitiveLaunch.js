@@ -187,4 +187,22 @@ jQuery(document).ready(function () {
                 }
             });
         });
+
+    /*** BING WEB SEARCH ***/
+
+    var webSearchForm = ".web-search-form";
+    jQuery(webSearchForm + " .form-submit")
+        .click(function (e) {
+            e.preventDefault();
+
+            jQuery(webSearchForm + " .results").html("");
+
+            jQuery.post(
+                jQuery(webSearchForm).attr("action"), { text: jQuery(webSearchForm + " #text").val() }
+            ).done(function (r) {
+                for (var i = 0; i < r.length; i++) {
+                    jQuery(webSearchForm + " .results").append("<div><a href='" + unescape(r[i].Url) + "'>" + r[i].Name+ "</a></div>");
+                }
+            });
+        });
 });

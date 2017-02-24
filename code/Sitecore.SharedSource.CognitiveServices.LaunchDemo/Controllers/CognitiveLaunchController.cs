@@ -15,17 +15,20 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         protected readonly IAutoSuggestService AutoSuggestService;
         protected readonly IImageSearchService ImageSearchService;
         protected readonly ISpellCheckService SpellCheckService;
+        protected readonly IWebSearchService WebSearchService;
 
         public CognitiveLaunchController(
             IVisionService visionService,
             IAutoSuggestService autoSuggestService,
             IImageSearchService imageSearchService,
-            ISpellCheckService spellCheckService)
+            ISpellCheckService spellCheckService,
+            IWebSearchService webSearchService)
         {
             VisionService = visionService;
             AutoSuggestService = autoSuggestService;
             ImageSearchService = imageSearchService;
             SpellCheckService = spellCheckService;
+            WebSearchService = webSearchService;
         }
         
         #region Moderator
@@ -71,7 +74,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         {
             var results = ImageSearchService.GetImages(query);
 
-            return Json(results.value);
+            return Json(results.Value);
         }
 
         public ActionResult GetTrendingImages(string query)
@@ -106,5 +109,21 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         }
 
         #endregion Spell Check
+
+        #region Web Search
+
+        public ActionResult WebSearch()
+        {
+            return View();
+        }
+
+        public ActionResult GetWebSearch(string text)
+        {
+            var results = WebSearchService.WebSearch(text);
+
+            return Json(results.WebPages.Value);
+        }
+
+        #endregion Web Search
     }
 }

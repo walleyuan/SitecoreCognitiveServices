@@ -7,6 +7,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Models.Bing
 {
     public class CategoryClassification
     {
-        public List<NameValues> Categories { get; set; }
+        public List<NameValue> Categories { get; set; }
     }
 }

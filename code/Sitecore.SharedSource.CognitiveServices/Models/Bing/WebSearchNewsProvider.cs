@@ -5,8 +5,9 @@ using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Bing
 {
-    public class NameValues
+    public class WebSearchNewsProvider
     {
+        public string _type { get; set; }
         public string Name { get; set; }
     }
 }

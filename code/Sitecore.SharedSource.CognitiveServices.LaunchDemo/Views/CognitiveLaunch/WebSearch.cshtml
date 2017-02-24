@@ -1,18 +1,18 @@
 ﻿@{
-    ViewBag.Title = "Spell Check";
+    ViewBag.Title = "Search Web";
     Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
 }
 
 <div class="frame">
-    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/CheckSpelling">
+    <form class="form web-search-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/GetWebSearch">
         <fieldset>
-            <legend>Spell Check</legend>
+            <legend>Web Search</legend>
             <div class="form-row">
                 <input type="text" name="text" id="text" />
-                <div class="suggestions"></div>
+                <div class="results"></div>
             </div>
             <div class="scWizardButtons">
-                <button class="form-submit">Check Spelling</button>
+                <button class="form-submit">Search Web</button>
             </div>
         </fieldset>
     </form>
