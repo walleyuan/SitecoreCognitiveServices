@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace Sitecore.SharedSource.CognitiveServices.Models.Bing
+namespace Sitecore.SharedSource.CognitiveServices.Models.Bing 
 {
-    public class WebSearchVideoResult
+    public class VideoSearchResult 
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -13,17 +11,22 @@ namespace Sitecore.SharedSource.CognitiveServices.Models.Bing
         public string ThumbnailUrl { get; set; }
         public DateTime DatePublished { get; set; }
         public List<NameValue> Publisher { get; set; }
+        public List<NameValue> Creator { get; set; }
         public string ContentUrl { get; set; }
         public string HostPageUrl { get; set; }
+        public string HostPageUrlPingSuffix { get; set; }
         public string EncodingFormat { get; set; }
         public string HostPageDisplayUrl { get; set; }
-        public int Height { get; set; }
         public int Width { get; set; }
+        public int Height { get; set; }
         public string Duration { get; set; }
+        public string MotionThumbnailUrl { get; set; }
         public string EmbedHtml { get; set; }
         public bool AllowHttpsEmbed { get; set; }
+        public int ViewCount { get; set; }
         public Thumbnail Thumbnail { get; set; }
         public bool AllowMobileEmbed { get; set; }
+        public string VideoId { get; set; }
         public bool IsSuperfresh { get; set; }
     }
 }

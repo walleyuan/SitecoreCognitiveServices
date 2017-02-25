@@ -11,7 +11,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Models.Bing
         public string ReadLink { get; set; }
         public string WebSearchUrl { get; set; }
         public bool IsFamilyFriendly { get; set; }
-        public List<WebSearchVideoResult> Value { get; set; }
+        public List<VideoSearchResult> Value { get; set; }
         public string Scenario { get; set; }
     }
 }

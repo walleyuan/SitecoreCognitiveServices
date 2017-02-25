@@ -15,7 +15,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Models.Bing
         public List<ImageSearchResult> Value { get; set; }
         public List<ImageSearchShortResult> QueryExpansions { get; set; }
         public int NextOffsetAddCount { get; set; }
-        public List<ImageSearchSuggestion> PivotSuggestions { get; set; }
+        public List<SearchSuggestion<ImageSearchShortResult>> PivotSuggestions { get; set; }
         public bool DisplayShoppingSourcesBadges { get; set; }
         public bool DisplayRecipeSourcesBadge { get; set; }
         public List<ImageSearchQuickResult> SimilarTerms { get; set; }

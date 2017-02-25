@@ -8,7 +8,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Models.Bing
     public class TrendSearchResponse
     {
         public string _type { get; set; }
-        public ImageSearchInstrumentation Instrumentation { get; set; }
+        public SearchInstrumentation Instrumentation { get; set; }
         public List<ImageSearchCategory> Categories { get; set; }
     }
 }

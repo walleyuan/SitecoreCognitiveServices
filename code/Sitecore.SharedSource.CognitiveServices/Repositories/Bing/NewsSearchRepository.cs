@@ -38,14 +38,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing {
 
         #region Trending Search
 
-        public NewsSearchTopicResponse TrendingSearch() {
+        public NewsSearchTrendResponse TrendingSearch() {
             return Task.Run(async () => await TrendingSearchAsync()).Result;
         }
 
-        public async Task<NewsSearchTopicResponse> TrendingSearchAsync() {
+        public async Task<NewsSearchTrendResponse> TrendingSearchAsync() {
             var response = await SendGetAsync(trendingUrl);
 
-            return JsonConvert.DeserializeObject<NewsSearchTopicResponse>(response);
+            return JsonConvert.DeserializeObject<NewsSearchTrendResponse>(response);
         }
 
         #endregion Trending Search

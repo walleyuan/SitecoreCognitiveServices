@@ -16,4 +16,5 @@ namespace Sitecore.SharedSource.CognitiveServices.Enums
     public enum ModulesRequestedOptions { All, Annotations, BRQ, Caption, Collections, Recipes, PagesIncluding, RecognizedEntities, RelatedSearches, ShoppingSources, SimilarImages, SimilarProducts }
     public enum SpellCheckModeOptions { Proof, Spell, None }
     public enum NewsCategoryOptions { Business, Entertainment, Health, Politics, ScienceAndTechnology, Sports, USUK, World }
+    public enum VideoDetailsModulesOptions { All, RelatedVideos, VideoResult }
 }

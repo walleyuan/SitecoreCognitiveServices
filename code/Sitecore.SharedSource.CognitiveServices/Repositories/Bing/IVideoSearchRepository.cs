@@ -1,10 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Threading.Tasks;
+using Sitecore.SharedSource.CognitiveServices.Enums;
+using Sitecore.SharedSource.CognitiveServices.Models.Bing;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing {
     public interface IVideoSearchRepository {
-        //https://dev.cognitive.microsoft.com/docs/services/56b43f3ccf5ff8098cef3809/operations/56b440d2cf5ff8098cef380b
+        VideoSearchResponse VideoSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off);
+        Task<VideoSearchResponse> VideoSearchAsync(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off);
+        VideoSearchTrendResponse TrendingSearch();
+        Task<VideoSearchTrendResponse> TrendingSearchAsync();
+        VideoSearchDetailsResponse VideoDetailsSearch(string id, VideoDetailsModulesOptions modulesRequested);
+        Task<VideoSearchDetailsResponse> VideoDetailsSearchAsync(string id, VideoDetailsModulesOptions modulesRequested);
     }
 }

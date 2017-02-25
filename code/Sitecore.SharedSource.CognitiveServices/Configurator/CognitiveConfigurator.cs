@@ -49,6 +49,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<ISpellCheckRepository, SpellCheckRepository>();
             serviceCollection.AddTransient<IWebSearchRepository, WebSearchRepository>();
             serviceCollection.AddTransient<INewsSearchRepository, NewsSearchRepository>();
+            serviceCollection.AddTransient<IVideoSearchRepository, VideoSearchRepository>();
 
             //services
             serviceCollection.AddTransient<ISearchService, SearchService>();
@@ -67,6 +68,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<ISpellCheckService, SpellCheckService>();
             serviceCollection.AddTransient<IWebSearchService, WebSearchService>();
             serviceCollection.AddTransient<INewsSearchService, NewsSearchService>();
+            serviceCollection.AddTransient<IVideoSearchService, VideoSearchService>();
 
             //factories
             serviceCollection.AddTransient<ICognitiveImageAnalysisFactory, CognitiveImageAnalysisFactory>();

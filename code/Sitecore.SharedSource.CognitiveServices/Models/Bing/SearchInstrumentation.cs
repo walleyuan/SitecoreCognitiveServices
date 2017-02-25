@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Bing
 {
-    public class ImageSearchInstrumentation
+    public class SearchInstrumentation
     {
         public string PageLoadPingUrl { get; set; }
     }

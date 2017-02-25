@@ -11,8 +11,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing {
     {
         NewsSearchCategoryResponse CategorySearch(NewsCategoryOptions category);
         Task<NewsSearchCategoryResponse> CategorySearchAsync(NewsCategoryOptions category);
-        NewsSearchTopicResponse TrendingSearch();
-        Task<NewsSearchTopicResponse> TrendingSearchAsync();
+        NewsSearchTrendResponse TrendingSearch();
+        Task<NewsSearchTrendResponse> TrendingSearchAsync();
         NewsSearchResponse NewsSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off);
         Task<NewsSearchResponse> NewsSearchAsync(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off);
     }

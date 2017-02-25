@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Bing {
-    public class NewsSearchInstrumentation {
+    public class MediaInstrumentation {
         public string PingUrlBase { get; set; }
         public string PageLoadPingUrl { get; set; }
     }

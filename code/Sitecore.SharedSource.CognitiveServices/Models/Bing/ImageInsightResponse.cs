@@ -8,7 +8,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Models.Bing
     public class ImageInsightResponse
     {
         public string _type { get; set; }
-        public ImageSearchInstrumentation Instrumentation { get; set; }
+        public SearchInstrumentation Instrumentation { get; set; }
         public BestRepresentativeQuery BestRepresentativeQuery { get; set; }
         public List<ImageSearchResult> PagesIncluding { get; set; }
         public List<ImageSearchQuickResult> RelatedSearches { get; set; }

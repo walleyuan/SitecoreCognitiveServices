@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Bing
 {
-    public class ImageSearchSuggestion
+    public class SearchSuggestion<T>
     {
         public string Pivot { get; set; }
-        public List<ImageSearchShortResult> Suggestions { get; set; }
+        public List<T> Suggestions { get; set; }
     }
 }

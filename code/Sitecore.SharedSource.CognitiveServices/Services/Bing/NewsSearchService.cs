@@ -31,7 +31,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
             return null;
         }
 
-        public virtual NewsSearchTopicResponse TrendingSearch() {
+        public virtual NewsSearchTrendResponse TrendingSearch() {
             try {
                 var result = Task.Run(async () => await NewsSearchRepository.TrendingSearchAsync()).Result;
                 
