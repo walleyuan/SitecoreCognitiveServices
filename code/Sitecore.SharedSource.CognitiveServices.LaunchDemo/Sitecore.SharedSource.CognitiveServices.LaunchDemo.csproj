@@ -148,6 +148,7 @@
     <Content Include="Views\CognitiveLaunch\ImageSearch.cshtml" />
     <Content Include="Views\CognitiveLaunch\SpellCheck.cshtml" />
     <Content Include="Views\CognitiveLaunch\WebSearch.cshtml" />
+    <Content Include="Views\CognitiveLaunch\NewsSearch.cshtml" />
     <None Include="Web.config" />
     <None Include="Views\Web.config" />
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Microsoft.ProjectOxford.Vision;
@@ -16,19 +17,22 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         protected readonly IImageSearchService ImageSearchService;
         protected readonly ISpellCheckService SpellCheckService;
         protected readonly IWebSearchService WebSearchService;
+        protected readonly INewsSearchService NewsSearchService;
 
         public CognitiveLaunchController(
             IVisionService visionService,
             IAutoSuggestService autoSuggestService,
             IImageSearchService imageSearchService,
             ISpellCheckService spellCheckService,
-            IWebSearchService webSearchService)
+            IWebSearchService webSearchService,
+            INewsSearchService newsSearchService)
         {
             VisionService = visionService;
             AutoSuggestService = autoSuggestService;
             ImageSearchService = imageSearchService;
             SpellCheckService = spellCheckService;
             WebSearchService = webSearchService;
+            NewsSearchService = newsSearchService;
         }
         
         #region Moderator
@@ -125,5 +129,33 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         }
 
         #endregion Web Search
+
+        #region News Search
+
+        public ActionResult NewsSearch() {
+            return View();
+        }
+
+        public ActionResult GetNewsSearch(string text) {
+            var results = NewsSearchService.NewsSearch(text);
+
+            return Json(results.Value);
+        }
+
+        public ActionResult GetNewsTrendSearch() {
+            var results = NewsSearchService.TrendingSearch();
+
+            return Json(results.Value.Take(10));
+        }
+
+        public ActionResult GetNewsCatSearch(string category)
+        {
+            var c = (NewsCategoryOptions)Enum.Parse(typeof(NewsCategoryOptions), category);
+
+            var results = NewsSearchService.CategorySearch(c);
+
+            return Json(results.Value);
+        }
+        #endregion News Search
     }
 }

@@ -205,4 +205,65 @@ jQuery(document).ready(function () {
                 }
             });
         });
+
+    /*** BING NEWS SEARCH ***/
+
+    var newsSearchForm = ".news-search-form";
+    jQuery(newsSearchForm + " .form-submit")
+        .click(function (e) {
+            e.preventDefault();
+
+            jQuery(newsSearchForm + " .results").html("");
+
+            jQuery.post(
+                jQuery(newsSearchForm).attr("action"),
+                {
+                    text: jQuery(newsSearchForm + " #text").val()
+                }
+            ).done(function (r) {
+                for (var i = 0; i < r.length; i++) {
+                    var d = r[i];
+                    jQuery(newsSearchForm + " .results").append("<div>" + (i+1) + ": <a href=\"" + d.Url + "\">" + d.Name + "</a></div>");
+                }
+            });
+        });
+
+    var newsTrendForm = ".news-trend-form";
+    jQuery(newsTrendForm + " .form-submit")
+        .click(function (e) {
+            e.preventDefault();
+
+            jQuery(newsTrendForm + " .results").html("");
+
+            jQuery.post(
+                jQuery(newsTrendForm).attr("action"), {}
+            ).done(function (r) {
+                for (var i = 0; i < r.length; i++) {
+                    var d = r[i];
+
+                    jQuery(newsTrendForm + " .results").append("<div>" + (i+1) + ": <a href='" + d.WebSearchUrl + "'>" + d.Name + " - " + d.Image.Provider[0].Name + "</a><div>");
+                }
+            });
+        });
+
+    var newsCatForm = ".news-category-form";
+    jQuery(newsCatForm + " .form-submit")
+        .click(function (e) {
+            e.preventDefault();
+
+            jQuery(newsCatForm + " .results").html("");
+
+            jQuery.post(
+                jQuery(newsCatForm).attr("action"),
+                {
+                    category: jQuery(newsCatForm + " #category").val()
+                }
+            ).done(function (r) {
+                for (var i = 0; i < r.length; i++) {
+                    var d = r[i];
+                    jQuery(newsCatForm + " .results").append("<div>" + (i + 1) + ": <a href=\"" + d.Url + "\">" + d.Name + "</a></div>");
+                }
+            });
+        });
+
 });
