@@ -5,10 +5,9 @@ using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Bing
 {
-    public class WebSearchNewsThumbnail
+    public class NewsAbout
     {
-        public string ContentUrl { get; set; }
-        public int Width { get; set; }
-        public int Height { get; set; }
+        public string ReadLink { get; set; }
+        public string Name { get; set; }
     }
 }

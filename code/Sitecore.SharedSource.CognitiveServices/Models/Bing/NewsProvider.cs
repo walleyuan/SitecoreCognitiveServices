@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Bing
 {
-    public class WebSearchNewsAbout
+    public class NewsProvider
     {
-        public string ReadLink { get; set; }
+        public string _type { get; set; }
         public string Name { get; set; }
     }
 }
