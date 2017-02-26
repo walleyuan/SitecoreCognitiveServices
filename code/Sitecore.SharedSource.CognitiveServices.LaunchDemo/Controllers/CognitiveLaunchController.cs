@@ -18,6 +18,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         protected readonly ISpellCheckService SpellCheckService;
         protected readonly IWebSearchService WebSearchService;
         protected readonly INewsSearchService NewsSearchService;
+        protected readonly IVideoSearchService VideoSearchService;
 
         public CognitiveLaunchController(
             IVisionService visionService,
@@ -25,7 +26,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             IImageSearchService imageSearchService,
             ISpellCheckService spellCheckService,
             IWebSearchService webSearchService,
-            INewsSearchService newsSearchService)
+            INewsSearchService newsSearchService,
+            IVideoSearchService videoSearchService)
         {
             VisionService = visionService;
             AutoSuggestService = autoSuggestService;
@@ -33,6 +35,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             SpellCheckService = spellCheckService;
             WebSearchService = webSearchService;
             NewsSearchService = newsSearchService;
+            VideoSearchService = videoSearchService;
         }
         
         #region Moderator
@@ -157,5 +160,31 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             return Json(results.Value);
         }
         #endregion News Search
+
+        #region Video Search
+
+        public ActionResult VideoSearch() {
+            return View();
+        }
+
+        public ActionResult GetVideoSearch(string text) {
+            var results = VideoSearchService.VideoSearch(text);
+
+            return Json(results.Value);
+        }
+
+        public ActionResult GetVideoTrendSearch() {
+            var results = VideoSearchService.TrendingSearch();
+
+            return Json(results.Categories.Take(5));
+        }
+
+        public ActionResult GetVideoDetailsSearch(string videoId) {
+            var results = VideoSearchService.VideoDetailsSearch(videoId, VideoDetailsModulesOptions.All);
+
+            return Json(results.VideoResult);
+        }
+
+        #endregion Video Search
     }
 }

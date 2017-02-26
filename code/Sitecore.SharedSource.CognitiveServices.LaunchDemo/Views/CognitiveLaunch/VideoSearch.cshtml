@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Search Videos";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form video-search-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/GetVideoSearch">
+        <fieldset>
+            <legend>Video Search</legend>
+            <div class="form-row">
+                <input type="text" name="text" id="text"/>
+                <div class="results"></div>
+            </div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Search Videos</button>
+            </div>
+        </fieldset>
+    </form>
+    <form class="form video-trend-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/GetVideoTrendSearch">
+        <fieldset>
+            <legend>Video Trend Search</legend>
+            <div class="form-row">
+                <div class="results"></div>
+            </div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Search Video Trends</button>
+            </div>
+        </fieldset>
+    </form>
+    <form class="form video-details-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/GetVideoDetailsSearch">
+        <fieldset>
+            <legend>Video Details Search</legend>
+            <div class="form-row">
+                <input type="text" name="text" id="text" />
+                <div class="results"></div>
+            </div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Search Video Details</button>
+            </div>
+        </fieldset>
+    </form>
+</div>

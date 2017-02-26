@@ -11,7 +11,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Models.Bing
         public string ThumbnailUrl { get; set; }
         public DateTime DatePublished { get; set; }
         public List<NameValue> Publisher { get; set; }
-        public List<NameValue> Creator { get; set; }
+        public NameValue Creator { get; set; }
         public string ContentUrl { get; set; }
         public string HostPageUrl { get; set; }
         public string HostPageUrlPingSuffix { get; set; }

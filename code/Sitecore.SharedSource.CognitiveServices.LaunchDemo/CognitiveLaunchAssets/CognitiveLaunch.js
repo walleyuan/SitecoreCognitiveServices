@@ -266,4 +266,71 @@ jQuery(document).ready(function () {
             });
         });
 
+    /*** BING VIDEO SEARCH ***/
+
+    var videoSearchForm = ".video-search-form";
+    jQuery(videoSearchForm + " .form-submit")
+        .click(function (e) {
+            e.preventDefault();
+
+            jQuery(videoSearchForm + " .results").html("");
+
+            jQuery.post(
+                jQuery(videoSearchForm).attr("action"),
+                {
+                    text: jQuery(videoSearchForm + " #text").val()
+                }
+            ).done(function (r) {
+                for (var i = 0; i < r.length; i++) {
+                    var d = r[i];
+                    jQuery(videoSearchForm + " .results").append("<div>" + (i + 1) + ": <a ref='" + d.VideoId + "' href=\"" + d.ContentUrl + "\">" + d.Name + "</a></div>");
+                }
+            });
+        });
+
+    var videoTrendForm = ".video-trend-form";
+    jQuery(videoTrendForm + " .form-submit")
+        .click(function (e) {
+            e.preventDefault();
+
+            jQuery(videoTrendForm + " .results").html("");
+
+            jQuery.post(
+                jQuery(videoTrendForm).attr("action"), {}
+            ).done(function (r) {
+                for (var i = 0; i < r.length; i++) {
+                    var d = r[i];
+                    var cat = "<div><div>" + d.Title + "</div>";
+                    for (var j = 0; j < d.Subcategories.length; j++) {
+                        var s = d.Subcategories[j];
+                        for (var k = 0; k < s.Tiles.length; k++) {
+                            var t = s.Tiles[k];
+                            cat += "<div><a href='" + t.Query.WebSearchUrl + "'>" + t.Query.DisplayText + "</a></div>";
+                        }
+                    }
+                    cat += "</div>";
+                    jQuery(videoTrendForm + " .results").append(cat);
+                }
+            });
+        });
+
+    var videoDetailsForm = ".video-details-form";
+    jQuery(videoDetailsForm + " .form-submit")
+        .click(function (e) {
+            e.preventDefault();
+
+            jQuery(videoDetailsForm + " .results").html("");
+
+            jQuery.post(
+                jQuery(videoDetailsForm).attr("action"),
+                {
+                    videoId: jQuery(videoDetailsForm + " #text").val()
+                }
+            ).done(function (r) {
+                for (var i = 0; i < r.length; i++) {
+                    var d = r[i];
+                    jQuery(videoDetailsForm + " .results").append("<div>" + (i + 1) + ": <a href=\"" + d.Url + "\">" + d.Name + "</a></div>");
+                }
+            });
+        });
 });
