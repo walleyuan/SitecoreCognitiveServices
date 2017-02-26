@@ -327,10 +327,7 @@ jQuery(document).ready(function () {
                     videoId: jQuery(videoDetailsForm + " #text").val()
                 }
             ).done(function (r) {
-                for (var i = 0; i < r.length; i++) {
-                    var d = r[i];
-                    jQuery(videoDetailsForm + " .results").append("<div>" + (i + 1) + ": <a href=\"" + d.Url + "\">" + d.Name + "</a></div>");
-                }
+                jQuery(videoDetailsForm + " .results").append("<a href=\"" + r.ContentUrl + "\">" + r.Name + "</a><br/><img src='" + r.ThumbnailUrl + "'/>");
             });
         });
 });
