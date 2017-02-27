@@ -209,6 +209,7 @@
     <Compile Include="Controllers\CognitiveMediaSearchController.cs" />
     <Compile Include="Controllers\CognitiveUtilityController.cs" />
     <Compile Include="Controllers\CognitiveAnalysisController.cs" />
+    <Compile Include="Enums\Academic.cs" />
     <Compile Include="Enums\Bing.cs" />
     <Compile Include="Factories\CognitiveImageAnalysisFactory.cs" />
     <Compile Include="Factories\ICognitiveMediaSearchFactory.cs" />
@@ -230,6 +231,18 @@
     <Compile Include="Foundation\ISitecoreDataService.cs" />
     <Compile Include="Foundation\IReflectionUtilWrapper.cs" />
     <Compile Include="Foundation\SitecoreDataService.cs" />
+    <Compile Include="Models\Academic\AA.cs" />
+    <Compile Include="Models\Academic\AcademicAuthor.cs" />
+    <Compile Include="Models\Academic\AcademicPaper.cs" />
+    <Compile Include="Models\Academic\AcademicReturn.cs" />
+    <Compile Include="Models\Academic\CalcHistogramResponse.cs" />
+    <Compile Include="Models\Academic\EvaluateResponse.cs" />
+    <Compile Include="Models\Academic\EvaluateResult.cs" />
+    <Compile Include="Models\Academic\GraphSearchRequest.cs" />
+    <Compile Include="Models\Academic\GraphSearchResponse.cs" />
+    <Compile Include="Models\Academic\GraphSearchResult.cs" />
+    <Compile Include="Models\Academic\Histogram.cs" />
+    <Compile Include="Models\Academic\HistogramResult.cs" />
     <Compile Include="Models\Bing\AutoSuggestEntry.cs" />
     <Compile Include="Models\Bing\AutoSuggestGroup.cs" />
     <Compile Include="Models\Bing\AutoSuggestQuery.cs" />
@@ -346,6 +359,8 @@
     <Compile Include="Repositories\Bing\IVideoSearchRepository.cs" />
     <Compile Include="Repositories\Bing\IWebSearchRepository.cs" />
     <Compile Include="Repositories\Bing\WebSearchRepository.cs" />
+    <Compile Include="Repositories\Knowledge\AcademicSearchRepository.cs" />
+    <Compile Include="Repositories\Knowledge\IAcademicSearchRepository.cs" />
     <Compile Include="Repositories\Knowledge\IKnowledgeExplorationRepository.cs" />
     <Compile Include="Repositories\Knowledge\IQnAMakerRepository.cs" />
     <Compile Include="Repositories\Knowledge\IRecommendationsRepository.cs" />
