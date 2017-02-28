@@ -16,10 +16,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing {
     {
         public static readonly string spellCheckUrl = "https://api.cognitive.microsoft.com/bing/v5.0/spellcheck/";
 
+        protected readonly IRepositoryClient RepositoryClient;
+
         public SpellCheckRepository(
-            IApiKeys apiKeys)
+            IApiKeys apiKeys,
+            IRepositoryClient repoClient)
             : base(apiKeys.BingSpellCheck)
         {
+            RepositoryClient = repoClient;
         }
 
         public SpellCheckResponse SpellCheck(string text, SpellCheckModeOptions mode = SpellCheckModeOptions.None, string languageCode = "")
@@ -39,40 +43,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing {
                 sb.Append($"{concat}mkt={languageCode}");
             }
                     
-            var response = await this.SendEncodedFormPostAsync($"{spellCheckUrl}{sb}", $"Text={text}");
+            var response = await RepositoryClient.SendEncodedFormPostAsync(this.ApiKey, $"{spellCheckUrl}{sb}", $"Text={text}");
 
             return JsonConvert.DeserializeObject<SpellCheckResponse>(response);
-        }
-
-        protected async Task<string> SendEncodedFormPostAsync(string url, string data)
-        {
-            if (string.IsNullOrWhiteSpace(url))
-                throw new ArgumentException("url");
-            if (string.IsNullOrWhiteSpace(this.ApiKey))
-                throw new ArgumentException("ApiKey");
-            if (string.IsNullOrWhiteSpace(data))
-                throw new ArgumentException("data");
-
-            byte[] reqData = Encoding.UTF8.GetBytes(data);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Headers.Add("Ocp-Apim-Subscription-Key", this.ApiKey);
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.Accept = "application/x-www-form-urlencoded";
-            request.ContentLength = (long)reqData.Length;
-            request.Method = "POST";
-
-            Stream requestStreamAsync = await request.GetRequestStreamAsync();
-            requestStreamAsync.Write(reqData, 0, reqData.Length);
-            requestStreamAsync.Close();
-
-            WebResponse responseAsync = await request.GetResponseAsync();
-            StreamReader streamReader = new StreamReader(responseAsync.GetResponseStream());
-            string end = streamReader.ReadToEnd();
-            streamReader.Close();
-            responseAsync.Close();
-
-            return end;
         }
     }
 }

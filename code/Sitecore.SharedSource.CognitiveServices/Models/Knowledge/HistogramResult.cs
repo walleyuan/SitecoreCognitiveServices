@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Sitecore.SharedSource.CognitiveServices.Models.Academic {
+namespace Sitecore.SharedSource.CognitiveServices.Models.Knowledge {
     public class HistogramResult {
         public string Attribute { get; set; }
         public int Distinct_Values { get; set; }

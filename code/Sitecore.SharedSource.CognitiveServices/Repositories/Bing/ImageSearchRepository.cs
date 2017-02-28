@@ -1,12 +1,8 @@
 ﻿extern alias MicrosoftProjectOxfordCommon;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using Microsoft.ProjectOxford.Text.Core;
 using Newtonsoft.Json;
 using Sitecore.SharedSource.CognitiveServices.Enums;
@@ -21,13 +17,16 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing
         public static readonly string imageTrendUrl = "https://api.cognitive.microsoft.com/bing/v5.0/images/trending";
 
         protected readonly IWebUtilWrapper WebUtil;
+        protected readonly IRepositoryClient RepositoryClient;
 
         public ImageSearchRepository(
             IApiKeys apiKeys,
-            IWebUtilWrapper webUtil)
+            IWebUtilWrapper webUtil,
+            IRepositoryClient repoClient)
             : base(apiKeys.BingSearch)
         {
             WebUtil = webUtil;
+            RepositoryClient = repoClient;
         }
 
         #region Image Search
@@ -209,34 +208,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing
             if (!string.IsNullOrEmpty(insightsToken))
                 sb.Append($"&insightsToken={insightsToken}");
             
-            var response = await SendPostMultiPartAsync(sb.ToString());
+            var response = await RepositoryClient.SendPostMultiPartAsync(ApiKey, sb.ToString(), "{}");
 
             return JsonConvert.DeserializeObject<ImageInsightResponse>(response);
         }
-
-        protected async Task<string> SendPostMultiPartAsync(string url)
-        {
-            if (string.IsNullOrWhiteSpace(url))
-                throw new ArgumentException("url");
-            if (string.IsNullOrWhiteSpace(this.ApiKey))
-                throw new ArgumentException("ApiKey");
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Headers.Add("Ocp-Apim-Subscription-Key", this.ApiKey);
-            request.ContentType = "multipart/form-data";
-            request.Accept = "multipart/form-data";
-            request.ContentLength = 0;
-            request.Method = "POST";
-
-            WebResponse responseAsync = await request.GetResponseAsync();
-            StreamReader streamReader = new StreamReader(responseAsync.GetResponseStream());
-            string end = streamReader.ReadToEnd();
-            streamReader.Close();
-            responseAsync.Close();
-
-            return end;
-        }
-
+        
         #endregion Image Insights
     }
 }

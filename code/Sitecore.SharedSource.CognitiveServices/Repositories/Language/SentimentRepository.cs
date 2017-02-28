@@ -1,12 +1,7 @@
-﻿using System;
-using System.IO;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Text.Sentiment;
 using Microsoft.ProjectOxford.Video.Contract;
 using Newtonsoft.Json;
-using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.SharedSource.CognitiveServices.Models.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
@@ -15,11 +10,15 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
     {
         protected static readonly string keyPhraseUrl = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases";
         protected static readonly string topicUrl = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics";
-        
+
+        protected readonly IRepositoryClient RepositoryClient;
+
         public SentimentRepository(
-            IApiKeys apiKeys)
+            IApiKeys apiKeys,
+            IRepositoryClient repoClient)
             : base(apiKeys.TextAnalytics)
         {
+            RepositoryClient = repoClient;
         }
 
         public KeyPhraseSentimentResponse GetKeyPhrases(SentimentRequest request)
@@ -40,38 +39,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
         /// <returns></returns>
         public string GetTopics(TopicRequest request) 
         {
-            return Task.Run(async () => await this.SendTopicsPostAsync(topicUrl, JsonConvert.SerializeObject((object)request))).Result;
+            return Task.Run(async () => await RepositoryClient.SendOperationPostAsync(ApiKey, topicUrl, JsonConvert.SerializeObject((object)request))).Result;
         }
-
-        protected async Task<string> SendTopicsPostAsync(string url, string data) {
-
-            if (string.IsNullOrWhiteSpace(url))
-                throw new ArgumentException("url");
-            if (string.IsNullOrWhiteSpace(this.ApiKey))
-                throw new ArgumentException("ApiKey");
-            if (string.IsNullOrWhiteSpace(data))
-                throw new ArgumentException("data");
-
-            byte[] reqData = Encoding.UTF8.GetBytes(data);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Headers.Add("Ocp-Apim-Subscription-Key", this.ApiKey);
-            request.ContentType = "application/json";
-            request.Accept = "application/json";
-            request.ContentLength = (long)reqData.Length;
-            request.Method = "POST";
-
-            Stream requestStreamAsync = await request.GetRequestStreamAsync();
-            requestStreamAsync.Write(reqData, 0, reqData.Length);
-            requestStreamAsync.Close();
-
-            HttpWebResponse responseAsync = (HttpWebResponse)await request.GetResponseAsync();
-            var opLocation = responseAsync.GetResponseHeader("operation-location");
-            responseAsync.Close();
-
-            return opLocation;
-        }
-
+        
         public OperationResult GetOperation(string operationLocationUrl)
         {
             return Task.Run(async () => await GetOperationAsync(operationLocationUrl)).Result;

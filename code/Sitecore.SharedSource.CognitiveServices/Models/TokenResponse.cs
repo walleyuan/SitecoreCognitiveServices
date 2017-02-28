@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
 
-namespace Sitecore.SharedSource.CognitiveServices.Models.Moderator
+namespace Sitecore.SharedSource.CognitiveServices.Models
 {
-    public class ModeratorTokenResponse
+    public class TokenResponse
     {
         public string Token_Type { get; set; }
         public string Expires_In { get; set; }

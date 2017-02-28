@@ -32,6 +32,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<ISettingsWrapper, SettingsWrapper>();
             serviceCollection.AddTransient<IReflectionUtilWrapper, ReflectionUtilWrapper>();
             serviceCollection.AddTransient<ILogWrapper, LogWrapper>();
+            serviceCollection.AddTransient<IRepositoryClient, RepositoryClient>();
 
             //repositories
             serviceCollection.AddTransient<IEmotionRepository, EmotionRepository>();
@@ -50,6 +51,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<IWebSearchRepository, WebSearchRepository>();
             serviceCollection.AddTransient<INewsSearchRepository, NewsSearchRepository>();
             serviceCollection.AddTransient<IVideoSearchRepository, VideoSearchRepository>();
+            serviceCollection.AddTransient<IAcademicSearchRepository, AcademicSearchRepository>();
 
             //services
             serviceCollection.AddTransient<ISearchService, SearchService>();
@@ -69,7 +71,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<IWebSearchService, WebSearchService>();
             serviceCollection.AddTransient<INewsSearchService, NewsSearchService>();
             serviceCollection.AddTransient<IVideoSearchService, VideoSearchService>();
-
+            
             //factories
             serviceCollection.AddTransient<ICognitiveImageAnalysisFactory, CognitiveImageAnalysisFactory>();
             serviceCollection.AddTransient<ICognitiveTextAnalysisFactory, CognitiveTextAnalysisFactory>();

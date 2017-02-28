@@ -1,13 +1,7 @@
 ﻿extern alias MicrosoftProjectOxfordCommon;
 using System;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
 using System.Web;
-using System.Web.Script.Serialization;
 using Sitecore.SharedSource.CognitiveServices.Models;
-using Sitecore.SharedSource.CognitiveServices.Models.Moderator;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Moderator {
     public class ContentModeratorRepository : IContentModeratorRepository
@@ -26,15 +20,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Moderator {
 
         protected static readonly string moderatorUrl = "https://westus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0";
         protected static readonly string moderateSessionTokenKey = "ModerateSessionTokenKey";
+
         protected readonly IApiKeys ApiKeys;
+        protected readonly IRepositoryClient RepositoryClient;
 
         protected HttpContextBase Context { get; set; }
 
         public ContentModeratorRepository(
             IApiKeys apiKeys,
+            IRepositoryClient repoClient,
             HttpContextBase context)
         {
             ApiKeys = apiKeys;
+            RepositoryClient = repoClient;
             Context = context;
         }
 
@@ -42,7 +40,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Moderator {
         {
             string token = GetToken();
 
-            var value = SendModeratorPost($"{moderatorUrl}/ProcessImage/Evaluate?CacheImage={imageUrl}", token);
+            var value = RepositoryClient.SendTokenPost(ApiKeys.ContentModerator, $"{moderatorUrl}/ProcessImage/Evaluate?CacheImage={imageUrl}", token);
 
             return value;
         }
@@ -51,69 +49,15 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Moderator {
         {
             if (Context.Session[moderateSessionTokenKey] != null)
             {
-                var sessionToken = (ModeratorTokenResponse) Context.Session[moderateSessionTokenKey];
+                var sessionToken = (TokenResponse) Context.Session[moderateSessionTokenKey];
                 if (sessionToken.Expires_On != null && sessionToken.ExpirationDate >= DateTime.Now)
                     return sessionToken.Access_Token;
             }
 
-            var token = SendTokenRequest();
+            var token = RepositoryClient.SendTokenRequest(ApiKeys.ContentModerator, ApiKeys.ContentModeratorClientId);
             Context.Session.Add(moderateSessionTokenKey, token);
             
             return token.Access_Token;
-        }
-
-        protected ModeratorTokenResponse SendTokenRequest()
-        {
-            byte[] reqData = Encoding.UTF8.GetBytes($"resource=https%3A%2F%2Fapi.contentmoderator.cognitive.microsoft.com%2Freview&client_id={ApiKeys.ContentModeratorClientId}&client_secret={ApiKeys.ContentModerator}&grant_type=client_credentials");
-            
-            WebRequest request = WebRequest.Create("https://login.microsoftonline.com/contentmoderatorprod.onmicrosoft.com/oauth2/token");
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = (long)reqData.Length;
-            
-            Stream requestStreamAsync = request.GetRequestStream();
-            requestStreamAsync.Write(reqData, 0, reqData.Length);
-            requestStreamAsync.Close();
-
-            WebResponse responseAsync = request.GetResponse();
-            StreamReader streamReader = new StreamReader(responseAsync.GetResponseStream());
-            string end = streamReader.ReadToEnd();
-            streamReader.Close();
-            responseAsync.Close();
-
-            ModeratorTokenResponse t = new JavaScriptSerializer().Deserialize<ModeratorTokenResponse>(end);
-
-            return t;
-        }
-
-        protected string SendModeratorPost(string url, string token)
-        {
-            if (string.IsNullOrWhiteSpace(url))
-                throw new ArgumentException("url");
-            if (string.IsNullOrWhiteSpace(token))
-                throw new ArgumentException("token");
-
-            byte[] reqData = Encoding.UTF8.GetBytes("");
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Headers.Add("Ocp-Apim-Subscription-Key", ApiKeys.ContentModerator);
-            request.Headers.Add("authorization", $"Bearer {token}");
-            request.ContentType = "application/json";
-            request.Accept = "application/json";
-            request.Method = "POST";
-            request.ContentLength = (long)reqData.Length;
-
-            Stream requestStreamAsync = request.GetRequestStream();
-            requestStreamAsync.Write(reqData, 0, reqData.Length);
-            requestStreamAsync.Close();
-
-            WebResponse responseAsync = request.GetResponse();
-            StreamReader streamReader = new StreamReader(responseAsync.GetResponseStream());
-            string end = streamReader.ReadToEnd();
-            streamReader.Close();
-            responseAsync.Close();
-
-            return end;
         }
     }
 }

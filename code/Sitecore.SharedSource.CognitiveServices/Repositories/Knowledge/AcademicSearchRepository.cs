@@ -1,25 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using Microsoft.ProjectOxford.Text.Core;
 using Newtonsoft.Json;
 using Sitecore.SharedSource.CognitiveServices.Enums;
-using Sitecore.SharedSource.CognitiveServices.Models.Academic;
+using Sitecore.SharedSource.CognitiveServices.Models.Knowledge;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
     public class AcademicSearchRepository : TextClient, IAcademicSearchRepository
     {
-        public static readonly string calcUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram";
-        public static readonly string evaluateUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate[?expr][&model][&count][&offset][&orderby][&attributes]";
-        public static readonly string graphUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search[?mode]";
+        protected static readonly string calcUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram";
+        protected static readonly string evaluateUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate";
+        protected static readonly string graphUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search";
+        protected static readonly string interpretUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret";
+        protected static readonly string similarityUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity";
+        
+        protected readonly IRepositoryClient RepositoryClient;
 
         public AcademicSearchRepository(
-            IApiKeys apiKeys)
+            IApiKeys apiKeys,
+            IRepositoryClient repoClient)
             : base(apiKeys.Academic)
         {
+            RepositoryClient = repoClient;
         }
 
         #region Calculate Histogram
@@ -33,12 +36,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
         /// <param name="count"></param>
         /// <param name="offset"></param>
         /// <returns></returns>
-        public HistogramResult CalcHistogram(string expression, AcademicHistogramModelOptions model, string attributes = "", int count = 10, int offset = 0)
+        public HistogramResult CalcHistogram(string expression, AcademicModelOptions model, string attributes = "", int count = 10, int offset = 0)
         {
             return Task.Run(async () => await CalcHistogramAsync(expression, model, attributes, count, offset)).Result;
         }
 
-        public async Task<HistogramResult> CalcHistogramAsync(string expression, AcademicHistogramModelOptions model, string attributes = "", int count = 10, int offset = 0) {
+        public async Task<HistogramResult> CalcHistogramAsync(string expression, AcademicModelOptions model, string attributes = "", int count = 10, int offset = 0) {
 
             StringBuilder sb = new StringBuilder();
             
@@ -51,9 +54,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
             if (offset > 0)
                 sb.Append($"&offset={offset}");
 
-            var modelName = Enum.GetName(typeof(AcademicHistogramModelOptions), model).Replace("beta2015", "beta-2015");
+            var modelName = Enum.GetName(typeof(AcademicModelOptions), model).Replace("beta2015", "beta-2015");
 
-            var response = await this.SendGetAsync($"{calcUrl}?expr={expression}&model={modelName}{sb}");
+            var response = await SendGetAsync($"{calcUrl}?expr={expression}&model={modelName}{sb}");
 
             return JsonConvert.DeserializeObject<HistogramResult>(response);
         }
@@ -71,11 +74,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
         /// <param name="count"></param>
         /// <param name="offset"></param>
         /// <returns></returns>
-        public EvaluateResponse Evaluate(string expression, AcademicHistogramModelOptions model, int count = 10, int offset = 0, string attributes = "", string orderby = "") {
+        public EvaluateResponse Evaluate(string expression, AcademicModelOptions model, int count = 10, int offset = 0, string attributes = "", string orderby = "") {
             return Task.Run(async () => await EvaluateAsync(expression, model, count, offset, attributes, orderby)).Result;
         }
 
-        public async Task<EvaluateResponse> EvaluateAsync(string expression, AcademicHistogramModelOptions model, int count = 10, int offset = 0, string attributes = "", string orderby = "") {
+        public async Task<EvaluateResponse> EvaluateAsync(string expression, AcademicModelOptions model, int count = 10, int offset = 0, string attributes = "", string orderby = "") {
 
             StringBuilder sb = new StringBuilder();
             
@@ -91,7 +94,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
             if (!string.IsNullOrEmpty(attributes))
                 sb.Append($"&attributes={attributes}");
 
-            var modelName = Enum.GetName(typeof(AcademicHistogramModelOptions), model).Replace("beta2015", "beta-2015");
+            var modelName = Enum.GetName(typeof(AcademicModelOptions), model).Replace("beta2015", "beta-2015");
 
             var response = await this.SendGetAsync($"{evaluateUrl}?expr={expression}&model={modelName}{sb}");
 
@@ -109,12 +112,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
         public async Task<GraphSearchResponse> GraphSearchAsync(AcademicGraphModeOptions mode, GraphSearchRequest request) {
 
             var modeName = Enum.GetName(typeof(AcademicGraphModeOptions), mode);
-
-            string data = (mode == AcademicGraphModeOptions.json)
-                ? JsonConvert.SerializeObject(request)
-                : GetLambda(request);
-
-            var response = await SendPostAsync($"{graphUrl}?mode={modeName}", data);
+            
+            var response = (mode == AcademicGraphModeOptions.json)
+                ? await RepositoryClient.SendJsonPostAsync(ApiKey, $"{graphUrl}?mode={modeName}", JsonConvert.SerializeObject(request))
+                : await RepositoryClient.SendTextPostAsync(ApiKey, $"{graphUrl}?mode={modeName}", GetLambda(request));
 
             return JsonConvert.DeserializeObject<GraphSearchResponse>(response);
         }
@@ -126,5 +127,59 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
 
         #endregion Graph Search
 
+        #region Interpret
+        
+        /// <param name="query">Query entered by user. If complete is set to 1, query will be interpreted as a prefix for generating query auto-completion suggestions.</param>
+        /// <param name="complete">1 means that auto-completion suggestions are generated based on the grammar and graph data.</param>
+        /// <param name="count">Maximum number of interpretations to return.</param>
+        /// <param name="offset">Index of the first interpretation to return. For example, count=2&offset=0 returns interpretations 0 and 1. count=2&offset=2 returns interpretations 2 and 3.</param>
+        /// <param name="timeout">Timeout in milliseconds.Only interpretations found before the timeout has elapsed are returned.</param>
+        /// <param name="model">Name of the model that you wish to query.Currently, the value defaults to "latest".</param>
+        /// <returns></returns>
+        public InterpretResponse Interpret(string query, bool complete = false, int count = 10, int offset = 0, int timeout = 0, AcademicModelOptions model = AcademicModelOptions.latest)
+        {
+            return Task.Run(async () => await InterpretAsync(query, complete, count, offset, timeout, model)).Result;
+        }
+
+        public async Task<InterpretResponse> InterpretAsync(string query, bool complete = false, int count = 10, int offset = 0, int timeout = 0, AcademicModelOptions model = AcademicModelOptions.latest)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (complete)
+                sb.Append($"complete={complete}");
+
+            if (count > 0)
+                sb.Append($"&count={count}");
+
+            if (offset > 0)
+                sb.Append($"&offset={offset}");
+
+            if (timeout > 0)
+                sb.Append($"&timeout={timeout}");
+
+            var modelName = Enum.GetName(typeof(AcademicModelOptions), model).Replace("beta2015", "beta-2015");
+
+            var response = await SendGetAsync($"{interpretUrl}?query={query}&model={modelName}{sb}");
+
+            return JsonConvert.DeserializeObject<InterpretResponse>(response);
+        }
+
+        #endregion Interpret
+
+        #region Similarity
+        
+        public double Similarity(string s1, string s2)
+        {
+            return Task.Run(async () => await SimilarityAsync(s1, s2)).Result;
+        }
+
+        public async Task<double> SimilarityAsync(string s1, string s2)
+        {
+            var response = await SendPostAsync(similarityUrl, $"s1={s1}&s2={s2}");
+
+            return JsonConvert.DeserializeObject<double>(response);
+        }
+
+        #endregion Similarity
     }
 }
