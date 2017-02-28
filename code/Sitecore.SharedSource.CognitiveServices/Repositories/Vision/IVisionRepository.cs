@@ -15,13 +15,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
         Task<Category[]> GetCategoryAnalysis(string imageUrl);
         Task<Microsoft.ProjectOxford.Vision.Contract.Color> GetColorAnalysis(Stream stream);
         Task<Microsoft.ProjectOxford.Vision.Contract.Color> GetColorAnalysis(string imageUrl);
-        Task<Description> GetDescriptionAnalysis(Stream stream);
-        Task<Description> GetDescriptionAnalysis(string imageUrl);
         Task<Face[]> GetFaceAnalysis(Stream stream);
         Task<Face[]> GetFaceAnalysis(string imageUrl);
         Task<ImageType> GetImageTypeAnalysis(Stream stream);
         Task<ImageType> GetImageTypeAnalysis(string imageUrl);
-        Task<Tag[]> GetTagsAnalysis(Stream stream);
-        Task<Tag[]> GetTagsAnalysis(string imageUrl);
     }
 }

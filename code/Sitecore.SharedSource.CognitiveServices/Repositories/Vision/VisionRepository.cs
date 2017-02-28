@@ -91,23 +91,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
             var result = await AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.Color });
             return result.Color;
         }
-
-        public virtual async Task<Description> GetDescriptionAnalysis(Stream stream)
-        {
-            Assert.IsNotNull(stream, GetType());
-
-            var result = await AnalyzeImageAsync(stream, new List<VisualFeature>() { VisualFeature.Description });
-            return result.Description;
-        }
-
-        public virtual async Task<Description> GetDescriptionAnalysis(string imageUrl)
-        {
-            Assert.IsNotNullOrEmpty(imageUrl, "GetFullAnalysis: image url must be provided but was empty");
-
-            var result = await AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.Description });
-            return result.Description;
-        }
-
+        
         public virtual async Task<Face[]> GetFaceAnalysis(Stream stream)
         {
             Assert.IsNotNull(stream, GetType());
@@ -138,22 +122,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision
 
             var result = await AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.ImageType });
             return result.ImageType;
-        }
-
-        public virtual async Task<Tag[]> GetTagsAnalysis(Stream stream)
-        {
-            Assert.IsNotNull(stream, GetType());
-
-            var result = await AnalyzeImageAsync(stream, new List<VisualFeature>() { VisualFeature.Tags });
-            return result.Tags;
-        }
-
-        public virtual async Task<Tag[]> GetTagsAnalysis(string imageUrl)
-        {
-            Assert.IsNotNullOrEmpty(imageUrl, "GetFullAnalysis: image url must be provided but was empty");
-
-            var result = await AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.Tags });
-            return result.Tags;
         }
 
         #endregion AnalyzeImageAsync
