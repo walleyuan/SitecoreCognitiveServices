@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using log4net.Repository.Hierarchy;
-using Sitecore.SharedSource.CognitiveServices.Enums;
+﻿using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Models.Knowledge;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
 {

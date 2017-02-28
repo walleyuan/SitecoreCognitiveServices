@@ -3,7 +3,7 @@ using System;
 using System.Web;
 using Sitecore.SharedSource.CognitiveServices.Models;
 
-namespace Sitecore.SharedSource.CognitiveServices.Repositories.Moderator {
+namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
     public class ContentModeratorRepository : IContentModeratorRepository
     {
         //so far this doesn't work. The token can be retrieved but the actual request has not yet accepted my token or api key. There may be more to the request than is documented. 

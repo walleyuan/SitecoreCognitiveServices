@@ -3,9 +3,9 @@ using System.IO;
 using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Video.Contract;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Video;
+using Sitecore.SharedSource.CognitiveServices.Repositories.Vision;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Video
+namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {
     public class VideoService : IVideoService
     {

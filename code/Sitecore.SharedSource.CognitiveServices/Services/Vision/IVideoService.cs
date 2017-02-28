@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.ProjectOxford.Video.Contract;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Video
+namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {
     public interface IVideoService
     {

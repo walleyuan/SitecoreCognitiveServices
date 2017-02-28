@@ -373,8 +373,8 @@
     <Compile Include="Repositories\Language\LinguisticRepository.cs" />
     <Compile Include="Models\Language\TextAnalysisRequest.cs" />
     <Compile Include="Models\Language\TokenResult.cs" />
-    <Compile Include="Repositories\Moderator\ContentModeratorRepository.cs" />
-    <Compile Include="Repositories\Moderator\IContentModeratorRepository.cs" />
+    <Compile Include="Repositories\Vision\ContentModeratorRepository.cs" />
+    <Compile Include="Repositories\Vision\IContentModeratorRepository.cs" />
     <Compile Include="Repositories\IRepositoryClient.cs" />
     <Compile Include="Repositories\RepositoryClient.cs" />
     <Compile Include="Repositories\Speech\ICustomSpeechRepository.cs" />
@@ -427,8 +427,8 @@
     <Compile Include="Repositories\Speech\ISpeakerVerificationRepository.cs" />
     <Compile Include="Repositories\Speech\SpeakerIdentificationRepository.cs" />
     <Compile Include="Repositories\Speech\SpeakerVerificationRepository.cs" />
-    <Compile Include="Repositories\Video\IVideoRepository.cs" />
-    <Compile Include="Repositories\Video\VideoRepository.cs" />
+    <Compile Include="Repositories\Vision\IVideoRepository.cs" />
+    <Compile Include="Repositories\Vision\VideoRepository.cs" />
     <Compile Include="Repositories\Vision\EmotionRepository.cs" />
     <Compile Include="Repositories\Vision\FaceRepository.cs" />
     <Compile Include="Repositories\Vision\IEmotionRepository.cs" />
@@ -442,13 +442,13 @@
     <Compile Include="Services\Language\ISentimentService.cs" />
     <Compile Include="Services\Speech\ISpeakerIdentificationService.cs" />
     <Compile Include="Services\Speech\ISpeakerVerificationService.cs" />
-    <Compile Include="Services\Video\IVideoService.cs" />
+    <Compile Include="Services\Vision\IVideoService.cs" />
     <Compile Include="Services\Vision\IVisionService.cs" />
     <Compile Include="Services\Language\LanguageService.cs" />
     <Compile Include="Services\Language\SentimentService.cs" />
     <Compile Include="Services\Speech\SpeakerIdentificationService.cs" />
     <Compile Include="Services\Speech\SpeakerVerificationService.cs" />
-    <Compile Include="Services\Video\VideoService.cs" />
+    <Compile Include="Services\Vision\VideoService.cs" />
     <Compile Include="Services\Vision\VisionService.cs" />
   </ItemGroup>
   <ItemGroup>
