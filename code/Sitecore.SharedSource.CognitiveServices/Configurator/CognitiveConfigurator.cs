@@ -71,7 +71,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<IWebSearchService, WebSearchService>();
             serviceCollection.AddTransient<INewsSearchService, NewsSearchService>();
             serviceCollection.AddTransient<IVideoSearchService, VideoSearchService>();
-            
+            serviceCollection.AddTransient<IAcademicSearchService, AcademicSearchService>();
+
             //factories
             serviceCollection.AddTransient<ICognitiveImageAnalysisFactory, CognitiveImageAnalysisFactory>();
             serviceCollection.AddTransient<ICognitiveTextAnalysisFactory, CognitiveTextAnalysisFactory>();

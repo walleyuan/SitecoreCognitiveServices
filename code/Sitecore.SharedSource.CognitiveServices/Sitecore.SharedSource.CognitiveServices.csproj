@@ -407,6 +407,8 @@
     <Compile Include="Services\Bing\IWebSearchService.cs" />
     <Compile Include="Services\Bing\VideoSearchService.cs" />
     <Compile Include="Services\Bing\WebSearchService.cs" />
+    <Compile Include="Services\Knowledge\AcademicSearchService.cs" />
+    <Compile Include="Services\Knowledge\IAcademicSearchService.cs" />
     <Compile Include="Services\Search\SearchService.cs" />
     <Compile Include="Services\Search\ISearchService.cs" />
     <Compile Include="Services\Language\ILinguisticService.cs" />
