@@ -52,7 +52,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<INewsSearchRepository, NewsSearchRepository>();
             serviceCollection.AddTransient<IVideoSearchRepository, VideoSearchRepository>();
             serviceCollection.AddTransient<IAcademicSearchRepository, AcademicSearchRepository>();
-
+            
             //services
             serviceCollection.AddTransient<ISearchService, SearchService>();
             serviceCollection.AddTransient<IEmotionService, EmotionService>();
