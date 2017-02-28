@@ -379,7 +379,7 @@
     <Compile Include="Repositories\RepositoryClient.cs" />
     <Compile Include="Repositories\Speech\ICustomSpeechRepository.cs" />
     <Compile Include="Repositories\Language\ILuisRepository.cs" />
-    <Compile Include="Repositories\Speech\ITranslatorRepository.cs" />
+    <Compile Include="Repositories\Language\ITranslatorRepository.cs" />
     <Compile Include="Search\CognitiveSearchContext.cs" />
     <Compile Include="Search\CognitiveSearchResult.cs" />
     <Compile Include="Search\ComputedFields\BaseComputedField.cs" />
