@@ -5,10 +5,9 @@ using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Knowledge.Recommendations
 {
-    public class CreateBuildRequest
+    public class UsageEventStatistic
     {
-        public string Description { get; set; }
-        public string BuildType { get; set; }
-        public BuildSet Parameters { get; set; }
+        public string EventType { get; set; }
+        public int Count { get; set; }
     }
 }

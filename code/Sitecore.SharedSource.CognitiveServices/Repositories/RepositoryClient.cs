@@ -46,6 +46,17 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             return await SendAsync(apiKey, url, sb.ToString(), "application/octet-stream", "UPDATE");
         }
 
+        public async Task<string> SendOctetStreamPostAsync(string apiKey, string url, Stream stream)
+        {
+            StringBuilder sb = new StringBuilder();
+            using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+            {
+                sb.Append(reader.ReadToEnd());
+            }
+
+            return await SendAsync(apiKey, url, sb.ToString(), "application/octet-stream", "POST");
+        }
+
         public async Task<string> SendJsonUpdateAsync(string apiKey, string url, string data)
         {
             return await SendAsync(apiKey, url, data, "application/json", "UPDATE");

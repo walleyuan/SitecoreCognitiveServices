@@ -5,10 +5,10 @@ using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Knowledge.Recommendations
 {
-    public class CreateBuildRequest
+    public class RecommendationItem
     {
-        public string Description { get; set; }
-        public string BuildType { get; set; }
-        public BuildSet Parameters { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Metadata { get; set; }
     }
 }

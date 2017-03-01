@@ -5,13 +5,13 @@ using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Knowledge.Recommendations
 {
-    public class CreateModelResponse
+    public class CatalogItem
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public string Category { get; set; }
         public string Description { get; set; }
-        public string CreatedDateTime { get; set; }
-        public int ActiveBuildId { get; set; }
-        public string CatalogDisplayName { get; set; }
+        public List<NameValuePair> Features { get; set; }
+        public string Metadata { get; set; }
     }
 }

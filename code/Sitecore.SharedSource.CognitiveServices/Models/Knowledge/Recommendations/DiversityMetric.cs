@@ -5,10 +5,10 @@ using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Knowledge.Recommendations
 {
-    public class CreateBuildRequest
+    public class DiversityMetric
     {
-        public string Description { get; set; }
-        public string BuildType { get; set; }
-        public BuildSet Parameters { get; set; }
+        public int Min { get; set; }
+        public int Max { get; set; }
+        public float Percentage { get; set; }
     }
 }

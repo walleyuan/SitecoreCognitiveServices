@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Knowledge.Recommendations
 {
-    public class CreateBuildSet
+    public class BuildSet
     {
         public RankingBuild Ranking { get; set; }
         public RecommendationBuild Recommendation { get; set; }
