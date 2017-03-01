@@ -12,46 +12,69 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
     {
         public async Task<string> SendPostMultiPartAsync(string apiKey, string url, string data)
         {
-            return await SendPostAsync(apiKey, url, data, "multipart/form-data");
+            return await SendAsync(apiKey, url, data, "multipart/form-data", "POST");
         }
 
         public async Task<string> SendEncodedFormPostAsync(string apiKey, string url, string data)
         {
-            return await SendPostAsync(apiKey, url, data, "application/x-www-form-urlencoded");
+            return await SendAsync(apiKey, url, data, "application/x-www-form-urlencoded", "POST");
         }
 
         public async Task<string> SendTextPostAsync(string apiKey, string url, string data)
         {
-            return await SendPostAsync(apiKey, url, data, "text/plain");
+            return await SendAsync(apiKey, url, data, "text/plain", "POST");
         }
 
         public async Task<string> SendJsonPostAsync(string apiKey, string url, string data)
         {
-            return await SendPostAsync(apiKey, url, data, "application/json");
+            return await SendAsync(apiKey, url, data, "application/json", "POST");
         }
 
-        protected async Task<string> SendPostAsync(string apiKey, string url, string data, string contentType)
+        public async Task<string> SendJsonDeleteAsync(string apiKey, string url, string data)
+        {
+            return await SendAsync(apiKey, url, data, "application/json", "DELETE");
+        }
+
+        public async Task<string> SendOctetStreamUpdateAsync(string apiKey, string url, Stream stream)
+        {
+            StringBuilder sb = new StringBuilder();
+            using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+            {
+                sb.Append(reader.ReadToEnd());
+            }
+
+            return await SendAsync(apiKey, url, sb.ToString(), "application/octet-stream", "UPDATE");
+        }
+
+        public async Task<string> SendJsonUpdateAsync(string apiKey, string url, string data)
+        {
+            return await SendAsync(apiKey, url, data, "application/json", "UPDATE");
+        }
+
+        public async Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method)
         {
             if (string.IsNullOrWhiteSpace(url))
                 throw new ArgumentException("url");
             if (string.IsNullOrWhiteSpace(apiKey))
                 throw new ArgumentException("ApiKey");
-            if (string.IsNullOrWhiteSpace(data))
-                throw new ArgumentException("data");
-
-            byte[] reqData = Encoding.UTF8.GetBytes(data);
-
+            
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Headers.Add("Ocp-Apim-Subscription-Key", apiKey);
             request.ContentType = contentType;
             request.Accept = contentType;
-            request.ContentLength = (long)reqData.Length;
-            request.Method = "POST";
+            request.Method = method;
 
-            Stream requestStreamAsync = await request.GetRequestStreamAsync();
-            requestStreamAsync.Write(reqData, 0, reqData.Length);
-            requestStreamAsync.Close();
+            if (!string.IsNullOrWhiteSpace(data))
+            {
+                byte[] reqData = Encoding.UTF8.GetBytes(data);
 
+                request.ContentLength = (long)reqData.Length;
+                
+                Stream requestStreamAsync = await request.GetRequestStreamAsync();
+                requestStreamAsync.Write(reqData, 0, reqData.Length);
+                requestStreamAsync.Close();
+            }
+            
             WebResponse responseAsync = await request.GetResponseAsync();
             StreamReader streamReader = new StreamReader(responseAsync.GetResponseStream());
             string end = streamReader.ReadToEnd();
@@ -60,7 +83,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
 
             return end;
         }
-
+        
         public async Task<string> SendOperationPostAsync(string apiKey, string url, string data)
         {
 

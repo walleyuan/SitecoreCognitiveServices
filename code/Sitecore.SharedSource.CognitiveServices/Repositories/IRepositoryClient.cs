@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Sitecore.SharedSource.CognitiveServices.Models;
+using System.IO;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories
 {
@@ -10,6 +11,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
         Task<string> SendOperationPostAsync(string apiKey, string url, string data);
         Task<string> SendTextPostAsync(string apiKey, string url, string data);
         Task<string> SendJsonPostAsync(string apiKey, string url, string data);
+        Task<string> SendJsonDeleteAsync(string apiKey, string url, string data);
+        Task<string> SendOctetStreamUpdateAsync(string apiKey, string url, Stream stream);
+        Task<string> SendJsonUpdateAsync(string apiKey, string url, string data);
+        Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method);
         TokenResponse SendTokenRequest(string apiKey, string clientId);
         string SendTokenPost(string apiKey, string url, string token);
     }
