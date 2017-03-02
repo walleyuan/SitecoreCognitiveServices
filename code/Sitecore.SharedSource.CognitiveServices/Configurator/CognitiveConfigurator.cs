@@ -8,6 +8,9 @@ using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Speech;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Vision;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
+using Sitecore.SharedSource.CognitiveServices.Models.Search;
+using Sitecore.SharedSource.CognitiveServices.Models.Utility;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Bing;
 using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
@@ -28,7 +31,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<ISitecoreDataService, SitecoreDataService>();
             serviceCollection.AddTransient<IWebUtilWrapper, WebUtilWrapper>();
             serviceCollection.AddTransient<ISettingsWrapper, SettingsWrapper>();
-            serviceCollection.AddTransient<IReflectionUtilWrapper, ReflectionUtilWrapper>();
             serviceCollection.AddTransient<ILogWrapper, LogWrapper>();
             serviceCollection.AddTransient<IRepositoryClient, RepositoryClient>();
 
@@ -71,6 +73,15 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<INewsSearchService, NewsSearchService>();
             serviceCollection.AddTransient<IVideoSearchService, VideoSearchService>();
             serviceCollection.AddTransient<IAcademicSearchService, AcademicSearchService>();
+
+            //factory models
+            serviceCollection.AddTransient<ICognitiveImageAnalysis, CognitiveImageAnalysis>();
+            serviceCollection.AddTransient<ICognitiveMediaSearch, CognitiveMediaSearch>();
+            serviceCollection.AddTransient<ICognitiveTextAnalysis, CognitiveTextAnalysis>();
+            serviceCollection.AddTransient<IImageDescription, ImageDescription>();
+            serviceCollection.AddTransient<IReanalyzeAll, ReanalyzeAll>();
+            serviceCollection.AddTransient<ISetAltTagsAll, SetAltTagsAll>();
+            serviceCollection.AddTransient<ICognitiveMediaSearchJsonResult, CognitiveMediaSearchJsonResult>();
 
             //factories
             serviceCollection.AddTransient<ICognitiveImageAnalysisFactory, CognitiveImageAnalysisFactory>();

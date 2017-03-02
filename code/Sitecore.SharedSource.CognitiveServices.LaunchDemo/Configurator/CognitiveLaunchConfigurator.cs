@@ -8,9 +8,6 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Configurator
     {
         public void Configure(IServiceCollection serviceCollection)
         {
-            //system
-            //serviceCollection.AddTransient<ISomething, Something>();
-            
             serviceCollection.AddMvcControllersInCurrentAssembly();
         }
     }

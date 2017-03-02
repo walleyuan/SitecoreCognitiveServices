@@ -1,7 +1,7 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.SharedSource.CognitiveServices.Models.Search;
 using Sitecore.SharedSource.CognitiveServices.Search;
 
@@ -9,16 +9,16 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
     public class CognitiveMediaSearchFactory : ICognitiveMediaSearchFactory
     {
-        protected readonly IReflectionUtilWrapper ReflectionUtil;
+        protected readonly IServiceProvider Provider;
 
-        public CognitiveMediaSearchFactory(IReflectionUtilWrapper reflectionUtil)
+        public CognitiveMediaSearchFactory(IServiceProvider provider)
         {
-            ReflectionUtil = reflectionUtil;
+            Provider = provider;
         }
 
         public virtual ICognitiveMediaSearch Create()
         {
-            return ReflectionUtil.CreateObjectFromSettings<ICognitiveMediaSearch>("CognitiveService.Types.ICognitiveMediaSearch");
+            return Provider.GetService<ICognitiveMediaSearch>();
         }
 
         public virtual ICognitiveMediaSearch Create(string db, string language)
@@ -32,7 +32,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
 
         public virtual ICognitiveMediaSearchJsonResult CreateMediaSearchJsonResult(ISitecoreDataService dataService, ICognitiveSearchResult searchResult)
         {
-            var obj = ReflectionUtil.CreateObjectFromSettings<ICognitiveMediaSearchJsonResult>("CognitiveService.Types.ICognitiveMediaSearchJsonResult");
+            var obj = Provider.GetService<ICognitiveMediaSearchJsonResult>();
             
             MediaItem m = dataService.GetItemByUri(searchResult.UniqueId);
 

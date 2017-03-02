@@ -227,9 +227,7 @@
     <Compile Include="Foundation\LogWrapper.cs" />
     <Compile Include="Foundation\SettingsWrapper.cs" />
     <Compile Include="Foundation\ISettingsWrapper.cs" />
-    <Compile Include="Foundation\ReflectionUtilWrapper.cs" />
     <Compile Include="Foundation\ISitecoreDataService.cs" />
-    <Compile Include="Foundation\IReflectionUtilWrapper.cs" />
     <Compile Include="Foundation\SitecoreDataService.cs" />
     <Compile Include="Models\Knowledge\AA.cs" />
     <Compile Include="Models\Knowledge\AcademicAuthor.cs" />

@@ -1,4 +1,5 @@
-﻿using Sitecore.SharedSource.CognitiveServices.Models;
+﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
@@ -9,19 +10,20 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
     public class CognitiveImageAnalysisFactory : ICognitiveImageAnalysisFactory
     {
         protected readonly ISitecoreDataService DataService;
-        protected readonly IReflectionUtilWrapper ReflectionUtil;
-        
+        protected readonly IServiceProvider Provider;
+
+
         public CognitiveImageAnalysisFactory(
             ISitecoreDataService dataService,
-            IReflectionUtilWrapper reflectionUtil)
+            IServiceProvider provider)
         {
             DataService = dataService;
-            ReflectionUtil = reflectionUtil;
+            Provider = provider;
         }
 
         public virtual ICognitiveImageAnalysis Create()
         {
-            return ReflectionUtil.CreateObjectFromSettings<ICognitiveImageAnalysis>("CognitiveService.Types.ICognitiveImageAnalysis");
+            return Provider.GetService<ICognitiveImageAnalysis>();
         }
 
         public virtual ICognitiveImageAnalysis Create(ICognitiveSearchResult result)

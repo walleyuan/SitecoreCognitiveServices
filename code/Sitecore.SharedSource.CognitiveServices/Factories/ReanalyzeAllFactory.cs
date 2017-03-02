@@ -1,21 +1,21 @@
-﻿using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Models;
+﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 using Sitecore.SharedSource.CognitiveServices.Models.Utility;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
     public class ReanalyzeAllFactory : IReanalyzeAllFactory
     {
-        protected readonly IReflectionUtilWrapper ReflectionUtil;
+        protected readonly IServiceProvider Provider;
 
-        public ReanalyzeAllFactory(IReflectionUtilWrapper reflectionUtil)
+        public ReanalyzeAllFactory(IServiceProvider provider)
         {
-            ReflectionUtil = reflectionUtil;
+            Provider = provider;
         }
 
         public virtual IReanalyzeAll Create(string itemId, string db, string language, int itemCount)
         {
-            var obj = ReflectionUtil.CreateObjectFromSettings<IReanalyzeAll>("CognitiveService.Types.IReanalyzeAll");
+            var obj = Provider.GetService<IReanalyzeAll>();
 
             obj.ItemId = itemId;
             obj.Database = db;

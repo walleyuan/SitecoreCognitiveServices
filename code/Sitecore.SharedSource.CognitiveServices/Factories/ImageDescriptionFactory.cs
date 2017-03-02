@@ -1,22 +1,22 @@
-﻿using Microsoft.ProjectOxford.Vision.Contract;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Models;
+﻿using System;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.SharedSource.CognitiveServices.Models.Utility;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
     public class ImageDescriptionFactory : IImageDescriptionFactory
     {
-        protected readonly IReflectionUtilWrapper ReflectionUtil;
+        protected readonly IServiceProvider Provider;
 
-        public ImageDescriptionFactory(IReflectionUtilWrapper reflectionUtil)
+        public ImageDescriptionFactory(IServiceProvider provider)
         {
-            ReflectionUtil = reflectionUtil;
+            Provider = provider;
         }
 
         public virtual IImageDescription Create()
         {
-            var obj = ReflectionUtil.CreateObjectFromSettings<IImageDescription>("CognitiveService.Types.IImageDescription");
+            var obj = Provider.GetService<IImageDescription>();
 
             obj.CognitiveDescription = new Description();
             obj.AltDescription = string.Empty;
