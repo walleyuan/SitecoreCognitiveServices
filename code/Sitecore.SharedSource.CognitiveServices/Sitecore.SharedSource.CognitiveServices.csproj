@@ -467,6 +467,8 @@
     <Compile Include="Services\Bing\WebSearchService.cs" />
     <Compile Include="Services\Knowledge\AcademicSearchService.cs" />
     <Compile Include="Services\Knowledge\IAcademicSearchService.cs" />
+    <Compile Include="Services\Knowledge\RecommendationsService.cs" />
+    <Compile Include="Services\Knowledge\IRecommendationsService.cs" />
     <Compile Include="Services\Search\SearchService.cs" />
     <Compile Include="Services\Search\ISearchService.cs" />
     <Compile Include="Services\Language\ILinguisticService.cs" />
