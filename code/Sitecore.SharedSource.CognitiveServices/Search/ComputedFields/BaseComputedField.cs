@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.ComputedFields;
+using Sitecore.ContentSearch.Diagnostics;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
@@ -25,26 +26,37 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields
 
             Item indexItem = indexable as SitecoreIndexableItem;
             if (indexItem == null)
-                return string.Empty;
+                return null;
 
             if (indexItem?.Database?.Name == "core")
-                return string.Empty;
+                return null;
 
             if (indexItem.TemplateID == TemplateIDs.MediaFolder || indexItem.ID == ItemIDs.MediaLibraryRoot)
-                return string.Empty;
+                return null;
             
             try {
-                return GetFieldValue(indexItem);
+
+                CognitiveIndexableItem cognitiveIndexable;
+                try
+                {
+                    cognitiveIndexable = (CognitiveIndexableItem)indexable;
+                }
+                catch (Exception ex)
+                {
+                    CrawlingLog.Log.Warn("Unable to convert indexable to CognitiveIndexableItem. Id: " + indexable.UniqueId + ", Message: " + ex.Message);
+                    return null;
+                }
+                return GetFieldValue(cognitiveIndexable);
             } catch (Exception e) {
                 Log.Error($"Error indexing field: {FieldName}, Item Path: {indexItem.Paths.FullPath}", e, GetType());
             }
 
-            return string.Empty;
+            return null;
         }
 
-        protected virtual object GetFieldValue(Item indexItem)
+        protected virtual object GetFieldValue(CognitiveIndexableItem cognitiveIndexable)
         {
-            return string.Empty;
+            return null;
         }
 
         protected void LogError(Exception ex, Item indexItem)

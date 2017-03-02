@@ -1,34 +1,17 @@
-﻿using System.Web.Mvc;
-using System.Web.Script.Serialization;
-using Sitecore.Data.Items;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Services.Vision;
+﻿using System.Web.Script.Serialization;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
 {
     public class EmotionAnalysis : BaseComputedField
     {
-        protected override object GetFieldValue(Item indexItem)
+        protected override object GetFieldValue(CognitiveIndexableItem cognitiveIndexable)
         {
-            var dataService = DependencyResolver.Current.GetService<ISitecoreDataService>();
-            if (dataService == null)
-                return string.Empty;
+            if (cognitiveIndexable.Emotions == null)
+            {
+                return null;
+            }
 
-            if (!dataService.IsMediaFile(indexItem))
-                return string.Empty;
-
-            MediaItem m = indexItem;
-
-            var emotionService = DependencyResolver.Current.GetService<IEmotionService>();
-            if (emotionService == null)
-                return string.Empty;
-            
-            var result = emotionService.Recognize(m.GetMediaStream());
-            if(result == null)
-                return string.Empty;
-            
-            var json = new JavaScriptSerializer().Serialize(result);
-
+            var json = new JavaScriptSerializer().Serialize(cognitiveIndexable.Emotions);
             return json;
         }
     }

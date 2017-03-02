@@ -6,7 +6,6 @@ using Microsoft.ProjectOxford.Text.Sentiment;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.SearchTypes;
-using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.SharedSource.CognitiveServices.Models.Language;
 using Face = Microsoft.ProjectOxford.Face.Contract.Face;
 
@@ -18,7 +17,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
         
         [IndexField("EmotionAnalysis")]
         public string EmotionAnalysisValue { get; set; }
-
+        
         public Emotion[] EmotionAnalysis => SaturateValue<Emotion[]>(EmotionAnalysisValue) ?? new Emotion[0];
         
         [IndexField("FacialAnalysis")]
@@ -63,6 +62,15 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
 
         [IndexField("_uniqueid")]
         public string UniqueId { get; set; }
+
+        [IndexField("gender")]
+        public int Gender { get; set; }
+
+        [IndexField("glasses")]
+        public List<int> Glasses { get; set; }
+
+        [IndexField("Tags")]
+        public string[] Tags { get; set; }
         
         #endregion properties
 

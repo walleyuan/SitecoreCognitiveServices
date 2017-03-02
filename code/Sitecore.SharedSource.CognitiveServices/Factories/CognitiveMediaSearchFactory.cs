@@ -21,15 +21,16 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
             return Provider.GetService<ICognitiveMediaSearch>();
         }
 
-        public virtual ICognitiveMediaSearch Create(string db, string language)
+        public virtual ICognitiveMediaSearch Create(string db, string language, ICognitiveSearchContext searcher)
         {
             var r = Create();
             r.Database = db;
             r.Language = language;
+            r.Tags = searcher.GetTags(language, db);
 
             return r;
         }
-
+        
         public virtual ICognitiveMediaSearchJsonResult CreateMediaSearchJsonResult(ISitecoreDataService dataService, ICognitiveSearchResult searchResult)
         {
             var obj = Provider.GetService<ICognitiveMediaSearchJsonResult>();
@@ -38,7 +39,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
 
             try
             {
-                obj.Url = $"-/media/{m.ID.Guid:N}.ashx";
+                obj.Url = $"/sitecore/shell/-/media/{m.ID.Guid:N}.ashx";
             }
             catch (Exception ex)
             {

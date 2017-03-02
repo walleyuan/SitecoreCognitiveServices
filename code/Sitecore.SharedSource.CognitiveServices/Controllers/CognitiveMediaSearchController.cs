@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Sitecore.Diagnostics;
@@ -37,15 +38,27 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
             var lang = WebUtil.GetQueryString("lang");
             var db = WebUtil.GetQueryString("db", "master");
 
-            var ms = MediaSearchFactory.Create(db, lang);
+            var ms = MediaSearchFactory.Create(db, lang, Searcher);
 
             return View("RTESearch", ms);
         }
 
-        public ActionResult RTESearchQuery(string query, string language, string db)
+        public ActionResult RTESearchQuery(
+            Dictionary<string, string[]> tagParameters, 
+            Dictionary<string, string[]> rangeParameters, 
+            int gender, 
+            int glasses,
+            string language, 
+            string db)
         {
-            List<ICognitiveSearchResult> csr = Searcher.GetMediaResults(query, language, db);
-            
+            List<ICognitiveSearchResult> csr = Searcher.GetMediaResults(
+                tagParameters, 
+                rangeParameters, 
+                gender, 
+                glasses,
+                language, 
+                db);
+
             return Json(new
             {
                 Results = csr.Select(r => MediaSearchFactory.CreateMediaSearchJsonResult(DataService, r)),

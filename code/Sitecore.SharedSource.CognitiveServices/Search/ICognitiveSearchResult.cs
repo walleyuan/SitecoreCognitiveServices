@@ -32,6 +32,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
         string LinguisticAnalysisValue { get; set; }
         List<LinguisticAnalysisResult> LinguisticAnalysis { get; }
         string UniqueId { get; set; }
+        int Gender { get; set; }
+        List<int> Glasses { get; set; }
+        string[] Tags { get; set; }
         string Language { get; set; }
         string Path { get; set; }
         string TemplateName { get; set; }

@@ -1,37 +1,18 @@
-﻿using System;
-using System.Web.Mvc;
-using System.Web.Script.Serialization;
-using Sitecore.Data.Items;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Services.Vision;
+﻿using System.Web.Script.Serialization;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
 {
     public class TextAnalysis : BaseComputedField
     {
-        protected override object GetFieldValue(Item indexItem)
+        protected override object GetFieldValue(CognitiveIndexableItem cognitiveIndexable)
         {
-            var dataService = DependencyResolver.Current.GetService<ISitecoreDataService>();
-            if (dataService == null)
-                return string.Empty;
+            if (cognitiveIndexable.Text == null)
+            {
+                return null;
+            }
 
-            if (!dataService.IsMediaFile(indexItem))
-                return string.Empty;
-
-            MediaItem m = indexItem;
-
-            var visionService = DependencyResolver.Current.GetService<IVisionService>();
-            if (visionService == null)
-                return string.Empty;
-            
-            try {
-                var result = visionService.RecognizeText(m.GetMediaStream(), "en", true);
-                var json = new JavaScriptSerializer().Serialize(result);
-
-                return json;
-            } catch (Exception ex) { LogError(ex, indexItem); }
-
-            return string.Empty;
+            var json = new JavaScriptSerializer().Serialize(cognitiveIndexable.Text);
+            return json;
         }
     }
 }
