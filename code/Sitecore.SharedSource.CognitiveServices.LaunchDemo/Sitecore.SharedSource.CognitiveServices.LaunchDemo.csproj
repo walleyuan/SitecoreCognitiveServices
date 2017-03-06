@@ -128,6 +128,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Configurator\CognitiveLaunchConfigurator.cs" />
     <Compile Include="Controllers\CognitiveLaunchController.cs" />
+    <Compile Include="Models\ComputerVisionResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +148,7 @@
     <Content Include="Views\CognitiveLaunch\NewsSearch.cshtml" />
     <Content Include="Views\CognitiveLaunch\VideoSearch.cshtml" />
     <Content Include="Views\Navigation\MainNavigation.cshtml" />
+    <Content Include="Views\CognitiveLaunch\ComputerVision.cshtml" />
     <None Include="Web.config" />
     <None Include="Views\Web.config" />
   </ItemGroup>

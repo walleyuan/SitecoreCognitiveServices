@@ -9,7 +9,7 @@
             {
                 <div>
                     <label>@c.Name.Replace("_", " "): </label>
-                    @Html.Partial("Common/MeasureBar", (float)c.Score)
+                    @Html.Partial("~/Views/CognitiveAnalysis/Common/MeasureBar.cshtml", (float)c.Score)
                 </div>
             }
         </div>

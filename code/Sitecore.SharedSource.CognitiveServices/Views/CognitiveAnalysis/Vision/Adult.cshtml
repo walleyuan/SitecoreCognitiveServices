@@ -7,7 +7,7 @@
         <h3>Adult</h3>
         <div class="detail-row">
             <label>Adult: </label>
-            @Html.Partial("Common/MeasureBar", (float)Model.AdultScore)
+            @Html.Partial("~/Views/CognitiveAnalysis/Common/MeasureBar.cshtml", (float)Model.AdultScore)
             <span class="tf-icon">
                 @if (Model.IsAdultContent)
                 {
@@ -21,7 +21,7 @@
         </div>
         <div class="detail-row">
             <label>Racy: </label>
-            @Html.Partial("Common/MeasureBar", (float)Model.RacyScore)
+            @Html.Partial("~/Views/CognitiveAnalysis/Common/MeasureBar.cshtml", (float)Model.RacyScore)
             <span class="tf-icon">
                 @if (Model.IsRacyContent)
                 {

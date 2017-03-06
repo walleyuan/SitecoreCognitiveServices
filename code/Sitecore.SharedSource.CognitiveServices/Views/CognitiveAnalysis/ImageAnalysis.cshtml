@@ -26,49 +26,49 @@
             <img src="@Model.ImageUrl" />
         </div>
         <div class="tab-content visual selected">
-            @Html.Partial("Vision/Faces", Model.VisionAnalysis.Faces, new ViewDataDictionary(Model.VisionAnalysis.Faces))
+            @Html.Partial("~/Views/CognitiveAnalysis/Vision/Faces.cshtml", Model.VisionAnalysis.Faces, new ViewDataDictionary(Model.VisionAnalysis.Faces))
             <nav class="subnav-detail">
                 <div class="detail-wrap">
                     <div class="detail-btn">
                         @Html.Raw(ThemeManager.GetImage("Office/32x32/message.png", 32, 32))
                     </div>
-                    @Html.Partial("Vision/Description", Model.VisionAnalysis.Description, new ViewDataDictionary(Model.VisionAnalysis.Description))
+                    @Html.Partial("~/Views/CognitiveAnalysis/Vision/Description.cshtml", Model.VisionAnalysis.Description, new ViewDataDictionary(Model.VisionAnalysis.Description))
                 </div>
                 <div class="detail-wrap">
                     <div class="detail-btn">
                         @Html.Raw(ThemeManager.GetImage("Office/32x32/tags.png", 32, 32))
                     </div>
-                    @Html.Partial("Vision/Tags", Model.VisionAnalysis.Tags, new ViewDataDictionary(Model.VisionAnalysis.Tags))
+                    @Html.Partial("~/Views/CognitiveAnalysis/Vision/Tags.cshtml", Model.VisionAnalysis.Tags, new ViewDataDictionary(Model.VisionAnalysis.Tags))
                 </div>
                 <div class="detail-wrap">
                     <div class="detail-btn">
                         @Html.Raw(ThemeManager.GetImage("Office/32x32/sign_warning.png", 32, 32))
                     </div>
-                    @Html.Partial("Vision/Adult", Model.VisionAnalysis.Adult, new ViewDataDictionary(Model.VisionAnalysis.Adult))
+                    @Html.Partial("~/Views/CognitiveAnalysis/Vision/Adult.cshtml", Model.VisionAnalysis.Adult, new ViewDataDictionary(Model.VisionAnalysis.Adult))
                 </div>
                 <div class="detail-wrap">
                     <div class="detail-btn">
                         @Html.Raw(ThemeManager.GetImage("Office/32x32/painters_palette.png", 32, 32))
                     </div>
-                    @Html.Partial("Vision/Color", Model.VisionAnalysis.Color, new ViewDataDictionary(Model.VisionAnalysis.Color))
+                    @Html.Partial("~/Views/CognitiveAnalysis/Vision/Color.cshtml", Model.VisionAnalysis.Color, new ViewDataDictionary(Model.VisionAnalysis.Color))
                 </div>
                 <div class="detail-wrap">
                     <div class="detail-btn">
                         @Html.Raw(ThemeManager.GetImage("Office/32x32/elements_hierarchy.png", 32, 32))
                     </div>
-                    @Html.Partial("Vision/Categories", Model.VisionAnalysis.Categories, new ViewDataDictionary(Model.VisionAnalysis.Categories))
+                    @Html.Partial("~/Views/CognitiveAnalysis/Vision/Categories.cshtml", Model.VisionAnalysis.Categories, new ViewDataDictionary(Model.VisionAnalysis.Categories))
                 </div>
-                @*@Html.Partial("Vision/Metadata", Model.VisionAnalysis.Metadata, new ViewDataDictionary(Model.VisionAnalysis.Metadata))*@
-                @*@Html.Partial("Vision/ImageType", Model.VisionAnalysis.ImageType, new ViewDataDictionary(Model.VisionAnalysis.ImageType))*@
+                @*@Html.Partial("~/Views/CognitiveAnalysis/Vision/Metadata.cshtml", Model.VisionAnalysis.Metadata, new ViewDataDictionary(Model.VisionAnalysis.Metadata))*@
+                @*@Html.Partial("~/Views/CognitiveAnalysis/Vision/ImageType.cshtml", Model.VisionAnalysis.ImageType, new ViewDataDictionary(Model.VisionAnalysis.ImageType))*@
             </nav>
         </div>
         <div class="tab-content emotional">
             @foreach (var ea in Model.EmotionAnalysis)
             {
                 <div class="emotion-block">
-                    @Html.Partial("Common/Rectangle", ea.FaceRectangle)
+                    @Html.Partial("~/Views/CognitiveAnalysis/Common/Rectangle.cshtml", ea.FaceRectangle)
                     <div class="score-wrap" style="top: @{@ea.FaceRectangle.Top}px; left: @{@(ea.FaceRectangle.Left + ea.FaceRectangle.Width + 15)}px">
-                        @Html.Partial("Emotion/Scores", ea.Scores)
+                        @Html.Partial("~/Views/CognitiveAnalysis/Emotion/Scores.cshtml", ea.Scores)
                     </div>
                 </div>
     }
@@ -78,17 +78,17 @@
             {
                 <div class="facial-block">
                     <div class="attribute-wrap" style="top: @{@fa.FaceRectangle.Top}px; left: @{@(fa.FaceRectangle.Left + fa.FaceRectangle.Width + 15)}px">
-                        @Html.Partial("Face/Attributes", fa.FaceAttributes, new ViewDataDictionary(fa.FaceAttributes))
+                        @Html.Partial("~/Views/CognitiveAnalysis/Face/Attributes.cshtml", fa.FaceAttributes, new ViewDataDictionary(fa.FaceAttributes))
                     </div>
                     <div class="landmark-wrap">
-                        @Html.Partial("Face/Landmarks", fa.FaceLandmarks, new ViewDataDictionary(fa.FaceLandmarks))
+                        @Html.Partial("~/Views/CognitiveAnalysis/Face/Landmarks.cshtml", fa.FaceLandmarks, new ViewDataDictionary(fa.FaceLandmarks))
                     </div>
-                    @Html.Partial("Face/Rectangle", fa.FaceRectangle)
+                    @Html.Partial("~/Views/CognitiveAnalysis/Face/Rectangle.cshtml", fa.FaceRectangle)
                 </div>
     }
         </div>
         <div class="tab-content textual">
-            @Html.Partial("Vision/Regions", Model.TextAnalysis.Regions, new ViewDataDictionary(Model.TextAnalysis.Regions))
+            @Html.Partial("~/Views/CognitiveAnalysis/Vision/Regions.cshtml", Model.TextAnalysis.Regions, new ViewDataDictionary(Model.TextAnalysis.Regions))
             <nav class="subnav-detail">
                 <div class="detail-wrap">
                     <div class="detail-btn">

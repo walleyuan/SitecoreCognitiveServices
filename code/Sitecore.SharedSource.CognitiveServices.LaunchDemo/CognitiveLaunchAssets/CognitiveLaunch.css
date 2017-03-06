@@ -19,3 +19,11 @@
 .spell-check-result { margin-bottom: 4px; }
 .token { font-weight: bold;color: #008998;}
 .suggestion { font-style: italic;margin-right: 5px;}
+
+.vision-sample { position: relative;}
+.face-block { position: absolute;top: 0px;left: 0px;z-index: 2;}
+.rectangle { position: absolute; border: 3px solid #fff; border-radius: 10px;}
+.face-wrap { position: absolute; background: #fff none repeat scroll 0 0; border-radius: 10px; padding: 10px; z-index: 2;}
+.detail-tags { position: absolute;bottom: -8px;left: -8px;background: #fff none repeat scroll 0 0; border-radius: 10px; padding: 10px; z-index: 2;}
+.tag-set { display: inline-block;}
+.bar-box { display: none;}

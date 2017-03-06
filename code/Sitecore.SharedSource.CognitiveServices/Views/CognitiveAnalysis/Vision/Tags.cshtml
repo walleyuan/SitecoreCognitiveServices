@@ -9,7 +9,7 @@
             {
                 <div class="tag-set">
                     <label>@t.Name: </label>
-                    @Html.Partial("Common/MeasureBar", (float)t.Confidence)
+                    @Html.Partial("~/Views/CognitiveAnalysis/Common/MeasureBar.cshtml", (float)t.Confidence)
                 </div>
             }
         </div>

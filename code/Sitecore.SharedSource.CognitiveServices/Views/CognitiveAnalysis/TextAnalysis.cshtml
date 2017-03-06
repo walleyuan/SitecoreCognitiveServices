@@ -34,31 +34,31 @@
         <div class="tab-content links selected">
             @if (Model.LinkAnalysis != null)
             {
-                @Html.Partial("EntityLinking/LinkAnalysis", Model.LinkAnalysis)
+                @Html.Partial("~/Views/CognitiveAnalysis/EntityLinking/LinkAnalysis.cshtml", Model.LinkAnalysis)
             }
         </div>
         <div class="tab-content phrase">
             @if (Model.KeyPhraseAnalysis != null)
             {
-                @Html.Partial("Text/KeyPhrases", Model.KeyPhraseAnalysis)
+                @Html.Partial("~/Views/CognitiveAnalysis/Text/KeyPhrases.cshtml", Model.KeyPhraseAnalysis)
             }
         </div>
         <div class="tab-content linguistic">
             @if (Model.LinguisticAnalysis != null)
             {
-                @Html.Partial("Text/LinguisticAnalysis", Model.LinguisticAnalysis)
+                @Html.Partial("~/Views/CognitiveAnalysis/Text/LinguisticAnalysis.cshtml", Model.LinguisticAnalysis)
             }
         </div>
         <div class="tab-content sentiment">
             @if (Model.SentimentAnalysis != null)
             {
-                @Html.Partial("Text/SentimentDocuments", Model.SentimentAnalysis.Documents)
+                @Html.Partial("~/Views/CognitiveAnalysis/Text/SentimentDocuments.cshtml", Model.SentimentAnalysis.Documents)
             }
         </div>
         <div class="tab-content language">
             @if (Model.LanguageAnalysis != null)
             {
-                @Html.Partial("Text/LanguageDocuments", Model.LanguageAnalysis.Documents)
+                @Html.Partial("~/Views/CognitiveAnalysis/Text/LanguageDocuments.cshtml", Model.LanguageAnalysis.Documents)
             }
         </div>
     </div>

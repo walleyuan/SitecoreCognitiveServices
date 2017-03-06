@@ -5,7 +5,7 @@
     foreach (var f in Model)
     {
         <div class="face-block">
-            @Html.Partial("Vision/FaceRectangle", f.FaceRectangle)
+            @Html.Partial("~/Views/CognitiveAnalysis/Vision/FaceRectangle.cshtml", f.FaceRectangle)
             <div class="face-wrap" style="top:@{@f.FaceRectangle.Top}px;left:@{@(f.FaceRectangle.Left + f.FaceRectangle.Width + 15)}px">
                 <div class="faces">
                     <div class="bg-layer"></div>

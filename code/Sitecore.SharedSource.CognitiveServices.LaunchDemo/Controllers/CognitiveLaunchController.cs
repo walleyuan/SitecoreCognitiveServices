@@ -7,6 +7,7 @@ using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Services.Bing;
 using Sitecore.SharedSource.CognitiveServices.Services.Vision;
+using Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 {
@@ -19,6 +20,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         protected readonly IWebSearchService WebSearchService;
         protected readonly INewsSearchService NewsSearchService;
         protected readonly IVideoSearchService VideoSearchService;
+        protected readonly IVideoService VideoService;
 
         public CognitiveLaunchController(
             IVisionService visionService,
@@ -27,7 +29,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             ISpellCheckService spellCheckService,
             IWebSearchService webSearchService,
             INewsSearchService newsSearchService,
-            IVideoSearchService videoSearchService)
+            IVideoSearchService videoSearchService,
+            IVideoService videoService)
         {
             VisionService = visionService;
             AutoSuggestService = autoSuggestService;
@@ -36,6 +39,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             WebSearchService = webSearchService;
             NewsSearchService = newsSearchService;
             VideoSearchService = videoSearchService;
+            VideoService = videoService;
         }
         
         #region Moderator
@@ -186,5 +190,24 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         }
 
         #endregion Video Search
+
+        #region Computer Vision
+
+        public ActionResult ComputerVision()
+        {
+            return View(new ComputerVisionResult());
+        }
+
+        [HttpPost]
+        public ActionResult ComputerVision(string url)
+        {
+            ComputerVisionResult cvr = new ComputerVisionResult();
+            cvr.ImageUrl = url;
+            cvr.Result = VisionService.AnalyzeImage(url, new List<VisualFeature> { VisualFeature.Faces, VisualFeature.Tags });
+
+            return View("ComputerVision", cvr);
+        }
+
+        #endregion Computer Vision
     }
 }

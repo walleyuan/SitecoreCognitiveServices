@@ -11,7 +11,7 @@
                 {
                     <div>
                         <label>@cp.Text: </label>
-                        @Html.Partial("Common/MeasureBar", (float)cp.Confidence)
+                        @Html.Partial("~/Views/CognitiveAnalysis/Common/MeasureBar.cshtml", (float)cp.Confidence)
                     </div>
                 }
             </div>

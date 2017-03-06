@@ -1,0 +1,33 @@
+﻿@model Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models.ComputerVisionResult
+@{
+    ViewBag.Title = "Computer Vision";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ComputerVision">
+        <fieldset>
+            <legend>Computer Vision</legend>
+            <div class="form-row">
+                <input type="text" name="url"/>
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Analyze Photo"/>
+            </div>
+            <div class="vision-sample">
+                @if (Model.ImageUrl != null)
+                {
+                    <img src="@Model.ImageUrl"/>
+                }
+                @if (@Model.Result != null && Model.Result.Faces != null)
+                {
+                    @Html.Partial("~/Views/CognitiveAnalysis/Vision/Faces.cshtml", Model.Result.Faces, new ViewDataDictionary(Model.Result.Faces))
+                }
+                @if (@Model.Result != null && Model.Result.Tags != null)
+                {
+                    @Html.Partial("~/Views/CognitiveAnalysis/Vision/Tags.cshtml", Model.Result.Tags, new ViewDataDictionary(Model.Result.Tags))
+                }
+            </div>
+        </fieldset>
+    </form>
+</div>
