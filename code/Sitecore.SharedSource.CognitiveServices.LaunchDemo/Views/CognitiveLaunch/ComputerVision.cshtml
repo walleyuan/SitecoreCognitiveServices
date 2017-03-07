@@ -9,12 +9,13 @@
         <fieldset>
             <legend>Computer Vision</legend>
             <div class="form-row">
+                <label>provide a photo url</label>
                 <input type="text" name="url"/>
             </div>
             <div class="scWizardButtons">
                 <input type="submit" value="Analyze Photo"/>
             </div>
-            <div class="vision-sample">
+            <div class="image-sample">
                 @if (Model.ImageUrl != null)
                 {
                     <img src="@Model.ImageUrl"/>

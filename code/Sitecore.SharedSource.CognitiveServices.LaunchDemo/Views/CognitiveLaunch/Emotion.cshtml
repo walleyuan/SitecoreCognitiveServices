@@ -1,0 +1,37 @@
+﻿@model Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models.EmotionResult
+@{
+    ViewBag.Title = "Emotion";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/Emotion">
+        <fieldset>
+            <legend>Emotion</legend>
+            <div class="form-row">
+                <label>provide a photo url</label>
+                <input type="text" name="url"/>
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Analyze Photo Emotion"/>
+            </div>
+            <div class="image-sample">
+                @if (Model.ImageUrl != null)
+                {
+                    <img src="@Model.ImageUrl" />
+                }
+                @if(Model.Result != null) { 
+                    foreach (var ea in Model.Result)
+                    {
+                        <div class="emotion-block">
+                            @Html.Partial("~/Views/CognitiveAnalysis/Common/Rectangle.cshtml", ea.FaceRectangle)
+                            <div class="score-wrap" style="top: @{@ea.FaceRectangle.Top}px; left: @{@(ea.FaceRectangle.Left + ea.FaceRectangle.Width + 15)}px">
+                                @Html.Partial("~/Views/CognitiveAnalysis/Emotion/Scores.cshtml", ea.Scores)
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </fieldset>
+    </form>
+</div>

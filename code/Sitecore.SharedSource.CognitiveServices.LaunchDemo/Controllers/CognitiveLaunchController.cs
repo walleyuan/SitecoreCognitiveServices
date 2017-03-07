@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Vision;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.SharedSource.CognitiveServices.Enums;
@@ -21,6 +22,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         protected readonly INewsSearchService NewsSearchService;
         protected readonly IVideoSearchService VideoSearchService;
         protected readonly IVideoService VideoService;
+        protected readonly IEmotionService EmotionService;
+        protected readonly IFaceService FaceService;
 
         public CognitiveLaunchController(
             IVisionService visionService,
@@ -30,7 +33,9 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             IWebSearchService webSearchService,
             INewsSearchService newsSearchService,
             IVideoSearchService videoSearchService,
-            IVideoService videoService)
+            IVideoService videoService,
+            IEmotionService emotionService,
+            IFaceService faceService)
         {
             VisionService = visionService;
             AutoSuggestService = autoSuggestService;
@@ -40,6 +45,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             NewsSearchService = newsSearchService;
             VideoSearchService = videoSearchService;
             VideoService = videoService;
+            EmotionService = emotionService;
+            FaceService = faceService;
         }
         
         #region Moderator
@@ -209,5 +216,51 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         }
 
         #endregion Computer Vision
+
+        #region Emotion
+
+        public ActionResult Emotion()
+        {
+            return View(new EmotionResult());
+        }
+
+        [HttpPost]
+        public ActionResult Emotion(string url)
+        {
+            EmotionResult er = new EmotionResult();
+            er.ImageUrl = url;
+            er.Result = EmotionService.Recognize(url);
+
+            return View("Emotion", er);
+        }
+
+        #endregion Emotion
+
+        #region Face
+
+        public ActionResult Face()
+        {
+            return View(new FaceResult());
+        }
+
+        [HttpPost]
+        public ActionResult Face(string url)
+        {
+            FaceResult fr = new FaceResult();
+            fr.ImageUrl = url;
+            fr.Result = FaceService.Detect(url, returnFaceAttributes:new List<FaceAttributeType>()
+            {
+                FaceAttributeType.Age,
+                FaceAttributeType.FacialHair,
+                FaceAttributeType.HeadPose,
+                FaceAttributeType.Gender,
+                FaceAttributeType.Glasses,
+                FaceAttributeType.Smile
+            }, returnFaceLandmarks:true );
+
+            return View("Face", fr);
+        }
+
+        #endregion Face
     }
 }

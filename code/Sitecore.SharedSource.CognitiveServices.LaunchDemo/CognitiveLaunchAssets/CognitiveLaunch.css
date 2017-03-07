@@ -20,10 +20,50 @@
 .token { font-weight: bold;color: #008998;}
 .suggestion { font-style: italic;margin-right: 5px;}
 
-.vision-sample { position: relative;}
-.face-block { position: absolute;top: 0px;left: 0px;z-index: 2;}
+.image-sample { position: relative;}
+.face-block,
+.facial-block { position: absolute;top: 0px;left: 0px;z-index: 2;}
 .rectangle { position: absolute; border: 3px solid #fff; border-radius: 10px;}
-.face-wrap { position: absolute; background: #fff none repeat scroll 0 0; border-radius: 10px; padding: 10px; z-index: 2;}
-.detail-tags { position: absolute;bottom: -8px;left: -8px;background: #fff none repeat scroll 0 0; border-radius: 10px; padding: 10px; z-index: 2;}
-.tag-set { display: inline-block;}
-.bar-box { display: none;}
+.score-wrap,
+.face-wrap,
+.attribute-wrap { position: absolute; background: #fff none repeat scroll 0 0; border-radius: 5px; padding: 10px; z-index: 2;border: 1px solid #ccc;}
+.detail-tags { position: absolute;top: 5px;left: 5px;background: #fff none repeat scroll 0 0; border-radius: 5px; padding: 10px; z-index: 2;border: 1px solid #ccc;}
+.face-set,
+.score-set,
+.attr-set { white-space: nowrap;}
+.tag-set label,
+.score-set label,
+.attr-set label { width: 60px;text-align: right;}
+
+.bar-list { margin: 5px 0; padding: 5px 0; position: relative; z-index: 1; }
+.bar-list h4 { border-bottom: 1px solid #ccc; margin-bottom: 5px; padding-bottom: 3px;margin-top: 0px; }
+.bar-box { background: #ccc;width: 100px;display: inline-block; height: 8px; width: 100px;}
+.bar-value { background: #651f76;height: 8px;}
+.bar-00 { width: 0px;}
+.bar-01 { width: 10px; }
+.bar-02 { width: 20px; }
+.bar-03 { width: 30px; }
+.bar-04 { width: 40px; }
+.bar-05 { width: 50px; }
+.bar-06 { width: 60px; }
+.bar-07 { width: 70px; }
+.bar-08 { width: 80px; }
+.bar-09 { width: 90px; }
+.bar-10 { width: 100px; }
+
+.sentiment-wrap { padding: 10px; }
+.sentiment-box { background: #ccc;width: 100px;display: inline-block; height: 8px; width: 100px;margin-right: 5px;}
+.sentiment-box .bar-value.bar-00 { background: #ff0000;}
+.sentiment-box .bar-value.bar-01 { background: #ff0080; }
+.sentiment-box .bar-value.bar-02 { background: #ff00ff; }
+.sentiment-box .bar-value.bar-03 { background: #8000ff; }
+.sentiment-box .bar-value.bar-04 { background: #0000ff; }
+.sentiment-box .bar-value.bar-05 { background: #0040ff; }
+.sentiment-box .bar-value.bar-06 { background: #00bfff; }
+.sentiment-box .bar-value.bar-07 { background: #00ffff; }
+.sentiment-box .bar-value.bar-08 { background: #00ffbf; }
+.sentiment-box .bar-value.bar-09 { background: #00ff80; }
+.sentiment-box .bar-value.bar-10 { background: #00ff00; }
+
+.landmark-wrap { z-index: 0; position: absolute;top: 0px;}
+.landmark {background: #651f76 none repeat scroll 0 0; height: 14px; position: absolute; width: 14px; }
