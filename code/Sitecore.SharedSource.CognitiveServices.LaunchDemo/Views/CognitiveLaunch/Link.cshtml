@@ -1,0 +1,28 @@
+﻿@using Sitecore.SharedSource.CognitiveServices.Models.Language
+@model List<LinkAnalysisResult>
+@{
+    ViewBag.Title = "Link Analysis";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/Link">
+        <fieldset>
+            <legend>Link Analysis</legend>
+            <div class="form-row">
+                <label>provide text</label>
+                <br/>
+                <textarea type="text" name="text"></textarea>
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Analyze Text"/>
+            </div>
+            <div class="text-sample">
+                @if (Model != null)
+                {
+                    @Html.Partial("~/Views/CognitiveAnalysis/EntityLinking/LinkAnalysis.cshtml", Model)
+                }
+            </div>
+        </fieldset>
+    </form>
+</div>

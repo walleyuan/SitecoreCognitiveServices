@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Microsoft.ProjectOxford.Face;
+using Microsoft.ProjectOxford.Text.Core;
+using Microsoft.ProjectOxford.Text.Language;
+using Microsoft.ProjectOxford.Text.Sentiment;
 using Microsoft.ProjectOxford.Vision;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.SharedSource.CognitiveServices.Enums;
@@ -10,6 +13,7 @@ using Sitecore.SharedSource.CognitiveServices.Services.Bing;
 using Sitecore.SharedSource.CognitiveServices.Services.Vision;
 using Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models;
 using Sitecore.SharedSource.CognitiveServices.Models.Language;
+using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
@@ -27,6 +31,9 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         protected readonly IEmotionService EmotionService;
         protected readonly IFaceService FaceService;
         protected readonly ILinguisticService LinguisticService;
+        protected readonly ISentimentService SentimentService;
+        protected readonly IEntityLinkingService EntityLinkingService;
+        protected readonly ILanguageService LanguageService;
 
         public CognitiveLaunchController(
             IVisionService visionService,
@@ -39,7 +46,10 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             IVideoService videoService,
             IEmotionService emotionService,
             IFaceService faceService,
-            ILinguisticService linguisticService)
+            ILinguisticService linguisticService,
+            ISentimentService sentimentService,
+            IEntityLinkingService entityLinkingService,
+            ILanguageService languageService)
         {
             VisionService = visionService;
             AutoSuggestService = autoSuggestService;
@@ -52,6 +62,9 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             EmotionService = emotionService;
             FaceService = faceService;
             LinguisticService = linguisticService;
+            SentimentService = sentimentService;
+            EntityLinkingService = entityLinkingService;
+            LanguageService = languageService;
         }
         
         #region Moderator
@@ -297,6 +310,116 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             return View("Linguistic", value);
         }
 
-        #endregion Face
+        #endregion Linguistic
+
+        #region Key Phrase
+
+        public ActionResult KeyPhrase()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult KeyPhrase(string text)
+        {
+            var sr = new SentimentRequest();
+            
+            sr.Documents.Add(new Document()
+            {
+                Text = text,
+                Id = "Sample Text"
+            });
+            
+            var result = SentimentService.GetKeyPhrases(sr);
+            
+            List<KeyPhraseAnalysisResult> fieldResults = result
+                .Documents
+                .Select(d => new KeyPhraseAnalysisResult()
+                {
+                    FieldName = d.Id,
+                    FieldValue = text,
+                    KeyPhraseAnalysis = d
+                })
+                .ToList();
+            
+            return View("KeyPhrase", fieldResults);
+        }
+
+        #endregion Key Phrase
+
+        #region Link Analysis
+
+        public ActionResult Link()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Link(string text)
+        {
+            var result = EntityLinkingService.Link(text);
+
+            List<LinkAnalysisResult> fieldResults = new List<LinkAnalysisResult>()
+            {
+                new LinkAnalysisResult()
+                {
+                    EntityAnalysis = result,
+                    FieldName = "Sample Text",
+                    FieldValue = text
+                }
+            };
+            
+            return View("Link", fieldResults);
+        }
+
+        #endregion Link Analysis
+
+        #region Sentiment Analysis
+
+        public ActionResult Sentiment()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Sentiment(string text)
+        {
+            var sr = new SentimentRequest();
+            sr.Documents.Add(new Document()
+            {
+                Text = text,
+                Id = "Sample Text"
+            });
+
+            var result = SentimentService.GetSentiment(sr);
+            
+            return View("Sentiment", result);
+        }
+
+        #endregion Sentiment Analysis
+
+        #region Language Analysis
+
+        public ActionResult Language()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Language(string text)
+        {
+            LanguageRequest lr = new LanguageRequest();
+
+            lr.Documents.Add(new Document()
+            {
+                Text = text,
+                Id = "Sample Text"
+            });
+
+            var result = LanguageService.GetLanguages(lr);
+            return View("Language", result);
+        }
+
+        #endregion Language Analysis
     }
 }

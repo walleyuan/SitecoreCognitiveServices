@@ -69,5 +69,9 @@ textarea  { height: 200px;width: 400px;}
 .landmark-wrap { z-index: 0; position: absolute;top: 0px;}
 .landmark {background: #651f76 none repeat scroll 0 0; height: 14px; position: absolute; width: 14px; }
 
-.linguistic-content-wrap { line-height: 28px; }
-.linguistic-entity { background: #651f76;color: #fff;padding: 3px;border-radius: 3px; }
+.linguistic-content-wrap,
+.phrase-content,
+.entity-content-wrap { line-height: 28px; }
+.linguistic-entity,
+.phrase-entity,
+.entity-match { background: #651f76;color: #fff;padding: 3px;border-radius: 3px; }

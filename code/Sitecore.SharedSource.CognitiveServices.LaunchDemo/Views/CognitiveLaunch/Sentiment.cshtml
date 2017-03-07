@@ -1,0 +1,27 @@
+﻿@model Microsoft.ProjectOxford.Text.Sentiment.SentimentResponse
+@{
+    ViewBag.Title = "Sentiment Analysis";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/Sentiment">
+        <fieldset>
+            <legend>Sentiment Analysis</legend>
+            <div class="form-row">
+                <label>provide text</label>
+                <br/>
+                <textarea type="text" name="text"></textarea>
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Analyze Text"/>
+            </div>
+            <div class="text-sample">
+                @if (Model != null)
+                {
+                    @Html.Partial("~/Views/CognitiveAnalysis/Text/SentimentDocuments.cshtml", Model.Documents)
+                }
+            </div>
+        </fieldset>
+    </form>
+</div>

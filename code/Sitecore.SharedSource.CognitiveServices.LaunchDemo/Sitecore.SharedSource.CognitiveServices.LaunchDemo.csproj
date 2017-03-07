@@ -65,8 +65,16 @@
       <HintPath>..\..\packages\Microsoft.ProjectOxford.Emotion.1.0.331.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Emotion.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ProjectOxford.EntityLinking, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ProjectOxford.EntityLinking.1.0.0.0\lib\portable-net45+win+wpa81+wp80\Microsoft.ProjectOxford.EntityLinking.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.ProjectOxford.Face, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.ProjectOxford.Face.1.2.1\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Microsoft.ProjectOxford.Face.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ProjectOxford.Text, Version=0.2.1.40774, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ProjectOxford.Text.0.2.1.40774\lib\net452\Microsoft.ProjectOxford.Text.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ProjectOxford.Vision, Version=1.0.354.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
@@ -174,6 +182,10 @@
     <Content Include="Views\CognitiveLaunch\Emotion.cshtml" />
     <Content Include="Views\CognitiveLaunch\Face.cshtml" />
     <Content Include="Views\CognitiveLaunch\Linguistic.cshtml" />
+    <Content Include="Views\CognitiveLaunch\KeyPhrase.cshtml" />
+    <Content Include="Views\CognitiveLaunch\Language.cshtml" />
+    <Content Include="Views\CognitiveLaunch\Sentiment.cshtml" />
+    <Content Include="Views\CognitiveLaunch\Link.cshtml" />
     <None Include="Web.config" />
     <None Include="Views\Web.config" />
   </ItemGroup>
