@@ -9,6 +9,8 @@ using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Services.Bing;
 using Sitecore.SharedSource.CognitiveServices.Services.Vision;
 using Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models;
+using Sitecore.SharedSource.CognitiveServices.Models.Language;
+using Sitecore.SharedSource.CognitiveServices.Services.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 {
@@ -24,6 +26,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         protected readonly IVideoService VideoService;
         protected readonly IEmotionService EmotionService;
         protected readonly IFaceService FaceService;
+        protected readonly ILinguisticService LinguisticService;
 
         public CognitiveLaunchController(
             IVisionService visionService,
@@ -35,7 +38,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             IVideoSearchService videoSearchService,
             IVideoService videoService,
             IEmotionService emotionService,
-            IFaceService faceService)
+            IFaceService faceService,
+            ILinguisticService linguisticService)
         {
             VisionService = visionService;
             AutoSuggestService = autoSuggestService;
@@ -47,6 +51,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             VideoService = videoService;
             EmotionService = emotionService;
             FaceService = faceService;
+            LinguisticService = linguisticService;
         }
         
         #region Moderator
@@ -259,6 +264,37 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             }, returnFaceLandmarks:true );
 
             return View("Face", fr);
+        }
+
+        #endregion Face
+
+        #region Linguistic
+
+        public ActionResult Linguistic()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Linguistic(string text)
+        {
+            TextAnalysisRequest tar = new TextAnalysisRequest()
+            {
+                Language = "en",
+                Text = text
+            };
+            
+            var result = LinguisticService.GetConstituencyTreeTextAnalysis(tar);
+            var value = new LinguisticAnalysisResult()
+            {
+                FieldName = "Sample Text",
+                FieldValue = text,
+                POSTagsAnalysis = null,
+                ConstituencyTreeAnalysis = result,
+                TokensAnalysis = null
+            };
+
+            return View("Linguistic", value);
         }
 
         #endregion Face

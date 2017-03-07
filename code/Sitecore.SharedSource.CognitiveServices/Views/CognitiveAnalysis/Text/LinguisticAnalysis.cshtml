@@ -10,24 +10,34 @@
                 <h3>
                     @l.FieldName
                 </h3>
-                <div class="linguistic-content">
-                    <h4>Parts of Speech Analysis</h4>
-                    <div class="linguistic-content-wrap">
-                        @Html.Raw(l.HighlightPOSTags("span", "linguistic-entity"))
+                @if(l.POSTagsAnalysis != null)
+                {
+                    <div class="linguistic-content">
+                        <h4>Parts of Speech Analysis</h4>
+                        <div class="linguistic-content-wrap">
+                            @Html.Raw(l.HighlightPOSTags("span", "linguistic-entity"))
+                        </div>
                     </div>
-                </div>
-                <div class="linguistic-content">
-                    <h4>Constituency Tree Analysis</h4>
-                    <div class="linguistic-content-wrap">
-                        @Html.Raw(l.HighlightConstituencyTree("span", "linguistic-entity"))
+                }
+                @if (l.ConstituencyTreeAnalysis != null)
+                {
+                    <div class="linguistic-content">
+                        <h4>Constituency Tree Analysis</h4>
+                        <div class="linguistic-content-wrap">
+                            @Html.Raw(l.HighlightConstituencyTree("span", "linguistic-entity"))
+                        </div>
                     </div>
-                </div>
-                @*<div class="linguistic-content">
-                    <h4>Token Analysis</h4>
-                    <div class="linguistic-content-wrap">
-                        @Html.Raw(l.HighlightTokens("span", "linguistic-entity"))
+                }
+                @*
+                @if(l.TokensAnalysis != null) 
+                { 
+                    <div class="linguistic-content">
+                        <h4>Token Analysis</h4>
+                        <div class="linguistic-content-wrap">
+                            @Html.Raw(l.HighlightTokens("span", "linguistic-entity"))
+                        </div>
                     </div>
-                </div>*@
+                }*@
             </div>
         }
     </div>

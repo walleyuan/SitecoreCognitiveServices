@@ -173,6 +173,7 @@
     <Content Include="Views\CognitiveLaunch\ComputerVision.cshtml" />
     <Content Include="Views\CognitiveLaunch\Emotion.cshtml" />
     <Content Include="Views\CognitiveLaunch\Face.cshtml" />
+    <Content Include="Views\CognitiveLaunch\Linguistic.cshtml" />
     <None Include="Web.config" />
     <None Include="Views\Web.config" />
   </ItemGroup>

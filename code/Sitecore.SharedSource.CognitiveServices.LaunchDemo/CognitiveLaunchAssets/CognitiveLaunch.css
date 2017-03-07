@@ -1,4 +1,5 @@
 ﻿.form  {}
+textarea  { height: 200px;width: 400px;}
 .form fieldset { margin-bottom: 20px;}
 .image-results .list {padding: 0 5px;border: 1px solid #ccc;max-height: 600px;overflow-y: auto;overflow-x: hidden;}
 .image-wrapper {margin: 5px 0; position: relative;}
@@ -67,3 +68,6 @@
 
 .landmark-wrap { z-index: 0; position: absolute;top: 0px;}
 .landmark {background: #651f76 none repeat scroll 0 0; height: 14px; position: absolute; width: 14px; }
+
+.linguistic-content-wrap { line-height: 28px; }
+.linguistic-entity { background: #651f76;color: #fff;padding: 3px;border-radius: 3px; }
