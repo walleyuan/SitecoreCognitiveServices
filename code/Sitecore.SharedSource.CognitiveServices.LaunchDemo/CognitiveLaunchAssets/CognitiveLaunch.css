@@ -24,7 +24,7 @@ textarea  { height: 200px;width: 400px;}
 .image-sample { position: relative;}
 .face-block,
 .facial-block { position: absolute;top: 0px;left: 0px;z-index: 2;}
-.rectangle { position: absolute; border: 3px solid #fff; border-radius: 10px;}
+.rectangle { position: absolute; border: 3px solid #651f76; border-radius: 10px;}
 .score-wrap,
 .face-wrap,
 .attribute-wrap { position: absolute; background: #fff none repeat scroll 0 0; border-radius: 5px; padding: 10px; z-index: 2;border: 1px solid #ccc;}
