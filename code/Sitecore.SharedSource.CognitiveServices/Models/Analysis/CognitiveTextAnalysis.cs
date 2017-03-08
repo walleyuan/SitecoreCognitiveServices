@@ -11,14 +11,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Models.Analysis
         {
             LinkAnalysis = new List<LinkAnalysisResult>();
             SentimentAnalysis = new SentimentResponse();
-            LanguageAnalysis = new LanguageResponse();
             KeyPhraseAnalysis = new List<KeyPhraseAnalysisResult>();
             LinguisticAnalysis = new List<LinguisticAnalysisResult>();
         }
 
         public List<LinkAnalysisResult> LinkAnalysis { get; set; }
         public SentimentResponse SentimentAnalysis { get; set; }
-        public LanguageResponse LanguageAnalysis { get; set; }
         public List<KeyPhraseAnalysisResult> KeyPhraseAnalysis { get; set; }
         public List<LinguisticAnalysisResult> LinguisticAnalysis { get; set; }
     }

@@ -115,7 +115,6 @@
             
             <!-- primary content fields that require web service calls -->
             <field fieldName="KeyPhraseAnalysis" returnType="string">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text.KeyPhraseAnalysis,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="LanguageAnalysis" returnType="string">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text.LanguageAnalysis,Sitecore.SharedSource.CognitiveServices</field>
             <field fieldName="LinkAnalysis" returnType="string">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text.LinkAnalysis,Sitecore.SharedSource.CognitiveServices</field>
             <field fieldName="SentimentAnalysis" returnType="string">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text.SentimentAnalysis,Sitecore.SharedSource.CognitiveServices</field>
             <field fieldName="LinguisticAnalysis" returnType="string">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text.LinguisticAnalysis,Sitecore.SharedSource.CognitiveServices</field>

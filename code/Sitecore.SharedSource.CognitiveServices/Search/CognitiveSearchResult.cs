@@ -35,11 +35,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
 
         public AnalysisResult VisionAnalysis => SaturateValue<AnalysisResult>(VisionAnalysisValue) ?? new AnalysisResult();
         
-        [IndexField("LanguageAnalysis")]
-        public string LanguageAnalysisValue { get; set; }
-
-        public LanguageResponse LanguageAnalysis => SaturateValue<LanguageResponse>(LanguageAnalysisValue) ?? new LanguageResponse();
-        
         [IndexField("LinkAnalysis")]
         public string LinkAnalysisValue { get; set; }
 

@@ -9,7 +9,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Models.Analysis
     {
         List<LinkAnalysisResult> LinkAnalysis { get; set; }
         SentimentResponse SentimentAnalysis { get; set; }
-        LanguageResponse LanguageAnalysis { get; set; }
         List<KeyPhraseAnalysisResult> KeyPhraseAnalysis { get; set; }
         List<LinguisticAnalysisResult> LinguisticAnalysis { get; set; }
     }

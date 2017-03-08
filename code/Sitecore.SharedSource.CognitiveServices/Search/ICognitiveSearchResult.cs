@@ -21,8 +21,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
         OcrResults TextAnalysis { get; }
         string VisionAnalysisValue { get; set; }
         AnalysisResult VisionAnalysis { get; }
-        string LanguageAnalysisValue { get; set; }
-        LanguageResponse LanguageAnalysis { get; }
         string LinkAnalysisValue { get; set; }
         List<LinkAnalysisResult> LinkAnalysis { get; }
         string SentimentAnalysisValue { get; set; }

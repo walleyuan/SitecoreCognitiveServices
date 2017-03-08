@@ -464,7 +464,6 @@
     <Compile Include="Search\ComputedFields\Text\KeyPhraseAnalysis.cs" />
     <Compile Include="Search\ComputedFields\Text\LinkAnalysis.cs" />
     <Compile Include="Search\ComputedFields\Text\SentimentAnalysis.cs" />
-    <Compile Include="Search\ComputedFields\Text\LanguageAnalysis.cs" />
     <Compile Include="Search\Crawlers\CognitiveCrawler.cs" />
     <Compile Include="Search\ICognitiveSearchContext.cs" />
     <Compile Include="Search\ICognitiveSearchResult.cs" />
@@ -582,7 +581,6 @@
     <Content Include="Views\CognitiveAnalysis\Vision\Metadata.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Vision\Tags.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Vision\FaceRectangle.cshtml" />
-    <Content Include="Views\CognitiveAnalysis\Text\LanguageDocuments.cshtml" />
     <Content Include="Views\CognitiveAnalysis\EntityLinking\LinkAnalysis.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Text\SentimentDocuments.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Common\MeasureBar.cshtml" />

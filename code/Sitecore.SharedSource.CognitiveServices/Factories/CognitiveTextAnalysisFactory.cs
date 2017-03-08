@@ -22,7 +22,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
         public virtual ICognitiveTextAnalysis Create(ICognitiveSearchResult result)
         {
             var analysis = Create();
-            analysis.LanguageAnalysis = result.LanguageAnalysis;
             analysis.LinkAnalysis = result.LinkAnalysis;
             analysis.SentimentAnalysis = result.SentimentAnalysis;
             analysis.KeyPhraseAnalysis = result.KeyPhraseAnalysis;

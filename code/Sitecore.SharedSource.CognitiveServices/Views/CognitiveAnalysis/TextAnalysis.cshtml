@@ -55,11 +55,5 @@
                 @Html.Partial("~/Views/CognitiveAnalysis/Text/SentimentDocuments.cshtml", Model.SentimentAnalysis.Documents)
             }
         </div>
-        <div class="tab-content language">
-            @if (Model.LanguageAnalysis != null)
-            {
-                @Html.Partial("~/Views/CognitiveAnalysis/Text/LanguageDocuments.cshtml", Model.LanguageAnalysis.Documents)
-            }
-        </div>
     </div>
 </div>
