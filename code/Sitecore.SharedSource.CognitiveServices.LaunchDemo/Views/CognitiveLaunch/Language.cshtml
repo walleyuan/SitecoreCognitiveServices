@@ -17,10 +17,28 @@
                 <input type="submit" value="Analyze Text"/>
             </div>
             <div class="text-sample">
-                @if (Model != null)
-                {
-                    @Html.Partial("~/Views/CognitiveAnalysis/Text/LanguageDocuments.cshtml", Model.Documents)
+                @if (Model != null && Model.Documents != null) {
+                    <div class="language-wrap">
+                        @foreach (var d in Model.Documents) {
+                            <div class="language-detail">
+                                <h4>
+                                    @d.Id:
+                                </h4>
+                                @foreach (var l in d.DetectedLanguages) {
+                                    <div class="language-set">
+                                        <label>
+                                            @l.Name (@l.Iso639Name)
+                                        </label>
+                                        <span>
+                                            @Html.Partial("~/Views/CognitiveAnalysis/Common/MeasureBar.cshtml", l.Score)
+                                        </span>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
                 }
+
             </div>
         </fieldset>
     </form>
