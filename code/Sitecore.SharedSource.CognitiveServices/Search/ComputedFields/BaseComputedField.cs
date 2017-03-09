@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Sitecore.Configuration;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.ComputedFields;
 using Sitecore.ContentSearch.Diagnostics;
@@ -17,8 +18,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields
     {
         public virtual string FieldName { get; set; }
         public virtual string ReturnType { get; set; }
-
-        public List<string> TextualFieldTypes = new List<string>() { "Rich Text", "Single-Line Text", "Multi-Line Text", "html", "text", "memo" };
+        public List<string> TextualFieldTypes => Settings.GetSetting("CognitiveService.TextualFieldTypes").Split('|').ToList();
 
         public object ComputeFieldValue(IIndexable indexable)
         {
