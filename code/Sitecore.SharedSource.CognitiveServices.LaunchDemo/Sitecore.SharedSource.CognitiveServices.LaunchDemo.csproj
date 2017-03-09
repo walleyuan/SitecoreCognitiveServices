@@ -169,7 +169,6 @@
     <Content Include="App_Config\Include\SitecoreCognitiveLaunch\SitecoreCognitiveLaunch.config">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Properties\PublishProfiles\Local.pubxml" />
     <Content Include="Views\CognitiveLaunch\CognitiveLaunchLayout.cshtml" />
     <Content Include="Views\CognitiveLaunch\Moderator.cshtml" />
     <Content Include="Views\CognitiveLaunch\Suggestions.cshtml" />
@@ -187,6 +186,9 @@
     <Content Include="Views\CognitiveLaunch\Language.cshtml" />
     <Content Include="Views\CognitiveLaunch\Sentiment.cshtml" />
     <Content Include="Views\CognitiveLaunch\Link.cshtml" />
+    <None Include="Properties\PublishProfiles\sc82rev160729.pubxml" />
+    <None Include="Properties\PublishProfiles\sc82rev161221.pubxml" />
+    <Content Include="Views\CognitiveLaunch\ContentModerator.cshtml" />
     <None Include="Web.config" />
     <None Include="Views\Web.config" />
   </ItemGroup>

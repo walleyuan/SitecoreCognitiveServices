@@ -1,0 +1,42 @@
+﻿@model Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModeratorEvaluateResponse
+@{
+    ViewBag.Title = "Content Moderator";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModerator">
+        <fieldset>
+            <legend>Content Moderator</legend>
+            <div class="form-row">
+                <label>provide an image url</label>
+                <input type="text" name="url"/>
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Analyze Image"/>
+            </div>
+            <div class="image-sample">
+                @if (Model != null)
+                {
+                    <h2>Result:  @Model.Result</h2>
+                    <hr />
+                    <div>
+                        <div>Is Adult: @Model.IsImageAdultClassified</div>
+                        <span>Adult Score: </span>
+                        <span>
+                            @Html.Partial("~/Views/CognitiveAnalysis/Common/MeasureBar.cshtml", (float) @Model.AdultClassificationScore)
+                        </span>
+                    </div>
+                    <hr/>
+                    <div>
+                        <div>Is Racy: @Model.IsImageRacyClassified</div>
+                        <span>Racy Score: </span>
+                        <span>
+                            @Html.Partial("~/Views/CognitiveAnalysis/Common/MeasureBar.cshtml", (float) @Model.RacyClassificationScore)
+                        </span>
+                    </div>
+                }
+            </div>
+        </fieldset>
+    </form>
+</div>

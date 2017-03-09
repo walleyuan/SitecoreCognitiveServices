@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
-using Sitecore.SharedSource.CognitiveServices.Models;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories
 {
@@ -37,24 +37,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
 
         public async Task<string> SendOctetStreamUpdateAsync(string apiKey, string url, Stream stream)
         {
-            StringBuilder sb = new StringBuilder();
-            using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
-            {
-                sb.Append(reader.ReadToEnd());
-            }
-
-            return await SendAsync(apiKey, url, sb.ToString(), "application/octet-stream", "UPDATE");
+            return await SendAsync(apiKey, url, GetStreamString(stream), "application/octet-stream", "UPDATE");
         }
 
         public async Task<string> SendOctetStreamPostAsync(string apiKey, string url, Stream stream)
         {
-            StringBuilder sb = new StringBuilder();
-            using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
-            {
-                sb.Append(reader.ReadToEnd());
-            }
-
-            return await SendAsync(apiKey, url, sb.ToString(), "application/octet-stream", "POST");
+            return await SendAsync(apiKey, url, GetStreamString(stream), "application/octet-stream", "POST");
         }
 
         public async Task<string> SendJsonUpdateAsync(string apiKey, string url, string data)
@@ -62,7 +50,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             return await SendAsync(apiKey, url, data, "application/json", "UPDATE");
         }
 
-        public async Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method)
+        public async Task<string> SendImagePostAsync(string apiKey, string url, Stream stream)
+        {
+            return await SendAsync(apiKey, url, GetStreamString(stream), GetImageStreamContentType(stream), "POST");
+        }
+
+        public async Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method, string token = "")
         {
             if (string.IsNullOrWhiteSpace(url))
                 throw new ArgumentException("url");
@@ -71,11 +64,16 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Headers.Add("Ocp-Apim-Subscription-Key", apiKey);
+            if (!string.IsNullOrEmpty(token))
+            {
+                request.Headers.Add("authorization", $"Bearer {token}");
+            }
+
             request.ContentType = contentType;
             request.Accept = contentType;
             request.Method = method;
 
-            if (!string.IsNullOrWhiteSpace(data))
+            if (!string.IsNullOrEmpty(data))
             {
                 byte[] reqData = Encoding.UTF8.GetBytes(data);
 
@@ -125,58 +123,30 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             return opLocation;
         }
 
-        public TokenResponse SendTokenRequest(string apiKey, string clientId)
+        private string GetImageStreamContentType(Stream stream)
         {
-            byte[] reqData = Encoding.UTF8.GetBytes($"resource=https%3A%2F%2Fapi.contentmoderator.cognitive.microsoft.com%2Freview&client_id={clientId}&client_secret={apiKey}&grant_type=client_credentials");
+            var image = Image.FromStream(stream);
+            if (ImageFormat.Jpeg.Equals(image.RawFormat))
+                return "image/jpeg";
+            else if (ImageFormat.Png.Equals(image.RawFormat))
+                return "image/png";
+            else if (ImageFormat.Gif.Equals(image.RawFormat))
+                return "image/gif";
+            else if (ImageFormat.Bmp.Equals(image.RawFormat))
+                return "image/bmp";
 
-            WebRequest request = WebRequest.Create("https://login.microsoftonline.com/contentmoderatorprod.onmicrosoft.com/oauth2/token");
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = (long)reqData.Length;
-
-            Stream requestStreamAsync = request.GetRequestStream();
-            requestStreamAsync.Write(reqData, 0, reqData.Length);
-            requestStreamAsync.Close();
-
-            WebResponse responseAsync = request.GetResponse();
-            StreamReader streamReader = new StreamReader(responseAsync.GetResponseStream());
-            string end = streamReader.ReadToEnd();
-            streamReader.Close();
-            responseAsync.Close();
-
-            TokenResponse t = new JavaScriptSerializer().Deserialize<TokenResponse>(end);
-
-            return t;
+            throw new BadImageFormatException("The image stream provided for cognitive analysis wasn't an allowed format (jpeg, png, gif or bmp)");
         }
 
-        public string SendTokenPost(string apiKey, string url, string token)
+        private string GetStreamString(Stream stream)
         {
-            if (string.IsNullOrWhiteSpace(url))
-                throw new ArgumentException("url");
-            if (string.IsNullOrWhiteSpace(token))
-                throw new ArgumentException("token");
+            StringBuilder sb = new StringBuilder();
+            using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+            {
+                sb.Append(reader.ReadToEnd());
+            }
 
-            byte[] reqData = Encoding.UTF8.GetBytes("");
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Headers.Add("Ocp-Apim-Subscription-Key", apiKey);
-            request.Headers.Add("authorization", $"Bearer {token}");
-            request.ContentType = "application/json";
-            request.Accept = "application/json";
-            request.Method = "POST";
-            request.ContentLength = (long)reqData.Length;
-
-            Stream requestStreamAsync = request.GetRequestStream();
-            requestStreamAsync.Write(reqData, 0, reqData.Length);
-            requestStreamAsync.Close();
-
-            WebResponse responseAsync = request.GetResponse();
-            StreamReader streamReader = new StreamReader(responseAsync.GetResponseStream());
-            string end = streamReader.ReadToEnd();
-            streamReader.Close();
-            responseAsync.Close();
-
-            return end;
+            return sb.ToString();
         }
     }
 }

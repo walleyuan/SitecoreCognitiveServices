@@ -34,6 +34,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         protected readonly ISentimentService SentimentService;
         protected readonly IEntityLinkingService EntityLinkingService;
         protected readonly ILanguageService LanguageService;
+        protected readonly IContentModeratorService ContentModeratorService;
 
         public CognitiveLaunchController(
             IVisionService visionService,
@@ -49,7 +50,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             ILinguisticService linguisticService,
             ISentimentService sentimentService,
             IEntityLinkingService entityLinkingService,
-            ILanguageService languageService)
+            ILanguageService languageService,
+            IContentModeratorService contentModeratorService)
         {
             VisionService = visionService;
             AutoSuggestService = autoSuggestService;
@@ -65,6 +67,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             SentimentService = sentimentService;
             EntityLinkingService = entityLinkingService;
             LanguageService = languageService;
+            ContentModeratorService = contentModeratorService;
         }
         
         #region Moderator
@@ -81,8 +84,22 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             return Json(ar.Adult);
         }
 
-        #endregion Moderator
+        public ActionResult ContentModerator()
+        {
+            return View();
+        }
         
+        [HttpPost]
+        public ActionResult ContentModerator(string url)
+        {
+            var result = ContentModeratorService.Evaluate(url);
+
+            return View("ContentModerator", result);
+        }
+
+
+        #endregion Moderator
+
         #region Auto Suggest
 
         public ActionResult Suggestions()

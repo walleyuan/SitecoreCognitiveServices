@@ -15,8 +15,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
         Task<string> SendOctetStreamUpdateAsync(string apiKey, string url, Stream stream);
         Task<string> SendOctetStreamPostAsync(string apiKey, string url, Stream stream);
         Task<string> SendJsonUpdateAsync(string apiKey, string url, string data);
-        Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method);
-        TokenResponse SendTokenRequest(string apiKey, string clientId);
-        string SendTokenPost(string apiKey, string url, string token);
+        Task<string> SendImagePostAsync(string apiKey, string url, Stream stream);
+        Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method, string token = "");
     }
 }
