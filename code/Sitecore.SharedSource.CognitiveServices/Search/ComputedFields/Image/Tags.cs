@@ -8,24 +8,27 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
         protected override object GetFieldValue(CognitiveIndexableItem cognitiveIndexable)
         {
             var regions = cognitiveIndexable.Text?.Regions;
-            List<string> words = (
+            var words = (
                 from r in regions
                 where r.Lines != null
                     from l in r.Lines
                     where l.Words != null
                         from w in l.Words
-                        where !string.IsNullOrEmpty(w.Text)
-                        select w.Text
-            ).ToList();
+                        where !string.IsNullOrEmpty(w.Text.Trim())
+                        select w.Text.Trim()
+            );
             
-            var tags = cognitiveIndexable.Visions?.Description?.Tags;
+            var tags = cognitiveIndexable.Visions?.Description?.Tags.Select(t => t.Trim()).ToList();
             if(tags != null && tags.Any())
-                words.AddRange(tags);
+                words = words.Concat(tags);
 
-            words.Add(cognitiveIndexable.Item.DisplayName);
+            words = words.Concat(new [] { cognitiveIndexable.Item.DisplayName });
 
-            return (words.Any())
-                ? (object)words.ToArray()
+            List<string> charList = new List<string>() { ":", ";", "~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "=", "_", "-", "|", "\\", "{", "}", "[", "]", "\"", "'", "?", "/", ">", ".", "<", ","};
+            var results = words.Where(w => !charList.Contains(w)).Distinct().ToArray();
+
+            return (results.Any())
+                ? results.Distinct().ToArray()
                 : null;
         }
     }
