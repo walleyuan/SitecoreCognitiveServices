@@ -1,7 +1,7 @@
 ﻿
-namespace Sitecore.SharedSource.CognitiveServices.Models.Vision
+namespace Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator
 {
-    public class ContentModeratorEvaluateResponse
+    public class EvaluateResponse
     {
         public double AdultClassificationScore { get; set; }
         public bool IsImageAdultClassified { get; set; }
@@ -9,7 +9,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Models.Vision
         public bool IsImageRacyClassified { get; set; }
         //public List<object> AdvancedInfo { get; set; }
         public bool Result { get; set; }
-        public ContentModeratorResponseStatus Status { get; set; }
+        public ResponseStatus Status { get; set; }
         public string TrackingId { get; set; }
     }
 }

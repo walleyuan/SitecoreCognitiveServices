@@ -153,6 +153,7 @@
       <HintPath>..\..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -409,21 +410,31 @@
     <Compile Include="Models\Language\TopicAssignment.cs" />
     <Compile Include="Models\Language\TopicRequest.cs" />
     <Compile Include="Models\Language\TokensTextAnalysisResponse.cs" />
-    <Compile Include="Models\Vision\ContentModeratorDetectLanguageResponse.cs" />
-    <Compile Include="Models\Vision\ContentModeratorFindFacesResponse.cs" />
-    <Compile Include="Models\Vision\ContentModeratorEvaluateResponse.cs" />
-    <Compile Include="Models\Vision\ContentModeratorMatchResponse.cs" />
-    <Compile Include="Models\Vision\ContentModeratorOCRResult.cs" />
-    <Compile Include="Models\Vision\ContentModeratorResponseStatus.cs" />
-    <Compile Include="Models\Vision\ContentModeratorScreenResponse.cs" />
-    <Compile Include="Models\Vision\FindFaceRectangle.cs" />
-    <Compile Include="Models\Vision\KeyValue.cs" />
-    <Compile Include="Models\Vision\OCRCandidate.cs" />
-    <Compile Include="Models\Vision\PersonalIdentifiableInformation.cs" />
-    <Compile Include="Models\Vision\PersonalIdentifiableInformationSet.cs" />
-    <Compile Include="Models\Vision\ScreenCategory.cs" />
-    <Compile Include="Models\Vision\ScreenUrl.cs" />
-    <Compile Include="Models\Vision\TermSet.cs" />
+    <Compile Include="Models\Vision\ContentModerator\CombineCombination.cs" />
+    <Compile Include="Models\Vision\ContentModerator\Condition.cs" />
+    <Compile Include="Models\Vision\ContentModerator\ConditionCombination.cs" />
+    <Compile Include="Models\Vision\ContentModerator\DetectLanguageResponse.cs" />
+    <Compile Include="Models\Vision\ContentModerator\WorkflowExpression.cs" />
+    <Compile Include="Models\Vision\ContentModerator\FindFacesResponse.cs" />
+    <Compile Include="Models\Vision\ContentModerator\EvaluateResponse.cs" />
+    <Compile Include="Models\Vision\ContentModerator\GetReviewResponse.cs" />
+    <Compile Include="Models\Vision\ContentModerator\IExpression.cs" />
+    <Compile Include="Models\Vision\ContentModerator\MatchResponse.cs" />
+    <Compile Include="Models\Vision\ContentModerator\MatchDetails.cs" />
+    <Compile Include="Models\Vision\ContentModerator\OCRResult.cs" />
+    <Compile Include="Models\Vision\ContentModerator\ResponseStatus.cs" />
+    <Compile Include="Models\Vision\ContentModerator\ReviewRequest.cs" />
+    <Compile Include="Models\Vision\ContentModerator\ScreenResponse.cs" />
+    <Compile Include="Models\Vision\ContentModerator\CreateJobResponse.cs" />
+    <Compile Include="Models\Vision\ContentModerator\FindFaceRectangle.cs" />
+    <Compile Include="Models\Vision\ContentModerator\GetJobResponse.cs" />
+    <Compile Include="Models\Vision\ContentModerator\KeyValue.cs" />
+    <Compile Include="Models\Vision\ContentModerator\OCRCandidate.cs" />
+    <Compile Include="Models\Vision\ContentModerator\PersonalIdentifiableInformation.cs" />
+    <Compile Include="Models\Vision\ContentModerator\PersonalIdentifiableInformationSet.cs" />
+    <Compile Include="Models\Vision\ContentModerator\ScreenCategory.cs" />
+    <Compile Include="Models\Vision\ContentModerator\ScreenUrl.cs" />
+    <Compile Include="Models\Vision\ContentModerator\TermSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Bing\AutoSuggestRepository.cs" />
     <Compile Include="Repositories\Bing\IAutoSuggestRepository.cs" />

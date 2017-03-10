@@ -11,6 +11,7 @@ namespace Sitecore.SharedSource.CognitiveServices
         string ComputerVision { get; }
         string ContentModerator { get; }
         string ContentModeratorClientId { get; }
+        string ContentModeratorPrivateKey { get; }
         string EntityLinking { get; }
         string Emotion { get; }
         string Face { get; }

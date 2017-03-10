@@ -5,6 +5,8 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
+using Sitecore.SharedSource.CognitiveServices.Models;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories
 {
@@ -54,7 +56,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
         {
             return await SendAsync(apiKey, url, GetStreamString(stream), GetImageStreamContentType(stream), "POST");
         }
-
+        
         public async Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method, string token = "")
         {
             if (string.IsNullOrWhiteSpace(url))
@@ -123,7 +125,31 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             return opLocation;
         }
 
-        private string GetImageStreamContentType(Stream stream)
+        public TokenResponse SendTokenRequest(string privateKey, string clientId)
+        {
+            byte[] reqData = Encoding.UTF8.GetBytes($"resource=https%3A%2F%2Fapi.contentmoderator.cognitive.microsoft.com%2Freview&client_id={clientId}&client_secret={privateKey}&grant_type=client_credentials");
+
+            WebRequest request = WebRequest.Create("https://login.microsoftonline.com/contentmoderatorprod.onmicrosoft.com/oauth2/token");
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = (long)reqData.Length;
+
+            Stream requestStreamAsync = request.GetRequestStream();
+            requestStreamAsync.Write(reqData, 0, reqData.Length);
+            requestStreamAsync.Close();
+
+            WebResponse responseAsync = request.GetResponse();
+            StreamReader streamReader = new StreamReader(responseAsync.GetResponseStream());
+            string end = streamReader.ReadToEnd();
+            streamReader.Close();
+            responseAsync.Close();
+
+            TokenResponse t = new JavaScriptSerializer().Deserialize<TokenResponse>(end);
+
+            return t;
+        }
+
+        public string GetImageStreamContentType(Stream stream)
         {
             var image = Image.FromStream(stream);
             if (ImageFormat.Jpeg.Equals(image.RawFormat))
@@ -138,7 +164,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             throw new BadImageFormatException("The image stream provided for cognitive analysis wasn't an allowed format (jpeg, png, gif or bmp)");
         }
 
-        private string GetStreamString(Stream stream)
+        public string GetStreamString(Stream stream)
         {
             StringBuilder sb = new StringBuilder();
             using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))

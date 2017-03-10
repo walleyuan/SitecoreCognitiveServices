@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Sitecore.SharedSource.CognitiveServices.Models.Vision
+namespace Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator
 {
-    public class ContentModeratorScreenResponse
+    public class ScreenResponse
     {
         public string OriginalText { get; set; }
         public string NormalizedText { get; set; }
@@ -12,7 +12,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Models.Vision
         public PersonalIdentifiableInformation PersonalIdentifiableInformation { get; set; }
         public string Language { get; set; }
         public List<TermSet> Terms { get; set; }
-        public ContentModeratorResponseStatus Status { get; set; }
+        public ResponseStatus Status { get; set; }
         public string TrackingId { get; set; }
     }
 }

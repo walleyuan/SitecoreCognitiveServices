@@ -12,6 +12,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
         public virtual string ComputerVision => Settings.GetSetting("CognitiveService.ApiKey.ComputerVision");
         public virtual string ContentModerator => Settings.GetSetting("CognitiveService.ApiKey.ContentModerator");
         public virtual string ContentModeratorClientId => Settings.GetSetting("CognitiveService.ApiKey.ContentModerator.ClientId");
+        public virtual string ContentModeratorPrivateKey => Settings.GetSetting("CognitiveService.ApiKey.ContentModerator.PrivateKey");
         public virtual string EntityLinking => Settings.GetSetting("CognitiveService.ApiKey.EntityLinking");
         public virtual string Emotion => Settings.GetSetting("CognitiveService.ApiKey.Emotion");
         public virtual string Face => Settings.GetSetting("CognitiveService.ApiKey.Face");

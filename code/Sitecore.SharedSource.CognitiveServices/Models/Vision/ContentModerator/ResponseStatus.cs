@@ -1,7 +1,7 @@
 ﻿
-namespace Sitecore.SharedSource.CognitiveServices.Models.Vision
+namespace Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator
 {
-    public class ContentModeratorResponseStatus
+    public class ResponseStatus
     {
         public int Code { get; set; }
         public string Description { get; set; }
