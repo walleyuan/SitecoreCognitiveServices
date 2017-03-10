@@ -78,44 +78,44 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge
         
         public async Task CancelOperationAsync(string operationId)
         {
-            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{operationsUrl}?id={operationId}", string.Empty);
+            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{operationsUrl}?id={operationId}");
         }
 
         public async Task DeleteAllBusinessRulesAsync(string modelId)
         {
-            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/rules", string.Empty);
+            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/rules");
         }
 
         public async Task DeleteAllUsageFilesAsync(string modelId)
         {
-            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/usage", string.Empty);
+            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/usage");
         }
 
         public async Task DeleteBuildAsync(string modelId, int buildId)
         {
-            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/builds/{buildId}", string.Empty);
+            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/builds/{buildId}");
         }
 
         public async Task DeleteBusinessRuleAsync(string modelId, string ruleId)
         {
-            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/rules/{ruleId}", string.Empty);
+            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/rules/{ruleId}");
         }
 
         public async Task<DeleteCatalogItemsResponse> DeleteCatalogItemsAsync(string modelId, bool deleteAll = false)
         {
-            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/catalog?deleteAll={deleteAll}", string.Empty);
+            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/catalog?deleteAll={deleteAll}");
 
             return JsonConvert.DeserializeObject<DeleteCatalogItemsResponse>(response);
         }
 
         public async Task DeleteModelAsync(string id)
         {
-            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{id}", string.Empty);
+            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{id}");
         }
 
         public async Task DeleteUsageFileAsync(string modelId, string fileId)
         {
-            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/usage/{fileId}", string.Empty);
+            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/usage/{fileId}");
         }
 
         #endregion Delete

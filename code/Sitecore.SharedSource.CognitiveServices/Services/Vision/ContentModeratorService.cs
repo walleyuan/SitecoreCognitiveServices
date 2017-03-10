@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Vision;
@@ -328,5 +329,305 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         }
 
         #endregion Review
+
+        #region List Management 
+
+        public virtual void AddImage(string imageUrl, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
+        {
+            try
+            {
+                Task.Run(async () => await ContentModeratorRepository.AddImageAsync(imageUrl, listId, tag, label));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"ContentModeratorService.AddImage failed: {imageUrl}", this, ex);
+            }
+        }
+
+        public virtual void AddImage(Stream stream, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
+        {
+            try
+            {
+                Task.Run(async () => await ContentModeratorRepository.AddImageAsync(stream, listId, tag, label));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.AddImage failed", this, ex);
+            }
+        }
+
+        public virtual void DeleteImage(string listId, string imageId)
+        {
+            try
+            {
+                Task.Run(async () => await ContentModeratorRepository.DeleteImageAsync(listId, imageId));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.DeleteImage failed", this, ex);
+            }
+        }
+
+        public virtual void DeleteAllImage(string listId)
+        {
+            try
+            {
+                Task.Run(async () => await ContentModeratorRepository.DeleteAllImageAsync(listId));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.DeleteAllImage failed", this, ex);
+            }
+        }
+
+        public virtual List<string> GetAllImageIds(string listId)
+        {
+            try
+            {
+                var result = Task.Run(async () => await ContentModeratorRepository.GetAllImageIdsAsync(listId)).Result;
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.GetAllImageIds failed", this, ex);
+            }
+
+            return null;
+        }
+
+        public virtual string GetImageListDetails(string listId)
+        {
+            try
+            {
+                var result = Task.Run(async () => await ContentModeratorRepository.GetImageListDetailsAsync(listId)).Result;
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.GetImageListDetails failed", this, ex);
+            }
+
+            return null;
+        }
+
+        public virtual string CreateList(ListDetails details)
+        {
+            try
+            {
+                var result = Task.Run(async () => await ContentModeratorRepository.CreateListAsync(details)).Result;
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.CreateList failed", this, ex);
+            }
+
+            return null;
+        }
+
+        public virtual void DeleteImageList(string listId)
+        {
+            try
+            {
+                Task.Run(async () => await ContentModeratorRepository.DeleteImageListAsync(listId));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.DeleteImageList failed", this, ex);
+            }
+        }
+
+        public virtual string GetAllImageLists()
+        {
+            try
+            {
+                var result = Task.Run(async () => await ContentModeratorRepository.GetAllImageListsAsync()).Result;
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.GetAllImageLists failed", this, ex);
+            }
+
+            return null;
+        }
+
+        public virtual string RefreshImageSearchIndex(string listId)
+        {
+            try
+            {
+                var result = Task.Run(async () => await ContentModeratorRepository.RefreshImageSearchIndexAsync(listId)).Result;
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.RefreshImageSearchIndex failed", this, ex);
+            }
+
+            return null;
+        }
+
+        public virtual void UpdateImageListDetails(string listId, ListDetails details)
+        {
+            try
+            {
+                Task.Run(async () => await ContentModeratorRepository.UpdateImageListDetailsAsync(listId, details));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.UpdateImageListDetails failed", this, ex);
+            }
+        }
+
+        public virtual string AddTerm(string listId, string term, string language)
+        {
+            try
+            {
+                var result = Task.Run(async () => await ContentModeratorRepository.AddTermAsync(listId, term, language)).Result;
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.AddTerm failed", this, ex);
+            }
+
+            return null;
+        }
+
+        public virtual void DeleteTerm(string listId, string term, string language)
+        {
+            try
+            {
+                Task.Run(async () => await ContentModeratorRepository.DeleteTermAsync(listId, term, language));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.DeleteTerm failed", this, ex);
+            }
+        }
+
+        public virtual void DeleteAllTerms(string listId, string language)
+        {
+            try
+            {
+                Task.Run(async () => await ContentModeratorRepository.DeleteAllTermsAsync(listId, language));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.DeleteAllTerms failed", this, ex);
+            }
+        }
+
+        public virtual string GetAllTerms(string listId, string language)
+        {
+            try
+            {
+                var result = Task.Run(async () => await ContentModeratorRepository.GetAllTermsAsync(listId, language)).Result;
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.GetAllTerms failed", this, ex);
+            }
+
+            return null;
+        }
+
+        public virtual string CreateTextList(ListDetails details)
+        {
+            try
+            {
+                var result = Task.Run(async () => await ContentModeratorRepository.CreateTextListAsync(details)).Result;
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.CreateTextList failed", this, ex);
+            }
+
+            return null;
+        }
+
+        public virtual void DeleteTermList(string listId)
+        {
+            try
+            {
+                Task.Run(async () => await ContentModeratorRepository.DeleteTermListAsync(listId));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.DeleteTermList failed", this, ex);
+            }
+        }
+
+        public virtual string GetAllTermLists()
+        {
+            try
+            {
+                var result = Task.Run(async () => await ContentModeratorRepository.GetAllTermListsAsync()).Result;
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.GetAllTermLists failed", this, ex);
+            }
+
+            return null;
+        }
+
+        public virtual string GetTermListDetails(string listId)
+        {
+            try
+            {
+                var result = Task.Run(async () => await ContentModeratorRepository.GetTermListDetailsAsync(listId)).Result;
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.GetTermListDetails failed", this, ex);
+            }
+
+            return null;
+        }
+
+        public virtual string RefreshTermSearchIndex(string listId, string language)
+        {
+            try
+            {
+                var result = Task.Run(async () => await ContentModeratorRepository.RefreshTermSearchIndexAsync(listId, language)).Result;
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.RefreshTermSearchIndex failed", this, ex);
+            }
+
+            return null;
+        }
+
+        public virtual void UpdateTermListDetails(string listId, ListDetails details)
+        {
+            try
+            {
+                Task.Run(async () => await ContentModeratorRepository.UpdateTermListDetailsAsync(listId, details));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("ContentModeratorService.UpdateTermListDetails failed", this, ex);
+            }
+        }
+
+        #endregion List Management
     }
 }

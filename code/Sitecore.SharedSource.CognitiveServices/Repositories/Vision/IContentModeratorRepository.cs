@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
@@ -25,5 +26,26 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
         Task CreateOrUpdateWorkflowAsync(string teamName, string workflowName, WorkflowExpression expression);
         Task<WorkflowExpression> GetWorkflowAsync(string teamName, string workflowName);
         Task<List<WorkflowExpression>> GetAllWorkflowsAsync(string teamName);
+        Task AddImageAsync(string imageUrl, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "");
+        Task AddImageAsync(Stream stream, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "");
+        Task DeleteImageAsync(string listId, string imageId);
+        Task DeleteAllImageAsync(string listId);
+        Task<List<string>> GetAllImageIdsAsync(string listId);
+        Task<string> GetImageListDetailsAsync(string listId);
+        Task<string> CreateListAsync(ListDetails details);
+        Task DeleteImageListAsync(string listId);
+        Task<string> GetAllImageListsAsync();
+        Task<string> RefreshImageSearchIndexAsync(string listId);
+        Task UpdateImageListDetailsAsync(string listId, ListDetails details);
+        Task<string> AddTermAsync(string listId, string term, string language);
+        Task DeleteTermAsync(string listId, string term, string language);
+        Task DeleteAllTermsAsync(string listId, string language);
+        Task<string> GetAllTermsAsync(string listId, string language);
+        Task<string> CreateTextListAsync(ListDetails details);
+        Task DeleteTermListAsync(string listId);
+        Task<string> GetAllTermListsAsync();
+        Task<string> GetTermListDetailsAsync(string listId);
+        Task<string> RefreshTermSearchIndexAsync(string listId, string language);
+        Task UpdateTermListDetailsAsync(string listId, ListDetails details);
     }
 }

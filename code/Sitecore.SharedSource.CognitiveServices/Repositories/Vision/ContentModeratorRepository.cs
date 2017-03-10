@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Microsoft.ProjectOxford.Text.Core;
 using Newtonsoft.Json;
+using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
 
@@ -24,6 +25,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
 
         protected static readonly string moderatorUrl = "https://westus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0";
         protected static readonly string reviewUrl = "https://westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0/teams/";
+        protected static readonly string listUrl = "https://westus.api.cognitive.microsoft.com/contentmoderator/lists/v1.0/imagelists/";
+        protected static readonly string termListUrl = "https://westus.api.cognitive.microsoft.com/contentmoderator/lists/v1.0/termlists/";
 
         protected static readonly string moderateSessionTokenKey = "ModerateSessionTokenKey";
 
@@ -232,7 +235,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
                 ApiKeys.ContentModerator,
                 $"{reviewUrl}{teamName}/jobs?ContentType=Image&ContentId={contentId}&WorkflowName={workflowName}{GetCreateJobQuerystring(callbackEndpoint)}",
                 RepositoryClient.GetStreamString(stream),
-                "image/jpeg",
+                RepositoryClient.GetImageStreamContentType(stream),
                 "POST",
                 GetToken());
 
@@ -333,6 +336,166 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
         #endregion Review
 
         #region List Management
+
+        #region Image
+
+        private string GetAddImageQuerystring(ContentModeratorTag tag, string label)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (tag != ContentModeratorTag.None)
+                sb.Append($"?tag={Enum.GetName(typeof(ContentModeratorTag), tag)}");
+
+            if (!string.IsNullOrEmpty(label))
+            {
+                var concat = sb.Length > 0 ? "&" : "?";
+                sb.Append($"{concat}label={label}");
+            }
+
+            return sb.ToString();
+        }
+
+        public async Task AddImageAsync(string imageUrl, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
+        {
+            string data = $"{{ \"DataRepresentation\":\"URL\", \"Value\":\"{imageUrl}\" }}";
+            
+            await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/images{GetAddImageQuerystring(tag, label)}", data);
+        }
+
+        public async Task AddImageAsync(Stream stream, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
+        {
+            await RepositoryClient.SendImagePostAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/images{GetAddImageQuerystring(tag, label)}", stream);
+        }
+
+        public async Task DeleteImageAsync(string listId, string imageId)
+        {
+            await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/images/{imageId}");
+        }
+
+        public async Task DeleteAllImageAsync(string listId)
+        {
+            await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/images");
+        }
+
+        public async Task<List<string>> GetAllImageIdsAsync(string listId)
+        {
+            var response = await SendGetAsync($"{listUrl}{listId}/images");
+
+            return JsonConvert.DeserializeObject<List<string>>(response);
+        }
+
+        #endregion Image
+
+        #region Image Lists
+
+        public async Task<string> GetImageListDetailsAsync(string listId)
+        {
+            var response = await SendGetAsync($"{listUrl}{listId}");
+
+            return response;
+        }
+
+        public async Task<string> CreateListAsync(ListDetails details)
+        {
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{listUrl}", JsonConvert.SerializeObject(details));
+
+            return response;
+        }
+
+        public async Task DeleteImageListAsync(string listId)
+        {
+            await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}");
+        }
+
+        public async Task<string> GetAllImageListsAsync()
+        {
+            var response = await SendGetAsync(listUrl);
+
+            return JsonConvert.DeserializeObject<string>(response);
+        }
+
+        public async Task<string> RefreshImageSearchIndexAsync(string listId)
+        {
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/RefreshIndex", "");
+
+            return response;
+        }
+
+        public async Task UpdateImageListDetailsAsync(string listId, ListDetails details)
+        {
+            await RepositoryClient.SendJsonPutAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}", JsonConvert.SerializeObject(details));
+        }
+
+        #endregion Image Lists
+
+        #region Term
+
+        public async Task<string> AddTermAsync(string listId, string term, string language)
+        {
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{termListUrl}{listId}/terms/{term}?language={language}", "");
+
+            return response;
+        }
+
+        public async Task DeleteTermAsync(string listId, string term, string language)
+        {
+            await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/terms/{term}?language={language}");
+        }
+
+        public async Task DeleteAllTermsAsync(string listId, string language)
+        {
+            await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/terms?language={language}");
+        }
+
+        public async Task<string> GetAllTermsAsync(string listId, string language)
+        {
+            var response = await SendGetAsync($"{termListUrl}{listId}/terms?language={language}");
+
+            return JsonConvert.DeserializeObject<string>(response);
+        }
+
+        #endregion Term
+
+        #region Term Lists
+
+        public async Task<string> CreateTextListAsync(ListDetails details)
+        {
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, termListUrl, JsonConvert.SerializeObject(details));
+
+            return response;
+        }
+
+        public async Task DeleteTermListAsync(string listId)
+        {
+            await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{termListUrl}{listId}");
+        }
+
+        public async Task<string> GetAllTermListsAsync()
+        {
+            var response = await SendGetAsync(termListUrl);
+
+            return response;
+        }
+
+        public async Task<string> GetTermListDetailsAsync(string listId)
+        {
+            var response = await SendGetAsync($"{termListUrl}{listId}");
+
+            return response;
+        }
+
+        public async Task<string> RefreshTermSearchIndexAsync(string listId, string language)
+        {
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{termListUrl}{listId}/RefreshIndex?lanaguage={language}", "");
+
+            return response;
+        }
+
+        public async Task UpdateTermListDetailsAsync(string listId, ListDetails details)
+        {
+            await RepositoryClient.SendJsonPutAsync(ApiKeys.ContentModerator, $"{termListUrl}{listId}", JsonConvert.SerializeObject(details));
+        }
+
+        #endregion Term Lists
 
         #endregion List Management
     }

@@ -32,9 +32,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             return await SendAsync(apiKey, url, data, "application/json", "POST");
         }
 
-        public async Task<string> SendJsonDeleteAsync(string apiKey, string url, string data)
+        public async Task<string> SendJsonPutAsync(string apiKey, string url, string data)
         {
-            return await SendAsync(apiKey, url, data, "application/json", "DELETE");
+            return await SendAsync(apiKey, url, data, "application/json", "PUT");
+        }
+
+        public async Task<string> SendJsonDeleteAsync(string apiKey, string url)
+        {
+            return await SendAsync(apiKey, url, "", "application/json", "DELETE");
         }
 
         public async Task<string> SendOctetStreamUpdateAsync(string apiKey, string url, Stream stream)

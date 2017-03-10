@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
@@ -25,5 +26,26 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         void CreateOrUpdateWorkflow(string teamName, string workflowName, WorkflowExpression expression);
         WorkflowExpression GetWorkflow(string teamName, string workflowName);
         List<WorkflowExpression> GetAllWorkflows(string teamName);
+        void AddImage(string imageUrl, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "");
+        void AddImage(Stream stream, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "");
+        void DeleteImage(string listId, string imageId);
+        void DeleteAllImage(string listId);
+        List<string> GetAllImageIds(string listId);
+        string GetImageListDetails(string listId);
+        string CreateList(ListDetails details);
+        void DeleteImageList(string listId);
+        string GetAllImageLists();
+        string RefreshImageSearchIndex(string listId);
+        void UpdateImageListDetails(string listId, ListDetails details);
+        string AddTerm(string listId, string term, string language);
+        void DeleteTerm(string listId, string term, string language);
+        void DeleteAllTerms(string listId, string language);
+        string GetAllTerms(string listId, string language);
+        string CreateTextList(ListDetails details);
+        void DeleteTermList(string listId);
+        string GetAllTermLists();
+        string GetTermListDetails(string listId);
+        string RefreshTermSearchIndex(string listId, string language);
+        void UpdateTermListDetails(string listId, ListDetails details);
     }
 }

@@ -8,8 +8,9 @@ using Newtonsoft.Json.Converters;
 
 namespace Sitecore.SharedSource.CognitiveServices.Enums
 {
-    public enum ContentModeratorTags
+    public enum ContentModeratorTag
     {
+        None = 0,
         Nudity = 101,
         SexualContent = 102,
         Alcohol = 201,
@@ -20,7 +21,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Enums
         Weapons = 402,
         Gore = 403,
         Profanity = 501,
-        Vulgarity = 502
+        Vulgarity = 502,
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
