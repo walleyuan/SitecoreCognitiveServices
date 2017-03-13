@@ -5,11 +5,11 @@ using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Vision.Video
 {
-    public class FaceFragment
+    public class MotionDetectionFragment
     {
         public int Start { get; set; }
         public int Duration { get; set; }
         public int Interval { get; set; }
-        public List<List<FragmentLocation>> Events { get; set; }
+        public List<List<MotionDetectionEvent>> Events { get; set; }
     }
 }

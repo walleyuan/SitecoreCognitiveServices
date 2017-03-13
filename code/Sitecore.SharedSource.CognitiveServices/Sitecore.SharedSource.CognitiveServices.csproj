@@ -439,7 +439,13 @@
     <Compile Include="Models\Vision\Video\FaceDetectionResult.cs" />
     <Compile Include="Models\Vision\Video\FaceEntity.cs" />
     <Compile Include="Models\Vision\Video\FaceFragment.cs" />
-    <Compile Include="Models\Vision\Video\FaceFragmentLocation.cs" />
+    <Compile Include="Models\Vision\Video\FragmentLocation.cs" />
+    <Compile Include="Models\Vision\Video\MotionDetectionAnalysis.cs" />
+    <Compile Include="Models\Vision\Video\MotionDetectionEvent.cs" />
+    <Compile Include="Models\Vision\Video\MotionDetectionFragment.cs" />
+    <Compile Include="Models\Vision\Video\MotionDetectionRegion.cs" />
+    <Compile Include="Models\Vision\Video\MotionDetectionResult.cs" />
+    <Compile Include="Models\Vision\Video\XYPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Bing\AutoSuggestRepository.cs" />
     <Compile Include="Repositories\Bing\IAutoSuggestRepository.cs" />

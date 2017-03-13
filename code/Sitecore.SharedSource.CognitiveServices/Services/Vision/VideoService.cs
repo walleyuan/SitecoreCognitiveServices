@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Video.Contract;
+using Newtonsoft.Json;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Vision;
 
@@ -98,6 +99,42 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             }
 
             return null;
+        }
+
+        public virtual FaceDetectionResult GetFaceDetectionOperationResult(Operation operation)
+        {
+            var result = GetOperationResult(operation);
+
+            return (result?.ProcessingResult != null)
+                ? JsonConvert.DeserializeObject<FaceDetectionResult>(result.ProcessingResult)
+                : null;
+        }
+
+        public virtual MotionDetectionResult GetMotionDetectionOperationResult(Operation operation)
+        {
+            var result = GetOperationResult(operation);
+
+            return (result?.ProcessingResult != null)
+                ? JsonConvert.DeserializeObject<MotionDetectionResult>(result.ProcessingResult)
+                : null;
+        }
+
+        public virtual string GetStabilizationOperationResult(Operation operation)
+        {
+            var result = GetOperationResult(operation);
+
+            return (!string.IsNullOrEmpty(result?.ResourceLocation)) 
+                ? result.ResourceLocation
+                : string.Empty;
+        }
+
+        public virtual string GetThumbnailOperationResult(Operation operation)
+        {
+            var result = GetOperationResult(operation);
+
+            return (!string.IsNullOrEmpty(result?.ResourceLocation))
+                ? result.ResourceLocation
+                : string.Empty;
         }
     }
 }

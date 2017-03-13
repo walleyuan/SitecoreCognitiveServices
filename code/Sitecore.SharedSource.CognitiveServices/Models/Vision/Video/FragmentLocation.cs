@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Vision.Video
 {
-    public class FaceFragmentLocation
+    public class FragmentLocation
     {
         public int Id { get; set; }
         public double X { get; set; }

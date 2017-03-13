@@ -10,5 +10,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         Operation CreateOperation(string videoUrl, VideoOperationSettings operationSettings);
         OperationResult GetOperationResult(Operation operation);
         Stream GetResultVideo(string url);
+        FaceDetectionResult GetFaceDetectionOperationResult(Operation operation);
+        MotionDetectionResult GetMotionDetectionOperationResult(Operation operation);
+        string GetStabilizationOperationResult(Operation operation);
+        string GetThumbnailOperationResult(Operation operation);
     }
 }
