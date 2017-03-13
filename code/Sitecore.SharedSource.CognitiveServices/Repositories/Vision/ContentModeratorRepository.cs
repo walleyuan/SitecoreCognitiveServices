@@ -54,7 +54,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
             return $"{{\"DataRepresentation\":\"URL\",\"Value\":\"{imageUrl}\"}}";
         }
 
-        public async Task<EvaluateResponse> EvaluateAsync(string imageUrl)
+        public virtual async Task<EvaluateResponse> EvaluateAsync(string imageUrl)
         {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{moderatorUrl}/ProcessImage/Evaluate", GetImageUrlData(imageUrl));
 
@@ -72,14 +72,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
 
         #region Find Faces
 
-        public async Task<FindFacesResponse> FindFacesAsync(string imageUrl)
+        public virtual async Task<FindFacesResponse> FindFacesAsync(string imageUrl)
         {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{moderatorUrl}/ProcessImage/FindFaces", GetImageUrlData(imageUrl));
 
             return JsonConvert.DeserializeObject<FindFacesResponse>(response);
         }
 
-        public async Task<FindFacesResponse> FindFacesAsync(Stream stream)
+        public virtual async Task<FindFacesResponse> FindFacesAsync(Stream stream)
         {
             var response = await RepositoryClient.SendImagePostAsync(ApiKeys.ContentModerator, $"{moderatorUrl}/ProcessImage/FindFaces", stream);
 
@@ -95,14 +95,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
             return string.IsNullOrEmpty(listId) ? "" : $"?listId={listId}";
         }
 
-        public async Task<MatchResponse> MatchAsync(string imageUrl, string listId = "")
+        public virtual async Task<MatchResponse> MatchAsync(string imageUrl, string listId = "")
         {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{moderatorUrl}/ProcessImage/Match{GetMatchQuerystring(listId)}", GetImageUrlData(imageUrl));
 
             return JsonConvert.DeserializeObject<MatchResponse>(response);
         }
 
-        public async Task<MatchResponse> MatchAsync(Stream stream, string listId = "")
+        public virtual async Task<MatchResponse> MatchAsync(Stream stream, string listId = "")
         {
             var response = await RepositoryClient.SendImagePostAsync(ApiKeys.ContentModerator, $"{moderatorUrl}/ProcessImage/Match{GetMatchQuerystring(listId)}", stream);
 
@@ -129,14 +129,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
             return sb.ToString();
         }
 
-        public async Task<OCRResult> OCRAsync(string imageUrl, string language = "", bool enhanced = false)
+        public virtual async Task<OCRResult> OCRAsync(string imageUrl, string language = "", bool enhanced = false)
         {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{moderatorUrl}/ProcessImage/OCR{GetOCRQuerystring(language, enhanced)}", GetImageUrlData(imageUrl));
 
             return JsonConvert.DeserializeObject<OCRResult>(response);
         }
 
-        public async Task<OCRResult> OCRAsync(Stream stream, string language = "", bool enhanced = false)
+        public virtual async Task<OCRResult> OCRAsync(Stream stream, string language = "", bool enhanced = false)
         {
             var response = await RepositoryClient.SendImagePostAsync(ApiKeys.ContentModerator, $"{moderatorUrl}/ProcessImage/OCR{GetOCRQuerystring(language, enhanced)}", stream);
 
@@ -147,7 +147,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
 
         #region Detect Language
 
-        public async Task<DetectLanguageResponse> DetectLanguageAsync(string text)
+        public virtual async Task<DetectLanguageResponse> DetectLanguageAsync(string text)
         {
             var response = await RepositoryClient.SendTextPostAsync(ApiKeys.ContentModerator, $"{moderatorUrl}/ProcessText/DetectLanguage", text);
 
@@ -158,7 +158,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
 
         #region Screen
 
-        public async Task<ScreenResponse> ScreenAsync(string text, string language = "eng", bool autocorrect = false, bool urls = false, bool PII = false, string listId = "")
+        public virtual async Task<ScreenResponse> ScreenAsync(string text, string language = "eng", bool autocorrect = false, bool urls = false, bool PII = false, string listId = "")
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($"?language={language}");
@@ -216,7 +216,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
             return $"{{ \"ContentValue\": \"{content}\" }}";
         }
 
-        public async Task<CreateJobResponse> CreateImageJobAsync(string imageUrl, string teamName, string contentId, string workflowName, string callbackEndpoint = "")
+        public virtual async Task<CreateJobResponse> CreateImageJobAsync(string imageUrl, string teamName, string contentId, string workflowName, string callbackEndpoint = "")
         {
             var response = await RepositoryClient.SendAsync(
                 ApiKeys.ContentModerator, 
@@ -229,7 +229,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
             return JsonConvert.DeserializeObject<CreateJobResponse>(response);
         }
 
-        public async Task<CreateJobResponse> CreateImageJobAsync(Stream stream, string teamName, string contentId, string workflowName, string callbackEndpoint = "")
+        public virtual async Task<CreateJobResponse> CreateImageJobAsync(Stream stream, string teamName, string contentId, string workflowName, string callbackEndpoint = "")
         {
             var response = await RepositoryClient.SendAsync(
                 ApiKeys.ContentModerator,
@@ -242,7 +242,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
             return JsonConvert.DeserializeObject<CreateJobResponse>(response);
         }
 
-        public async Task<CreateJobResponse> CreateTextJobAsync(string text, string teamName, string contentId, string workflowName, string callbackEndpoint = "")
+        public virtual async Task<CreateJobResponse> CreateTextJobAsync(string text, string teamName, string contentId, string workflowName, string callbackEndpoint = "")
         {
             var response = await RepositoryClient.SendAsync(
                 ApiKeys.ContentModerator,
@@ -259,7 +259,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
 
         #region Get Job
 
-        public async Task<GetJobResponse> GetJobAsync(string teamName, string jobId)
+        public virtual async Task<GetJobResponse> GetJobAsync(string teamName, string jobId)
         {
             var response = await RepositoryClient.SendAsync(ApiKeys.ContentModerator, $"{reviewUrl}{teamName}/jobs/{jobId}", "", "application/json", "GET", GetToken());
 
@@ -270,7 +270,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
 
         #region Create Review
 
-        public async Task<List<string>> CreateReviewAsync(string teamName, List<ReviewRequest> requests, string subTeam = "")
+        public virtual async Task<List<string>> CreateReviewAsync(string teamName, List<ReviewRequest> requests, string subTeam = "")
         {
             StringBuilder sb = new StringBuilder();
             if (!string.IsNullOrEmpty(subTeam))
@@ -291,7 +291,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
 
         #region Get Review
 
-        public async Task<GetReviewResponse> GetReviewAsync(string teamName, string reviewId)
+        public virtual async Task<GetReviewResponse> GetReviewAsync(string teamName, string reviewId)
         {
             var response = await RepositoryClient.SendAsync(ApiKeys.ContentModerator, $"{reviewUrl}{teamName}/reviews/{reviewId}", "", "application/json", "GET", GetToken());
 
@@ -302,7 +302,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
 
         #region Create or Update Workflow
 
-        public async Task CreateOrUpdateWorkflowAsync(string teamName, string workflowName, WorkflowExpression expression)
+        public virtual async Task CreateOrUpdateWorkflowAsync(string teamName, string workflowName, WorkflowExpression expression)
         {
             var response = await RepositoryClient.SendAsync(
                 ApiKeys.ContentModerator,
@@ -317,14 +317,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
 
         #region Get Workflow
 
-        public async Task<WorkflowExpression> GetWorkflowAsync(string teamName, string workflowName)
+        public virtual async Task<WorkflowExpression> GetWorkflowAsync(string teamName, string workflowName)
         {
             var response = await RepositoryClient.SendAsync(ApiKeys.ContentModerator, $"{reviewUrl}{teamName}/workflows/{workflowName}", "", "application/json", "GET", GetToken());
 
             return JsonConvert.DeserializeObject<WorkflowExpression>(response);
         }
 
-        public async Task<List<WorkflowExpression>> GetAllWorkflowsAsync(string teamName)
+        public virtual async Task<List<WorkflowExpression>> GetAllWorkflowsAsync(string teamName)
         {
             var response = await RepositoryClient.SendAsync(ApiKeys.ContentModerator, $"{reviewUrl}{teamName}/workflows", "", "application/json", "GET", GetToken());
 
@@ -354,29 +354,29 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
             return sb.ToString();
         }
 
-        public async Task AddImageAsync(string imageUrl, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
+        public virtual async Task AddImageAsync(string imageUrl, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
         {
             string data = $"{{ \"DataRepresentation\":\"URL\", \"Value\":\"{imageUrl}\" }}";
             
             await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/images{GetAddImageQuerystring(tag, label)}", data);
         }
 
-        public async Task AddImageAsync(Stream stream, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
+        public virtual async Task AddImageAsync(Stream stream, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
         {
             await RepositoryClient.SendImagePostAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/images{GetAddImageQuerystring(tag, label)}", stream);
         }
 
-        public async Task DeleteImageAsync(string listId, string imageId)
+        public virtual async Task DeleteImageAsync(string listId, string imageId)
         {
             await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/images/{imageId}");
         }
 
-        public async Task DeleteAllImageAsync(string listId)
+        public virtual async Task DeleteAllImageAsync(string listId)
         {
             await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/images");
         }
 
-        public async Task<List<string>> GetAllImageIdsAsync(string listId)
+        public virtual async Task<List<string>> GetAllImageIdsAsync(string listId)
         {
             var response = await SendGetAsync($"{listUrl}{listId}/images");
 
@@ -387,40 +387,40 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
 
         #region Image Lists
 
-        public async Task<string> GetImageListDetailsAsync(string listId)
+        public virtual async Task<string> GetImageListDetailsAsync(string listId)
         {
             var response = await SendGetAsync($"{listUrl}{listId}");
 
             return response;
         }
 
-        public async Task<string> CreateListAsync(ListDetails details)
+        public virtual async Task<string> CreateListAsync(ListDetails details)
         {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{listUrl}", JsonConvert.SerializeObject(details));
 
             return response;
         }
 
-        public async Task DeleteImageListAsync(string listId)
+        public virtual async Task DeleteImageListAsync(string listId)
         {
             await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}");
         }
 
-        public async Task<string> GetAllImageListsAsync()
+        public virtual async Task<string> GetAllImageListsAsync()
         {
             var response = await SendGetAsync(listUrl);
 
             return JsonConvert.DeserializeObject<string>(response);
         }
 
-        public async Task<string> RefreshImageSearchIndexAsync(string listId)
+        public virtual async Task<string> RefreshImageSearchIndexAsync(string listId)
         {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/RefreshIndex", "");
 
             return response;
         }
 
-        public async Task UpdateImageListDetailsAsync(string listId, ListDetails details)
+        public virtual async Task UpdateImageListDetailsAsync(string listId, ListDetails details)
         {
             await RepositoryClient.SendJsonPutAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}", JsonConvert.SerializeObject(details));
         }
@@ -429,24 +429,24 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
 
         #region Term
 
-        public async Task<string> AddTermAsync(string listId, string term, string language)
+        public virtual async Task<string> AddTermAsync(string listId, string term, string language)
         {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{termListUrl}{listId}/terms/{term}?language={language}", "");
 
             return response;
         }
 
-        public async Task DeleteTermAsync(string listId, string term, string language)
+        public virtual async Task DeleteTermAsync(string listId, string term, string language)
         {
             await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/terms/{term}?language={language}");
         }
 
-        public async Task DeleteAllTermsAsync(string listId, string language)
+        public virtual async Task DeleteAllTermsAsync(string listId, string language)
         {
             await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/terms?language={language}");
         }
 
-        public async Task<string> GetAllTermsAsync(string listId, string language)
+        public virtual async Task<string> GetAllTermsAsync(string listId, string language)
         {
             var response = await SendGetAsync($"{termListUrl}{listId}/terms?language={language}");
 
@@ -457,40 +457,40 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
 
         #region Term Lists
 
-        public async Task<string> CreateTextListAsync(ListDetails details)
+        public virtual async Task<string> CreateTextListAsync(ListDetails details)
         {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, termListUrl, JsonConvert.SerializeObject(details));
 
             return response;
         }
 
-        public async Task DeleteTermListAsync(string listId)
+        public virtual async Task DeleteTermListAsync(string listId)
         {
             await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{termListUrl}{listId}");
         }
 
-        public async Task<string> GetAllTermListsAsync()
+        public virtual async Task<string> GetAllTermListsAsync()
         {
             var response = await SendGetAsync(termListUrl);
 
             return response;
         }
 
-        public async Task<string> GetTermListDetailsAsync(string listId)
+        public virtual async Task<string> GetTermListDetailsAsync(string listId)
         {
             var response = await SendGetAsync($"{termListUrl}{listId}");
 
             return response;
         }
 
-        public async Task<string> RefreshTermSearchIndexAsync(string listId, string language)
+        public virtual async Task<string> RefreshTermSearchIndexAsync(string listId, string language)
         {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{termListUrl}{listId}/RefreshIndex?lanaguage={language}", "");
 
             return response;
         }
 
-        public async Task UpdateTermListDetailsAsync(string listId, ListDetails details)
+        public virtual async Task UpdateTermListDetailsAsync(string listId, ListDetails details)
         {
             await RepositoryClient.SendJsonPutAsync(ApiKeys.ContentModerator, $"{termListUrl}{listId}", JsonConvert.SerializeObject(details));
         }

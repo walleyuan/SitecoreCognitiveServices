@@ -19,8 +19,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
             
             Sitecore.Context.ClientPage.Start(this, "Run", context.Parameters);
         }
-        
-        protected void Run(ClientPipelineArgs args)
+
+        public virtual void Run(ClientPipelineArgs args)
         {
             if (args.IsPostBack)
                 return;

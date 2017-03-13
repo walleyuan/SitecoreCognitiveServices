@@ -21,12 +21,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
             RepositoryClient = repoClient;
         }
 
-        public KeyPhraseSentimentResponse GetKeyPhrases(SentimentRequest request)
+        public virtual KeyPhraseSentimentResponse GetKeyPhrases(SentimentRequest request)
         {
             return Task.Run(async () => await GetKeyPhrasesAsync(request)).Result;
         }
 
-        public async Task<KeyPhraseSentimentResponse> GetKeyPhrasesAsync(SentimentRequest request)
+        public virtual async Task<KeyPhraseSentimentResponse> GetKeyPhrasesAsync(SentimentRequest request)
         {
             request.Validate();
             return JsonConvert.DeserializeObject<KeyPhraseSentimentResponse>(await this.SendPostAsync(keyPhraseUrl, JsonConvert.SerializeObject((object)request)));
@@ -37,12 +37,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public string GetTopics(TopicRequest request) 
+        public virtual string GetTopics(TopicRequest request) 
         {
             return Task.Run(async () => await RepositoryClient.SendOperationPostAsync(ApiKey, topicUrl, JsonConvert.SerializeObject((object)request))).Result;
         }
         
-        public OperationResult GetOperation(string operationLocationUrl)
+        public virtual OperationResult GetOperation(string operationLocationUrl)
         {
             return Task.Run(async () => await GetOperationAsync(operationLocationUrl)).Result;
         }
@@ -52,7 +52,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
         /// </summary>
         /// <param name="operationLocationUrl"></param>
         /// <returns></returns>
-        public async Task<OperationResult> GetOperationAsync(string operationLocationUrl)
+        public virtual async Task<OperationResult> GetOperationAsync(string operationLocationUrl)
         {
             return JsonConvert.DeserializeObject<OperationResult>(await this.SendPostAsync(operationLocationUrl, "{}"));
         }

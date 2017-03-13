@@ -27,45 +27,45 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge
 
         #region Post
 
-        public async Task<CreateBusinessRuleResponse> CreateBusinessRuleAsync(string modelId, CreateBusinessRuleRequest request)
+        public virtual async Task<CreateBusinessRuleResponse> CreateBusinessRuleAsync(string modelId, CreateBusinessRuleRequest request)
         {
             var response = await SendPostAsync($"{modelsUrl}{modelId}/rules", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<CreateBusinessRuleResponse>(response);
         }
         
-        public async Task<RecommendationModel> CreateModelAsync(CreateModelRequest request)
+        public virtual async Task<RecommendationModel> CreateModelAsync(CreateModelRequest request)
         {
             var response = await SendPostAsync(modelsUrl, JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<RecommendationModel>(response);
         }
 
-        public async Task<CreateBuildResponse> CreateBuildAsync(string modelId, CreateBuildRequest request)
+        public virtual async Task<CreateBuildResponse> CreateBuildAsync(string modelId, CreateBuildRequest request)
         {
             var response = await SendPostAsync($"{modelsUrl}{modelId}/builds", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<CreateBuildResponse>(response);
         }
 
-        public async Task StartBatchJobAsync(BatchJobRequest request)
+        public virtual async Task StartBatchJobAsync(BatchJobRequest request)
         {
             await SendPostAsync(batchUrl, JsonConvert.SerializeObject(request));
         }
 
-        public async Task<UploadCatalogFileResponse> UploadCatalogFileAsync(string modelId, string catalogDisplayName, Stream stream)
+        public virtual async Task<UploadCatalogFileResponse> UploadCatalogFileAsync(string modelId, string catalogDisplayName, Stream stream)
         {
             var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKey, $"{modelsUrl}{modelId}/catalog?catalogDisplayName={catalogDisplayName}", stream);
 
             return JsonConvert.DeserializeObject<UploadCatalogFileResponse>(response);
         }
 
-        public async Task UploadUsageEventAsync(string modelId, UploadUsageEventRequest request)
+        public virtual async Task UploadUsageEventAsync(string modelId, UploadUsageEventRequest request)
         {
             await SendPostAsync($"{modelsUrl}{modelId}/usage/events", JsonConvert.SerializeObject(request));
         }
 
-        public async Task<UploadUsageFileResponse> UploadUsageFileAsync(string modelId, string usageDisplayName, Stream stream)
+        public virtual async Task<UploadUsageFileResponse> UploadUsageFileAsync(string modelId, string usageDisplayName, Stream stream)
         {
             var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKey, $"{modelsUrl}{modelId}/usage?usageDisplayName={usageDisplayName}", stream);
 
@@ -76,44 +76,44 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge
 
         #region Delete
         
-        public async Task CancelOperationAsync(string operationId)
+        public virtual async Task CancelOperationAsync(string operationId)
         {
             await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{operationsUrl}?id={operationId}");
         }
 
-        public async Task DeleteAllBusinessRulesAsync(string modelId)
+        public virtual async Task DeleteAllBusinessRulesAsync(string modelId)
         {
             await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/rules");
         }
 
-        public async Task DeleteAllUsageFilesAsync(string modelId)
+        public virtual async Task DeleteAllUsageFilesAsync(string modelId)
         {
             await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/usage");
         }
 
-        public async Task DeleteBuildAsync(string modelId, int buildId)
+        public virtual async Task DeleteBuildAsync(string modelId, int buildId)
         {
             await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/builds/{buildId}");
         }
 
-        public async Task DeleteBusinessRuleAsync(string modelId, string ruleId)
+        public virtual async Task DeleteBusinessRuleAsync(string modelId, string ruleId)
         {
             await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/rules/{ruleId}");
         }
 
-        public async Task<DeleteCatalogItemsResponse> DeleteCatalogItemsAsync(string modelId, bool deleteAll = false)
+        public virtual async Task<DeleteCatalogItemsResponse> DeleteCatalogItemsAsync(string modelId, bool deleteAll = false)
         {
             var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/catalog?deleteAll={deleteAll}");
 
             return JsonConvert.DeserializeObject<DeleteCatalogItemsResponse>(response);
         }
 
-        public async Task DeleteModelAsync(string id)
+        public virtual async Task DeleteModelAsync(string id)
         {
             await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{id}");
         }
 
-        public async Task DeleteUsageFileAsync(string modelId, string fileId)
+        public virtual async Task DeleteUsageFileAsync(string modelId, string fileId)
         {
             await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/usage/{fileId}");
         }
@@ -122,14 +122,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge
 
         #region Update
 
-        public async Task<UpdateCatalogItemsResponse> UpdateCatalogItemsAsync(string modelId, Stream fileStream)
+        public virtual async Task<UpdateCatalogItemsResponse> UpdateCatalogItemsAsync(string modelId, Stream fileStream)
         {
             var response = await RepositoryClient.SendOctetStreamUpdateAsync(ApiKey, $"{modelsUrl}{modelId}/catalog", fileStream);
 
             return JsonConvert.DeserializeObject<UpdateCatalogItemsResponse>(response);
         }
 
-        public async Task UpdateModelAsync(string modelId, UpdateModelRequest request)
+        public virtual async Task UpdateModelAsync(string modelId, UpdateModelRequest request)
         {
             await RepositoryClient.SendJsonUpdateAsync(ApiKey, $"{modelsUrl}{modelId}", JsonConvert.SerializeObject(request));
         }
@@ -138,35 +138,35 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge
 
         #region Get
 
-        public async Task<string> DownloadUsageFileAsync(string modelId, string fileId)
+        public virtual async Task<string> DownloadUsageFileAsync(string modelId, string fileId)
         {
             var response = await SendGetAsync($"{modelsUrl}{modelId}/usage/{fileId}");
 
             return response;
         }
 
-        public async Task<GetBatchJobResponse> GetAllBatchJobsAsync(string jobId)
+        public virtual async Task<GetBatchJobResponse> GetAllBatchJobsAsync(string jobId)
         {
             var response = await SendGetAsync($"{batchUrl}{jobId}");
 
             return JsonConvert.DeserializeObject<GetBatchJobResponse>(response);
         }
 
-        public async Task<GetAllBuildsResponse> GetAllBuildsAsync(string modelId, bool onlyLastRequestedBuild = false)
+        public virtual async Task<GetAllBuildsResponse> GetAllBuildsAsync(string modelId, bool onlyLastRequestedBuild = false)
         {
             var response = await SendGetAsync($"{modelsUrl}{modelId}/builds?onlyLastRequestedBuild={onlyLastRequestedBuild}");
 
             return JsonConvert.DeserializeObject<GetAllBuildsResponse>(response);
         }
 
-        public async Task<GetAllBusinessRulesResponse> GetAllBusinessRulesAsync(string modelId)
+        public virtual async Task<GetAllBusinessRulesResponse> GetAllBusinessRulesAsync(string modelId)
         {
             var response = await SendGetAsync($"{modelsUrl}{modelId}/rules");
 
             return JsonConvert.DeserializeObject<GetAllBusinessRulesResponse>(response);
         }
 
-        public async Task<GetAllCatalogItemsResponse> GetAllCatalogItemsAsync(string modelId, int top = 0, int skip = 0, int maxpagesize = 0)
+        public virtual async Task<GetAllCatalogItemsResponse> GetAllCatalogItemsAsync(string modelId, int top = 0, int skip = 0, int maxpagesize = 0)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -190,42 +190,42 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge
             return JsonConvert.DeserializeObject<GetAllCatalogItemsResponse>(response);
         }
 
-        public async Task<GetAllModelsResponse> GetAllModelsAsync()
+        public virtual async Task<GetAllModelsResponse> GetAllModelsAsync()
         {
             var response = await SendGetAsync(modelsUrl);
 
             return JsonConvert.DeserializeObject<GetAllModelsResponse>(response);
         }
 
-        public async Task<Build> GetBuildByIdAsync(string modelId, int buildId)
+        public virtual async Task<Build> GetBuildByIdAsync(string modelId, int buildId)
         {
             var response = await SendGetAsync($"{modelsUrl}{modelId}/builds/{buildId}");
 
             return JsonConvert.DeserializeObject<Build>(response);
         }
 
-        public async Task<BuildDataStatisticsResponse> GetBuildDataStatisticsAsync(string modelId, int buildId)
+        public virtual async Task<BuildDataStatisticsResponse> GetBuildDataStatisticsAsync(string modelId, int buildId)
         {
             var response = await SendGetAsync($"{modelsUrl}{modelId}/builds/{buildId}/datastatistics");
 
             return JsonConvert.DeserializeObject<BuildDataStatisticsResponse>(response);
         }
 
-        public async Task<BuildMetricsResponse> GetBuildMetricsAsync(string modelId, int buildId)
+        public virtual async Task<BuildMetricsResponse> GetBuildMetricsAsync(string modelId, int buildId)
         {
             var response = await SendGetAsync($"{modelsUrl}{modelId}/builds/{buildId}/metrics");
 
             return JsonConvert.DeserializeObject<BuildMetricsResponse>(response);
         }
 
-        public async Task<BusinessRule> GetBusinessRuleAsync(string modelId, string ruleId)
+        public virtual async Task<BusinessRule> GetBusinessRuleAsync(string modelId, string ruleId)
         {
             var response = await SendGetAsync($"{modelsUrl}{modelId}/rules/{ruleId}");
 
             return JsonConvert.DeserializeObject<BusinessRule>(response);
         }
         
-        public async Task<ItemRecommendationResponse> GetItemToItemRecommendationsAsync(string modelId, List<string> itemIds, int numberOfResults, int minimalScore, int buildId = 0)
+        public virtual async Task<ItemRecommendationResponse> GetItemToItemRecommendationsAsync(string modelId, List<string> itemIds, int numberOfResults, int minimalScore, int buildId = 0)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -237,14 +237,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge
             return JsonConvert.DeserializeObject<ItemRecommendationResponse>(response);
         }
 
-        public async Task<RecommendationModel> GetModelAsync(string modelId)
+        public virtual async Task<RecommendationModel> GetModelAsync(string modelId)
         {
             var response = await SendGetAsync($"{modelsUrl}{modelId}");
 
             return JsonConvert.DeserializeObject<RecommendationModel>(response);
         }
 
-        public async Task<ModelFeatureResponse> GetModelFeaturesAsync(string modelId, int rankBuildId = 0)
+        public virtual async Task<ModelFeatureResponse> GetModelFeaturesAsync(string modelId, int rankBuildId = 0)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -256,14 +256,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge
             return JsonConvert.DeserializeObject<ModelFeatureResponse>(response);
         }
 
-        public async Task<GetOperationStatusResponse> GetOperationStatusAsync(string operationId)
+        public virtual async Task<GetOperationStatusResponse> GetOperationStatusAsync(string operationId)
         {
             var response = await SendGetAsync($"{operationsUrl}{operationId}");
 
             return JsonConvert.DeserializeObject<GetOperationStatusResponse>(response);
         }
 
-        public async Task<SearchCatalogItemsResponse> GetSpecificCatalogItemsBySearchTermAsync(string modelId, List<string> ids = null, string searchTerm = "") 
+        public virtual async Task<SearchCatalogItemsResponse> GetSpecificCatalogItemsBySearchTermAsync(string modelId, List<string> ids = null, string searchTerm = "") 
         {
             StringBuilder sb = new StringBuilder();
 
@@ -281,21 +281,21 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge
             return JsonConvert.DeserializeObject<SearchCatalogItemsResponse>(response);
         }
 
-        public async Task<BuildUsageStatisticsResponse> GetUsageStatisticsForABuildAsync(string modelId, int buildId, string interval, List<string> eventTypes)
+        public virtual async Task<BuildUsageStatisticsResponse> GetUsageStatisticsForABuildAsync(string modelId, int buildId, string interval, List<string> eventTypes)
         {
             var response = await SendGetAsync($"{modelsUrl}{modelId}/builds/{buildId}/usagestatistics?interval={interval}&eventTypes={string.Join(",",eventTypes)}");
 
             return JsonConvert.DeserializeObject<BuildUsageStatisticsResponse>(response);
         }
 
-        public async Task<ModelUsageStatisticsResponse> GetUsageStatisticsForAModelAsync(string modelId, string interval, List<string> eventTypes)
+        public virtual async Task<ModelUsageStatisticsResponse> GetUsageStatisticsForAModelAsync(string modelId, string interval, List<string> eventTypes)
         {
             var response = await SendGetAsync($"{modelsUrl}{modelId}/builds/usagestatistics?interval={interval}&eventTypes={string.Join(",", eventTypes)}");
 
             return JsonConvert.DeserializeObject<ModelUsageStatisticsResponse>(response);
         }
 
-        public async Task<ItemRecommendationResponse> GetUserToItemRecommendationsAsync(string modelId, string userId, int numberOfResults, List<string> itemIds = null, bool includeMetadata = false, int buildId = 0)
+        public virtual async Task<ItemRecommendationResponse> GetUserToItemRecommendationsAsync(string modelId, string userId, int numberOfResults, List<string> itemIds = null, bool includeMetadata = false, int buildId = 0)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -313,7 +313,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge
             return JsonConvert.DeserializeObject<ItemRecommendationResponse>(response);
         }
 
-        public async Task<List<UsageFile>> ListUsageFilesAsync(string modelId)
+        public virtual async Task<List<UsageFile>> ListUsageFilesAsync(string modelId)
         {
             var response = await SendGetAsync($"{modelsUrl}{modelId}/usage");
 

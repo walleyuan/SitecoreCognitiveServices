@@ -279,7 +279,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public IEnumerable<Field> GetTextualFields(Item item)
+        public virtual IEnumerable<Field> GetTextualFields(Item item)
         {
             IEnumerable<Field> fields = item.Fields
                     .Where(f => !f.Name.StartsWith("__") && GetTextualFieldTypes().Contains(f.Type));

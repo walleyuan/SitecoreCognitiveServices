@@ -31,12 +31,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing
 
         #region Image Search
 
-        public ImageSearchResponse GetImages(string query, int count = 10, int offset = 0, string languageCode = "en-us", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
+        public virtual ImageSearchResponse GetImages(string query, int count = 10, int offset = 0, string languageCode = "en-us", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
         {
             return Task.Run(async () => await GetImagesAsync(query, count, offset, languageCode, safeSearch)).Result;
         }
 
-        public async Task<ImageSearchResponse> GetImagesAsync(string query, int count = 10, int offset = 0, string languageCode = "en-us", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
+        public virtual async Task<ImageSearchResponse> GetImagesAsync(string query, int count = 10, int offset = 0, string languageCode = "en-us", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
         {
             string searchUrl = $"{imageSearchUrl}?q={query}&count={count}&offset={offset}&mkt={languageCode}&safeSearch={Enum.GetName(typeof(SafeSearchOptions), safeSearch)}";
             var response = await SendGetAsync(searchUrl);
@@ -48,12 +48,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing
 
         #region Trending Images
 
-        public TrendSearchResponse GetTrendingImages()
+        public virtual TrendSearchResponse GetTrendingImages()
         {
             return Task.Run(async () => await GetTrendingImagesAsync()).Result;
         }
 
-        public async Task<TrendSearchResponse> GetTrendingImagesAsync()
+        public virtual async Task<TrendSearchResponse> GetTrendingImagesAsync()
         {
             var response = await SendGetAsync(imageTrendUrl);
 
@@ -64,7 +64,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing
 
         #region Image Insights
 
-        public ImageInsightResponse GetImageInsights(
+        public virtual ImageInsightResponse GetImageInsights(
             string query = "",
             int height = 0,
             int width = 0,
@@ -93,7 +93,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing
             return Task.Run(async () => await GetImageInsightsAsync(query, height, width, count, offset, languageCode, aspect, color, freshness, imageContent, imageType, license, size, safeSearch, modulesRequested, cab, cal, car, cat, ct, cc, id, imgUrl, insightsToken)).Result;
         }
 
-        public async Task<ImageInsightResponse> GetImageInsightsAsync(
+        public virtual async Task<ImageInsightResponse> GetImageInsightsAsync(
             string query = "", 
             int height = 0, 
             int width = 0,

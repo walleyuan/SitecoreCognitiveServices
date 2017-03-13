@@ -21,11 +21,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing {
 
         #region Category Search
 
-        public NewsSearchCategoryResponse CategorySearch(NewsCategoryOptions category) {
+        public virtual NewsSearchCategoryResponse CategorySearch(NewsCategoryOptions category) {
             return Task.Run(async () => await CategorySearchAsync(category)).Result;
         }
 
-        public async Task<NewsSearchCategoryResponse> CategorySearchAsync(NewsCategoryOptions category)
+        public virtual async Task<NewsSearchCategoryResponse> CategorySearchAsync(NewsCategoryOptions category)
         {
             var catName = Enum.GetName(typeof (NewsCategoryOptions), category).Replace("USUK", "US/UK");
 
@@ -38,11 +38,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing {
 
         #region Trending Search
 
-        public NewsSearchTrendResponse TrendingSearch() {
+        public virtual NewsSearchTrendResponse TrendingSearch() {
             return Task.Run(async () => await TrendingSearchAsync()).Result;
         }
 
-        public async Task<NewsSearchTrendResponse> TrendingSearchAsync() {
+        public virtual async Task<NewsSearchTrendResponse> TrendingSearchAsync() {
             var response = await SendGetAsync(trendingUrl);
 
             return JsonConvert.DeserializeObject<NewsSearchTrendResponse>(response);
@@ -52,11 +52,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing {
 
         #region News Search
 
-        public NewsSearchResponse NewsSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off) {
+        public virtual NewsSearchResponse NewsSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off) {
             return Task.Run(async () => await NewsSearchAsync(text, countOffset, languageCode, safeSearch)).Result;
         }
 
-        public async Task<NewsSearchResponse> NewsSearchAsync(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off) {
+        public virtual async Task<NewsSearchResponse> NewsSearchAsync(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off) {
 
             StringBuilder sb = new StringBuilder();
 

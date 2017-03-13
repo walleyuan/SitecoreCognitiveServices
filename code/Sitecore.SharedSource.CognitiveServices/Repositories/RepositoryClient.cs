@@ -12,57 +12,57 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
 {
     public class RepositoryClient : IRepositoryClient
     {
-        public async Task<string> SendPostMultiPartAsync(string apiKey, string url, string data)
+        public virtual async Task<string> SendPostMultiPartAsync(string apiKey, string url, string data)
         {
             return await SendAsync(apiKey, url, data, "multipart/form-data", "POST");
         }
 
-        public async Task<string> SendEncodedFormPostAsync(string apiKey, string url, string data)
+        public virtual async Task<string> SendEncodedFormPostAsync(string apiKey, string url, string data)
         {
             return await SendAsync(apiKey, url, data, "application/x-www-form-urlencoded", "POST");
         }
 
-        public async Task<string> SendTextPostAsync(string apiKey, string url, string data)
+        public virtual async Task<string> SendTextPostAsync(string apiKey, string url, string data)
         {
             return await SendAsync(apiKey, url, data, "text/plain", "POST");
         }
 
-        public async Task<string> SendJsonPostAsync(string apiKey, string url, string data)
+        public virtual async Task<string> SendJsonPostAsync(string apiKey, string url, string data)
         {
             return await SendAsync(apiKey, url, data, "application/json", "POST");
         }
 
-        public async Task<string> SendJsonPutAsync(string apiKey, string url, string data)
+        public virtual async Task<string> SendJsonPutAsync(string apiKey, string url, string data)
         {
             return await SendAsync(apiKey, url, data, "application/json", "PUT");
         }
 
-        public async Task<string> SendJsonDeleteAsync(string apiKey, string url)
+        public virtual async Task<string> SendJsonDeleteAsync(string apiKey, string url)
         {
             return await SendAsync(apiKey, url, "", "application/json", "DELETE");
         }
 
-        public async Task<string> SendOctetStreamUpdateAsync(string apiKey, string url, Stream stream)
+        public virtual async Task<string> SendOctetStreamUpdateAsync(string apiKey, string url, Stream stream)
         {
             return await SendAsync(apiKey, url, GetStreamString(stream), "application/octet-stream", "UPDATE");
         }
 
-        public async Task<string> SendOctetStreamPostAsync(string apiKey, string url, Stream stream)
+        public virtual async Task<string> SendOctetStreamPostAsync(string apiKey, string url, Stream stream)
         {
             return await SendAsync(apiKey, url, GetStreamString(stream), "application/octet-stream", "POST");
         }
 
-        public async Task<string> SendJsonUpdateAsync(string apiKey, string url, string data)
+        public virtual async Task<string> SendJsonUpdateAsync(string apiKey, string url, string data)
         {
             return await SendAsync(apiKey, url, data, "application/json", "UPDATE");
         }
 
-        public async Task<string> SendImagePostAsync(string apiKey, string url, Stream stream)
+        public virtual async Task<string> SendImagePostAsync(string apiKey, string url, Stream stream)
         {
             return await SendAsync(apiKey, url, GetStreamString(stream), GetImageStreamContentType(stream), "POST");
         }
         
-        public async Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method, string token = "")
+        public virtual async Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method, string token = "")
         {
             if (string.IsNullOrWhiteSpace(url))
                 throw new ArgumentException("url");
@@ -100,7 +100,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             return end;
         }
         
-        public async Task<string> SendOperationPostAsync(string apiKey, string url, string data)
+        public virtual async Task<string> SendOperationPostAsync(string apiKey, string url, string data)
         {
 
             if (string.IsNullOrWhiteSpace(url))
@@ -130,7 +130,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             return opLocation;
         }
 
-        public TokenResponse SendTokenRequest(string privateKey, string clientId)
+        public virtual TokenResponse SendTokenRequest(string privateKey, string clientId)
         {
             byte[] reqData = Encoding.UTF8.GetBytes($"resource=https%3A%2F%2Fapi.contentmoderator.cognitive.microsoft.com%2Freview&client_id={clientId}&client_secret={privateKey}&grant_type=client_credentials");
 
@@ -154,7 +154,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             return t;
         }
 
-        public string GetImageStreamContentType(Stream stream)
+        public virtual string GetImageStreamContentType(Stream stream)
         {
             var image = Image.FromStream(stream);
             if (ImageFormat.Jpeg.Equals(image.RawFormat))
@@ -169,7 +169,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             throw new BadImageFormatException("The image stream provided for cognitive analysis wasn't an allowed format (jpeg, png, gif or bmp)");
         }
 
-        public string GetStreamString(Stream stream)
+        public virtual string GetStreamString(Stream stream)
         {
             StringBuilder sb = new StringBuilder();
             using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))

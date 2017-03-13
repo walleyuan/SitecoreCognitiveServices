@@ -24,7 +24,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             DataService = dataService;
         }
 
-        public ICognitiveSearchResult GetAnalysis(string itemId, string languageCode, string dbName)
+        public virtual ICognitiveSearchResult GetAnalysis(string itemId, string languageCode, string dbName)
         {
             var index = ContentSearchManager.GetIndex(GetIndexName(dbName));
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
@@ -38,7 +38,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             }
         }
 
-        public List<ICognitiveSearchResult> GetMediaResults(string query, string languageCode, string dbName)
+        public virtual List<ICognitiveSearchResult> GetMediaResults(string query, string languageCode, string dbName)
         {
             var index = ContentSearchManager.GetIndex(GetIndexName(dbName));
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
@@ -61,7 +61,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
         /// <param name="parameterValues"></param>
         /// <param name="fieldName"></param>
         /// <returns></returns>
-        private Expression<Func<CognitiveSearchResult, bool>> GetDefaultFilter(string[] parameterValues, string fieldName)
+        private virtual Expression<Func<CognitiveSearchResult, bool>> GetDefaultFilter(string[] parameterValues, string fieldName)
         {
             if (string.IsNullOrEmpty(fieldName) || parameterValues == null || !parameterValues.Any())
             {
@@ -78,7 +78,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             return innerPredicate;
         }
 
-        private Expression<Func<CognitiveSearchResult, bool>> GetRangeFilter(string[] parameterValues, string fieldName)
+        private virtual Expression<Func<CognitiveSearchResult, bool>> GetRangeFilter(string[] parameterValues, string fieldName)
         {
             if (string.IsNullOrEmpty(fieldName) || !parameterValues.Any())
             {
@@ -118,7 +118,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             return innerPredicate.And(i => (double)i[(ObjectIndexerKey)fieldName] >= min && (double)i[(ObjectIndexerKey)fieldName] <= max);
         }
 
-        public List<ICognitiveSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, string languageCode, string dbName)
+        public virtual List<ICognitiveSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, string languageCode, string dbName)
         {
             var index = ContentSearchManager.GetIndex(GetIndexName(dbName));
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
@@ -158,7 +158,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             }
         }
 
-        public string[] GetAutocompleteResults(string term, string languageCode, string dbName)
+        public virtual string[] GetAutocompleteResults(string term, string languageCode, string dbName)
         {
             var index = ContentSearchManager.GetIndex(GetIndexName(dbName));
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
@@ -171,7 +171,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             }
         }
 
-        public List<KeyValuePair<string, int>> GetTags(string languageCode, string dbName)
+        public virtual List<KeyValuePair<string, int>> GetTags(string languageCode, string dbName)
         {
             var index = ContentSearchManager.GetIndex(GetIndexName(dbName));
             
@@ -192,7 +192,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             }
         }
 
-        public void AddItemToIndex(string itemId, string dbName)
+        public virtual void AddItemToIndex(string itemId, string dbName)
         {
             ID id = DataService.GetID(itemId);
             if (id.IsNull)
@@ -205,7 +205,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             AddItemToIndex(i, dbName);
         }
 
-        public void AddItemToIndex(Item item, string dbName)
+        public virtual void AddItemToIndex(Item item, string dbName)
         {
             if (item == null)
                 return;
@@ -214,7 +214,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             ContentSearchManager.GetIndex(GetIndexName(dbName)).Refresh(tempItem);
         }
 
-        public void UpdateItemInIndex(string itemId, string dbName)
+        public virtual void UpdateItemInIndex(string itemId, string dbName)
         {
             ID id = DataService.GetID(itemId);
             if (id.IsNull)
@@ -227,7 +227,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             UpdateItemInIndex(i, dbName);
         }
 
-        public void UpdateItemInIndex(Item item, string dbName)
+        public virtual void UpdateItemInIndex(Item item, string dbName)
         {
             if (item == null)
                 return;

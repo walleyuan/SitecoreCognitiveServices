@@ -21,11 +21,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing {
 
         #region Video Search
 
-        public VideoSearchResponse VideoSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off) {
+        public virtual VideoSearchResponse VideoSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off) {
             return Task.Run(async () => await VideoSearchAsync(text, countOffset, languageCode, safeSearch)).Result;
         }
 
-        public async Task<VideoSearchResponse> VideoSearchAsync(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off) {
+        public virtual async Task<VideoSearchResponse> VideoSearchAsync(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off) {
 
             StringBuilder sb = new StringBuilder();
 
@@ -51,11 +51,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing {
 
         #region Trending Videos Search
 
-        public VideoSearchTrendResponse TrendingSearch() {
+        public virtual VideoSearchTrendResponse TrendingSearch() {
             return Task.Run(async () => await TrendingSearchAsync()).Result;
         }
 
-        public async Task<VideoSearchTrendResponse> TrendingSearchAsync() {
+        public virtual async Task<VideoSearchTrendResponse> TrendingSearchAsync() {
             var response = await SendGetAsync(trendingUrl);
 
             return JsonConvert.DeserializeObject<VideoSearchTrendResponse>(response);
@@ -65,11 +65,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing {
 
         #region Video Details Search
 
-        public VideoSearchDetailsResponse VideoDetailsSearch(string id, VideoDetailsModulesOptions modulesRequested) {
+        public virtual VideoSearchDetailsResponse VideoDetailsSearch(string id, VideoDetailsModulesOptions modulesRequested) {
             return Task.Run(async () => await VideoDetailsSearchAsync(id, modulesRequested)).Result;
         }
 
-        public async Task<VideoSearchDetailsResponse> VideoDetailsSearchAsync(string id, VideoDetailsModulesOptions modulesRequested) {
+        public virtual async Task<VideoSearchDetailsResponse> VideoDetailsSearchAsync(string id, VideoDetailsModulesOptions modulesRequested) {
             
             var response = await SendGetAsync($"{detailsUrl}?id={id}&modulesRequested={Enum.GetName(typeof(VideoDetailsModulesOptions), modulesRequested)}");
 

@@ -23,7 +23,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         
         #region Post
 
-        public CreateBusinessRuleResponse CreateBusinessRule(string modelId, CreateBusinessRuleRequest request)
+        public virtual CreateBusinessRuleResponse CreateBusinessRule(string modelId, CreateBusinessRuleRequest request)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public RecommendationModel CreateModel(CreateModelRequest request)
+        public virtual RecommendationModel CreateModel(CreateModelRequest request)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public CreateBuildResponse CreateBuild(string modelId, CreateBuildRequest request)
+        public virtual CreateBuildResponse CreateBuild(string modelId, CreateBuildRequest request)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public void StartBatchJob(BatchJobRequest request)
+        public virtual void StartBatchJob(BatchJobRequest request)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             }
         }
 
-        public UploadCatalogFileResponse UploadCatalogFile(string modelId, string catalogDisplayName, Stream stream)
+        public virtual UploadCatalogFileResponse UploadCatalogFile(string modelId, string catalogDisplayName, Stream stream)
         {
             try
             {
@@ -99,7 +99,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public void UploadUsageEvent(string modelId, UploadUsageEventRequest request)
+        public virtual void UploadUsageEvent(string modelId, UploadUsageEventRequest request)
         {
             try
             {
@@ -111,7 +111,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             }
         }
 
-        public UploadUsageFileResponse UploadUsageFile(string modelId, string usageDisplayName, Stream stream)
+        public virtual UploadUsageFileResponse UploadUsageFile(string modelId, string usageDisplayName, Stream stream)
         {
             try
             {
@@ -131,7 +131,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
 
         #region Delete
 
-        public void CancelOperation(string operationId)
+        public virtual void CancelOperation(string operationId)
         {
             try
             {
@@ -143,7 +143,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             }
         }
 
-        public void DeleteAllBusinessRules(string modelId)
+        public virtual void DeleteAllBusinessRules(string modelId)
         {
             try
             {
@@ -155,7 +155,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             }
         }
 
-        public void DeleteAllUsageFiles(string modelId)
+        public virtual void DeleteAllUsageFiles(string modelId)
         {
             try
             {
@@ -167,7 +167,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             }
         }
 
-        public void DeleteBuild(string modelId, int buildId)
+        public virtual void DeleteBuild(string modelId, int buildId)
         {
             try
             {
@@ -179,7 +179,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             }
         }
 
-        public void DeleteBusinessRule(string modelId, string ruleId)
+        public virtual void DeleteBusinessRule(string modelId, string ruleId)
         {
             try
             {
@@ -191,7 +191,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             }
         }
 
-        public DeleteCatalogItemsResponse DeleteCatalogItems(string modelId, bool deleteAll = false)
+        public virtual DeleteCatalogItemsResponse DeleteCatalogItems(string modelId, bool deleteAll = false)
         {
             try
             {
@@ -207,7 +207,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public void DeleteModel(string id)
+        public virtual void DeleteModel(string id)
         {
             try
             {
@@ -219,7 +219,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             }
         }
 
-        public void DeleteUsageFile(string modelId, string fileId)
+        public virtual void DeleteUsageFile(string modelId, string fileId)
         {
             try
             {
@@ -235,7 +235,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
 
         #region Update
 
-        public UpdateCatalogItemsResponse UpdateCatalogItems(string modelId, Stream fileStream)
+        public virtual UpdateCatalogItemsResponse UpdateCatalogItems(string modelId, Stream fileStream)
         {
             try
             {
@@ -251,7 +251,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public void UpdateModel(string modelId, UpdateModelRequest request)
+        public virtual void UpdateModel(string modelId, UpdateModelRequest request)
         {
             try
             {
@@ -267,7 +267,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
 
         #region Get
 
-        public string DownloadUsageFile(string modelId, string fileId)
+        public virtual string DownloadUsageFile(string modelId, string fileId)
         {
             try
             {
@@ -283,7 +283,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public GetBatchJobResponse GetAllBatchJobs(string jobId)
+        public virtual GetBatchJobResponse GetAllBatchJobs(string jobId)
         {
             try
             {
@@ -299,7 +299,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public GetAllBuildsResponse GetAllBuilds(string modelId, bool onlyLastRequestedBuild = false)
+        public virtual GetAllBuildsResponse GetAllBuilds(string modelId, bool onlyLastRequestedBuild = false)
         {
             try
             {
@@ -315,7 +315,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public GetAllBusinessRulesResponse GetAllBusinessRules(string modelId)
+        public virtual GetAllBusinessRulesResponse GetAllBusinessRules(string modelId)
         {
             try
             {
@@ -331,7 +331,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public GetAllCatalogItemsResponse GetAllCatalogItems(string modelId, int top = 0, int skip = 0, int maxpagesize = 0)
+        public virtual GetAllCatalogItemsResponse GetAllCatalogItems(string modelId, int top = 0, int skip = 0, int maxpagesize = 0)
         {
             try
             {
@@ -347,7 +347,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public GetAllModelsResponse GetAllModels()
+        public virtual GetAllModelsResponse GetAllModels()
         {
             try
             {
@@ -363,7 +363,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public Build GetBuildById(string modelId, int buildId)
+        public virtual Build GetBuildById(string modelId, int buildId)
         {
             try
             {
@@ -379,7 +379,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public BuildDataStatisticsResponse GetBuildDataStatistics(string modelId, int buildId)
+        public virtual BuildDataStatisticsResponse GetBuildDataStatistics(string modelId, int buildId)
         {
             try
             {
@@ -395,7 +395,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public BuildMetricsResponse GetBuildMetrics(string modelId, int buildId)
+        public virtual BuildMetricsResponse GetBuildMetrics(string modelId, int buildId)
         {
             try
             {
@@ -411,7 +411,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public BusinessRule GetBusinessRule(string modelId, string ruleId)
+        public virtual BusinessRule GetBusinessRule(string modelId, string ruleId)
         {
             try
             {
@@ -427,7 +427,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public ItemRecommendationResponse GetItemToItemRecommendations(string modelId, List<string> itemIds, int numberOfResults, int minimalScore, int buildId = 0)
+        public virtual ItemRecommendationResponse GetItemToItemRecommendations(string modelId, List<string> itemIds, int numberOfResults, int minimalScore, int buildId = 0)
         {
             try
             {
@@ -443,7 +443,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public RecommendationModel GetModel(string modelId)
+        public virtual RecommendationModel GetModel(string modelId)
         {
             try
             {
@@ -459,7 +459,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public ModelFeatureResponse GetModelFeatures(string modelId, int rankBuildId = 0)
+        public virtual ModelFeatureResponse GetModelFeatures(string modelId, int rankBuildId = 0)
         {
             try
             {
@@ -475,7 +475,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public GetOperationStatusResponse GetOperationStatus(string operationId)
+        public virtual GetOperationStatusResponse GetOperationStatus(string operationId)
         {
             try
             {
@@ -491,7 +491,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public SearchCatalogItemsResponse GetSpecificCatalogItemsBySearchTerm(string modelId, List<string> ids = null, string searchTerm = "")
+        public virtual SearchCatalogItemsResponse GetSpecificCatalogItemsBySearchTerm(string modelId, List<string> ids = null, string searchTerm = "")
         {
             try
             {
@@ -507,7 +507,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public BuildUsageStatisticsResponse GetUsageStatisticsForABuild(string modelId, int buildId, string interval, List<string> eventTypes)
+        public virtual BuildUsageStatisticsResponse GetUsageStatisticsForABuild(string modelId, int buildId, string interval, List<string> eventTypes)
         {
             try
             {
@@ -523,7 +523,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public ModelUsageStatisticsResponse GetUsageStatisticsForAModel(string modelId, string interval, List<string> eventTypes)
+        public virtual ModelUsageStatisticsResponse GetUsageStatisticsForAModel(string modelId, string interval, List<string> eventTypes)
         {
             try
             {
@@ -539,7 +539,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public ItemRecommendationResponse GetUserToItemRecommendations(string modelId, string userId, int numberOfResults, List<string> itemIds = null, bool includeMetadata = false, int buildId = 0)
+        public virtual ItemRecommendationResponse GetUserToItemRecommendations(string modelId, string userId, int numberOfResults, List<string> itemIds = null, bool includeMetadata = false, int buildId = 0)
         {
             try
             {
@@ -555,7 +555,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
 
-        public List<UsageFile> ListUsageFiles(string modelId)
+        public virtual List<UsageFile> ListUsageFiles(string modelId)
         {
             try
             {

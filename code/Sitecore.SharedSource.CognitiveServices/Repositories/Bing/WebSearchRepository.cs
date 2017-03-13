@@ -18,12 +18,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing
         {
         }
 
-        public WebSearchResponse WebSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
+        public virtual WebSearchResponse WebSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
         {
             return Task.Run(async () => await WebSearchAsync(text, countOffset, languageCode, safeSearch)).Result;
         }
 
-        public async Task<WebSearchResponse> WebSearchAsync(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
+        public virtual async Task<WebSearchResponse> WebSearchAsync(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
         {
             StringBuilder sb = new StringBuilder();
 

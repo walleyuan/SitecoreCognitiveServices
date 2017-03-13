@@ -26,12 +26,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing {
             RepositoryClient = repoClient;
         }
 
-        public SpellCheckResponse SpellCheck(string text, SpellCheckModeOptions mode = SpellCheckModeOptions.None, string languageCode = "")
+        public virtual SpellCheckResponse SpellCheck(string text, SpellCheckModeOptions mode = SpellCheckModeOptions.None, string languageCode = "")
         {
             return Task.Run(async () => await SpellCheckAsync(text, mode, languageCode)).Result;
         }
 
-        public async Task<SpellCheckResponse> SpellCheckAsync(string text, SpellCheckModeOptions mode = SpellCheckModeOptions.None, string languageCode = "")
+        public virtual async Task<SpellCheckResponse> SpellCheckAsync(string text, SpellCheckModeOptions mode = SpellCheckModeOptions.None, string languageCode = "")
         {
             StringBuilder sb = new StringBuilder();
             if (mode != SpellCheckModeOptions.None)

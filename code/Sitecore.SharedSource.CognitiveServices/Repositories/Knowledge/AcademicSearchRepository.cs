@@ -36,12 +36,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
         /// <param name="count"></param>
         /// <param name="offset"></param>
         /// <returns></returns>
-        public HistogramResult CalcHistogram(string expression, AcademicModelOptions model, string attributes = "", int count = 10, int offset = 0)
+        public virtual HistogramResult CalcHistogram(string expression, AcademicModelOptions model, string attributes = "", int count = 10, int offset = 0)
         {
             return Task.Run(async () => await CalcHistogramAsync(expression, model, attributes, count, offset)).Result;
         }
 
-        public async Task<HistogramResult> CalcHistogramAsync(string expression, AcademicModelOptions model, string attributes = "", int count = 10, int offset = 0) {
+        public virtual async Task<HistogramResult> CalcHistogramAsync(string expression, AcademicModelOptions model, string attributes = "", int count = 10, int offset = 0) {
 
             StringBuilder sb = new StringBuilder();
             
@@ -74,11 +74,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
         /// <param name="count"></param>
         /// <param name="offset"></param>
         /// <returns></returns>
-        public EvaluateResponse Evaluate(string expression, AcademicModelOptions model, int count = 10, int offset = 0, string attributes = "", string orderby = "") {
+        public virtual EvaluateResponse Evaluate(string expression, AcademicModelOptions model, int count = 10, int offset = 0, string attributes = "", string orderby = "") {
             return Task.Run(async () => await EvaluateAsync(expression, model, count, offset, attributes, orderby)).Result;
         }
 
-        public async Task<EvaluateResponse> EvaluateAsync(string expression, AcademicModelOptions model, int count = 10, int offset = 0, string attributes = "", string orderby = "") {
+        public virtual async Task<EvaluateResponse> EvaluateAsync(string expression, AcademicModelOptions model, int count = 10, int offset = 0, string attributes = "", string orderby = "") {
 
             StringBuilder sb = new StringBuilder();
             
@@ -105,11 +105,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
 
         #region Graph Search
 
-        public GraphSearchResponse GraphSearch(AcademicGraphModeOptions mode, GraphSearchRequest request) {
+        public virtual GraphSearchResponse GraphSearch(AcademicGraphModeOptions mode, GraphSearchRequest request) {
             return Task.Run(async () => await GraphSearchAsync(mode, request)).Result;
         }
 
-        public async Task<GraphSearchResponse> GraphSearchAsync(AcademicGraphModeOptions mode, GraphSearchRequest request) {
+        public virtual async Task<GraphSearchResponse> GraphSearchAsync(AcademicGraphModeOptions mode, GraphSearchRequest request) {
 
             var modeName = Enum.GetName(typeof(AcademicGraphModeOptions), mode);
             
@@ -136,12 +136,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
         /// <param name="timeout">Timeout in milliseconds.Only interpretations found before the timeout has elapsed are returned.</param>
         /// <param name="model">Name of the model that you wish to query.Currently, the value defaults to "latest".</param>
         /// <returns></returns>
-        public InterpretResponse Interpret(string query, bool complete = false, int count = 10, int offset = 0, int timeout = 0, AcademicModelOptions model = AcademicModelOptions.latest)
+        public virtual InterpretResponse Interpret(string query, bool complete = false, int count = 10, int offset = 0, int timeout = 0, AcademicModelOptions model = AcademicModelOptions.latest)
         {
             return Task.Run(async () => await InterpretAsync(query, complete, count, offset, timeout, model)).Result;
         }
 
-        public async Task<InterpretResponse> InterpretAsync(string query, bool complete = false, int count = 10, int offset = 0, int timeout = 0, AcademicModelOptions model = AcademicModelOptions.latest)
+        public virtual async Task<InterpretResponse> InterpretAsync(string query, bool complete = false, int count = 10, int offset = 0, int timeout = 0, AcademicModelOptions model = AcademicModelOptions.latest)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -168,12 +168,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
 
         #region Similarity
         
-        public double Similarity(string s1, string s2)
+        public virtual double Similarity(string s1, string s2)
         {
             return Task.Run(async () => await SimilarityAsync(s1, s2)).Result;
         }
 
-        public async Task<double> SimilarityAsync(string s1, string s2)
+        public virtual async Task<double> SimilarityAsync(string s1, string s2)
         {
             var response = await SendPostAsync(similarityUrl, $"s1={s1}&s2={s2}");
 

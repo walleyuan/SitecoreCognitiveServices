@@ -15,12 +15,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing
         {
         }
 
-        public AutoSuggestResponse GetSuggestions(string text)
+        public virtual AutoSuggestResponse GetSuggestions(string text)
         {
             return Task.Run(async () => await GetSuggestionsAsync(text)).Result;
         }
 
-        public async Task<AutoSuggestResponse> GetSuggestionsAsync(string text)
+        public virtual async Task<AutoSuggestResponse> GetSuggestionsAsync(string text)
         {
             var response = await this.SendGetAsync($"{suggestUrl}?q={text}");
 
