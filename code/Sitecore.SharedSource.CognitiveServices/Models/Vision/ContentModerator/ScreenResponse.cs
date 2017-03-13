@@ -9,7 +9,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator
         public string AutoCorrectedText { get; set; }
         public List<ScreenUrl> Urls { get; set; }
         //public object Misrepresentation { get; set; }
-        public PersonalIdentifiableInformation PersonalIdentifiableInformation { get; set; }
+        public PersonalIdentifiableInformation PII { get; set; }
         public string Language { get; set; }
         public List<TermSet> Terms { get; set; }
         public ResponseStatus Status { get; set; }

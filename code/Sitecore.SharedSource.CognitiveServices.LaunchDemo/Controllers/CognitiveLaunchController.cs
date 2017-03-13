@@ -71,8 +71,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             LanguageService = languageService;
             ContentModeratorService = contentModeratorService;
         }
-        
-        #region Moderator
+
+        #region Giphy Moderator
 
         public ActionResult Moderator()
         {
@@ -86,21 +86,38 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             return Json(ar.Adult);
         }
 
-        public ActionResult ContentModerator()
+        #endregion Giphy Moderator
+
+        #region Content Moderator
+
+        public ActionResult ContentModeratorEvaluate()
         {
-            return View(new EvaluateResponse());
+            return View("ContentModerator/Evaluate", new EvaluateResponse());
         }
         
         [HttpPost]
-        public ActionResult ContentModerator(string url)
+        public ActionResult ContentModeratorEvaluate(string url)
         {
             var result = ContentModeratorService.Evaluate(url);
 
-            return View("ContentModerator", result);
+            return View("ContentModerator/Evaluate", result);
         }
 
+        public ActionResult ContentModeratorScreen()
+        {
+            return View("ContentModerator/Screen", new ScreenResponse());
+        }
 
-        #endregion Moderator
+        [HttpPost]
+        public ActionResult ContentModeratorScreen(string text)
+        {
+            var result = ContentModeratorService.Screen(text, autocorrect:true, PII: true);
+
+            return View("ContentModerator/Screen", result);
+        }
+
+        #endregion Content Moderator
+
         #region Video
 
         public ActionResult Video()

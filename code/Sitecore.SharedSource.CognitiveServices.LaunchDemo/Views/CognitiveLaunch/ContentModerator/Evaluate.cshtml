@@ -1,25 +1,27 @@
 ﻿@model Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator.EvaluateResponse
 @{
-    ViewBag.Title = "Content Moderator";
+    ViewBag.Title = "Content Moderator - Evaluate";
     Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
 }
 
 <div class="frame">
-    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModerator">
+    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorEvaluate">
         <fieldset>
-            <legend>Content Moderator</legend>
+            <legend>Evaluate Image</legend>
             <div class="form-row">
                 <label>provide an image url</label>
                 <input type="text" name="url"/>
             </div>
             <div class="scWizardButtons">
-                <input type="submit" value="Analyze Image"/>
+                <input type="submit" value="Evaluate Image"/>
             </div>
-            <div class="image-sample">
+            <br/>
+            <div>
+                <h2>Evaluate Image</h2>
                 @if (Model != null)
                 {
-                    <h2>Result:  @Model.Result</h2>
-                    <hr />
+                    <h3>Result: @Model.Result</h3>
+                    <hr/>
                     <div>
                         <div>Is Adult: @Model.IsImageAdultClassified</div>
                         <span>Adult Score: </span>
