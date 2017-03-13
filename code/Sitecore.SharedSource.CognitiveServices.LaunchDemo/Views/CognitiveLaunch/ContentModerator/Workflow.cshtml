@@ -1,0 +1,61 @@
+﻿@model Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models.WorkflowResult
+@{
+    ViewBag.Title = "Content Moderator - Workflow";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorWorkflowgetall">
+        <fieldset>
+            <legend>Workflow</legend>
+            <div class="form-row">
+                <label>Team Name</label>
+                <input type="text" name="teamName" />
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Get All Workflows" />
+            </div>
+            @if(Model.Workflows != null && Model.Workflows.Any()) {
+                <div>
+                    <h3>Workflows</h3>
+                    @foreach (var w in Model.Workflows)
+                    {
+                        @w.Description
+                    }
+                </div>
+            }
+        </fieldset>
+    </form>
+    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorWorkflowget">
+        <fieldset>
+            <legend>Workflow</legend>
+            <div class="form-row">
+                <label>Team Name</label>
+                <input type="text" name="teamName" />
+            </div>
+            <div class="form-row">
+                <label>Workflow Name</label>
+                <input type="text" name="workflowName" />
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Get Workflow" />
+            </div>
+        </fieldset>
+    </form>
+    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorWorkflowcreate">
+        <fieldset>
+            <legend>Workflow</legend>
+            <div class="form-row">
+                <label>Team Name</label>
+                <input type="text" name="teamName"/>
+            </div>
+            <div class="form-row">
+                <label>Workflow Name</label>
+                <input type="text" name="workflowName"/>
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Create Workflow"/>
+            </div>
+        </fieldset>
+    </form>
+</div>

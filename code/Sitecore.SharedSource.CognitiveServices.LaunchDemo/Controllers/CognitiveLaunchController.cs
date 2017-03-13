@@ -17,6 +17,7 @@ using Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
 using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
 using Microsoft.ProjectOxford.Video.Contract;
+using Newtonsoft.Json;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 {
@@ -114,6 +115,70 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             var result = ContentModeratorService.Screen(text, autocorrect:true, PII: true);
 
             return View("ContentModerator/Screen", result);
+        }
+
+        public ActionResult ContentModeratorJob()
+        {
+            return View("ContentModerator/Job", new ScreenResponse());
+        }
+        
+        public ActionResult ContentModeratorReview()
+        {
+            return View("ContentModerator/Review");
+        }
+
+        public ActionResult ContentModeratorWorkflow()
+        {
+            return View("ContentModerator/Workflow", new WorkflowResult());
+        }
+
+        public ActionResult ContentModeratorWorkflowGetAll()
+        {
+            return ContentModeratorWorkflow();
+        }
+
+        [HttpPost]
+        public ActionResult ContentModeratorWorkflowGetAll(string teamName)
+        {
+            var response = ContentModeratorService.GetAllWorkflows(teamName);
+
+            return View("ContentModerator/Workflow", new WorkflowResult() { Workflows = response });
+        }
+
+        public ActionResult ContentModeratorWorkflowGet()
+        {
+            return ContentModeratorWorkflow();
+        }
+
+        [HttpPost]
+        public ActionResult ContentModeratorWorkflowGet(string teamName, string workflowName)
+        {
+            var response = ContentModeratorService.GetWorkflow(teamName, workflowName);
+
+            return View("ContentModerator/Workflow", new WorkflowResult() { Workflow = response });
+        }
+
+        public ActionResult ContentModeratorWorkflowCreate()
+        {
+            return ContentModeratorWorkflow();
+        }
+
+        [HttpPost]
+        public ActionResult ContentModeratorWorkflowCreate(string teamName, string workflowName)
+        {
+            WorkflowExpression we = new WorkflowExpression();
+            we.Description = $"New Sample Workflow: {workflowName}";
+            Condition c = new Condition
+            {
+                Operator = "ge",
+                OutputName = "adultscore",
+                Value = "0.1"
+            };
+            we.Expression = JsonConvert.SerializeObject(c);
+
+            ContentModeratorService.CreateOrUpdateWorkflow(teamName, workflowName, we);
+
+            return View("ContentModerator/Workflow", new WorkflowResult() { Workflow = we });
         }
 
         #endregion Content Moderator

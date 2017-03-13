@@ -165,6 +165,7 @@
     <Compile Include="Models\FaceResult.cs" />
     <Compile Include="Models\EmotionResult.cs" />
     <Compile Include="Models\VideoResult.cs" />
+    <Compile Include="Models\WorkflowResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +197,9 @@
     <Content Include="Views\CognitiveLaunch\ContentModerator\Evaluate.cshtml" />
     <Content Include="Views\CognitiveLaunch\ContentModerator\Screen.cshtml" />
     <Content Include="Views\CognitiveLaunch\Video.cshtml" />
+    <Content Include="Views\CognitiveLaunch\ContentModerator\Job.cshtml" />
+    <Content Include="Views\CognitiveLaunch\ContentModerator\Review.cshtml" />
+    <Content Include="Views\CognitiveLaunch\ContentModerator\Workflow.cshtml" />
     <None Include="Web.config" />
     <None Include="Views\Web.config" />
   </ItemGroup>

@@ -1,0 +1,21 @@
+﻿@model Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator.ScreenResponse
+@{
+    ViewBag.Title = "Content Moderator - Job";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorJob">
+        <fieldset>
+            <legend>Job</legend>
+            <div class="form-row">
+                <label>provide text to screen</label>
+                <br/>
+                <textarea type="text" name="text"></textarea>
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Job"/>
+            </div>
+        </fieldset>
+    </form>
+</div>
