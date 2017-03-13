@@ -13,6 +13,7 @@ using Sitecore.SharedSource.CognitiveServices.Services.Bing;
 using Sitecore.SharedSource.CognitiveServices.Services.Vision;
 using Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models;
 using Sitecore.SharedSource.CognitiveServices.Models.Language;
+using Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
 using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
 
@@ -86,7 +87,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 
         public ActionResult ContentModerator()
         {
-            return View();
+            return View(new EvaluateResponse());
         }
         
         [HttpPost]
