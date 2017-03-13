@@ -61,7 +61,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
         /// <param name="parameterValues"></param>
         /// <param name="fieldName"></param>
         /// <returns></returns>
-        private virtual Expression<Func<CognitiveSearchResult, bool>> GetDefaultFilter(string[] parameterValues, string fieldName)
+        public virtual Expression<Func<CognitiveSearchResult, bool>> GetDefaultFilter(string[] parameterValues, string fieldName)
         {
             if (string.IsNullOrEmpty(fieldName) || parameterValues == null || !parameterValues.Any())
             {
@@ -78,7 +78,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             return innerPredicate;
         }
 
-        private virtual Expression<Func<CognitiveSearchResult, bool>> GetRangeFilter(string[] parameterValues, string fieldName)
+        public virtual Expression<Func<CognitiveSearchResult, bool>> GetRangeFilter(string[] parameterValues, string fieldName)
         {
             if (string.IsNullOrEmpty(fieldName) || !parameterValues.Any())
             {
