@@ -436,6 +436,10 @@
     <Compile Include="Models\Vision\ContentModerator\ScreenCategory.cs" />
     <Compile Include="Models\Vision\ContentModerator\ScreenUrl.cs" />
     <Compile Include="Models\Vision\ContentModerator\TermSet.cs" />
+    <Compile Include="Models\Vision\Video\FaceDetectionResult.cs" />
+    <Compile Include="Models\Vision\Video\FaceEntity.cs" />
+    <Compile Include="Models\Vision\Video\FaceFragment.cs" />
+    <Compile Include="Models\Vision\Video\FaceFragmentLocation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Bing\AutoSuggestRepository.cs" />
     <Compile Include="Repositories\Bing\IAutoSuggestRepository.cs" />

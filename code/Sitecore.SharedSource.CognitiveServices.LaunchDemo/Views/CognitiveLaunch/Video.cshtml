@@ -1,0 +1,50 @@
+﻿@using Newtonsoft.Json
+@model Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models.VideoResult
+@{
+    ViewBag.Title = "Video";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/video">
+        <fieldset>
+            <legend>Video</legend>
+            <div class="form-row">
+                <label>provide a video url</label>
+                <input type="text" name="url"/>
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Analyze Video"/>
+            </div>
+        </fieldset>
+    </form>
+    @if (Model.Operation != null && !string.IsNullOrEmpty(Model.Operation.Url))
+    {
+        <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/videooperation">
+            <fieldset>
+                <legend>Video Operation</legend>
+                <div class="form-row">
+                    <input type="hidden" name="operationUrl" value="@Model.Operation.Url"/>
+                </div>
+                <div class="scWizardButtons">
+                    <input type="submit" value="Check Video Results"/>
+                </div>
+                @if (Model.OperationResult != null)
+                {
+                    if (Model.OperationResult.Status != null)
+                    {
+                        @Model.OperationResult.Status
+                    }
+                    if (Model.FaceDetectionResult != null && Model.FaceDetectionResult.Fragments != null)
+                    {
+                        <div>Fragments: @Model.FaceDetectionResult.Fragments.Length</div>
+                    }
+                    if (Model.FaceDetectionResult != null && Model.FaceDetectionResult.FacesDetected != null)
+                    {
+                        <div>Faces Detected:  @Model.FaceDetectionResult.FacesDetected.Length</div>
+                    }
+                }
+            </fieldset>
+        </form>
+    }
+</div>

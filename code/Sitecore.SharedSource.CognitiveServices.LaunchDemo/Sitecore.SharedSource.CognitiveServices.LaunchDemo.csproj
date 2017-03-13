@@ -77,6 +77,10 @@
       <HintPath>..\..\packages\Microsoft.ProjectOxford.Text.0.2.1.40774\lib\net452\Microsoft.ProjectOxford.Text.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ProjectOxford.Video, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\Microsoft.ProjectOxford.Video.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ProjectOxford.Vision, Version=1.0.354.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -160,6 +164,7 @@
     <Compile Include="Models\ComputerVisionResult.cs" />
     <Compile Include="Models\FaceResult.cs" />
     <Compile Include="Models\EmotionResult.cs" />
+    <Compile Include="Models\VideoResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +194,7 @@
     <None Include="Properties\PublishProfiles\sc82rev160729.pubxml" />
     <None Include="Properties\PublishProfiles\sc82rev161221.pubxml" />
     <Content Include="Views\CognitiveLaunch\ContentModerator.cshtml" />
+    <Content Include="Views\CognitiveLaunch\Video.cshtml" />
     <None Include="Web.config" />
     <None Include="Views\Web.config" />
   </ItemGroup>

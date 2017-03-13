@@ -16,6 +16,7 @@ using Sitecore.SharedSource.CognitiveServices.Models.Language;
 using Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
 using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
+using Microsoft.ProjectOxford.Video.Contract;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 {
@@ -100,6 +101,38 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 
 
         #endregion Moderator
+        #region Video
+
+        public ActionResult Video()
+        {
+            return View(new VideoResult());
+        }
+
+        [HttpPost]
+        public ActionResult Video(string url)
+        {
+            var vr = new VideoResult();
+            vr.Operation = VideoService.CreateOperation(url, new FaceDetectionOperationSettings());
+            
+            return View("Video", vr);
+        }
+
+        public ActionResult VideoOperation()
+        {
+            return Video();
+        }
+
+        [HttpPost]
+        public ActionResult VideoOperation(string operationUrl)
+        {
+            var vr = new VideoResult();
+            vr.Operation = new Operation(operationUrl);
+            vr.OperationResult = VideoService.GetOperationResult(new Operation(operationUrl));
+            
+            return View("Video", vr);
+        }
+
+        #endregion Video
 
         #region Auto Suggest
 
