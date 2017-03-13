@@ -122,7 +122,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 
         public ActionResult Video()
         {
-            return View(new VideoResult());
+            return View("Video", new VideoResult());
         }
 
         [HttpPost]
