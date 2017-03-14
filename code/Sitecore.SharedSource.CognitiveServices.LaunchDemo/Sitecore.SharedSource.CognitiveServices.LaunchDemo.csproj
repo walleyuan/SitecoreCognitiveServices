@@ -164,6 +164,7 @@
     <Compile Include="Models\ComputerVisionResult.cs" />
     <Compile Include="Models\FaceResult.cs" />
     <Compile Include="Models\EmotionResult.cs" />
+    <Compile Include="Models\JobResponse.cs" />
     <Compile Include="Models\VideoResult.cs" />
     <Compile Include="Models\WorkflowResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

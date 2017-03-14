@@ -91,6 +91,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 
         #region Content Moderator
 
+        #region Evaluate
+
         public ActionResult ContentModeratorEvaluate()
         {
             return View("ContentModerator/Evaluate", new EvaluateResponse());
@@ -103,6 +105,10 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 
             return View("ContentModerator/Evaluate", result);
         }
+
+        #endregion Evaluate
+
+        #region Screen
 
         public ActionResult ContentModeratorScreen()
         {
@@ -117,11 +123,59 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             return View("ContentModerator/Screen", result);
         }
 
+        #endregion Screen
+
+        #region Job
+
         public ActionResult ContentModeratorJob()
         {
-            return View("ContentModerator/Job", new ScreenResponse());
+            return View("ContentModerator/Job", new JobResponse());
         }
-        
+
+        public ActionResult ContentModeratorJobGet()
+        {
+            return ContentModeratorJob();
+        }
+
+        [HttpPost]
+        public ActionResult ContentModeratorJobGet(string teamName, string jobId)
+        {
+            var result = ContentModeratorService.GetJob(teamName, jobId);
+            return View("ContentModerator/Job", new JobResponse() { Job = result });
+        }
+
+        public ActionResult ContentModeratorJobCreateImage()
+        {
+            return ContentModeratorJob();
+        }
+
+        [HttpPost]
+        public ActionResult ContentModeratorJobCreateImage(string imageUrl, string teamName, string workflowName)
+        {
+            var result = ContentModeratorService.CreateImageJob(imageUrl, teamName, "", workflowName);
+            return View("ContentModerator/Job", new JobResponse() { JobId = result.JobId });
+        }
+
+        public ActionResult ContentModeratorJobCreateText()
+        {
+            return ContentModeratorJob();
+        }
+
+        [HttpPost]
+        public ActionResult ContentModeratorJobCreateText(string text, string teamName, string workflowName)
+        {
+            var result = ContentModeratorService.CreateTextJob(text, teamName, "", workflowName);
+            return View("ContentModerator/Job", new JobResponse() { JobId = result.JobId });
+        }
+
+        #endregion Job
+
+        #region Reviews
+
+        #endregion Reviews
+
+        #region Workflow
+
         public ActionResult ContentModeratorReview()
         {
             return View("ContentModerator/Review");
@@ -197,6 +251,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 
             return View("ContentModerator/Workflow", new WorkflowResult() { Workflow = wer });
         }
+
+        #endregion Workflow
 
         #endregion Content Moderator
 
