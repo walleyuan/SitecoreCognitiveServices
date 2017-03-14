@@ -164,8 +164,10 @@
     <Compile Include="Models\ComputerVisionResult.cs" />
     <Compile Include="Models\FaceResult.cs" />
     <Compile Include="Models\EmotionResult.cs" />
+    <Compile Include="Models\ImageListResponse.cs" />
     <Compile Include="Models\JobResponse.cs" />
     <Compile Include="Models\ReviewResponse.cs" />
+    <Compile Include="Models\TermListResponse.cs" />
     <Compile Include="Models\VideoResult.cs" />
     <Compile Include="Models\WorkflowResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -202,6 +204,8 @@
     <Content Include="Views\CognitiveLaunch\ContentModerator\Job.cshtml" />
     <Content Include="Views\CognitiveLaunch\ContentModerator\Review.cshtml" />
     <Content Include="Views\CognitiveLaunch\ContentModerator\Workflow.cshtml" />
+    <Content Include="Views\CognitiveLaunch\ContentModerator\ImageLists.cshtml" />
+    <Content Include="Views\CognitiveLaunch\ContentModerator\TermLists.cshtml" />
     <None Include="Web.config" />
     <None Include="Views\Web.config" />
   </ItemGroup>

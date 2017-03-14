@@ -273,6 +273,28 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 
         #endregion Workflow
 
+        #region List Management
+
+        #region Image Lists
+
+        public ActionResult ContentModeratorImageList()
+        {
+            return View("ContentModerator/ImageLists", new ImageListResponse());
+        }
+
+        #endregion Image Lists
+
+        #region Term Lists
+
+        public ActionResult ContentModeratorTermList()
+        {
+            return View("ContentModerator/TermLists", new TermListResponse());
+        }
+
+        #endregion Term Lists
+
+        #endregion List Management
+
         #endregion Content Moderator
 
         #region Video

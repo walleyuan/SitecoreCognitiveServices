@@ -1,0 +1,39 @@
+﻿@model Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models.TermListResponse
+@{
+    ViewBag.Title = "Content Moderator - Term Lists";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    
+    <li>Add Term</li>
+    <li>Delete Term</li>
+    <li>Delete All Terms</li>
+    <li>Get All Terms</li>
+    <li>Create Text List</li>
+    <li>Delete Term List</li>
+    <li>Get All Term Lists</li>
+    <li>Get Term List Details</li>
+    <li>Refresh Term Search Index</li>
+    <li>Update Term List Details</li>
+
+    <form class="form cm-term-list-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorTermList">
+        <fieldset>
+            <legend>Create Review</legend>
+            <div class="form-row">
+                <label>Team Name</label>
+                <input type="text" name="teamName" />
+            </div>
+            <div class="form-row">
+                <label>Image Url</label>
+                <input type="text" name="imageUrl" />
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Create Review" />
+            </div>
+            @if (Model != null)
+            {
+            }
+        </fieldset>
+    </form>
+</div>

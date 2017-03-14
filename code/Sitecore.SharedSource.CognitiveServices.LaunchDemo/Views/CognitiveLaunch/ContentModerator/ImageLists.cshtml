@@ -1,0 +1,39 @@
+﻿@model Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models.ImageListResponse
+@{
+    ViewBag.Title = "Content Moderator - Image Lists";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    
+    <li>Add Image</li>
+    <li>Delete Image</li>
+    <li>Delete All Image</li>
+    <li>Get All Image Ids</li>
+    <li>Get Image List Details</li>
+    <li>Create Image List</li>
+    <li>Delete Image List</li>
+    <li>Get All Image Lists</li>
+    <li>Refresh Image Search Index</li>
+    <li>Update Image List Details</li>
+
+    <form class="form cm-image-list-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorImageList">
+        <fieldset>
+            <legend>Create Review</legend>
+            <div class="form-row">
+                <label>Team Name</label>
+                <input type="text" name="teamName"/>
+            </div>
+            <div class="form-row">
+                <label>Image Url</label>
+                <input type="text" name="imageUrl"/>
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Create Review"/>
+            </div>
+            @if (Model != null)
+            {
+            }
+        </fieldset>
+    </form>
+</div>
