@@ -77,3 +77,5 @@ textarea  { height: 200px;width: 400px;}
 .entity-match { background: #651f76;color: #fff;padding: 3px;border-radius: 3px; }
 
 .screen-result label { font-weight: bold;display: block;}
+.cm-job-form label,
+.cm-workflow-form label { display: inline-block;width: 150px; }

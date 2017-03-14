@@ -15,30 +15,29 @@
             <div class="scWizardButtons">
                 <input type="submit" value="Evaluate Image"/>
             </div>
-            <br/>
-            <div>
-                <h2>Evaluate Image</h2>
-                @if (Model != null)
+                @if (Model != null && Model.Status != null)
                 {
-                    <h3>Result: @Model.Result</h3>
-                    <hr/>
+                    <br />
                     <div>
-                        <div>Is Adult: @Model.IsImageAdultClassified</div>
-                        <span>Adult Score: </span>
-                        <span>
-                            @Html.Partial("~/Views/CognitiveAnalysis/Common/MeasureBar.cshtml", (float) @Model.AdultClassificationScore)
-                        </span>
+                        <h3>Result: @Model.Result</h3>
+                        <br />
+                        <div>
+                            <div>Is Adult: @Model.IsImageAdultClassified</div>
+                            <span>Adult Score: </span>
+                            <span>
+                                @Html.Partial("~/Views/CognitiveAnalysis/Common/MeasureBar.cshtml", (float)@Model.AdultClassificationScore)
+                            </span>
+                        </div>
+                        <br />
+                        <div>
+                            <div>Is Racy: @Model.IsImageRacyClassified</div>
+                            <span>Racy Score: </span>
+                            <span>
+                                @Html.Partial("~/Views/CognitiveAnalysis/Common/MeasureBar.cshtml", (float)@Model.RacyClassificationScore)
+                            </span>
+                        </div>
                     </div>
-                    <hr/>
-                    <div>
-                        <div>Is Racy: @Model.IsImageRacyClassified</div>
-                        <span>Racy Score: </span>
-                        <span>
-                            @Html.Partial("~/Views/CognitiveAnalysis/Common/MeasureBar.cshtml", (float) @Model.RacyClassificationScore)
-                        </span>
-                    </div>
-                }
-            </div>
+                }                    
         </fieldset>
     </form>
 </div>

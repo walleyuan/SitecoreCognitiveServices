@@ -12,7 +12,7 @@
             <label>Job Id: </label> @Model.JobId
         </div>
     }
-    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorJobCreateImage">
+    <form class="form cm-job-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorJobCreateImage">
         <fieldset>
             <legend>Make Image Job</legend>
             <div class="form-row">
@@ -32,7 +32,7 @@
             </div>
         </fieldset>
     </form>
-    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorJobCreateText">
+    <form class="form cm-job-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorJobCreateText">
         <fieldset>
             <legend>Make Text Job</legend>
             <div class="form-row">
@@ -53,7 +53,7 @@
             </div>
         </fieldset>
     </form>
-    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorJobGet">
+    <form class="form cm-job-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorJobGet">
         <fieldset>
             <legend>Get Job</legend>
             <div class="form-row">
@@ -62,7 +62,6 @@
             </div>
             <div class="form-row">
                 <label>Job Id</label>
-                <br/>
                 <input type="text" name="jobId"/>
             </div>
             <div class="scWizardButtons">
