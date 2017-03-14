@@ -282,6 +282,55 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             return View("ContentModerator/ImageLists", new ImageListResponse());
         }
 
+        public ActionResult ContentModeratorImageAdd()
+        {
+            return ContentModeratorImageList();
+        }
+
+        [HttpPost]
+        public ActionResult ContentModeratorImageAdd(string imageUrl, string listId)
+        {
+            ContentModeratorService.AddImage(imageUrl, listId, ContentModeratorTag.Alcohol);
+
+            return View("ContentModerator/ImageLists", new ImageListResponse());
+        }
+
+        public ActionResult ContentModeratorImageGetAll()
+        {
+            return ContentModeratorImageList();
+        }
+
+        [HttpPost]
+        public ActionResult ContentModeratorImageGetAll(string imageUrl, string listId)
+        {
+            ContentModeratorService.AddImage(imageUrl, listId, ContentModeratorTag.Alcohol);
+            return View("ContentModerator/ImageLists", new ImageListResponse());
+        }
+
+        public ActionResult ContentModeratorImageAddList()
+        {
+            return ContentModeratorImageList();
+        }
+
+        [HttpPost]
+        public ActionResult ContentModeratorImageAddList(string imageUrl, string listId)
+        {
+            ContentModeratorService.AddImage(imageUrl, listId, ContentModeratorTag.Alcohol);
+            return View("ContentModerator/ImageLists", new ImageListResponse());
+        }
+
+        public ActionResult ContentModeratorImageGetAllLists()
+        {
+            return ContentModeratorImageList();
+        }
+
+        [HttpPost]
+        public ActionResult ContentModeratorImageGetAllLists(string imageUrl, string listId)
+        {
+            ContentModeratorService.AddImage(imageUrl, listId, ContentModeratorTag.Alcohol);
+            return View("ContentModerator/ImageLists", new ImageListResponse());
+        }
+
         #endregion Image Lists
 
         #region Term Lists

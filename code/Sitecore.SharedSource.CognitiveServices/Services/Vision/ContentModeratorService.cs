@@ -336,28 +336,36 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 
         #region List Management 
 
-        public virtual void AddImage(string imageUrl, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
+        public virtual AddImageResponse AddImage(string imageUrl, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
         {
             try
             {
-                Task.Run(async () => await ContentModeratorRepository.AddImageAsync(imageUrl, listId, tag, label));
+                var result = Task.Run(async () => await ContentModeratorRepository.AddImageAsync(imageUrl, listId, tag, label)).Result;
+
+                return result;
             }
             catch (Exception ex)
             {
                 Logger.Error($"ContentModeratorService.AddImage failed: {imageUrl}", this, ex);
             }
+
+            return null;
         }
 
-        public virtual void AddImage(Stream stream, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
+        public virtual AddImageResponse AddImage(Stream stream, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
         {
             try
             {
-                Task.Run(async () => await ContentModeratorRepository.AddImageAsync(stream, listId, tag, label));
+                var result = Task.Run(async () => await ContentModeratorRepository.AddImageAsync(stream, listId, tag, label)).Result;
+
+                return result;
             }
             catch (Exception ex)
             {
                 Logger.Error("ContentModeratorService.AddImage failed", this, ex);
             }
+
+            return null;
         }
 
         public virtual void DeleteImage(string listId, string imageId)
@@ -384,7 +392,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             }
         }
 
-        public virtual List<string> GetAllImageIds(string listId)
+        public virtual GetImagesResponse GetAllImageIds(string listId)
         {
             try
             {
@@ -400,7 +408,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             return null;
         }
 
-        public virtual string GetImageListDetails(string listId)
+        public virtual ListDetails GetImageListDetails(string listId)
         {
             try
             {
@@ -416,7 +424,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             return null;
         }
 
-        public virtual string CreateList(ListDetails details)
+        public virtual ListDetails CreateList(ListDetails details)
         {
             try
             {
@@ -444,7 +452,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             }
         }
 
-        public virtual string GetAllImageLists()
+        public virtual List<ListDetails> GetAllImageLists()
         {
             try
             {
@@ -460,7 +468,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             return null;
         }
 
-        public virtual string RefreshImageSearchIndex(string listId)
+        public virtual RefreshSearchResponse RefreshImageSearchIndex(string listId)
         {
             try
             {
@@ -476,32 +484,36 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             return null;
         }
 
-        public virtual void UpdateImageListDetails(string listId, ListDetails details)
+        public virtual ListDetails UpdateImageListDetails(string listId, ListDetails details)
         {
             try
             {
-                Task.Run(async () => await ContentModeratorRepository.UpdateImageListDetailsAsync(listId, details));
+                var result = Task.Run(async () => await ContentModeratorRepository.UpdateImageListDetailsAsync(listId, details)).Result;
+
+                return result;
             }
             catch (Exception ex)
             {
                 Logger.Error("ContentModeratorService.UpdateImageListDetails failed", this, ex);
             }
+
+            return null;
         }
 
-        public virtual string AddTerm(string listId, string term, string language)
+        public virtual bool AddTerm(string listId, string term, string language)
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.AddTermAsync(listId, term, language)).Result;
+                Task.Run(async () => await ContentModeratorRepository.AddTermAsync(listId, term, language));
 
-                return result;
+                return true;
             }
             catch (Exception ex)
             {
                 Logger.Error("ContentModeratorService.AddTerm failed", this, ex);
             }
 
-            return null;
+            return false;
         }
 
         public virtual void DeleteTerm(string listId, string term, string language)
@@ -528,7 +540,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             }
         }
 
-        public virtual string GetAllTerms(string listId, string language)
+        public virtual GetTermsResponse GetAllTerms(string listId, string language)
         {
             try
             {
@@ -544,11 +556,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             return null;
         }
 
-        public virtual string CreateTextList(ListDetails details)
+        public virtual ListDetails CreateTermList(ListDetails details)
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.CreateTextListAsync(details)).Result;
+                var result = Task.Run(async () => await ContentModeratorRepository.CreateTermListAsync(details)).Result;
 
                 return result;
             }
@@ -572,7 +584,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             }
         }
 
-        public virtual string GetAllTermLists()
+        public virtual List<ListDetails> GetAllTermLists()
         {
             try
             {
@@ -588,7 +600,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             return null;
         }
 
-        public virtual string GetTermListDetails(string listId)
+        public virtual ListDetails GetTermListDetails(string listId)
         {
             try
             {
@@ -604,7 +616,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             return null;
         }
 
-        public virtual string RefreshTermSearchIndex(string listId, string language)
+        public virtual RefreshSearchResponse RefreshTermSearchIndex(string listId, string language)
         {
             try
             {
@@ -620,16 +632,20 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             return null;
         }
 
-        public virtual void UpdateTermListDetails(string listId, ListDetails details)
+        public virtual ListDetails UpdateTermListDetails(string listId, ListDetails details)
         {
             try
             {
-                Task.Run(async () => await ContentModeratorRepository.UpdateTermListDetailsAsync(listId, details));
+                var result = Task.Run(async () => await ContentModeratorRepository.UpdateTermListDetailsAsync(listId, details)).Result;
+
+                return result;
             }
             catch (Exception ex)
             {
                 Logger.Error("ContentModeratorService.UpdateTermListDetails failed", this, ex);
             }
+
+            return null;
         }
 
         #endregion List Management

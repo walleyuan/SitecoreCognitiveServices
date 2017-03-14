@@ -14,15 +14,6 @@ using Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
     public class ContentModeratorRepository : TextClient, IContentModeratorRepository
     {
-        //documentation
-        //https://www.microsoft.com/cognitive-services/en-us/content-moderator/documentation/review-api-authentication#request-samples
-        //moderate
-        //https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c/console
-        //review
-        //https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5
-        //list management
-        //https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f675
-
         protected static readonly string moderatorUrl = "https://westus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0";
         protected static readonly string reviewUrl = "https://westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0/teams/";
         protected static readonly string listUrl = "https://westus.api.cognitive.microsoft.com/contentmoderator/lists/v1.0/imagelists/";
@@ -358,16 +349,20 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
             return sb.ToString();
         }
 
-        public virtual async Task AddImageAsync(string imageUrl, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
+        public virtual async Task<AddImageResponse> AddImageAsync(string imageUrl, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
         {
             string data = $"{{ \"DataRepresentation\":\"URL\", \"Value\":\"{imageUrl}\" }}";
             
-            await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/images{GetAddImageQuerystring(tag, label)}", data);
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/images{GetAddImageQuerystring(tag, label)}", data);
+
+            return JsonConvert.DeserializeObject<AddImageResponse>(response);
         }
 
-        public virtual async Task AddImageAsync(Stream stream, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
+        public virtual async Task<AddImageResponse> AddImageAsync(Stream stream, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "")
         {
-            await RepositoryClient.SendImagePostAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/images{GetAddImageQuerystring(tag, label)}", stream);
+            var response = await RepositoryClient.SendImagePostAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/images{GetAddImageQuerystring(tag, label)}", stream);
+
+            return JsonConvert.DeserializeObject<AddImageResponse>(response);
         }
 
         public virtual async Task DeleteImageAsync(string listId, string imageId)
@@ -380,29 +375,29 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
             await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/images");
         }
 
-        public virtual async Task<List<string>> GetAllImageIdsAsync(string listId)
+        public virtual async Task<GetImagesResponse> GetAllImageIdsAsync(string listId)
         {
             var response = await SendGetAsync($"{listUrl}{listId}/images");
 
-            return JsonConvert.DeserializeObject<List<string>>(response);
+            return JsonConvert.DeserializeObject<GetImagesResponse>(response);
         }
 
         #endregion Image
 
         #region Image Lists
 
-        public virtual async Task<string> GetImageListDetailsAsync(string listId)
+        public virtual async Task<ListDetails> GetImageListDetailsAsync(string listId)
         {
             var response = await SendGetAsync($"{listUrl}{listId}");
 
-            return response;
+            return JsonConvert.DeserializeObject<ListDetails>(response);
         }
 
-        public virtual async Task<string> CreateListAsync(ListDetails details)
+        public virtual async Task<ListDetails> CreateListAsync(ListDetails details)
         {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{listUrl}", JsonConvert.SerializeObject(details));
 
-            return response;
+            return JsonConvert.DeserializeObject<ListDetails>(response);
         }
 
         public virtual async Task DeleteImageListAsync(string listId)
@@ -410,34 +405,34 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
             await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}");
         }
 
-        public virtual async Task<string> GetAllImageListsAsync()
+        public virtual async Task<List<ListDetails>> GetAllImageListsAsync()
         {
             var response = await SendGetAsync(listUrl);
 
-            return JsonConvert.DeserializeObject<string>(response);
+            return JsonConvert.DeserializeObject<List<ListDetails>>(response);
         }
 
-        public virtual async Task<string> RefreshImageSearchIndexAsync(string listId)
+        public virtual async Task<RefreshSearchResponse> RefreshImageSearchIndexAsync(string listId)
         {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/RefreshIndex", "");
 
-            return response;
+            return JsonConvert.DeserializeObject<RefreshSearchResponse>(response);
         }
 
-        public virtual async Task UpdateImageListDetailsAsync(string listId, ListDetails details)
+        public virtual async Task<ListDetails> UpdateImageListDetailsAsync(string listId, ListDetails details)
         {
-            await RepositoryClient.SendJsonPutAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}", JsonConvert.SerializeObject(details));
+            var response = await RepositoryClient.SendJsonPutAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}", JsonConvert.SerializeObject(details));
+
+            return JsonConvert.DeserializeObject<ListDetails>(response);
         }
 
         #endregion Image Lists
 
         #region Term
 
-        public virtual async Task<string> AddTermAsync(string listId, string term, string language)
+        public virtual async Task AddTermAsync(string listId, string term, string language)
         {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{termListUrl}{listId}/terms/{term}?language={language}", "");
-
-            return response;
         }
 
         public virtual async Task DeleteTermAsync(string listId, string term, string language)
@@ -450,22 +445,22 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
             await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/terms?language={language}");
         }
 
-        public virtual async Task<string> GetAllTermsAsync(string listId, string language)
+        public virtual async Task<GetTermsResponse> GetAllTermsAsync(string listId, string language)
         {
             var response = await SendGetAsync($"{termListUrl}{listId}/terms?language={language}");
 
-            return JsonConvert.DeserializeObject<string>(response);
+            return JsonConvert.DeserializeObject<GetTermsResponse>(response);
         }
 
         #endregion Term
 
         #region Term Lists
 
-        public virtual async Task<string> CreateTextListAsync(ListDetails details)
+        public virtual async Task<ListDetails> CreateTermListAsync(ListDetails details)
         {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, termListUrl, JsonConvert.SerializeObject(details));
 
-            return response;
+            return JsonConvert.DeserializeObject<ListDetails>(response);
         }
 
         public virtual async Task DeleteTermListAsync(string listId)
@@ -473,30 +468,32 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
             await RepositoryClient.SendJsonDeleteAsync(ApiKeys.ContentModerator, $"{termListUrl}{listId}");
         }
 
-        public virtual async Task<string> GetAllTermListsAsync()
+        public virtual async Task<List<ListDetails>> GetAllTermListsAsync()
         {
             var response = await SendGetAsync(termListUrl);
 
-            return response;
+            return JsonConvert.DeserializeObject<List<ListDetails>>(response);
         }
 
-        public virtual async Task<string> GetTermListDetailsAsync(string listId)
+        public virtual async Task<ListDetails> GetTermListDetailsAsync(string listId)
         {
             var response = await SendGetAsync($"{termListUrl}{listId}");
 
-            return response;
+            return JsonConvert.DeserializeObject<ListDetails>(response);
         }
 
-        public virtual async Task<string> RefreshTermSearchIndexAsync(string listId, string language)
+        public virtual async Task<RefreshSearchResponse> RefreshTermSearchIndexAsync(string listId, string language)
         {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{termListUrl}{listId}/RefreshIndex?lanaguage={language}", "");
 
-            return response;
+            return JsonConvert.DeserializeObject<RefreshSearchResponse>(response);
         }
 
-        public virtual async Task UpdateTermListDetailsAsync(string listId, ListDetails details)
+        public virtual async Task<ListDetails> UpdateTermListDetailsAsync(string listId, ListDetails details)
         {
-            await RepositoryClient.SendJsonPutAsync(ApiKeys.ContentModerator, $"{termListUrl}{listId}", JsonConvert.SerializeObject(details));
+            var response = await RepositoryClient.SendJsonPutAsync(ApiKeys.ContentModerator, $"{termListUrl}{listId}", JsonConvert.SerializeObject(details));
+
+            return JsonConvert.DeserializeObject<ListDetails>(response);
         }
 
         #endregion Term Lists
