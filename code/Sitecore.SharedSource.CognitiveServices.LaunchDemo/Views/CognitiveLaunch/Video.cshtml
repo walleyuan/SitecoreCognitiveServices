@@ -6,7 +6,7 @@
 }
 
 <div class="frame">
-    <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/video">
+    <form class="form video-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/video">
         <fieldset>
             <legend>Video</legend>
             <div class="form-row">
@@ -20,7 +20,7 @@
     </form>
     @if (Model.Operation != null && !string.IsNullOrEmpty(Model.Operation.Url))
     {
-        <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/videooperation">
+        <form class="form video-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/videooperation">
             <fieldset>
                 <legend>Video Operation</legend>
                 <div class="form-row">

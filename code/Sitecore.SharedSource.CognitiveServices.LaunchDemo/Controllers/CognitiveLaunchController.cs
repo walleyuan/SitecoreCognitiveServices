@@ -170,9 +170,14 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 
         #endregion Job
 
-        #region Reviews
+        #region Review
 
-        #endregion Reviews
+        public ActionResult ContentModeratorReview()
+        {
+            return View("ContentModerator/Review", new ReviewResponse());
+        }
+
+        #endregion Review
 
         #region Workflow
 
