@@ -415,6 +415,7 @@
     <Compile Include="Models\Vision\ContentModerator\ConditionCombination.cs" />
     <Compile Include="Models\Vision\ContentModerator\ListDetails.cs" />
     <Compile Include="Models\Vision\ContentModerator\DetectLanguageResponse.cs" />
+    <Compile Include="Models\Vision\ContentModerator\WorkflowExpressionResponse.cs" />
     <Compile Include="Models\Vision\ContentModerator\WorkflowExpression.cs" />
     <Compile Include="Models\Vision\ContentModerator\FindFacesResponse.cs" />
     <Compile Include="Models\Vision\ContentModerator\EvaluateResponse.cs" />

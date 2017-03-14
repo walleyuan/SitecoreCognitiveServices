@@ -296,7 +296,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             }
         }
 
-        public virtual WorkflowExpression GetWorkflow(string teamName, string workflowName)
+        public virtual WorkflowExpressionResponse GetWorkflow(string teamName, string workflowName)
         {
             try
             {
@@ -312,7 +312,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             return null;
         }
 
-        public virtual List<WorkflowExpression> GetAllWorkflows(string teamName)
+        public virtual List<WorkflowExpressionResponse> GetAllWorkflows(string teamName)
         {
             try
             {

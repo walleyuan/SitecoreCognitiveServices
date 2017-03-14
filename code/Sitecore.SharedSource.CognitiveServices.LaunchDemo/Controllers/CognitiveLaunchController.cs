@@ -166,19 +166,26 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         [HttpPost]
         public ActionResult ContentModeratorWorkflowCreate(string teamName, string workflowName)
         {
-            WorkflowExpression we = new WorkflowExpression();
-            we.Description = $"New Sample Workflow: {workflowName}";
-            Condition c = new Condition
-            {
-                Operator = "ge",
-                OutputName = "adultscore",
-                Value = "0.1"
+            WorkflowExpression we = new WorkflowExpression() { 
+                Name = workflowName,
+                Description = $"New Sample Workflow: {workflowName}",
+                Expression = new Condition
+                {
+                    Operator = "ge",
+                    OutputName = "adultscore",
+                    Value = "0.1"
+                }
             };
-            we.Expression = JsonConvert.SerializeObject(c);
 
             ContentModeratorService.CreateOrUpdateWorkflow(teamName, workflowName, we);
 
-            return View("ContentModerator/Workflow", new WorkflowResult() { Workflow = we });
+            var wer = new WorkflowExpressionResponse()
+            {
+                Description = we.Description,
+                Name = we.Name
+            };
+
+            return View("ContentModerator/Workflow", new WorkflowResult() { Workflow = wer });
         }
 
         #endregion Content Moderator

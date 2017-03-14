@@ -317,18 +317,18 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
 
         #region Get Workflow
 
-        public virtual async Task<WorkflowExpression> GetWorkflowAsync(string teamName, string workflowName)
+        public virtual async Task<WorkflowExpressionResponse> GetWorkflowAsync(string teamName, string workflowName)
         {
             var response = await RepositoryClient.SendAsync(ApiKeys.ContentModerator, $"{reviewUrl}{teamName}/workflows/{workflowName}", "", "application/json", "GET", GetToken());
 
-            return JsonConvert.DeserializeObject<WorkflowExpression>(response);
+            return JsonConvert.DeserializeObject<WorkflowExpressionResponse>(response);
         }
 
-        public virtual async Task<List<WorkflowExpression>> GetAllWorkflowsAsync(string teamName)
+        public virtual async Task<List<WorkflowExpressionResponse>> GetAllWorkflowsAsync(string teamName)
         {
             var response = await RepositoryClient.SendAsync(ApiKeys.ContentModerator, $"{reviewUrl}{teamName}/workflows", "", "application/json", "GET", GetToken());
 
-            return JsonConvert.DeserializeObject<List<WorkflowExpression>>(response);
+            return JsonConvert.DeserializeObject<List<WorkflowExpressionResponse>>(response);
         }
 
         #endregion Get Workflow

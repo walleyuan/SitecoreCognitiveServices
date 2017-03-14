@@ -24,8 +24,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
         Task<List<string>> CreateReviewAsync(string teamName, List<ReviewRequest> requests, string subTeam = "");
         Task<GetReviewResponse> GetReviewAsync(string teamName, string reviewId);
         Task CreateOrUpdateWorkflowAsync(string teamName, string workflowName, WorkflowExpression expression);
-        Task<WorkflowExpression> GetWorkflowAsync(string teamName, string workflowName);
-        Task<List<WorkflowExpression>> GetAllWorkflowsAsync(string teamName);
+        Task<WorkflowExpressionResponse> GetWorkflowAsync(string teamName, string workflowName);
+        Task<List<WorkflowExpressionResponse>> GetAllWorkflowsAsync(string teamName);
         Task AddImageAsync(string imageUrl, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "");
         Task AddImageAsync(Stream stream, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "");
         Task DeleteImageAsync(string listId, string imageId);

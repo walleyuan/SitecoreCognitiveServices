@@ -7,7 +7,7 @@
 <div class="frame">
     <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorWorkflowgetall">
         <fieldset>
-            <legend>Workflow</legend>
+            <legend>Get All Workflows</legend>
             <div class="form-row">
                 <label>Team Name</label>
                 <input type="text" name="teamName" />
@@ -16,19 +16,22 @@
                 <input type="submit" value="Get All Workflows" />
             </div>
             @if(Model.Workflows != null && Model.Workflows.Any()) {
+                <br/>
                 <div>
                     <h3>Workflows</h3>
-                    @foreach (var w in Model.Workflows)
-                    {
-                        @w.Description
-                    }
+                    <ul>
+                        @foreach (var w in Model.Workflows)
+                        {
+                            <li>@w.Name - @w.Description</li>
+                        }
+                    </ul>
                 </div>
             }
         </fieldset>
     </form>
     <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorWorkflowget">
         <fieldset>
-            <legend>Workflow</legend>
+            <legend>Get Workflow</legend>
             <div class="form-row">
                 <label>Team Name</label>
                 <input type="text" name="teamName" />
@@ -40,11 +43,21 @@
             <div class="scWizardButtons">
                 <input type="submit" value="Get Workflow" />
             </div>
+            @if (Model.Workflow != null)
+            {
+                <br />
+                <div>
+                    <label>Name: </label> @Model.Workflow.Name
+                </div>
+                <div>
+                    <label>Description: </label> @Model.Workflow.Description
+                </div>
+            }
         </fieldset>
     </form>
     <form class="form spell-check-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorWorkflowcreate">
         <fieldset>
-            <legend>Workflow</legend>
+            <legend>Create Workflow</legend>
             <div class="form-row">
                 <label>Team Name</label>
                 <input type="text" name="teamName"/>

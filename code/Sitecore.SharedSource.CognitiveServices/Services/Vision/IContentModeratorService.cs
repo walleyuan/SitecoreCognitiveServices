@@ -24,8 +24,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         List<string> CreateReview(string teamName, List<ReviewRequest> requests, string subTeam = "");
         GetReviewResponse GetReview(string teamName, string reviewId);
         void CreateOrUpdateWorkflow(string teamName, string workflowName, WorkflowExpression expression);
-        WorkflowExpression GetWorkflow(string teamName, string workflowName);
-        List<WorkflowExpression> GetAllWorkflows(string teamName);
+        WorkflowExpressionResponse GetWorkflow(string teamName, string workflowName);
+        List<WorkflowExpressionResponse> GetAllWorkflows(string teamName);
         void AddImage(string imageUrl, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "");
         void AddImage(Stream stream, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "");
         void DeleteImage(string listId, string imageId);

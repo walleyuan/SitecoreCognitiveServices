@@ -8,7 +8,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models
 {
     public class WorkflowResult
     {
-        public WorkflowExpression Workflow { get; set; }
-        public List<WorkflowExpression> Workflows { get; set; }
+        public WorkflowExpressionResponse Workflow { get; set; }
+        public List<WorkflowExpressionResponse> Workflows { get; set; }
     }
 }
