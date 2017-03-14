@@ -23,7 +23,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
         Task<GetJobResponse> GetJobAsync(string teamName, string jobId);
         Task<List<string>> CreateReviewAsync(string teamName, List<ReviewRequest> requests, string subTeam = "");
         Task<GetReviewResponse> GetReviewAsync(string teamName, string reviewId);
-        Task CreateOrUpdateWorkflowAsync(string teamName, string workflowName, WorkflowExpression expression);
+        Task<bool> CreateOrUpdateWorkflowAsync(string teamName, string workflowName, WorkflowExpression expression);
         Task<WorkflowExpressionResponse> GetWorkflowAsync(string teamName, string workflowName);
         Task<List<WorkflowExpressionResponse>> GetAllWorkflowsAsync(string teamName);
         Task AddImageAsync(string imageUrl, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "");

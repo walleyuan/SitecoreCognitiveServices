@@ -23,7 +23,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         GetJobResponse GetJob(string teamName, string jobId);
         List<string> CreateReview(string teamName, List<ReviewRequest> requests, string subTeam = "");
         GetReviewResponse GetReview(string teamName, string reviewId);
-        void CreateOrUpdateWorkflow(string teamName, string workflowName, WorkflowExpression expression);
+        bool CreateOrUpdateWorkflow(string teamName, string workflowName, WorkflowExpression expression);
         WorkflowExpressionResponse GetWorkflow(string teamName, string workflowName);
         List<WorkflowExpressionResponse> GetAllWorkflows(string teamName);
         void AddImage(string imageUrl, string listId, ContentModeratorTag tag = ContentModeratorTag.None, string label = "");

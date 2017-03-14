@@ -302,15 +302,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
 
         #region Create or Update Workflow
 
-        public virtual async Task CreateOrUpdateWorkflowAsync(string teamName, string workflowName, WorkflowExpression expression)
+        public virtual async Task<bool> CreateOrUpdateWorkflowAsync(string teamName, string workflowName, WorkflowExpression expression)
         {
+            var data = JsonConvert.SerializeObject(expression);
+
             var response = await RepositoryClient.SendAsync(
                 ApiKeys.ContentModerator,
                 $"{reviewUrl}{teamName}/workflows/{workflowName}",
-                JsonConvert.SerializeObject(expression),
+                data,
                 "application/json",
                 "PUT",
                 GetToken());
+
+            return JsonConvert.DeserializeObject<bool>(response);
         }
 
         #endregion Create or Update Workflow

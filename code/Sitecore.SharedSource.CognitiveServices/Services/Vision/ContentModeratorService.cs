@@ -284,16 +284,20 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             return null;
         }
 
-        public virtual void CreateOrUpdateWorkflow(string teamName, string workflowName, WorkflowExpression expression)
+        public virtual bool CreateOrUpdateWorkflow(string teamName, string workflowName, WorkflowExpression expression)
         {
             try
             {
-                Task.Run(async () => await ContentModeratorRepository.CreateOrUpdateWorkflowAsync(teamName, workflowName, expression));
+                var result = Task.Run(async () => await ContentModeratorRepository.CreateOrUpdateWorkflowAsync(teamName, workflowName, expression)).Result;
+
+                return result;
             }
             catch (Exception ex)
             {
                 Logger.Error("ContentModeratorService.CreateOrUpdateWorkflow failed", this, ex);
             }
+
+            return false;
         }
 
         public virtual WorkflowExpressionResponse GetWorkflow(string teamName, string workflowName)

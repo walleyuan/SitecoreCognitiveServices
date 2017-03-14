@@ -153,6 +153,10 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         [HttpPost]
         public ActionResult ContentModeratorWorkflowGet(string teamName, string workflowName)
         {
+            //only text or numbers. no special characters
+            if(!workflowName.All(char.IsLetterOrDigit))
+                return ContentModeratorWorkflow();
+
             var response = ContentModeratorService.GetWorkflow(teamName, workflowName);
 
             return View("ContentModerator/Workflow", new WorkflowResult() { Workflow = response });
@@ -166,9 +170,13 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         [HttpPost]
         public ActionResult ContentModeratorWorkflowCreate(string teamName, string workflowName)
         {
+            //only text or numbers. no special characters
+            if (!workflowName.All(char.IsLetterOrDigit))
+                return ContentModeratorWorkflow();
+
             WorkflowExpression we = new WorkflowExpression() { 
-                Name = workflowName,
                 Description = $"New Sample Workflow: {workflowName}",
+                Type = ContentModeratorReviewType.Image,
                 Expression = new Condition
                 {
                     Operator = "ge",
@@ -177,12 +185,14 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
                 }
             };
 
-            ContentModeratorService.CreateOrUpdateWorkflow(teamName, workflowName, we);
+            var result = ContentModeratorService.CreateOrUpdateWorkflow(teamName, workflowName, we);
+            if (!result)
+                return ContentModeratorWorkflow();
 
             var wer = new WorkflowExpressionResponse()
             {
                 Description = we.Description,
-                Name = we.Name
+                Name = workflowName
             };
 
             return View("ContentModerator/Workflow", new WorkflowResult() { Workflow = wer });

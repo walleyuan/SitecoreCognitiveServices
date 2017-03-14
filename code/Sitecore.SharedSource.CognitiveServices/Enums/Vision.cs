@@ -38,11 +38,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Enums
     [JsonConverter(typeof(StringEnumConverter))]
     public enum ContentModeratorReviewType
     {
-        [EnumMember(Value = "Image")]
-        Image,
         [EnumMember(Value = "Text")]
-        Text,
+        Text = 0,
+        [EnumMember(Value = "Image")]
+        Image = 1,
         [EnumMember(Value = "Video")]
-        Video
+        Video = 2
     }
 }
