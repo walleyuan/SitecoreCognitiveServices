@@ -177,14 +177,28 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             return View("ContentModerator/Review", new ReviewResponse());
         }
 
+        public ActionResult ContentModeratorReviewCreate(string teamName, string imageUrl, string contentId)
+        {
+            ReviewRequest r = new ReviewRequest();
+            r.Content = imageUrl;
+            r.ContentId = contentId;
+            r.Type = ContentModeratorReviewType.Image;
+
+            var result = ContentModeratorService.CreateReview(teamName, new List<ReviewRequest>() { r });
+
+            return View("ContentModerator/Review", new ReviewResponse() { CreateReviews = result });
+        }
+
+        public ActionResult ContentModeratorReviewGet(string teamName, string reviewId)
+        {
+            var result = ContentModeratorService.GetReview(teamName, reviewId);
+
+            return View("ContentModerator/Review", new ReviewResponse() { Review = result });
+        }
+
         #endregion Review
 
         #region Workflow
-
-        public ActionResult ContentModeratorReview()
-        {
-            return View("ContentModerator/Review");
-        }
 
         public ActionResult ContentModeratorWorkflow()
         {
