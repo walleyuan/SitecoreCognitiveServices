@@ -338,7 +338,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Vision {
         {
             StringBuilder sb = new StringBuilder();
             if (tag != ContentModeratorTag.None)
-                sb.Append($"?tag={Enum.GetName(typeof(ContentModeratorTag), tag)}");
+                sb.Append($"?tag={(int)tag}");
 
             if (!string.IsNullOrEmpty(label))
             {

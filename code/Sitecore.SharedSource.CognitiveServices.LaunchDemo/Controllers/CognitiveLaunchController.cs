@@ -290,9 +290,9 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         [HttpPost]
         public ActionResult ContentModeratorImageAdd(string imageUrl, string listId)
         {
-            ContentModeratorService.AddImage(imageUrl, listId, ContentModeratorTag.Alcohol);
+            var result = ContentModeratorService.AddImage(imageUrl, listId, ContentModeratorTag.Alcohol);
 
-            return View("ContentModerator/ImageLists", new ImageListResponse());
+            return View("ContentModerator/ImageLists", new ImageListResponse() { Image = result });
         }
 
         public ActionResult ContentModeratorImageGetAll()
@@ -301,10 +301,11 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         }
 
         [HttpPost]
-        public ActionResult ContentModeratorImageGetAll(string imageUrl, string listId)
+        public ActionResult ContentModeratorImageGetAll(string listId)
         {
-            ContentModeratorService.AddImage(imageUrl, listId, ContentModeratorTag.Alcohol);
-            return View("ContentModerator/ImageLists", new ImageListResponse());
+            var result = ContentModeratorService.GetAllImageIds(listId);
+
+            return View("ContentModerator/ImageLists", new ImageListResponse() { Images = result });
         }
 
         public ActionResult ContentModeratorImageAddList()
@@ -313,10 +314,11 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         }
 
         [HttpPost]
-        public ActionResult ContentModeratorImageAddList(string imageUrl, string listId)
+        public ActionResult ContentModeratorImageAddList(string name, string description)
         {
-            ContentModeratorService.AddImage(imageUrl, listId, ContentModeratorTag.Alcohol);
-            return View("ContentModerator/ImageLists", new ImageListResponse());
+            var result = ContentModeratorService.CreateList(new ListDetails() { Name = name, Description = description });
+
+            return View("ContentModerator/ImageLists", new ImageListResponse() { List = result });
         }
 
         public ActionResult ContentModeratorImageGetAllLists()
@@ -325,10 +327,11 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         }
 
         [HttpPost]
-        public ActionResult ContentModeratorImageGetAllLists(string imageUrl, string listId)
+        public ActionResult ContentModeratorImageGetAllLists(string placeholder)
         {
-            ContentModeratorService.AddImage(imageUrl, listId, ContentModeratorTag.Alcohol);
-            return View("ContentModerator/ImageLists", new ImageListResponse());
+            var result = ContentModeratorService.GetAllImageLists();
+
+            return View("ContentModerator/ImageLists", new ImageListResponse() { Lists = result });
         }
 
         #endregion Image Lists
@@ -338,6 +341,58 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         public ActionResult ContentModeratorTermList()
         {
             return View("ContentModerator/TermLists", new TermListResponse());
+        }
+
+        public ActionResult ContentModeratorTermListAdd()
+        {
+            return ContentModeratorTermList();
+        }
+
+        [HttpPost]
+        public ActionResult ContentModeratorTermListAdd(string listId, string term)
+        {
+            var result = ContentModeratorService.AddTerm(listId, term, "eng");
+
+            return View("ContentModerator/TermLists", new TermListResponse() { EventOccurred = true, EventSuccess = result });
+        }
+
+        public ActionResult ContentModeratorTermListGetAll()
+        {
+            return ContentModeratorTermList();
+        }
+
+        [HttpPost]
+        public ActionResult ContentModeratorTermListGetAll(string listId)
+        {
+            var result = ContentModeratorService.GetAllTerms(listId, "eng");
+
+            return View("ContentModerator/TermLists", new TermListResponse() { Terms = result });
+        }
+
+        public ActionResult ContentModeratorTermListAddList()
+        {
+            return ContentModeratorTermList();
+        }
+
+        [HttpPost]
+        public ActionResult ContentModeratorTermListAddList(string name, string description)
+        {
+            var result = ContentModeratorService.CreateTermList(new ListDetails() { Name = name, Description = description });
+
+            return View("ContentModerator/TermLists", new TermListResponse() { List = result });
+        }
+
+        public ActionResult ContentModeratorTermListGetAllLists()
+        {
+            return ContentModeratorTermList();
+        }
+
+        [HttpPost]
+        public ActionResult ContentModeratorTermListGetAllLists(string placeholder)
+        {
+            var result = ContentModeratorService.GetAllTermLists();
+            
+            return View("ContentModerator/TermLists", new TermListResponse() { Lists = result });
         }
 
         #endregion Term Lists

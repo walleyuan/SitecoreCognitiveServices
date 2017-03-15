@@ -6,12 +6,20 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories
 {
     public class RepositoryClient : IRepositoryClient
     {
+        protected ILogWrapper Logger;
+
+        public RepositoryClient(ILogWrapper logger)
+        {
+            Logger = logger;
+        }
+
         public virtual async Task<string> SendPostMultiPartAsync(string apiKey, string url, string data)
         {
             return await SendAsync(apiKey, url, data, "multipart/form-data", "POST");
@@ -84,18 +92,36 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             {
                 byte[] reqData = Encoding.UTF8.GetBytes(data);
 
-                request.ContentLength = (long)reqData.Length;
-                
+                request.ContentLength = (long) reqData.Length;
+
                 Stream requestStreamAsync = await request.GetRequestStreamAsync();
                 requestStreamAsync.Write(reqData, 0, reqData.Length);
                 requestStreamAsync.Close();
             }
+            else
+            {
+                request.ContentLength = 0;
+            }
+
+            string end = "";
+            WebResponse responseAsync = null;
+            StreamReader streamReader = null;
+            try
+            {
+                responseAsync = await request.GetResponseAsync();
+                streamReader = new StreamReader(responseAsync.GetResponseStream());
+                end = streamReader.ReadToEnd();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, this, ex);
+            }
+            finally
+            {
+                streamReader?.Close();
+                responseAsync?.Close();
+            }
             
-            WebResponse responseAsync = await request.GetResponseAsync();
-            StreamReader streamReader = new StreamReader(responseAsync.GetResponseStream());
-            string end = streamReader.ReadToEnd();
-            streamReader.Close();
-            responseAsync.Close();
 
             return end;
         }

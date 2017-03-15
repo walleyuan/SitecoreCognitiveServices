@@ -368,28 +368,36 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             return null;
         }
 
-        public virtual void DeleteImage(string listId, string imageId)
+        public virtual bool DeleteImage(string listId, string imageId)
         {
             try
             {
                 Task.Run(async () => await ContentModeratorRepository.DeleteImageAsync(listId, imageId));
+
+                return true;
             }
             catch (Exception ex)
             {
                 Logger.Error("ContentModeratorService.DeleteImage failed", this, ex);
             }
+
+            return false;
         }
 
-        public virtual void DeleteAllImage(string listId)
+        public virtual bool DeleteAllImage(string listId)
         {
             try
             {
                 Task.Run(async () => await ContentModeratorRepository.DeleteAllImageAsync(listId));
+
+                return true;
             }
             catch (Exception ex)
             {
                 Logger.Error("ContentModeratorService.DeleteAllImage failed", this, ex);
             }
+
+            return false;
         }
 
         public virtual GetImagesResponse GetAllImageIds(string listId)
@@ -440,16 +448,20 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             return null;
         }
 
-        public virtual void DeleteImageList(string listId)
+        public virtual bool DeleteImageList(string listId)
         {
             try
             {
                 Task.Run(async () => await ContentModeratorRepository.DeleteImageListAsync(listId));
+
+                return true;
             }
             catch (Exception ex)
             {
                 Logger.Error("ContentModeratorService.DeleteImageList failed", this, ex);
             }
+
+            return false;
         }
 
         public virtual List<ListDetails> GetAllImageLists()
@@ -516,28 +528,36 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             return false;
         }
 
-        public virtual void DeleteTerm(string listId, string term, string language)
+        public virtual bool DeleteTerm(string listId, string term, string language)
         {
             try
             {
                 Task.Run(async () => await ContentModeratorRepository.DeleteTermAsync(listId, term, language));
+
+                return true;
             }
             catch (Exception ex)
             {
                 Logger.Error("ContentModeratorService.DeleteTerm failed", this, ex);
             }
+
+            return false;
         }
 
-        public virtual void DeleteAllTerms(string listId, string language)
+        public virtual bool DeleteAllTerms(string listId, string language)
         {
             try
             {
                 Task.Run(async () => await ContentModeratorRepository.DeleteAllTermsAsync(listId, language));
+
+                return true;
             }
             catch (Exception ex)
             {
                 Logger.Error("ContentModeratorService.DeleteAllTerms failed", this, ex);
             }
+
+            return false;
         }
 
         public virtual GetTermsResponse GetAllTerms(string listId, string language)
@@ -572,16 +592,20 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             return null;
         }
 
-        public virtual void DeleteTermList(string listId)
+        public virtual bool DeleteTermList(string listId)
         {
             try
             {
                 Task.Run(async () => await ContentModeratorRepository.DeleteTermListAsync(listId));
+
+                return true;
             }
             catch (Exception ex)
             {
                 Logger.Error("ContentModeratorService.DeleteTermList failed", this, ex);
             }
+
+            return false;
         }
 
         public virtual List<ListDetails> GetAllTermLists()

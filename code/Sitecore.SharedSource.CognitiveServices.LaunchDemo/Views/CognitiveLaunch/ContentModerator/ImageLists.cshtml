@@ -5,28 +5,118 @@
 }
 
 <div class="frame">
-    
-    <li>Get All Image Ids</li>
-    <li>Add Image</li>
-    <li>Get All Image Lists</li>
-    <li>Create Image List</li>
-    
-    <form class="form cm-image-list-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorImageList">
+    <form class="form cm-image-list-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorImageAddList">
         <fieldset>
-            <legend>Create Review</legend>
+            <legend>Create Image List</legend>
             <div class="form-row">
-                <label>Team Name</label>
-                <input type="text" name="teamName"/>
+                <label>List Name</label>
+                <input type="text" name="name" />
             </div>
+            <div class="form-row">
+                <label>List Description</label>
+                <input type="text" name="description" />
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Create Image List" />
+            </div>
+            @if (Model.List != null)
+            {
+                <br/>
+                <div>
+                    <div>
+                        <label>Id: </label> @Model.List.Id
+                    </div>
+                    <div>
+                        <label>Name: </label> @Model.List.Name
+                    </div>
+                    <div>
+                        <label>Description: </label> @Model.List.Description
+                    </div>
+                </div>
+            }
+        </fieldset>
+    </form>
+    <form class="form cm-image-list-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorImageGetAllLists">
+        <fieldset>
+            <legend>Get All Image Lists</legend>
+            <div class="form-row">
+                <input type="hidden" name="placeholder" value="" />
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Get All Image Lists" />
+            </div>
+            @if (Model.Lists != null)
+            {
+                foreach (var l in Model.Lists)
+                {
+                    <br />
+                    <div>
+                        <div>
+                            <label>Id: </label> @l.Id
+                        </div>
+                        <div>
+                            <label>Name: </label> @l.Name
+                        </div>
+                        <div>
+                            <label>Description: </label> @l.Description
+                        </div>
+                    </div>
+                }
+            }
+        </fieldset>
+    </form>
+    <form class="form cm-image-list-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorImageAdd">
+        <fieldset>
+            <legend>Add Image</legend>
             <div class="form-row">
                 <label>Image Url</label>
                 <input type="text" name="imageUrl"/>
             </div>
-            <div class="scWizardButtons">
-                <input type="submit" value="Create Review"/>
+            <div class="form-row">
+                <label>List Id</label>
+                <input type="text" name="listId" />
             </div>
-            @if (Model != null)
+            <div class="scWizardButtons">
+                <input type="submit" value="Add Image"/>
+            </div>
+            @if (Model.Image != null)
             {
+                <br/>
+                <div>
+                    <div>
+                        <label>Content Id: </label> @Model.Image.ContentId
+                    </div>
+                    <div>
+                        <label>Status: </label> @Model.Image.Status
+                    </div>
+                    <div>
+                        <label>Tracking Id: </label> @Model.Image.Trackingid
+                    </div>
+                </div>
+            }
+        </fieldset>
+    </form>
+    <form class="form cm-image-list-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/ContentModeratorImageGetAll">
+        <fieldset>
+            <legend>Get All Image Ids</legend>
+            <div class="form-row">
+                <label>List Id</label>
+                <input type="text" name="listId" />
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Get All Images" />
+            </div>
+            @if (Model.Images != null)
+            {
+                foreach (var i in Model.Images.ContentIds)
+                {
+                    <br />
+                    <div>
+                        <div>
+                            <label>Content Id: </label> @i
+                        </div>
+                    </div>
+                }
             }
         </fieldset>
     </form>

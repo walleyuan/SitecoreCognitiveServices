@@ -79,4 +79,6 @@ textarea  { height: 200px;width: 400px;}
 .screen-result label { font-weight: bold;display: block;}
 .cm-job-form label,
 .cm-workflow-form label,
-.cm-review-form label { display: inline-block;width: 150px; }
+.cm-review-form label,
+.cm-image-list-form label,
+.cm-term-list-form label { display: inline-block;width: 150px; }
