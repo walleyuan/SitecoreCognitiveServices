@@ -244,8 +244,8 @@
     <Compile Include="Models\Knowledge\GraphSearchRequest.cs" />
     <Compile Include="Models\Knowledge\GraphSearchResponse.cs" />
     <Compile Include="Models\Knowledge\GraphSearchResult.cs" />
-    <Compile Include="Models\Knowledge\Histogram.cs" />
-    <Compile Include="Models\Knowledge\HistogramResult.cs" />
+    <Compile Include="Models\Knowledge\CalcHistogram.cs" />
+    <Compile Include="Models\Knowledge\CalcHistogramResult.cs" />
     <Compile Include="Models\Bing\AutoSuggestEntry.cs" />
     <Compile Include="Models\Bing\AutoSuggestGroup.cs" />
     <Compile Include="Models\Bing\AutoSuggestQuery.cs" />

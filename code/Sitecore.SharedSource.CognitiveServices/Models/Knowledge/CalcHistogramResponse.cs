@@ -7,6 +7,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Models.Knowledge {
     public class CalcHistogramResponse {
         public string Expr { get; set; }
         public int Num_Entities { get; set; }
-        public List<HistogramResult> Histograms { get; set; } 
+        public List<CalcHistogramResult> Histograms { get; set; } 
     }
 }

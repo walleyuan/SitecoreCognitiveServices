@@ -17,7 +17,8 @@ using Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
 using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
 using Microsoft.ProjectOxford.Video.Contract;
-using Newtonsoft.Json;
+using Sitecore.SharedSource.CognitiveServices.Models.Knowledge;
+using EvaluateResponse = Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator.EvaluateResponse;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 {
@@ -38,6 +39,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         protected readonly IEntityLinkingService EntityLinkingService;
         protected readonly ILanguageService LanguageService;
         protected readonly IContentModeratorService ContentModeratorService;
+        protected readonly IAcademicSearchService AcademicSearchService;
 
         public CognitiveLaunchController(
             IVisionService visionService,
@@ -54,7 +56,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             ISentimentService sentimentService,
             IEntityLinkingService entityLinkingService,
             ILanguageService languageService,
-            IContentModeratorService contentModeratorService)
+            IContentModeratorService contentModeratorService,
+            IAcademicSearchService academicSearchService)
         {
             VisionService = visionService;
             AutoSuggestService = autoSuggestService;
@@ -71,6 +74,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             EntityLinkingService = entityLinkingService;
             LanguageService = languageService;
             ContentModeratorService = contentModeratorService;
+            AcademicSearchService = academicSearchService;
         }
 
         #region Giphy Moderator
@@ -129,7 +133,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 
         public ActionResult ContentModeratorJob()
         {
-            return View("ContentModerator/Job", new JobResponse());
+            return View("ContentModerator/Job", new JobResult());
         }
 
         public ActionResult ContentModeratorJobGet()
@@ -141,7 +145,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         public ActionResult ContentModeratorJobGet(string teamName, string jobId)
         {
             var result = ContentModeratorService.GetJob(teamName, jobId);
-            return View("ContentModerator/Job", new JobResponse() { Job = result });
+            return View("ContentModerator/Job", new JobResult() { Job = result });
         }
 
         public ActionResult ContentModeratorJobCreateImage()
@@ -153,7 +157,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         public ActionResult ContentModeratorJobCreateImage(string imageUrl, string teamName, string workflowName)
         {
             var result = ContentModeratorService.CreateImageJob(imageUrl, teamName, "", workflowName);
-            return View("ContentModerator/Job", new JobResponse() { JobId = result.JobId });
+            return View("ContentModerator/Job", new JobResult() { JobId = result.JobId });
         }
 
         public ActionResult ContentModeratorJobCreateText()
@@ -165,7 +169,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         public ActionResult ContentModeratorJobCreateText(string text, string teamName, string workflowName)
         {
             var result = ContentModeratorService.CreateTextJob(text, teamName, "", workflowName);
-            return View("ContentModerator/Job", new JobResponse() { JobId = result.JobId });
+            return View("ContentModerator/Job", new JobResult() { JobId = result.JobId });
         }
 
         #endregion Job
@@ -174,7 +178,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 
         public ActionResult ContentModeratorReview()
         {
-            return View("ContentModerator/Review", new ReviewResponse());
+            return View("ContentModerator/Review", new ReviewResult());
         }
 
         public ActionResult ContentModeratorReviewCreate(string teamName, string imageUrl, string contentId)
@@ -186,14 +190,14 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 
             var result = ContentModeratorService.CreateReview(teamName, new List<ReviewRequest>() { r });
 
-            return View("ContentModerator/Review", new ReviewResponse() { CreateReviews = result });
+            return View("ContentModerator/Review", new ReviewResult() { CreateReviews = result });
         }
 
         public ActionResult ContentModeratorReviewGet(string teamName, string reviewId)
         {
             var result = ContentModeratorService.GetReview(teamName, reviewId);
 
-            return View("ContentModerator/Review", new ReviewResponse() { Review = result });
+            return View("ContentModerator/Review", new ReviewResult() { Review = result });
         }
 
         #endregion Review
@@ -279,7 +283,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 
         public ActionResult ContentModeratorImageList()
         {
-            return View("ContentModerator/ImageLists", new ImageListResponse());
+            return View("ContentModerator/ImageLists", new ImageListResult());
         }
 
         public ActionResult ContentModeratorImageAdd()
@@ -292,7 +296,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         {
             var result = ContentModeratorService.AddImage(imageUrl, listId, ContentModeratorTag.Alcohol);
 
-            return View("ContentModerator/ImageLists", new ImageListResponse() { Image = result });
+            return View("ContentModerator/ImageLists", new ImageListResult() { Image = result });
         }
 
         public ActionResult ContentModeratorImageGetAll()
@@ -305,7 +309,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         {
             var result = ContentModeratorService.GetAllImageIds(listId);
 
-            return View("ContentModerator/ImageLists", new ImageListResponse() { Images = result });
+            return View("ContentModerator/ImageLists", new ImageListResult() { Images = result });
         }
 
         public ActionResult ContentModeratorImageAddList()
@@ -318,7 +322,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         {
             var result = ContentModeratorService.CreateList(new ListDetails() { Name = name, Description = description });
 
-            return View("ContentModerator/ImageLists", new ImageListResponse() { List = result });
+            return View("ContentModerator/ImageLists", new ImageListResult() { List = result });
         }
 
         public ActionResult ContentModeratorImageGetAllLists()
@@ -331,7 +335,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         {
             var result = ContentModeratorService.GetAllImageLists();
 
-            return View("ContentModerator/ImageLists", new ImageListResponse() { Lists = result });
+            return View("ContentModerator/ImageLists", new ImageListResult() { Lists = result });
         }
 
         #endregion Image Lists
@@ -340,7 +344,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 
         public ActionResult ContentModeratorTermList()
         {
-            return View("ContentModerator/TermLists", new TermListResponse());
+            return View("ContentModerator/TermLists", new TermListResult());
         }
 
         public ActionResult ContentModeratorTermListAdd()
@@ -353,7 +357,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         {
             var result = ContentModeratorService.AddTerm(listId, term, "eng");
 
-            return View("ContentModerator/TermLists", new TermListResponse() { EventOccurred = true, EventSuccess = result });
+            return View("ContentModerator/TermLists", new TermListResult() { EventOccurred = true, EventSuccess = result });
         }
 
         public ActionResult ContentModeratorTermListGetAll()
@@ -366,7 +370,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         {
             var result = ContentModeratorService.GetAllTerms(listId, "eng");
 
-            return View("ContentModerator/TermLists", new TermListResponse() { Terms = result });
+            return View("ContentModerator/TermLists", new TermListResult() { Terms = result });
         }
 
         public ActionResult ContentModeratorTermListAddList()
@@ -379,7 +383,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         {
             var result = ContentModeratorService.CreateTermList(new ListDetails() { Name = name, Description = description });
 
-            return View("ContentModerator/TermLists", new TermListResponse() { List = result });
+            return View("ContentModerator/TermLists", new TermListResult() { List = result });
         }
 
         public ActionResult ContentModeratorTermListGetAllLists()
@@ -392,7 +396,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         {
             var result = ContentModeratorService.GetAllTermLists();
             
-            return View("ContentModerator/TermLists", new TermListResponse() { Lists = result });
+            return View("ContentModerator/TermLists", new TermListResult() { Lists = result });
         }
 
         #endregion Term Lists
@@ -772,5 +776,95 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         }
 
         #endregion Language Analysis
+
+        #region Academic Search
+
+        public ActionResult AcademicSearch()
+        {
+            return View("AcademicSearch", new AcademicResult());
+        }
+
+        public ActionResult AcademicSearchCalcHistogram()
+        {
+            return AcademicSearch();
+        }
+
+        [HttpPost]
+        public ActionResult AcademicSearchCalcHistogram(string expression)
+        {
+            var result = AcademicSearchService.CalcHistogram(expression, AcademicModelOptions.latest, "Y,F.FN,AA.AuN");
+
+            return View("AcademicSearch", new AcademicResult() { Histogram = result });
+        }
+
+        public ActionResult AcademicSearchEvaluate()
+        {
+            return AcademicSearch();
+        }
+
+        [HttpPost]
+        public ActionResult AcademicSearchEvaluate(string expression)
+        {
+            var result = AcademicSearchService.Evaluate(expression, AcademicModelOptions.latest);
+
+            return View("AcademicSearch", new AcademicResult() { Evaluate = result });
+        }
+
+        public ActionResult AcademicSearchGraphSearch()
+        {
+            return AcademicSearch();
+        }
+
+        [HttpPost]
+        public ActionResult AcademicSearchGraphSearch(string author)
+        {
+            GraphSearchRequest g = new GraphSearchRequest()
+            {
+                Author = new AcademicAuthor() { 
+                    Return = new AcademicReturn() { 
+                        Name = author,
+                        Type = "Author"
+                    }
+                },
+                Paper = new AcademicPaper() { 
+                    NormalizedTitle = "graph engine",
+                    Select = new List<string>() { "OriginalTitle" },
+                    Type = "Paper"
+                },
+                Path = "/paper/AuthorIDs/author"
+            };
+
+            var result = AcademicSearchService.GraphSearch(g);
+
+            return View("AcademicSearch", new AcademicResult() { GraphSearch = result });
+        }
+
+        public ActionResult AcademicSearchInterpret()
+        {
+            return AcademicSearch();
+        }
+
+        [HttpPost]
+        public ActionResult AcademicSearchInterpret(string query)
+        {
+            var result = AcademicSearchService.Interpret(query);
+            
+            return View("AcademicSearch", new AcademicResult() { Interpret = result });
+        }
+
+        public ActionResult AcademicSearchSimilarity()
+        {
+            return AcademicSearch();
+        }
+
+        [HttpPost]
+        public ActionResult AcademicSearchSimilarity(string text, string text2)
+        {
+            var result = AcademicSearchService.Similarity(text, text2);
+
+            return View("AcademicSearch", new AcademicResult() { Similarity = result, SimilarityRun = "" });
+        }
+
+        #endregion Academic Search
     }
 }

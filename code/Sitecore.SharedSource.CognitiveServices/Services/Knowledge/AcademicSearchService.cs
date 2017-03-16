@@ -23,7 +23,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             Logger = logger;
         }
         
-        public virtual HistogramResult CalcHistogram(string expression, AcademicModelOptions model, string attributes = "", int count = 10, int offset = 0)
+        public virtual CalcHistogramResponse CalcHistogram(string expression, AcademicModelOptions model, string attributes = "", int count = 10, int offset = 0)
         {
             try
             {
@@ -55,11 +55,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
             return null;
         }
         
-        public virtual GraphSearchResponse GraphSearch(AcademicGraphModeOptions mode, GraphSearchRequest request)
+        public virtual GraphSearchResponse GraphSearch(GraphSearchRequest request)
         {
             try
             {
-                var result = Task.Run(async () => await AcademicSearchRepository.GraphSearchAsync(mode, request)).Result;
+                var result = Task.Run(async () => await AcademicSearchRepository.GraphSearchAsync(request)).Result;
 
                 return result;
             }

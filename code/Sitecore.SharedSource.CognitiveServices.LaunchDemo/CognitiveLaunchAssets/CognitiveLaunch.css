@@ -81,4 +81,14 @@ textarea  { height: 200px;width: 400px;}
 .cm-workflow-form label,
 .cm-review-form label,
 .cm-image-list-form label,
-.cm-term-list-form label { display: inline-block;width: 150px; }
+.cm-term-list-form label,
+.academic-form label { display: inline-block;width: 150px; }
+
+.histogram { margin-bottom: 15px;border-bottom: 1px solid #cccccc;padding-bottom: 25px;}
+.histo-chart { background: #eee none repeat scroll 0 0; display: inline-block; padding: 20px 5px 5px; }
+.histo-col { bottom: 0; display: inline-block; position: relative; width: 80px; }
+.histo-bar {  background: #651f76 none repeat scroll 0 0;position: relative;}
+.histo-bar span { color: #fff;text-align: center;position: absolute;bottom: 3px;width: 100%;}
+.histo-data { text-align: center;height: 40px;overflow: hidden;}
+.histo-detail { }
+.histo-detail span { font-weight: bold;}

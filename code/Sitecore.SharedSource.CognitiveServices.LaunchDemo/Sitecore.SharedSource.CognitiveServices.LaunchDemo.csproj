@@ -161,13 +161,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Configurator\CognitiveLaunchConfigurator.cs" />
     <Compile Include="Controllers\CognitiveLaunchController.cs" />
+    <Compile Include="Models\AcademicResult.cs" />
     <Compile Include="Models\ComputerVisionResult.cs" />
     <Compile Include="Models\FaceResult.cs" />
     <Compile Include="Models\EmotionResult.cs" />
-    <Compile Include="Models\ImageListResponse.cs" />
-    <Compile Include="Models\JobResponse.cs" />
-    <Compile Include="Models\ReviewResponse.cs" />
-    <Compile Include="Models\TermListResponse.cs" />
+    <Compile Include="Models\ImageListResult.cs" />
+    <Compile Include="Models\JobResult.cs" />
+    <Compile Include="Models\ReviewResult.cs" />
+    <Compile Include="Models\TermListResult.cs" />
     <Compile Include="Models\VideoResult.cs" />
     <Compile Include="Models\WorkflowResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -206,6 +207,7 @@
     <Content Include="Views\CognitiveLaunch\ContentModerator\Workflow.cshtml" />
     <Content Include="Views\CognitiveLaunch\ContentModerator\ImageLists.cshtml" />
     <Content Include="Views\CognitiveLaunch\ContentModerator\TermLists.cshtml" />
+    <Content Include="Views\CognitiveLaunch\AcademicSearch.cshtml" />
     <None Include="Web.config" />
     <None Include="Views\Web.config" />
   </ItemGroup>

@@ -36,12 +36,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
         /// <param name="count"></param>
         /// <param name="offset"></param>
         /// <returns></returns>
-        public virtual HistogramResult CalcHistogram(string expression, AcademicModelOptions model, string attributes = "", int count = 10, int offset = 0)
+        public virtual CalcHistogramResponse CalcHistogram(string expression, AcademicModelOptions model, string attributes = "", int count = 10, int offset = 0)
         {
             return Task.Run(async () => await CalcHistogramAsync(expression, model, attributes, count, offset)).Result;
         }
 
-        public virtual async Task<HistogramResult> CalcHistogramAsync(string expression, AcademicModelOptions model, string attributes = "", int count = 10, int offset = 0) {
+        public virtual async Task<CalcHistogramResponse> CalcHistogramAsync(string expression, AcademicModelOptions model, string attributes = "", int count = 10, int offset = 0) {
 
             StringBuilder sb = new StringBuilder();
             
@@ -58,7 +58,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
 
             var response = await SendGetAsync($"{calcUrl}?expr={expression}&model={modelName}{sb}");
 
-            return JsonConvert.DeserializeObject<HistogramResult>(response);
+            return JsonConvert.DeserializeObject<CalcHistogramResponse>(response);
         }
 
         #endregion Calculate Histogram
@@ -105,24 +105,15 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
 
         #region Graph Search
 
-        public virtual GraphSearchResponse GraphSearch(AcademicGraphModeOptions mode, GraphSearchRequest request) {
-            return Task.Run(async () => await GraphSearchAsync(mode, request)).Result;
+        public virtual GraphSearchResponse GraphSearch(GraphSearchRequest request) {
+            return Task.Run(async () => await GraphSearchAsync(request)).Result;
         }
 
-        public virtual async Task<GraphSearchResponse> GraphSearchAsync(AcademicGraphModeOptions mode, GraphSearchRequest request) {
-
-            var modeName = Enum.GetName(typeof(AcademicGraphModeOptions), mode);
+        public virtual async Task<GraphSearchResponse> GraphSearchAsync(GraphSearchRequest request) {
             
-            var response = (mode == AcademicGraphModeOptions.json)
-                ? await RepositoryClient.SendJsonPostAsync(ApiKey, $"{graphUrl}?mode={modeName}", JsonConvert.SerializeObject(request))
-                : await RepositoryClient.SendTextPostAsync(ApiKey, $"{graphUrl}?mode={modeName}", GetLambda(request));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKey, $"{graphUrl}?mode=json", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<GraphSearchResponse>(response);
-        }
-
-        protected string GetLambda(GraphSearchRequest request)
-        {
-            return $"MAG.StartFrom(@\"{{ type : \"{request.Author.Return.Type}\", match : {{ Name : \"{request.Author.Return.Name}\" }} }}\").FollowEdge(\"PaperIDs\").VisitNode(Action.Return);";
         }
 
         #endregion Graph Search
@@ -175,7 +166,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
 
         public virtual async Task<double> SimilarityAsync(string s1, string s2)
         {
-            var response = await SendPostAsync(similarityUrl, $"s1={s1}&s2={s2}");
+            var response = await RepositoryClient.SendEncodedFormPostAsync(ApiKey, similarityUrl, $"s1={s1}&s2={s2}");
 
             return JsonConvert.DeserializeObject<double>(response);
         }
