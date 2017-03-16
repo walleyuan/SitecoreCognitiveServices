@@ -40,6 +40,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         protected readonly ILanguageService LanguageService;
         protected readonly IContentModeratorService ContentModeratorService;
         protected readonly IAcademicSearchService AcademicSearchService;
+        protected readonly IWebLanguageModelService WebLanguageModelService;
 
         public CognitiveLaunchController(
             IVisionService visionService,
@@ -57,7 +58,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             IEntityLinkingService entityLinkingService,
             ILanguageService languageService,
             IContentModeratorService contentModeratorService,
-            IAcademicSearchService academicSearchService)
+            IAcademicSearchService academicSearchService,
+            IWebLanguageModelService webLanguageModelService)
         {
             VisionService = visionService;
             AutoSuggestService = autoSuggestService;
@@ -75,6 +77,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             LanguageService = languageService;
             ContentModeratorService = contentModeratorService;
             AcademicSearchService = academicSearchService;
+            WebLanguageModelService = webLanguageModelService;
         }
 
         #region Giphy Moderator
@@ -866,5 +869,94 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         }
 
         #endregion Academic Search
+
+        #region Web Language Model
+
+        public ActionResult WebLanguageModel()
+        {
+            return View("WebLanguageModel", new WebLanguageModelResult());
+        }
+
+        public ActionResult WebLanguageModelBreakIntoWords()
+        {
+            return WebLanguageModel();
+        }
+
+        [HttpPost]
+        public ActionResult WebLanguageModelBreakIntoWords(string text)
+        {
+            var result = WebLanguageModelService.BreakIntoWords(WebLMModelOptions.title, text);
+
+            return View("WebLanguageModel", new WebLanguageModelResult() { BreakIntoWords = result });
+        }
+
+        public ActionResult WebLanguageModelCalculateConditionalProbability()
+        {
+            return WebLanguageModel();
+        }
+
+        [HttpPost]
+        public ActionResult WebLanguageModelCalculateConditionalProbability(string phrase, string word)
+        {
+            ConditionalProbabilityRequest c = new ConditionalProbabilityRequest()
+            {
+                Queries = new List<ConditionalProbabilityQuery>()
+                {
+                    new ConditionalProbabilityQuery()
+                    {
+                        Words = phrase,
+                        Word = word
+                    }
+                }
+            };
+            var result = WebLanguageModelService.CalculateConditionalProbability(WebLMModelOptions.title, c);
+
+            return View("WebLanguageModel", new WebLanguageModelResult() { ConditionalProbability = result });
+        }
+
+        public ActionResult WebLanguageModelCalculateJointProbability()
+        {
+            return WebLanguageModel();
+        }
+
+        [HttpPost]
+        public ActionResult WebLanguageModelCalculateJointProbability(string phrase1, string phrase2)
+        {
+            JointProbabilityRequest j = new JointProbabilityRequest()
+            {
+                Queries = new List<string>() { phrase1, phrase2 }
+            };
+            var result = WebLanguageModelService.CalculateJointProbability(WebLMModelOptions.title, j);
+
+            return View("WebLanguageModel", new WebLanguageModelResult() { JointProbability = result });
+        }
+
+        public ActionResult WebLanguageModelGenerateNextWords()
+        {
+            return WebLanguageModel();
+        }
+
+        [HttpPost]
+        public ActionResult WebLanguageModelGenerateNextWords(string phrase)
+        {
+            var result = WebLanguageModelService.GenerateNextWords(WebLMModelOptions.title, phrase);
+
+            return View("WebLanguageModel", new WebLanguageModelResult() { NextWords = result });
+        }
+
+        public ActionResult WebLanguageModelListAvailable()
+        {
+            return WebLanguageModel();
+        }
+
+        [HttpPost]
+        public ActionResult WebLanguageModelListAvailable(string placeholder)
+        {
+            var result = WebLanguageModelService.ListAvailableModels();
+
+            return View("WebLanguageModel", new WebLanguageModelResult() { WebLMModels = result });
+        }
+
+        #endregion Web Language Model
     }
 }

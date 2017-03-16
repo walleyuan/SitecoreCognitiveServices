@@ -170,6 +170,7 @@
     <Compile Include="Models\ReviewResult.cs" />
     <Compile Include="Models\TermListResult.cs" />
     <Compile Include="Models\VideoResult.cs" />
+    <Compile Include="Models\WebLanguageModelResult.cs" />
     <Compile Include="Models\WorkflowResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -208,6 +209,7 @@
     <Content Include="Views\CognitiveLaunch\ContentModerator\ImageLists.cshtml" />
     <Content Include="Views\CognitiveLaunch\ContentModerator\TermLists.cshtml" />
     <Content Include="Views\CognitiveLaunch\AcademicSearch.cshtml" />
+    <Content Include="Views\CognitiveLaunch\WebLanguageModel.cshtml" />
     <None Include="Web.config" />
     <None Include="Views\Web.config" />
   </ItemGroup>
