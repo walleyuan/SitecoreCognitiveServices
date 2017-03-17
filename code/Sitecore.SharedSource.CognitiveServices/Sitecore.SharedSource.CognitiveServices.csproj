@@ -187,9 +187,9 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.20511.1437, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.IdentityModel.Tokens.Jwt.4.0.2.205111437\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.20622.1351, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.IdentityModel.Tokens.Jwt.4.0.2.206221351\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Numerics" />
@@ -540,6 +540,7 @@
     <Compile Include="Repositories\Knowledge\RecommendationsRepository.cs" />
     <Compile Include="Repositories\Language\ILinguisticRepository.cs" />
     <Compile Include="Models\Language\KeyPhraseSentimentResponse.cs" />
+    <Compile Include="Repositories\Language\TranslatorRepository.cs" />
     <Compile Include="Repositories\Language\WebLanguageModelRepository.cs" />
     <Compile Include="Repositories\Language\IWebLanguageModelRepository.cs" />
     <Compile Include="Repositories\Language\LinguisticRepository.cs" />

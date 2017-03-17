@@ -10,7 +10,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing
 {
     public class WebSearchRepository : TextClient, IWebSearchRepository
     {
-        public static readonly string webSearchUrl = "https://api.cognitive.microsoft.com/bing/v5.0/spellcheck/";
+        public static readonly string webSearchUrl = "https://api.cognitive.microsoft.com/bing/v5.0/search";
 
         public WebSearchRepository(
             IApiKeys apiKeys)
