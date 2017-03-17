@@ -4,9 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.ProjectOxford.SpeakerRecognition.Contract.Verification;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Speech;
-using CreateProfileResponse = Microsoft.ProjectOxford.SpeakerRecognition.Contract.Verification.CreateProfileResponse;
-using Enrollment = Microsoft.ProjectOxford.SpeakerRecognition.Contract.Verification.Enrollment;
-using Profile = Microsoft.ProjectOxford.SpeakerRecognition.Contract.Verification.Profile;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
 {
