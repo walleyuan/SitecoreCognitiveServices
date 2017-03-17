@@ -45,4 +45,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Enums
         [EnumMember(Value = "Video")]
         Video = 2
     }
+
+    public enum ContentModeratorVideoModeOptions { Speed, Balance, Quality }
 }
