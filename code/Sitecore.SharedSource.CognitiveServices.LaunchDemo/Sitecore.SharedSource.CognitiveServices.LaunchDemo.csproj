@@ -199,6 +199,7 @@
     <Content Include="Views\CognitiveLaunch\Sentiment.cshtml" />
     <Content Include="Views\CognitiveLaunch\Link.cshtml" />
     <None Include="Properties\PublishProfiles\sc82rev160729.pubxml" />
+    <None Include="Properties\PublishProfiles\sc82rev161115.pubxml" />
     <None Include="Properties\PublishProfiles\sc82rev161221.pubxml" />
     <Content Include="Views\CognitiveLaunch\ContentModerator\Evaluate.cshtml" />
     <Content Include="Views\CognitiveLaunch\ContentModerator\Screen.cshtml" />
