@@ -148,7 +148,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
                     var min = double.Parse(age[0]);
                     var max = double.Parse(age[1]);
 
-                    queryable = queryable.Where(r => r.AgeMin >= min && r.AgeMax <= max);
+                    if(min > 0d)
+                        queryable = queryable.Where(r => r.AgeMin >= min);
+
+                    if(max < 100d)
+                        queryable = queryable.Where(r => r.AgeMax <= max);
 
                     rangeParameters.Remove(ageKey);
                 }
