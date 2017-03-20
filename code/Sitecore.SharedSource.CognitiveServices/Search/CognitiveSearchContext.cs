@@ -112,7 +112,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             return innerPredicate.And(i => (double)i[(ObjectIndexerKey)fieldName] >= min && (double)i[(ObjectIndexerKey)fieldName] <= max);
         }
 
-        public virtual List<ICognitiveSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, string languageCode, string dbName)
+        public virtual List<ICognitiveSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, int size, string languageCode, string dbName)
         {
             var index = ContentSearchManager.GetIndex(GetIndexName(dbName));
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
@@ -151,6 +151,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
                     queryable = queryable.Where(r => r.AgeMin >= min && r.AgeMax <= max);
 
                     rangeParameters.Remove(ageKey);
+                }
+
+                if (size > 0)
+                {
+                    queryable = queryable.Where(r => r.Size >= size);
                 }
 
                 foreach (var parameter in rangeParameters)

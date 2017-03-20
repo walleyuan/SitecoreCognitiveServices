@@ -157,6 +157,7 @@ jQuery(document).ready(function () {
         var dbValue = jQuery(imageSearchForm + " #database").attr("value");
         var gender = jQuery(imageSearchForm + " #gender").val();
         var glasses = jQuery(imageSearchForm + " #glasses").val();
+        var size = jQuery(imageSearchForm + " #size").val();
 
         jQuery(rteSearchForm + " .progress-indicator").show();
         jQuery(".search-results").hide();
@@ -172,6 +173,7 @@ jQuery(document).ready(function () {
                     rangeParameters: ranges,
                     gender: gender,
                     glasses: glasses,
+                    size: size,
                     language: langValue,
                     db: dbValue
                 }

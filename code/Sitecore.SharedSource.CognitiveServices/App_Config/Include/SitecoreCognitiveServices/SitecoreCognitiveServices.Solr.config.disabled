@@ -134,6 +134,7 @@
             <field fieldName="Gender" returnType="int">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Gender,Sitecore.SharedSource.CognitiveServices</field>
             <field fieldName="Adult" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Adult.AdultScore,Sitecore.SharedSource.CognitiveServices</field>
             <field fieldName="Racy" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Adult.RacyScore,Sitecore.SharedSource.CognitiveServices</field>
+            <field fieldName="Size" returnType="int">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Size,Sitecore.SharedSource.CognitiveServices</field>
             <field fieldName="Glasses" returnType="intCollection">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Glasses,Sitecore.SharedSource.CognitiveServices</field>
 
           </fields>

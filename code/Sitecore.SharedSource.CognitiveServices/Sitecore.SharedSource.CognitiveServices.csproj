@@ -263,6 +263,7 @@
     <Compile Include="Controllers\CognitiveAnalysisController.cs" />
     <Compile Include="Enums\Academic.cs" />
     <Compile Include="Enums\Bing.cs" />
+    <Compile Include="Enums\ImageSize.cs" />
     <Compile Include="Enums\Language.cs" />
     <Compile Include="Enums\Vision.cs" />
     <Compile Include="Factories\CognitiveImageAnalysisFactory.cs" />
@@ -559,6 +560,7 @@
     <Compile Include="Search\ComputedFields\BaseComputedField.cs" />
     <Compile Include="Search\ComputedFields\Image\Adult\AdultScore.cs" />
     <Compile Include="Search\ComputedFields\Image\Adult\RacyScore.cs" />
+    <Compile Include="Search\ComputedFields\Image\Size.cs" />
     <Compile Include="Search\ComputedFields\Image\AgeMin.cs" />
     <Compile Include="Search\ComputedFields\Image\AgeMax.cs" />
     <Compile Include="Search\ComputedFields\Image\Emotions\Anger.cs" />
@@ -656,8 +658,9 @@
     <Content Include="App_Config\Include\Unicorn\Unicorn.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.AutoPublish.config" />
     <Content Include="App_Config\Include\SitecoreCognitiveServices\Unicorn.Configs.SitecoreCognitiveServices.config" />
-    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Lucene.config" />
-    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Solr.config.disabled" />
+    <None Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Lucene.config" />
+    <None Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Solr.config.disabled" />
+    <None Include="Properties\PublishProfiles\Braga.pubxml" />
     <None Include="Properties\PublishProfiles\sc82rev160729.pubxml" />
     <None Include="Properties\PublishProfiles\sc82rev161115.pubxml" />
     <None Include="Properties\PublishProfiles\sc82rev161221.pubxml" />

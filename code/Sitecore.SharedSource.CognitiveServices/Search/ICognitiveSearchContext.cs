@@ -9,7 +9,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
 
         List<ICognitiveSearchResult> GetMediaResults(string query, string languageCode, string dbName);
 
-        List<ICognitiveSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, string languageCode, string dbName);
+        List<ICognitiveSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, int size, string languageCode, string dbName);
 
         string[] GetAutocompleteResults(string term, string languageCode, string dbName);
 

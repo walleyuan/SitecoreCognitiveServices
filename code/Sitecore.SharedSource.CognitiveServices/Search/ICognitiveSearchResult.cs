@@ -1,12 +1,8 @@
 ﻿using System.Collections.Generic;
 using Microsoft.ProjectOxford.Emotion.Contract;
-using Microsoft.ProjectOxford.Text.Language;
 using Microsoft.ProjectOxford.Text.Sentiment;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.ContentSearch;
-using Sitecore.ContentSearch.Converters;
-using Sitecore.Data;
-using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.SharedSource.CognitiveServices.Models.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search
@@ -31,6 +27,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
         List<LinguisticAnalysisResult> LinguisticAnalysis { get; }
         string UniqueId { get; set; }
         int Gender { get; set; }
+        int Size { get; set; }
+
         List<int> Glasses { get; set; }
         string[] Tags { get; set; }
         double AgeMin { get; set; }

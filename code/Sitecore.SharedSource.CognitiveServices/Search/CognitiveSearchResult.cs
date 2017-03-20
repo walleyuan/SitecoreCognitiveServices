@@ -61,6 +61,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
         [IndexField("gender")]
         public int Gender { get; set; }
 
+        [IndexField("size")]
+        public int Size { get; set; }
+
         [IndexField("glasses")]
         public List<int> Glasses { get; set; }
 

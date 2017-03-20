@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Sitecore.Diagnostics;
@@ -48,6 +47,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
             Dictionary<string, string[]> rangeParameters, 
             int gender, 
             int glasses,
+            int size,
             string language, 
             string db)
         {
@@ -56,6 +56,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
                 rangeParameters, 
                 gender, 
                 glasses,
+                size,
                 language, 
                 db);
 
