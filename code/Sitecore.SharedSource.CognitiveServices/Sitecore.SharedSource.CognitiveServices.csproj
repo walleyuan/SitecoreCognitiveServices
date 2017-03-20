@@ -658,9 +658,8 @@
     <Content Include="App_Config\Include\Unicorn\Unicorn.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.AutoPublish.config" />
     <Content Include="App_Config\Include\SitecoreCognitiveServices\Unicorn.Configs.SitecoreCognitiveServices.config" />
-    <None Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Lucene.config" />
-    <None Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Solr.config.disabled" />
-    <None Include="Properties\PublishProfiles\Braga.pubxml" />
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Lucene.config" />
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Solr.config.disabled" />
     <None Include="Properties\PublishProfiles\sc82rev160729.pubxml" />
     <None Include="Properties\PublishProfiles\sc82rev161115.pubxml" />
     <None Include="Properties\PublishProfiles\sc82rev161221.pubxml" />
