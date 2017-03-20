@@ -42,33 +42,6 @@
             }
         </fieldset>
     </form>
-    <form class="form identification-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/SpeakerIdentificationGetProfile">
-        <fieldset>
-            <legend>Get Profile</legend>
-            <div class="form-row">
-                <label>Profile Id</label>
-                <input type="text" name="profileId"/>
-            </div>
-            <div class="scWizardButtons">
-                <button class="form-submit">Get Profile</button>
-            </div>
-            @if (Model.Profile != null)
-            {
-                <div>
-                    <h3>Profile</h3>
-                    <div>
-                        <label>Profile Id: </label> @Model.Profile.ProfileId
-                    </div>
-                    <div>
-                        <label>Enrollment Speech Seconds: </label> @Model.Profile.EnrollmentSpeechSeconds
-                    </div>
-                    <div>
-                        <label>Remaining Enrollment Speech Seconds: </label> @Model.Profile.RemainingEnrollmentSpeechSeconds
-                    </div>
-                </div>
-            }
-        </fieldset>
-    </form>
     <form class="form identification-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/SpeakerIdentificationCreateProfile">
         <fieldset>
             <legend>Create Profile</legend>
@@ -86,6 +59,33 @@
             {
                 <div>
                     <label>Profile Id: </label> @Model.NewProfile.ProfileId
+                </div>
+            }
+        </fieldset>
+    </form>
+    <form class="form identification-form" method="post" action="/CognitiveLaunchDemo/CognitiveLaunch/SpeakerIdentificationGetProfile">
+        <fieldset>
+            <legend>Get Profile</legend>
+            <div class="form-row">
+                <label>Profile Id</label>
+                <input type="text" name="profileId" />
+            </div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Get Profile</button>
+            </div>
+            @if (Model.Profile != null)
+            {
+                <div>
+                    <h3>Profile</h3>
+                    <div>
+                        <label>Profile Id: </label> @Model.Profile.ProfileId
+                    </div>
+                    <div>
+                        <label>Enrollment Speech Seconds: </label> @Model.Profile.EnrollmentSpeechSeconds
+                    </div>
+                    <div>
+                        <label>Remaining Enrollment Speech Seconds: </label> @Model.Profile.RemainingEnrollmentSpeechSeconds
+                    </div>
                 </div>
             }
         </fieldset>

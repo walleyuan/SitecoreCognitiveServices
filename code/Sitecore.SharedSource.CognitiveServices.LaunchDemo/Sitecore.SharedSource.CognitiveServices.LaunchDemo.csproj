@@ -173,6 +173,7 @@
     <Compile Include="Models\JobResult.cs" />
     <Compile Include="Models\ReviewResult.cs" />
     <Compile Include="Models\SpeakerIdentificationResult.cs" />
+    <Compile Include="Models\SpeakerVerificationResult.cs" />
     <Compile Include="Models\TermListResult.cs" />
     <Compile Include="Models\VideoResult.cs" />
     <Compile Include="Models\WebLanguageModelResult.cs" />

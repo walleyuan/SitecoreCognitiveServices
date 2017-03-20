@@ -84,7 +84,11 @@ textarea  { height: 200px;width: 400px;}
 .cm-term-list-form label,
 .academic-form label,
 .weblm-form label,
-.identification-form label { display: inline-block;width: 150px; }
+.identification-form label,
+.verification-form label { display: inline-block;width: 150px; }
+
+.identification-form input[type="file"],
+.verification-form input[type="file"] { display: inline-block; }
 
 .histogram { margin-bottom: 15px;border-bottom: 1px solid #cccccc;padding-bottom: 25px;}
 .histo-chart { background: #eee none repeat scroll 0 0; display: inline-block; padding: 20px 5px 5px; }

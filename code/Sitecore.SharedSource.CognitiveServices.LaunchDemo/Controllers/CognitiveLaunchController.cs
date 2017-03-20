@@ -1097,6 +1097,115 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 
         #region Speaker Verification
 
+        public ActionResult SpeakerVerification()
+        {
+            return View("SpeakerVerification", new SpeakerVerificationResult());
+        }
+
+        public ActionResult SpeakerVerificationCreateProfile()
+        {
+            return SpeakerVerification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerVerificationCreateProfile(string locale)
+        {
+            var result = SpeakerVerificationService.CreateProfile(locale);
+            
+            return View("SpeakerVerification", new SpeakerVerificationResult() { NewProfile = result });
+        }
+
+        public ActionResult SpeakerVerificationDeleteProfile()
+        {
+            return SpeakerVerification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerVerificationDeleteProfile(Guid profileId)
+        {
+            SpeakerVerificationService.DeleteProfile(profileId);
+            
+            return View("SpeakerVerification", new SpeakerVerificationResult());
+        }
+
+        public ActionResult SpeakerVerificationEnroll()
+        {
+            return SpeakerVerification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerVerificationEnroll(Guid profileId, HttpPostedFileBase file)
+        {
+            var result = SpeakerVerificationService.Enroll(file.InputStream, profileId);
+            
+            return View("SpeakerVerification", new SpeakerVerificationResult() { Enrollment = result });
+        }
+
+        public ActionResult SpeakerVerificationGetPhrases()
+        {
+            return SpeakerVerification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerVerificationGetPhrases(string locale)
+        {
+            var result = SpeakerVerificationService.GetPhrases(locale);
+            
+            return View("SpeakerVerification", new SpeakerVerificationResult() { Phrases = result });
+        }
+
+        public ActionResult SpeakerVerificationGetProfile()
+        {
+            return SpeakerVerification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerVerificationGetProfile(Guid profileId)
+        {
+            var result = SpeakerVerificationService.GetProfile(profileId);
+            
+            return View("SpeakerVerification", new SpeakerVerificationResult() { Profile = result });
+        }
+
+        public ActionResult SpeakerVerificationGetProfiles()
+        {
+            return SpeakerVerification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerVerificationGetProfiles(string placeholder)
+        {
+            var result = SpeakerVerificationService.GetProfiles();
+            
+            return View("SpeakerVerification", new SpeakerVerificationResult() { Profiles = result });
+        }
+
+        public ActionResult SpeakerVerificationResetEnrollments()
+        {
+            return SpeakerVerification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerVerificationResetEnrollments(Guid profileId)
+        {
+            SpeakerVerificationService.ResetEnrollments(profileId);
+            
+            return View("SpeakerVerification", new SpeakerVerificationResult());
+        }
+
+        public ActionResult SpeakerVerificationVerify()
+        {
+            return SpeakerVerification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerVerificationVerify(Guid profileId, HttpPostedFileBase file)
+        {
+            var result = SpeakerVerificationService.Verify(file.InputStream, profileId);
+
+            return View("SpeakerVerification", new SpeakerVerificationResult() { Verification = result });
+        }
+
         #endregion Speaker Verification
     }
 }
