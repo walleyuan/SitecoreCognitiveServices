@@ -73,6 +73,10 @@
       <HintPath>..\..\packages\Microsoft.ProjectOxford.Face.1.2.1\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Microsoft.ProjectOxford.Face.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ProjectOxford.SpeakerRecognition, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ProjectOxford.SpeakerRecognition.1.2.0\lib\portable45-net45+win8+wp8+wpa81\Microsoft.ProjectOxford.SpeakerRecognition.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.ProjectOxford.Text, Version=0.2.1.40774, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.ProjectOxford.Text.0.2.1.40774\lib\net452\Microsoft.ProjectOxford.Text.dll</HintPath>
       <Private>True</Private>
@@ -168,6 +172,7 @@
     <Compile Include="Models\ImageListResult.cs" />
     <Compile Include="Models\JobResult.cs" />
     <Compile Include="Models\ReviewResult.cs" />
+    <Compile Include="Models\SpeakerIdentificationResult.cs" />
     <Compile Include="Models\TermListResult.cs" />
     <Compile Include="Models\VideoResult.cs" />
     <Compile Include="Models\WebLanguageModelResult.cs" />
@@ -211,6 +216,8 @@
     <Content Include="Views\CognitiveLaunch\ContentModerator\TermLists.cshtml" />
     <Content Include="Views\CognitiveLaunch\AcademicSearch.cshtml" />
     <Content Include="Views\CognitiveLaunch\WebLanguageModel.cshtml" />
+    <Content Include="Views\CognitiveLaunch\SpeakerIdentification.cshtml" />
+    <Content Include="Views\CognitiveLaunch\SpeakerVerification.cshtml" />
     <None Include="Web.config" />
     <None Include="Views\Web.config" />
   </ItemGroup>

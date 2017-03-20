@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using Microsoft.ProjectOxford.Face;
+using Microsoft.ProjectOxford.SpeakerRecognition.Contract.Identification;
 using Microsoft.ProjectOxford.Text.Core;
 using Microsoft.ProjectOxford.Text.Language;
 using Microsoft.ProjectOxford.Text.Sentiment;
@@ -18,7 +20,9 @@ using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
 using Microsoft.ProjectOxford.Video.Contract;
 using Sitecore.SharedSource.CognitiveServices.Models.Knowledge;
+using Sitecore.SharedSource.CognitiveServices.Services.Speech;
 using EvaluateResponse = Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator.EvaluateResponse;
+using Operation = Microsoft.ProjectOxford.Video.Contract.Operation;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
 {
@@ -41,6 +45,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         protected readonly IContentModeratorService ContentModeratorService;
         protected readonly IAcademicSearchService AcademicSearchService;
         protected readonly IWebLanguageModelService WebLanguageModelService;
+        protected readonly ISpeakerIdentificationService SpeakerIdentificationService;
+        protected readonly ISpeakerVerificationService SpeakerVerificationService;
 
         public CognitiveLaunchController(
             IVisionService visionService,
@@ -59,7 +65,9 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             ILanguageService languageService,
             IContentModeratorService contentModeratorService,
             IAcademicSearchService academicSearchService,
-            IWebLanguageModelService webLanguageModelService)
+            IWebLanguageModelService webLanguageModelService,
+            ISpeakerIdentificationService speakerIdentificationService,
+            ISpeakerVerificationService speakerVerificationService)
         {
             VisionService = visionService;
             AutoSuggestService = autoSuggestService;
@@ -78,6 +86,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
             ContentModeratorService = contentModeratorService;
             AcademicSearchService = academicSearchService;
             WebLanguageModelService = webLanguageModelService;
+            SpeakerIdentificationService = speakerIdentificationService;
+            SpeakerVerificationService = speakerVerificationService;
         }
 
         #region Giphy Moderator
@@ -958,5 +968,135 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         }
 
         #endregion Web Language Model
+
+        #region Speaker Identification
+
+        public ActionResult SpeakerIdentification()
+        {
+            return View("SpeakerIdentification", new SpeakerIdentificationResult());
+        }
+
+        public ActionResult SpeakerIdentificationGetProfiles()
+        {
+            return SpeakerIdentification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerIdentificationGetProfiles(string placeholder)
+        {
+            var result = SpeakerIdentificationService.GetProfiles();
+            
+            return View("SpeakerIdentification", new SpeakerIdentificationResult() { Profiles = result });
+        }
+
+        public ActionResult SpeakerIdentificationGetProfile()
+        {
+            return SpeakerIdentification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerIdentificationGetProfile(Guid profileId)
+        {
+            var result = SpeakerIdentificationService.GetProfile(profileId);
+            
+            return View("SpeakerIdentification", new SpeakerIdentificationResult() { Profile = result });
+        }
+
+        public ActionResult SpeakerIdentificationCreateProfile()
+        {
+            return SpeakerIdentification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerIdentificationCreateProfile(string locale)
+        {
+            var result = SpeakerIdentificationService.CreateProfile(locale);
+            
+            return View("SpeakerIdentification", new SpeakerIdentificationResult() { NewProfile = result });
+        }
+
+        public ActionResult SpeakerIdentificationEnroll()
+        {
+            return SpeakerIdentification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerIdentificationEnroll(Guid profileId, HttpPostedFileBase file)
+        {
+            var result = SpeakerIdentificationService.Enroll(file.InputStream, profileId);
+            
+            return View("SpeakerIdentification", new SpeakerIdentificationResult() { EnrollOperation = result });
+        }
+
+        public ActionResult SpeakerIdentificationCheckIdentificationStatus()
+        {
+            return SpeakerIdentification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerIdentificationCheckIdentificationStatus(string url)
+        {
+            var result = SpeakerIdentificationService.CheckIdentificationStatus(new OperationLocation() { Url = url });
+            
+            return View("SpeakerIdentification", new SpeakerIdentificationResult() { IdentificationStatus = result });
+        }
+
+        public ActionResult SpeakerIdentificationCheckEnrollmentStatus()
+        {
+            return SpeakerIdentification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerIdentificationCheckEnrollmentStatus(string url)
+        {
+            var result = SpeakerIdentificationService.CheckEnrollmentStatus(new OperationLocation() { Url = url });
+            
+            return View("SpeakerIdentification", new SpeakerIdentificationResult() { EnrollmentStatus = result });
+        }
+
+        public ActionResult SpeakerIdentificationIdentify()
+        {
+            return SpeakerIdentification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerIdentificationIdentify(Guid profileId, HttpPostedFileBase file)
+        {
+            var result = SpeakerIdentificationService.Identify(file.InputStream, new []{ profileId });
+
+            return View("SpeakerIdentification", new SpeakerIdentificationResult() { IdentifyOperation = result });
+        }
+
+        public ActionResult SpeakerIdentificationDeleteProfile()
+        {
+            return SpeakerIdentification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerIdentificationDeleteProfile(Guid profileId)
+        {
+            SpeakerIdentificationService.DeleteProfile(profileId);
+
+            return View("SpeakerIdentification", new SpeakerIdentificationResult());
+        }
+
+        public ActionResult SpeakerIdentificationResetEnrollments()
+        {
+            return SpeakerIdentification();
+        }
+
+        [HttpPost]
+        public ActionResult SpeakerIdentificationResetEnrollments(Guid profileId)
+        {
+            SpeakerIdentificationService.ResetEnrollments(profileId);
+
+            return View("SpeakerIdentification", new SpeakerIdentificationResult());
+        }
+
+        #endregion Speaker Identification
+
+        #region Speaker Verification
+
+        #endregion Speaker Verification
     }
 }
