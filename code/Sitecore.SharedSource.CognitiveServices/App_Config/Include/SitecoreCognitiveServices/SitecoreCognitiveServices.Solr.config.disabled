@@ -129,7 +129,8 @@
             <field fieldName="Neutral" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Emotions.Neutral,Sitecore.SharedSource.CognitiveServices</field>
             <field fieldName="Sadness" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Emotions.Sadness,Sitecore.SharedSource.CognitiveServices</field>
             <field fieldName="Surprise" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Emotions.Surprise,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="Age" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Age,Sitecore.SharedSource.CognitiveServices</field>
+            <field fieldName="AgeMin" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.AgeMin,Sitecore.SharedSource.CognitiveServices</field>
+            <field fieldName="AgeMax" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.AgeMax,Sitecore.SharedSource.CognitiveServices</field>
             <field fieldName="Gender" returnType="int">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Gender,Sitecore.SharedSource.CognitiveServices</field>
             <field fieldName="Adult" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Adult.AdultScore,Sitecore.SharedSource.CognitiveServices</field>
             <field fieldName="Racy" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Adult.RacyScore,Sitecore.SharedSource.CognitiveServices</field>

@@ -20,8 +20,9 @@ jQuery(document).ready(function () {
             values: [0, 100],
             slide: function (event, ui) {
                 var parent = jQuery(this).parent('.emotion-item');
-                var rangeVal = ui.values[0] + " - " + ui.values[1] + "%";
                 var filterValue = jQuery(parent).find(".filter-value");
+                var rangeVal = ui.values[0] + " - " + ui.values[1];
+                rangeVal += (filterValue.data("field") == "age") ? "" : "%";
                 filterValue.html(rangeVal);
                 filterValue.data('min', ui.values[0]);
                 filterValue.data('max', ui.values[1]);
@@ -30,7 +31,9 @@ jQuery(document).ready(function () {
 
         var parent = jQuery(this).parent('.emotion-item');
         var filterValue = jQuery(parent).find(".filter-value");
-        filterValue.html("0 - 100%");
+        var htmlVal = "0 - 100";
+        htmlVal += (filterValue.data("field") == "age") ? "" : "%";
+        filterValue.html(htmlVal);
         filterValue.data('min', 0);
         filterValue.data('max', 100);
     });

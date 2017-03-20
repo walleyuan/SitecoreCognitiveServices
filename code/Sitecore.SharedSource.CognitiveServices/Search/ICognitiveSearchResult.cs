@@ -33,6 +33,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
         int Gender { get; set; }
         List<int> Glasses { get; set; }
         string[] Tags { get; set; }
+        double AgeMin { get; set; }
+        double AgeMax { get; set; }
         string Language { get; set; }
         string Path { get; set; }
         string TemplateName { get; set; }

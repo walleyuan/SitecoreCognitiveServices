@@ -28,7 +28,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
             var results = words.Where(w => !charList.Contains(w)).Distinct().ToArray();
 
             return (results.Any())
-                ? results.Distinct().ToArray()
+                ? results.Distinct()
                 : null;
         }
     }

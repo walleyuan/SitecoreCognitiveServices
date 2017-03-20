@@ -66,7 +66,13 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
 
         [IndexField("Tags")]
         public string[] Tags { get; set; }
-        
+
+        [IndexField("AgeMin")]
+        public double AgeMin { get; set; }
+
+        [IndexField("AgeMax")]
+        public double AgeMax { get; set; }
+
         #endregion properties
 
         private static T SaturateValue<T>(string value)

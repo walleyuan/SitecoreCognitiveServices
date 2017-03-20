@@ -96,13 +96,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             //scientific notation
             double min = double.Parse(parameterValues[0]);
             double max = double.Parse(parameterValues[1]);
-
-            if (fieldName != "age_td")
-            {
-                min = min * .01;
-                max = max * .01;
-            }
-
+            
             if (parameterValues[0] == "0")
             {
                 //place limit only on the high end
@@ -143,6 +137,20 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
                     {
                         queryable = queryable.Where(thisParamPredicate);
                     }
+                }
+
+                var hasAge = rangeParameters.Keys.Any(k => k.StartsWith("age"));
+                if (hasAge)
+                {
+                    var ageKey = rangeParameters.ContainsKey("age_td") ? "age_td" : "age";
+                    var age = rangeParameters[ageKey];
+                    
+                    var min = double.Parse(age[0]);
+                    var max = double.Parse(age[1]);
+
+                    queryable = queryable.Where(r => r.AgeMin >= min && r.AgeMax <= max);
+
+                    rangeParameters.Remove(ageKey);
                 }
 
                 foreach (var parameter in rangeParameters)
@@ -239,7 +247,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             index.Update(tempItem.UniqueId);
         }
 
-        protected string GetIndexName(string dbName)
+        protected virtual string GetIndexName(string dbName)
         {
             if (dbName == null)
             {

@@ -559,7 +559,8 @@
     <Compile Include="Search\ComputedFields\BaseComputedField.cs" />
     <Compile Include="Search\ComputedFields\Image\Adult\AdultScore.cs" />
     <Compile Include="Search\ComputedFields\Image\Adult\RacyScore.cs" />
-    <Compile Include="Search\ComputedFields\Image\Age.cs" />
+    <Compile Include="Search\ComputedFields\Image\AgeMin.cs" />
+    <Compile Include="Search\ComputedFields\Image\AgeMax.cs" />
     <Compile Include="Search\ComputedFields\Image\Emotions\Anger.cs" />
     <Compile Include="Search\ComputedFields\Image\Emotions\Contempt.cs" />
     <Compile Include="Search\ComputedFields\Image\Emotions\Disgust.cs" />
