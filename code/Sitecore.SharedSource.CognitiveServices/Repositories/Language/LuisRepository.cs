@@ -223,6 +223,42 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
 
         #region Models
 
+        public virtual async Task<List<EntityExtractorInfo>> AddPrebuiltEntityExtractorsAsync(Guid appId, string versionId, List<string> extractorNames) {
+            var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/prebuilts", JsonConvert.SerializeObject(extractorNames));
+
+            return JsonConvert.DeserializeObject<List<EntityExtractorInfo>>(response);
+        }
+
+        public virtual async Task<Guid> CreateCloseListEntityModelAsync(Guid appId, string versionId, CreateCloseListEntityModelRequest request) {
+            var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/closedlists", JsonConvert.SerializeObject(request));
+
+            return JsonConvert.DeserializeObject<Guid>(response);
+        }
+
+        public virtual async Task<Guid> CreateCompositeEntityExtractorAsync(Guid appId, string versionId, CreateStructuredEntityExtractorRequest request) {
+            var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/compositeentities", JsonConvert.SerializeObject(request));
+
+            return JsonConvert.DeserializeObject<Guid>(response);
+        }
+
+        public virtual async Task<Guid> CreateEntityExtractorAsync(Guid appId, string versionId, CreateNamedEntityRequest request) {
+            var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/entities", JsonConvert.SerializeObject(request));
+
+            return JsonConvert.DeserializeObject<Guid>(response);
+        }
+
+        public virtual async Task<Guid> CreateHeirarchicalEntityExtractorAsync(Guid appId, string versionId, CreateStructuredEntityExtractorRequest request) {
+            var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/hierarchicalentities", JsonConvert.SerializeObject(request));
+
+            return JsonConvert.DeserializeObject<Guid>(response);
+        }
+
+        public virtual async Task<Guid> CreateIntentClassifierAsync(Guid appId, string versionId, CreateNamedEntityRequest request) {
+            var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/intents", JsonConvert.SerializeObject(request));
+
+            return JsonConvert.DeserializeObject<Guid>(response);
+        }
+
         #endregion Models
 
         #region Train

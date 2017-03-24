@@ -439,8 +439,13 @@
     <Compile Include="Models\Language\Luis\AddLabelRequest.cs" />
     <Compile Include="Models\Language\Luis\ApplicationRenameRequest.cs" />
     <Compile Include="Models\Language\Luis\BatchAddLabelsResponse.cs" />
+    <Compile Include="Models\Language\Luis\CreateNamedEntityRequest.cs" />
+    <Compile Include="Models\Language\Luis\CreateCloseListEntityModelRequest.cs" />
+    <Compile Include="Models\Language\Luis\CreateStructuredEntityExtractorRequest.cs" />
+    <Compile Include="Models\Language\Luis\EntityExtractorSublist.cs" />
     <Compile Include="Models\Language\Luis\Entitylabel.cs" />
     <Compile Include="Models\Language\Luis\EntityPrediction.cs" />
+    <Compile Include="Models\Language\Luis\EntityExtractorInfo.cs" />
     <Compile Include="Models\Language\Luis\ImportApplicationRequest.cs" />
     <Compile Include="Models\Language\Luis\IntentPrediction.cs" />
     <Compile Include="Models\Language\Luis\LabeledExamples.cs" />
