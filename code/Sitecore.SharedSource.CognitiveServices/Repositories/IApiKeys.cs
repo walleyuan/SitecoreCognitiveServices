@@ -16,6 +16,7 @@ namespace Sitecore.SharedSource.CognitiveServices
         string Emotion { get; }
         string Face { get; }
         string LinguisticAnalysis { get; }
+        string Luis { get; }
         string Recommendations { get; }
         string SpeakerRecognition { get; }
         string TextAnalytics { get; }

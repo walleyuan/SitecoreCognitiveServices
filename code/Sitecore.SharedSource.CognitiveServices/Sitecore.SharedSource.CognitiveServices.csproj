@@ -538,6 +538,7 @@
     <Compile Include="Repositories\Knowledge\RecommendationsRepository.cs" />
     <Compile Include="Repositories\Language\ILinguisticRepository.cs" />
     <Compile Include="Models\Language\Sentiment\KeyPhraseSentimentResponse.cs" />
+    <Compile Include="Repositories\Language\LuisRepository.cs" />
     <Compile Include="Repositories\Language\TranslatorRepository.cs" />
     <Compile Include="Repositories\Language\WebLanguageModelRepository.cs" />
     <Compile Include="Repositories\Language\IWebLanguageModelRepository.cs" />
@@ -683,6 +684,7 @@
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Sitecore.SharedSource.CognitiveServices.js" />
     <Content Include="sitecore\shell\Controls\Rich Text Editor\RichText Commands.js" />
     <Content Include="sitecore\shell\Themes\Standard\Default\Content Manager.css" />
+    <Content Include="ReadMe.txt" />
     <Content Include="Views\CognitiveAnalysis\ImageAnalysis.cshtml" />
     <Content Include="Views\CognitiveAnalysis\TextAnalysis.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Common\Rectangle.cshtml" />
