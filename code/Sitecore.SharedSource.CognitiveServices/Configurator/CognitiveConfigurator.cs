@@ -33,6 +33,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<ISettingsWrapper, SettingsWrapper>();
             serviceCollection.AddTransient<ILogWrapper, LogWrapper>();
             serviceCollection.AddTransient<IRepositoryClient, RepositoryClient>();
+            serviceCollection.AddTransient<ICSVParser, CSVParser>();
 
             //repositories
             serviceCollection.AddTransient<IEmotionRepository, EmotionRepository>();
