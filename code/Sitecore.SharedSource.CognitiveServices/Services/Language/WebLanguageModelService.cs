@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Models.Language;
+using Sitecore.SharedSource.CognitiveServices.Models.Language.WebLanguageModel;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Language

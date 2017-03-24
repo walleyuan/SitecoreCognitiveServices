@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Models.Bing;
+using Sitecore.SharedSource.CognitiveServices.Models.Bing.ImageSearch;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing {
     public interface IImageSearchRepository

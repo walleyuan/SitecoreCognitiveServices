@@ -4,6 +4,7 @@ using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
 using Sitecore.SharedSource.CognitiveServices.Models.Language;
+using Sitecore.SharedSource.CognitiveServices.Models.Language.Linguistic;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Language
 {

@@ -3,6 +3,7 @@ using Microsoft.ProjectOxford.Text.Sentiment;
 using Microsoft.ProjectOxford.Video.Contract;
 using Newtonsoft.Json;
 using Sitecore.SharedSource.CognitiveServices.Models.Language;
+using Sitecore.SharedSource.CognitiveServices.Models.Language.Sentiment;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
 {

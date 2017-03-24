@@ -5,6 +5,7 @@ using Microsoft.ProjectOxford.Text.Core;
 using Newtonsoft.Json;
 using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Models.Bing;
+using Sitecore.SharedSource.CognitiveServices.Models.Bing.WebSearch;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing
 {

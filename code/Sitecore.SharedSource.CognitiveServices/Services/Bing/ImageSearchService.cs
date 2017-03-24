@@ -7,6 +7,7 @@ using Sitecore.SharedSource.CognitiveServices.Models.Bing;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Bing;
 using System.Threading.Tasks;
 using Sitecore.SharedSource.CognitiveServices.Enums;
+using Sitecore.SharedSource.CognitiveServices.Models.Bing.ImageSearch;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
 {

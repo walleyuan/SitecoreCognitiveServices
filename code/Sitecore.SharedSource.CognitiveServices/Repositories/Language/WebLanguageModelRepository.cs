@@ -3,6 +3,7 @@ using Microsoft.ProjectOxford.Text.Core;
 using Newtonsoft.Json;
 using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Models.Language;
+using Sitecore.SharedSource.CognitiveServices.Models.Language.WebLanguageModel;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
     public class WebLanguageModelRepository : TextClient, IWebLanguageModelRepository {

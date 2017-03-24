@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models.Bing;
+using Sitecore.SharedSource.CognitiveServices.Models.Bing.ImageSearch;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing
 {

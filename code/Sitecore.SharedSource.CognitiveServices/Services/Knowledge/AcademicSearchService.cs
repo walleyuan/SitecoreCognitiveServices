@@ -6,6 +6,7 @@ using System.Web;
 using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models.Knowledge;
+using Sitecore.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge

@@ -1,5 +1,6 @@
 ﻿using Sitecore.SharedSource.CognitiveServices.Models.Bing;
 using Sitecore.SharedSource.CognitiveServices.Enums;
+using Sitecore.SharedSource.CognitiveServices.Models.Bing.SpellCheck;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
 {

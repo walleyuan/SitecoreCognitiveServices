@@ -1,5 +1,6 @@
 ﻿using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Models.Knowledge;
+using Sitecore.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
 {

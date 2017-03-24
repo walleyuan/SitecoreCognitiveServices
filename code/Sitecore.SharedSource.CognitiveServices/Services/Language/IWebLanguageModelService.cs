@@ -1,5 +1,6 @@
 ﻿using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Models.Language;
+using Sitecore.SharedSource.CognitiveServices.Models.Language.WebLanguageModel;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Language
 {

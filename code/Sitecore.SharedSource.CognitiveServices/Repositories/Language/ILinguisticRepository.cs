@@ -3,6 +3,7 @@ using Sitecore.SharedSource.CognitiveServices.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sitecore.SharedSource.CognitiveServices.Models.Language;
+using Sitecore.SharedSource.CognitiveServices.Models.Language.Linguistic;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language
 {

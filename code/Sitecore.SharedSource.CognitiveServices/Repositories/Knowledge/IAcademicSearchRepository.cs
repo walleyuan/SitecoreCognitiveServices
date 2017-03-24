@@ -1,6 +1,7 @@
 ﻿using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Models.Knowledge;
 using System.Threading.Tasks;
+using Sitecore.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge {
     public interface IAcademicSearchRepository

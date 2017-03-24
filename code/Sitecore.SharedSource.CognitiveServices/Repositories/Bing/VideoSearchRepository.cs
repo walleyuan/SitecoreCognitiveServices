@@ -5,6 +5,7 @@ using Microsoft.ProjectOxford.Text.Core;
 using Newtonsoft.Json;
 using Sitecore.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Models.Bing;
+using Sitecore.SharedSource.CognitiveServices.Models.Bing.VideoSearch;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Bing {
     public class VideoSearchRepository : TextClient, IVideoSearchRepository {
