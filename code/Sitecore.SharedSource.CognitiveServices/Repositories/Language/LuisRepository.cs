@@ -166,17 +166,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
         }
 
         public virtual async Task<ApplicationFeaturesResponse> GetApplicationVersionFeaturesAsync(Guid appId, string versionId, int skip = 0, int take = 100) {
-
-            StringBuilder sb = new StringBuilder();
-            if (skip > 0)
-                sb.Append($"?skip={skip}");
-
-            if (take != 100) {
-                var concat = (sb.Length > 0) ? "&" : "?";
-                sb.Append($"{concat}take={take}");
-            }
-
-            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/feature{sb}");
+            
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/feature{GetSkipTakeQuerystring(skip, take)}");
 
             return JsonConvert.DeserializeObject<ApplicationFeaturesResponse>(response);
         }
@@ -258,6 +249,42 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
 
             return JsonConvert.DeserializeObject<Guid>(response);
         }
+
+        public virtual async Task DeleteClosedListEntityModelAsync(Guid appId, string versionId, Guid closeListEntityId) {
+            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/closedlists/{closeListEntityId}");
+        }
+
+        public virtual async Task DeleteCompositeEntityModelAsync(Guid appId, string versionId, Guid compositeEntityId) {
+            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/compositeentities/{compositeEntityId}");
+        }
+
+        public virtual async Task DeleteEntityModelAsync(Guid appId, string versionId, Guid entityId) {
+            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/entities/{entityId}");
+        }
+
+        public virtual async Task DeleteHierarchicalEntityModelAsync(Guid appId, string versionId, Guid heirarchicalEntityId) {
+            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/hierarchicalentities/{heirarchicalEntityId}");
+        }
+
+        public virtual async Task DeleteIntentModelAsync(Guid appId, string versionId, Guid intentId) {
+            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/intents/{intentId}");
+        }
+
+        public virtual async Task DeletePrebuiltModelAsync(Guid appId, string versionId, Guid prebuiltId) {
+            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/prebuilts/{prebuiltId}");
+        }
+
+        public virtual async Task DeletePrebuiltModelAsync(Guid appId, string versionId, Guid closedListEntityId, int sublistId) {
+            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/closedlists/{closedListEntityId}/sublists/{sublistId}");
+        }
+
+        public virtual async Task<EntityExtractorInfo> GetApplicationVersionClosedListInfosAsync(Guid appId, string versionId, int skip = 0, int take = 100) {
+            
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/closedlists{GetSkipTakeQuerystring(skip, take)}");
+
+            return JsonConvert.DeserializeObject<EntityExtractorInfo>(response);
+        }
+
 
         #endregion Models
 

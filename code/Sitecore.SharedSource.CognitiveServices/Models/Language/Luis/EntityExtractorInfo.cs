@@ -9,5 +9,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Models.Language.Luis {
         public string Name { get; set; }
         public int TypeId { get; set; }
         public string ReadableType { get; set; }
+        public List<EntityExtractorSublist> Sublists { get; set; }
     }
 }
