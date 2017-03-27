@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Language.Luis {
-    public class CreateStructuredEntityExtractorRequest {
+    public class EntityInfo {
+        public string Id { get; set; }
         public string Name { get; set; }
-        public string[] Children { get; set; }
+        public int TypeId { get; set; }
+        public string ReadableType { get; set; }
     }
 }

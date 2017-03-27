@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Language.Luis {
-    public class CreateCloseListEntityModelRequest {
+    public class CloseListEntityRequest {
         public string Name { get; set; }
-        public EntityExtractorSublist[] Sublists { get; set; }
+        public ClosedListEntity[] Sublists { get; set; }
     }
 }

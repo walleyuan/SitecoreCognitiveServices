@@ -25,8 +25,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
             CSVParser = csvParser;
         }
 
-        public string GetSkipTakeQuerystring(int skip, int take)
-        {
+        public string GetSkipTakeQuerystring(int skip, int take) {
             StringBuilder sb = new StringBuilder();
             if (skip > 0)
                 sb.Append($"?skip={skip}");
@@ -88,7 +87,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
         }
 
         public virtual async Task<List<UserApplication>> GetUserApplicationsAsync(int skip = 0, int take = 100) {
-            
+
             var response = await SendGetAsync($"{luisUrl}{GetSkipTakeQuerystring(skip, take)}");
 
             return JsonConvert.DeserializeObject<List<UserApplication>>(response);
@@ -116,15 +115,13 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
 
         #region Examples
 
-        public virtual async Task<AddLabelResponse> AddLabelAsync(Guid appId, string versionId, AddLabelRequest request) 
-        {
+        public virtual async Task<AddLabelResponse> AddLabelAsync(Guid appId, string versionId, AddLabelRequest request) {
             var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/example", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<AddLabelResponse>(response);
         }
 
-        public virtual async Task<List<BatchAddLabelsResponse>> BatchAddLabelsAsync(Guid appId, string versionId, List<AddLabelRequest> request) 
-        {
+        public virtual async Task<List<BatchAddLabelsResponse>> BatchAddLabelsAsync(Guid appId, string versionId, List<AddLabelRequest> request) {
             var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/examples", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<List<BatchAddLabelsResponse>>(response);
@@ -134,8 +131,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
             var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/examples/{exampleId}");
         }
 
-        public virtual async Task<List<LabeledExamples>>  ReviewLabeledExamplesAsync(Guid appId, string versionId, int skip = 0, int take = 100) {
-            
+        public virtual async Task<List<LabeledExamples>> ReviewLabeledExamplesAsync(Guid appId, string versionId, int skip = 0, int take = 100) {
+
             var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/examples{GetSkipTakeQuerystring(skip, take)}");
 
             return JsonConvert.DeserializeObject<List<LabeledExamples>>(response);
@@ -166,14 +163,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
         }
 
         public virtual async Task<ApplicationFeaturesResponse> GetApplicationVersionFeaturesAsync(Guid appId, string versionId, int skip = 0, int take = 100) {
-            
+
             var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/feature{GetSkipTakeQuerystring(skip, take)}");
 
             return JsonConvert.DeserializeObject<ApplicationFeaturesResponse>(response);
         }
 
         public virtual async Task<List<PatternFeature>> GetApplicationVersionPatternFeaturesAsync(Guid appId, string versionId, int skip = 0, int take = 100) {
-            
+
             var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/patterns{GetSkipTakeQuerystring(skip, take)}");
 
             return JsonConvert.DeserializeObject<List<PatternFeature>>(response);
@@ -214,37 +211,37 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
 
         #region Models
 
-        public virtual async Task<List<EntityExtractorInfo>> AddPrebuiltEntityExtractorsAsync(Guid appId, string versionId, List<string> extractorNames) {
+        public virtual async Task<List<EntityInfo>> AddPrebuiltEntityExtractorsAsync(Guid appId, string versionId, List<string> extractorNames) {
             var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/prebuilts", JsonConvert.SerializeObject(extractorNames));
 
-            return JsonConvert.DeserializeObject<List<EntityExtractorInfo>>(response);
+            return JsonConvert.DeserializeObject<List<ClosedListEntityInfo>>(response);
         }
 
-        public virtual async Task<Guid> CreateCloseListEntityModelAsync(Guid appId, string versionId, CreateCloseListEntityModelRequest request) {
+        public virtual async Task<Guid> CreateCloseListEntityModelAsync(Guid appId, string versionId, CloseListEntityRequest request) {
             var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/closedlists", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<Guid>(response);
         }
 
-        public virtual async Task<Guid> CreateCompositeEntityExtractorAsync(Guid appId, string versionId, CreateStructuredEntityExtractorRequest request) {
+        public virtual async Task<Guid> CreateCompositeEntityExtractorAsync(Guid appId, string versionId, ComplexEntityRequest request) {
             var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/compositeentities", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<Guid>(response);
         }
 
-        public virtual async Task<Guid> CreateEntityExtractorAsync(Guid appId, string versionId, CreateNamedEntityRequest request) {
+        public virtual async Task<Guid> CreateEntityExtractorAsync(Guid appId, string versionId, NamedEntityRequest request) {
             var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/entities", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<Guid>(response);
         }
 
-        public virtual async Task<Guid> CreateHeirarchicalEntityExtractorAsync(Guid appId, string versionId, CreateStructuredEntityExtractorRequest request) {
+        public virtual async Task<Guid> CreateHeirarchicalEntityExtractorAsync(Guid appId, string versionId, ComplexEntityRequest request) {
             var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/hierarchicalentities", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<Guid>(response);
         }
 
-        public virtual async Task<Guid> CreateIntentClassifierAsync(Guid appId, string versionId, CreateNamedEntityRequest request) {
+        public virtual async Task<Guid> CreateIntentClassifierAsync(Guid appId, string versionId, NamedEntityRequest request) {
             var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/intents", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<Guid>(response);
@@ -278,18 +275,172 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
             var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/closedlists/{closedListEntityId}/sublists/{sublistId}");
         }
 
-        public virtual async Task<EntityExtractorInfo> GetApplicationVersionClosedListInfosAsync(Guid appId, string versionId, int skip = 0, int take = 100) {
-            
+        public virtual async Task<ClosedListEntityInfo> GetApplicationVersionClosedListInfosAsync(Guid appId, string versionId, int skip = 0, int take = 100) {
+
             var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/closedlists{GetSkipTakeQuerystring(skip, take)}");
 
-            return JsonConvert.DeserializeObject<EntityExtractorInfo>(response);
+            return JsonConvert.DeserializeObject<ClosedListEntityInfo>(response);
         }
 
+        public virtual async Task<ComplexEntityInfo> GetApplicationVersionCompositeEntityInfosAsync(Guid appId, string versionId, int skip = 0, int take = 100) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/compositeentities{GetSkipTakeQuerystring(skip, take)}");
+
+            return JsonConvert.DeserializeObject<ComplexEntityInfo>(response);
+        }
+
+        public virtual async Task<List<EntityInfo>> GetApplicationVersionEntityInfosAsync(Guid appId, string versionId, int skip = 0, int take = 100) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/entities{GetSkipTakeQuerystring(skip, take)}");
+
+            return JsonConvert.DeserializeObject<List<EntityInfo>>(response);
+        }
+
+        public virtual async Task<List<ComplexEntityInfo>> GetApplicationVersionHeirarchicalEntityInfosAsync(Guid appId, string versionId, int skip = 0, int take = 100) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/hierarchicalentities{GetSkipTakeQuerystring(skip, take)}");
+
+            return JsonConvert.DeserializeObject<List<ComplexEntityInfo>>(response);
+        }
+
+        public virtual async Task<List<EntityInfo>> GetApplicationVersionIntentInfosAsync(Guid appId, string versionId, int skip = 0, int take = 100) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/intents{GetSkipTakeQuerystring(skip, take)}");
+
+            return JsonConvert.DeserializeObject<List<EntityInfo>>(response);
+        }
+
+        public virtual async Task<List<EntityInfo>> GetApplicationVersionModelInfosAsync(Guid appId, string versionId, int skip = 0, int take = 100) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/models{GetSkipTakeQuerystring(skip, take)}");
+
+            return JsonConvert.DeserializeObject<List<EntityInfo>>(response);
+        }
+
+        public virtual async Task<List<EntityInfo>> GetApplicationVersionPrebuiltInfosAsync(Guid appId, string versionId, int skip = 0, int take = 100) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/prebuilts{GetSkipTakeQuerystring(skip, take)}");
+
+            return JsonConvert.DeserializeObject<List<EntityInfo>>(response);
+        }
+
+        public virtual async Task<List<PrebuiltEntity>> GetAvailablePrebuiltEntityExtractorsAsync(Guid appId, string versionId) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/listprebuilts");
+
+            return JsonConvert.DeserializeObject<List<PrebuiltEntity>>(response);
+        }
+
+        public virtual async Task<ClosedListEntityInfo> GetCloseListEntityInfoAsync(Guid appId, string versionId, Guid closeListEntityId) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/closedlists/{closeListEntityId}");
+
+            return JsonConvert.DeserializeObject<ClosedListEntityInfo>(response);
+        }
+
+        public virtual async Task<ComplexEntityInfo> GetCompositeEntityInfoAsync(Guid appId, string versionId, Guid compositeEntityId) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/compositeentities/{compositeEntityId}");
+
+            return JsonConvert.DeserializeObject<ComplexEntityInfo>(response);
+        }
+
+        public virtual async Task<EntityInfo> GetEntityInfoAsync(Guid appId, string versionId, Guid entityId) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/entities/{entityId}");
+
+            return JsonConvert.DeserializeObject<EntityInfo>(response);
+        }
+
+        public virtual async Task<ComplexEntityInfo> GetHeirarchicalEntityInfoAsync(Guid appId, string versionId, Guid heirarchicalEntityId) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/hierarchicalentities/{heirarchicalEntityId}");
+
+            return JsonConvert.DeserializeObject<ComplexEntityInfo>(response);
+        }
+
+        public virtual async Task<EntityInfo> GetIntentInfoAsync(Guid appId, string versionId, Guid intentId) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/intents/{intentId}");
+
+            return JsonConvert.DeserializeObject<EntityInfo>(response);
+        }
+
+        public virtual async Task<EntityInfo> GetPrebuiltInfoAsync(Guid appId, string versionId, Guid prebuiltId) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/prebuilts/{prebuiltId}");
+
+            return JsonConvert.DeserializeObject<EntityInfo>(response);
+        }
+
+        public virtual async Task PatchCloseListEntityModelAsync(Guid appId, string versionId, Guid closedListEntityId, PatchClosedListEntityModelRequest request) {
+
+            var response = await RepositoryClient.SendJsonPatchAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/closedlists/{closedListEntityId}", JsonConvert.SerializeObject(request));
+        }
+
+        public virtual async Task RenameEntityModelAsync(Guid appId, string versionId, Guid entityId, NamedEntityRequest request) {
+
+            var response = await RepositoryClient.SendJsonPutAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/entities/{entityId}", JsonConvert.SerializeObject(request));
+        }
+
+        public virtual async Task RenameIntentModelAsync(Guid appId, string versionId, Guid intentId, NamedEntityRequest request) {
+
+            var response = await RepositoryClient.SendJsonPutAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/intents/{intentId}", JsonConvert.SerializeObject(request));
+        }
+
+        public virtual async Task<List<LabeledExamples>> SuggestEndpointQueriesForEntitiesAsync(Guid appId, string versionId, Guid entityId, int take = 10) {
+
+            StringBuilder sb = new StringBuilder();
+            if (take != 10 && take > 0)
+                sb.Append($"?take={take}");
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/entities/{entityId}/suggest{sb}");
+
+            return JsonConvert.DeserializeObject<List<LabeledExamples>>(response);
+        }
+
+        public virtual async Task<List<LabeledExamples>> SuggestEndpointQueriesForIntentsAsync(Guid appId, string versionId, Guid intentId, int take = 10) {
+
+            StringBuilder sb = new StringBuilder();
+            if (take != 10 && take > 0)
+                sb.Append($"?take={take}");
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/intents/{intentId}/suggest{sb}");
+
+            return JsonConvert.DeserializeObject<List<LabeledExamples>>(response);
+        }
+
+        public virtual async Task UpdateClosedListEntityModelAsync(Guid appId, string versionId, Guid closedListEntityId, CloseListEntityRequest request) {
+
+            var response = await RepositoryClient.SendJsonPutAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/closedlists/{closedListEntityId}", JsonConvert.SerializeObject(request));
+        }
+
+        public virtual async Task UpdateCompositeEntityModelAsync(Guid appId, string versionId, Guid compositeEntityId, ComplexEntityRequest request) {
+
+            var response = await RepositoryClient.SendJsonPutAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/compositeentities/{compositeEntityId}", JsonConvert.SerializeObject(request));
+        }
+
+        public virtual async Task UpdateHeirarchicalEntityModelAsync(Guid appId, string versionId, Guid heirarchicalEntityId, ComplexEntityRequest request) {
+
+            var response = await RepositoryClient.SendJsonPutAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/hierarchicalentities/{heirarchicalEntityId}", JsonConvert.SerializeObject(request));
+        }
 
         #endregion Models
 
         #region Train
 
+        public virtual async Task<List<ModelTrainingStatus>> GetApplicationVersionTrainingStatusAsync(Guid appId, string versionId) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/train");
+
+            return JsonConvert.DeserializeObject<List<ModelTrainingStatus>>(response);
+        }
+
+        public virtual async Task TrainApplicationVersionAsync(Guid appId, string versionId) {
+
+            var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/train");
+        }
+        
         #endregion Train
 
         #region User

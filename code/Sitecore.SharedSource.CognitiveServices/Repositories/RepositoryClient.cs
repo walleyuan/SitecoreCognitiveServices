@@ -45,6 +45,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
             return await SendAsync(apiKey, url, data, "application/json", "PUT");
         }
 
+        public virtual async Task<string> SendJsonPatchAsync(string apiKey, string url, string data) {
+            return await SendAsync(apiKey, url, data, "application/json", "PATCH");
+        }
+
         public virtual async Task<string> SendJsonDeleteAsync(string apiKey, string url)
         {
             return await SendAsync(apiKey, url, "", "application/json", "DELETE");
