@@ -96,7 +96,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
             return JsonConvert.DeserializeObject<List<UserApplication>>(response);
         }
 
-        public virtual async Task<string> ImportApplicationAsync(ImportApplicationRequest request, string appName = "") {
+        public virtual async Task<string> ImportApplicationAsync(ApplicationDefinition request, string appName = "") {
             var appQS = string.IsNullOrEmpty(appName) ? "" : $"?appName={appName}";
 
             var response = await SendPostAsync($"{luisUrl}import{appQS}", JsonConvert.SerializeObject(request));
@@ -110,7 +110,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
             return JsonConvert.DeserializeObject<PublishResponse>(response);
         }
 
-        public virtual async Task RenameApplication(Guid appId, ApplicationRenameRequest request) {
+        public virtual async Task RenameApplicationAsync(Guid appId, ApplicationRenameRequest request) {
             var response = await RepositoryClient.SendJsonPutAsync(ApiKey, $"{luisUrl}{appId}", JsonConvert.SerializeObject(request));
         }
 
@@ -217,10 +217,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
         public virtual async Task<List<EntityInfo>> AddPrebuiltEntityExtractorsAsync(Guid appId, string versionId, List<string> extractorNames) {
             var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/prebuilts", JsonConvert.SerializeObject(extractorNames));
 
-            return JsonConvert.DeserializeObject<List<ClosedListEntityInfo>>(response);
+            return JsonConvert.DeserializeObject<List<EntityInfo>>(response);
         }
 
-        public virtual async Task<Guid> CreateCloseListEntityModelAsync(Guid appId, string versionId, CloseListEntityRequest request) {
+        public virtual async Task<Guid> CreateClosedListEntityModelAsync(Guid appId, string versionId, ClosedListEntityRequest request) {
             var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/closedlists", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<Guid>(response);
@@ -250,8 +250,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
             return JsonConvert.DeserializeObject<Guid>(response);
         }
 
-        public virtual async Task DeleteClosedListEntityModelAsync(Guid appId, string versionId, Guid closeListEntityId) {
-            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/closedlists/{closeListEntityId}");
+        public virtual async Task DeleteClosedListEntityModelAsync(Guid appId, string versionId, Guid closedListEntityId) {
+            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/closedlists/{closedListEntityId}");
         }
 
         public virtual async Task DeleteCompositeEntityModelAsync(Guid appId, string versionId, Guid compositeEntityId) {
@@ -334,9 +334,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
             return JsonConvert.DeserializeObject<List<PrebuiltEntity>>(response);
         }
 
-        public virtual async Task<ClosedListEntityInfo> GetCloseListEntityInfoAsync(Guid appId, string versionId, Guid closeListEntityId) {
+        public virtual async Task<ClosedListEntityInfo> GetClosedListEntityInfoAsync(Guid appId, string versionId, Guid closedListEntityId) {
 
-            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/closedlists/{closeListEntityId}");
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/closedlists/{closedListEntityId}");
 
             return JsonConvert.DeserializeObject<ClosedListEntityInfo>(response);
         }
@@ -376,7 +376,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
             return JsonConvert.DeserializeObject<EntityInfo>(response);
         }
 
-        public virtual async Task PatchCloseListEntityModelAsync(Guid appId, string versionId, Guid closedListEntityId, PatchClosedListEntityModelRequest request) {
+        public virtual async Task PatchClosedListEntityModelAsync(Guid appId, string versionId, Guid closedListEntityId, PatchClosedListEntityModelRequest request) {
 
             var response = await RepositoryClient.SendJsonPatchAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/closedlists/{closedListEntityId}", JsonConvert.SerializeObject(request));
         }
@@ -413,7 +413,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
             return JsonConvert.DeserializeObject<List<LabeledExamples>>(response);
         }
 
-        public virtual async Task UpdateClosedListEntityModelAsync(Guid appId, string versionId, Guid closedListEntityId, CloseListEntityRequest request) {
+        public virtual async Task UpdateClosedListEntityModelAsync(Guid appId, string versionId, Guid closedListEntityId, ClosedListEntityRequest request) {
 
             var response = await RepositoryClient.SendJsonPutAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/closedlists/{closedListEntityId}", JsonConvert.SerializeObject(request));
         }
