@@ -11,6 +11,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
     public class LuisRepository : TextClient, ILuisRepository {
 
         protected static readonly string luisUrl = "https://westus.api.cognitive.microsoft.com/luis/api/v2.0/apps/";
+        protected static readonly string luisApiKeyUrl = "https://westus.api.cognitive.microsoft.com/luis/api/v2.0/externalKeys/";
+        protected static readonly string luisSubKeyUrl = "https://westus.api.cognitive.microsoft.com/luis/api/v2.0/subscriptions/";
+        protected static readonly string luisProgKeyUrl = "https://westus.api.cognitive.microsoft.com/luis/api/v2.0/programmatickey";
 
         protected readonly IRepositoryClient RepositoryClient;
         protected readonly ICSVParser CSVParser;
@@ -440,14 +443,129 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
 
             var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/train");
         }
-        
+
         #endregion Train
 
         #region User
 
+        public virtual async Task AddExternalApiKeyAsync(ExternalApiKeyRequest request) {
+
+            var response = await SendPostAsync(luisApiKeyUrl, JsonConvert.SerializeObject(request));
+        }
+
+        public virtual async Task AddSubscriptionKeyAsync(SubscriptionKeySet request) {
+
+            var response = await SendPostAsync(luisSubKeyUrl, JsonConvert.SerializeObject(request));
+        }
+
+        public virtual async Task DeleteExternalApiKeyAsync(string externalApiKey) {
+
+            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisApiKeyUrl}{externalApiKey}");
+        }
+
+        public virtual async Task DeleteSubscriptionKeyAsync(string subscriptionKey) {
+
+            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisSubKeyUrl}{subscriptionKey}");
+        }
+
+        public virtual async Task<ExternalApiKeySet> GetExternalApiKeyAsync() {
+
+            var response = await SendGetAsync(luisApiKeyUrl);
+
+            return JsonConvert.DeserializeObject<ExternalApiKeySet>(response);
+        }
+
+        public virtual async Task<List<SubscriptionKeySet>> GetSubscriptionKeyAsync() {
+
+            var response = await SendGetAsync(luisApiKeyUrl);
+
+            return JsonConvert.DeserializeObject<List<SubscriptionKeySet>>(response);
+        }
+
+        public virtual async Task<string> ResetProgrammaticKeyAsync() {
+
+            var response = await RepositoryClient.SendJsonPutAsync(ApiKey, luisProgKeyUrl, "");
+
+            return JsonConvert.DeserializeObject<string>(response);
+        }
+
         #endregion User
 
         #region Versions
+
+        public virtual async Task AssignSubscriptionKeyToVersionAsync(Guid appId, string versionId, string subscriptionKey) {
+            var response = await RepositoryClient.SendJsonPutAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/assignedkey", subscriptionKey);
+        }
+
+        public virtual async Task<string> CloneVersionAsync(Guid appId, string versionId, VersionRequest request) {
+            var response = await SendPostAsync($"{luisUrl}{appId}/versions/{versionId}/clone", JsonConvert.SerializeObject(request));
+
+            return JsonConvert.DeserializeObject<string>(response);
+        }
+
+        public virtual async Task DeleteApplicationVersionAsync(Guid appId, string versionId) {
+            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}");
+        }
+
+        public virtual async Task DeleteApplicationVersionExternalKeyAsync(Guid appId, string versionId, string keyType) {
+            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/externalKeys/{keyType}");
+        }
+
+        public virtual async Task<ApplicationDefinition> ExportApplicationVersoinAsync(Guid appId, string versionId) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/export");
+
+            return JsonConvert.DeserializeObject<ApplicationDefinition>(response);
+        }
+
+        public virtual async Task<ApplicationVersion> GetApplicationVersionAsync(Guid appId, string versionId) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}");
+
+            return JsonConvert.DeserializeObject<ApplicationVersion>(response);
+        }
+
+        public virtual async Task<List<ExternalApiKeySet>> GetApplicationVersionExternalApiKeysAsync(Guid appId, string versionId) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}");
+
+            return JsonConvert.DeserializeObject<List<ExternalApiKeySet>>(response);
+        }
+
+        public virtual async Task<SubscriptionKeySet> GetApplicationVersionSubscriptionKeysAsync(Guid appId, string versionId) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/assignedkey");
+
+            return JsonConvert.DeserializeObject<SubscriptionKeySet>(response);
+        }
+
+        public virtual async Task<List<ApplicationVersion>> GetApplicationVersionsAsync(Guid appId, int skip = 0, int take = 100) {
+
+            var response = await SendGetAsync($"{luisUrl}{appId}/versions{GetSkipTakeQuerystring(skip, take)}");
+
+            return JsonConvert.DeserializeObject<List<ApplicationVersion>>(response);
+        }
+
+        public virtual async Task<string> GetApplicationVersionsAsync(Guid appId, ApplicationDefinition definition, string versionId = "") {
+
+            StringBuilder sb = new StringBuilder();
+            if (!string.IsNullOrEmpty(versionId))
+                sb.Append($"versionId={versionId}");
+
+            var response = await SendPostAsync($"{luisUrl}{appId}/versions/import{sb}", JsonConvert.SerializeObject(definition));
+
+            return JsonConvert.DeserializeObject<string>(response);
+        }
+
+        public virtual async Task RenameApplicationVersionAsync(Guid appId, string versionId, VersionRequest request) {
+
+            var response = await RepositoryClient.SendJsonPutAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}", JsonConvert.SerializeObject(request));
+        }
+
+        public virtual async Task UpdateApplicationVersionExternalKeyAsync(Guid appId, string versionId, ExternalApiKeyRequest request) {
+
+            var response = await RepositoryClient.SendJsonPutAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/externalKeys", JsonConvert.SerializeObject(request));
+        }
 
         #endregion Versions
     }

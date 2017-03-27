@@ -5,7 +5,7 @@ using System.Web;
 using Newtonsoft.Json;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Language.Luis {
-    public class ImportApplicationRequest {
+    public class ApplicationDefinition {
         [JsonProperty(PropertyName = "luis_schema_version")]
         public string LuisSchemaVersion { get; set; }
         public string Name { get; set; }
