@@ -2,6 +2,7 @@
 using Microsoft.ProjectOxford.EntityLinking.Contract;
 using NUnit.Framework;
 using Sitecore.SharedSource.CognitiveServices.Models;
+using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
 using Sitecore.SharedSource.CognitiveServices.Models.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Tests.Models

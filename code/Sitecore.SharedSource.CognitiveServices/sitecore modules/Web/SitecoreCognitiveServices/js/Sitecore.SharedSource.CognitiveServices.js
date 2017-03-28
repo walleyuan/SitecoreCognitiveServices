@@ -250,7 +250,37 @@ jQuery(document).ready(function () {
     }
 
     //get results for the first load
-    RunQuery();
+    if (jQuery(imageSearchForm).length)
+        RunQuery();
+
+    //ole chat
+    var chatInput = ".chat-input";
+    var chatForm = ".chat-form";
+    var chatConversation = ".chat-conversation";
+    
+    //sends chat text on 'enter-press' on the form
+    jQuery(chatForm + " .chat-submit")
+        .click(function (event) {
+            event.preventDefault();
+            var queryValue = jQuery(chatInput).val();
+            jQuery(chatInput).val("");
+            UpdateChatWindow(queryValue, "user");
+
+            jQuery.post(
+                jQuery(chatForm).attr("action"),
+                {
+                    query: queryValue
+                }).done(function (r) {
+                    UpdateChatWindow(r, "bot");
+                }
+            );
+        });
+
+    function UpdateChatWindow(text, type) {
+        var convoBox = jQuery(chatConversation);
+        convoBox.append("<div class='" + type + "'>" + text + "</div>");
+        convoBox.scrollTop(convoBox[0].scrollHeight - convoBox.height());
+    }
 });
 
 //closes the search modal and passes value back to the RTE

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using System.Web;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language { 
-    public interface ILuisRepository { 
-
+    public interface ILuisRepository
+    {
+        Task<QueryResult> QueryAsync(Guid appId, string query);
         Task<string> AddApplicationAsync(AddApplicationRequest request);
         Task DeleteApplicationAsync(Guid appId);
         Task<List<List<string>>> DownloadApplicationQueryLogsAsync(Guid appId);

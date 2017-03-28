@@ -8,13 +8,16 @@ using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models.Language.Luis;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
-    public class LuisRepository : TextClient, ILuisRepository {
+    public class LuisRepository : TextClient, ILuisRepository
+    {
 
-        protected static readonly string luisUrl = "https://westus.api.cognitive.microsoft.com/luis/api/v2.0/apps/";
-        protected static readonly string luisApiKeyUrl = "https://westus.api.cognitive.microsoft.com/luis/api/v2.0/externalKeys/";
-        protected static readonly string luisSubKeyUrl = "https://westus.api.cognitive.microsoft.com/luis/api/v2.0/subscriptions/";
-        protected static readonly string luisProgKeyUrl = "https://westus.api.cognitive.microsoft.com/luis/api/v2.0/programmatickey";
-
+        protected static readonly string luisQueryUrl = "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/";
+        protected static readonly string luisRoot =     "https://westus.api.cognitive.microsoft.com/luis/api/v2.0/";
+        protected static readonly string luisUrl = $"{luisRoot}apps/";
+        protected static readonly string luisApiKeyUrl = $"{luisRoot}externalKeys/";
+        protected static readonly string luisSubKeyUrl = $"{luisRoot}subscriptions/";
+        protected static readonly string luisProgKeyUrl = $"{luisRoot}programmatickey";
+        
         protected readonly IRepositoryClient RepositoryClient;
         protected readonly ICSVParser CSVParser;
 
@@ -40,6 +43,17 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language {
 
             return sb.ToString();
         }
+
+        #region Querying
+
+        public virtual async Task<QueryResult> QueryAsync(Guid appId, string query)
+        {
+            var response = await SendGetAsync($"{luisQueryUrl}{appId}?subscription-key={ApiKey}&verbose=true&q={query}");
+
+            return JsonConvert.DeserializeObject<QueryResult>(response);
+        }
+
+        #endregion Querying
 
         #region Apps
 

@@ -20,6 +20,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
             Logger = logger;
         }
 
+        public virtual QueryResult Query(Guid appId, string query)
+        {
+            try {
+                var result = Task.Run(async () => await LuisRepository.QueryAsync(appId, query)).Result;
+
+                return result;
+            } catch (Exception ex) {
+                Logger.Error("LuisService.Query failed", this, ex);
+            }
+
+            return null;
+        }
+
         public virtual string AddApplication(AddApplicationRequest request)
         {
             try {
