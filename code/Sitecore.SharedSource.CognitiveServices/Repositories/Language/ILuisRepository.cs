@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language;
+namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language { 
     public interface ILuisRepository { 
 
         Task<string> AddApplicationAsync(AddApplicationRequest request);
@@ -23,7 +23,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories.Language;
         Task<AddLabelResponse> AddLabelAsync(Guid appId, string versionId, AddLabelRequest request);
         Task<List<BatchAddLabelsResponse>> BatchAddLabelsAsync(Guid appId, string versionId, List<AddLabelRequest> request);
         Task DeleteExampleLabelAsync(Guid appId, string versionId, int exampleId);
-        Task<List<LabeledExamples>> ReviewLabeledExamplesAsync(Guid appId, string versionId, int skip = 0, int take = 100) 
+        Task<List<LabeledExamples>> ReviewLabeledExamplesAsync(Guid appId, string versionId, int skip = 0, int take = 100);
         Task<int> CreatePatternFeatureAsync(Guid appId, string versionId, PatternFeature feature);
         Task<int> CreatePhraseListFeatureAsync(Guid appId, string versionId, PhraseListFeature feature);
         Task DeletePatternFeatureAsync(Guid appId, string versionId, int patternId);
