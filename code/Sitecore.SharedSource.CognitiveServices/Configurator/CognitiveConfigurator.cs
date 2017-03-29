@@ -8,6 +8,7 @@ using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Speech;
 using Sitecore.SharedSource.CognitiveServices.Repositories.Vision;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Intents;
 using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
 using Sitecore.SharedSource.CognitiveServices.Models.Search;
 using Sitecore.SharedSource.CognitiveServices.Models.Utility;
@@ -34,6 +35,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<ILogWrapper, LogWrapper>();
             serviceCollection.AddTransient<IRepositoryClient, RepositoryClient>();
             serviceCollection.AddTransient<ICSVParser, CSVParser>();
+            serviceCollection.AddTransient<ITextTranslator, TextTranslator>();
+            serviceCollection.AddTransient<IIntentProvider, IntentProvider>();
 
             //repositories
             serviceCollection.AddTransient<IEmotionRepository, EmotionRepository>();

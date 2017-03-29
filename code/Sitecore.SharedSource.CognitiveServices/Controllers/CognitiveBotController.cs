@@ -1,21 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web.Mvc;
-using System.Xml;
-using System.Xml.Linq;
+using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Intents;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Controllers {
 
     public class CognitiveBotController : Controller
     {
+        protected readonly IIntentProvider IntentProvider;
         protected readonly ILuisService LuisService;
+        protected readonly ITextTranslator TextTranslator;
 
-        public CognitiveBotController(ILuisService luisService)
+        public CognitiveBotController(
+            IIntentProvider intentProvider, 
+            ILuisService luisService,
+            ITextTranslator textTranslator)
         {
+            IntentProvider = intentProvider;
             LuisService = luisService;
+            TextTranslator = textTranslator;
         }
 
         public ActionResult OleChat()
@@ -25,36 +31,21 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers {
 
         public ActionResult OleChatRequest(string query)
         {
+            var appId = new Guid("a9b7f39c-692a-499c-bcee-b1e57232b93a");
+            var result = LuisService.Query(appId, query);
 
+            var defaultResponse = IntentProvider.GetIntent(appId, "default")?.Respond(TextTranslator, result) ?? string.Empty;
 
-            var result = LuisService.Query(new Guid("a9b7f39c-692a-499c-bcee-b1e57232b93a"), query);
-            var intent = result.Intents.OrderByDescending(a => a.Score).FirstOrDefault().Intent.ToLower();
+            var intentRecommendation = result?.Intents?.OrderByDescending(a => a.Score).FirstOrDefault();
+            if (intentRecommendation == null)
+                return Json(defaultResponse);
 
-            if (intent == "greet")
-                return Json("Hi, how can I help you?");
-            if (intent == "version")
-                return Json($"My version is {GetVersion()}");
-            if (intent == "cursing")
-                return Json("You really shouldn't talk like that");
+            var intentName = intentRecommendation.Intent.ToLower();
+            var intent = IntentProvider.GetIntent(appId, intentName);
 
-            return Json("Sorry, can you try again? I didn't quite understand you.");
-        }
-
-        public string GetVersion()
-        {
-            var path = Server.MapPath("~/sitecore/shell/sitecore.version.xml");
-            if (!System.IO.File.Exists(path))
-                return string.Empty;
-
-            string xmlText = System.IO.File.ReadAllText(path);
-            XDocument xdoc = XDocument.Parse(xmlText);
-
-            var version = xdoc.Descendants("version").First();
-            var major = version.Descendants("major").First().Value;
-            var minor = version.Descendants("minor").First().Value;
-            var revision = version.Descendants("revision").First().Value;
-
-            return $"{major}.{minor} rev {revision}";
+            return (intent != null)
+                ? Json(intent.Respond(TextTranslator, result))
+                : Json(defaultResponse);
         }
     }
 }

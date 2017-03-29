@@ -266,20 +266,14 @@ jQuery(document).ready(function () {
             jQuery(chatInput).val("");
             UpdateChatWindow(queryValue, "user");
 
-            jQuery.post(
-                jQuery(chatForm).attr("action"),
-                {
-                    query: queryValue
-                }).done(function (r) {
-                    UpdateChatWindow(r, "bot");
-                }
-            );
+            jQuery
+                .post(jQuery(chatForm).attr("action"), { query: queryValue })
+                .done(function (r) { UpdateChatWindow(r, "bot"); });
         });
 
     function UpdateChatWindow(text, type) {
         var convoBox = jQuery(chatConversation);
-        convoBox.append("<div class='" + type + "'>" + text + "</div>");
-        convoBox.scrollTop(convoBox[0].scrollHeight - convoBox.height());
+        convoBox.prepend("<div class='" + type + "'><span>" + text + "</span></div>");
     }
 });
 
