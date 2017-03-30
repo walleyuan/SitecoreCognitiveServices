@@ -330,6 +330,8 @@
     <Compile Include="Foundation\ISitecoreDataService.cs" />
     <Compile Include="Foundation\SitecoreDataService.cs" />
     <Compile Include="Foundation\TextTranslator.cs" />
+    <Compile Include="Intents\KickUser.cs" />
+    <Compile Include="Intents\LoggedInUsers.cs" />
     <Compile Include="Intents\CursingIntent.cs" />
     <Compile Include="Intents\DefaultIntent.cs" />
     <Compile Include="Intents\IIntent.cs" />

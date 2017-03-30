@@ -13,15 +13,18 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers {
         protected readonly IIntentProvider IntentProvider;
         protected readonly ILuisService LuisService;
         protected readonly ITextTranslator TextTranslator;
+        protected readonly IWebUtilWrapper WebUtil;
 
         public CognitiveBotController(
             IIntentProvider intentProvider, 
             ILuisService luisService,
-            ITextTranslator textTranslator)
+            ITextTranslator textTranslator,
+            IWebUtilWrapper webUtil)
         {
             IntentProvider = intentProvider;
             LuisService = luisService;
             TextTranslator = textTranslator;
+            WebUtil = webUtil;
         }
 
         public ActionResult OleChat()
@@ -33,18 +36,20 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers {
         {
             var appId = new Guid("a9b7f39c-692a-499c-bcee-b1e57232b93a");
             var result = LuisService.Query(appId, query);
+            
+            var defaultResponse = IntentProvider.GetIntent(appId, "default")?.Respond(TextTranslator, result, null) ?? string.Empty;
+            
+            var intent = IntentProvider.GetIntent(appId, result.TopScoringIntent.Intent);
 
-            var defaultResponse = IntentProvider.GetIntent(appId, "default")?.Respond(TextTranslator, result) ?? string.Empty;
-
-            var intentRecommendation = result?.Intents?.OrderByDescending(a => a.Score).FirstOrDefault();
-            if (intentRecommendation == null)
-                return Json(defaultResponse);
-
-            var intentName = intentRecommendation.Intent.ToLower();
-            var intent = IntentProvider.GetIntent(appId, intentName);
+            Dictionary<string, string> parameters = new Dictionary<string, string>()
+            {
+                {"id", WebUtil.GetQueryString("id")},
+                {"language", WebUtil.GetQueryString("language")},
+                {"db", WebUtil.GetQueryString("db")}
+            };
 
             return (intent != null)
-                ? Json(intent.Respond(TextTranslator, result))
+                ? Json(intent.Respond(TextTranslator, result, parameters))
                 : Json(defaultResponse);
         }
     }

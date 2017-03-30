@@ -9,6 +9,6 @@ using Sitecore.SharedSource.CognitiveServices.Models.Language.Luis;
 namespace Sitecore.SharedSource.CognitiveServices.Intents {
     public interface IIntent {
         string Name { get; }
-        string Respond(ITextTranslator translator, QueryResult result);
+        string Respond(ITextTranslator translator, QueryResult result, Dictionary<string, string> parameters);
     }
 }

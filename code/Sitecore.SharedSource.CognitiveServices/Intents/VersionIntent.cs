@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Xml.Linq;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
@@ -8,7 +9,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Intents {
     public class VersionIntent : IIntent {
         public string Name => "version";
 
-        public string Respond(ITextTranslator translator, QueryResult result) {
+        public string Respond(ITextTranslator translator, QueryResult result, Dictionary<string, string> parameters) {
 
             var path = HttpContext.Current.Server.MapPath("~/sitecore/shell/sitecore.version.xml");
             if (!System.IO.File.Exists(path))

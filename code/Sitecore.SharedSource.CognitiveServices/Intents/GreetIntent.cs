@@ -11,7 +11,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Intents {
     {
         public string Name => "greet";
 
-        public string Respond(ITextTranslator translator, QueryResult result)
+        public string Respond(ITextTranslator translator, QueryResult result, Dictionary<string, string> parameters)
         {
             return "Hi, how can I help you?";
         }

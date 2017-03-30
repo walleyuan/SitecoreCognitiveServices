@@ -12,21 +12,26 @@ namespace Sitecore.SharedSource.CognitiveServices.Intents {
             CursingIntent c = new CursingIntent();
             GreetIntent g = new GreetIntent();
             VersionIntent v = new VersionIntent();
+            LoggedInUsersIntent l = new LoggedInUsersIntent();
+            KickUserIntent k = new KickUserIntent();
 
             _intentDictionary = new Dictionary<string, IIntent>()
             {
-                { d.Name, d },
-                { c.Name, c },
-                { g.Name, g },
-                { v.Name, v }
+                { d.Name.ToLower(), d },
+                { c.Name.ToLower(), c },
+                { g.Name.ToLower(), g },
+                { v.Name.ToLower(), v },
+                { l.Name.ToLower(), l },
+                { k.Name.ToLower(), k }
             };
-
         }
 
         public IIntent GetIntent(Guid appId, string intentName)
         {
-            return (_intentDictionary.ContainsKey(intentName))
-                ? _intentDictionary[intentName]
+            var caseSensitiveName = intentName.ToLower();
+
+            return (_intentDictionary.ContainsKey(caseSensitiveName))
+                ? _intentDictionary[caseSensitiveName]
                 : null;
         }
     }

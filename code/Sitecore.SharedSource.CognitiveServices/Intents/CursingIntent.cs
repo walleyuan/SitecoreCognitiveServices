@@ -10,7 +10,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Intents {
     public class CursingIntent : IIntent {
         public string Name => "cursing";
 
-        public string Respond(ITextTranslator translator, QueryResult result) {
+        public string Respond(ITextTranslator translator, QueryResult result, Dictionary<string, string> parameters) {
             return "You really shouldn't talk like that";
         }
     }
