@@ -1,7 +1,7 @@
 ﻿using System;
-using Sitecore.SharedSource.CognitiveServices.Enums;
-using Sitecore.SharedSource.CognitiveServices.Models.Bing;
-using Sitecore.SharedSource.CognitiveServices.Models.Bing.VideoSearch;
+using Microsoft.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Models.Bing;
+using Microsoft.SharedSource.CognitiveServices.Models.Bing.VideoSearch;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Bing {
     public interface IVideoSearchService

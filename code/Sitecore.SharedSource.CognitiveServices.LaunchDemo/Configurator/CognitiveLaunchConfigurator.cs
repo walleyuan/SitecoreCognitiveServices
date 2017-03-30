@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sitecore.DependencyInjection;
-using Sitecore.Foundation.DependencyInjection;
+using Sitecore.SharedSource.CognitiveServices.Foundation;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Configurator
 {

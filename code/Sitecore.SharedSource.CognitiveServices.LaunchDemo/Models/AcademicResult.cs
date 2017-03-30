@@ -1,6 +1,6 @@
 ﻿
-using Sitecore.SharedSource.CognitiveServices.Models.Knowledge;
-using Sitecore.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
+using Microsoft.SharedSource.CognitiveServices.Models.Knowledge;
+using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models
 {

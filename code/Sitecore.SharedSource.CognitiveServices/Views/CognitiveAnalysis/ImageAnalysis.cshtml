@@ -1,5 +1,4 @@
-﻿@using Sitecore.Shell.Framework.Commands.Masters
-@using Sitecore.Data.Managers
+﻿@using Sitecore.Data.Managers
 @model Sitecore.SharedSource.CognitiveServices.Models.Analysis.ICognitiveImageAnalysis
 
 @{
@@ -58,8 +57,6 @@
                     </div>
                     @Html.Partial("~/Views/CognitiveAnalysis/Vision/Categories.cshtml", Model.VisionAnalysis.Categories, new ViewDataDictionary(Model.VisionAnalysis.Categories))
                 </div>
-                @*@Html.Partial("~/Views/CognitiveAnalysis/Vision/Metadata.cshtml", Model.VisionAnalysis.Metadata, new ViewDataDictionary(Model.VisionAnalysis.Metadata))*@
-                @*@Html.Partial("~/Views/CognitiveAnalysis/Vision/ImageType.cshtml", Model.VisionAnalysis.ImageType, new ViewDataDictionary(Model.VisionAnalysis.ImageType))*@
             </nav>
         </div>
         <div class="tab-content emotional">

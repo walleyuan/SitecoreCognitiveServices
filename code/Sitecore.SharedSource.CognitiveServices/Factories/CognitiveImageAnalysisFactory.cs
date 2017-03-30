@@ -29,6 +29,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
         public virtual ICognitiveImageAnalysis Create(ICognitiveSearchResult result)
         {
             var analysis = Create();
+            if (result == null)
+                return analysis;
+
             analysis.EmotionAnalysis = result.EmotionAnalysis;
             analysis.FacialAnalysis = result.FacialAnalysis;
             analysis.TextAnalysis = result.TextAnalysis;

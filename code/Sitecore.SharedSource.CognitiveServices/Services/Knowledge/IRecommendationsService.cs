@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Sitecore.SharedSource.CognitiveServices.Models.Knowledge.Recommendations;
+using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.Recommendations;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
 {

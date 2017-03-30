@@ -4,7 +4,7 @@ using Microsoft.ProjectOxford.Text.Sentiment;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.ContentSearch;
 using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
-using Sitecore.SharedSource.CognitiveServices.Models.Language;
+using Microsoft.SharedSource.CognitiveServices.Models.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search
 {

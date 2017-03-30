@@ -1,5 +1,5 @@
 ﻿using Sitecore.Data.Items;
-using Sitecore.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Enums;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
 {

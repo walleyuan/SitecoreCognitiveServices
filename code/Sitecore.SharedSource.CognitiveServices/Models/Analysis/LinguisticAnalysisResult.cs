@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Sitecore.SharedSource.CognitiveServices.Models.Language;
-using Sitecore.SharedSource.CognitiveServices.Models.Language.Linguistic;
+using Microsoft.SharedSource.CognitiveServices.Models.Language;
+using Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Analysis {
     public class LinguisticAnalysisResult : ILinguisticAnalysisResult

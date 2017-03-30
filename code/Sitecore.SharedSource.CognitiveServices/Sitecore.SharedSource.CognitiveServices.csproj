@@ -59,7 +59,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="EvalWrapper, Version=0.0.0.0, Culture=neutral, PublicKeyToken=52681d72504348ec, processorArchitecture=AMD64">
-      <HintPath>..\..\packages\Microsoft.Research.CNTK.CpuEval-mkl.1.7.1\lib\net45\x64\EvalWrapper.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Research.CNTK.CpuEval-mkl.1.7.2\lib\net45\x64\EvalWrapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Kamsar.WebConsole, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -120,24 +120,24 @@
       <HintPath>..\..\packages\Microsoft.ProjectOxford.EntityLinking.1.0.0.0\lib\portable-net45+win+wpa81+wp80\Microsoft.ProjectOxford.EntityLinking.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ProjectOxford.Face, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.ProjectOxford.Face.1.2.1\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Microsoft.ProjectOxford.Face.dll</HintPath>
+    <Reference Include="Microsoft.ProjectOxford.Face, Version=1.2.1.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ProjectOxford.Face.1.2.1.2\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Microsoft.ProjectOxford.Face.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ProjectOxford.SpeakerRecognition, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.ProjectOxford.SpeakerRecognition.1.2.0\lib\portable45-net45+win8+wp8+wpa81\Microsoft.ProjectOxford.SpeakerRecognition.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ProjectOxford.Text, Version=0.2.1.40774, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.ProjectOxford.Text.0.2.1.40774\lib\net452\Microsoft.ProjectOxford.Text.dll</HintPath>
+    <Reference Include="Microsoft.ProjectOxford.Text, Version=0.3.0.29367, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ProjectOxford.Text.0.3.0.29367\lib\net452\Microsoft.ProjectOxford.Text.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ProjectOxford.Video, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.ProjectOxford.Video.1.1.0\lib\portable-net45+win+wpa81+wp80\Microsoft.ProjectOxford.Video.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ProjectOxford.Vision, Version=1.0.354.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.ProjectOxford.Vision.1.0.354\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Vision.dll</HintPath>
+    <Reference Include="Microsoft.ProjectOxford.Vision, Version=1.0.370.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ProjectOxford.Vision.1.0.370\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Vision.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -204,9 +204,8 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.Logging, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sitecore.Logging.NoReferences.8.2.160729\lib\NET452\Sitecore.Logging.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <HintPath>..\..\packages\Sitecore.Logging.NoReferences.8.2.161115\lib\NET452\Sitecore.Logging.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Sitecore.Mvc, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Sitecore.Mvc.NoReferences.8.2.160729\lib\NET452\Sitecore.Mvc.dll</HintPath>
@@ -303,11 +302,6 @@
     <Compile Include="Controllers\CognitiveMediaSearchController.cs" />
     <Compile Include="Controllers\CognitiveUtilityController.cs" />
     <Compile Include="Controllers\CognitiveAnalysisController.cs" />
-    <Compile Include="Enums\Academic.cs" />
-    <Compile Include="Enums\Bing.cs" />
-    <Compile Include="Enums\ImageSize.cs" />
-    <Compile Include="Enums\Language.cs" />
-    <Compile Include="Enums\Vision.cs" />
     <Compile Include="Factories\CognitiveImageAnalysisFactory.cs" />
     <Compile Include="Factories\ICognitiveMediaSearchFactory.cs" />
     <Compile Include="Factories\CognitiveMediaSearchFactory.cs" />
@@ -320,8 +314,6 @@
     <Compile Include="Factories\ImageDescriptionFactory.cs" />
     <Compile Include="Factories\IImageDescriptionFactory.cs" />
     <Compile Include="Factories\ICognitiveTextAnalysisFactory.cs" />
-    <Compile Include="Foundation\CSVParser.cs" />
-    <Compile Include="Foundation\ICSVParser.cs" />
     <Compile Include="Foundation\ILogWrapper.cs" />
     <Compile Include="Foundation\ITextTranslator.cs" />
     <Compile Include="Foundation\LogWrapper.cs" />
@@ -330,328 +322,41 @@
     <Compile Include="Foundation\ISitecoreDataService.cs" />
     <Compile Include="Foundation\SitecoreDataService.cs" />
     <Compile Include="Foundation\TextTranslator.cs" />
-    <Compile Include="Intents\KickUser.cs" />
-    <Compile Include="Intents\LoggedInUsers.cs" />
-    <Compile Include="Intents\CursingIntent.cs" />
-    <Compile Include="Intents\DefaultIntent.cs" />
-    <Compile Include="Intents\IIntent.cs" />
-    <Compile Include="Intents\IIntentProvider.cs" />
-    <Compile Include="Intents\GreetIntent.cs" />
-    <Compile Include="Intents\IntentProvider.cs" />
-    <Compile Include="Intents\VersionIntent.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\AA.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\AcademicAuthor.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\AcademicPaper.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\AcademicReturn.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\CalcHistogramResponse.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\EvaluateResponse.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\EvaluateResult.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\GraphSearchRequest.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\GraphSearchResponse.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\GraphSearchResult.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\CalcHistogram.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\CalcHistogramResult.cs" />
-    <Compile Include="Models\Bing\AutoSuggest\AutoSuggestEntry.cs" />
-    <Compile Include="Models\Bing\AutoSuggest\AutoSuggestGroup.cs" />
-    <Compile Include="Models\Bing\AutoSuggest\AutoSuggestQuery.cs" />
-    <Compile Include="Models\Bing\AutoSuggest\AutoSuggestResponse.cs" />
-    <Compile Include="Models\Bing\ImageSearch\BestRepresentativeQuery.cs" />
-    <Compile Include="Models\Bing\ImageSearch\CategoryClassification.cs" />
-    <Compile Include="Models\Bing\WebSearch\IdValue.cs" />
-    <Compile Include="Models\Bing\ImageSearch\ImageInsightResponse.cs" />
-    <Compile Include="Models\Bing\ImageSearch\ImageSearchCategory.cs" />
-    <Compile Include="Models\Bing\ImageSearch\ImageSearchImage.cs" />
-    <Compile Include="Models\Bing\ImageSearch\ImageSearchInsightSearchSummary.cs" />
-    <Compile Include="Models\Bing\SearchInstrumentation.cs" />
-    <Compile Include="Models\Bing\NewsSearch\NewsSearchCategoryResponse.cs" />
-    <Compile Include="Models\Bing\NewsSearch\NewsSearchImage.cs" />
-    <Compile Include="Models\Bing\MediaInstrumentation.cs" />
-    <Compile Include="Models\Bing\NewsSearch\NewsSearchResponse.cs" />
-    <Compile Include="Models\Bing\NewsSearch\NewsSearchResult.cs" />
-    <Compile Include="Models\Bing\NewsSearch\NewsSearchTopicImage.cs" />
-    <Compile Include="Models\Bing\NewsSearch\NewsSearchTrendResponse.cs" />
-    <Compile Include="Models\Bing\NewsSearch\NewsSearchTopicResult.cs" />
-    <Compile Include="Models\Bing\SimpleSearchResult.cs" />
-    <Compile Include="Models\Bing\ImageSearch\ImageSearchQuickResult.cs" />
-    <Compile Include="Models\Bing\ImageSearch\ImageSearchResponse.cs" />
-    <Compile Include="Models\Bing\ImageSearch\ImageSearchResult.cs" />
-    <Compile Include="Models\Bing\ImageSearch\ImageSearchShortResult.cs" />
-    <Compile Include="Models\Bing\SearchSuggestion.cs" />
-    <Compile Include="Models\Bing\Thumbnail.cs" />
-    <Compile Include="Models\Bing\ImageSearch\ImageSearchThumbnailLink.cs" />
-    <Compile Include="Models\Bing\ImageSearch\ImageSearchThumbnailUrl.cs" />
-    <Compile Include="Models\Bing\ImageSearch\ImageSearchTile.cs" />
-    <Compile Include="Models\Bing\NameValue.cs" />
-    <Compile Include="Models\Bing\SpellCheck\SpellCheckResponse.cs" />
-    <Compile Include="Models\Bing\SpellCheck\SpellCheckSuggestion.cs" />
-    <Compile Include="Models\Bing\SpellCheck\SpellCheckToken.cs" />
-    <Compile Include="Models\Bing\ImageSearch\TrendSearchResponse.cs" />
-    <Compile Include="Models\Analysis\CognitiveImageAnalysis.cs" />
-    <Compile Include="Models\Bing\VideoSearch\VideoSearchCategory.cs" />
-    <Compile Include="Models\Bing\VideoSearch\VideoSearchDetailsResponse.cs" />
-    <Compile Include="Models\Bing\VideoSearch\VideoSearchRelatedResult.cs" />
-    <Compile Include="Models\Bing\VideoSearch\VideoSearchImage.cs" />
-    <Compile Include="Models\Bing\VideoSearch\VideoSearchQuery.cs" />
-    <Compile Include="Models\Bing\VideoSearch\VideoSearchResponse.cs" />
-    <Compile Include="Models\Bing\VideoSearch\VideoSearchResult.cs" />
-    <Compile Include="Models\Bing\VideoSearch\VideoSearchShortResult.cs" />
-    <Compile Include="Models\Bing\VideoSearch\VideoSearchSubategory.cs" />
-    <Compile Include="Models\Bing\VideoSearch\VideoSearchTile.cs" />
-    <Compile Include="Models\Bing\VideoSearch\VideoSearchTrendResponse.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchDeepLink.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchImages.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchMainline.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchMainlineItem.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchNews.cs" />
-    <Compile Include="Models\Bing\NewsSearch\NewsAbout.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchNewsCluster.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchNewsImage.cs" />
-    <Compile Include="Models\Bing\NewsSearch\NewsProvider.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchNewsResult.cs" />
-    <Compile Include="Models\Bing\NewsSearch\NewsThumbnail.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchPages.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchRanking.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchRelated.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchResponse.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchResult.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchSidebar.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchSidebarItem.cs" />
-    <Compile Include="Models\Bing\WebSearch\WebSearchVideos.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\InterpretResponse.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\InterpretResult.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\InterpretRule.cs" />
-    <Compile Include="Models\Knowledge\AcademicSearch\InterpretRuleOutput.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\BatchEntity.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\BatchJob.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\BatchJobDetails.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\BatchJobRequest.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\BlockList.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\Build.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\BuildDataStatisticsResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\BuildMetricsResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\BuildUsageStatisticsResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\BusinessRule.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\BusinessRuleSet.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\CatalogItem.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\CreateBuildRequest.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\CreateBuildResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\BuildSet.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\CreateBusinessRuleRequest.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\CreateBusinessRuleResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\CreateModelRequest.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\DiversityMetric.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\DiversitySet.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\GetAllModelsResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\GetOperationStatusResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\ItemRecommendationResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\ModelFeature.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\ModelFeatureResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\ModelUsageStatisticsResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\PrecisionMetric.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\PrecisionSet.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\Recommendation.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\RecommendationItem.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\RecommendationModel.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\DateSplitParameters.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\DeleteCatalogItemsResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\ErrorDetails.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\ErrorLines.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\ErrorSummary.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\FeatureBlockList.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\FeatureWhiteList.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\FrequentlyBoughtTogetherBuild.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\GetAllBuildsResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\GetAllBusinessRulesResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\GetAllCatalogItemsResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\GetBatchJobResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\NameValuePair.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\PerSeedBlockList.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\RandomSplitParameters.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\RankingBuild.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\RecommendationBuild.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\SearchCatalogItemsResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\UpdateCatalogItemsResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\UpdateModelRequest.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\UploadCatalogFileResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\UploadUsageEventRequest.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\UploadUsageFileResponse.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\Upsale.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\UsageEvent.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\UsageEventStatistic.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\UsageFile.cs" />
-    <Compile Include="Models\Knowledge\Recommendations\Whitelist.cs" />
-    <Compile Include="Models\Language\Luis\ExternalApiKeyRequest.cs" />
-    <Compile Include="Models\Language\Luis\AddLabelResponse.cs" />
-    <Compile Include="Models\Language\Luis\ApplicationVersion.cs" />
-    <Compile Include="Models\Language\Luis\QueryResult.cs" />
-    <Compile Include="Models\Language\Luis\SubscriptionKeySet.cs" />
-    <Compile Include="Models\Language\Luis\ApplicationCulture.cs" />
-    <Compile Include="Models\Language\Luis\ApplicationEndpoints.cs" />
-    <Compile Include="Models\Language\Luis\ApplicationEntity.cs" />
-    <Compile Include="Models\Language\Luis\ApplicationFeaturesResponse.cs" />
-    <Compile Include="Models\Language\Luis\ApplicationInfo.cs" />
-    <Compile Include="Models\Language\Luis\ApplicationIntent.cs" />
-    <Compile Include="Models\Language\Luis\ApplicationLabel.cs" />
-    <Compile Include="Models\Language\Luis\AddLabelRequest.cs" />
-    <Compile Include="Models\Language\Luis\ApplicationRenameRequest.cs" />
-    <Compile Include="Models\Language\Luis\BatchAddLabelsResponse.cs" />
-    <Compile Include="Models\Language\Luis\ComplexEntity.cs" />
-    <Compile Include="Models\Language\Luis\ComplexEntityInfo.cs" />
-    <Compile Include="Models\Language\Luis\ExternalApiKeySet.cs" />
-    <Compile Include="Models\Language\Luis\ModelTrainingStatus.cs" />
-    <Compile Include="Models\Language\Luis\NamedEntityRequest.cs" />
-    <Compile Include="Models\Language\Luis\ClosedListEntityRequest.cs" />
-    <Compile Include="Models\Language\Luis\ComplexEntityRequest.cs" />
-    <Compile Include="Models\Language\Luis\EntityInfo.cs" />
-    <Compile Include="Models\Language\Luis\ClosedListEntity.cs" />
-    <Compile Include="Models\Language\Luis\Entitylabel.cs" />
-    <Compile Include="Models\Language\Luis\EntityPrediction.cs" />
-    <Compile Include="Models\Language\Luis\ClosedListEntityInfo.cs" />
-    <Compile Include="Models\Language\Luis\ApplicationDefinition.cs" />
-    <Compile Include="Models\Language\Luis\IntentPrediction.cs" />
-    <Compile Include="Models\Language\Luis\LabeledExamples.cs" />
-    <Compile Include="Models\Language\Luis\ModelFeature.cs" />
-    <Compile Include="Models\Language\Luis\PatchClosedListEntityModelRequest.cs" />
-    <Compile Include="Models\Language\Luis\PatternFeature.cs" />
-    <Compile Include="Models\Language\Luis\PersonalAssistantEndpoints.cs" />
-    <Compile Include="Models\Language\Luis\PersonalAssistantResponse.cs" />
-    <Compile Include="Models\Language\Luis\PhraseListFeature.cs" />
-    <Compile Include="Models\Language\Luis\PrebuiltEntity.cs" />
-    <Compile Include="Models\Language\Luis\ProductionEnpoint.cs" />
-    <Compile Include="Models\Language\Luis\PublishRequest.cs" />
-    <Compile Include="Models\Language\Luis\PublishResponse.cs" />
-    <Compile Include="Models\Language\Luis\TrainingStatusDetails.cs" />
-    <Compile Include="Models\Language\Luis\UserApplication.cs" />
-    <Compile Include="Models\Language\Luis\Utterance.cs" />
-    <Compile Include="Models\Language\Luis\UtteranceEntity.cs" />
-    <Compile Include="Models\Language\Luis\VersionRequest.cs" />
-    <Compile Include="Models\Language\WebLanguageModel\BreakIntoWordsCandidate.cs" />
-    <Compile Include="Models\Language\WebLanguageModel\BreakIntoWordsResponse.cs" />
-    <Compile Include="Models\Language\WebLanguageModel\ConditionalProbabilityQuery.cs" />
-    <Compile Include="Models\Language\WebLanguageModel\ConditionalProbabilityRequest.cs" />
-    <Compile Include="Models\Language\WebLanguageModel\ConditionalProbabilityResponse.cs" />
-    <Compile Include="Models\Language\WebLanguageModel\ConditionalProbablity.cs" />
-    <Compile Include="Models\Language\Linguistic\ConstituencyTreeTextAnalysisResponse.cs" />
-    <Compile Include="Models\Language\WebLanguageModel\GenerateNextWordsResponse.cs" />
-    <Compile Include="Models\Language\WebLanguageModel\JointProbability.cs" />
-    <Compile Include="Models\Language\WebLanguageModel\JointProbabilityRequest.cs" />
-    <Compile Include="Models\Language\WebLanguageModel\JointProbabilityResponse.cs" />
-    <Compile Include="Models\Language\Luis\AddApplicationRequest.cs" />
-    <Compile Include="Models\Language\Linguistic\NextWordCandidate.cs" />
-    <Compile Include="Models\Language\WebLanguageModel\WebLMModel.cs" />
-    <Compile Include="Models\Language\WebLanguageModel\WebLMModelResponse.cs" />
-    <Compile Include="Models\Search\ICognitiveMediaSearchJsonResult.cs" />
-    <Compile Include="Models\Analysis\CognitiveTextAnalysis.cs" />
-    <Compile Include="Models\Analysis\ICognitiveImageAnalysis.cs" />
-    <Compile Include="Models\Search\CognitiveMediaSearch.cs" />
-    <Compile Include="Models\Search\ICognitiveMediaSearch.cs" />
-    <Compile Include="Models\Analysis\IKeyPhraseAnalysisResult.cs" />
-    <Compile Include="Models\Analysis\ILinguisticAnalysisResult.cs" />
-    <Compile Include="Models\Utility\IReanalyzeAll.cs" />
-    <Compile Include="Models\Analysis\ILinkAnalysisResult.cs" />
-    <Compile Include="Models\Analysis\KeyPhraseAnalysisResult.cs" />
-    <Compile Include="Models\Analysis\LinguisticAnalysisResult.cs" />
-    <Compile Include="Models\Analysis\LinkAnalysisResult.cs" />
-    <Compile Include="Models\Search\CognitiveMediaSearchJsonResult.cs" />
-    <Compile Include="Models\TokenResponse.cs" />
-    <Compile Include="Models\Language\Linguistic\POSTagsTextAnalysisResponse.cs" />
-    <Compile Include="Models\Language\Linguistic\ResultSet.cs" />
-    <Compile Include="Models\Language\Sentiment\SentimentDocumentResult.cs" />
-    <Compile Include="Models\Utility\SetAltTagsAll.cs" />
-    <Compile Include="Models\Utility\ISetAltTagsAll.cs" />
-    <Compile Include="Models\Utility\ReanalyzeAll.cs" />
-    <Compile Include="Models\Utility\ImageDescription.cs" />
-    <Compile Include="Models\Utility\IImageDescription.cs" />
-    <Compile Include="Models\Analysis\ICognitiveTextAnalysis.cs" />
+    <Compile Include="Ole\Intents\KickUser.cs" />
+    <Compile Include="Ole\Intents\LoggedInUsers.cs" />
+    <Compile Include="Ole\Intents\CursingIntent.cs" />
+    <Compile Include="Ole\Intents\DefaultIntent.cs" />
+    <Compile Include="Ole\Intents\IIntent.cs" />
+    <Compile Include="Ole\IIntentProvider.cs" />
+    <Compile Include="Ole\Intents\GreetIntent.cs" />
+    <Compile Include="Ole\IntentProvider.cs" />
+    <Compile Include="Ole\Intents\VersionIntent.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Configurator\CognitiveConfigurator.cs" />
     <Compile Include="Foundation\IWebUtilWrapper.cs" />
     <Compile Include="Foundation\ServiceCollectionExtensions.cs" />
     <Compile Include="Foundation\WebUtilWrapper.cs" />
-    <Compile Include="Models\Language\Sentiment\TopicRequest.cs" />
-    <Compile Include="Models\Language\Linguistic\TokensTextAnalysisResponse.cs" />
-    <Compile Include="Models\Vision\ContentModerator\AddImageResponse.cs" />
-    <Compile Include="Models\Vision\ContentModerator\CombineCombination.cs" />
-    <Compile Include="Models\Vision\ContentModerator\Condition.cs" />
-    <Compile Include="Models\Vision\ContentModerator\ConditionCombination.cs" />
-    <Compile Include="Models\Vision\ContentModerator\GetImagesResponse.cs" />
-    <Compile Include="Models\Vision\ContentModerator\GetTermsResponse.cs" />
-    <Compile Include="Models\Vision\ContentModerator\ListDetails.cs" />
-    <Compile Include="Models\Vision\ContentModerator\DetectLanguageResponse.cs" />
-    <Compile Include="Models\Vision\ContentModerator\PagingInfo.cs" />
-    <Compile Include="Models\Vision\ContentModerator\RefreshSearchResponse.cs" />
-    <Compile Include="Models\Vision\ContentModerator\TermData.cs" />
-    <Compile Include="Models\Vision\ContentModerator\TermEntity.cs" />
-    <Compile Include="Models\Vision\ContentModerator\VideoModerationConfiguration.cs" />
-    <Compile Include="Models\Vision\ContentModerator\VideoModerationOptions.cs" />
-    <Compile Include="Models\Vision\ContentModerator\WorkflowExpressionResponse.cs" />
-    <Compile Include="Models\Vision\ContentModerator\WorkflowExpression.cs" />
-    <Compile Include="Models\Vision\ContentModerator\FindFacesResponse.cs" />
-    <Compile Include="Models\Vision\ContentModerator\EvaluateResponse.cs" />
-    <Compile Include="Models\Vision\ContentModerator\GetReviewResponse.cs" />
-    <Compile Include="Models\Vision\ContentModerator\IExpression.cs" />
-    <Compile Include="Models\Vision\ContentModerator\MatchResponse.cs" />
-    <Compile Include="Models\Vision\ContentModerator\MatchDetails.cs" />
-    <Compile Include="Models\Vision\ContentModerator\OCRResult.cs" />
-    <Compile Include="Models\Vision\ContentModerator\ResponseStatus.cs" />
-    <Compile Include="Models\Vision\ContentModerator\ReviewRequest.cs" />
-    <Compile Include="Models\Vision\ContentModerator\ScreenResponse.cs" />
-    <Compile Include="Models\Vision\ContentModerator\CreateJobResponse.cs" />
-    <Compile Include="Models\Vision\ContentModerator\FindFaceRectangle.cs" />
-    <Compile Include="Models\Vision\ContentModerator\GetJobResponse.cs" />
-    <Compile Include="Models\Vision\ContentModerator\KeyValue.cs" />
-    <Compile Include="Models\Vision\ContentModerator\OCRCandidate.cs" />
-    <Compile Include="Models\Vision\ContentModerator\PersonalIdentifiableInformation.cs" />
-    <Compile Include="Models\Vision\ContentModerator\PersonalIdentifiableInformationSet.cs" />
-    <Compile Include="Models\Vision\ContentModerator\ScreenCategory.cs" />
-    <Compile Include="Models\Vision\ContentModerator\ScreenUrl.cs" />
-    <Compile Include="Models\Vision\ContentModerator\TermSet.cs" />
-    <Compile Include="Models\Vision\Video\FaceDetectionResult.cs" />
-    <Compile Include="Models\Vision\Video\FaceEntity.cs" />
-    <Compile Include="Models\Vision\Video\FaceFragment.cs" />
-    <Compile Include="Models\Vision\Video\FragmentLocation.cs" />
-    <Compile Include="Models\Vision\Video\MotionDetectionAnalysis.cs" />
-    <Compile Include="Models\Vision\Video\MotionDetectionEvent.cs" />
-    <Compile Include="Models\Vision\Video\MotionDetectionFragment.cs" />
-    <Compile Include="Models\Vision\Video\MotionDetectionRegion.cs" />
-    <Compile Include="Models\Vision\Video\MotionDetectionResult.cs" />
-    <Compile Include="Models\Vision\Video\XYPoint.cs" />
+    <Compile Include="Models\Analysis\CognitiveImageAnalysis.cs" />
+    <Compile Include="Models\Analysis\CognitiveTextAnalysis.cs" />
+    <Compile Include="Models\Analysis\ICognitiveImageAnalysis.cs" />
+    <Compile Include="Models\Analysis\ICognitiveTextAnalysis.cs" />
+    <Compile Include="Models\Analysis\IKeyPhraseAnalysisResult.cs" />
+    <Compile Include="Models\Analysis\ILinguisticAnalysisResult.cs" />
+    <Compile Include="Models\Analysis\ILinkAnalysisResult.cs" />
+    <Compile Include="Models\Analysis\KeyPhraseAnalysisResult.cs" />
+    <Compile Include="Models\Analysis\LinguisticAnalysisResult.cs" />
+    <Compile Include="Models\Analysis\LinkAnalysisResult.cs" />
+    <Compile Include="Models\Search\CognitiveMediaSearch.cs" />
+    <Compile Include="Models\Search\CognitiveMediaSearchJsonResult.cs" />
+    <Compile Include="Models\Search\ICognitiveMediaSearch.cs" />
+    <Compile Include="Models\Search\ICognitiveMediaSearchJsonResult.cs" />
+    <Compile Include="Models\Utility\IImageDescription.cs" />
+    <Compile Include="Models\Utility\ImageDescription.cs" />
+    <Compile Include="Models\Utility\IReanalyzeAll.cs" />
+    <Compile Include="Models\Utility\ISetAltTagsAll.cs" />
+    <Compile Include="Models\Utility\ReanalyzeAll.cs" />
+    <Compile Include="Models\Utility\SetAltTagsAll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Bing\AutoSuggestRepository.cs" />
-    <Compile Include="Repositories\Bing\IAutoSuggestRepository.cs" />
-    <Compile Include="Repositories\Bing\IImageSearchRepository.cs" />
-    <Compile Include="Repositories\Bing\ImageSearchRepository.cs" />
-    <Compile Include="Repositories\Bing\INewsSearchRepository.cs" />
-    <Compile Include="Repositories\Bing\ISpeechRepository.cs" />
-    <Compile Include="Repositories\Bing\VideoSearchRepository.cs" />
-    <Compile Include="Repositories\Bing\NewsSearchRepository.cs" />
-    <Compile Include="Repositories\Bing\SpellCheckRepository.cs" />
-    <Compile Include="Repositories\Bing\ISpellCheckRepository.cs" />
-    <Compile Include="Repositories\Bing\IVideoSearchRepository.cs" />
-    <Compile Include="Repositories\Bing\IWebSearchRepository.cs" />
-    <Compile Include="Repositories\Bing\WebSearchRepository.cs" />
-    <Compile Include="Repositories\Knowledge\AcademicSearchRepository.cs" />
-    <Compile Include="Repositories\Knowledge\IAcademicSearchRepository.cs" />
-    <Compile Include="Repositories\Knowledge\IKnowledgeExplorationRepository.cs" />
-    <Compile Include="Repositories\Knowledge\IQnAMakerRepository.cs" />
-    <Compile Include="Repositories\Knowledge\IRecommendationsRepository.cs" />
-    <Compile Include="Repositories\Knowledge\RecommendationsRepository.cs" />
-    <Compile Include="Repositories\Language\ILinguisticRepository.cs" />
-    <Compile Include="Models\Language\Sentiment\KeyPhraseSentimentResponse.cs" />
-    <Compile Include="Repositories\Language\LuisRepository.cs" />
-    <Compile Include="Repositories\Language\TranslatorRepository.cs" />
-    <Compile Include="Repositories\Language\WebLanguageModelRepository.cs" />
-    <Compile Include="Repositories\Language\IWebLanguageModelRepository.cs" />
-    <Compile Include="Repositories\Language\LinguisticRepository.cs" />
-    <Compile Include="Models\Language\Linguistic\TextAnalysisRequest.cs" />
-    <Compile Include="Models\Language\Linguistic\TokenResult.cs" />
-    <Compile Include="Repositories\Vision\ContentModeratorRepository.cs" />
-    <Compile Include="Repositories\Vision\IContentModeratorRepository.cs" />
-    <Compile Include="Repositories\IRepositoryClient.cs" />
-    <Compile Include="Repositories\RepositoryClient.cs" />
-    <Compile Include="Repositories\Speech\ICustomSpeechRepository.cs" />
-    <Compile Include="Repositories\Language\ILuisRepository.cs" />
-    <Compile Include="Repositories\Language\ITranslatorRepository.cs" />
     <Compile Include="Search\CognitiveIndexableItem.cs" />
     <Compile Include="Search\CognitiveSearchContext.cs" />
     <Compile Include="Search\CognitiveSearchResult.cs" />
@@ -712,25 +417,6 @@
     <Compile Include="Services\Vision\EmotionService.cs" />
     <Compile Include="Services\Knowledge\EntityLinkingService.cs" />
     <Compile Include="Services\Vision\FaceService.cs" />
-    <Compile Include="Repositories\IApiKeys.cs" />
-    <Compile Include="Repositories\Knowledge\EntityLinkingRepository.cs" />
-    <Compile Include="Repositories\Knowledge\IEntityLinkingRepository.cs" />
-    <Compile Include="Repositories\Language\ILanguageRepository.cs" />
-    <Compile Include="Repositories\Language\ISentimentRepository.cs" />
-    <Compile Include="Repositories\Language\LanguageRepository.cs" />
-    <Compile Include="Repositories\Language\SentimentRepository.cs" />
-    <Compile Include="Repositories\Speech\ISpeakerIdentificationRepository.cs" />
-    <Compile Include="Repositories\Speech\ISpeakerVerificationRepository.cs" />
-    <Compile Include="Repositories\Speech\SpeakerIdentificationRepository.cs" />
-    <Compile Include="Repositories\Speech\SpeakerVerificationRepository.cs" />
-    <Compile Include="Repositories\Vision\IVideoRepository.cs" />
-    <Compile Include="Repositories\Vision\VideoRepository.cs" />
-    <Compile Include="Repositories\Vision\EmotionRepository.cs" />
-    <Compile Include="Repositories\Vision\FaceRepository.cs" />
-    <Compile Include="Repositories\Vision\IEmotionRepository.cs" />
-    <Compile Include="Repositories\Vision\IFaceRepository.cs" />
-    <Compile Include="Repositories\Vision\IVisionRepository.cs" />
-    <Compile Include="Repositories\Vision\VisionRepository.cs" />
     <Compile Include="Services\Vision\IContentModeratorService.cs" />
     <Compile Include="Services\Vision\IEmotionService.cs" />
     <Compile Include="Services\Knowledge\IEntityLinkingService.cs" />
@@ -802,8 +488,6 @@
     <Content Include="Views\CognitiveAnalysis\Vision\Color.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Vision\Description.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Vision\Faces.cshtml" />
-    <Content Include="Views\CognitiveAnalysis\Vision\ImageType.cshtml" />
-    <Content Include="Views\CognitiveAnalysis\Vision\Metadata.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Vision\Tags.cshtml" />
     <Content Include="Views\CognitiveAnalysis\Vision\FaceRectangle.cshtml" />
     <Content Include="Views\CognitiveAnalysis\EntityLinking\LinkAnalysis.cshtml" />
@@ -822,12 +506,22 @@
     <None Include="Web.config" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\Sitecore.SharedSource.CognitiveServices.css" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\jquery-1.10.2.min.js" />
-    <None Include="Views\Web.config" />
+    <None Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.SharedSource.CognitiveServices\Microsoft.SharedSource.CognitiveServices.csproj">
+      <Project>{13ecb0db-e99d-4d05-97e8-138eb3884353}</Project>
+      <Name>Microsoft.SharedSource.CognitiveServices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include="packages.config" />
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -862,14 +556,11 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\..\packages\Microsoft.Research.CNTK.CpuEval-mkl.1.7.1\build\net45\Microsoft.Research.CNTK.CpuEval-mkl.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Research.CNTK.CpuEval-mkl.1.7.1\build\net45\Microsoft.Research.CNTK.CpuEval-mkl.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.Research.CNTK.CpuEval-mkl.1.7.2\build\net45\Microsoft.Research.CNTK.CpuEval-mkl.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Research.CNTK.CpuEval-mkl.1.7.2\build\net45\Microsoft.Research.CNTK.CpuEval-mkl.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
   </Target>
-  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
-  </Target>
-  <Import Project="..\..\packages\Microsoft.Research.CNTK.CpuEval-mkl.1.7.1\build\net45\Microsoft.Research.CNTK.CpuEval-mkl.targets" Condition="Exists('..\..\packages\Microsoft.Research.CNTK.CpuEval-mkl.1.7.1\build\net45\Microsoft.Research.CNTK.CpuEval-mkl.targets')" />
+  <Import Project="..\..\packages\Microsoft.Research.CNTK.CpuEval-mkl.1.7.2\build\net45\Microsoft.Research.CNTK.CpuEval-mkl.targets" Condition="Exists('..\..\packages\Microsoft.Research.CNTK.CpuEval-mkl.1.7.2\build\net45\Microsoft.Research.CNTK.CpuEval-mkl.targets')" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

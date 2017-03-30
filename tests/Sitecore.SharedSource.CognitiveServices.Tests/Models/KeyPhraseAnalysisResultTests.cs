@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 using Sitecore.SharedSource.CognitiveServices.Models;
 using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
-using Sitecore.SharedSource.CognitiveServices.Models.Language;
-using Sitecore.SharedSource.CognitiveServices.Models.Language.Sentiment;
+using Microsoft.SharedSource.CognitiveServices.Models.Language;
+using Microsoft.SharedSource.CognitiveServices.Models.Language.Sentiment;
 
 namespace Sitecore.SharedSource.CognitiveServices.Tests.Models
 {

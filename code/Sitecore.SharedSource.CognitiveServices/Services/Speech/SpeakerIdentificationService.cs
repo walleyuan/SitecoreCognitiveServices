@@ -3,7 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Microsoft.ProjectOxford.SpeakerRecognition.Contract.Identification;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Speech;
+using Microsoft.SharedSource.CognitiveServices.Repositories.Speech;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
 {

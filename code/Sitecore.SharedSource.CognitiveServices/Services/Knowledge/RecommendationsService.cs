@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Models.Knowledge.Recommendations;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge;
+using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.Recommendations;
+using Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
 {

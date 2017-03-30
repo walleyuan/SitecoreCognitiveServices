@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using log4net.Repository.Hierarchy;
-using Sitecore.SharedSource.CognitiveServices.Models.Language.Luis;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
+using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+using Microsoft.SharedSource.CognitiveServices.Repositories.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
     public interface ILuisService

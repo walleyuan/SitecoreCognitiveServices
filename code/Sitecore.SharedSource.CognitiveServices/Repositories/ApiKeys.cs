@@ -1,4 +1,5 @@
-﻿using Sitecore.Configuration;
+﻿using Microsoft.SharedSource.CognitiveServices;
+using Sitecore.Configuration;
 
 namespace Sitecore.SharedSource.CognitiveServices.Repositories
 {

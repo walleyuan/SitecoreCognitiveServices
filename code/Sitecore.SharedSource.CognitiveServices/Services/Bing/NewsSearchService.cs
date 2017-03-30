@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Sitecore.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Models.Bing;
-using Sitecore.SharedSource.CognitiveServices.Models.Bing.NewsSearch;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Bing;
+using Microsoft.SharedSource.CognitiveServices.Models.Bing;
+using Microsoft.SharedSource.CognitiveServices.Models.Bing.NewsSearch;
+using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
 {

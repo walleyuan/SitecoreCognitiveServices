@@ -1,6 +1,6 @@
 ﻿
-using Sitecore.SharedSource.CognitiveServices.Models.Language;
-using Sitecore.SharedSource.CognitiveServices.Models.Language.Linguistic;
+using Microsoft.SharedSource.CognitiveServices.Models.Language;
+using Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic;
 
 namespace Sitecore.SharedSource.CognitiveServices.Models.Analysis {
     public interface ILinguisticAnalysisResult

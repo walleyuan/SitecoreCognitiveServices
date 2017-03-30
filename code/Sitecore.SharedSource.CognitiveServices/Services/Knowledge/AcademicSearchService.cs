@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
-using Sitecore.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Models.Knowledge;
-using Sitecore.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge;
+using Microsoft.SharedSource.CognitiveServices.Models.Knowledge;
+using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
+using Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
 {

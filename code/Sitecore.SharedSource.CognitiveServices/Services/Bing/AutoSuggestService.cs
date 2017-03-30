@@ -1,9 +1,9 @@
 ﻿using System;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Models.Bing;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Bing;
+using Microsoft.SharedSource.CognitiveServices.Models.Bing;
+using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
 using System.Threading.Tasks;
-using Sitecore.SharedSource.CognitiveServices.Models.Bing.AutoSuggest;
+using Microsoft.SharedSource.CognitiveServices.Models.Bing.AutoSuggest;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
 {

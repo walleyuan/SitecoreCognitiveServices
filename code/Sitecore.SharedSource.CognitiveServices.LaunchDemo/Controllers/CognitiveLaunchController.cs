@@ -10,22 +10,20 @@ using Microsoft.ProjectOxford.Text.Language;
 using Microsoft.ProjectOxford.Text.Sentiment;
 using Microsoft.ProjectOxford.Vision;
 using Microsoft.ProjectOxford.Vision.Contract;
-using Sitecore.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Services.Bing;
 using Sitecore.SharedSource.CognitiveServices.Services.Vision;
 using Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models;
-using Sitecore.SharedSource.CognitiveServices.Models.Language;
-using Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
 using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
 using Microsoft.ProjectOxford.Video.Contract;
 using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
-using Sitecore.SharedSource.CognitiveServices.Models.Knowledge;
-using Sitecore.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
-using Sitecore.SharedSource.CognitiveServices.Models.Language.Linguistic;
-using Sitecore.SharedSource.CognitiveServices.Models.Language.WebLanguageModel;
+using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
+using Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic;
+using Microsoft.SharedSource.CognitiveServices.Models.Language.WebLanguageModel;
 using Sitecore.SharedSource.CognitiveServices.Services.Speech;
-using EvaluateResponse = Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator.EvaluateResponse;
+using EvaluateResponse = Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator.EvaluateResponse;
 using Operation = Microsoft.ProjectOxford.Video.Contract.Operation;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers

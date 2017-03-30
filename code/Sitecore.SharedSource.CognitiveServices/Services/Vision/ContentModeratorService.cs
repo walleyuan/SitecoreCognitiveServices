@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Sitecore.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Vision;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
+using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {

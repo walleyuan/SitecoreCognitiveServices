@@ -1,18 +1,20 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.SharedSource.CognitiveServices;
+using Microsoft.SharedSource.CognitiveServices.CSV;
 using Sitecore.DependencyInjection;
-using Sitecore.Foundation.DependencyInjection;
+using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Factories;
 using Sitecore.SharedSource.CognitiveServices.Repositories;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Knowledge;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Speech;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Vision;
+using Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge;
+using Microsoft.SharedSource.CognitiveServices.Repositories.Language;
+using Microsoft.SharedSource.CognitiveServices.Repositories.Speech;
+using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Intents;
 using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
 using Sitecore.SharedSource.CognitiveServices.Models.Search;
 using Sitecore.SharedSource.CognitiveServices.Models.Utility;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Bing;
+using Microsoft.SharedSource.CognitiveServices.Repositories;
+using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
 using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
 using Sitecore.SharedSource.CognitiveServices.Services.Speech;
@@ -20,6 +22,7 @@ using Sitecore.SharedSource.CognitiveServices.Services.Vision;
 using Sitecore.SharedSource.CognitiveServices.Search;
 using Sitecore.SharedSource.CognitiveServices.Services.Bing;
 using Sitecore.SharedSource.CognitiveServices.Services.Search;
+using Sitecore.SharedSource.CognitiveServices.Ole;
 
 namespace Sitecore.SharedSource.CognitiveServices.Configurator
 {

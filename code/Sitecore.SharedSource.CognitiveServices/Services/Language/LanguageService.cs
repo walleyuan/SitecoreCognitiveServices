@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Text.Language;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Repositories.Language;
+using Microsoft.SharedSource.CognitiveServices.Repositories.Language;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Language
 {

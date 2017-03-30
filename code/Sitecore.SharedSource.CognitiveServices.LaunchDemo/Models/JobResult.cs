@@ -1,4 +1,4 @@
-﻿using Sitecore.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
+﻿using Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models
 {
