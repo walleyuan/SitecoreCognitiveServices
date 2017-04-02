@@ -11,11 +11,9 @@ __Environment Prep__
 
 __Configuration files__
 
-In order to prevent sharing API keys and local dev paths to the world two config files needs to be copied (to the same folder) and renamed:
-- Copy `Sitecore.SharedSource.CognitiveServices\App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.config.localdev` and remove the `.localdev` suffix.
-  - Enter your API Keys into the renamed SitecoreCognitiveServices.config file.
-- Copy `Sitecore.SharedSource.CognitiveServices\App_Config\Include\SitecoreCognitiveServices\UnicornSerializationRoot.localdev.config` and remove the `localdev` suffix. 
-  - Update this config file with the full path in your local repository where the Sitecore items are serialized (this should end with `\serialization\Sitecore.SharedSource.CognitiveServices`).
+In order to prevent sharing API keys and local dev paths (the Unicorn serialization root) to the world two config files needs to be copied (to the same folder) and renamed. This is done by running the `setup-localdev.ps1` script located in the setup folder. This script will also set the Unicorn serialization root to math the folder in the repository so there's no need to copy yml files.
+
+- Run the `setup-localdev.ps1` script (make sure that the PowerShell execution policy is at least set to [RemoteSigned](https://ss64.com/ps/set-executionpolicy.html)).
 - Update the publishing profile on the core library project with the path to your Sitecore webroot (so the publish goes to your local web root)
 - Build the projects (to ensure all the Nuget packages get downloaded because this doesn't always work right away)
 - Publish the core and launch demo projects onto your website
