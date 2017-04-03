@@ -13,6 +13,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
 
         public string Respond(ITextTranslator translator, QueryResult result, Dictionary<string, string> parameters) {
 
+            //check if you're the admin user
+            if (!Sitecore.Context.User.IsAdministrator)
+                return "Sorry, you can only perform this action if you're an admin";
+            
             var user = result?.Entities?.FirstOrDefault(x => x.Type.Equals("Domain User"))?.Entity;
             if (string.IsNullOrEmpty(user))
                 return "Sorry, that's not a valid user name.";

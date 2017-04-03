@@ -273,7 +273,7 @@ jQuery(document).ready(function () {
 
     function UpdateChatWindow(text, type) {
         var convoBox = jQuery(chatConversation);
-        convoBox.prepend("<div class='" + type + "'><span>" + text + "</span></div>");
+        convoBox.append("<div class='" + type + "'><span>" + text + "</span></div>");
     }
 });
 

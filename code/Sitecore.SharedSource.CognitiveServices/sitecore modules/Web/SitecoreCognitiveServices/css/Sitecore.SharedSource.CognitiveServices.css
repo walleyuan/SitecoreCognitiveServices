@@ -248,7 +248,7 @@ fieldset legend { margin-bottom: 10px;}
 
 .chat-form .chat-input {}
 .chat-form .chat-submit { display:none; }
-.chat-form .chat-conversation {border: 1px solid #ccc; margin-top: 5px; max-height: 410px; overflow-x: hidden; overflow-y: auto; padding: 10px; }
+.chat-form .chat-conversation { border: 1px solid #ccc; margin-bottom: 5px; height: 410px; overflow-x: hidden; overflow-y: auto; padding: 10px; }
 .chat-form .user,
 .chat-form .bot { margin-bottom:5px; padding-bottom:5px; }
 .chat-form .user span,
