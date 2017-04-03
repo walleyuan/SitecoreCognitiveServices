@@ -1,8 +1,8 @@
 ﻿---
-ID: "810a254f-b9d2-4af6-9c2e-7700b3e83ceb"
-Parent: "e0160b8f-1e4b-48a6-8094-60fc97131623"
+ID: "6f8a77fc-c08d-4cdf-a581-91ea6afb28e3"
+Parent: "37c28cbf-bf04-4023-a01b-8039aa06f351"
 Template: "1db34c92-03b0-4475-9a39-da14e4d9d8fc"
-Path: /sitecore/content/Applications/Content Editor/Ribbons/Chunks/Utility/Ole
+Path: /sitecore/content/Applications/Content Editor/Ribbons/Chunks/Chat/Ole
 DB: core
 SharedFields:
 - ID: "d47ed548-84d5-4622-9886-5cc164727507"
