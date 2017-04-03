@@ -84,7 +84,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language {
         Task<string> CloneVersionAsync(Guid appId, string versionId, VersionRequest request);
         Task DeleteApplicationVersionAsync(Guid appId, string versionId);
         Task DeleteApplicationVersionExternalKeyAsync(Guid appId, string versionId, string keyType);
-        Task<ApplicationDefinition> ExportApplicationVersoinAsync(Guid appId, string versionId);
+        Task<ApplicationDefinition> ExportApplicationVersionAsync(Guid appId, string versionId);
         Task<ApplicationVersion> GetApplicationVersionAsync(Guid appId, string versionId);
         Task<List<ExternalApiKeySet>> GetApplicationVersionExternalApiKeysAsync(Guid appId, string versionId);
         Task<SubscriptionKeySet> GetApplicationVersionSubscriptionKeysAsync(Guid appId, string versionId);

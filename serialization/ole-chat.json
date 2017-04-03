@@ -1,0 +1,388 @@
+{
+  "luis_schema_version": "2.0.0",
+  "versionId": "1.0",
+  "name": "Ole Chat",
+  "desc": "This is Sitecore's AI chat bot",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "Cursing"
+    },
+    {
+      "name": "Greet"
+    },
+    {
+      "name": "Kick User"
+    },
+    {
+      "name": "Logged In Users"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "Version"
+    }
+  ],
+  "entities": [
+    {
+      "name": "Content",
+      "children": [
+        "item",
+        "image",
+        "media",
+        "template",
+        "datasource",
+        "rendering",
+        "layout"
+      ]
+    },
+    {
+      "name": "Domain User"
+    },
+    {
+      "name": "Users",
+      "children": [
+        "editors",
+        "users",
+        "content editors",
+        "people"
+      ]
+    }
+  ],
+  "composites": [],
+  "closedLists": [],
+  "bing_entities": [],
+  "actions": [],
+  "model_features": [],
+  "regex_features": [
+    {
+      "name": "Domain User",
+      "pattern": "([a-zA-Z0-9]+\\\\[a-zA-Z0-9]+)",
+      "activated": true
+    }
+  ],
+  "utterances": [
+    {
+      "text": "find a rendering",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "d",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "asdf",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "sion",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "soi",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "osij",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "publish something",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Content",
+          "startPos": 8,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "i want to publish something",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Content",
+          "startPos": 18,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "can you publish this item",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Content",
+          "startPos": 16,
+          "endPos": 24
+        }
+      ]
+    },
+    {
+      "text": "is this item in workflow",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Content",
+          "startPos": 3,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "what is the current items workflow",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Content",
+          "startPos": 12,
+          "endPos": 24
+        }
+      ]
+    },
+    {
+      "text": "what is this items workflow",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Content",
+          "startPos": 8,
+          "endPos": 17
+        }
+      ]
+    },
+    {
+      "text": "what is the workflow status of something",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Content",
+          "startPos": 31,
+          "endPos": 39
+        }
+      ]
+    },
+    {
+      "text": "who is this",
+      "intent": "Greet",
+      "entities": []
+    },
+    {
+      "text": "hey",
+      "intent": "Greet",
+      "entities": []
+    },
+    {
+      "text": "hi there",
+      "intent": "Greet",
+      "entities": []
+    },
+    {
+      "text": "hello",
+      "intent": "Greet",
+      "entities": []
+    },
+    {
+      "text": "hi",
+      "intent": "Greet",
+      "entities": []
+    },
+    {
+      "text": "is anyone there",
+      "intent": "Greet",
+      "entities": []
+    },
+    {
+      "text": "dude",
+      "intent": "Greet",
+      "entities": []
+    },
+    {
+      "text": "what's up",
+      "intent": "Greet",
+      "entities": []
+    },
+    {
+      "text": "ole",
+      "intent": "Greet",
+      "entities": []
+    },
+    {
+      "text": "what version are you",
+      "intent": "Version",
+      "entities": []
+    },
+    {
+      "text": "what's the sitecore version",
+      "intent": "Version",
+      "entities": []
+    },
+    {
+      "text": "what version is sitecore",
+      "intent": "Version",
+      "entities": []
+    },
+    {
+      "text": "what's your sitecore version",
+      "intent": "Version",
+      "entities": []
+    },
+    {
+      "text": "what's your version",
+      "intent": "Version",
+      "entities": []
+    },
+    {
+      "text": "prick",
+      "intent": "Cursing",
+      "entities": []
+    },
+    {
+      "text": "shit",
+      "intent": "Cursing",
+      "entities": []
+    },
+    {
+      "text": "ass",
+      "intent": "Cursing",
+      "entities": []
+    },
+    {
+      "text": "asshole",
+      "intent": "Cursing",
+      "entities": []
+    },
+    {
+      "text": "whore",
+      "intent": "Cursing",
+      "entities": []
+    },
+    {
+      "text": "bitch",
+      "intent": "Cursing",
+      "entities": []
+    },
+    {
+      "text": "fuck you",
+      "intent": "Cursing",
+      "entities": []
+    },
+    {
+      "text": "fuck",
+      "intent": "Cursing",
+      "entities": []
+    },
+    {
+      "text": "dumbass",
+      "intent": "Cursing",
+      "entities": []
+    },
+    {
+      "text": "jackass",
+      "intent": "Cursing",
+      "entities": []
+    },
+    {
+      "text": "punk",
+      "intent": "Cursing",
+      "entities": []
+    },
+    {
+      "text": "hell",
+      "intent": "Cursing",
+      "entities": []
+    },
+    {
+      "text": "bastard",
+      "intent": "Cursing",
+      "entities": []
+    },
+    {
+      "text": "how many people are in sitecore",
+      "intent": "Logged In Users",
+      "entities": [
+        {
+          "entity": "Users",
+          "startPos": 9,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "how many people are using the system",
+      "intent": "Logged In Users",
+      "entities": [
+        {
+          "entity": "Users",
+          "startPos": 9,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "how many users are logged in",
+      "intent": "Logged In Users",
+      "entities": [
+        {
+          "entity": "Users",
+          "startPos": 9,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "how many people are logged in",
+      "intent": "Logged In Users",
+      "entities": [
+        {
+          "entity": "Users",
+          "startPos": 9,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "log out sitecore\\admin",
+      "intent": "Kick User",
+      "entities": []
+    },
+    {
+      "text": "kick out sitecore\\admin",
+      "intent": "Kick User",
+      "entities": []
+    },
+    {
+      "text": "kick sitecore\\someuser out",
+      "intent": "Kick User",
+      "entities": []
+    },
+    {
+      "text": "kick out somedomain\\someuser",
+      "intent": "Kick User",
+      "entities": []
+    },
+    {
+      "text": "kick domain\\user out",
+      "intent": "Kick User",
+      "entities": []
+    },
+    {
+      "text": "logout sitecore\\someuser",
+      "intent": "Kick User",
+      "entities": []
+    },
+    {
+      "text": "log out somedomain\\someuser",
+      "intent": "Kick User",
+      "entities": []
+    }
+  ]
+}

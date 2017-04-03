@@ -525,7 +525,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language {
             var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{luisUrl}{appId}/versions/{versionId}/externalKeys/{keyType}");
         }
 
-        public virtual async Task<ApplicationDefinition> ExportApplicationVersoinAsync(Guid appId, string versionId) {
+        public virtual async Task<ApplicationDefinition> ExportApplicationVersionAsync(Guid appId, string versionId) {
 
             var response = await SendGetAsync($"{luisUrl}{appId}/versions/{versionId}/export");
 

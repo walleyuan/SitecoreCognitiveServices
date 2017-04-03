@@ -86,7 +86,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
         string CloneVersion(Guid appId, string versionId, VersionRequest request);
         void DeleteApplicationVersion(Guid appId, string versionId);
         void DeleteApplicationVersionExternalKey(Guid appId, string versionId, string keyType);
-        ApplicationDefinition ExportApplicationVersoin(Guid appId, string versionId);
+        ApplicationDefinition ExportApplicationVersion(Guid appId, string versionId);
         ApplicationVersion GetApplicationVersion(Guid appId, string versionId);
         List<ExternalApiKeySet> GetApplicationVersionExternalApiKeys(Guid appId, string versionId);
         SubscriptionKeySet GetApplicationVersionSubscriptionKeys(Guid appId, string versionId);
