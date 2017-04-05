@@ -6,6 +6,7 @@ using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 using Sitecore.ContentSearch;
 using Sitecore.Data.Items;
 using Sitecore.Publishing;
+using Sitecore.SharedSource.CognitiveServices.Models.Ole;
 
 namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
 
@@ -14,7 +15,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
     public class PublishIntent : IPublishIntent {
         public string Name => "publish";
 
-        public string Respond(ITextTranslator translator, QueryResult result, Dictionary<string, string> parameters) {
+        public string Respond(ITextTranslator translator, QueryResult result, ItemContextParameters parameters) {
             
             var entities = result?.Entities;
             if (entities == null)
@@ -24,8 +25,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
             if (string.IsNullOrEmpty(dbName))
                 return "Sorry, I think you forgot to mention the database name you wanted to publish to.";
 
-            var db = Sitecore.Configuration.Factory.GetDatabase("dbName");
-            if (db == null)
+            var toDb = Sitecore.Configuration.Factory.GetDatabase(dbName);
+            if (toDb == null)
                 return "Sorry, I couldn't find that database.";
 
             var itemPath = entities.FirstOrDefault(x => x.Type.Equals("Item Path"))?.Entity;
@@ -33,11 +34,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
                 return "Sorry, I think you forgot to mention the root item path.";
 
             var recursively = entities.FirstOrDefault(x => x.Type.Equals("Recursion"))?.Entity;
-            var isRecursive = string.IsNullOrEmpty(recursively);
+            var isRecursive = !string.IsNullOrEmpty(recursively);
 
-            ILogWrapper log = new LogWrapper();
-            ISitecoreDataService ds = new SitecoreDataService(log);
-            Item item = Sitecore.Context.Database.GetItem(itemPath);
+            var fromDb = Sitecore.Configuration.Factory.GetDatabase(parameters.Database);
+            Item item = fromDb.GetItem(itemPath);
             if (item == null)
                 return $"Sorry, I couldn't find the item at {itemPath}. Are you sure that's the right path?";
 
@@ -49,9 +49,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
 
             var tempItem = (SitecoreIndexableItem)item;
 
-            PublishManager.PublishItem(item, new[] {db}, new[] { item.Language }, isRecursive, false);
+            PublishManager.PublishItem(item, new[] { toDb }, new[] { item.Language }, isRecursive, false);
 
-            return $"I've published {item.DisplayName} to the {dbName} database in {item.Language} {(isRecursive ? " with it's children" : string.Empty)}";
+            return $"I've published {item.DisplayName} to the {dbName} database in {item.Language.Name} {(isRecursive ? " with it's children" : string.Empty)}";
         }
     }
 }

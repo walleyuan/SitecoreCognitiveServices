@@ -1,4 +1,4 @@
-﻿@model object
+﻿@model Sitecore.SharedSource.CognitiveServices.Models.Ole.ItemContextParameters
 
 @{
     ViewBag.Title = "Cognitive Services: Ole Chat";
@@ -7,8 +7,11 @@
 
 <div class="frame">
     <form class="form chat-form" method="post" action="/SitecoreCognitiveServices/CognitiveBot/OleChatRequest">
-        <div class="chat-conversation"></div> 
+        <div class="chat-conversation"></div>
         <input class="chat-input" type="text"/>
+        <input type="hidden" name="chat-db" class="chat-db" value="@Model.Database"/>
+        <input type="hidden" name="chat-lang" class="chat-lang" value="@Model.Language" />
+        <input type="hidden" name="chat-id" class="chat-id"value="@Model.Id" />
         <button class="chat-submit scButton">Send</button>
     </form>
 </div>

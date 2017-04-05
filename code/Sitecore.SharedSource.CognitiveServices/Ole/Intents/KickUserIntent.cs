@@ -5,6 +5,7 @@ using System.Web;
 using Microsoft.Bot.Builder.Luis.Models;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+using Sitecore.SharedSource.CognitiveServices.Models.Ole;
 using Sitecore.Web.Authentication;
 
 namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
@@ -14,7 +15,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
     public class KickUserIntent : IKickUserIntent {
         public string Name => "kick user";
 
-        public string Respond(ITextTranslator translator, QueryResult result, Dictionary<string, string> parameters) {
+        public string Respond(ITextTranslator translator, QueryResult result, ItemContextParameters parameters) {
 
             //check if you're the admin user
             if (!Sitecore.Context.User.IsAdministrator)

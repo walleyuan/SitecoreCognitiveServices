@@ -5,6 +5,7 @@ using System.Web;
 using Microsoft.Bot.Builder.Luis.Models;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+using Sitecore.SharedSource.CognitiveServices.Models.Ole;
 using Sitecore.Web.Authentication;
 
 namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
@@ -14,7 +15,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
     public class LoggedInUsersIntent : ILoggedInUsersIntent {
         public string Name => "logged in users";
 
-        public string Respond(ITextTranslator translator, QueryResult result, Dictionary<string, string> parameters) {
+        public string Respond(ITextTranslator translator, QueryResult result, ItemContextParameters parameters) {
 
             var sessions = DomainAccessGuard.Sessions.OrderByDescending(s => s.LastRequest);
             var sessionCount = sessions.Count();

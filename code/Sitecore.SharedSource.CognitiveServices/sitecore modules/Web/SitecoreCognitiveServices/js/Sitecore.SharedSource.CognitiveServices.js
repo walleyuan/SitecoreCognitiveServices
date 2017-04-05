@@ -263,11 +263,20 @@ jQuery(document).ready(function () {
         .click(function (event) {
             event.preventDefault();
             var queryValue = jQuery(chatInput).val();
+            var langValue = jQuery(".chat-lang").val();
+            var dbValue = jQuery(".chat-db").val();
+            var idValue = jQuery(".chat-id").val();
+
             jQuery(chatInput).val("");
             UpdateChatWindow(queryValue, "user");
 
             jQuery
-                .post(jQuery(chatForm).attr("action"), { query: queryValue })
+                .post(jQuery(chatForm).attr("action"), {
+                    query: queryValue,
+                    language: langValue,
+                    database: dbValue,
+                    id: idValue
+                })
                 .done(function (r) { UpdateChatWindow(r, "bot"); });
         });
 

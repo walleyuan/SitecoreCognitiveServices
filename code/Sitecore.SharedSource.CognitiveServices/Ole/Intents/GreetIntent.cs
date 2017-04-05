@@ -7,6 +7,7 @@ using Microsoft.Bot.Builder.Luis.Models;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 using Sitecore.Security.Accounts;
+using Sitecore.SharedSource.CognitiveServices.Models.Ole;
 
 namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
     public interface IGreetIntent : IIntent { }
@@ -15,7 +16,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
     {
         public string Name => "greet";
 
-        public string Respond(ITextTranslator translator, QueryResult result, Dictionary<string, string> parameters)
+        public string Respond(ITextTranslator translator, QueryResult result, ItemContextParameters parameters)
         {
             string fullName = Sitecore.Context.User.Profile.FullName;
             

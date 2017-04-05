@@ -4,6 +4,7 @@ using System.Web;
 using System.Xml.Linq;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+using Sitecore.SharedSource.CognitiveServices.Models.Ole;
 
 namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
 
@@ -12,7 +13,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
     public class VersionIntent : IVersionIntent {
         public string Name => "version";
 
-        public string Respond(ITextTranslator translator, QueryResult result, Dictionary<string, string> parameters) {
+        public string Respond(ITextTranslator translator, QueryResult result, ItemContextParameters parameters) {
 
             var path = HttpContext.Current.Server.MapPath("~/sitecore/shell/sitecore.version.xml");
             if (!System.IO.File.Exists(path))

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.Bot.Builder.Luis.Models;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+﻿using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+using Sitecore.SharedSource.CognitiveServices.Models.Ole;
 
 namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
     public interface IIntent {
         string Name { get; }
-        string Respond(ITextTranslator translator, QueryResult result, Dictionary<string, string> parameters);
+        string Respond(ITextTranslator translator, QueryResult result, ItemContextParameters parameters);
     }
 }
