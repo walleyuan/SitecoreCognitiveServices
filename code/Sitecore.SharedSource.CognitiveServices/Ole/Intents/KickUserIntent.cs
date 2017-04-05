@@ -8,7 +8,10 @@ using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 using Sitecore.Web.Authentication;
 
 namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
-    public class KickUserIntent : IIntent {
+
+    public interface IKickUserIntent : IIntent { }
+
+    public class KickUserIntent : IKickUserIntent {
         public string Name => "kick user";
 
         public string Respond(ITextTranslator translator, QueryResult result, Dictionary<string, string> parameters) {

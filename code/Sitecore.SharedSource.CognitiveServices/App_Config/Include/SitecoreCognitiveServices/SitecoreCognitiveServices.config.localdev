@@ -40,6 +40,7 @@
       <setting name="CognitiveService.ApiKey.WebLM" value="" />
 
       <!-- Module Settings-->
+      <setting name="CognitiveService.OleApplicationId" value="a9b7f39c-692a-499c-bcee-b1e57232b93a" />
       <setting name="CognitiveService.Language" value="en" />
       <setting name="CognitiveService.TextualFieldTypes" value="Rich Text|Single-Line Text|Multi-Line Text|html|text|memo" />
 

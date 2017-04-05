@@ -273,7 +273,7 @@ jQuery(document).ready(function () {
 
     function UpdateChatWindow(text, type) {
         var convoBox = jQuery(chatConversation);
-        convoBox.append("<div class='" + type + "'><span>" + text + "</span></div>");
+        convoBox.append("<div class='" + type + "'><span class='message'>" + text + "<span class='icon'></span></span></div>");
         convoBox.scrollTop(convoBox[0].scrollHeight - convoBox.height());
     }
 });

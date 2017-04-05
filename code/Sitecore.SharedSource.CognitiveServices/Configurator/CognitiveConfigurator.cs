@@ -9,12 +9,12 @@ using Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Language;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Speech;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
 using Sitecore.SharedSource.CognitiveServices.Models.Search;
 using Sitecore.SharedSource.CognitiveServices.Models.Utility;
 using Microsoft.SharedSource.CognitiveServices.Repositories;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
+using Sitecore.SharedSource.CognitiveServices.Factories.Intents;
 using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
 using Sitecore.SharedSource.CognitiveServices.Services.Speech;
@@ -23,6 +23,7 @@ using Sitecore.SharedSource.CognitiveServices.Search;
 using Sitecore.SharedSource.CognitiveServices.Services.Bing;
 using Sitecore.SharedSource.CognitiveServices.Services.Search;
 using Sitecore.SharedSource.CognitiveServices.Ole;
+using Sitecore.SharedSource.CognitiveServices.Ole.Intents;
 
 namespace Sitecore.SharedSource.CognitiveServices.Configurator
 {
@@ -31,6 +32,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
         public void Configure(IServiceCollection serviceCollection)
         {
             //system
+            serviceCollection.AddSingleton<IApplicationSettings, ApplicationSettings>();
             serviceCollection.AddSingleton<IApiKeys, ApiKeys>();
             serviceCollection.AddTransient<ISitecoreDataService, SitecoreDataService>();
             serviceCollection.AddTransient<IWebUtilWrapper, WebUtilWrapper>();
@@ -104,6 +106,22 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<IReanalyzeAllFactory, ReanalyzeAllFactory>();
             serviceCollection.AddTransient<ISetAltTagsAllFactory, SetAltTagsAllFactory>();
             serviceCollection.AddTransient<ICognitiveMediaSearchFactory, CognitiveMediaSearchFactory>();
+
+            //intents
+            serviceCollection.AddTransient<IDefaultIntent, DefaultIntent>();
+            serviceCollection.AddTransient<IGreetIntent, GreetIntent>();
+            serviceCollection.AddTransient<IKickUserIntent, KickUserIntent>();
+            serviceCollection.AddTransient<ILoggedInUsersIntent, LoggedInUsersIntent>();
+            serviceCollection.AddTransient<IPublishIntent, PublishIntent>();
+            serviceCollection.AddTransient<IVersionIntent, VersionIntent>();
+
+            //intent factories
+            serviceCollection.AddTransient<IDefaultIntentFactory, DefaultIntentFactory>();
+            serviceCollection.AddTransient<IGreetIntentFactory, GreetIntentFactory>();
+            serviceCollection.AddTransient<IKickUserIntentFactory, KickUserIntentFactory>();
+            serviceCollection.AddTransient<ILoggedInUsersIntentFactory, LoggedInUsersIntentFactory>();
+            serviceCollection.AddTransient<IPublishIntentFactory, PublishIntentFactory>();
+            serviceCollection.AddTransient<IVersionIntentFactory, VersionIntentFactory>();
 
             //search
             serviceCollection.AddTransient<ICognitiveSearchContext, CognitiveSearchContext>();

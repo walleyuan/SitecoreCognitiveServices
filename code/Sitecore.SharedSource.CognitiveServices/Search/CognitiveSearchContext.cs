@@ -15,13 +15,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
     public class CognitiveSearchContext : ICognitiveSearchContext
     {
         protected readonly ISitecoreDataService DataService;
-        
-        protected static readonly string IndexNameFormat = Sitecore.Configuration.Settings.GetSetting("CognitiveService.Search.IndexNameFormat");
+        protected readonly IApplicationSettings ApplicationSettings;
         
         public CognitiveSearchContext(
-            ISitecoreDataService dataService)
+            ISitecoreDataService dataService,
+            IApplicationSettings applicationSettings)
         {
             DataService = dataService;
+            ApplicationSettings = applicationSettings;
         }
 
         public virtual ICognitiveSearchResult GetAnalysis(string itemId, string languageCode, string dbName)
@@ -262,7 +263,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             {
                 dbName = "master";
             }
-            return string.Format(IndexNameFormat, dbName);
+            return string.Format(ApplicationSettings.IndexNameFormat, dbName);
         }
     }
 }

@@ -6,7 +6,10 @@ using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 
 namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
-    public class VersionIntent : IIntent {
+
+    public interface IVersionIntent : IIntent { }
+
+    public class VersionIntent : IVersionIntent {
         public string Name => "version";
 
         public string Respond(ITextTranslator translator, QueryResult result, Dictionary<string, string> parameters) {

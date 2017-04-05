@@ -8,7 +8,10 @@ using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 using Sitecore.Web.Authentication;
 
 namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
-    public class LoggedInUsersIntent : IIntent {
+
+    public interface ILoggedInUsersIntent : IIntent { }
+
+    public class LoggedInUsersIntent : ILoggedInUsersIntent {
         public string Name => "logged in users";
 
         public string Respond(ITextTranslator translator, QueryResult result, Dictionary<string, string> parameters) {

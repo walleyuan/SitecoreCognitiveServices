@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Sitecore.Data.Managers;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Ole;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
@@ -14,17 +15,23 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers {
         protected readonly ILuisService LuisService;
         protected readonly ITextTranslator TextTranslator;
         protected readonly IWebUtilWrapper WebUtil;
+        protected readonly IApplicationSettings ApplicationSettings;
 
         public CognitiveBotController(
             IIntentProvider intentProvider, 
             ILuisService luisService,
             ITextTranslator textTranslator,
-            IWebUtilWrapper webUtil)
+            IWebUtilWrapper webUtil,
+            IApplicationSettings applicationSettings)
         {
             IntentProvider = intentProvider;
             LuisService = luisService;
             TextTranslator = textTranslator;
             WebUtil = webUtil;
+            ApplicationSettings = applicationSettings;
+
+            //warm up ole icon
+            ThemeManager.GetImage("Office/32x32/man_8.png", 32, 32);
         }
 
         public ActionResult OleChat()
@@ -34,7 +41,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers {
 
         public ActionResult OleChatRequest(string query)
         {
-            var appId = new Guid("a9b7f39c-692a-499c-bcee-b1e57232b93a");
+            var appId = ApplicationSettings.OleApplicationId;
             var result = LuisService.Query(appId, query);
             
             var defaultResponse = IntentProvider.GetIntent(appId, "default")?.Respond(TextTranslator, result, null) ?? string.Empty;

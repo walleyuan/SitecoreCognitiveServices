@@ -6,9 +6,6 @@
   "culture": "en-us",
   "intents": [
     {
-      "name": "Cursing"
-    },
-    {
       "name": "Greet"
     },
     {
@@ -19,6 +16,9 @@
     },
     {
       "name": "None"
+    },
+    {
+      "name": "Publish"
     },
     {
       "name": "Version"
@@ -38,7 +38,19 @@
       ]
     },
     {
+      "name": "Database Name"
+    },
+    {
       "name": "Domain User"
+    },
+    {
+      "name": "Item Path"
+    },
+    {
+      "name": "Language"
+    },
+    {
+      "name": "Recursion"
     },
     {
       "name": "Users",
@@ -63,113 +75,6 @@
     }
   ],
   "utterances": [
-    {
-      "text": "find a rendering",
-      "intent": "None",
-      "entities": []
-    },
-    {
-      "text": "d",
-      "intent": "None",
-      "entities": []
-    },
-    {
-      "text": "asdf",
-      "intent": "None",
-      "entities": []
-    },
-    {
-      "text": "sion",
-      "intent": "None",
-      "entities": []
-    },
-    {
-      "text": "soi",
-      "intent": "None",
-      "entities": []
-    },
-    {
-      "text": "osij",
-      "intent": "None",
-      "entities": []
-    },
-    {
-      "text": "publish something",
-      "intent": "None",
-      "entities": [
-        {
-          "entity": "Content",
-          "startPos": 8,
-          "endPos": 16
-        }
-      ]
-    },
-    {
-      "text": "i want to publish something",
-      "intent": "None",
-      "entities": [
-        {
-          "entity": "Content",
-          "startPos": 18,
-          "endPos": 26
-        }
-      ]
-    },
-    {
-      "text": "can you publish this item",
-      "intent": "None",
-      "entities": [
-        {
-          "entity": "Content",
-          "startPos": 16,
-          "endPos": 24
-        }
-      ]
-    },
-    {
-      "text": "is this item in workflow",
-      "intent": "None",
-      "entities": [
-        {
-          "entity": "Content",
-          "startPos": 3,
-          "endPos": 11
-        }
-      ]
-    },
-    {
-      "text": "what is the current items workflow",
-      "intent": "None",
-      "entities": [
-        {
-          "entity": "Content",
-          "startPos": 12,
-          "endPos": 24
-        }
-      ]
-    },
-    {
-      "text": "what is this items workflow",
-      "intent": "None",
-      "entities": [
-        {
-          "entity": "Content",
-          "startPos": 8,
-          "endPos": 17
-        }
-      ]
-    },
-    {
-      "text": "what is the workflow status of something",
-      "intent": "None",
-      "entities": [
-        {
-          "entity": "Content",
-          "startPos": 31,
-          "endPos": 39
-        }
-      ]
-    },
     {
       "text": "who is this",
       "intent": "Greet",
@@ -241,71 +146,6 @@
       "entities": []
     },
     {
-      "text": "prick",
-      "intent": "Cursing",
-      "entities": []
-    },
-    {
-      "text": "shit",
-      "intent": "Cursing",
-      "entities": []
-    },
-    {
-      "text": "ass",
-      "intent": "Cursing",
-      "entities": []
-    },
-    {
-      "text": "asshole",
-      "intent": "Cursing",
-      "entities": []
-    },
-    {
-      "text": "whore",
-      "intent": "Cursing",
-      "entities": []
-    },
-    {
-      "text": "bitch",
-      "intent": "Cursing",
-      "entities": []
-    },
-    {
-      "text": "fuck you",
-      "intent": "Cursing",
-      "entities": []
-    },
-    {
-      "text": "fuck",
-      "intent": "Cursing",
-      "entities": []
-    },
-    {
-      "text": "dumbass",
-      "intent": "Cursing",
-      "entities": []
-    },
-    {
-      "text": "jackass",
-      "intent": "Cursing",
-      "entities": []
-    },
-    {
-      "text": "punk",
-      "intent": "Cursing",
-      "entities": []
-    },
-    {
-      "text": "hell",
-      "intent": "Cursing",
-      "entities": []
-    },
-    {
-      "text": "bastard",
-      "intent": "Cursing",
-      "entities": []
-    },
-    {
       "text": "how many people are in sitecore",
       "intent": "Logged In Users",
       "entities": [
@@ -352,37 +192,206 @@
     {
       "text": "log out sitecore\\admin",
       "intent": "Kick User",
-      "entities": []
+      "entities": [
+        {
+          "entity": "Domain User",
+          "startPos": 8,
+          "endPos": 21
+        }
+      ]
     },
     {
       "text": "kick out sitecore\\admin",
       "intent": "Kick User",
-      "entities": []
+      "entities": [
+        {
+          "entity": "Domain User",
+          "startPos": 9,
+          "endPos": 22
+        }
+      ]
     },
     {
       "text": "kick sitecore\\someuser out",
       "intent": "Kick User",
-      "entities": []
+      "entities": [
+        {
+          "entity": "Domain User",
+          "startPos": 5,
+          "endPos": 21
+        }
+      ]
     },
     {
       "text": "kick out somedomain\\someuser",
       "intent": "Kick User",
-      "entities": []
+      "entities": [
+        {
+          "entity": "Domain User",
+          "startPos": 9,
+          "endPos": 27
+        }
+      ]
     },
     {
       "text": "kick domain\\user out",
       "intent": "Kick User",
-      "entities": []
+      "entities": [
+        {
+          "entity": "Domain User",
+          "startPos": 5,
+          "endPos": 15
+        }
+      ]
     },
     {
       "text": "logout sitecore\\someuser",
       "intent": "Kick User",
-      "entities": []
+      "entities": [
+        {
+          "entity": "Domain User",
+          "startPos": 7,
+          "endPos": 23
+        }
+      ]
     },
     {
       "text": "log out somedomain\\someuser",
       "intent": "Kick User",
-      "entities": []
+      "entities": [
+        {
+          "entity": "Domain User",
+          "startPos": 8,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "publish the /sitecore/content/home to the web database",
+      "intent": "Publish",
+      "entities": [
+        {
+          "entity": "Database Name",
+          "startPos": 42,
+          "endPos": 44
+        },
+        {
+          "entity": "Item Path",
+          "startPos": 12,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "would you publish /sitecore/templates/userdefined to the web database",
+      "intent": "Publish",
+      "entities": [
+        {
+          "entity": "Database Name",
+          "startPos": 57,
+          "endPos": 59
+        },
+        {
+          "entity": "Item Path",
+          "startPos": 18,
+          "endPos": 48
+        }
+      ]
+    },
+    {
+      "text": "publish /sitecore/content/home to the web database recursively",
+      "intent": "Publish",
+      "entities": [
+        {
+          "entity": "Database Name",
+          "startPos": 38,
+          "endPos": 40
+        },
+        {
+          "entity": "Recursion",
+          "startPos": 51,
+          "endPos": 61
+        },
+        {
+          "entity": "Item Path",
+          "startPos": 8,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "can you publish /sitecore/system/modules to web",
+      "intent": "Publish",
+      "entities": [
+        {
+          "entity": "Database Name",
+          "startPos": 44,
+          "endPos": 46
+        },
+        {
+          "entity": "Item Path",
+          "startPos": 16,
+          "endPos": 39
+        }
+      ]
+    },
+    {
+      "text": "can you publish /sitecore/templates to web recursively",
+      "intent": "Publish",
+      "entities": [
+        {
+          "entity": "Database Name",
+          "startPos": 39,
+          "endPos": 41
+        },
+        {
+          "entity": "Recursion",
+          "startPos": 43,
+          "endPos": 53
+        },
+        {
+          "entity": "Item Path",
+          "startPos": 16,
+          "endPos": 34
+        }
+      ]
+    },
+    {
+      "text": "publish /sitecore/content/somesite to master recursively",
+      "intent": "Publish",
+      "entities": [
+        {
+          "entity": "Database Name",
+          "startPos": 38,
+          "endPos": 43
+        },
+        {
+          "entity": "Recursion",
+          "startPos": 45,
+          "endPos": 55
+        },
+        {
+          "entity": "Item Path",
+          "startPos": 8,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "publish /sitecore/media library/somefolder to the master database",
+      "intent": "Publish",
+      "entities": [
+        {
+          "entity": "Database Name",
+          "startPos": 50,
+          "endPos": 55
+        },
+        {
+          "entity": "Item Path",
+          "startPos": 8,
+          "endPos": 41
+        }
+      ]
     }
   ]
 }

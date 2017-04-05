@@ -7,7 +7,10 @@ using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 
 namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
-    public class DefaultIntent : IIntent {
+
+    public interface IDefaultIntent : IIntent { }
+
+    public class DefaultIntent : IDefaultIntent {
         public string Name => "default";
 
         public string Respond(ITextTranslator translator, QueryResult result, Dictionary<string, string> parameters) {
