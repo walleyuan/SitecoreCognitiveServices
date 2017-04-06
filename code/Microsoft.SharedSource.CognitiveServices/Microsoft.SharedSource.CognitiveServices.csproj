@@ -276,6 +276,14 @@
     <Compile Include="Models\Knowledge\AcademicSearch\InterpretResult.cs" />
     <Compile Include="Models\Knowledge\AcademicSearch\InterpretRule.cs" />
     <Compile Include="Models\Knowledge\AcademicSearch\InterpretRuleOutput.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\AnswerEntity.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\KnowledgeBaseDetails.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\DataExtractionResult.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\GenerateAnswerRequest.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\GenerateAnswerResponse.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\KnowledgeBaseExtractionDetails.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\PatchKnowledgeBaseRequest.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\QnAPair.cs" />
     <Compile Include="Models\Knowledge\Recommendations\BatchEntity.cs" />
     <Compile Include="Models\Knowledge\Recommendations\BatchJob.cs" />
     <Compile Include="Models\Knowledge\Recommendations\BatchJobDetails.cs" />
@@ -474,6 +482,7 @@
     <Compile Include="Repositories\Knowledge\IKnowledgeExplorationRepository.cs" />
     <Compile Include="Repositories\Knowledge\IQnAMakerRepository.cs" />
     <Compile Include="Repositories\Knowledge\IRecommendationsRepository.cs" />
+    <Compile Include="Repositories\Knowledge\QnAMakerRepository.cs" />
     <Compile Include="Repositories\Knowledge\RecommendationsRepository.cs" />
     <Compile Include="Repositories\Language\ILanguageRepository.cs" />
     <Compile Include="Repositories\Language\ILinguisticRepository.cs" />

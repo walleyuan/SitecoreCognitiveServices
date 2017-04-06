@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Microsoft.SharedSource.CognitiveServices.Models.Knowledge.QnAMaker {
-    public class Answer {
+    public class AnswerEntity {
         public string Answer { get; set; }
         public float Score { get; set; }
     }

@@ -330,8 +330,6 @@
     <Compile Include="Foundation\ILogWrapper.cs" />
     <Compile Include="Foundation\ITextTranslator.cs" />
     <Compile Include="Foundation\LogWrapper.cs" />
-    <Compile Include="Foundation\SettingsWrapper.cs" />
-    <Compile Include="Foundation\ISettingsWrapper.cs" />
     <Compile Include="Foundation\ISitecoreDataService.cs" />
     <Compile Include="Foundation\SitecoreDataService.cs" />
     <Compile Include="Foundation\TextTranslator.cs" />
@@ -420,12 +418,16 @@
     <Compile Include="Services\Bing\WebSearchService.cs" />
     <Compile Include="Services\Knowledge\AcademicSearchService.cs" />
     <Compile Include="Services\Knowledge\IAcademicSearchService.cs" />
+    <Compile Include="Services\Knowledge\IQnAMakerService.cs" />
+    <Compile Include="Services\Knowledge\QnAMakerService.cs" />
     <Compile Include="Services\Knowledge\RecommendationsService.cs" />
     <Compile Include="Services\Knowledge\IRecommendationsService.cs" />
     <Compile Include="Services\Language\IWebLanguageModelService.cs" />
     <Compile Include="Services\Language\ILuisService.cs" />
     <Compile Include="Services\Language\LuisService.cs" />
     <Compile Include="Services\Language\WebLanguageModelService.cs" />
+    <Compile Include="Foundation\IPublishWrapper.cs" />
+    <Compile Include="Foundation\PublishWrapper.cs" />
     <Compile Include="Services\Search\SearchService.cs" />
     <Compile Include="Services\Search\ISearchService.cs" />
     <Compile Include="Services\Language\ILinguisticService.cs" />

@@ -14,7 +14,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers {
     {
         protected readonly IIntentProvider IntentProvider;
         protected readonly ILuisService LuisService;
-        protected readonly ITextTranslator TextTranslator;
         protected readonly IWebUtilWrapper WebUtil;
         protected readonly IApplicationSettings ApplicationSettings;
 
@@ -23,13 +22,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers {
         public CognitiveBotController(
             IIntentProvider intentProvider, 
             ILuisService luisService,
-            ITextTranslator textTranslator,
             IWebUtilWrapper webUtil,
             IApplicationSettings applicationSettings)
         {
             IntentProvider = intentProvider;
             LuisService = luisService;
-            TextTranslator = textTranslator;
             WebUtil = webUtil;
             ApplicationSettings = applicationSettings;
 
@@ -59,12 +56,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers {
             var appId = ApplicationSettings.OleApplicationId;
             var result = LuisService.Query(appId, query);
             
-            var defaultResponse = IntentProvider.GetIntent(appId, "default")?.Respond(TextTranslator, result, null) ?? string.Empty;
+            var defaultResponse = IntentProvider.GetIntent(appId, "default")?.Respond(result, null) ?? string.Empty;
             
             var intent = IntentProvider.GetIntent(appId, result.TopScoringIntent.Intent);
             
             return (intent != null)
-                ? Json(intent.Respond(TextTranslator, result, parameters))
+                ? Json(intent.Respond(result, parameters))
                 : Json(defaultResponse);
         }
     }

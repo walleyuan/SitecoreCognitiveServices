@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace Microsoft.SharedSource.CognitiveServices.Models.Knowledge.QnAMaker {
     public class GenerateAnswerResponse {
-        public Answer[] Answers { get; set; }
+        public AnswerEntity[] Answers { get; set; }
     }
 }

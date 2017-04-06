@@ -12,12 +12,18 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
 
     public interface IKickUserIntent : IIntent { }
 
-    public class KickUserIntent : IKickUserIntent {
+    public class KickUserIntent : IKickUserIntent 
+    {
+        protected readonly ITextTranslator Translator;
+
         public string Name => "kick user";
 
-        public string Respond(ITextTranslator translator, QueryResult result, ItemContextParameters parameters) {
+        public KickUserIntent(ITextTranslator translator) {
+            Translator = translator;
+        }
 
-            //check if you're the admin user
+        public string Respond(QueryResult result, ItemContextParameters parameters) {
+
             if (!Sitecore.Context.User.IsAdministrator)
                 return "Sorry, you can only perform this action if you're an admin";
             

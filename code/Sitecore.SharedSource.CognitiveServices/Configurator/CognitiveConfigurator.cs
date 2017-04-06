@@ -36,12 +36,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddSingleton<IApiKeys, ApiKeys>();
             serviceCollection.AddTransient<ISitecoreDataService, SitecoreDataService>();
             serviceCollection.AddTransient<IWebUtilWrapper, WebUtilWrapper>();
-            serviceCollection.AddTransient<ISettingsWrapper, SettingsWrapper>();
             serviceCollection.AddTransient<ILogWrapper, LogWrapper>();
             serviceCollection.AddTransient<IRepositoryClient, RepositoryClient>();
             serviceCollection.AddTransient<ICSVParser, CSVParser>();
             serviceCollection.AddTransient<ITextTranslator, TextTranslator>();
             serviceCollection.AddTransient<IIntentProvider, IntentProvider>();
+            serviceCollection.AddTransient<IPublishWrapper, PublishWrapper>();
 
             //repositories
             serviceCollection.AddTransient<IEmotionRepository, EmotionRepository>();
