@@ -1,28 +1,27 @@
 ﻿using System;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.ProjectOxford.Text.Core;
 using Newtonsoft.Json;
 using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge;
 using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
-    public class AcademicSearchRepository : TextClient, IAcademicSearchRepository
+    public class AcademicSearchRepository : IAcademicSearchRepository
     {
         protected static readonly string calcUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram";
         protected static readonly string evaluateUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate";
         protected static readonly string graphUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search";
         protected static readonly string interpretUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret";
         protected static readonly string similarityUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity";
-        
+
+        protected readonly IApiKeys ApiKeys;
         protected readonly IRepositoryClient RepositoryClient;
 
         public AcademicSearchRepository(
             IApiKeys apiKeys,
             IRepositoryClient repoClient)
-            : base(apiKeys.Academic)
         {
+            ApiKeys = apiKeys;
             RepositoryClient = repoClient;
         }
 
@@ -57,7 +56,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
 
             var modelName = Enum.GetName(typeof(AcademicModelOptions), model).Replace("beta2015", "beta-2015");
 
-            var response = await SendGetAsync($"{calcUrl}?expr={expression}&model={modelName}{sb}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Academic, $"{calcUrl}?expr={expression}&model={modelName}{sb}");
 
             return JsonConvert.DeserializeObject<CalcHistogramResponse>(response);
         }
@@ -97,7 +96,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
 
             var modelName = Enum.GetName(typeof(AcademicModelOptions), model).Replace("beta2015", "beta-2015");
 
-            var response = await this.SendGetAsync($"{evaluateUrl}?expr={expression}&model={modelName}{sb}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Academic, $"{evaluateUrl}?expr={expression}&model={modelName}{sb}");
 
             return JsonConvert.DeserializeObject<EvaluateResponse>(response);
         }
@@ -112,7 +111,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
 
         public virtual async Task<GraphSearchResponse> GraphSearchAsync(GraphSearchRequest request) {
             
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKey, $"{graphUrl}?mode=json", JsonConvert.SerializeObject(request));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.Academic, $"{graphUrl}?mode=json", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<GraphSearchResponse>(response);
         }
@@ -151,7 +150,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
 
             var modelName = Enum.GetName(typeof(AcademicModelOptions), model).Replace("beta2015", "beta-2015");
 
-            var response = await SendGetAsync($"{interpretUrl}?query={query}&model={modelName}{sb}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Academic, $"{interpretUrl}?query={query}&model={modelName}{sb}");
 
             return JsonConvert.DeserializeObject<InterpretResponse>(response);
         }
@@ -167,7 +166,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
 
         public virtual async Task<double> SimilarityAsync(string s1, string s2)
         {
-            var response = await RepositoryClient.SendEncodedFormPostAsync(ApiKey, similarityUrl, $"s1={s1}&s2={s2}");
+            var response = await RepositoryClient.SendEncodedFormPostAsync(ApiKeys.Academic, similarityUrl, $"s1={s1}&s2={s2}");
 
             return JsonConvert.DeserializeObject<double>(response);
         }
