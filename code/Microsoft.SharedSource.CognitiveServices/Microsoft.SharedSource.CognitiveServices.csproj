@@ -187,7 +187,6 @@
     <Compile Include="CSV\ICSVParser.cs" />
     <Compile Include="Enums\Academic.cs" />
     <Compile Include="Enums\Bing.cs" />
-    <Compile Include="Enums\ImageSize.cs" />
     <Compile Include="Enums\Language.cs" />
     <Compile Include="Enums\Vision.cs" />
     <Compile Include="Models\Bing\AutoSuggest\AutoSuggestEntry.cs" />
@@ -223,6 +222,12 @@
     <Compile Include="Models\Bing\SearchInstrumentation.cs" />
     <Compile Include="Models\Bing\SearchSuggestion.cs" />
     <Compile Include="Models\Bing\SimpleSearchResult.cs" />
+    <Compile Include="Models\Bing\Speech\Header.cs" />
+    <Compile Include="Models\Bing\Speech\HeaderProperties.cs" />
+    <Compile Include="Models\Bing\Speech\Result.cs" />
+    <Compile Include="Models\Bing\Speech\ResultProperties.cs" />
+    <Compile Include="Models\Bing\Speech\SpeechToTextResponse.cs" />
+    <Compile Include="Models\Bing\Speech\SpeechToTextToken.cs" />
     <Compile Include="Models\Bing\SpellCheck\SpellCheckResponse.cs" />
     <Compile Include="Models\Bing\SpellCheck\SpellCheckSuggestion.cs" />
     <Compile Include="Models\Bing\SpellCheck\SpellCheckToken.cs" />
@@ -271,6 +276,14 @@
     <Compile Include="Models\Knowledge\AcademicSearch\InterpretResult.cs" />
     <Compile Include="Models\Knowledge\AcademicSearch\InterpretRule.cs" />
     <Compile Include="Models\Knowledge\AcademicSearch\InterpretRuleOutput.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\AnswerEntity.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\KnowledgeBaseDetails.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\DataExtractionResult.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\GenerateAnswerRequest.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\GenerateAnswerResponse.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\KnowledgeBaseExtractionDetails.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\PatchKnowledgeBaseRequest.cs" />
+    <Compile Include="Models\Knowledge\QnAMaker\QnAPair.cs" />
     <Compile Include="Models\Knowledge\Recommendations\BatchEntity.cs" />
     <Compile Include="Models\Knowledge\Recommendations\BatchJob.cs" />
     <Compile Include="Models\Knowledge\Recommendations\BatchJobDetails.cs" />
@@ -456,6 +469,7 @@
     <Compile Include="Repositories\Bing\IVideoSearchRepository.cs" />
     <Compile Include="Repositories\Bing\IWebSearchRepository.cs" />
     <Compile Include="Repositories\Bing\NewsSearchRepository.cs" />
+    <Compile Include="Repositories\Bing\SpeechRepository.cs" />
     <Compile Include="Repositories\Bing\SpellCheckRepository.cs" />
     <Compile Include="Repositories\Bing\VideoSearchRepository.cs" />
     <Compile Include="Repositories\Bing\WebSearchRepository.cs" />
@@ -468,6 +482,7 @@
     <Compile Include="Repositories\Knowledge\IKnowledgeExplorationRepository.cs" />
     <Compile Include="Repositories\Knowledge\IQnAMakerRepository.cs" />
     <Compile Include="Repositories\Knowledge\IRecommendationsRepository.cs" />
+    <Compile Include="Repositories\Knowledge\QnAMakerRepository.cs" />
     <Compile Include="Repositories\Knowledge\RecommendationsRepository.cs" />
     <Compile Include="Repositories\Language\ILanguageRepository.cs" />
     <Compile Include="Repositories\Language\ILinguisticRepository.cs" />

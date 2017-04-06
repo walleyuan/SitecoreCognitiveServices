@@ -3,25 +3,25 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.ProjectOxford.Text.Core;
 using Newtonsoft.Json;
 using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.Recommendations;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge
 {
-    public class RecommendationsRepository : TextClient, IRecommendationsRepository
+    public class RecommendationsRepository : IRecommendationsRepository
     {
         protected static readonly string operationsUrl = "https://westus.api.cognitive.microsoft.com/recommendations/v4.0/operations/";
         protected static readonly string modelsUrl = "https://westus.api.cognitive.microsoft.com/recommendations/v4.0/models/";
         protected static readonly string batchUrl = "https://westus.api.cognitive.microsoft.com/recommendations/v4.0/batchjobs/";
 
+        protected readonly IApiKeys ApiKeys;
         protected readonly IRepositoryClient RepositoryClient;
 
         public RecommendationsRepository(
             IApiKeys apiKeys,
             IRepositoryClient repoClient)
-            : base(apiKeys.Recommendations)
         {
+            ApiKeys = apiKeys;
             RepositoryClient = repoClient;
         }
 
@@ -29,45 +29,45 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge
 
         public virtual async Task<CreateBusinessRuleResponse> CreateBusinessRuleAsync(string modelId, CreateBusinessRuleRequest request)
         {
-            var response = await SendPostAsync($"{modelsUrl}{modelId}/rules", JsonConvert.SerializeObject(request));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/rules", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<CreateBusinessRuleResponse>(response);
         }
         
         public virtual async Task<RecommendationModel> CreateModelAsync(CreateModelRequest request)
         {
-            var response = await SendPostAsync(modelsUrl, JsonConvert.SerializeObject(request));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.Recommendations, modelsUrl, JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<RecommendationModel>(response);
         }
 
         public virtual async Task<CreateBuildResponse> CreateBuildAsync(string modelId, CreateBuildRequest request)
         {
-            var response = await SendPostAsync($"{modelsUrl}{modelId}/builds", JsonConvert.SerializeObject(request));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/builds", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<CreateBuildResponse>(response);
         }
 
         public virtual async Task StartBatchJobAsync(BatchJobRequest request)
         {
-            await SendPostAsync(batchUrl, JsonConvert.SerializeObject(request));
+            await RepositoryClient.SendJsonPostAsync(ApiKeys.Recommendations, batchUrl, JsonConvert.SerializeObject(request));
         }
 
         public virtual async Task<UploadCatalogFileResponse> UploadCatalogFileAsync(string modelId, string catalogDisplayName, Stream stream)
         {
-            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKey, $"{modelsUrl}{modelId}/catalog?catalogDisplayName={catalogDisplayName}", stream);
+            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/catalog?catalogDisplayName={catalogDisplayName}", stream);
 
             return JsonConvert.DeserializeObject<UploadCatalogFileResponse>(response);
         }
 
         public virtual async Task UploadUsageEventAsync(string modelId, UploadUsageEventRequest request)
         {
-            await SendPostAsync($"{modelsUrl}{modelId}/usage/events", JsonConvert.SerializeObject(request));
+            await RepositoryClient.SendJsonPostAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/usage/events", JsonConvert.SerializeObject(request));
         }
 
         public virtual async Task<UploadUsageFileResponse> UploadUsageFileAsync(string modelId, string usageDisplayName, Stream stream)
         {
-            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKey, $"{modelsUrl}{modelId}/usage?usageDisplayName={usageDisplayName}", stream);
+            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/usage?usageDisplayName={usageDisplayName}", stream);
 
             return JsonConvert.DeserializeObject<UploadUsageFileResponse>(response);
         }
@@ -78,44 +78,44 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge
         
         public virtual async Task CancelOperationAsync(string operationId)
         {
-            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{operationsUrl}?id={operationId}");
+            await RepositoryClient.SendJsonDeleteAsync(ApiKeys.Recommendations, $"{operationsUrl}?id={operationId}");
         }
 
         public virtual async Task DeleteAllBusinessRulesAsync(string modelId)
         {
-            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/rules");
+            await RepositoryClient.SendJsonDeleteAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/rules");
         }
 
         public virtual async Task DeleteAllUsageFilesAsync(string modelId)
         {
-            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/usage");
+            await RepositoryClient.SendJsonDeleteAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/usage");
         }
 
         public virtual async Task DeleteBuildAsync(string modelId, int buildId)
         {
-            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/builds/{buildId}");
+            await RepositoryClient.SendJsonDeleteAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/builds/{buildId}");
         }
 
         public virtual async Task DeleteBusinessRuleAsync(string modelId, string ruleId)
         {
-            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/rules/{ruleId}");
+            await RepositoryClient.SendJsonDeleteAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/rules/{ruleId}");
         }
 
         public virtual async Task<DeleteCatalogItemsResponse> DeleteCatalogItemsAsync(string modelId, bool deleteAll = false)
         {
-            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/catalog?deleteAll={deleteAll}");
+            var response = await RepositoryClient.SendJsonDeleteAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/catalog?deleteAll={deleteAll}");
 
             return JsonConvert.DeserializeObject<DeleteCatalogItemsResponse>(response);
         }
 
         public virtual async Task DeleteModelAsync(string id)
         {
-            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{id}");
+            await RepositoryClient.SendJsonDeleteAsync(ApiKeys.Recommendations, $"{modelsUrl}{id}");
         }
 
         public virtual async Task DeleteUsageFileAsync(string modelId, string fileId)
         {
-            await RepositoryClient.SendJsonDeleteAsync(ApiKey, $"{modelsUrl}{modelId}/usage/{fileId}");
+            await RepositoryClient.SendJsonDeleteAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/usage/{fileId}");
         }
 
         #endregion Delete
@@ -124,14 +124,14 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge
 
         public virtual async Task<UpdateCatalogItemsResponse> UpdateCatalogItemsAsync(string modelId, Stream fileStream)
         {
-            var response = await RepositoryClient.SendOctetStreamUpdateAsync(ApiKey, $"{modelsUrl}{modelId}/catalog", fileStream);
+            var response = await RepositoryClient.SendOctetStreamUpdateAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/catalog", fileStream);
 
             return JsonConvert.DeserializeObject<UpdateCatalogItemsResponse>(response);
         }
 
         public virtual async Task UpdateModelAsync(string modelId, UpdateModelRequest request)
         {
-            await RepositoryClient.SendJsonUpdateAsync(ApiKey, $"{modelsUrl}{modelId}", JsonConvert.SerializeObject(request));
+            await RepositoryClient.SendJsonUpdateAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}", JsonConvert.SerializeObject(request));
         }
 
         #endregion Update
@@ -140,28 +140,28 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge
 
         public virtual async Task<string> DownloadUsageFileAsync(string modelId, string fileId)
         {
-            var response = await SendGetAsync($"{modelsUrl}{modelId}/usage/{fileId}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/usage/{fileId}");
 
             return response;
         }
 
         public virtual async Task<GetBatchJobResponse> GetAllBatchJobsAsync(string jobId)
         {
-            var response = await SendGetAsync($"{batchUrl}{jobId}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{batchUrl}{jobId}");
 
             return JsonConvert.DeserializeObject<GetBatchJobResponse>(response);
         }
 
         public virtual async Task<GetAllBuildsResponse> GetAllBuildsAsync(string modelId, bool onlyLastRequestedBuild = false)
         {
-            var response = await SendGetAsync($"{modelsUrl}{modelId}/builds?onlyLastRequestedBuild={onlyLastRequestedBuild}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/builds?onlyLastRequestedBuild={onlyLastRequestedBuild}");
 
             return JsonConvert.DeserializeObject<GetAllBuildsResponse>(response);
         }
 
         public virtual async Task<GetAllBusinessRulesResponse> GetAllBusinessRulesAsync(string modelId)
         {
-            var response = await SendGetAsync($"{modelsUrl}{modelId}/rules");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/rules");
 
             return JsonConvert.DeserializeObject<GetAllBusinessRulesResponse>(response);
         }
@@ -185,42 +185,42 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge
                 sb.Append($"{concat}$maxpagesize={maxpagesize}");
             }
 
-            var response = await SendGetAsync($"{modelsUrl}{modelId}/catalog{sb}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/catalog{sb}");
 
             return JsonConvert.DeserializeObject<GetAllCatalogItemsResponse>(response);
         }
 
         public virtual async Task<GetAllModelsResponse> GetAllModelsAsync()
         {
-            var response = await SendGetAsync(modelsUrl);
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, modelsUrl);
 
             return JsonConvert.DeserializeObject<GetAllModelsResponse>(response);
         }
 
         public virtual async Task<Build> GetBuildByIdAsync(string modelId, int buildId)
         {
-            var response = await SendGetAsync($"{modelsUrl}{modelId}/builds/{buildId}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/builds/{buildId}");
 
             return JsonConvert.DeserializeObject<Build>(response);
         }
 
         public virtual async Task<BuildDataStatisticsResponse> GetBuildDataStatisticsAsync(string modelId, int buildId)
         {
-            var response = await SendGetAsync($"{modelsUrl}{modelId}/builds/{buildId}/datastatistics");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/builds/{buildId}/datastatistics");
 
             return JsonConvert.DeserializeObject<BuildDataStatisticsResponse>(response);
         }
 
         public virtual async Task<BuildMetricsResponse> GetBuildMetricsAsync(string modelId, int buildId)
         {
-            var response = await SendGetAsync($"{modelsUrl}{modelId}/builds/{buildId}/metrics");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/builds/{buildId}/metrics");
 
             return JsonConvert.DeserializeObject<BuildMetricsResponse>(response);
         }
 
         public virtual async Task<BusinessRule> GetBusinessRuleAsync(string modelId, string ruleId)
         {
-            var response = await SendGetAsync($"{modelsUrl}{modelId}/rules/{ruleId}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/rules/{ruleId}");
 
             return JsonConvert.DeserializeObject<BusinessRule>(response);
         }
@@ -232,14 +232,14 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge
             if (buildId > 0)
                 sb.Append($"&buildId={buildId}");
 
-            var response = await SendGetAsync($"{modelsUrl}{modelId}/recommend/item?itemIds={string.Join(",", itemIds)}&numberOfResults={numberOfResults}&minimalScore={minimalScore}{sb}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/recommend/item?itemIds={string.Join(",", itemIds)}&numberOfResults={numberOfResults}&minimalScore={minimalScore}{sb}");
 
             return JsonConvert.DeserializeObject<ItemRecommendationResponse>(response);
         }
 
         public virtual async Task<RecommendationModel> GetModelAsync(string modelId)
         {
-            var response = await SendGetAsync($"{modelsUrl}{modelId}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}");
 
             return JsonConvert.DeserializeObject<RecommendationModel>(response);
         }
@@ -251,14 +251,14 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge
             if (rankBuildId > 0)
                 sb.Append($"?rankBuildId={rankBuildId}");
 
-            var response = await SendGetAsync($"{modelsUrl}{modelId}/features{sb}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/features{sb}");
 
             return JsonConvert.DeserializeObject<ModelFeatureResponse>(response);
         }
 
         public virtual async Task<GetOperationStatusResponse> GetOperationStatusAsync(string operationId)
         {
-            var response = await SendGetAsync($"{operationsUrl}{operationId}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{operationsUrl}{operationId}");
 
             return JsonConvert.DeserializeObject<GetOperationStatusResponse>(response);
         }
@@ -276,21 +276,21 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge
                 sb.Append($"{concat}searchTerm={searchTerm}");
             }
 
-            var response = await SendGetAsync($"{modelsUrl}{modelId}/catalog/items{sb}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/catalog/items{sb}");
 
             return JsonConvert.DeserializeObject<SearchCatalogItemsResponse>(response);
         }
 
         public virtual async Task<BuildUsageStatisticsResponse> GetUsageStatisticsForABuildAsync(string modelId, int buildId, string interval, List<string> eventTypes)
         {
-            var response = await SendGetAsync($"{modelsUrl}{modelId}/builds/{buildId}/usagestatistics?interval={interval}&eventTypes={string.Join(",",eventTypes)}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/builds/{buildId}/usagestatistics?interval={interval}&eventTypes={string.Join(",",eventTypes)}");
 
             return JsonConvert.DeserializeObject<BuildUsageStatisticsResponse>(response);
         }
 
         public virtual async Task<ModelUsageStatisticsResponse> GetUsageStatisticsForAModelAsync(string modelId, string interval, List<string> eventTypes)
         {
-            var response = await SendGetAsync($"{modelsUrl}{modelId}/builds/usagestatistics?interval={interval}&eventTypes={string.Join(",", eventTypes)}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/builds/usagestatistics?interval={interval}&eventTypes={string.Join(",", eventTypes)}");
 
             return JsonConvert.DeserializeObject<ModelUsageStatisticsResponse>(response);
         }
@@ -308,14 +308,14 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge
             if (buildId > 0)
                 sb.Append($"&buildId={buildId}");
 
-            var response = await SendGetAsync($"{modelsUrl}{modelId}/recommend/user?userId={userId}&numberOfResults={numberOfResults}{sb}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/recommend/user?userId={userId}&numberOfResults={numberOfResults}{sb}");
 
             return JsonConvert.DeserializeObject<ItemRecommendationResponse>(response);
         }
 
         public virtual async Task<List<UsageFile>> ListUsageFilesAsync(string modelId)
         {
-            var response = await SendGetAsync($"{modelsUrl}{modelId}/usage");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Recommendations, $"{modelsUrl}{modelId}/usage");
 
             return JsonConvert.DeserializeObject<List<UsageFile>>(response);
         }

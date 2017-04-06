@@ -1,29 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
-using Microsoft.ProjectOxford.Text.Core;
 using Newtonsoft.Json;
 using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing;
 using Microsoft.SharedSource.CognitiveServices.Models.Bing.SpellCheck;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
-    public class SpellCheckRepository : TextClient, ISpellCheckRepository
+    public class SpellCheckRepository : ISpellCheckRepository
     {
         public static readonly string spellCheckUrl = "https://api.cognitive.microsoft.com/bing/v5.0/spellcheck/";
 
+        protected readonly IApiKeys ApiKeys;
         protected readonly IRepositoryClient RepositoryClient;
 
         public SpellCheckRepository(
             IApiKeys apiKeys,
             IRepositoryClient repoClient)
-            : base(apiKeys.BingSpellCheck)
         {
+            ApiKeys = apiKeys;
             RepositoryClient = repoClient;
         }
 
@@ -44,7 +38,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
                 sb.Append($"{concat}mkt={languageCode}");
             }
                     
-            var response = await RepositoryClient.SendEncodedFormPostAsync(this.ApiKey, $"{spellCheckUrl}{sb}", $"Text={text}");
+            var response = await RepositoryClient.SendEncodedFormPostAsync(ApiKeys.BingSpellCheck, $"{spellCheckUrl}{sb}", $"Text={text}");
 
             return JsonConvert.DeserializeObject<SpellCheckResponse>(response);
         }

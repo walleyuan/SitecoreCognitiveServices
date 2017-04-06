@@ -1,23 +1,26 @@
 ﻿using System;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.ProjectOxford.Text.Core;
 using Newtonsoft.Json;
 using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing;
 using Microsoft.SharedSource.CognitiveServices.Models.Bing.VideoSearch;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
-    public class VideoSearchRepository : TextClient, IVideoSearchRepository {
+    public class VideoSearchRepository : IVideoSearchRepository {
 
         public static readonly string videoUrl = "https://api.cognitive.microsoft.com/bing/v5.0/videos/search";
         public static readonly string trendingUrl = "https://api.cognitive.microsoft.com/bing/v5.0/videos/trending";
         public static readonly string detailsUrl = "https://api.cognitive.microsoft.com/bing/v5.0/videos/details";
 
+        protected readonly IApiKeys ApiKeys;
+        protected readonly IRepositoryClient RepositoryClient;
+
         public VideoSearchRepository(
-            IApiKeys apiKeys)
-            : base(apiKeys.BingSearch)
+            IApiKeys apiKeys,
+            IRepositoryClient repoClient)
         {
+            ApiKeys = apiKeys;
+            RepositoryClient = repoClient;
         }
 
         #region Video Search
@@ -43,7 +46,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
                 sb.Append($"{concat}safeSearch={Enum.GetName(typeof(SafeSearchOptions), safeSearch)}");
             }
 
-            var response = await SendGetAsync($"{videoUrl}?q={text}{sb}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{videoUrl}?q={text}{sb}");
 
             return JsonConvert.DeserializeObject<VideoSearchResponse>(response);
         }
@@ -57,7 +60,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
         }
 
         public virtual async Task<VideoSearchTrendResponse> TrendingSearchAsync() {
-            var response = await SendGetAsync(trendingUrl);
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, trendingUrl);
 
             return JsonConvert.DeserializeObject<VideoSearchTrendResponse>(response);
         }
@@ -72,7 +75,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
 
         public virtual async Task<VideoSearchDetailsResponse> VideoDetailsSearchAsync(string id, VideoDetailsModulesOptions modulesRequested) {
             
-            var response = await SendGetAsync($"{detailsUrl}?id={id}&modulesRequested={Enum.GetName(typeof(VideoDetailsModulesOptions), modulesRequested)}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{detailsUrl}?id={id}&modulesRequested={Enum.GetName(typeof(VideoDetailsModulesOptions), modulesRequested)}");
 
             return JsonConvert.DeserializeObject<VideoSearchDetailsResponse>(response);
         }

@@ -28,7 +28,7 @@ textarea  { height: 200px;width: 400px;}
 .score-wrap,
 .face-wrap,
 .attribute-wrap { position: absolute; background: #fff none repeat scroll 0 0; border-radius: 5px; padding: 10px; z-index: 2;border: 1px solid #ccc;}
-.detail-tags { position: absolute;top: 5px;left: 5px;background: #fff none repeat scroll 0 0; border-radius: 5px; padding: 10px; z-index: 2;border: 1px solid #ccc;}
+.detail-tags { width: 210px; background: #fff none repeat scroll 0 0; border-radius: 5px; padding: 10px; border: 1px solid #ccc; margin-top:10px;}
 .face-set,
 .score-set,
 .attr-set { white-space: nowrap;}

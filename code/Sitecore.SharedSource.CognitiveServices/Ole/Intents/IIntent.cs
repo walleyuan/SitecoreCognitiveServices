@@ -5,6 +5,6 @@ using Sitecore.SharedSource.CognitiveServices.Models.Ole;
 namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
     public interface IIntent {
         string Name { get; }
-        string Respond(ITextTranslator translator, QueryResult result, ItemContextParameters parameters);
+        string Respond(QueryResult result, ItemContextParameters parameters);
     }
 }

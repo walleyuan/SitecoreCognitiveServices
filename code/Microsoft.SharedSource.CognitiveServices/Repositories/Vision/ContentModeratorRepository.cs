@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
-using Microsoft.ProjectOxford.Text.Core;
 using Microsoft.WindowsAzure.MediaServices.Client;
 using Newtonsoft.Json;
 using Microsoft.SharedSource.CognitiveServices.Enums;
@@ -15,11 +14,13 @@ using System.Linq;
 using Chronic;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
-    public class ContentModeratorRepository : TextClient, IContentModeratorRepository {
-        protected static readonly string moderatorUrl = "https://westus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0";
-        protected static readonly string reviewUrl = "https://westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0/teams/";
-        protected static readonly string listUrl = "https://westus.api.cognitive.microsoft.com/contentmoderator/lists/v1.0/imagelists/";
-        protected static readonly string termListUrl = "https://westus.api.cognitive.microsoft.com/contentmoderator/lists/v1.0/termlists/";
+    public class ContentModeratorRepository : IContentModeratorRepository
+    {
+        protected static readonly string baseUrl = "https://westus.api.cognitive.microsoft.com/contentmoderator/";
+        protected static readonly string moderatorUrl = $"{baseUrl}moderate/v1.0";
+        protected static readonly string reviewUrl = $"{baseUrl}review/v1.0/teams/";
+        protected static readonly string listUrl = $"{baseUrl}lists/v1.0/imagelists/";
+        protected static readonly string termListUrl = $"{baseUrl}lists/v1.0/termlists/";
 
         protected static readonly string moderateSessionTokenKey = "ModerateSessionTokenKey";
 
@@ -31,7 +32,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
         public ContentModeratorRepository(
             IApiKeys apiKeys,
             IRepositoryClient repoClient,
-            HttpContextBase context) : base(apiKeys.ContentModerator) {
+            HttpContextBase context) {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;
             Context = context;
@@ -171,7 +172,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
                     return sessionToken.Access_Token;
             }
 
-            var token = RepositoryClient.SendTokenRequest(ApiKeys.ContentModeratorPrivateKey, ApiKeys.ContentModeratorClientId);
+            var token = RepositoryClient.SendContentModeratorTokenRequest(ApiKeys.ContentModeratorPrivateKey, ApiKeys.ContentModeratorClientId);
             Context.Session.Add(moderateSessionTokenKey, token);
 
             return token.Access_Token;
@@ -407,7 +408,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
         }
 
         public virtual async Task<GetImagesResponse> GetAllImageIdsAsync(string listId) {
-            var response = await SendGetAsync($"{listUrl}{listId}/images");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}/images");
 
             return JsonConvert.DeserializeObject<GetImagesResponse>(response);
         }
@@ -417,7 +418,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
         #region Image Lists
 
         public virtual async Task<ListDetails> GetImageListDetailsAsync(string listId) {
-            var response = await SendGetAsync($"{listUrl}{listId}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.ContentModerator, $"{listUrl}{listId}");
 
             return JsonConvert.DeserializeObject<ListDetails>(response);
         }
@@ -433,7 +434,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
         }
 
         public virtual async Task<List<ListDetails>> GetAllImageListsAsync() {
-            var response = await SendGetAsync(listUrl);
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.ContentModerator, listUrl);
 
             return JsonConvert.DeserializeObject<List<ListDetails>>(response);
         }
@@ -467,7 +468,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
         }
 
         public virtual async Task<GetTermsResponse> GetAllTermsAsync(string listId, string language) {
-            var response = await SendGetAsync($"{termListUrl}{listId}/terms?language={language}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.ContentModerator, $"{termListUrl}{listId}/terms?language={language}");
 
             return JsonConvert.DeserializeObject<GetTermsResponse>(response);
         }
@@ -487,13 +488,13 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
         }
 
         public virtual async Task<List<ListDetails>> GetAllTermListsAsync() {
-            var response = await SendGetAsync(termListUrl);
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.ContentModerator, termListUrl);
 
             return JsonConvert.DeserializeObject<List<ListDetails>>(response);
         }
 
         public virtual async Task<ListDetails> GetTermListDetailsAsync(string listId) {
-            var response = await SendGetAsync($"{termListUrl}{listId}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.ContentModerator, $"{termListUrl}{listId}");
 
             return JsonConvert.DeserializeObject<ListDetails>(response);
         }

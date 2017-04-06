@@ -17,6 +17,7 @@ namespace Microsoft.SharedSource.CognitiveServices
         string Face { get; }
         string LinguisticAnalysis { get; }
         string Luis { get; }
+        string QnA { get; }
         string Recommendations { get; }
         string SpeakerRecognition { get; }
         string TextAnalytics { get; }

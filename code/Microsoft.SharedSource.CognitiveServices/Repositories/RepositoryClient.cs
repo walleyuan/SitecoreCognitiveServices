@@ -1,19 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using Microsoft.SharedSource.CognitiveServices.Enums;
 using Microsoft.SharedSource.CognitiveServices.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories
 {
     public class RepositoryClient : IRepositoryClient
     {
-        public RepositoryClient()
-        {
+        public virtual async Task<string> SendGetAsync(string apiKey, string url) {
+            return await SendAsync(apiKey, url, "", "application/json", "GET");
         }
 
         public virtual async Task<string> SendPostMultiPartAsync(string apiKey, string url, string data)
@@ -70,7 +75,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             return await SendAsync(apiKey, url, GetStreamString(stream), GetImageStreamContentType(stream), "POST");
         }
         
-        public virtual async Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method, string token = "")
+        public virtual async Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method, string token = "", bool sendChunked = false, string host = "")
         {
             if (string.IsNullOrWhiteSpace(url))
                 throw new ArgumentException("url");
@@ -87,6 +92,11 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             request.ContentType = contentType;
             request.Accept = contentType;
             request.Method = method;
+
+            if(sendChunked)
+                request.SendChunked = true;
+            if(!string.IsNullOrEmpty(host))
+                request.Host = host;
 
             if (!string.IsNullOrEmpty(data))
             {
@@ -159,7 +169,37 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             return opLocation;
         }
 
-        public virtual TokenResponse SendTokenRequest(string privateKey, string clientId)
+        public virtual async Task<Stream> GetAudioStreamAsync(string url, string text, BingSpeechLocaleOptions locale, string voiceName, GenderOptions voiceType, AudioOutputFormatOptions outputFormat, string token)
+        {
+            HttpClientHandler handler = new HttpClientHandler() { CookieContainer = new CookieContainer(), UseProxy = false };
+            HttpClient client = new HttpClient(handler);
+
+            client.DefaultRequestHeaders.Clear();
+
+            Dictionary<string, string> Headers = new Dictionary<string, string>()
+            {
+                { "Content-Type", "application/ssml+xml" },
+                { "X-Microsoft-OutputFormat", JsonConvert.SerializeObject(outputFormat) },
+                { "Authorization", $"Bearer {token}" },
+                { "X-Search-AppId", "07D3234E49CE426DAA29772419F436CA" },
+                { "X-Search-ClientID", "1ECFAE91408841A480F00935DC390960" },
+                { "User-Agent", "TTSClient" }
+            };
+
+            foreach (var header in Headers) {
+                client.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
+            }
+
+            var request = new HttpRequestMessage(HttpMethod.Post, url) {
+                Content = new StringContent($"<speak version=\"1.0\" xmlns:lang=\"en-US\"><voice xmlns:lang=\"{JsonConvert.SerializeObject(locale)}\" xmlns:gender=\"{JsonConvert.SerializeObject(voiceType)}\" name=\"{voiceName}\">{text}</voice></speak>")
+            };
+
+            var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, CancellationToken.None);
+
+            return await response.Content.ReadAsStreamAsync();
+        }
+
+        public virtual TokenResponse SendContentModeratorTokenRequest(string privateKey, string clientId)
         {
             byte[] reqData = Encoding.UTF8.GetBytes($"resource=https%3A%2F%2Fapi.contentmoderator.cognitive.microsoft.com%2Freview&client_id={clientId}&client_secret={privateKey}&grant_type=client_credentials");
 
@@ -172,17 +212,33 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             requestStreamAsync.Write(reqData, 0, reqData.Length);
             requestStreamAsync.Close();
 
-            WebResponse responseAsync = request.GetResponse();
-            StreamReader streamReader = new StreamReader(responseAsync.GetResponseStream());
+            WebResponse response = request.GetResponse();
+            StreamReader streamReader = new StreamReader(response.GetResponseStream());
             string end = streamReader.ReadToEnd();
             streamReader.Close();
-            responseAsync.Close();
+            response.Close();
 
             TokenResponse t = new JavaScriptSerializer().Deserialize<TokenResponse>(end);
 
             return t;
         }
 
+        public virtual string SendBingSpeechTokenRequest(string apiKey) {
+
+            WebRequest request = WebRequest.Create("https://api.cognitive.microsoft.com/sts/v1.0/issueToken");
+            request.Method = "POST";
+            request.Headers["Ocp-Apim-Subscription-Key"] = apiKey;
+            request.ContentLength = 0;
+
+            WebResponse response = request.GetResponse();
+            StreamReader streamReader = new StreamReader(response.GetResponseStream());
+            string end = streamReader.ReadToEnd();
+            streamReader.Close();
+            response.Close();
+
+            return end;
+        }
+        
         public virtual string GetImageStreamContentType(Stream stream)
         {
             var image = Image.FromStream(stream);

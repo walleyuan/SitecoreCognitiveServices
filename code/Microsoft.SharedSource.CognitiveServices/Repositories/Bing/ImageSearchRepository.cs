@@ -3,26 +3,25 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using Microsoft.ProjectOxford.Text.Core;
 using Newtonsoft.Json;
 using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing;
 using Microsoft.SharedSource.CognitiveServices.Models.Bing.ImageSearch;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
 {
-    public class ImageSearchRepository : TextClient, IImageSearchRepository
+    public class ImageSearchRepository : IImageSearchRepository
     {
         public static readonly string imageSearchUrl = "https://api.cognitive.microsoft.com/bing/v5.0/images/search";
         public static readonly string imageTrendUrl = "https://api.cognitive.microsoft.com/bing/v5.0/images/trending";
 
+        protected readonly IApiKeys ApiKeys;
         protected readonly IRepositoryClient RepositoryClient;
 
         public ImageSearchRepository(
             IApiKeys apiKeys,
             IRepositoryClient repoClient)
-            : base(apiKeys.BingSearch)
         {
+            ApiKeys = apiKeys;
             RepositoryClient = repoClient;
         }
 
@@ -36,7 +35,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
         public virtual async Task<ImageSearchResponse> GetImagesAsync(string query, int count = 10, int offset = 0, string languageCode = "en-us", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
         {
             string searchUrl = $"{imageSearchUrl}?q={query}&count={count}&offset={offset}&mkt={languageCode}&safeSearch={Enum.GetName(typeof(SafeSearchOptions), safeSearch)}";
-            var response = await SendGetAsync(searchUrl);
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, searchUrl);
 
             return JsonConvert.DeserializeObject<ImageSearchResponse>(response);
         }
@@ -52,7 +51,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
 
         public virtual async Task<TrendSearchResponse> GetTrendingImagesAsync()
         {
-            var response = await SendGetAsync(imageTrendUrl);
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, imageTrendUrl);
 
             return JsonConvert.DeserializeObject<TrendSearchResponse>(response);
         }
@@ -205,7 +204,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
             if (!string.IsNullOrEmpty(insightsToken))
                 sb.Append($"&insightsToken={insightsToken}");
             
-            var response = await RepositoryClient.SendPostMultiPartAsync(ApiKey, sb.ToString(), "{}");
+            var response = await RepositoryClient.SendPostMultiPartAsync(ApiKeys.BingSearch, sb.ToString(), "{}");
 
             return JsonConvert.DeserializeObject<ImageInsightResponse>(response);
         }

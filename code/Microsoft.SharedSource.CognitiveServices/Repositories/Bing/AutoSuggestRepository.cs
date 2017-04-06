@@ -1,19 +1,22 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.ProjectOxford.Text.Core;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing;
 using Microsoft.SharedSource.CognitiveServices.Models.Bing.AutoSuggest;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
 {
-    public class AutoSuggestRepository : TextClient, IAutoSuggestRepository
+    public class AutoSuggestRepository : IAutoSuggestRepository
     {
         public static readonly string suggestUrl = "https://api.cognitive.microsoft.com/bing/v5.0/suggestions/";
 
+        protected readonly IApiKeys ApiKeys;
+        protected readonly IRepositoryClient RepositoryClient;
+
         public AutoSuggestRepository(
-            IApiKeys apiKeys)
-            : base(apiKeys.BingAutosuggest)
+            IApiKeys apiKeys,
+            IRepositoryClient repositoryClient)
         {
+            ApiKeys = apiKeys;
+            RepositoryClient = repositoryClient;
         }
 
         public virtual AutoSuggestResponse GetSuggestions(string text)
@@ -23,7 +26,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
 
         public virtual async Task<AutoSuggestResponse> GetSuggestionsAsync(string text)
         {
-            var response = await this.SendGetAsync($"{suggestUrl}?q={text}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingAutosuggest, $"{suggestUrl}?q={text}");
 
             return JsonConvert.DeserializeObject<AutoSuggestResponse>(response);
         }

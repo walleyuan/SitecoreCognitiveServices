@@ -12,10 +12,17 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
 
     public interface ILoggedInUsersIntent : IIntent { }
 
-    public class LoggedInUsersIntent : ILoggedInUsersIntent {
+    public class LoggedInUsersIntent : ILoggedInUsersIntent 
+    {
+        protected readonly ITextTranslator Translator;
+
         public string Name => "logged in users";
 
-        public string Respond(ITextTranslator translator, QueryResult result, ItemContextParameters parameters) {
+        public LoggedInUsersIntent(ITextTranslator translator) {
+            Translator = translator;
+        }
+
+        public string Respond(QueryResult result, ItemContextParameters parameters) {
 
             var sessions = DomainAccessGuard.Sessions.OrderByDescending(s => s.LastRequest);
             var sessionCount = sessions.Count();

@@ -14,9 +14,15 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
 
     public class GreetIntent : IGreetIntent
     {
+        protected readonly ITextTranslator Translator;
+
         public string Name => "greet";
 
-        public string Respond(ITextTranslator translator, QueryResult result, ItemContextParameters parameters)
+        public GreetIntent(ITextTranslator translator) {
+            Translator = translator;
+        }
+
+        public string Respond(QueryResult result, ItemContextParameters parameters)
         {
             string fullName = Sitecore.Context.User.Profile.FullName;
             

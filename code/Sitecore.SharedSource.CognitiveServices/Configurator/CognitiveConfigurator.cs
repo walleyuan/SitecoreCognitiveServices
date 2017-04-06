@@ -36,12 +36,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddSingleton<IApiKeys, ApiKeys>();
             serviceCollection.AddTransient<ISitecoreDataService, SitecoreDataService>();
             serviceCollection.AddTransient<IWebUtilWrapper, WebUtilWrapper>();
-            serviceCollection.AddTransient<ISettingsWrapper, SettingsWrapper>();
             serviceCollection.AddTransient<ILogWrapper, LogWrapper>();
             serviceCollection.AddTransient<IRepositoryClient, RepositoryClient>();
             serviceCollection.AddTransient<ICSVParser, CSVParser>();
             serviceCollection.AddTransient<ITextTranslator, TextTranslator>();
             serviceCollection.AddTransient<IIntentProvider, IntentProvider>();
+            serviceCollection.AddTransient<IPublishWrapper, PublishWrapper>();
 
             //repositories
             serviceCollection.AddTransient<IEmotionRepository, EmotionRepository>();
@@ -65,6 +65,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<IContentModeratorRepository, ContentModeratorRepository>();
             serviceCollection.AddTransient<IWebLanguageModelRepository, WebLanguageModelRepository>();
             serviceCollection.AddTransient<ILuisRepository, LuisRepository>();
+            serviceCollection.AddTransient<ISpeechRepository, SpeechRepository>();
+            serviceCollection.AddTransient<IQnAMakerRepository, QnAMakerRepository>();
 
             //services
             serviceCollection.AddTransient<ISearchService, SearchService>();
@@ -89,6 +91,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<IContentModeratorService, ContentModeratorService>();
             serviceCollection.AddTransient<IWebLanguageModelService, WebLanguageModelService>();
             serviceCollection.AddTransient<ILuisService, LuisService>();
+            serviceCollection.AddTransient<ISpeechService, SpeechService>();
+            serviceCollection.AddTransient<IQnAMakerService, QnAMakerService>();
 
             //factory models
             serviceCollection.AddTransient<ICognitiveImageAnalysis, CognitiveImageAnalysis>();

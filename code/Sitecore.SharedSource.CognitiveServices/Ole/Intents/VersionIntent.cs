@@ -10,10 +10,17 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
 
     public interface IVersionIntent : IIntent { }
 
-    public class VersionIntent : IVersionIntent {
+    public class VersionIntent : IVersionIntent 
+    {
+        protected readonly ITextTranslator Translator;
+
         public string Name => "version";
 
-        public string Respond(ITextTranslator translator, QueryResult result, ItemContextParameters parameters) {
+        public VersionIntent(ITextTranslator translator) {
+            Translator = translator;
+        }
+
+        public string Respond(QueryResult result, ItemContextParameters parameters) {
 
             var path = HttpContext.Current.Server.MapPath("~/sitecore/shell/sitecore.version.xml");
             if (!System.IO.File.Exists(path))
