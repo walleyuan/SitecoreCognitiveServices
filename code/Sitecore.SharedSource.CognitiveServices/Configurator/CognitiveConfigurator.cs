@@ -66,6 +66,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<IWebLanguageModelRepository, WebLanguageModelRepository>();
             serviceCollection.AddTransient<ILuisRepository, LuisRepository>();
             serviceCollection.AddTransient<ISpeechRepository, SpeechRepository>();
+            serviceCollection.AddTransient<IQnAMakerRepository, QnAMakerRepository>();
 
             //services
             serviceCollection.AddTransient<ISearchService, SearchService>();
@@ -91,6 +92,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<IWebLanguageModelService, WebLanguageModelService>();
             serviceCollection.AddTransient<ILuisService, LuisService>();
             serviceCollection.AddTransient<ISpeechService, SpeechService>();
+            serviceCollection.AddTransient<IQnAMakerService, QnAMakerService>();
 
             //factory models
             serviceCollection.AddTransient<ICognitiveImageAnalysis, CognitiveImageAnalysis>();

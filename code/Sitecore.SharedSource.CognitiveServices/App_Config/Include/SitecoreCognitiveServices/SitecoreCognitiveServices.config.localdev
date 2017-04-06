@@ -33,6 +33,7 @@
       <setting name="CognitiveService.ApiKey.Face" value="" />
       <setting name="CognitiveService.ApiKey.LinguisticAnalysis" value="" />
       <setting name="CognitiveService.ApiKey.Luis" value="" />
+      <setting name="CognitiveService.ApiKey.QnA" value="" />
       <setting name="CognitiveService.ApiKey.Recommendations" value="" />
       <setting name="CognitiveService.ApiKey.SpeakerRecognition" value="" />
       <setting name="CognitiveService.ApiKey.TextAnalytics" value="" />

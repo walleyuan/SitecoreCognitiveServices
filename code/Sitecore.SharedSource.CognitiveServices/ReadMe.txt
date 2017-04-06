@@ -9,3 +9,5 @@ LUIS BOT FRAMEWORK
  - https://dev.botframework.com/
 
 TEXT/SPEECH TRANSLATOR - https://www.microsoft.com/en-us/translator/getstarted.aspx
+
+QNA MAKER - https://qnamaker.ai/

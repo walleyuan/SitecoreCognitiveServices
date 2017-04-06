@@ -1,20 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using Microsoft.SharedSource.CognitiveServices.Enums;
 using Microsoft.SharedSource.CognitiveServices.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories
 {
     public class RepositoryClient : IRepositoryClient
     {
-        public RepositoryClient()
-        {
+        public virtual async Task<string> SendGetAsync(string apiKey, string url) {
+            return await SendAsync(apiKey, url, "", "application/json", "GET");
         }
 
         public virtual async Task<string> SendPostMultiPartAsync(string apiKey, string url, string data)
@@ -163,6 +167,36 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             responseAsync.Close();
 
             return opLocation;
+        }
+
+        public virtual async Task<Stream> GetAudioStreamAsync(string url, string text, BingSpeechLocaleOptions locale, string voiceName, GenderOptions voiceType, AudioOutputFormatOptions outputFormat, string token)
+        {
+            HttpClientHandler handler = new HttpClientHandler() { CookieContainer = new CookieContainer(), UseProxy = false };
+            HttpClient client = new HttpClient(handler);
+
+            client.DefaultRequestHeaders.Clear();
+
+            Dictionary<string, string> Headers = new Dictionary<string, string>()
+            {
+                { "Content-Type", "application/ssml+xml" },
+                { "X-Microsoft-OutputFormat", JsonConvert.SerializeObject(outputFormat) },
+                { "Authorization", $"Bearer {token}" },
+                { "X-Search-AppId", "07D3234E49CE426DAA29772419F436CA" },
+                { "X-Search-ClientID", "1ECFAE91408841A480F00935DC390960" },
+                { "User-Agent", "TTSClient" }
+            };
+
+            foreach (var header in Headers) {
+                client.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
+            }
+
+            var request = new HttpRequestMessage(HttpMethod.Post, url) {
+                Content = new StringContent($"<speak version=\"1.0\" xmlns:lang=\"en-US\"><voice xmlns:lang=\"{JsonConvert.SerializeObject(locale)}\" xmlns:gender=\"{JsonConvert.SerializeObject(voiceType)}\" name=\"{voiceName}\">{text}</voice></speak>")
+            };
+
+            var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, CancellationToken.None);
+
+            return await response.Content.ReadAsStreamAsync();
         }
 
         public virtual TokenResponse SendContentModeratorTokenRequest(string privateKey, string clientId)
