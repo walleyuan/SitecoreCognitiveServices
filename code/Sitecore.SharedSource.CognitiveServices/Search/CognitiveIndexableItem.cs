@@ -68,12 +68,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             SentimentRequest sr = new SentimentRequest();
 
             IEnumerable<Field> fields = GetTextualFields(item);
-			if (!fields.Any())
-			{
-				return;
-			}
+            if (!fields.Any())
+            {
+                return;
+            }
 
-			foreach (Field f in fields)
+            foreach (Field f in fields)
             {
                 sr.Documents.Add(new Document()
                 {
@@ -97,12 +97,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
 
             List<LinkAnalysisResult> fieldResults = new List<LinkAnalysisResult>();
             IEnumerable<Field> fields = GetTextualFields(item);
-			if (!fields.Any())
-			{
-				return;
-			}
+            if (!fields.Any())
+            {
+                return;
+            }
 
-			foreach (Field f in fields)
+            foreach (Field f in fields)
             {
                 string value = Regex.Replace(f.Value, "<.*?>", string.Empty);
                 var result = entityLinkingService.Link(value) ?? new EntityLink[0];
@@ -127,12 +127,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
 
             List<LinguisticAnalysisResult> fieldResults = new List<LinguisticAnalysisResult>();
             IEnumerable<Field> fields = GetTextualFields(item);
-			if (!fields.Any())
-			{
-				return;
-			}
+            if (!fields.Any())
+            {
+                return;
+            }
 
-			foreach (Field f in fields)
+            foreach (Field f in fields)
             {
                 string value = RemoveHtmlMarkup(f.Value);
                 TextAnalysisRequest tar = new TextAnalysisRequest()
@@ -166,12 +166,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             LanguageRequest lr = new LanguageRequest();
 
             IEnumerable<Field> fields = GetTextualFields(item);
-			if (!fields.Any())
-	        {
-				return;
-	        }
+            if (!fields.Any())
+            {
+                return;
+            }
 
-	        foreach (Field f in fields)
+            foreach (Field f in fields)
             {
                 lr.Documents.Add(new Document()
                 {
@@ -192,12 +192,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             SentimentRequest sr = new SentimentRequest();
 
             Dictionary<string, Field> fields = GetTextualFields(item).ToDictionary(a => a.DisplayName);
-			if (!fields.Any())
-			{
-				return;
-			}
+            if (!fields.Any())
+            {
+                return;
+            }
 
-			foreach (var f in fields)
+            foreach (var f in fields)
             {
                 sr.Documents.Add(new Document()
                 {
@@ -206,8 +206,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
                 });
             }
 
-	       
-	        var result = sentimentService.GetKeyPhrases(sr);
+
+            var result = sentimentService.GetKeyPhrases(sr);
             if (result == null)
                 return;
 
