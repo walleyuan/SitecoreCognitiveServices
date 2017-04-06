@@ -7,5 +7,6 @@ namespace Sitecore.SharedSource.CognitiveServices {
     public interface IApplicationSettings {
         Guid OleApplicationId { get; }
         string IndexNameFormat { get; }
+        bool CatchAndReleaseExceptions { get; }
     }
 }

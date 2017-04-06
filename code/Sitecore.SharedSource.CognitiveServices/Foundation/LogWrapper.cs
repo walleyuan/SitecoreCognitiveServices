@@ -1,14 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Web;
 using Sitecore.Diagnostics;
 
 namespace Sitecore.SharedSource.CognitiveServices.Foundation {
-    public class LogWrapper : ILogWrapper {
+    public class LogWrapper : ILogWrapper
+    {
+        protected readonly IApplicationSettings Settings;
+
+        public LogWrapper(IApplicationSettings settings)
+        {
+            Settings = settings;
+        }
 
         public virtual void Error(string message, object owner, Exception ex = null)
         {
@@ -16,6 +20,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Foundation {
                 Log.Error(message, owner);
             } else {  
                 Log.Error(ProcessWebException(message, ex), ex, owner);
+
+                if (!Settings.CatchAndReleaseExceptions)
+                    return;
+
                 if (ex.InnerException != null)
                     throw ex.InnerException;
                 throw ex;
