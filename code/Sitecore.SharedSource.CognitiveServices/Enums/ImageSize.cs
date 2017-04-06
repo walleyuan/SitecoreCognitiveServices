@@ -1,4 +1,4 @@
-﻿namespace Microsoft.SharedSource.CognitiveServices.Enums
+﻿namespace Sitecore.SharedSource.CognitiveServices.Enums
 {
     public enum ImageSize
     {

@@ -171,7 +171,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
                     return sessionToken.Access_Token;
             }
 
-            var token = RepositoryClient.SendTokenRequest(ApiKeys.ContentModeratorPrivateKey, ApiKeys.ContentModeratorClientId);
+            var token = RepositoryClient.SendContentModeratorTokenRequest(ApiKeys.ContentModeratorPrivateKey, ApiKeys.ContentModeratorClientId);
             Context.Session.Add(moderateSessionTokenKey, token);
 
             return token.Access_Token;

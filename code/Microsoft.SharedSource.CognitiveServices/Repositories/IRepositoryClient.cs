@@ -17,9 +17,10 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
         Task<string> SendOctetStreamPostAsync(string apiKey, string url, Stream stream);
         Task<string> SendJsonUpdateAsync(string apiKey, string url, string data);
         Task<string> SendImagePostAsync(string apiKey, string url, Stream stream);
-        Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method, string token = "");
+        Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method, string token = "", bool sendChunked = false, string host = "");
         Task<string> SendOperationPostAsync(string apiKey, string url, string data);
-        TokenResponse SendTokenRequest(string apiKey, string clientId);
+        TokenResponse SendContentModeratorTokenRequest(string apiKey, string clientId);
+        string SendBingSpeechTokenRequest(string apiKey);
         string GetImageStreamContentType(Stream stream);
         string GetStreamString(Stream stream);
     }

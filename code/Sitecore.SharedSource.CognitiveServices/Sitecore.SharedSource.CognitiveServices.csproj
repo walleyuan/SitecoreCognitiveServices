@@ -302,6 +302,7 @@
     <Compile Include="Controllers\CognitiveMediaSearchController.cs" />
     <Compile Include="Controllers\CognitiveUtilityController.cs" />
     <Compile Include="Controllers\CognitiveAnalysisController.cs" />
+    <Compile Include="Enums\ImageSize.cs" />
     <Compile Include="Factories\CognitiveImageAnalysisFactory.cs" />
     <Compile Include="Factories\ICognitiveMediaSearchFactory.cs" />
     <Compile Include="Factories\CognitiveMediaSearchFactory.cs" />
@@ -403,10 +404,12 @@
     <Compile Include="Search\ICognitiveSearchContext.cs" />
     <Compile Include="Search\ICognitiveSearchResult.cs" />
     <Compile Include="Repositories\ApiKeys.cs" />
+    <Compile Include="Services\Bing\ISpeechService.cs" />
     <Compile Include="Services\Bing\IVideoSearchService.cs" />
     <Compile Include="Services\Bing\NewsSearchService.cs" />
     <Compile Include="Services\Bing\ISpellCheckService.cs" />
     <Compile Include="Services\Bing\INewsSearchService.cs" />
+    <Compile Include="Services\Bing\SpeechService.cs" />
     <Compile Include="Services\Bing\SpellCheckService.cs" />
     <Compile Include="Services\Bing\AutoSuggestService.cs" />
     <Compile Include="Services\Bing\IAutoSuggestService.cs" />

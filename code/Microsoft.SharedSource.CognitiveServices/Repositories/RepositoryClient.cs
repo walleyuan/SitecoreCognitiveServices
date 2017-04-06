@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
@@ -70,7 +71,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             return await SendAsync(apiKey, url, GetStreamString(stream), GetImageStreamContentType(stream), "POST");
         }
         
-        public virtual async Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method, string token = "")
+        public virtual async Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method, string token = "", bool sendChunked = false, string host = "")
         {
             if (string.IsNullOrWhiteSpace(url))
                 throw new ArgumentException("url");
@@ -87,6 +88,11 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             request.ContentType = contentType;
             request.Accept = contentType;
             request.Method = method;
+
+            if(sendChunked)
+                request.SendChunked = true;
+            if(!string.IsNullOrEmpty(host))
+                request.Host = host;
 
             if (!string.IsNullOrEmpty(data))
             {
@@ -159,7 +165,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             return opLocation;
         }
 
-        public virtual TokenResponse SendTokenRequest(string privateKey, string clientId)
+        public virtual TokenResponse SendContentModeratorTokenRequest(string privateKey, string clientId)
         {
             byte[] reqData = Encoding.UTF8.GetBytes($"resource=https%3A%2F%2Fapi.contentmoderator.cognitive.microsoft.com%2Freview&client_id={clientId}&client_secret={privateKey}&grant_type=client_credentials");
 
@@ -172,17 +178,33 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             requestStreamAsync.Write(reqData, 0, reqData.Length);
             requestStreamAsync.Close();
 
-            WebResponse responseAsync = request.GetResponse();
-            StreamReader streamReader = new StreamReader(responseAsync.GetResponseStream());
+            WebResponse response = request.GetResponse();
+            StreamReader streamReader = new StreamReader(response.GetResponseStream());
             string end = streamReader.ReadToEnd();
             streamReader.Close();
-            responseAsync.Close();
+            response.Close();
 
             TokenResponse t = new JavaScriptSerializer().Deserialize<TokenResponse>(end);
 
             return t;
         }
 
+        public virtual string SendBingSpeechTokenRequest(string apiKey) {
+
+            WebRequest request = WebRequest.Create("https://api.cognitive.microsoft.com/sts/v1.0/issueToken");
+            request.Method = "POST";
+            request.Headers["Ocp-Apim-Subscription-Key"] = apiKey;
+            request.ContentLength = 0;
+
+            WebResponse response = request.GetResponse();
+            StreamReader streamReader = new StreamReader(response.GetResponseStream());
+            string end = streamReader.ReadToEnd();
+            streamReader.Close();
+            response.Close();
+
+            return end;
+        }
+        
         public virtual string GetImageStreamContentType(Stream stream)
         {
             var image = Image.FromStream(stream);
