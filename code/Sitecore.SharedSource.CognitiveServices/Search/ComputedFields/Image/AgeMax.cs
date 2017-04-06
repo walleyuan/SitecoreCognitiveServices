@@ -6,7 +6,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
     {
         protected override object GetFieldValue(CognitiveIndexableItem cognitiveIndexable)
         {
-            return cognitiveIndexable?.Faces?.Select(x => x.FaceAttributes.Age).OrderByDescending(a => a).First() ?? 100d;
+            return cognitiveIndexable?.Faces?.Select(x => x.FaceAttributes.Age).OrderByDescending(a => a).FirstOrDefault() ?? 100d;
         }
     }
 }
