@@ -307,6 +307,18 @@
     <Compile Include="Factories\CognitiveMediaSearchFactory.cs" />
     <Compile Include="Factories\CognitiveTextAnalysisFactory.cs" />
     <Compile Include="Factories\ICognitiveImageAnalysisFactory.cs" />
+    <Compile Include="Factories\Intents\VersionIntentFactory.cs" />
+    <Compile Include="Factories\Intents\IVersionIntentFactory.cs" />
+    <Compile Include="Factories\Intents\PublishIntentFactory.cs" />
+    <Compile Include="Factories\Intents\IPublishIntentFactory.cs" />
+    <Compile Include="Factories\Intents\LoggedInUsersIntentFactory.cs" />
+    <Compile Include="Factories\Intents\ILoggedInUsersIntentFactory.cs" />
+    <Compile Include="Factories\Intents\KickUserIntentFactory.cs" />
+    <Compile Include="Factories\Intents\GreetIntentFactory.cs" />
+    <Compile Include="Factories\Intents\DefaultIntentFactory.cs" />
+    <Compile Include="Factories\Intents\IKickUserIntentFactory.cs" />
+    <Compile Include="Factories\Intents\IGreetIntentFactory.cs" />
+    <Compile Include="Factories\Intents\IDefaultIntentFactory.cs" />
     <Compile Include="Factories\SetAltTagsAllFactory.cs" />
     <Compile Include="Factories\ISetAltTagsAllFactory.cs" />
     <Compile Include="Factories\IReanalyzeAllFactory.cs" />
@@ -322,9 +334,11 @@
     <Compile Include="Foundation\ISitecoreDataService.cs" />
     <Compile Include="Foundation\SitecoreDataService.cs" />
     <Compile Include="Foundation\TextTranslator.cs" />
-    <Compile Include="Ole\Intents\KickUser.cs" />
-    <Compile Include="Ole\Intents\LoggedInUsers.cs" />
-    <Compile Include="Ole\Intents\CursingIntent.cs" />
+    <Compile Include="IApplicationSettings.cs" />
+    <Compile Include="Models\Ole\ItemContextParameters.cs" />
+    <Compile Include="Ole\Intents\PublishIntent.cs" />
+    <Compile Include="Ole\Intents\KickUserIntent.cs" />
+    <Compile Include="Ole\Intents\LoggedInUsersIntent.cs" />
     <Compile Include="Ole\Intents\DefaultIntent.cs" />
     <Compile Include="Ole\Intents\IIntent.cs" />
     <Compile Include="Ole\IIntentProvider.cs" />
@@ -433,6 +447,7 @@
     <Compile Include="Services\Speech\SpeakerVerificationService.cs" />
     <Compile Include="Services\Vision\VideoService.cs" />
     <Compile Include="Services\Vision\VisionService.cs" />
+    <Compile Include="ApplicationSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.config">

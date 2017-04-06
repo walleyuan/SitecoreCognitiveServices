@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Sitecore.SharedSource.CognitiveServices.Ole;
+using System.Linq;
+using Sitecore.SharedSource.CognitiveServices.Factories.Intents;
 using Sitecore.SharedSource.CognitiveServices.Ole.Intents;
 
 namespace Sitecore.SharedSource.CognitiveServices.Ole {
@@ -8,24 +9,24 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole {
     {
         private readonly Dictionary<string, IIntent> _intentDictionary;
         
-        public IntentProvider()
+        public IntentProvider(
+            IDefaultIntentFactory defaultFactory,
+            IGreetIntentFactory greetFactory,
+            IVersionIntentFactory versionFactory,
+            ILoggedInUsersIntentFactory loggedInFactory,
+            IKickUserIntentFactory kickFactory,
+            IPublishIntentFactory publishFactory
+            )
         {
-            DefaultIntent d = new DefaultIntent();
-            CursingIntent c = new CursingIntent();
-            GreetIntent g = new GreetIntent();
-            VersionIntent v = new VersionIntent();
-            LoggedInUsersIntent l = new LoggedInUsersIntent();
-            KickUserIntent k = new KickUserIntent();
-
-            _intentDictionary = new Dictionary<string, IIntent>()
+            _intentDictionary = new List<IIntent>()
             {
-                { d.Name.ToLower(), d },
-                { c.Name.ToLower(), c },
-                { g.Name.ToLower(), g },
-                { v.Name.ToLower(), v },
-                { l.Name.ToLower(), l },
-                { k.Name.ToLower(), k }
-            };
+                defaultFactory.Create(),
+                greetFactory.Create(),
+                versionFactory.Create(),
+                loggedInFactory.Create(),
+                kickFactory.Create(),
+                publishFactory.Create()    
+            }.ToDictionary(a => a.Name);
         }
 
         public IIntent GetIntent(Guid appId, string intentName)

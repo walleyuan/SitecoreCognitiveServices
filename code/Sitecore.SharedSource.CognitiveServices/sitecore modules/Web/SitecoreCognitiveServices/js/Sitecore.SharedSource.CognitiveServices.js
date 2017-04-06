@@ -263,17 +263,26 @@ jQuery(document).ready(function () {
         .click(function (event) {
             event.preventDefault();
             var queryValue = jQuery(chatInput).val();
+            var langValue = jQuery(".chat-lang").val();
+            var dbValue = jQuery(".chat-db").val();
+            var idValue = jQuery(".chat-id").val();
+
             jQuery(chatInput).val("");
             UpdateChatWindow(queryValue, "user");
 
             jQuery
-                .post(jQuery(chatForm).attr("action"), { query: queryValue })
+                .post(jQuery(chatForm).attr("action"), {
+                    query: queryValue,
+                    language: langValue,
+                    database: dbValue,
+                    id: idValue
+                })
                 .done(function (r) { UpdateChatWindow(r, "bot"); });
         });
 
     function UpdateChatWindow(text, type) {
         var convoBox = jQuery(chatConversation);
-        convoBox.append("<div class='" + type + "'><span>" + text + "</span></div>");
+        convoBox.append("<div class='" + type + "'><span class='message'>" + text + "<span class='icon'></span></span></div>");
         convoBox.scrollTop(convoBox[0].scrollHeight - convoBox.height());
     }
 });
