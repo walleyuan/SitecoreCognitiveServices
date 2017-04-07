@@ -5,7 +5,5 @@ using System.Web;
 using Sitecore.SharedSource.CognitiveServices.Ole.Intents;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories.Intents {
-    public interface IPublishIntentFactory {
-        IPublishIntent Create();
-    }
+    public interface IPublishIntentFactory : IBaseIntentFactory<IPublishIntent> { }
 }

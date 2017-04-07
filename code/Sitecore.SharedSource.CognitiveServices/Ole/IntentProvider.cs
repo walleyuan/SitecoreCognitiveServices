@@ -18,15 +18,12 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole {
             IPublishIntentFactory publishFactory
             )
         {
-            _intentDictionary = new List<IIntent>()
+            List<IBaseIntentFactory<IIntent>> f = new List<IBaseIntentFactory<IIntent>>()
             {
-                defaultFactory.Create(),
-                greetFactory.Create(),
-                versionFactory.Create(),
-                loggedInFactory.Create(),
-                kickFactory.Create(),
-                publishFactory.Create()    
-            }.ToDictionary(a => a.Name);
+                defaultFactory, greetFactory, versionFactory, loggedInFactory, kickFactory, publishFactory
+            };
+
+            _intentDictionary = f.Select(a => a.Create()).ToDictionary(a => a.Name);
         }
 
         public IIntent GetIntent(Guid appId, string intentName)

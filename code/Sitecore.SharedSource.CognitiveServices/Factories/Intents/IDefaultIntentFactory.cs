@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.DynamicData;
 using Sitecore.SharedSource.CognitiveServices.Ole.Intents;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories.Intents {
-    public interface IDefaultIntentFactory
-    {
-        IDefaultIntent Create();
-    }
+    public interface IDefaultIntentFactory : IBaseIntentFactory<IDefaultIntent> { }
 }

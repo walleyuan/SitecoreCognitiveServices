@@ -5,8 +5,5 @@ using System.Web;
 using Sitecore.SharedSource.CognitiveServices.Ole.Intents;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories.Intents {
-    public interface IVersionIntentFactory
-    {
-        IVersionIntent Create();
-    }
+    public interface IVersionIntentFactory : IBaseIntentFactory<IVersionIntent> { }
 }
