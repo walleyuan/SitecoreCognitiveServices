@@ -335,6 +335,7 @@
     <Compile Include="Foundation\TextTranslator.cs" />
     <Compile Include="IApplicationSettings.cs" />
     <Compile Include="Models\Ole\ItemContextParameters.cs" />
+    <Compile Include="Ole\Intents\IBaseIntentFactory.cs" />
     <Compile Include="Ole\Intents\PublishIntent.cs" />
     <Compile Include="Ole\Intents\KickUserIntent.cs" />
     <Compile Include="Ole\Intents\LoggedInUsersIntent.cs" />
