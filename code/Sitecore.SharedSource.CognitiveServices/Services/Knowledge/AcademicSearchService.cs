@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using Microsoft.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge;
 using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge;
 
@@ -28,7 +24,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await AcademicSearchRepository.CalcHistogramAsync(expression, model, attributes, count, offset)).Result;
+                var result = AcademicSearchRepository.CalcHistogram(expression, model, attributes, count, offset);
 
                 return result;
             }
@@ -44,7 +40,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await AcademicSearchRepository.EvaluateAsync(expression, model, count, offset, attributes, orderby)).Result;
+                var result = AcademicSearchRepository.Evaluate(expression, model, count, offset, attributes, orderby);
 
                 return result;
             }
@@ -60,7 +56,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await AcademicSearchRepository.GraphSearchAsync(request)).Result;
+                var result = AcademicSearchRepository.GraphSearch(request);
 
                 return result;
             }
@@ -76,7 +72,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await AcademicSearchRepository.InterpretAsync(query, complete, count, offset, timeout, model)).Result;
+                var result = AcademicSearchRepository.Interpret(query, complete, count, offset, timeout, model);
 
                 return result;
             }
@@ -92,7 +88,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await AcademicSearchRepository.SimilarityAsync(s1, s2)).Result;
+                var result = AcademicSearchRepository.Similarity(s1, s2);
 
                 return result;
             }

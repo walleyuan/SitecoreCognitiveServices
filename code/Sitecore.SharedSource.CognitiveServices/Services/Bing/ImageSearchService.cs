@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
 using System.Threading.Tasks;
 using Microsoft.SharedSource.CognitiveServices.Enums;
@@ -28,7 +25,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
         {
             try
             {
-                var result = Task.Run(async () => await ImageSearchRepository.GetImagesAsync(query, count, offset, languageCode, safeSearch)).Result;
+                var result = ImageSearchRepository.GetImages(query, count, offset, languageCode, safeSearch);
 
                 return result;
             }
@@ -44,7 +41,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
         {
             try
             {
-                var result = Task.Run(async () => await ImageSearchRepository.GetTrendingImagesAsync()).Result;
+                var result = ImageSearchRepository.GetTrendingImages();
 
                 return result;
             }
@@ -84,7 +81,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
         {
             try
             {
-                var result = Task.Run(async () => await ImageSearchRepository.GetImageInsightsAsync(query, height, width, count, offset, languageCode, aspect, color, freshness, imageContent, imageType, license, size, safeSearch, modulesRequested, cab, cal, car, cat, ct, cc, id, imgUrl, insightsToken)).Result;
+                var result = ImageSearchRepository.GetImageInsights(query, height, width, count, offset, languageCode, aspect, color, freshness, imageContent, imageType, license, size, safeSearch, modulesRequested, cab, cal, car, cat, ct, cc, id, imgUrl, insightsToken);
 
                 return result;
             }

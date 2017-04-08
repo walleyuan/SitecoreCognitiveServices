@@ -22,7 +22,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
         public virtual LanguageResponse GetLanguages(LanguageRequest request)
         {
             try {
-                var result = Task.Run(async () => await LanguageRepository.GetLanguagesAsync(request)).Result;
+                var result = LanguageRepository.GetLanguages(request);
 
                 return result;
             } catch (Exception ex) {

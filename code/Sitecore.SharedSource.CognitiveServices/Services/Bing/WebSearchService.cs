@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
 using System.Threading.Tasks;
 using Microsoft.SharedSource.CognitiveServices.Models.Bing.WebSearch;
@@ -25,7 +24,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
         {
             try
             {
-                var result = Task.Run(async () => await WebSearchRepository.WebSearchAsync(text, countOffset, languageCode, safeSearch)).Result;
+                var result = WebSearchRepository.WebSearch(text, countOffset, languageCode, safeSearch);
 
                 return result;
             }

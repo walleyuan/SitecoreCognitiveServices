@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing;
 using Microsoft.SharedSource.CognitiveServices.Models.Bing.VideoSearch;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
 
@@ -21,7 +20,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Bing {
 
         public VideoSearchResponse VideoSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off) {
             try {
-                var result = Task.Run(async () => await VideoSearchRepository.VideoSearchAsync(text, countOffset, languageCode, safeSearch)).Result;
+                var result = VideoSearchRepository.VideoSearch(text, countOffset, languageCode, safeSearch);
 
                 return result;
             } catch (Exception ex) {
@@ -33,7 +32,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Bing {
         
         public VideoSearchTrendResponse TrendingSearch() {
             try {
-                var result = Task.Run(async () => await VideoSearchRepository.TrendingSearchAsync()).Result;
+                var result = VideoSearchRepository.TrendingSearch();
 
                 return result;
             } catch (Exception ex) {
@@ -45,7 +44,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Bing {
 
         public VideoSearchDetailsResponse VideoDetailsSearch(string id, VideoDetailsModulesOptions modulesRequested) {
             try {
-                var result = Task.Run(async () => await VideoSearchRepository.VideoDetailsSearchAsync(id, modulesRequested)).Result;
+                var result = VideoSearchRepository.VideoDetailsSearch(id, modulesRequested);
 
                 return result;
             } catch (Exception ex) {

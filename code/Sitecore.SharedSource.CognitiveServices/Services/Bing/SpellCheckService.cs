@@ -1,6 +1,5 @@
 ﻿using System;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
 using System.Threading.Tasks;
 using Microsoft.SharedSource.CognitiveServices.Enums;
@@ -25,7 +24,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
         {
             try
             {
-                var result = Task.Run(async () => await SpellCheckRepository.SpellCheckAsync(text, mode, languageCode)).Result;
+                var result = SpellCheckRepository.SpellCheck(text, mode, languageCode);
 
                 return result;
             }

@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing;
 using Microsoft.SharedSource.CognitiveServices.Models.Bing.NewsSearch;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
 
@@ -22,7 +21,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
         
         public virtual NewsSearchCategoryResponse CategorySearch(NewsCategoryOptions category) {
             try {
-                var result = Task.Run(async () => await NewsSearchRepository.CategorySearchAsync(category)).Result;
+                var result = NewsSearchRepository.CategorySearch(category);
                 
                 return result;
             } catch (Exception ex) {
@@ -34,7 +33,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
 
         public virtual NewsSearchTrendResponse TrendingSearch() {
             try {
-                var result = Task.Run(async () => await NewsSearchRepository.TrendingSearchAsync()).Result;
+                var result = NewsSearchRepository.TrendingSearch();
                 
                 return result;
             } catch (Exception ex) {
@@ -46,7 +45,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
 
         public virtual NewsSearchResponse NewsSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off) {
             try {
-                var result = Task.Run(async () => await NewsSearchRepository.NewsSearchAsync(text, countOffset, languageCode, safeSearch)).Result;
+                var result = NewsSearchRepository.NewsSearch(text, countOffset, languageCode, safeSearch);
 
                 return result;
             } catch (Exception ex) {

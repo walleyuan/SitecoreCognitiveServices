@@ -20,7 +20,6 @@ using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
-using Microsoft.SharedSource.CognitiveServices.Models.Language;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
 using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;

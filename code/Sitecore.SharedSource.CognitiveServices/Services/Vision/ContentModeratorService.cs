@@ -28,7 +28,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.EvaluateAsync(imageUrl)).Result;
+                var result = ContentModeratorRepository.Evaluate(imageUrl);
 
                 return result;
             }
@@ -44,7 +44,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.EvaluateAsync(stream)).Result;
+                var result = ContentModeratorRepository.Evaluate(stream);
 
                 return result;
             }
@@ -60,7 +60,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.FindFacesAsync(imageUrl)).Result;
+                var result = ContentModeratorRepository.FindFaces(imageUrl);
 
                 return result;
             }
@@ -76,7 +76,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.FindFacesAsync(stream)).Result;
+                var result = ContentModeratorRepository.FindFaces(stream);
 
                 return result;
             }
@@ -92,7 +92,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.MatchAsync(imageUrl)).Result;
+                var result = ContentModeratorRepository.Match(imageUrl);
 
                 return result;
             }
@@ -108,7 +108,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.MatchAsync(stream, listId)).Result;
+                var result = ContentModeratorRepository.Match(stream, listId);
 
                 return result;
             }
@@ -124,7 +124,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.OCRAsync(imageUrl, language, enhanced)).Result;
+                var result = ContentModeratorRepository.OCR(imageUrl, language, enhanced);
 
                 return result;
             }
@@ -140,7 +140,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.OCRAsync(stream, language, enhanced)).Result;
+                var result = ContentModeratorRepository.OCR(stream, language, enhanced);
 
                 return result;
             }
@@ -156,7 +156,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.DetectLanguageAsync(text)).Result;
+                var result = ContentModeratorRepository.DetectLanguage(text);
 
                 return result;
             }
@@ -172,7 +172,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.ScreenAsync(text, language, autocorrect, urls, PII, listId)).Result;
+                var result = ContentModeratorRepository.Screen(text, language, autocorrect, urls, PII, listId);
 
                 return result;
             }
@@ -192,7 +192,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.CreateImageJobAsync(imageUrl, teamName, contentId, workflowName, callbackEndpoint)).Result;
+                var result = ContentModeratorRepository.CreateImageJob(imageUrl, teamName, contentId, workflowName, callbackEndpoint);
 
                 return result;
             }
@@ -208,7 +208,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.CreateImageJobAsync(stream, teamName, contentId, workflowName, callbackEndpoint)).Result;
+                var result = ContentModeratorRepository.CreateImageJob(stream, teamName, contentId, workflowName, callbackEndpoint);
 
                 return result;
             }
@@ -224,7 +224,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.CreateTextJobAsync(text, teamName, contentId, workflowName, callbackEndpoint)).Result;
+                var result = ContentModeratorRepository.CreateTextJob(text, teamName, contentId, workflowName, callbackEndpoint);
 
                 return result;
             }
@@ -240,7 +240,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.GetJobAsync(teamName, jobId)).Result;
+                var result = ContentModeratorRepository.GetJob(teamName, jobId);
 
                 return result;
             }
@@ -256,7 +256,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.CreateReviewAsync(teamName, requests, subTeam)).Result;
+                var result = ContentModeratorRepository.CreateReview(teamName, requests, subTeam);
 
                 return result;
             }
@@ -272,7 +272,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.GetReviewAsync(teamName, reviewId)).Result;
+                var result = ContentModeratorRepository.GetReview(teamName, reviewId);
 
                 return result;
             }
@@ -288,7 +288,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.CreateOrUpdateWorkflowAsync(teamName, workflowName, expression)).Result;
+                var result = ContentModeratorRepository.CreateOrUpdateWorkflow(teamName, workflowName, expression);
 
                 return result;
             }
@@ -304,7 +304,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.GetWorkflowAsync(teamName, workflowName)).Result;
+                var result = ContentModeratorRepository.GetWorkflow(teamName, workflowName);
 
                 return result;
             }
@@ -320,7 +320,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.GetAllWorkflowsAsync(teamName)).Result;
+                var result = ContentModeratorRepository.GetAllWorkflows(teamName);
 
                 return result;
             }
@@ -340,7 +340,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.AddImageAsync(imageUrl, listId, tag, label)).Result;
+                var result = ContentModeratorRepository.AddImage(imageUrl, listId, tag, label);
 
                 return result;
             }
@@ -356,7 +356,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.AddImageAsync(stream, listId, tag, label)).Result;
+                var result = ContentModeratorRepository.AddImage(stream, listId, tag, label);
 
                 return result;
             }
@@ -372,7 +372,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                Task.Run(async () => await ContentModeratorRepository.DeleteImageAsync(listId, imageId));
+                ContentModeratorRepository.DeleteImage(listId, imageId);
 
                 return true;
             }
@@ -388,7 +388,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                Task.Run(async () => await ContentModeratorRepository.DeleteAllImageAsync(listId));
+                ContentModeratorRepository.DeleteAllImage(listId);
 
                 return true;
             }
@@ -404,7 +404,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.GetAllImageIdsAsync(listId)).Result;
+                var result = ContentModeratorRepository.GetAllImageIds(listId);
 
                 return result;
             }
@@ -420,7 +420,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.GetImageListDetailsAsync(listId)).Result;
+                var result = ContentModeratorRepository.GetImageListDetails(listId);
 
                 return result;
             }
@@ -436,7 +436,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.CreateListAsync(details)).Result;
+                var result = ContentModeratorRepository.CreateList(details);
 
                 return result;
             }
@@ -452,7 +452,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                Task.Run(async () => await ContentModeratorRepository.DeleteImageListAsync(listId));
+                ContentModeratorRepository.DeleteImageList(listId);
 
                 return true;
             }
@@ -468,7 +468,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.GetAllImageListsAsync()).Result;
+                var result = ContentModeratorRepository.GetAllImageLists();
 
                 return result;
             }
@@ -484,7 +484,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.RefreshImageSearchIndexAsync(listId)).Result;
+                var result = ContentModeratorRepository.RefreshImageSearchIndex(listId);
 
                 return result;
             }
@@ -500,7 +500,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.UpdateImageListDetailsAsync(listId, details)).Result;
+                var result = ContentModeratorRepository.UpdateImageListDetails(listId, details);
 
                 return result;
             }
@@ -516,7 +516,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                Task.Run(async () => await ContentModeratorRepository.AddTermAsync(listId, term, language));
+                ContentModeratorRepository.AddTerm(listId, term, language);
 
                 return true;
             }
@@ -532,7 +532,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                Task.Run(async () => await ContentModeratorRepository.DeleteTermAsync(listId, term, language));
+                ContentModeratorRepository.DeleteTerm(listId, term, language);
 
                 return true;
             }
@@ -548,7 +548,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                Task.Run(async () => await ContentModeratorRepository.DeleteAllTermsAsync(listId, language));
+                ContentModeratorRepository.DeleteAllTerms(listId, language);
 
                 return true;
             }
@@ -564,7 +564,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.GetAllTermsAsync(listId, language)).Result;
+                var result = ContentModeratorRepository.GetAllTerms(listId, language);
 
                 return result;
             }
@@ -580,7 +580,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.CreateTermListAsync(details)).Result;
+                var result = ContentModeratorRepository.CreateTermList(details);
 
                 return result;
             }
@@ -596,7 +596,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                Task.Run(async () => await ContentModeratorRepository.DeleteTermListAsync(listId));
+                ContentModeratorRepository.DeleteTermList(listId);
 
                 return true;
             }
@@ -612,7 +612,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.GetAllTermListsAsync()).Result;
+                var result = ContentModeratorRepository.GetAllTermLists();
 
                 return result;
             }
@@ -628,7 +628,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.GetTermListDetailsAsync(listId)).Result;
+                var result = ContentModeratorRepository.GetTermListDetails(listId);
 
                 return result;
             }
@@ -644,7 +644,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.RefreshTermSearchIndexAsync(listId, language)).Result;
+                var result = ContentModeratorRepository.RefreshTermSearchIndex(listId, language);
 
                 return result;
             }
@@ -660,7 +660,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await ContentModeratorRepository.UpdateTermListDetailsAsync(listId, details)).Result;
+                var result = ContentModeratorRepository.UpdateTermListDetails(listId, details);
 
                 return result;
             }

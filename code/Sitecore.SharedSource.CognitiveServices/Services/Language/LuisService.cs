@@ -23,7 +23,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
         public virtual QueryResult Query(Guid appId, string query)
         {
             try {
-                var result = Task.Run(async () => await LuisRepository.QueryAsync(appId, query)).Result;
+                var result = LuisRepository.Query(appId, query);
 
                 return result;
             } catch (Exception ex) {
@@ -36,7 +36,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
         public virtual string AddApplication(AddApplicationRequest request)
         {
             try {
-                var result = Task.Run(async () => await LuisRepository.AddApplicationAsync(request)).Result;
+                var result = LuisRepository.AddApplication(request);
 
                 return result;
             } catch (Exception ex) {
@@ -48,7 +48,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void DeleteApplication(Guid appId) {
             try {
-                Task.Run(async () => await LuisRepository.DeleteApplicationAsync(appId));
+                LuisRepository.DeleteApplication(appId);
             } catch (Exception ex) {
                 Logger.Error("LuisService.DeleteApplication failed", this, ex);
             }
@@ -56,7 +56,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<List<string>> DownloadApplicationQueryLogs(Guid appId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.DownloadApplicationQueryLogsAsync(appId)).Result;
+                var result = LuisRepository.DownloadApplicationQueryLogs(appId);
 
                 return result;
             } catch (Exception ex) {
@@ -68,7 +68,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<ApplicationCulture> GetApplicationCultures() {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationCulturesAsync()).Result;
+                var result = LuisRepository.GetApplicationCultures();
 
                 return result;
             } catch (Exception ex) {
@@ -80,7 +80,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<string> GetApplicationDomains() {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationDomainsAsync()).Result;
+                var result = LuisRepository.GetApplicationDomains();
 
                 return result;
             } catch (Exception ex) {
@@ -92,7 +92,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual ApplicationInfo GetApplicationInfo(Guid appId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationInfoAsync(appId)).Result;
+                var result = LuisRepository.GetApplicationInfo(appId);
 
                 return result;
             } catch (Exception ex) {
@@ -104,7 +104,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<string> GetApplicationUsageScenarios() {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationUsageScenariosAsync()).Result;
+                var result = LuisRepository.GetApplicationUsageScenarios();
 
                 return result;
             } catch (Exception ex) {
@@ -116,7 +116,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual PersonalAssistantResponse GetPersonalAssistantApplications() {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetPersonalAssistantApplicationsAsync()).Result;
+                var result = LuisRepository.GetPersonalAssistantApplications();
 
                 return result;
             } catch (Exception ex) {
@@ -128,7 +128,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<UserApplication> GetUserApplications(int skip = 0, int take = 100) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetUserApplicationsAsync(skip, take)).Result;
+                var result = LuisRepository.GetUserApplications(skip, take);
 
                 return result;
             } catch (Exception ex) {
@@ -140,7 +140,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual string ImportApplication(ApplicationDefinition request, string appName = "") {
             try {
-                var result = Task.Run(async () => await LuisRepository.ImportApplicationAsync(request, appName)).Result;
+                var result = LuisRepository.ImportApplication(request, appName);
 
                 return result;
             } catch (Exception ex) {
@@ -152,7 +152,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual PublishResponse PublishApplication(Guid appId, PublishRequest request) {
             try {
-                var result = Task.Run(async () => await LuisRepository.PublishApplicationAsync(appId, request)).Result;
+                var result = LuisRepository.PublishApplication(appId, request);
 
                 return result;
             } catch (Exception ex) {
@@ -164,7 +164,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void RenameApplication(Guid appId, ApplicationRenameRequest request) {
             try {
-                Task.Run(async () => await LuisRepository.RenameApplicationAsync(appId, request));
+                LuisRepository.RenameApplication(appId, request);
             } catch (Exception ex) {
                 Logger.Error("LuisService.RenameApplication failed", this, ex);
             }
@@ -172,7 +172,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual AddLabelResponse AddLabel(Guid appId, string versionId, AddLabelRequest request) {
             try {
-                var result = Task.Run(async () => await LuisRepository.AddLabelAsync(appId, versionId, request)).Result;
+                var result = LuisRepository.AddLabel(appId, versionId, request);
 
                 return result;
             } catch (Exception ex) {
@@ -184,7 +184,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<BatchAddLabelsResponse> BatchAddLabels(Guid appId, string versionId, List<AddLabelRequest> request) {
             try {
-                var result = Task.Run(async () => await LuisRepository.BatchAddLabelsAsync(appId, versionId, request)).Result;
+                var result = LuisRepository.BatchAddLabels(appId, versionId, request);
 
                 return result;
             } catch (Exception ex) {
@@ -196,7 +196,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void DeleteExampleLabel(Guid appId, string versionId, int exampleId) {
             try {
-                Task.Run(async () => await LuisRepository.DeleteExampleLabelAsync(appId, versionId, exampleId));
+                LuisRepository.DeleteExampleLabel(appId, versionId, exampleId);
             } catch (Exception ex) {
                 Logger.Error("LuisService.DeleteExampleLabel failed", this, ex);
             }
@@ -204,7 +204,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<LabeledExamples> ReviewLabeledExamples(Guid appId, string versionId, int skip = 0, int take = 100) {
             try {
-                var result = Task.Run(async () => await LuisRepository.ReviewLabeledExamplesAsync(appId, versionId, skip, take)).Result;
+                var result = LuisRepository.ReviewLabeledExamples(appId, versionId, skip, take);
 
                 return result;
             } catch (Exception ex) {
@@ -216,7 +216,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual int CreatePatternFeature(Guid appId, string versionId, PatternFeature feature) {
             try {
-                var result = Task.Run(async () => await LuisRepository.CreatePatternFeatureAsync(appId, versionId, feature)).Result;
+                var result = LuisRepository.CreatePatternFeature(appId, versionId, feature);
 
                 return result;
             } catch (Exception ex) {
@@ -228,7 +228,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual int CreatePhraseListFeature(Guid appId, string versionId, PhraseListFeature feature) {
             try {
-                var result = Task.Run(async () => await LuisRepository.CreatePhraseListFeatureAsync(appId, versionId, feature)).Result;
+                var result = LuisRepository.CreatePhraseListFeature(appId, versionId, feature);
 
                 return result;
             } catch (Exception ex) {
@@ -240,7 +240,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void DeletePatternFeature(Guid appId, string versionId, int patternId) {
             try {
-                Task.Run(async () => await LuisRepository.DeletePatternFeatureAsync(appId, versionId, patternId));
+                LuisRepository.DeletePatternFeature(appId, versionId, patternId);
             } catch (Exception ex) {
                 Logger.Error("LuisService.DeletePatternFeature failed", this, ex);
             }
@@ -248,7 +248,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void DeletePhraseListFeature(Guid appId, string versionId, int phraselistId) {
             try {
-                Task.Run(async () => await LuisRepository.DeletePhraseListFeatureAsync(appId, versionId, phraselistId));
+                LuisRepository.DeletePhraseListFeature(appId, versionId, phraselistId);
             } catch (Exception ex) {
                 Logger.Error("LuisService.DeletePhraseListFeature failed", this, ex);
             }
@@ -256,7 +256,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual ApplicationFeaturesResponse GetApplicationVersionFeatures(Guid appId, string versionId, int skip = 0, int take = 100) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionFeaturesAsync(appId, versionId, skip, take)).Result;
+                var result = LuisRepository.GetApplicationVersionFeatures(appId, versionId, skip, take);
 
                 return result;
             } catch (Exception ex) {
@@ -268,7 +268,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<PatternFeature> GetApplicationVersionPatternFeatures(Guid appId, string versionId, int skip = 0, int take = 100) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionPatternFeaturesAsync(appId, versionId, skip, take)).Result;
+                var result = LuisRepository.GetApplicationVersionPatternFeatures(appId, versionId, skip, take);
 
                 return result;
             } catch (Exception ex) {
@@ -280,7 +280,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<PhraseListFeature> GetApplicationVersionPhraseListFeatures(Guid appId, string versionId, int skip = 0, int take = 100) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionPhraseListFeaturesAsync(appId, versionId, skip, take)).Result;
+                var result = LuisRepository.GetApplicationVersionPhraseListFeatures(appId, versionId, skip, take);
 
                 return result;
             } catch (Exception ex) {
@@ -292,7 +292,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual PatternFeature GetPatternFeatureInfo(Guid appId, string versionId, int patternId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetPatternFeatureInfoAsync(appId, versionId, patternId)).Result;
+                var result = LuisRepository.GetPatternFeatureInfo(appId, versionId, patternId);
 
                 return result;
             } catch (Exception ex) {
@@ -304,7 +304,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual PhraseListFeature GetPhraseListFeatureInfo(Guid appId, string versionId, int phraselistId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetPhraseListFeatureInfoAsync(appId, versionId, phraselistId)).Result;
+                var result = LuisRepository.GetPhraseListFeatureInfo(appId, versionId, phraselistId);
 
                 return result;
             } catch (Exception ex) {
@@ -316,7 +316,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void UpdatePatternFeature(Guid appId, string versionId, int patternId, PatternFeature feature) {
             try {
-                Task.Run(async () => await LuisRepository.UpdatePatternFeatureAsync(appId, versionId, patternId, feature));
+                LuisRepository.UpdatePatternFeature(appId, versionId, patternId, feature);
             } catch (Exception ex) {
                 Logger.Error("LuisService.UpdatePatternFeature failed", this, ex);
             }
@@ -324,7 +324,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void UpdatePhraseListFeature(Guid appId, string versionId, int phraselistId, PhraseListFeature feature) {
             try {
-                Task.Run(async () => await LuisRepository.UpdatePhraseListFeatureAsync(appId, versionId, phraselistId, feature));
+                LuisRepository.UpdatePhraseListFeature(appId, versionId, phraselistId, feature);
             } catch (Exception ex) {
                 Logger.Error("LuisService.UpdatePhraseListFeature failed", this, ex);
             }
@@ -332,7 +332,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<EntityInfo> AddPrebuiltEntityExtractors(Guid appId, string versionId, List<string> extractorNames) {
             try {
-                var result = Task.Run(async () => await LuisRepository.AddPrebuiltEntityExtractorsAsync(appId, versionId, extractorNames)).Result;
+                var result = LuisRepository.AddPrebuiltEntityExtractors(appId, versionId, extractorNames);
 
                 return result;
             } catch (Exception ex) {
@@ -344,7 +344,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual Guid CreateClosedListEntityModel(Guid appId, string versionId, ClosedListEntityRequest request) {
             try {
-                var result = Task.Run(async () => await LuisRepository.CreateClosedListEntityModelAsync(appId, versionId, request)).Result;
+                var result = LuisRepository.CreateClosedListEntityModel(appId, versionId, request);
 
                 return result;
             } catch (Exception ex) {
@@ -356,7 +356,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual Guid CreateCompositeEntityExtractor(Guid appId, string versionId, ComplexEntityRequest request) {
             try {
-                var result = Task.Run(async () => await LuisRepository.CreateCompositeEntityExtractorAsync(appId, versionId, request)).Result;
+                var result = LuisRepository.CreateCompositeEntityExtractor(appId, versionId, request);
 
                 return result;
             } catch (Exception ex) {
@@ -368,7 +368,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual Guid CreateEntityExtractor(Guid appId, string versionId, NamedEntityRequest request) {
             try {
-                var result = Task.Run(async () => await LuisRepository.CreateEntityExtractorAsync(appId, versionId, request)).Result;
+                var result = LuisRepository.CreateEntityExtractor(appId, versionId, request);
 
                 return result;
             } catch (Exception ex) {
@@ -380,7 +380,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual Guid CreateHeirarchicalEntityExtractor(Guid appId, string versionId, ComplexEntityRequest request) {
             try {
-                var result = Task.Run(async () => await LuisRepository.CreateHeirarchicalEntityExtractorAsync(appId, versionId, request)).Result;
+                var result = LuisRepository.CreateHeirarchicalEntityExtractor(appId, versionId, request);
 
                 return result;
             } catch (Exception ex) {
@@ -392,7 +392,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual Guid CreateIntentClassifier(Guid appId, string versionId, NamedEntityRequest request) {
             try {
-                var result = Task.Run(async () => await LuisRepository.CreateIntentClassifierAsync(appId, versionId, request)).Result;
+                var result = LuisRepository.CreateIntentClassifier(appId, versionId, request);
 
                 return result;
             } catch (Exception ex) {
@@ -404,7 +404,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void DeleteClosedListEntityModel(Guid appId, string versionId, Guid closedListEntityId) {
             try {
-                Task.Run(async () => await LuisRepository.DeleteClosedListEntityModelAsync(appId, versionId, closedListEntityId));
+                LuisRepository.DeleteClosedListEntityModel(appId, versionId, closedListEntityId);
             } catch (Exception ex) {
                 Logger.Error("LuisService.DeleteClosedListEntityModel failed", this, ex);
             }
@@ -412,7 +412,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void DeleteCompositeEntityModel(Guid appId, string versionId, Guid compositeEntityId) {
             try {
-                Task.Run(async () => await LuisRepository.DeleteCompositeEntityModelAsync(appId, versionId, compositeEntityId));
+                LuisRepository.DeleteCompositeEntityModel(appId, versionId, compositeEntityId);
             } catch (Exception ex) {
                 Logger.Error("LuisService.DeleteCompositeEntityModel failed", this, ex);
             }
@@ -420,7 +420,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void DeleteEntityModel(Guid appId, string versionId, Guid entityId) {
             try {
-                Task.Run(async () => await LuisRepository.DeleteEntityModelAsync(appId, versionId, entityId));
+                LuisRepository.DeleteEntityModel(appId, versionId, entityId);
             } catch (Exception ex) {
                 Logger.Error("LuisService.DeleteEntityModel failed", this, ex);
             }
@@ -428,7 +428,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void DeleteHierarchicalEntityModel(Guid appId, string versionId, Guid heirarchicalEntityId) {
             try {
-                Task.Run(async () => await LuisRepository.DeleteHierarchicalEntityModelAsync(appId, versionId, heirarchicalEntityId));
+                LuisRepository.DeleteHierarchicalEntityModel(appId, versionId, heirarchicalEntityId);
             } catch (Exception ex) {
                 Logger.Error("LuisService.DeleteHierarchicalEntityModel failed", this, ex);
             }
@@ -436,7 +436,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void DeleteIntentModel(Guid appId, string versionId, Guid intentId) {
             try {
-                Task.Run(async () => await LuisRepository.DeleteIntentModelAsync(appId, versionId, intentId));
+                LuisRepository.DeleteIntentModel(appId, versionId, intentId);
             } catch (Exception ex) {
                 Logger.Error("LuisService.DeleteIntentModel failed", this, ex);
             }
@@ -444,7 +444,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void DeletePrebuiltModel(Guid appId, string versionId, Guid prebuiltId) {
             try {
-                Task.Run(async () => await LuisRepository.DeletePrebuiltModelAsync(appId, versionId, prebuiltId));
+                LuisRepository.DeletePrebuiltModel(appId, versionId, prebuiltId);
             } catch (Exception ex) {
                 Logger.Error("LuisService.DeletePrebuiltModel failed", this, ex);
             }
@@ -452,7 +452,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void DeletePrebuiltModel(Guid appId, string versionId, Guid closedListEntityId, int sublistId) {
             try {
-                Task.Run(async () => await LuisRepository.DeletePrebuiltModelAsync(appId, versionId, closedListEntityId, sublistId));
+                LuisRepository.DeletePrebuiltModel(appId, versionId, closedListEntityId, sublistId);
             } catch (Exception ex) {
                 Logger.Error("LuisService.DeletePrebuiltModel failed", this, ex);
             }
@@ -460,7 +460,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual ClosedListEntityInfo GetApplicationVersionClosedListInfos(Guid appId, string versionId, int skip = 0, int take = 100) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionClosedListInfosAsync(appId, versionId, skip, take)).Result;
+                var result = LuisRepository.GetApplicationVersionClosedListInfos(appId, versionId, skip, take);
 
                 return result;
             } catch (Exception ex) {
@@ -472,7 +472,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual ComplexEntityInfo GetApplicationVersionCompositeEntityInfos(Guid appId, string versionId, int skip = 0, int take = 100) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionCompositeEntityInfosAsync(appId, versionId, skip, take)).Result;
+                var result = LuisRepository.GetApplicationVersionCompositeEntityInfos(appId, versionId, skip, take);
 
                 return result;
             } catch (Exception ex) {
@@ -484,7 +484,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<EntityInfo> GetApplicationVersionEntityInfos(Guid appId, string versionId, int skip = 0, int take = 100) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionEntityInfosAsync(appId, versionId, skip, take)).Result;
+                var result = LuisRepository.GetApplicationVersionEntityInfos(appId, versionId, skip, take);
 
                 return result;
             } catch (Exception ex) {
@@ -496,7 +496,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<ComplexEntityInfo> GetApplicationVersionHeirarchicalEntityInfos(Guid appId, string versionId, int skip = 0, int take = 100) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionHeirarchicalEntityInfosAsync(appId, versionId, skip, take)).Result;
+                var result = LuisRepository.GetApplicationVersionHeirarchicalEntityInfos(appId, versionId, skip, take);
 
                 return result;
             } catch (Exception ex) {
@@ -508,7 +508,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<EntityInfo> GetApplicationVersionIntentInfos(Guid appId, string versionId, int skip = 0, int take = 100) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionIntentInfosAsync(appId, versionId, skip, take)).Result;
+                var result = LuisRepository.GetApplicationVersionIntentInfos(appId, versionId, skip, take);
 
                 return result;
             } catch (Exception ex) {
@@ -520,7 +520,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<EntityInfo> GetApplicationVersionModelInfos(Guid appId, string versionId, int skip = 0, int take = 100) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionModelInfosAsync(appId, versionId, skip, take)).Result;
+                var result = LuisRepository.GetApplicationVersionModelInfos(appId, versionId, skip, take);
 
                 return result;
             } catch (Exception ex) {
@@ -532,7 +532,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<EntityInfo> GetApplicationVersionPrebuiltInfos(Guid appId, string versionId, int skip = 0, int take = 100) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionPrebuiltInfosAsync(appId, versionId, skip, take)).Result;
+                var result = LuisRepository.GetApplicationVersionPrebuiltInfos(appId, versionId, skip, take);
 
                 return result;
             } catch (Exception ex) {
@@ -544,7 +544,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<PrebuiltEntity> GetAvailablePrebuiltEntityExtractors(Guid appId, string versionId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetAvailablePrebuiltEntityExtractorsAsync(appId, versionId)).Result;
+                var result = LuisRepository.GetAvailablePrebuiltEntityExtractors(appId, versionId);
 
                 return result;
             } catch (Exception ex) {
@@ -556,7 +556,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual ClosedListEntityInfo GetClosedListEntityInfo(Guid appId, string versionId, Guid closedListEntityId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetClosedListEntityInfoAsync(appId, versionId, closedListEntityId)).Result;
+                var result = LuisRepository.GetClosedListEntityInfo(appId, versionId, closedListEntityId);
 
                 return result;
             } catch (Exception ex) {
@@ -568,7 +568,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual ComplexEntityInfo GetCompositeEntityInfo(Guid appId, string versionId, Guid compositeEntityId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetCompositeEntityInfoAsync(appId, versionId, compositeEntityId)).Result;
+                var result = LuisRepository.GetCompositeEntityInfo(appId, versionId, compositeEntityId);
 
                 return result;
             } catch (Exception ex) {
@@ -580,7 +580,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual EntityInfo GetEntityInfo(Guid appId, string versionId, Guid entityId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetEntityInfoAsync(appId, versionId, entityId)).Result;
+                var result = LuisRepository.GetEntityInfo(appId, versionId, entityId);
 
                 return result;
             } catch (Exception ex) {
@@ -592,7 +592,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual ComplexEntityInfo GetHeirarchicalEntityInfo(Guid appId, string versionId, Guid heirarchicalEntityId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetHeirarchicalEntityInfoAsync(appId, versionId, heirarchicalEntityId)).Result;
+                var result = LuisRepository.GetHeirarchicalEntityInfo(appId, versionId, heirarchicalEntityId);
 
                 return result;
             } catch (Exception ex) {
@@ -604,7 +604,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual EntityInfo GetIntentInfo(Guid appId, string versionId, Guid intentId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetIntentInfoAsync(appId, versionId, intentId)).Result;
+                var result = LuisRepository.GetIntentInfo(appId, versionId, intentId);
 
                 return result;
             } catch (Exception ex) {
@@ -616,7 +616,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual EntityInfo GetPrebuiltInfo(Guid appId, string versionId, Guid prebuiltId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetPrebuiltInfoAsync(appId, versionId, prebuiltId)).Result;
+                var result = LuisRepository.GetPrebuiltInfo(appId, versionId, prebuiltId);
 
                 return result;
             } catch (Exception ex) {
@@ -628,7 +628,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void PatchClosedListEntityModel(Guid appId, string versionId, Guid closedListEntityId, PatchClosedListEntityModelRequest request) {
             try {
-                Task.Run(async () => await LuisRepository.PatchClosedListEntityModelAsync(appId, versionId, closedListEntityId, request));
+                LuisRepository.PatchClosedListEntityModel(appId, versionId, closedListEntityId, request);
             } catch (Exception ex) {
                 Logger.Error("LuisService.PatchClosedListEntityModel failed", this, ex);
             }
@@ -636,7 +636,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void RenameEntityModel(Guid appId, string versionId, Guid entityId, NamedEntityRequest request) {
             try {
-                Task.Run(async () => await LuisRepository.RenameEntityModelAsync(appId, versionId, entityId, request));
+                LuisRepository.RenameEntityModel(appId, versionId, entityId, request);
             } catch (Exception ex) {
                 Logger.Error("LuisService.RenameEntityModel failed", this, ex);
             }
@@ -644,7 +644,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void RenameIntentModel(Guid appId, string versionId, Guid intentId, NamedEntityRequest request) {
             try {
-                Task.Run(async () => await LuisRepository.RenameIntentModelAsync(appId, versionId, intentId, request));
+                LuisRepository.RenameIntentModel(appId, versionId, intentId, request);
             } catch (Exception ex) {
                 Logger.Error("LuisService.RenameIntentModel failed", this, ex);
             }
@@ -652,7 +652,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<LabeledExamples> SuggestEndpointQueriesForEntities(Guid appId, string versionId, Guid entityId, int take = 10) {
             try {
-                var result = Task.Run(async () => await LuisRepository.SuggestEndpointQueriesForEntitiesAsync(appId, versionId, entityId, take)).Result;
+                var result = LuisRepository.SuggestEndpointQueriesForEntities(appId, versionId, entityId, take);
 
                 return result;
             } catch (Exception ex) {
@@ -664,7 +664,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<LabeledExamples> SuggestEndpointQueriesForIntents(Guid appId, string versionId, Guid intentId, int take = 10) {
             try {
-                var response = Task.Run(async () => await LuisRepository.SuggestEndpointQueriesForIntentsAsync(appId, versionId, intentId, take)).Result;
+                var response = LuisRepository.SuggestEndpointQueriesForIntents(appId, versionId, intentId, take);
 
                 return response;
             } catch (Exception ex) {
@@ -676,7 +676,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void UpdateClosedListEntityModel(Guid appId, string versionId, Guid closedListEntityId, ClosedListEntityRequest request) {
             try {
-                Task.Run(async () => await LuisRepository.UpdateClosedListEntityModelAsync(appId, versionId, closedListEntityId, request));
+                LuisRepository.UpdateClosedListEntityModel(appId, versionId, closedListEntityId, request);
             } catch (Exception ex) {
                 Logger.Error("LuisService.UpdateClosedListEntityModel failed", this, ex);
             }
@@ -684,7 +684,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void UpdateCompositeEntityModel(Guid appId, string versionId, Guid compositeEntityId, ComplexEntityRequest request) {
             try {
-                Task.Run(async () => await LuisRepository.UpdateCompositeEntityModelAsync(appId, versionId, compositeEntityId, request));
+                LuisRepository.UpdateCompositeEntityModel(appId, versionId, compositeEntityId, request);
             } catch (Exception ex) {
                 Logger.Error("LuisService.UpdateCompositeEntityModel failed", this, ex);
             }
@@ -692,7 +692,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void UpdateHeirarchicalEntityModel(Guid appId, string versionId, Guid heirarchicalEntityId, ComplexEntityRequest request) {
             try {
-                Task.Run(async () => await LuisRepository.UpdateHeirarchicalEntityModelAsync(appId, versionId, heirarchicalEntityId, request));
+                LuisRepository.UpdateHeirarchicalEntityModel(appId, versionId, heirarchicalEntityId, request);
             } catch (Exception ex) {
                 Logger.Error("LuisService.UpdateHeirarchicalEntityModel failed", this, ex);
             }
@@ -700,7 +700,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<ModelTrainingStatus> GetApplicationVersionTrainingStatus(Guid appId, string versionId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionTrainingStatusAsync(appId, versionId)).Result;
+                var result = LuisRepository.GetApplicationVersionTrainingStatus(appId, versionId);
 
                 return result;
             } catch (Exception ex) {
@@ -712,7 +712,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void TrainApplicationVersion(Guid appId, string versionId) {
             try {
-                Task.Run(async () => await LuisRepository.TrainApplicationVersionAsync(appId, versionId));
+                LuisRepository.TrainApplicationVersion(appId, versionId);
             } catch (Exception ex) {
                 Logger.Error("LuisService.TrainApplicationVersion failed", this, ex);
             }
@@ -720,7 +720,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void AddExternalApiKey(ExternalApiKeyRequest request) {
             try {
-                Task.Run(async () => await LuisRepository.AddExternalApiKeyAsync(request));
+                LuisRepository.AddExternalApiKey(request);
             } catch (Exception ex) {
                 Logger.Error("LuisService.AddExternalApiKey failed", this, ex);
             }
@@ -728,7 +728,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void AddSubscriptionKey(SubscriptionKeySet request) {
             try {
-                Task.Run(async () => await LuisRepository.AddSubscriptionKeyAsync(request));
+                LuisRepository.AddSubscriptionKey(request);
             } catch (Exception ex) {
                 Logger.Error("LuisService.AddSubscriptionKey failed", this, ex);
             }
@@ -736,7 +736,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void DeleteExternalApiKey(string externalApiKey) {
             try {
-                Task.Run(async () => await LuisRepository.DeleteExternalApiKeyAsync(externalApiKey));
+                LuisRepository.DeleteExternalApiKey(externalApiKey);
             } catch (Exception ex) {
                 Logger.Error("LuisService.DeleteExternalApiKey failed", this, ex);
             }
@@ -744,7 +744,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void DeleteSubscriptionKey(string subscriptionKey) {
             try {
-                Task.Run(async () => await LuisRepository.DeleteSubscriptionKeyAsync(subscriptionKey));
+                LuisRepository.DeleteSubscriptionKey(subscriptionKey);
             } catch (Exception ex) {
                 Logger.Error("LuisService.DeleteSubscriptionKey failed", this, ex);
             }
@@ -752,7 +752,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual ExternalApiKeySet GetExternalApiKey() {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetExternalApiKeyAsync()).Result;
+                var result = LuisRepository.GetExternalApiKey();
 
                 return result;
             } catch (Exception ex) {
@@ -764,7 +764,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<SubscriptionKeySet> GetSubscriptionKey() {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetSubscriptionKeyAsync()).Result;
+                var result = LuisRepository.GetSubscriptionKey();
 
                 return result;
             } catch (Exception ex) {
@@ -776,7 +776,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual string ResetProgrammaticKey() {
             try {
-                var result = Task.Run(async () => await LuisRepository.ResetProgrammaticKeyAsync()).Result;
+                var result = LuisRepository.ResetProgrammaticKey();
 
                 return result;
             } catch (Exception ex) {
@@ -788,7 +788,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void AssignSubscriptionKeyToVersion(Guid appId, string versionId, string subscriptionKey) {
             try {
-                Task.Run(async () => await LuisRepository.AssignSubscriptionKeyToVersionAsync(appId, versionId, subscriptionKey));
+                LuisRepository.AssignSubscriptionKeyToVersion(appId, versionId, subscriptionKey);
             } catch (Exception ex) {
                 Logger.Error("LuisService.AssignSubscriptionKeyToVersion failed", this, ex);
             }
@@ -796,7 +796,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual string CloneVersion(Guid appId, string versionId, VersionRequest request) {
             try {
-                var result = Task.Run(async () => await LuisRepository.CloneVersionAsync(appId, versionId, request)).Result;
+                var result = LuisRepository.CloneVersion(appId, versionId, request);
 
                 return result;
             } catch (Exception ex) {
@@ -808,7 +808,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void DeleteApplicationVersion(Guid appId, string versionId) {
             try {
-                Task.Run(async () => await LuisRepository.DeleteApplicationVersionAsync(appId, versionId));
+                LuisRepository.DeleteApplicationVersion(appId, versionId);
             } catch (Exception ex) {
                 Logger.Error("LuisService.DeleteApplicationVersion failed", this, ex);
             }
@@ -816,7 +816,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void DeleteApplicationVersionExternalKey(Guid appId, string versionId, string keyType) {
             try {
-                Task.Run(async () => await LuisRepository.DeleteApplicationVersionExternalKeyAsync(appId, versionId, keyType));
+                LuisRepository.DeleteApplicationVersionExternalKey(appId, versionId, keyType);
             } catch (Exception ex) {
                 Logger.Error("LuisService.DeleteApplicationVersionExternalKey failed", this, ex);
             }
@@ -824,7 +824,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual ApplicationDefinition ExportApplicationVersion(Guid appId, string versionId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.ExportApplicationVersionAsync(appId, versionId)).Result;
+                var result = LuisRepository.ExportApplicationVersion(appId, versionId);
 
                 return result;
             } catch (Exception ex) {
@@ -836,7 +836,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual ApplicationVersion GetApplicationVersion(Guid appId, string versionId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionAsync(appId, versionId)).Result;
+                var result = LuisRepository.GetApplicationVersion(appId, versionId);
 
                 return result;
             } catch (Exception ex) {
@@ -848,7 +848,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<ExternalApiKeySet> GetApplicationVersionExternalApiKeys(Guid appId, string versionId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionExternalApiKeysAsync(appId, versionId)).Result;
+                var result = LuisRepository.GetApplicationVersionExternalApiKeys(appId, versionId);
 
                 return result;
             } catch (Exception ex) {
@@ -860,7 +860,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual SubscriptionKeySet GetApplicationVersionSubscriptionKeys(Guid appId, string versionId) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionSubscriptionKeysAsync(appId, versionId)).Result;
+                var result = LuisRepository.GetApplicationVersionSubscriptionKeys(appId, versionId);
 
                 return result;
             } catch (Exception ex) {
@@ -872,7 +872,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual List<ApplicationVersion> GetApplicationVersions(Guid appId, int skip = 0, int take = 100) {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionsAsync(appId, skip, take)).Result;
+                var result = LuisRepository.GetApplicationVersions(appId, skip, take);
 
                 return result;
             } catch (Exception ex) {
@@ -884,7 +884,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual string ImportVersionToApplication(Guid appId, ApplicationDefinition definition, string versionId = "") {
             try {
-                var result = Task.Run(async () => await LuisRepository.ImportVersionToApplicationAsync(appId, definition, versionId)).Result;
+                var result = LuisRepository.ImportVersionToApplication(appId, definition, versionId);
 
                 return result;
             } catch (Exception ex) {
@@ -896,7 +896,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void RenameApplicationVersion(Guid appId, string versionId, VersionRequest request) {
             try {
-                Task.Run(async () => await LuisRepository.RenameApplicationVersionAsync(appId, versionId, request));
+                LuisRepository.RenameApplicationVersion(appId, versionId, request);
             } catch (Exception ex) {
                 Logger.Error("LuisService.RenameApplicationVersion failed", this, ex);
             }
@@ -904,7 +904,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
 
         public virtual void UpdateApplicationVersionExternalKey(Guid appId, string versionId, ExternalApiKeyRequest request) {
             try {
-                Task.Run(async () => await LuisRepository.UpdateApplicationVersionExternalKeyAsync(appId, versionId, request));
+                LuisRepository.UpdateApplicationVersionExternalKey(appId, versionId, request);
             } catch (Exception ex) {
                 Logger.Error("LuisService.UpdateApplicationVersionExternalKey failed", this, ex);
             }

@@ -1,8 +1,6 @@
 ﻿using System;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
-using System.Threading.Tasks;
 using Microsoft.SharedSource.CognitiveServices.Models.Bing.AutoSuggest;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
@@ -24,7 +22,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
         {
             try
             {
-                var result = Task.Run(async () => await AutoSuggestRepository.GetSuggestionsAsync(text)).Result;
+                var result = AutoSuggestRepository.GetSuggestions(text);
 
                 return result;
             }

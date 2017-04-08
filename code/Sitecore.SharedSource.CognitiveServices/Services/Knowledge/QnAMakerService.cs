@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.QnAMaker;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
@@ -19,7 +18,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge {
 
         public virtual KnowledgeBaseExtractionDetails CreateKnowledgeBase(KnowledgeBaseDetails request) {
             try {
-                var result = Task.Run(async () => await QnAMakerRepository.CreateKnowledgeBaseAsync(request)).Result;
+                var result = QnAMakerRepository.CreateKnowledgeBase(request);
 
                 return result;
             } catch (Exception ex) {
@@ -31,7 +30,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge {
 
         public virtual bool DeleteKnowledgeBase(Guid knowledgeBaseId) {
             try {
-                Task.Run(async () => await QnAMakerRepository.DeleteKnowledgeBaseAsync(knowledgeBaseId));
+                QnAMakerRepository.DeleteKnowledgeBase(knowledgeBaseId);
 
                 return true;
             } catch (Exception ex) {
@@ -43,7 +42,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge {
 
         public virtual string DownloadKnowledgeBase(Guid knowledgeBaseId) {
             try {
-                var result = Task.Run(async () => await QnAMakerRepository.DownloadKnowledgeBaseAsync(knowledgeBaseId)).Result;
+                var result = QnAMakerRepository.DownloadKnowledgeBase(knowledgeBaseId);
 
                 return result;
             } catch (Exception ex) {
@@ -55,7 +54,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge {
 
         public virtual GenerateAnswerResponse GenerateAnswer(Guid knowledgeBaseId, GenerateAnswerRequest request) {
             try {
-                var result = Task.Run(async () => await QnAMakerRepository.GenerateAnswerAsync(knowledgeBaseId, request)).Result;
+                var result = QnAMakerRepository.GenerateAnswer(knowledgeBaseId, request);
 
                 return result;
             } catch (Exception ex) {
@@ -67,7 +66,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge {
 
         public virtual bool PublishKnowledgeBase(Guid knowledgeBaseId) {
             try {
-                Task.Run(async () => await QnAMakerRepository.PublishKnowledgeBaseAsync(knowledgeBaseId));
+                QnAMakerRepository.PublishKnowledgeBase(knowledgeBaseId);
 
                 return true;
             } catch (Exception ex) {
@@ -79,7 +78,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge {
 
         public virtual bool UpdateKnowledgeBase(Guid knowledgeBaseId, PatchKnowledgeBaseRequest request) {
             try {
-                Task.Run(async () => await QnAMakerRepository.UpdateKnowledgeBaseAsync(knowledgeBaseId, request));
+                QnAMakerRepository.UpdateKnowledgeBase(knowledgeBaseId, request);
 
                 return true;
             } catch (Exception ex) {

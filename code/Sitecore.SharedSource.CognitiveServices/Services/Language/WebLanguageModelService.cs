@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Microsoft.SharedSource.CognitiveServices.Enums;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.WebLanguageModel;
@@ -24,7 +23,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
         {
             try
             {
-                var result = Task.Run(async () => await WebLanguageModelRepository.BreakIntoWordsAsync(model, text, order, maxNumOfCandidatesReturned)).Result;
+                var result = WebLanguageModelRepository.BreakIntoWords(model, text, order, maxNumOfCandidatesReturned);
 
                 return result;
             }
@@ -40,7 +39,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
         {
             try
             {
-                var result = Task.Run(async () => await WebLanguageModelRepository.CalculateConditionalProbabilityAsync(model, request, order)).Result;
+                var result = WebLanguageModelRepository.CalculateConditionalProbability(model, request, order);
 
                 return result;
             }
@@ -56,7 +55,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
         {
             try
             {
-                var result = Task.Run(async () => await WebLanguageModelRepository.CalculateJointProbabilityAsync(model, request, order)).Result;
+                var result = WebLanguageModelRepository.CalculateJointProbability(model, request, order);
 
                 return result;
             }
@@ -72,7 +71,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
         {
             try
             {
-                var result = Task.Run(async () => await WebLanguageModelRepository.GenerateNextWordsAsync(model, words, order, maxNumOfCandidatesReturned)).Result;
+                var result = WebLanguageModelRepository.GenerateNextWords(model, words, order, maxNumOfCandidatesReturned);
 
                 return result;
             }
@@ -88,7 +87,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
         {
             try
             {
-                var result = Task.Run(async () => await WebLanguageModelRepository.ListAvailableModelsAsync()).Result;
+                var result = WebLanguageModelRepository.ListAvailableModels();
 
                 return result;
             }

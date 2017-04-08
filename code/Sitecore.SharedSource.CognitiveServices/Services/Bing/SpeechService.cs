@@ -22,7 +22,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Bing {
         public virtual SpeechToTextResponse SpeechToText(Stream audioStream, ScenarioOptions scenario, BingSpeechLocaleOptions locale, SpeechOsOptions os, Guid fromDeviceId, int maxnbest = 1, int profanitycheck = 1)
         {
             try {
-                var result = Task.Run(async () => await SpeechRepository.SpeechToTextAsync(audioStream, scenario, locale, os, fromDeviceId, maxnbest, profanitycheck)).Result;
+                var result = SpeechRepository.SpeechToText(audioStream, scenario, locale, os, fromDeviceId, maxnbest, profanitycheck);
 
                 return result;
             } catch (Exception ex) {

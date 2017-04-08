@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.Recommendations;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge;
@@ -27,7 +26,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.CreateBusinessRuleAsync(modelId, request)).Result;
+                var result = RecommendationsRepository.CreateBusinessRule(modelId, request);
 
                 return result;
             }
@@ -43,7 +42,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.CreateModelAsync(request)).Result;
+                var result = RecommendationsRepository.CreateModel(request);
 
                 return result;
             }
@@ -59,7 +58,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.CreateBuildAsync(modelId, request)).Result;
+                var result = RecommendationsRepository.CreateBuild(modelId, request);
 
                 return result;
             }
@@ -75,7 +74,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                Task.Run(async () => await RecommendationsRepository.StartBatchJobAsync(request));
+                RecommendationsRepository.StartBatchJob(request);
             }
             catch (Exception ex)
             {
@@ -87,7 +86,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.UploadCatalogFileAsync(modelId, catalogDisplayName, stream)).Result;
+                var result = RecommendationsRepository.UploadCatalogFile(modelId, catalogDisplayName, stream);
 
                 return result;
             }
@@ -103,7 +102,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                Task.Run(async () => await RecommendationsRepository.UploadUsageEventAsync(modelId, request));
+                RecommendationsRepository.UploadUsageEvent(modelId, request);
             }
             catch (Exception ex)
             {
@@ -115,7 +114,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.UploadUsageFileAsync(modelId, usageDisplayName, stream)).Result;
+                var result = RecommendationsRepository.UploadUsageFile(modelId, usageDisplayName, stream);
 
                 return result;
             }
@@ -135,7 +134,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                Task.Run(async () => await RecommendationsRepository.CancelOperationAsync(operationId));
+                RecommendationsRepository.CancelOperation(operationId);
             }
             catch (Exception ex)
             {
@@ -147,7 +146,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                Task.Run(async () => await RecommendationsRepository.DeleteAllBusinessRulesAsync(modelId));
+                RecommendationsRepository.DeleteAllBusinessRules(modelId);
             }
             catch (Exception ex)
             {
@@ -159,7 +158,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                Task.Run(async () => await RecommendationsRepository.DeleteAllUsageFilesAsync(modelId));
+                RecommendationsRepository.DeleteAllUsageFiles(modelId);
             }
             catch (Exception ex)
             {
@@ -171,7 +170,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                Task.Run(async () => await RecommendationsRepository.DeleteBuildAsync(modelId, buildId));
+                RecommendationsRepository.DeleteBuild(modelId, buildId);
             }
             catch (Exception ex)
             {
@@ -183,7 +182,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                Task.Run(async () => await RecommendationsRepository.DeleteBusinessRuleAsync(modelId, ruleId));
+                RecommendationsRepository.DeleteBusinessRule(modelId, ruleId);
             }
             catch (Exception ex)
             {
@@ -195,7 +194,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.DeleteCatalogItemsAsync(modelId, deleteAll)).Result;
+                var result = RecommendationsRepository.DeleteCatalogItems(modelId, deleteAll);
 
                 return result;
             }
@@ -211,7 +210,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.DeleteModelAsync(id));
+                RecommendationsRepository.DeleteModel(id);
             }
             catch (Exception ex)
             {
@@ -223,7 +222,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                Task.Run(async () => await RecommendationsRepository.DeleteUsageFileAsync(modelId, fileId));
+                RecommendationsRepository.DeleteUsageFile(modelId, fileId);
             }
             catch (Exception ex)
             {
@@ -239,7 +238,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.UpdateCatalogItemsAsync(modelId, fileStream)).Result;
+                var result = RecommendationsRepository.UpdateCatalogItems(modelId, fileStream);
 
                 return result;
             }
@@ -255,7 +254,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                Task.Run(async () => await RecommendationsRepository.UpdateModelAsync(modelId, request));
+                RecommendationsRepository.UpdateModel(modelId, request);
             }
             catch (Exception ex)
             {
@@ -271,7 +270,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.DownloadUsageFileAsync(modelId, fileId)).Result;
+                var result = RecommendationsRepository.DownloadUsageFile(modelId, fileId);
 
                 return result;
             }
@@ -287,7 +286,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetAllBatchJobsAsync(jobId)).Result;
+                var result = RecommendationsRepository.GetAllBatchJobs(jobId);
 
                 return result;
             }
@@ -303,7 +302,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetAllBuildsAsync(modelId, onlyLastRequestedBuild)).Result;
+                var result = RecommendationsRepository.GetAllBuilds(modelId, onlyLastRequestedBuild);
 
                 return result;
             }
@@ -319,7 +318,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetAllBusinessRulesAsync(modelId)).Result;
+                var result = RecommendationsRepository.GetAllBusinessRules(modelId);
 
                 return result;
             }
@@ -335,7 +334,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetAllCatalogItemsAsync(modelId, top, skip, maxpagesize)).Result;
+                var result = RecommendationsRepository.GetAllCatalogItems(modelId, top, skip, maxpagesize);
 
                 return result;
             }
@@ -351,7 +350,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetAllModelsAsync()).Result;
+                var result = RecommendationsRepository.GetAllModels();
 
                 return result;
             }
@@ -367,7 +366,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetBuildByIdAsync(modelId, buildId)).Result;
+                var result = RecommendationsRepository.GetBuildById(modelId, buildId);
 
                 return result;
             }
@@ -383,7 +382,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetBuildDataStatisticsAsync(modelId, buildId)).Result;
+                var result = RecommendationsRepository.GetBuildDataStatistics(modelId, buildId);
 
                 return result;
             }
@@ -399,7 +398,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetBuildMetricsAsync(modelId, buildId)).Result;
+                var result = RecommendationsRepository.GetBuildMetrics(modelId, buildId);
 
                 return result;
             }
@@ -415,7 +414,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetBusinessRuleAsync(modelId, ruleId)).Result;
+                var result = RecommendationsRepository.GetBusinessRule(modelId, ruleId);
 
                 return result;
             }
@@ -431,7 +430,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetItemToItemRecommendationsAsync(modelId, itemIds, numberOfResults, minimalScore, buildId)).Result;
+                var result = RecommendationsRepository.GetItemToItemRecommendations(modelId, itemIds, numberOfResults, minimalScore, buildId);
 
                 return result;
             }
@@ -447,7 +446,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetModelAsync(modelId)).Result;
+                var result = RecommendationsRepository.GetModel(modelId);
 
                 return result;
             }
@@ -463,7 +462,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetModelFeaturesAsync(modelId, rankBuildId)).Result;
+                var result = RecommendationsRepository.GetModelFeatures(modelId, rankBuildId);
 
                 return result;
             }
@@ -479,7 +478,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetOperationStatusAsync(operationId)).Result;
+                var result = RecommendationsRepository.GetOperationStatus(operationId);
 
                 return result;
             }
@@ -495,7 +494,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetSpecificCatalogItemsBySearchTermAsync(modelId, ids, searchTerm)).Result;
+                var result = RecommendationsRepository.GetSpecificCatalogItemsBySearchTerm(modelId, ids, searchTerm);
 
                 return result;
             }
@@ -511,7 +510,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetUsageStatisticsForABuildAsync(modelId, buildId, interval, eventTypes)).Result;
+                var result = RecommendationsRepository.GetUsageStatisticsForABuild(modelId, buildId, interval, eventTypes);
 
                 return result;
             }
@@ -527,7 +526,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetUsageStatisticsForAModelAsync(modelId, interval, eventTypes)).Result;
+                var result = RecommendationsRepository.GetUsageStatisticsForAModel(modelId, interval, eventTypes);
 
                 return result;
             }
@@ -543,7 +542,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.GetUserToItemRecommendationsAsync(modelId, userId, numberOfResults, itemIds, includeMetadata, buildId)).Result;
+                var result = RecommendationsRepository.GetUserToItemRecommendations(modelId, userId, numberOfResults, itemIds, includeMetadata, buildId);
 
                 return result;
             }
@@ -559,7 +558,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
         {
             try
             {
-                var result = Task.Run(async () => await RecommendationsRepository.ListUsageFilesAsync(modelId)).Result;
+                var result = RecommendationsRepository.ListUsageFiles(modelId);
 
                 return result;
             }
