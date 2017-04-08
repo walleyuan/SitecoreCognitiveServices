@@ -7,17 +7,17 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 {
     public interface IVisionRepository : IVisionServiceClient
     {
-        Task<AnalysisResult> GetFullAnalysis(Stream stream);
-        Task<AnalysisResult> GetFullAnalysis(string imageUrl);
-        Task<Adult> GetAdultAnalysis(Stream stream);
-        Task<Adult> GetAdultAnalysis(string imageUrl);
-        Task<Category[]> GetCategoryAnalysis(Stream stream);
-        Task<Category[]> GetCategoryAnalysis(string imageUrl);
-        Task<Microsoft.ProjectOxford.Vision.Contract.Color> GetColorAnalysis(Stream stream);
-        Task<Microsoft.ProjectOxford.Vision.Contract.Color> GetColorAnalysis(string imageUrl);
-        Task<Face[]> GetFaceAnalysis(Stream stream);
-        Task<Face[]> GetFaceAnalysis(string imageUrl);
-        Task<ImageType> GetImageTypeAnalysis(Stream stream);
-        Task<ImageType> GetImageTypeAnalysis(string imageUrl);
+        Task<AnalysisResult> GetFullAnalysisAsync(Stream stream);
+        Task<AnalysisResult> GetFullAnalysisAsync(string imageUrl);
+        Task<Adult> GetAdultAnalysisAsync(Stream stream);
+        Task<Adult> GetAdultAnalysisAsync(string imageUrl);
+        Task<Category[]> GetCategoryAnalysisAsync(Stream stream);
+        Task<Category[]> GetCategoryAnalysisAsync(string imageUrl);
+        Task<Microsoft.ProjectOxford.Vision.Contract.Color> GetColorAnalysisAsync(Stream stream);
+        Task<Microsoft.ProjectOxford.Vision.Contract.Color> GetColorAnalysisAsync(string imageUrl);
+        Task<Face[]> GetFaceAnalysisAsync(Stream stream);
+        Task<Face[]> GetFaceAnalysisAsync(string imageUrl);
+        Task<ImageType> GetImageTypeAnalysisAsync(Stream stream);
+        Task<ImageType> GetImageTypeAnalysisAsync(string imageUrl);
     }
 }

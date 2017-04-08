@@ -24,7 +24,8 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
 
         public virtual KeyPhraseSentimentResponse GetKeyPhrases(SentimentRequest request)
         {
-            return Task.Run(async () => await GetKeyPhrasesAsync(request)).Result;
+            request.Validate();
+            return JsonConvert.DeserializeObject<KeyPhraseSentimentResponse>(SendPost(keyPhraseUrl, JsonConvert.SerializeObject((object)request)));
         }
 
         public virtual async Task<KeyPhraseSentimentResponse> GetKeyPhrasesAsync(SentimentRequest request)
@@ -33,19 +34,23 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
             return JsonConvert.DeserializeObject<KeyPhraseSentimentResponse>(await this.SendPostAsync(keyPhraseUrl, JsonConvert.SerializeObject((object)request)));
         }
         
+        public virtual string GetTopics(TopicRequest request) 
+        {
+            return RepositoryClient.SendOperationPost(ApiKey, topicUrl, JsonConvert.SerializeObject((object)request));
+        }
+
         /// <summary>
         /// This takes in at least 100 documents and returns a url to the operation where you check for the status of the result
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public virtual string GetTopics(TopicRequest request) 
-        {
-            return Task.Run(async () => await RepositoryClient.SendOperationPostAsync(ApiKey, topicUrl, JsonConvert.SerializeObject((object)request))).Result;
+        public virtual async Task<string> GetTopicsAsync(TopicRequest request) {
+            return await RepositoryClient.SendOperationPostAsync(ApiKey, topicUrl, JsonConvert.SerializeObject((object)request));
         }
-        
+
         public virtual OperationResult GetOperation(string operationLocationUrl)
         {
-            return Task.Run(async () => await GetOperationAsync(operationLocationUrl)).Result;
+            return JsonConvert.DeserializeObject<OperationResult>(SendPost(operationLocationUrl, "{}"));
         }
 
         /// <summary>

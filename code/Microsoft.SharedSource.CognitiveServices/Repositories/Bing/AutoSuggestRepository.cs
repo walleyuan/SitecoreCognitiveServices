@@ -21,7 +21,9 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
 
         public virtual AutoSuggestResponse GetSuggestions(string text)
         {
-            return Task.Run(async () => await GetSuggestionsAsync(text)).Result;
+            var response = RepositoryClient.SendGet(ApiKeys.BingAutosuggest, $"{suggestUrl}?q={text}");
+
+            return JsonConvert.DeserializeObject<AutoSuggestResponse>(response);
         }
 
         public virtual async Task<AutoSuggestResponse> GetSuggestionsAsync(string text)

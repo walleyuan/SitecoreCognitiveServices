@@ -29,7 +29,10 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
 
         public virtual ImageSearchResponse GetImages(string query, int count = 10, int offset = 0, string languageCode = "en-us", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
         {
-            return Task.Run(async () => await GetImagesAsync(query, count, offset, languageCode, safeSearch)).Result;
+            string searchUrl = $"{imageSearchUrl}?q={query}&count={count}&offset={offset}&mkt={languageCode}&safeSearch={Enum.GetName(typeof(SafeSearchOptions), safeSearch)}";
+            var response = RepositoryClient.SendGet(ApiKeys.BingSearch, searchUrl);
+
+            return JsonConvert.DeserializeObject<ImageSearchResponse>(response);
         }
 
         public virtual async Task<ImageSearchResponse> GetImagesAsync(string query, int count = 10, int offset = 0, string languageCode = "en-us", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
@@ -46,7 +49,9 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
 
         public virtual TrendSearchResponse GetTrendingImages()
         {
-            return Task.Run(async () => await GetTrendingImagesAsync()).Result;
+            var response = RepositoryClient.SendGet(ApiKeys.BingSearch, imageTrendUrl);
+
+            return JsonConvert.DeserializeObject<TrendSearchResponse>(response);
         }
 
         public virtual async Task<TrendSearchResponse> GetTrendingImagesAsync()
@@ -60,7 +65,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
 
         #region Image Insights
 
-        public virtual ImageInsightResponse GetImageInsights(
+        protected virtual string GetImageInsightUrl(
             string query = "",
             int height = 0,
             int width = 0,
@@ -86,38 +91,9 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
             string imgUrl = "",
             string insightsToken = "")
         {
-            return Task.Run(async () => await GetImageInsightsAsync(query, height, width, count, offset, languageCode, aspect, color, freshness, imageContent, imageType, license, size, safeSearch, modulesRequested, cab, cal, car, cat, ct, cc, id, imgUrl, insightsToken)).Result;
-        }
-
-        public virtual async Task<ImageInsightResponse> GetImageInsightsAsync(
-            string query = "", 
-            int height = 0, 
-            int width = 0,
-            int count = 0,
-            int offset = 0,
-            string languageCode = "",
-            AspectOptions aspect = AspectOptions.All, 
-            ColorOptions color = ColorOptions.All, 
-            FreshnessOptions freshness = FreshnessOptions.All, 
-            ImageContentOptions imageContent = ImageContentOptions.All, 
-            ImageTypeOptions imageType = ImageTypeOptions.All, 
-            LicenseOptions license = LicenseOptions.All, 
-            SizeOptions size = SizeOptions.All,
-            SafeSearchOptions safeSearch = SafeSearchOptions.Off,
-            List<ModulesRequestedOptions> modulesRequested = null,
-            float cab = 0f,
-            float cal = 0f,
-            float car = 0f,
-            float cat = 0f,
-            int ct = 0,
-            string cc = "",
-            string id = "",
-            string imgUrl = "",
-            string insightsToken = "")
-        {
             StringBuilder sb = new StringBuilder();
             sb.Append($"{imageSearchUrl}?q={query}");
-            
+
             if (height > 0)
                 sb.Append($"&height={height}");
 
@@ -130,7 +106,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
             if (offset > 0)
                 sb.Append($"&offset={offset}");
 
-            if(!string.IsNullOrEmpty(languageCode))
+            if (!string.IsNullOrEmpty(languageCode))
                 sb.Append($"&mkt={languageCode}");
 
             var aspectName = Enum.GetName(typeof(AspectOptions), aspect);
@@ -144,7 +120,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
             var freshnessName = Enum.GetName(typeof(FreshnessOptions), freshness);
             if (freshnessName != null && !freshnessName.Equals("All"))
                 sb.Append($"&freshness={freshnessName}");
-            
+
             var imageContentName = Enum.GetName(typeof(ImageContentOptions), imageContent);
             if (imageContentName != null && !imageContentName.Equals("All"))
                 sb.Append($"&imageContent={imageContentName}");
@@ -166,9 +142,8 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
                 sb.Append($"&safeSearch={safeSearchName}");
 
             StringBuilder mod = new StringBuilder();
-            if (modulesRequested != null)
-            {
-                foreach(var m in modulesRequested) { 
+            if (modulesRequested != null) {
+                foreach (var m in modulesRequested) {
                     if (mod.Length > 0)
                         mod.Append(",");
 
@@ -203,8 +178,76 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
 
             if (!string.IsNullOrEmpty(insightsToken))
                 sb.Append($"&insightsToken={insightsToken}");
+
+            return sb.ToString();
+        }
+
+        public virtual ImageInsightResponse GetImageInsights(
+            string query = "",
+            int height = 0,
+            int width = 0,
+            int count = 0,
+            int offset = 0,
+            string languageCode = "",
+            AspectOptions aspect = AspectOptions.All,
+            ColorOptions color = ColorOptions.All,
+            FreshnessOptions freshness = FreshnessOptions.All,
+            ImageContentOptions imageContent = ImageContentOptions.All,
+            ImageTypeOptions imageType = ImageTypeOptions.All,
+            LicenseOptions license = LicenseOptions.All,
+            SizeOptions size = SizeOptions.All,
+            SafeSearchOptions safeSearch = SafeSearchOptions.Off,
+            List<ModulesRequestedOptions> modulesRequested = null,
+            float cab = 0f,
+            float cal = 0f,
+            float car = 0f,
+            float cat = 0f,
+            int ct = 0,
+            string cc = "",
+            string id = "",
+            string imgUrl = "",
+            string insightsToken = "")
+        {
+            var url = GetImageInsightUrl(query, height, width, count, offset, languageCode, aspect, color,
+                freshness, imageContent, imageType, license, size, safeSearch, modulesRequested, cab, cal,
+                car, cat, ct, cc, id, imgUrl, insightsToken);
+
+            var response = RepositoryClient.SendPostMultiPart(ApiKeys.BingSearch, url, "{}");
+
+            return JsonConvert.DeserializeObject<ImageInsightResponse>(response);
+        }
+
+        public virtual async Task<ImageInsightResponse> GetImageInsightsAsync(
+            string query = "", 
+            int height = 0, 
+            int width = 0,
+            int count = 0,
+            int offset = 0,
+            string languageCode = "",
+            AspectOptions aspect = AspectOptions.All, 
+            ColorOptions color = ColorOptions.All, 
+            FreshnessOptions freshness = FreshnessOptions.All, 
+            ImageContentOptions imageContent = ImageContentOptions.All, 
+            ImageTypeOptions imageType = ImageTypeOptions.All, 
+            LicenseOptions license = LicenseOptions.All, 
+            SizeOptions size = SizeOptions.All,
+            SafeSearchOptions safeSearch = SafeSearchOptions.Off,
+            List<ModulesRequestedOptions> modulesRequested = null,
+            float cab = 0f,
+            float cal = 0f,
+            float car = 0f,
+            float cat = 0f,
+            int ct = 0,
+            string cc = "",
+            string id = "",
+            string imgUrl = "",
+            string insightsToken = "")
+        {
+            var url = GetImageInsightUrl(query, height, width, count, offset, languageCode, aspect, color,
+                freshness, imageContent, imageType, license, size, safeSearch, modulesRequested, cab, cal,
+                car, cat, ct, cc, id, imgUrl, insightsToken);
             
-            var response = await RepositoryClient.SendPostMultiPartAsync(ApiKeys.BingSearch, sb.ToString(), "{}");
+            var response = await RepositoryClient.SendPostMultiPartAsync(ApiKeys.BingSearch, url, "{}");
 
             return JsonConvert.DeserializeObject<ImageInsightResponse>(response);
         }

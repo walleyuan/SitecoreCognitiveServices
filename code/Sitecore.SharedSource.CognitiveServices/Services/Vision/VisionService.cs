@@ -29,7 +29,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await VisionRepository.GetAdultAnalysis(imageUrl)).Result;
+                var result = Task.Run(async () => await VisionRepository.GetAdultAnalysisAsync(imageUrl)).Result;
                 
                 return result;
             }
@@ -45,7 +45,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await VisionRepository.GetAdultAnalysis(imageStream)).Result;
+                var result = Task.Run(async () => await VisionRepository.GetAdultAnalysisAsync(imageStream)).Result;
 
                 return result;
             }
@@ -65,7 +65,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await VisionRepository.GetCategoryAnalysis(imageUrl)).Result;
+                var result = Task.Run(async () => await VisionRepository.GetCategoryAnalysisAsync(imageUrl)).Result;
                 
                 return result;
             }
@@ -81,7 +81,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await VisionRepository.GetCategoryAnalysis(imageStream)).Result;
+                var result = Task.Run(async () => await VisionRepository.GetCategoryAnalysisAsync(imageStream)).Result;
 
                 return result;
             }
@@ -101,7 +101,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await VisionRepository.GetColorAnalysis(imageUrl)).Result;
+                var result = Task.Run(async () => await VisionRepository.GetColorAnalysisAsync(imageUrl)).Result;
                 
                 return result;
             }
@@ -117,7 +117,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await VisionRepository.GetColorAnalysis(imageStream)).Result;
+                var result = Task.Run(async () => await VisionRepository.GetColorAnalysisAsync(imageStream)).Result;
 
                 return result;
             }
@@ -137,7 +137,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await VisionRepository.GetFaceAnalysis(imageUrl)).Result;
+                var result = Task.Run(async () => await VisionRepository.GetFaceAnalysisAsync(imageUrl)).Result;
                 
                 return result;
             }
@@ -153,7 +153,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await VisionRepository.GetFaceAnalysis(imageStream)).Result;
+                var result = Task.Run(async () => await VisionRepository.GetFaceAnalysisAsync(imageStream)).Result;
 
                 return result;
             }
@@ -173,7 +173,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await VisionRepository.GetFullAnalysis(imageUrl)).Result;
+                var result = Task.Run(async () => await VisionRepository.GetFullAnalysisAsync(imageUrl)).Result;
                 
                 return result;
             }
@@ -189,7 +189,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await VisionRepository.GetFullAnalysis(imageStream)).Result;
+                var result = Task.Run(async () => await VisionRepository.GetFullAnalysisAsync(imageStream)).Result;
 
                 return result;
             }
@@ -209,7 +209,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await VisionRepository.GetImageTypeAnalysis(imageUrl)).Result;
+                var result = Task.Run(async () => await VisionRepository.GetImageTypeAnalysisAsync(imageUrl)).Result;
 
                 return result;
             }
@@ -225,7 +225,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await VisionRepository.GetImageTypeAnalysis(imageStream)).Result;
+                var result = Task.Run(async () => await VisionRepository.GetImageTypeAnalysisAsync(imageStream)).Result;
 
                 return result;
             }

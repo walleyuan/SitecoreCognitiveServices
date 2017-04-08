@@ -412,6 +412,7 @@
     <Compile Include="Models\Language\WebLanguageModel\WebLMModel.cs" />
     <Compile Include="Models\Language\WebLanguageModel\WebLMModelResponse.cs" />
     <Compile Include="Models\TokenResponse.cs" />
+    <Compile Include="Models\Vision\ContentModerator\AddImageRequest.cs" />
     <Compile Include="Models\Vision\ContentModerator\AddImageResponse.cs" />
     <Compile Include="Models\Vision\ContentModerator\CombineCombination.cs" />
     <Compile Include="Models\Vision\ContentModerator\Condition.cs" />

@@ -15,7 +15,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
         
         #region AnalyzeImageAsync
         
-        public virtual async Task<AnalysisResult> GetFullAnalysis(Stream stream)
+        public virtual async Task<AnalysisResult> GetFullAnalysisAsync(Stream stream)
         {
             return await AnalyzeImageAsync(stream, new List<VisualFeature>() {
                 VisualFeature.Adult,
@@ -27,7 +27,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
                 VisualFeature.Tags });
         }
 
-        public virtual async Task<AnalysisResult> GetFullAnalysis(string imageUrl)
+        public virtual async Task<AnalysisResult> GetFullAnalysisAsync(string imageUrl)
         {
             return await AnalyzeImageAsync(imageUrl, new List<VisualFeature>() {
                 VisualFeature.Adult,
@@ -39,61 +39,61 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
                 VisualFeature.Tags });
         }
 
-        public virtual async Task<Adult> GetAdultAnalysis(Stream stream)
+        public virtual async Task<Adult> GetAdultAnalysisAsync(Stream stream)
         {
             var result = await AnalyzeImageAsync(stream, new List<VisualFeature>() { VisualFeature.Adult });
             return result.Adult;
         }
 
-        public virtual async Task<Adult> GetAdultAnalysis(string imageUrl)
+        public virtual async Task<Adult> GetAdultAnalysisAsync(string imageUrl)
         {
             var result = await AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.Adult });
             return result.Adult;
         }
 
-        public virtual async Task<Category[]> GetCategoryAnalysis(Stream stream)
+        public virtual async Task<Category[]> GetCategoryAnalysisAsync(Stream stream)
         {
             var result = await AnalyzeImageAsync(stream, new List<VisualFeature>() { VisualFeature.Categories });
             return result.Categories;
         }
 
-        public virtual async Task<Category[]> GetCategoryAnalysis(string imageUrl)
+        public virtual async Task<Category[]> GetCategoryAnalysisAsync(string imageUrl)
         {
             var result = await AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.Categories });
             return result.Categories;
         }
 
-        public virtual async Task<Microsoft.ProjectOxford.Vision.Contract.Color> GetColorAnalysis(Stream stream)
+        public virtual async Task<Microsoft.ProjectOxford.Vision.Contract.Color> GetColorAnalysisAsync(Stream stream)
         {
             var result = await AnalyzeImageAsync(stream, new List<VisualFeature>() { VisualFeature.Color });
             return result.Color;
         }
 
-        public virtual async Task<Microsoft.ProjectOxford.Vision.Contract.Color> GetColorAnalysis(string imageUrl)
+        public virtual async Task<Microsoft.ProjectOxford.Vision.Contract.Color> GetColorAnalysisAsync(string imageUrl)
         {
             var result = await AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.Color });
             return result.Color;
         }
         
-        public virtual async Task<Face[]> GetFaceAnalysis(Stream stream)
+        public virtual async Task<Face[]> GetFaceAnalysisAsync(Stream stream)
         {
             var result = await AnalyzeImageAsync(stream, new List<VisualFeature>() { VisualFeature.Faces });
             return result.Faces;
         }
 
-        public virtual async Task<Face[]> GetFaceAnalysis(string imageUrl)
+        public virtual async Task<Face[]> GetFaceAnalysisAsync(string imageUrl)
         {
             var result = await AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.Faces });
             return result.Faces;
         }
 
-        public virtual async Task<ImageType> GetImageTypeAnalysis(Stream stream)
+        public virtual async Task<ImageType> GetImageTypeAnalysisAsync(Stream stream)
         {
             var result = await AnalyzeImageAsync(stream, new List<VisualFeature>() { VisualFeature.ImageType });
             return result.ImageType;
         }
 
-        public virtual async Task<ImageType> GetImageTypeAnalysis(string imageUrl)
+        public virtual async Task<ImageType> GetImageTypeAnalysisAsync(string imageUrl)
         {
             var result = await AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.ImageType });
             return result.ImageType;

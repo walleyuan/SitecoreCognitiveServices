@@ -21,24 +21,34 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
             RepositoryClient = repoClient;
         }
 
-        public virtual SpellCheckResponse SpellCheck(string text, SpellCheckModeOptions mode = SpellCheckModeOptions.None, string languageCode = "")
-        {
-            return Task.Run(async () => await SpellCheckAsync(text, mode, languageCode)).Result;
-        }
-
-        public virtual async Task<SpellCheckResponse> SpellCheckAsync(string text, SpellCheckModeOptions mode = SpellCheckModeOptions.None, string languageCode = "")
+        protected virtual string GetSpellCheckQuerystring(SpellCheckModeOptions mode, string languageCode)
         {
             StringBuilder sb = new StringBuilder();
             if (mode != SpellCheckModeOptions.None)
                 sb.Append($"?mode={Enum.GetName(typeof(SpellCheckModeOptions), mode)}");
 
-            if (!string.IsNullOrEmpty(languageCode))
-            {
+            if (!string.IsNullOrEmpty(languageCode)) {
                 var concat = (sb.Length > 0) ? "?" : "&";
                 sb.Append($"{concat}mkt={languageCode}");
             }
+
+            return sb.ToString();
+        }
+
+        public virtual SpellCheckResponse SpellCheck(string text, SpellCheckModeOptions mode = SpellCheckModeOptions.None, string languageCode = "")
+        {
+            var qs = GetSpellCheckQuerystring(mode, languageCode);
+
+            var response = RepositoryClient.SendEncodedFormPost(ApiKeys.BingSpellCheck, $"{spellCheckUrl}{qs}", $"Text={text}");
+
+            return JsonConvert.DeserializeObject<SpellCheckResponse>(response);
+        }
+
+        public virtual async Task<SpellCheckResponse> SpellCheckAsync(string text, SpellCheckModeOptions mode = SpellCheckModeOptions.None, string languageCode = "")
+        {
+            var qs = GetSpellCheckQuerystring(mode, languageCode);
                     
-            var response = await RepositoryClient.SendEncodedFormPostAsync(ApiKeys.BingSpellCheck, $"{spellCheckUrl}{sb}", $"Text={text}");
+            var response = await RepositoryClient.SendEncodedFormPostAsync(ApiKeys.BingSpellCheck, $"{spellCheckUrl}{qs}", $"Text={text}");
 
             return JsonConvert.DeserializeObject<SpellCheckResponse>(response);
         }

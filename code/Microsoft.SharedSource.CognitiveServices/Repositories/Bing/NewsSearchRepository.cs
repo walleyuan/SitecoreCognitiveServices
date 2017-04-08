@@ -26,7 +26,11 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
         #region Category Search
 
         public virtual NewsSearchCategoryResponse CategorySearch(NewsCategoryOptions category) {
-            return Task.Run(async () => await CategorySearchAsync(category)).Result;
+            var catName = Enum.GetName(typeof(NewsCategoryOptions), category).Replace("USUK", "US/UK");
+
+            var response = RepositoryClient.SendGet(ApiKeys.BingSearch, $"{categoryUrl}?Category={catName}");
+
+            return JsonConvert.DeserializeObject<NewsSearchCategoryResponse>(response);
         }
 
         public virtual async Task<NewsSearchCategoryResponse> CategorySearchAsync(NewsCategoryOptions category)
@@ -43,7 +47,9 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
         #region Trending Search
 
         public virtual NewsSearchTrendResponse TrendingSearch() {
-            return Task.Run(async () => await TrendingSearchAsync()).Result;
+            var response = RepositoryClient.SendGet(ApiKeys.BingSearch, trendingUrl);
+
+            return JsonConvert.DeserializeObject<NewsSearchTrendResponse>(response);
         }
 
         public virtual async Task<NewsSearchTrendResponse> TrendingSearchAsync() {
@@ -56,12 +62,8 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
 
         #region News Search
 
-        public virtual NewsSearchResponse NewsSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off) {
-            return Task.Run(async () => await NewsSearchAsync(text, countOffset, languageCode, safeSearch)).Result;
-        }
-
-        public virtual async Task<NewsSearchResponse> NewsSearchAsync(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off) {
-
+        protected virtual string GetNewsSearchQuerystring(int countOffset, string languageCode, SafeSearchOptions safeSearch)
+        {
             StringBuilder sb = new StringBuilder();
 
             if (countOffset > 0)
@@ -77,7 +79,22 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
                 sb.Append($"{concat}safeSearch={Enum.GetName(typeof(SafeSearchOptions), safeSearch)}");
             }
 
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{newsUrl}?q={text}{sb}");
+            return sb.ToString();
+        }
+
+        public virtual NewsSearchResponse NewsSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off) {
+            var qs = GetNewsSearchQuerystring(countOffset, languageCode, safeSearch);
+
+            var response = RepositoryClient.SendGet(ApiKeys.BingSearch, $"{newsUrl}?q={text}{qs}");
+
+            return JsonConvert.DeserializeObject<NewsSearchResponse>(response);
+        }
+
+        public virtual async Task<NewsSearchResponse> NewsSearchAsync(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
+        {
+            var qs = GetNewsSearchQuerystring(countOffset, languageCode, safeSearch);
+
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{newsUrl}?q={text}{qs}");
             
             return JsonConvert.DeserializeObject<NewsSearchResponse>(response);
         }

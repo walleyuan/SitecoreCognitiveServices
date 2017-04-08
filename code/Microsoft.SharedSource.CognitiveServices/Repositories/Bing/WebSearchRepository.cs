@@ -20,7 +20,27 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;
         }
-        
+
+        protected virtual string GetWebSearchQuerystring(int countOffset, string languageCode, SafeSearchOptions safeSearch)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (countOffset > 0)
+                sb.Append($"?countoffset={countOffset}");
+
+            if (!string.IsNullOrEmpty(languageCode)) {
+                var concat = (sb.Length > 0) ? "?" : "&";
+                sb.Append($"{concat}mkt={languageCode}");
+            }
+
+            if (safeSearch != SafeSearchOptions.Off) {
+                var concat = (sb.Length > 0) ? "?" : "&";
+                sb.Append($"{concat}safeSearch={Enum.GetName(typeof(SafeSearchOptions), safeSearch)}");
+            }
+
+            return sb.ToString();
+        }
+
         public virtual WebSearchResponse WebSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
         {
             return Task.Run(async () => await WebSearchAsync(text, countOffset, languageCode, safeSearch)).Result;
@@ -28,24 +48,9 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
 
         public virtual async Task<WebSearchResponse> WebSearchAsync(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
         {
-            StringBuilder sb = new StringBuilder();
+            var qs = GetWebSearchQuerystring(countOffset, languageCode, safeSearch);
 
-            if (countOffset > 0)
-                sb.Append($"?countoffset={countOffset}");
-            
-            if (!string.IsNullOrEmpty(languageCode))
-            {
-                var concat = (sb.Length > 0) ? "?" : "&";
-                sb.Append($"{concat}mkt={languageCode}");
-            }
-
-            if (safeSearch != SafeSearchOptions.Off)
-            {
-                var concat = (sb.Length > 0) ? "?" : "&";
-                sb.Append($"{concat}safeSearch={Enum.GetName(typeof(SafeSearchOptions), safeSearch)}");
-            }
-
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{webSearchUrl}?q={text}{sb}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{webSearchUrl}?q={text}{qs}");
             
             return JsonConvert.DeserializeObject<WebSearchResponse>(response);
         }

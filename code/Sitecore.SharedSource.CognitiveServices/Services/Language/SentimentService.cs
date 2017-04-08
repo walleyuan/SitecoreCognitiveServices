@@ -2,10 +2,9 @@
 using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Text.Sentiment;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
-using Sitecore.SharedSource.CognitiveServices.Models;
-using Microsoft.SharedSource.CognitiveServices.Models.Language;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Sentiment;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Language;
+using Microsoft.ProjectOxford.Video.Contract;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Language
 {
@@ -49,6 +48,32 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
             catch (Exception ex)
             {
                 Logger.Error("SentimentService.GetKeyPhrasesAsync failed", this, ex);
+            }
+
+            return null;
+        }
+
+        public virtual string GetTopics(TopicRequest request)
+        {
+            try {
+                var result = SentimentRepository.GetTopics(request);
+
+                return result;
+            } catch (Exception ex) {
+                Logger.Error("SentimentService.GetTopics failed", this, ex);
+            }
+
+            return null;
+        }
+
+        public virtual OperationResult GetOperation(string operationLocationUrl)
+        {
+            try {
+                var result = SentimentRepository.GetOperation(operationLocationUrl);
+
+                return result;
+            } catch (Exception ex) {
+                Logger.Error("SentimentService.GetOperation failed", this, ex);
             }
 
             return null;

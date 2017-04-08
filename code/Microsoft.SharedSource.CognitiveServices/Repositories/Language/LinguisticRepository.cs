@@ -19,10 +19,21 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;
         }
-        
+
+        protected enum AnalyzerType { PartsOfSpeech, ConstituencyTree, Token }
+        protected readonly Dictionary<AnalyzerType, string> AnalyzerIds = new Dictionary<AnalyzerType, string>()
+        {
+            { AnalyzerType.PartsOfSpeech, "4fa79af1-f22c-408d-98bb-b7d7aeef7f04" },
+            { AnalyzerType.ConstituencyTree, "22a6b758-420f-4745-8a3c-46835a67c0d2" },
+            { AnalyzerType.Token, "08ea174b-bfdb-4e64-987e-602f85da7f72" }
+        };
+
         public virtual POSTagsTextAnalysisResponse GetPOSTagsTextAnalysis(TextAnalysisRequest request)
         {
-            return Task.Run(async () => await GetPOSTagsTextAnalysisAsync(request)).Result;
+            request.AnalyzerIds = new[] { AnalyzerIds[AnalyzerType.PartsOfSpeech] };
+            var response = RepositoryClient.SendJsonPost(ApiKeys.LinguisticAnalysis, textAnalysisUrl, JsonConvert.SerializeObject(request));
+
+            return JsonConvert.DeserializeObject<List<POSTagsTextAnalysisResponse>>(response).First();
         }
 
         /// <summary>
@@ -32,7 +43,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         /// </summary>
         public virtual async Task<POSTagsTextAnalysisResponse> GetPOSTagsTextAnalysisAsync(TextAnalysisRequest request)
         {
-            request.AnalyzerIds = new string[] { "4fa79af1-f22c-408d-98bb-b7d7aeef7f04" };
+            request.AnalyzerIds = new [] { AnalyzerIds[AnalyzerType.PartsOfSpeech] };
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.LinguisticAnalysis, textAnalysisUrl, JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<List<POSTagsTextAnalysisResponse>>(response).First();
@@ -40,7 +51,10 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         
         public virtual ConstituencyTreeTextAnalysisResponse GetConstituencyTreeTextAnalysis(TextAnalysisRequest request)
         {
-            return Task.Run(async () => await GetConstituencyTreeTextAnalysisAsync(request)).Result;
+            request.AnalyzerIds = new[] { AnalyzerIds[AnalyzerType.ConstituencyTree] };
+            var response = RepositoryClient.SendJsonPost(ApiKeys.LinguisticAnalysis, textAnalysisUrl, JsonConvert.SerializeObject(request));
+
+            return JsonConvert.DeserializeObject<List<ConstituencyTreeTextAnalysisResponse>>(response).First();
         }
 
         /// <summary>
@@ -50,7 +64,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         /// </summary>
         public virtual async Task<ConstituencyTreeTextAnalysisResponse> GetConstituencyTreeTextAnalysisAsync(TextAnalysisRequest request)
         {
-            request.AnalyzerIds = new string[] { "22a6b758-420f-4745-8a3c-46835a67c0d2" };
+            request.AnalyzerIds = new [] { AnalyzerIds[AnalyzerType.ConstituencyTree] };
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.LinguisticAnalysis, textAnalysisUrl, JsonConvert.SerializeObject(request));
             
             return JsonConvert.DeserializeObject<List<ConstituencyTreeTextAnalysisResponse>>(response).First();
@@ -58,7 +72,10 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         
         public virtual TokensTextAnalysisResponse GetTokensTextAnalysis(TextAnalysisRequest request)
         {
-            return Task.Run(async () => await GetTokensTextAnalysisAsync(request)).Result;
+            request.AnalyzerIds = new[] { AnalyzerIds[AnalyzerType.Token] };
+            var response = RepositoryClient.SendJsonPost(ApiKeys.LinguisticAnalysis, textAnalysisUrl, JsonConvert.SerializeObject(request));
+
+            return JsonConvert.DeserializeObject<List<TokensTextAnalysisResponse>>(response).First();
         }
 
         /// <summary>
@@ -67,7 +84,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         /// </summary>
         public virtual async Task<TokensTextAnalysisResponse> GetTokensTextAnalysisAsync(TextAnalysisRequest request)
         {
-            request.AnalyzerIds = new string[] { "08ea174b-bfdb-4e64-987e-602f85da7f72" };
+            request.AnalyzerIds = new [] { AnalyzerIds[AnalyzerType.Token] };
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.LinguisticAnalysis, textAnalysisUrl, JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<List<TokensTextAnalysisResponse>>(response).First();

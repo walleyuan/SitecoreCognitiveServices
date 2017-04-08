@@ -21,9 +21,17 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             return await SendAsync(apiKey, url, "", "application/json", "GET");
         }
 
+        public virtual string SendGet(string apiKey, string url) {
+            return Send(apiKey, url, "", "application/json", "GET");
+        }
+
         public virtual async Task<string> SendPostMultiPartAsync(string apiKey, string url, string data)
         {
             return await SendAsync(apiKey, url, data, "multipart/form-data", "POST");
+        }
+
+        public virtual string SendPostMultiPart(string apiKey, string url, string data) {
+            return Send(apiKey, url, data, "multipart/form-data", "POST");
         }
 
         public virtual async Task<string> SendEncodedFormPostAsync(string apiKey, string url, string data)
@@ -31,9 +39,17 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             return await SendAsync(apiKey, url, data, "application/x-www-form-urlencoded", "POST");
         }
 
+        public virtual string SendEncodedFormPost(string apiKey, string url, string data) {
+            return Send(apiKey, url, data, "application/x-www-form-urlencoded", "POST");
+        }
+
         public virtual async Task<string> SendTextPostAsync(string apiKey, string url, string data)
         {
             return await SendAsync(apiKey, url, data, "text/plain", "POST");
+        }
+
+        public virtual string SendTextPost(string apiKey, string url, string data) {
+            return Send(apiKey, url, data, "text/plain", "POST");
         }
 
         public virtual async Task<string> SendJsonPostAsync(string apiKey, string url, string data)
@@ -41,13 +57,25 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             return await SendAsync(apiKey, url, data, "application/json", "POST");
         }
 
+        public virtual string SendJsonPost(string apiKey, string url, string data) {
+            return Send(apiKey, url, data, "application/json", "POST");
+        }
+
         public virtual async Task<string> SendJsonPutAsync(string apiKey, string url, string data)
         {
             return await SendAsync(apiKey, url, data, "application/json", "PUT");
         }
 
+        public virtual string SendJsonPut(string apiKey, string url, string data) {
+            return Send(apiKey, url, data, "application/json", "PUT");
+        }
+
         public virtual async Task<string> SendJsonPatchAsync(string apiKey, string url, string data) {
             return await SendAsync(apiKey, url, data, "application/json", "PATCH");
+        }
+
+        public virtual string SendJsonPatch(string apiKey, string url, string data) {
+            return Send(apiKey, url, data, "application/json", "PATCH");
         }
 
         public virtual async Task<string> SendJsonDeleteAsync(string apiKey, string url)
@@ -55,9 +83,17 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             return await SendAsync(apiKey, url, "", "application/json", "DELETE");
         }
 
+        public virtual string SendJsonDelete(string apiKey, string url) {
+            return Send(apiKey, url, "", "application/json", "DELETE");
+        }
+
         public virtual async Task<string> SendOctetStreamUpdateAsync(string apiKey, string url, Stream stream)
         {
             return await SendAsync(apiKey, url, GetStreamString(stream), "application/octet-stream", "UPDATE");
+        }
+
+        public virtual string SendOctetStreamUpdate(string apiKey, string url, Stream stream) {
+            return Send(apiKey, url, GetStreamString(stream), "application/octet-stream", "UPDATE");
         }
 
         public virtual async Task<string> SendOctetStreamPostAsync(string apiKey, string url, Stream stream)
@@ -65,16 +101,28 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             return await SendAsync(apiKey, url, GetStreamString(stream), "application/octet-stream", "POST");
         }
 
+        public virtual string SendOctetStreamPost(string apiKey, string url, Stream stream) {
+            return Send(apiKey, url, GetStreamString(stream), "application/octet-stream", "POST");
+        }
+
         public virtual async Task<string> SendJsonUpdateAsync(string apiKey, string url, string data)
         {
             return await SendAsync(apiKey, url, data, "application/json", "UPDATE");
+        }
+
+        public virtual string SendJsonUpdate(string apiKey, string url, string data) {
+            return Send(apiKey, url, data, "application/json", "UPDATE");
         }
 
         public virtual async Task<string> SendImagePostAsync(string apiKey, string url, Stream stream)
         {
             return await SendAsync(apiKey, url, GetStreamString(stream), GetImageStreamContentType(stream), "POST");
         }
-        
+
+        public virtual string SendImagePost(string apiKey, string url, Stream stream) {
+            return Send(apiKey, url, GetStreamString(stream), GetImageStreamContentType(stream), "POST");
+        }
+
         public virtual async Task<string> SendAsync(string apiKey, string url, string data, string contentType, string method, string token = "", bool sendChunked = false, string host = "")
         {
             if (string.IsNullOrWhiteSpace(url))
@@ -134,11 +182,63 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
                 if (exHolder != null)
                     throw exHolder;
             }
-            
 
             return end;
         }
-        
+
+        public virtual string Send(string apiKey, string url, string data, string contentType, string method, string token = "", bool sendChunked = false, string host = "") {
+            if (string.IsNullOrWhiteSpace(url))
+                throw new ArgumentException("url");
+            if (string.IsNullOrWhiteSpace(apiKey))
+                throw new ArgumentException("ApiKey");
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Headers.Add("Ocp-Apim-Subscription-Key", apiKey);
+            if (!string.IsNullOrEmpty(token)) {
+                request.Headers.Add("authorization", $"Bearer {token}");
+            }
+
+            request.ContentType = contentType;
+            request.Accept = contentType;
+            request.Method = method;
+
+            if (sendChunked)
+                request.SendChunked = true;
+            if (!string.IsNullOrEmpty(host))
+                request.Host = host;
+
+            if (!string.IsNullOrEmpty(data)) {
+                byte[] reqData = Encoding.UTF8.GetBytes(data);
+
+                request.ContentLength = (long)reqData.Length;
+
+                Stream requestStream = request.GetRequestStream();
+                requestStream.Write(reqData, 0, reqData.Length);
+                requestStream.Close();
+            } else {
+                request.ContentLength = 0;
+            }
+
+            string end = "";
+            WebResponse response = null;
+            StreamReader streamReader = null;
+            Exception exHolder = null;
+            try {
+                response = request.GetResponse();
+                streamReader = new StreamReader(response.GetResponseStream());
+                end = streamReader.ReadToEnd();
+            } catch (Exception ex) {
+                exHolder = ex;
+            } finally {
+                streamReader?.Close();
+                response?.Close();
+                if (exHolder != null)
+                    throw exHolder;
+            }
+
+            return end;
+        }
+
         public virtual async Task<string> SendOperationPostAsync(string apiKey, string url, string data)
         {
 
@@ -165,6 +265,35 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             HttpWebResponse responseAsync = (HttpWebResponse)await request.GetResponseAsync();
             var opLocation = responseAsync.GetResponseHeader("operation-location");
             responseAsync.Close();
+
+            return opLocation;
+        }
+
+        public virtual string SendOperationPost(string apiKey, string url, string data) {
+
+            if (string.IsNullOrWhiteSpace(url))
+                throw new ArgumentException("url");
+            if (string.IsNullOrWhiteSpace(apiKey))
+                throw new ArgumentException("ApiKey");
+            if (string.IsNullOrWhiteSpace(data))
+                throw new ArgumentException("data");
+
+            byte[] reqData = Encoding.UTF8.GetBytes(data);
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Headers.Add("Ocp-Apim-Subscription-Key", apiKey);
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
+            request.ContentLength = (long)reqData.Length;
+            request.Method = "POST";
+
+            Stream requestStream = request.GetRequestStream();
+            requestStream.Write(reqData, 0, reqData.Length);
+            requestStream.Close();
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            var opLocation = response.GetResponseHeader("operation-location");
+            response.Close();
 
             return opLocation;
         }
@@ -198,7 +327,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
 
             return await response.Content.ReadAsStreamAsync();
         }
-
+        
         public virtual TokenResponse SendContentModeratorTokenRequest(string privateKey, string clientId)
         {
             byte[] reqData = Encoding.UTF8.GetBytes($"resource=https%3A%2F%2Fapi.contentmoderator.cognitive.microsoft.com%2Freview&client_id={clientId}&client_secret={privateKey}&grant_type=client_credentials");

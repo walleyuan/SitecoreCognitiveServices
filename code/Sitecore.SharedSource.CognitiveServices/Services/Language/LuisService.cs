@@ -882,9 +882,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
             return null;
         }
 
-        public virtual string GetApplicationVersions(Guid appId, ApplicationDefinition definition, string versionId = "") {
+        public virtual string ImportVersionToApplication(Guid appId, ApplicationDefinition definition, string versionId = "") {
             try {
-                var result = Task.Run(async () => await LuisRepository.GetApplicationVersionsAsync(appId, definition, versionId)).Result;
+                var result = Task.Run(async () => await LuisRepository.ImportVersionToApplicationAsync(appId, definition, versionId)).Result;
 
                 return result;
             } catch (Exception ex) {

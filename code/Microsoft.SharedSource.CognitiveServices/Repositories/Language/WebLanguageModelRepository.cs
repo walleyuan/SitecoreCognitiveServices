@@ -19,6 +19,12 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language {
             RepositoryClient = repoClient;
         }
 
+        public virtual BreakIntoWordsResponse BreakIntoWords(WebLMModelOptions model, string text, int order = 5, int maxNumOfCandidatesReturned = 5) {
+            var response = RepositoryClient.SendJsonPost(ApiKeys.WebLM, $"{weblmUrl}breakIntoWords?model={model}&text={text}&order={order}&maxNumOfCandidatesReturned={maxNumOfCandidatesReturned}", "");
+
+            return JsonConvert.DeserializeObject<BreakIntoWordsResponse>(response);
+        }
+
         /// <param name="model">Which model to use, supported value: title/anchor/query/body</param>
         /// <param name="text">The line of text to break into words. If spaces are present, they will be interpreted as hard breaks and maintained, except for leading or trailing spaces, which will be trimmed.</param>
         /// <param name="order">The order of N-gram. If not specified, use default value 5 .Supported value: 1, 2, 3, 4, 5.</param>
@@ -29,6 +35,12 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.WebLM, $"{weblmUrl}breakIntoWords?model={model}&text={text}&order={order}&maxNumOfCandidatesReturned={maxNumOfCandidatesReturned}", "");
 
             return JsonConvert.DeserializeObject<BreakIntoWordsResponse>(response);
+        }
+
+        public virtual ConditionalProbabilityResponse CalculateConditionalProbability(WebLMModelOptions model, ConditionalProbabilityRequest request, int order = 5) {
+            var response = RepositoryClient.SendJsonPost(ApiKeys.WebLM, $"{weblmUrl}calculateConditionalProbability?model={model}&order={order}", JsonConvert.SerializeObject(request));
+
+            return JsonConvert.DeserializeObject<ConditionalProbabilityResponse>(response);
         }
 
         /// <param name="model">Which model to use, supported value: title/anchor/query/body</param>
@@ -42,6 +54,12 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language {
             return JsonConvert.DeserializeObject<ConditionalProbabilityResponse>(response);
         }
 
+        public virtual JointProbabilityResponse CalculateJointProbability(WebLMModelOptions model, JointProbabilityRequest request, int order = 5) {
+            var response = RepositoryClient.SendJsonPost(ApiKeys.WebLM, $"{weblmUrl}calculateJointProbability?model={model}&order={order}", JsonConvert.SerializeObject(request));
+
+            return JsonConvert.DeserializeObject<JointProbabilityResponse>(response);
+        }
+
         /// <param name="model">Which model to use, supported value: title/anchor/query/body</param>
         /// <param name="request">Request object that specifies the queries</param>
         /// <param name="order">The order of N-gram. If not specified, use default value 5 .Supported value: 1, 2, 3, 4, 5.</param>
@@ -51,6 +69,12 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.WebLM, $"{weblmUrl}calculateJointProbability?model={model}&order={order}", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<JointProbabilityResponse>(response);
+        }
+
+        public virtual GenerateNextWordsResponse GenerateNextWords(WebLMModelOptions model, string words, int order = 5, int maxNumOfCandidatesReturned = 5) {
+            var response = RepositoryClient.SendJsonPost(ApiKeys.WebLM, $"{weblmUrl}generateNextWords?model={model}&words={words}&order={order}&maxNumOfCandidatesReturned={maxNumOfCandidatesReturned}", "");
+
+            return JsonConvert.DeserializeObject<GenerateNextWordsResponse>(response);
         }
 
         /// <param name="model">Which model to use, supported value: title/anchor/query/body</param>
@@ -63,6 +87,12 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.WebLM, $"{weblmUrl}generateNextWords?model={model}&words={words}&order={order}&maxNumOfCandidatesReturned={maxNumOfCandidatesReturned}", "");
 
             return JsonConvert.DeserializeObject<GenerateNextWordsResponse>(response);
+        }
+
+        public virtual WebLMModelResponse ListAvailableModels() {
+            var response = RepositoryClient.SendGet(ApiKeys.WebLM, $"{weblmUrl}models");
+
+            return JsonConvert.DeserializeObject<WebLMModelResponse>(response);
         }
 
         public virtual async Task<WebLMModelResponse> ListAvailableModelsAsync()

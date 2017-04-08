@@ -21,14 +21,30 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
             RepositoryClient = repositoryClient;
         }
 
+        public virtual KnowledgeBaseExtractionDetails CreateKnowledgeBase(KnowledgeBaseDetails request) {
+            var response = RepositoryClient.SendJsonPost(ApiKeys.QnA, $"{qnaUrl}create", JsonConvert.SerializeObject(request));
+
+            return JsonConvert.DeserializeObject<KnowledgeBaseExtractionDetails>(response);
+        }
+
         public virtual async Task<KnowledgeBaseExtractionDetails> CreateKnowledgeBaseAsync(KnowledgeBaseDetails request) {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.QnA, $"{qnaUrl}create", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<KnowledgeBaseExtractionDetails>(response);
         }
 
+        public virtual void DeleteKnowledgeBase(Guid knowledgeBaseId) {
+            RepositoryClient.SendJsonDelete(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}");
+        }
+
         public virtual async Task DeleteKnowledgeBaseAsync(Guid knowledgeBaseId) {
             await RepositoryClient.SendJsonDeleteAsync(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}");
+        }
+
+        public virtual string DownloadKnowledgeBase(Guid knowledgeBaseId) {
+            var response = RepositoryClient.SendGet(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}");
+
+            return response;
         }
 
         public virtual async Task<string> DownloadKnowledgeBaseAsync(Guid knowledgeBaseId) {
@@ -36,14 +52,29 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
 
             return response;
         }
+
+        public virtual GenerateAnswerResponse GenerateAnswer(Guid knowledgeBaseId, GenerateAnswerRequest request) {
+            var response = RepositoryClient.SendJsonPost(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}/generateAnswer", JsonConvert.SerializeObject(request));
+
+            return JsonConvert.DeserializeObject<GenerateAnswerResponse>(response);
+        }
+
         public virtual async Task<GenerateAnswerResponse> GenerateAnswerAsync(Guid knowledgeBaseId, GenerateAnswerRequest request) {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}/generateAnswer", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<GenerateAnswerResponse>(response);
         }
 
+        public virtual void PublishKnowledgeBase(Guid knowledgeBaseId) {
+            RepositoryClient.SendJsonPut(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}", "");
+        }
+
         public virtual async Task PublishKnowledgeBaseAsync(Guid knowledgeBaseId) {
             await RepositoryClient.SendJsonPutAsync(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}", "");
+        }
+
+        public virtual void UpdateKnowledgeBase(Guid knowledgeBaseId, PatchKnowledgeBaseRequest request) {
+            RepositoryClient.SendJsonPatch(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}", JsonConvert.SerializeObject(request));
         }
 
         public virtual async Task UpdateKnowledgeBaseAsync(Guid knowledgeBaseId, PatchKnowledgeBaseRequest request) {

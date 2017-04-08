@@ -91,7 +91,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
         List<ExternalApiKeySet> GetApplicationVersionExternalApiKeys(Guid appId, string versionId);
         SubscriptionKeySet GetApplicationVersionSubscriptionKeys(Guid appId, string versionId);
         List<ApplicationVersion> GetApplicationVersions(Guid appId, int skip = 0, int take = 100);
-        string GetApplicationVersions(Guid appId, ApplicationDefinition definition, string versionId = "");
+        string ImportVersionToApplication(Guid appId, ApplicationDefinition definition, string versionId = "");
         void RenameApplicationVersion(Guid appId, string versionId, VersionRequest request);
         void UpdateApplicationVersionExternalKey(Guid appId, string versionId, ExternalApiKeyRequest request);
     }
