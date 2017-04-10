@@ -8,5 +8,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole {
     public interface IIntentProvider
     {
         IIntent GetIntent(Guid appId, string intentName);
+
+        string GetDefaultResponse(Guid appId);
     }
 }

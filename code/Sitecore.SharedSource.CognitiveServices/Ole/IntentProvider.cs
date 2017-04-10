@@ -34,5 +34,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole {
                 ? _intentDictionary[caseSensitiveName]
                 : null;
         }
+
+        public string GetDefaultResponse(Guid appId)
+        {
+            return GetIntent(appId, "default")?.Respond(null, null) ?? string.Empty;
+        }
     }
 }

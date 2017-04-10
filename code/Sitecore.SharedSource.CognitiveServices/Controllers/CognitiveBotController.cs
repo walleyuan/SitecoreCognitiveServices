@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http;
 using System.Web.Mvc;
+using Microsoft.Bot.Connector;
+using Newtonsoft.Json;
 using Sitecore.Data.Managers;
 using Sitecore.SharedSource.CognitiveServices.Foundation;
 using Sitecore.SharedSource.CognitiveServices.Models.Ole;
@@ -19,6 +22,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers {
 
         protected readonly ItemContextParameters Parameters;
 
+        protected readonly Guid AppId;
+
         public CognitiveBotController(
             IIntentProvider intentProvider, 
             ILuisService luisService,
@@ -29,6 +34,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers {
             LuisService = luisService;
             WebUtil = webUtil;
             ApplicationSettings = applicationSettings;
+
+            AppId = ApplicationSettings.OleApplicationId;
 
             Parameters = new ItemContextParameters()
             {
@@ -44,25 +51,26 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers {
         {
             return View("OleChat", Parameters);
         }
+        
+        public ActionResult Post([FromBody]Activity activity) {
 
-        public ActionResult OleChatRequest(string query, string language, string database, string id)
-        {
-            ItemContextParameters parameters = new ItemContextParameters() {
-                Id = id,
-                Language = language,
-                Database = database
-            };
+            var s = JsonConvert.SerializeObject(activity.ChannelData);
+            var d = JsonConvert.DeserializeObject<ItemContextParameters>(s);
+            ItemContextParameters parameters = d;
 
-            var appId = ApplicationSettings.OleApplicationId;
-            var result = LuisService.Query(appId, query);
-            
-            var defaultResponse = IntentProvider.GetIntent(appId, "default")?.Respond(result, null) ?? string.Empty;
-            
-            var intent = IntentProvider.GetIntent(appId, result.TopScoringIntent.Intent);
-            
-            return (intent != null)
-                ? Json(intent.Respond(result, parameters))
-                : Json(defaultResponse);
+            if (activity.Type == ActivityTypes.Message) {
+                var result = LuisService.Query(AppId, activity.Text); // determine which intent to use
+                var intent = IntentProvider.GetIntent(AppId, result.TopScoringIntent.Intent); // try to find the matching intent object
+
+                var text = (intent != null) // respond with the selected intent or fallback to default
+                    ? intent.Respond(result, parameters)
+                    : IntentProvider.GetDefaultResponse(AppId);
+
+                var reply = activity.CreateReply(text, "en-US");
+                return Json(reply);
+            }
+
+            return null;
         }
     }
 }

@@ -1,6 +1,88 @@
 jQuery.noConflict();
-jQuery(document).ready(function () {
 
+//nav
+jQuery(document).ready(function () {
+    //toggles tabs based on nav clicks
+    jQuery(".nav-btn")
+        .click(function () {
+            var selected = "selected";
+            var tab = jQuery(this).attr("rel");
+            jQuery(".nav-btn").removeClass(selected);
+            jQuery(".tab-content").removeClass(selected);
+            jQuery(".tab-content." + tab).addClass(selected);
+            jQuery(this).addClass(selected);
+        });
+});
+
+//reanalyze
+jQuery(document).ready(function () {
+    //handles reanalyze all form
+    var reanlyzeAllForm = ".reanalyze-all-form";
+    jQuery(reanlyzeAllForm + " button")
+        .click(function(event) {
+            event.preventDefault();
+            
+            var idValue = jQuery(reanlyzeAllForm + " #id").attr("value");
+            var langValue = jQuery(reanlyzeAllForm + " #language").attr("value");
+            var dbValue = jQuery(reanlyzeAllForm + " #database").attr("value");
+            
+            jQuery(".form").hide();
+            jQuery(".progress-indicator").show();
+
+            jQuery.post(
+                jQuery(reanlyzeAllForm).attr("action"),
+                {
+                    id: idValue,
+                    language: langValue,
+                    db: dbValue
+                }
+            ).done(function (r) {
+                jQuery(".result-count").text(r.ItemCount);
+                jQuery(".progress-indicator").hide();
+                jQuery(".result-display").show();
+            });
+        });
+});
+
+//set alt tags
+jQuery(document).ready(function () {
+    //handles the submit on the set all alts form
+    var setAltsAllForm = ".set-alt-all-form";
+    jQuery(setAltsAllForm + " button")
+        .click(function (event) {
+            event.preventDefault();
+
+            var idValue = jQuery(setAltsAllForm + " #id").attr("value");
+            var langValue = jQuery(setAltsAllForm + " #language").attr("value");
+            var dbValue = jQuery(setAltsAllForm + " #database").attr("value");
+            var thresholdValue = jQuery(setAltsAllForm + " #threshold").val();
+            var overwriteValue = jQuery(setAltsAllForm + " #overwrite").is(':checked');
+
+            jQuery(".form").hide();
+            jQuery(".progress-indicator").show();
+
+            jQuery.post(
+                jQuery(setAltsAllForm).attr("action"),
+                {
+                    id: idValue,
+                    language: langValue,
+                    db: dbValue,
+                    threshold: thresholdValue,
+                    overwrite: overwriteValue
+                }
+            ).done(function (r) {
+                jQuery(".result-modified").text(r.ItemsModified);
+                jQuery(".result-count").text(r.ItemCount);
+                jQuery(".progress-indicator").hide();
+                jQuery(".result-display").show();
+            }).always(function () {
+                jQuery(".progress-indicator").hide();
+            });
+        });
+});
+
+//image search
+jQuery(document).ready(function () {
     var config = {
         '.chosen-select': { width: "100%" }
     }
@@ -37,78 +119,6 @@ jQuery(document).ready(function () {
         filterValue.data('min', 0);
         filterValue.data('max', 100);
     });
-
-    //toggles tabs based on nav clicks
-    jQuery(".nav-btn")
-        .click(function () {
-            var selected = "selected";
-            var tab = jQuery(this).attr("rel");
-            jQuery(".nav-btn").removeClass(selected);
-            jQuery(".tab-content").removeClass(selected);
-            jQuery(".tab-content." + tab).addClass(selected);
-            jQuery(this).addClass(selected);
-        });
-
-    //handles reanalyze all form
-    var reanlyzeAllForm = ".reanalyze-all-form";
-    jQuery(reanlyzeAllForm + " button")
-        .click(function(event) {
-            event.preventDefault();
-            
-            var idValue = jQuery(reanlyzeAllForm + " #id").attr("value");
-            var langValue = jQuery(reanlyzeAllForm + " #language").attr("value");
-            var dbValue = jQuery(reanlyzeAllForm + " #database").attr("value");
-            
-            jQuery(".form").hide();
-            jQuery(".progress-indicator").show();
-
-            jQuery.post(
-                jQuery(reanlyzeAllForm).attr("action"),
-                {
-                    id: idValue,
-                    language: langValue,
-                    db: dbValue
-                }
-            ).done(function (r) {
-                jQuery(".result-count").text(r.ItemCount);
-                jQuery(".progress-indicator").hide();
-                jQuery(".result-display").show();
-            });
-        });
-
-    //handles the submit on the set all alts form
-    var setAltsAllForm = ".set-alt-all-form";
-    jQuery(setAltsAllForm + " button")
-        .click(function (event) {
-            event.preventDefault();
-
-            var idValue = jQuery(setAltsAllForm + " #id").attr("value");
-            var langValue = jQuery(setAltsAllForm + " #language").attr("value");
-            var dbValue = jQuery(setAltsAllForm + " #database").attr("value");
-            var thresholdValue = jQuery(setAltsAllForm + " #threshold").val();
-            var overwriteValue = jQuery(setAltsAllForm + " #overwrite").is(':checked');
-
-            jQuery(".form").hide();
-            jQuery(".progress-indicator").show();
-
-            jQuery.post(
-                jQuery(setAltsAllForm).attr("action"),
-                {
-                    id: idValue,
-                    language: langValue,
-                    db: dbValue,
-                    threshold: thresholdValue,
-                    overwrite: overwriteValue
-                }
-            ).done(function (r) {
-                jQuery(".result-modified").text(r.ItemsModified);
-                jQuery(".result-count").text(r.ItemCount);
-                jQuery(".progress-indicator").hide();
-                jQuery(".result-display").show();
-            }).always(function () {
-                jQuery(".progress-indicator").hide();
-            });
-        });
 
     //closes modal and send selected image back to RTE
     var queryObj;
@@ -252,12 +262,16 @@ jQuery(document).ready(function () {
     //get results for the first load
     if (jQuery(imageSearchForm).length)
         RunQuery();
+});
 
+//ole chat
+jQuery(document).ready(function () {
     //ole chat
     var chatInput = ".chat-input";
     var chatForm = ".chat-form";
     var chatConversation = ".chat-conversation";
-    
+    var chatConversationData = {};
+
     //sends chat text on 'enter-press' on the form
     jQuery(chatForm + " .chat-submit")
         .click(function (event) {
@@ -269,21 +283,61 @@ jQuery(document).ready(function () {
 
             jQuery(chatInput).val("");
             UpdateChatWindow(queryValue, "user");
-
+            
             jQuery
-                .post(jQuery(chatForm).attr("action"), {
-                    query: queryValue,
-                    language: langValue,
-                    database: dbValue,
-                    id: idValue
-                })
-                .done(function (r) { UpdateChatWindow(r, "bot"); });
+                .post(jQuery(chatForm).attr("action"), GenerateActivity(queryValue, langValue, dbValue, idValue))
+                .done(function(r) {
+                    chatConversationData = r.conversation;
+                    UpdateChatWindow(r.Text, "bot");
+                });
         });
 
     function UpdateChatWindow(text, type) {
         var convoBox = jQuery(chatConversation);
         convoBox.append("<div class='" + type + "'><span class='message'>" + text + "<span class='icon'></span></span></div>");
         convoBox.scrollTop(convoBox[0].scrollHeight - convoBox.height());
+    }
+
+    function GenerateActivity(query, langValue, dbValue, idValue) {
+        
+        var activity = {
+            type: "message",
+            id: GenerateGuid(),
+            timestamp: Date.now(),
+            channelId: "ole",
+            from: {
+                id: "2c1c7fa3",
+                name: "User1"
+            },
+            conversation: {
+                isGroup: false,
+                id: "8a684db8",
+                name: "Conv1"
+            },
+            recipient: {
+                id: "56800324",
+                name: "Bot1"
+            },
+            text: query,
+            attachments: [],
+            entities: [],
+            channelData: {
+                language: langValue,
+                database: dbValue,
+                id: idValue
+            }
+        }
+
+        return activity;
+    }
+
+    function GenerateGuid() {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+              .toString(16)
+              .substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
 });
 
