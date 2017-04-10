@@ -8,6 +8,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image
         protected override object GetFieldValue(CognitiveIndexableItem cognitiveIndexable)
         {
             var regions = cognitiveIndexable.Text?.Regions;
+            if (regions == null)
+                return null;
+
             var words = (
                 from r in regions
                 where r.Lines != null
