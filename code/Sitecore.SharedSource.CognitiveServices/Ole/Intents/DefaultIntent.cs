@@ -15,7 +15,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Ole.Intents {
 
         protected readonly ITextTranslator Translator;
         
-        public string Name => "default";
+        public string Name => "none";
 
         public DefaultIntent(ITextTranslator translator) {
             Translator = translator;

@@ -55,8 +55,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers {
         public ActionResult Post([FromBody]Activity activity) {
 
             var s = JsonConvert.SerializeObject(activity.ChannelData);
-            var d = JsonConvert.DeserializeObject<ItemContextParameters>(s);
-            ItemContextParameters parameters = d;
+            var d = JsonConvert.DeserializeObject<List<string>>(s);
+            ItemContextParameters parameters = (d.Any()) 
+                ? JsonConvert.DeserializeObject<ItemContextParameters>(d[0]) 
+                : new ItemContextParameters();
 
             if (activity.Type == ActivityTypes.Message) {
                 var result = LuisService.Query(AppId, activity.Text); // determine which intent to use
