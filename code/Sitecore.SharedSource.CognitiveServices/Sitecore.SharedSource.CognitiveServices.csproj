@@ -468,9 +468,10 @@
     <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Lucene.config" />
     <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Solr.config.disabled" />
     <Content Include="App_Config\Include\SitecoreCognitiveServices\UnicornSerializationRoot.config" />
-    <None Include="Properties\PublishProfiles\sc82rev160729.pubxml" />
-    <None Include="Properties\PublishProfiles\sc82rev161115.pubxml" />
-    <None Include="Properties\PublishProfiles\sc82rev161221.pubxml" />
+    <None Include="Properties\PublishProfiles\sc82u0.pubxml" />
+    <None Include="Properties\PublishProfiles\sc82u1.pubxml" />
+    <None Include="Properties\PublishProfiles\sc82u3.pubxml" />
+    <None Include="Properties\PublishProfiles\sc82u2.pubxml" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\chosen-sprite%402x.png" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\chosen-sprite.png" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\chosen.css" />
