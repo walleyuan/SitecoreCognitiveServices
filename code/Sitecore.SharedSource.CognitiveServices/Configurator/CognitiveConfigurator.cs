@@ -40,7 +40,6 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<IRepositoryClient, RepositoryClient>();
             serviceCollection.AddTransient<ICSVParser, CSVParser>();
             serviceCollection.AddTransient<ITextTranslator, TextTranslator>();
-            serviceCollection.AddTransient<IIntentProvider, IntentProvider>();
             serviceCollection.AddTransient<IPublishWrapper, PublishWrapper>();
 
             //repositories
@@ -118,14 +117,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Configurator
             serviceCollection.AddTransient<ILoggedInUsersIntent, LoggedInUsersIntent>();
             serviceCollection.AddTransient<IPublishIntent, PublishIntent>();
             serviceCollection.AddTransient<IVersionIntent, VersionIntent>();
+            serviceCollection.AddTransient<IAboutIntent, AboutIntent>();
 
             //intent factories
-            serviceCollection.AddTransient<IDefaultIntentFactory, DefaultIntentFactory>();
-            serviceCollection.AddTransient<IGreetIntentFactory, GreetIntentFactory>();
-            serviceCollection.AddTransient<IKickUserIntentFactory, KickUserIntentFactory>();
-            serviceCollection.AddTransient<ILoggedInUsersIntentFactory, LoggedInUsersIntentFactory>();
-            serviceCollection.AddTransient<IPublishIntentFactory, PublishIntentFactory>();
-            serviceCollection.AddTransient<IVersionIntentFactory, VersionIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, DefaultIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, GreetIntentFactory >();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, KickUserIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, LoggedInUsersIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, PublishIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, VersionIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, AboutIntentFactory>();
+
+            //intent provider
+            serviceCollection.AddTransient<IIntentProvider, IntentProvider>();
 
             //search
             serviceCollection.AddTransient<ICognitiveSearchContext, CognitiveSearchContext>();
