@@ -3,18 +3,18 @@ using Microsoft.Extensions.DependencyInjection;
 using Sitecore.SharedSource.CognitiveServices.Ole.Intents;
 
 namespace Sitecore.SharedSource.CognitiveServices.Factories.Intents {
-   
-    public class AboutIntentFactory : IIntentFactory<IAboutIntent> {
+    
+    public class LockedItemCountIntentFactory : IIntentFactory<ILockedItemCountIntent> {
         
         protected readonly IServiceProvider Provider;
 
-        public AboutIntentFactory(IServiceProvider provider)
+        public LockedItemCountIntentFactory(IServiceProvider provider)
         {
             Provider = provider;
         }
 
-        public virtual IAboutIntent Create() {
-            return Provider.GetService<IAboutIntent>();
+        public virtual ILockedItemCountIntent Create() {
+            return Provider.GetService<ILockedItemCountIntent>();
         }
     }
 }

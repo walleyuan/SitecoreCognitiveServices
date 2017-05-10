@@ -309,6 +309,8 @@
     <Compile Include="Factories\CognitiveTextAnalysisFactory.cs" />
     <Compile Include="Factories\ICognitiveImageAnalysisFactory.cs" />
     <Compile Include="Factories\Intents\AboutIntentFactory.cs" />
+    <Compile Include="Factories\Intents\UnlockItemsIntentFactory.cs" />
+    <Compile Include="Factories\Intents\LockedItemCountIntentFactory.cs" />
     <Compile Include="Factories\Intents\VersionIntentFactory.cs" />
     <Compile Include="Factories\Intents\PublishIntentFactory.cs" />
     <Compile Include="Factories\Intents\LoggedInUsersIntentFactory.cs" />
@@ -330,8 +332,10 @@
     <Compile Include="Foundation\TextTranslator.cs" />
     <Compile Include="IApplicationSettings.cs" />
     <Compile Include="Models\Ole\ItemContextParameters.cs" />
-    <Compile Include="Ole\Intents\AboutIntent.cs" />
     <Compile Include="Factories\Intents\IIntentFactory.cs" />
+    <Compile Include="Ole\Intents\LockedItemCountIntent.cs" />
+    <Compile Include="Ole\Intents\UnlockItemsIntent.cs" />
+    <Compile Include="Ole\Intents\AboutIntent.cs" />
     <Compile Include="Ole\Intents\PublishIntent.cs" />
     <Compile Include="Ole\Intents\KickUserIntent.cs" />
     <Compile Include="Ole\Intents\LoggedInUsersIntent.cs" />
