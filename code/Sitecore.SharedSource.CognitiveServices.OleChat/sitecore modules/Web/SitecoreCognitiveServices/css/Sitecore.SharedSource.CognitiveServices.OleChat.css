@@ -245,3 +245,18 @@ fieldset legend { margin-bottom: 10px;}
 .rte-search-form input[type="password"], 
 .rte-search-form select, 
 .rte-search-form textarea { min-height: auto; padding: 0px; }
+
+.chat-form .chat-input {}
+.chat-form .chat-submit { display:none; }
+.chat-form .chat-conversation { border: 1px solid #ccc; margin-bottom: 5px; height: 410px; overflow-x: hidden; overflow-y: auto; padding: 10px; }
+.chat-form .user,
+.chat-form .bot { margin-bottom:5px; padding-bottom:5px; }
+.chat-form .user span.message,
+.chat-form .bot span.message { display:inline-block; padding:5px 10px; border-radius: 5px;  color:#fff; font-size:19px; text-align:left; position:relative;}
+.chat-form .user { text-align:left; }
+.chat-form .bot { text-align:right; padding-left:32px; }
+.chat-form .user span.message { background-color:#474747;}
+.chat-form .bot span.message { background:#dc291e; padding-right:40px; }
+.chat-form .bot span.icon { background:url('/temp/iconcache/office/24x24/man_8.png') top right no-repeat; border-radius: 12px; position:absolute; top:7px; right:7px; height: 24px; width: 24px; }
+.chat-form ul { list-style-type: disc; padding-left:26px; font-size:16px; }
+.chat-form li {}

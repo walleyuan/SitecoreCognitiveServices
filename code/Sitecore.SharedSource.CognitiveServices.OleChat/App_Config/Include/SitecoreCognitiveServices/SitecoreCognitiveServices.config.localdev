@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns:patch="http://www.sitecore.net/xmlconfig/">
+  <sitecore>
+    <commands>
+      <command name="cognitive:ole" type="Sitecore.SharedSource.CognitiveServices.Commands.OleChat,Sitecore.SharedSource.CognitiveServices"/>
+      <command name="cognitive:viewanalaysis" type="Sitecore.SharedSource.CognitiveServices.Commands.ViewAnalysis,Sitecore.SharedSource.CognitiveServices"/>
+      <command name="cognitive:reanalyze" type="Sitecore.SharedSource.CognitiveServices.Commands.Reanalyze,Sitecore.SharedSource.CognitiveServices"/>
+      <command name="cognitive:reanalyzeall" type="Sitecore.SharedSource.CognitiveServices.Commands.ReanalyzeAll,Sitecore.SharedSource.CognitiveServices"/>
+      <command name="cognitive:setalttags" type="Sitecore.SharedSource.CognitiveServices.Commands.SetAltTags,Sitecore.SharedSource.CognitiveServices"/>
+      <command name="cognitive:setalttagsall" type="Sitecore.SharedSource.CognitiveServices.Commands.SetAltTagsAll,Sitecore.SharedSource.CognitiveServices"/>
+    </commands>
+    <pipelines>
+      <initialize>
+        <processor type="Sitecore.SharedSource.CognitiveServices.App_Start.LoadRoutes,Sitecore.SharedSource.CognitiveServices" patch:after="processor[@type='Sitecore.Pipelines.Loader.EnsureAnonymousUsers, Sitecore.Kernel']" />
+      </initialize>
+    </pipelines>
+    <services>
+      <configurator type="Sitecore.SharedSource.CognitiveServices.Configurator.CognitiveConfigurator, Sitecore.SharedSource.CognitiveServices" />
+    </services>
+    <settings>
+      <!-- API Keys -->
+      <setting name="CognitiveService.ApiKey.Academic" value="" />
+      <setting name="CognitiveService.ApiKey.BingSpeech" value="" />
+      <setting name="CognitiveService.ApiKey.BingSpellCheck" value="" />
+      <setting name="CognitiveService.ApiKey.BingAutosuggest" value="" />
+      <setting name="CognitiveService.ApiKey.BingSearch" value="" />
+      <setting name="CognitiveService.ApiKey.ComputerVision" value="" />
+      <setting name="CognitiveService.ApiKey.ContentModerator" value="" />
+      <setting name="CognitiveService.ApiKey.ContentModerator.ClientId" value="" />
+      <setting name="CognitiveService.ApiKey.ContentModerator.PrivateKey" value="" />
+      <setting name="CognitiveService.ApiKey.EntityLinking" value="" />
+      <setting name="CognitiveService.ApiKey.Emotion" value="" />
+      <setting name="CognitiveService.ApiKey.Face" value="" />
+      <setting name="CognitiveService.ApiKey.LinguisticAnalysis" value="" />
+      <setting name="CognitiveService.ApiKey.Luis" value="" />
+      <setting name="CognitiveService.ApiKey.QnA" value="" />
+      <setting name="CognitiveService.ApiKey.Recommendations" value="" />
+      <setting name="CognitiveService.ApiKey.SpeakerRecognition" value="" />
+      <setting name="CognitiveService.ApiKey.TextAnalytics" value="" />
+      <setting name="CognitiveService.ApiKey.Video" value="" />
+      <setting name="CognitiveService.ApiKey.WebLM" value="" />
+
+      <!-- Module Settings-->
+      <setting name="CognitiveService.OleApplicationId" value="a9b7f39c-692a-499c-bcee-b1e57232b93a" />
+      <setting name="CognitiveService.Language" value="en" />
+      <setting name="CognitiveService.TextualFieldTypes" value="Rich Text|Single-Line Text|Multi-Line Text|html|text|memo" />
+      <setting name="CognitiveService.CatchAndReleaseExceptions" value="false" />
+
+      <!-- Search -->
+      <setting name="CognitiveService.Search.IndexNameFormat" value="cognitive_{0}_index" />
+    </settings>
+  </sitecore>
+</configuration>
