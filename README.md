@@ -32,3 +32,19 @@ __Sitecore__
 - Log into Sitecore, go to the Control Panel
 - Open the Indexing Manager and reindex the `cognitive_master_index`
 - Start viewing the analysis of content or media items and go build more functionality!
+
+## Troubleshooting
+<dl>
+  <dt>How do I get API keys?</dt>
+  <dd><p>Check out some of the answers on this StackOverflow question: https://stackoverflow.com/questions/40757076/unable-to-find-subscription-key-for-microsoft-cognitive-services</p>
+  <p>
+In general, you need to provision the service in Azure Portal and then go to the Keys section and copy the primary key value for that particular service. This needs to be done for each service you want to use.</p></dd>
+
+  <dt>Visual Studio Publish fails with access error for target folder</dt>
+  <dd>If you have installed Sitecore in a restricted area, such as the standard inetpub\wwwroot folder, you need elevated access to publish to this area of the file system. Launch Visual Studio in Administrator mode to allow you to publish to these folders.</dd>
+  
+  <dt>After publishing Sitecore shows error 'Access to the path denied' when executing Rainbow.Storage.SerializationFileSystemDataStore.InitializeRootPath</dt>
+  <dd><p>By default, the PowerShell setup script will initialize your serialization folder (`serializationRootPath` setting in `App_Config\Include\SitecoreCognitiveServices\UnicornSerializationRoot.config`) to the location where your CognitiveServices project source code is located. Your IIS worker process likely does not have access to your source control folder if you receive this message. </p>
+  <p>To correct the issue, navigate in Windows Explorer to your serialization folder (e.g `{sourcepath}\SitecoreCognitiveServices\serialization`). Right-click on the folder and open the Security dialog. Grant modify access to the local IIS_IUSRS group (or the equivalent on your OS version/application pool configuration).
+  </p></dd>
+</dl>
