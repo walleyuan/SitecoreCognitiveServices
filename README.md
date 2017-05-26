@@ -34,13 +34,15 @@ __Sitecore__
 - Start viewing the analysis of content or media items and go build more functionality!
 
 ## Troubleshooting
-__How do I get API keys?__
-Check out some of the answers on this StackOverflow question: https://stackoverflow.com/questions/40757076/unable-to-find-subscription-key-for-microsoft-cognitive-services
+<dl>
+  <dt>How do I get API keys?</dt>
+  <dd><p>Check out some of the answers on this StackOverflow question: https://stackoverflow.com/questions/40757076/unable-to-find-subscription-key-for-microsoft-cognitive-services</p>
+  <p>
+In general, you need to provision the service in Azure Portal and then go to the Keys section and copy the primary key value for that particular service. This needs to be done for each service you want to use.</p></dd>
 
-In general, you need to provision the service in Azure Portal and then go to the Keys section and copy the primary key value for that particular service. This needs to be done for each service you want to use.
-
-__Visual Studio Publish fails with access error for target folder__
-If you have installed Sitecore in a restricted area, such as the standard inetpub\wwwroot folder, you need elevated access to publish to this area of the file system. Launch Visual Studio in Administrator mode to allow you to publish to these folders.
-
-__After publishing Sitecore shows error 'Access to the path denied' when executing Rainbow.Storage.SerializationFileSystemDataStore.InitializeRootPath__
-By default, the PowerShell setup script will initialize your serialization folder (serializationRootPath setting) to the location where your CognitiveServices project is. This needs to be updated to point to your Sitecore installation serialization folder (e.g. c:\inetpub\wwwroot\sc82u3\Data\serialization
+  <dt>Visual Studio Publish fails with access error for target folder</dt>
+  <dd>If you have installed Sitecore in a restricted area, such as the standard inetpub\wwwroot folder, you need elevated access to publish to this area of the file system. Launch Visual Studio in Administrator mode to allow you to publish to these folders.</dd>
+  
+  <dt>After publishing Sitecore shows error 'Access to the path denied' when executing Rainbow.Storage.SerializationFileSystemDataStore.InitializeRootPath</dt>
+  <dd>By default, the PowerShell setup script will initialize your serialization folder (serializationRootPath setting) to the location where your CognitiveServices project is. This needs to be updated to point to your Sitecore installation serialization folder (e.g. c:\inetpub\wwwroot\sc82u3\Data\serialization)</dd>
+</dl>
