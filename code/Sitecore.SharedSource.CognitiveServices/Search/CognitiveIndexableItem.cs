@@ -54,10 +54,10 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             SetKeyPhraseInfo(item);
             SetLinguisticInfo(item);
             SetEntityLinkingInfo(item);
-            SetSentitmentInfo(item);
+            SetSentimentInfo(item);
         }
 
-        private void SetSentitmentInfo(Item item)
+        private void SetSentimentInfo(Item item)
         {
             var sentimentService = DependencyResolver.Current.GetService<ISentimentService>();
             if (sentimentService == null)
@@ -235,7 +235,14 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
                 {
                     Emotions = Task.Run(async () => await emotionRepository.RecognizeAsync(m.GetMediaStream())).Result;
                 }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(String.Format("Error recognizing Emotions. Item: {0}, Message: {1}", item.ID, ex.Message), ex);
+            }
 
+            try
+            {
                 var faceRepository = DependencyResolver.Current.GetService<IFaceRepository>();
                 if (faceRepository != null)
                 {
@@ -249,7 +256,13 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
                         FaceAttributeType.Smile
                     })).Result;
                 }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(String.Format("Error detecting Faces. Item: {0}, Message: {1}", item.ID, ex.Message), ex);
+            }
 
+            try { 
                 var visionRepository = DependencyResolver.Current.GetService<IVisionRepository>();
                 if (visionRepository != null)
                 {
@@ -269,7 +282,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             }
             catch (Exception ex)
             {
-                Log.Error(String.Format("Item: {0}, Message: {1}", item.ID, ex.Message), ex);
+                Log.Error(String.Format("Error analyzing using Computer Vision API. Item: {0}, Message: {1}", item.ID, ex.Message), ex);
             }
         }
 
