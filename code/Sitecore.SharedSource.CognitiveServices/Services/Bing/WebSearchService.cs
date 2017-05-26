@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.SharedSource.CognitiveServices.Enums;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
 using System.Threading.Tasks;
 using Microsoft.SharedSource.CognitiveServices.Models.Bing.WebSearch;

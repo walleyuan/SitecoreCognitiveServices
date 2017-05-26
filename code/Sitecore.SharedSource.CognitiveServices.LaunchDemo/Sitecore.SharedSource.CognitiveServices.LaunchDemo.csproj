@@ -256,8 +256,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Configurator\CognitiveLaunchConfigurator.cs" />
+    <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="Controllers\CognitiveLaunchController.cs" />
     <Compile Include="Models\AcademicResult.cs" />
     <Compile Include="Models\ComputerVisionResult.cs" />
@@ -278,7 +277,7 @@
     <Content Include="CognitiveLaunchAssets\CognitiveLaunch.css" />
     <Content Include="CognitiveLaunchAssets\CognitiveLaunch.js" />
     <Content Include="CognitiveLaunchAssets\jquery-1.10.2.min.js" />
-    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveLaunch.config">
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.LaunchDemo.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\CognitiveLaunch\CognitiveLaunchLayout.cshtml" />

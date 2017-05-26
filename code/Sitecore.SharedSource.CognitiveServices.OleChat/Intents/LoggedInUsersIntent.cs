@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
 using Sitecore.Web.Authentication;
@@ -11,7 +11,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
     public class LoggedInUsersIntent : ILoggedInUsersIntent 
     {
-        protected readonly ITextTranslator Translator;
+        protected readonly ITextTranslatorWrapper Translator;
         protected readonly IOleSettings Settings;
 
         public Guid ApplicationId => Settings.OleApplicationId;
@@ -21,7 +21,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
         public string Description => "List the logged in users";
 
         public LoggedInUsersIntent(
-            ITextTranslator translator,
+            ITextTranslatorWrapper translator,
             IOleSettings settings) {
             Translator = translator;
             Settings = settings;

@@ -167,7 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OleSettings.cs" />
-    <Compile Include="App_Start\CognitiveConfigurator.cs" />
+    <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="Commands\OleChat.cs" />
     <Compile Include="Controllers\CognitiveBotController.cs" />
     <Compile Include="Factories\AboutIntentFactory.cs" />

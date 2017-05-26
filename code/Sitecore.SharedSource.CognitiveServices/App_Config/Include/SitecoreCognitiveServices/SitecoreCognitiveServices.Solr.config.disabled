@@ -119,24 +119,6 @@
             <field fieldName="SentimentAnalysis" returnType="string">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text.SentimentAnalysis,Sitecore.SharedSource.CognitiveServices</field>
             <field fieldName="LinguisticAnalysis" returnType="string">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Text.LinguisticAnalysis,Sitecore.SharedSource.CognitiveServices</field>
 
-            <!--Searchable Cognitive Fields -->
-            <field fieldName="Tags" returnType="stringArray">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Tags,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="Anger" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Emotions.Anger,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="Contempt" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Emotions.Contempt,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="Disgust" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Emotions.Disgust,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="Fear" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Emotions.Fear,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="Happiness" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Emotions.Happiness,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="Neutral" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Emotions.Neutral,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="Sadness" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Emotions.Sadness,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="Surprise" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Emotions.Surprise,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="AgeMin" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.AgeMin,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="AgeMax" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.AgeMax,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="Gender" returnType="int">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Gender,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="Adult" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Adult.AdultScore,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="Racy" returnType="double">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Adult.RacyScore,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="Size" returnType="int">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Size,Sitecore.SharedSource.CognitiveServices</field>
-            <field fieldName="Glasses" returnType="intCollection">Sitecore.SharedSource.CognitiveServices.Search.ComputedFields.Image.Glasses,Sitecore.SharedSource.CognitiveServices</field>
-
           </fields>
 
           <!-- INDEX FIELD STORAGE MAPPER 

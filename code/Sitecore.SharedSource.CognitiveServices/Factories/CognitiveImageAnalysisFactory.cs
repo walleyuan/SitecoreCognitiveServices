@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.Data.Items;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
 using Sitecore.SharedSource.CognitiveServices.Search;
 
@@ -9,15 +9,15 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
 {
     public class CognitiveImageAnalysisFactory : ICognitiveImageAnalysisFactory
     {
-        protected readonly ISitecoreDataService DataService;
+        protected readonly ISitecoreDataWrapper DataWrapper;
         protected readonly IServiceProvider Provider;
 
 
         public CognitiveImageAnalysisFactory(
-            ISitecoreDataService dataService,
+            ISitecoreDataWrapper dataWrapper,
             IServiceProvider provider)
         {
-            DataService = dataService;
+            DataWrapper = dataWrapper;
             Provider = provider;
         }
 
@@ -37,7 +37,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Factories
             analysis.TextAnalysis = result.TextAnalysis;
             analysis.VisionAnalysis = result.VisionAnalysis;
             
-            Item i = DataService.GetItemByUri(result?.UniqueId ?? string.Empty);
+            Item i = DataWrapper.GetItemByUri(result?.UniqueId ?? string.Empty);
             if (i == null)
                 return analysis;
 

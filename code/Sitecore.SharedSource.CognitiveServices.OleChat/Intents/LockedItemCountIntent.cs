@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.SearchTypes;
@@ -14,7 +14,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
     public class LockedItemCountIntent : ILockedItemCountIntent {
 
-        protected readonly ITextTranslator Translator;
+        protected readonly ITextTranslatorWrapper Translator;
         protected readonly IOleSettings Settings;
 
         public Guid ApplicationId => Settings.OleApplicationId;
@@ -24,7 +24,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
         public string Description => "Count your locked items";
 
         public LockedItemCountIntent(
-            ITextTranslator translator,
+            ITextTranslatorWrapper translator,
             IOleSettings settings) {
             Translator = translator;
             Settings = settings;

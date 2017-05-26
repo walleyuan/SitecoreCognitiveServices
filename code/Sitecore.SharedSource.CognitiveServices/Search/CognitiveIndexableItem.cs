@@ -18,7 +18,7 @@ using Sitecore.ContentSearch;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
@@ -32,13 +32,13 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
     {
         public CognitiveIndexableItem(Item item) : base(item)
         {
-            var dataService = DependencyResolver.Current.GetService<ISitecoreDataService>();
-            if (dataService == null)
+            var dataWrapper = DependencyResolver.Current.GetService<ISitecoreDataWrapper>();
+            if (dataWrapper == null)
             {
                 return;
             }
 
-            if (dataService.IsMediaFile(item))
+            if (dataWrapper.IsMediaFile(item))
             {
                 SetMediaProperties(item);
             }

@@ -1,5 +1,5 @@
 ﻿using System;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
 
@@ -9,7 +9,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
     public class DefaultIntent : IDefaultIntent {
 
-        protected readonly ITextTranslator Translator;
+        protected readonly ITextTranslatorWrapper Translator;
         protected readonly IOleSettings Settings;
 
         public Guid ApplicationId => Settings.OleApplicationId;
@@ -19,7 +19,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
         public string Description => "";
 
         public DefaultIntent(
-            ITextTranslator translator,
+            ITextTranslatorWrapper translator,
             IOleSettings settings) {
             Translator = translator;
             Settings = settings;

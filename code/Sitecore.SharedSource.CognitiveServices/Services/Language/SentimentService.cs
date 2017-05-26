@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Text.Sentiment;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Sentiment;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Language;
 using Microsoft.ProjectOxford.Video.Contract;

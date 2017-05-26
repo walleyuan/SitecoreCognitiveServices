@@ -1,8 +1,7 @@
-﻿using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Sitecore.SharedSource.CognitiveServices.Search;
 using Sitecore.SharedSource.CognitiveServices.Factories;
 using Sitecore.SharedSource.CognitiveServices.Services.Search;
@@ -15,26 +14,26 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
         protected readonly ICognitiveImageAnalysisFactory ImageAnalysisFactory;
         protected readonly ICognitiveTextAnalysisFactory TextAnalysisFactory;
         protected readonly IReanalyzeAllFactory ReanalyzeAllFactory;
-        protected readonly ISitecoreDataService DataService;
+        protected readonly ISitecoreDataWrapper DataWrapper;
         
         public CognitiveAnalysisController(
             ISearchService searchService,
             ICognitiveImageAnalysisFactory iaFactory,
             ICognitiveTextAnalysisFactory taFactory,
             IReanalyzeAllFactory pFactory,
-            ISitecoreDataService dataService)
+            ISitecoreDataWrapper dataWrapper)
         {
             Assert.IsNotNull(searchService, typeof(ISearchService));
             Assert.IsNotNull(iaFactory, typeof(ICognitiveImageAnalysisFactory));
             Assert.IsNotNull(taFactory, typeof(ICognitiveTextAnalysisFactory));
             Assert.IsNotNull(pFactory, typeof(IReanalyzeAllFactory));
-            Assert.IsNotNull(dataService, typeof(ISitecoreDataService));
+            Assert.IsNotNull(dataWrapper, typeof(ISitecoreDataWrapper));
 
             SearchService = searchService;
             ImageAnalysisFactory = iaFactory;
             TextAnalysisFactory = taFactory;
             ReanalyzeAllFactory = pFactory;
-            DataService = dataService;
+            DataWrapper = dataWrapper;
         }
 
         public ActionResult ImageAnalysis(string id, string language, string db)
@@ -53,7 +52,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
 
         public ActionResult Reanalyze(string id, string language, string db)
         {
-            Item item = DataService.GetItemByIdValue(id, db);
+            Item item = DataWrapper.GetItemByIdValue(id, db);
             if(item == null)
                 return View("TextAnalysis", null);
 
@@ -73,7 +72,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Controllers
 
         public ActionResult ReanalyzeAll(string id, string language, string db)
         {
-            Item item = DataService.GetItemByIdValue(id, db);
+            Item item = DataWrapper.GetItemByIdValue(id, db);
             if (item == null)
                 return ViewReanalyzeAll(id, language, db);
             

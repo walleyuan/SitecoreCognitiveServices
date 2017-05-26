@@ -11,7 +11,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
     {
         public override void Execute(CommandContext context)
         {
-            Item ctxItem = DataService.ExtractItem(context);
+            Item ctxItem = DataWrapper.ExtractItem(context);
             if (ctxItem == null)
                 return;
 
@@ -26,7 +26,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
 
             string id = args.Parameters[idParam];
             string db = Sitecore.Context.ContentDatabase.Name;
-            Item i = DataService.GetItemByIdValue(id, db);
+            Item i = DataWrapper.GetItemByIdValue(id, db);
             string langCode = i.Language.Name;
             
             ModalDialogOptions mdo = new ModalDialogOptions($"/SitecoreCognitiveServices/CognitiveUtility/ViewImageDescriptionThreshold?id={id}&language={langCode}&db={db}")
@@ -43,9 +43,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
 
         public override CommandState QueryState(CommandContext context)
         {
-            Item ctxItem = DataService?.ExtractItem(context);
+            Item ctxItem = DataWrapper?.ExtractItem(context);
 
-            return (ctxItem != null && DataService.IsMediaFolder(ctxItem))
+            return (ctxItem != null && DataWrapper.IsMediaFolder(ctxItem))
                 ? CommandState.Enabled
                 : CommandState.Hidden;
         }

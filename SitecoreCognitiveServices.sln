@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.Cogni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.OleChat.Tests", "tests\Sitecore.SharedSource.CognitiveServices.OleChat.Tests\Sitecore.SharedSource.CognitiveServices.OleChat.Tests.csproj", "{FB32BF28-C112-4EA0-A45D-D117E69CAF87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.ImageSearch.Tests", "tests\Sitecore.SharedSource.CognitiveServices.ImageSearch.Tests\Sitecore.SharedSource.CognitiveServices.ImageSearch.Tests.csproj", "{5661CBBC-D134-49D6-A3BB-44EB0DC87759}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.ImageSearch", "code\Sitecore.SharedSource.CognitiveServices.ImageSearch\Sitecore.SharedSource.CognitiveServices.ImageSearch.csproj", "{449CE943-4EF2-4DDF-AD16-37DCC62CFCFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,14 @@ Global
 		{FB32BF28-C112-4EA0-A45D-D117E69CAF87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB32BF28-C112-4EA0-A45D-D117E69CAF87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB32BF28-C112-4EA0-A45D-D117E69CAF87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5661CBBC-D134-49D6-A3BB-44EB0DC87759}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5661CBBC-D134-49D6-A3BB-44EB0DC87759}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5661CBBC-D134-49D6-A3BB-44EB0DC87759}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5661CBBC-D134-49D6-A3BB-44EB0DC87759}.Release|Any CPU.Build.0 = Release|Any CPU
+		{449CE943-4EF2-4DDF-AD16-37DCC62CFCFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{449CE943-4EF2-4DDF-AD16-37DCC62CFCFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{449CE943-4EF2-4DDF-AD16-37DCC62CFCFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{449CE943-4EF2-4DDF-AD16-37DCC62CFCFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +78,8 @@ Global
 		{13ECB0DB-E99D-4D05-97E8-138EB3884353} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
 		{B6AFA26B-B8D7-4DF6-8AB2-5AD3A8D216E3} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
 		{FB32BF28-C112-4EA0-A45D-D117E69CAF87} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
+		{5661CBBC-D134-49D6-A3BB-44EB0DC87759} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
+		{449CE943-4EF2-4DDF-AD16-37DCC62CFCFD} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4

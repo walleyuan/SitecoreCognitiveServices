@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Factories;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
@@ -12,7 +12,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
     public class AboutIntent : IAboutIntent {
 
-        protected readonly ITextTranslator Translator;
+        protected readonly ITextTranslatorWrapper Translator;
         protected readonly IOleSettings Settings;
         protected readonly IServiceProvider Provider;
 
@@ -23,7 +23,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
         public string Description => "Tell you about my abilities";
 
         public AboutIntent(
-            ITextTranslator translator,
+            ITextTranslatorWrapper translator,
             IOleSettings settings,
             IServiceProvider provider) {
             Translator = translator;

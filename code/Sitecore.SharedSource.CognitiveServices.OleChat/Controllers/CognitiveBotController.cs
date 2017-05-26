@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
 using Sitecore.Data.Managers;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Intents;

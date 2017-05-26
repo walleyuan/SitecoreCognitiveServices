@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Emotion.Contract;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Vision

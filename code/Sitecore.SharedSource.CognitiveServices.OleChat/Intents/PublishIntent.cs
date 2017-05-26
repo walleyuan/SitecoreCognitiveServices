@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
@@ -11,9 +11,9 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
     public class PublishIntent : IPublishIntent
     {
-        protected readonly ITextTranslator Translator;
+        protected readonly ITextTranslatorWrapper Translator;
         protected readonly IOleSettings Settings;
-        protected readonly ISitecoreDataService DataService;
+        protected readonly ISitecoreDataWrapper DataWrapper;
         protected readonly IPublishWrapper PublishWrapper;
 
         public Guid ApplicationId => Settings.OleApplicationId;
@@ -23,14 +23,14 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
         public string Description => "Publish content";
 
         public PublishIntent(
-            ITextTranslator translator,
+            ITextTranslatorWrapper translator,
             IOleSettings settings,
-            ISitecoreDataService dataService,
+            ISitecoreDataWrapper dataWrapper,
             IPublishWrapper publishWrapper)
         {
             Translator = translator;
             Settings = settings;
-            DataService = dataService;
+            DataWrapper = dataWrapper;
             PublishWrapper = publishWrapper;
         }
 
@@ -44,7 +44,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             if (string.IsNullOrEmpty(dbName))
                 return "Sorry, I think you forgot to mention the database name you wanted to publish to.";
 
-            var toDb = DataService.GetDatabase(dbName);
+            var toDb = DataWrapper.GetDatabase(dbName);
             if (toDb == null)
                 return "Sorry, I couldn't find that database.";
 
@@ -55,7 +55,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             var recursively = entities.FirstOrDefault(x => x.Type.Equals("Recursion"))?.Entity;
             var isRecursive = !string.IsNullOrEmpty(recursively);
 
-            var fromDb = DataService.GetDatabase(parameters.Database);
+            var fromDb = DataWrapper.GetDatabase(parameters.Database);
             Item item = fromDb.GetItem(itemPath);
             if (item == null)
                 return $"Sorry, I couldn't find the item at {itemPath}. Are you sure that's the right path?";

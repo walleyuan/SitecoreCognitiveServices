@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.SharedSource.CognitiveServices.Enums;
 using Microsoft.SharedSource.CognitiveServices.Models.Bing.Speech;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Bing {
     public class SpeechService : ISpeechService {

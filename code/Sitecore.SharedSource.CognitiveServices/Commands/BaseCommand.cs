@@ -1,11 +1,7 @@
-﻿using Sitecore.Text;
-using System;
-using System.Linq;
+﻿using System;
 using System.Web.Mvc;
 using Sitecore.Shell.Framework.Commands;
-using Sitecore.Web.UI.Sheer;
-using Sitecore.Data.Items;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 
 namespace Sitecore.SharedSource.CognitiveServices.Commands
 {
@@ -17,11 +13,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Commands
         protected static readonly string widthParam = "widthValue";
         protected static readonly string languageParam = "language";
 
-        protected readonly ISitecoreDataService DataService;
+        protected readonly ISitecoreDataWrapper DataWrapper;
 
         public BaseCommand()
         {
-            DataService = DependencyResolver.Current.GetService<ISitecoreDataService>();
+            DataWrapper = DependencyResolver.Current.GetService<ISitecoreDataWrapper>();
         }
 
         public override void Execute(CommandContext context) { }

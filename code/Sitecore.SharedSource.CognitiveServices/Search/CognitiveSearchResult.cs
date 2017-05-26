@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Web.Script.Serialization;
 using Microsoft.ProjectOxford.Emotion.Contract;
-using Microsoft.ProjectOxford.Text.Language;
 using Microsoft.ProjectOxford.Text.Sentiment;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
-using Microsoft.SharedSource.CognitiveServices.Models.Language;
 using Face = Microsoft.ProjectOxford.Face.Contract.Face;
 
 namespace Sitecore.SharedSource.CognitiveServices.Search
@@ -58,25 +56,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
 
         [IndexField("_uniqueid")]
         public string UniqueId { get; set; }
-
-        [IndexField("gender")]
-        public int Gender { get; set; }
-
-        [IndexField("size")]
-        public int Size { get; set; }
-
-        [IndexField("glasses")]
-        public List<int> Glasses { get; set; }
-
-        [IndexField("Tags")]
-        public string[] Tags { get; set; }
-
-        [IndexField("AgeMin")]
-        public double AgeMin { get; set; }
-
-        [IndexField("AgeMax")]
-        public double AgeMax { get; set; }
-
+        
         #endregion properties
 
         private static T SaturateValue<T>(string value)

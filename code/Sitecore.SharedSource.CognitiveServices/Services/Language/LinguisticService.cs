@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Language;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic;
 

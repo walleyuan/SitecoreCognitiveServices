@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.QnAMaker;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge;
-using Sitecore.SharedSource.CognitiveServices.Foundation;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge {
     public class QnAMakerService : IQnAMakerService 
