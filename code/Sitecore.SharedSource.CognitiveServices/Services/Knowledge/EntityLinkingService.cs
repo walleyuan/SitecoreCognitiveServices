@@ -25,7 +25,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
 
                 return result;
             } catch (Exception ex) {
-                Logger.Error("SentimentService.GetSentiment failed", this, ex);
+                Logger.Error("EntityLinkingService.Link failed", this, ex);
             }
 
             return null;
