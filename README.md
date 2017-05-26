@@ -11,7 +11,7 @@ __Environment Prep__
 
 __Configuration files__
 
-In order to prevent sharing API keys and local dev paths (the Unicorn serialization root) to the world two config files needs to be copied (to the same folder) and renamed. This is done by running the `setup-localdev.ps1` script located in the setup folder. This script will also set the Unicorn serialization root to math the folder in the repository so there's no need to copy yml files.
+In order to prevent sharing API keys and local dev paths (the Unicorn serialization root) to the world two config files needs to be copied (to the same folder) and renamed. This is done by running the `setup-localdev.ps1` script located in the setup folder. This script will also set the Unicorn serialization root to match the folder in the repository so there's no need to copy yml files.
 
 - Run the `setup-localdev.ps1` script (make sure that the PowerShell execution policy is at least set to [RemoteSigned](https://ss64.com/ps/set-executionpolicy.html)).
 - Update the publishing profile on the core library project with the path to your Sitecore webroot (so the publish goes to your local web root)
