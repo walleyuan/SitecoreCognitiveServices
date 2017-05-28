@@ -220,7 +220,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             return sb.ToString();
         }
 
-        private void SetMediaProperties(Item item)
+        protected virtual void SetMediaProperties(Item item)
         {
             MediaItem m = item;
             if (!MeetsRestrictions(m))
@@ -228,6 +228,19 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
                 return;
             }
 
+            SetEmotions(m);
+
+            SetFaceData(m);
+
+            SetVisionData(m);
+        }
+
+        /// <summary>
+        /// Contacts the Emotions repository and updates the Emotions data for the media item
+        /// </summary>
+        /// <param name="m"></param>
+        protected virtual void SetEmotions(MediaItem m)
+        {
             try
             {
                 var emotionRepository = DependencyResolver.Current.GetService<IEmotionRepository>();
@@ -238,9 +251,16 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             }
             catch (Exception ex)
             {
-                Log.Error(String.Format("Error recognizing Emotions. Item: {0}, Message: {1}", item.ID, ex.Message), ex);
+                Log.Error(String.Format("Error recognizing Emotions. Item: {0}, Message: {1}", m.InnerItem.ID, ex.Message), ex);
             }
+        }
 
+        /// <summary>
+        /// Contacts the Face API and updates the Face data for the media item
+        /// </summary>
+        /// <param name="m"></param>
+        protected virtual void SetFaceData(MediaItem m)
+        {
             try
             {
                 var faceRepository = DependencyResolver.Current.GetService<IFaceRepository>();
@@ -259,10 +279,18 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             }
             catch (Exception ex)
             {
-                Log.Error(String.Format("Error detecting Faces. Item: {0}, Message: {1}", item.ID, ex.Message), ex);
+                Log.Error(String.Format("Error detecting Faces. Item: {0}, Message: {1}", m.InnerItem.ID, ex.Message), ex);
             }
+        }
 
-            try { 
+        /// <summary>
+        /// Contacts the Vision repository and collects data about the media item
+        /// </summary>
+        /// <param name="m"></param>
+        protected virtual void SetVisionData(MediaItem m)
+        {
+            try
+            {
                 var visionRepository = DependencyResolver.Current.GetService<IVisionRepository>();
                 if (visionRepository != null)
                 {
@@ -282,8 +310,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
             }
             catch (Exception ex)
             {
-                Log.Error(String.Format("Error analyzing using Computer Vision API. Item: {0}, Message: {1}", item.ID, ex.Message), ex);
+                Log.Error(String.Format("Error analyzing using Computer Vision API. Item: {0}, Message: {1}", m.InnerItem.ID, ex.Message), ex);
             }
+
         }
 
         /// <summary>
