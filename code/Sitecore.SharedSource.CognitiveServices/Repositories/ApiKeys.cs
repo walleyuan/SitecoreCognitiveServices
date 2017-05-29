@@ -25,6 +25,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
         public virtual string Recommendations => Settings.GetSetting("CognitiveService.ApiKey.Recommendations");
         public virtual string SpeakerRecognition => Settings.GetSetting("CognitiveService.ApiKey.SpeakerRecognition");
         public virtual string TextAnalytics => Settings.GetSetting("CognitiveService.ApiKey.TextAnalytics");
+        public virtual string TextAnalyticsEndpoint => Settings.GetSetting("CognitiveService.ApiKey.TextAnalytics.Endpoint");
         public virtual string Video => Settings.GetSetting("CognitiveService.ApiKey.Video");
         public virtual string WebLM => Settings.GetSetting("CognitiveService.ApiKey.WebLM");
     }

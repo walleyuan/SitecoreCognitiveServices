@@ -23,6 +23,7 @@ namespace Microsoft.SharedSource.CognitiveServices
         string Recommendations { get; }
         string SpeakerRecognition { get; }
         string TextAnalytics { get; }
+        string TextAnalyticsEndpoint { get; }
         string Video { get; }
         string WebLM { get; }
     }
