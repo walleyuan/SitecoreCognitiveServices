@@ -40,6 +40,10 @@ __Sitecore__
   <p>
 In general, you need to provision the service in Azure Portal and then go to the Keys section and copy the primary key value for that particular service. This needs to be done for each service you want to use.</p></dd>
 
+  <dt>My FACE API key is specified, but I am getting a "access denied due to invalid subscription key" error. What gives?</dt>
+  <dd><p>The keys appear to be specific to region. You need to configure the endpoint for your Face API to match to the endpoint in your Azure portal.</p>
+  <p>See this Stackoverflow question for details: https://stackoverflow.com/questions/43918434/face-api-access-denied-due-to-invalid-subscription-key</p></dd>
+  
   <dt>Visual Studio Publish fails with access error for target folder</dt>
   <dd>If you have installed Sitecore in a restricted area, such as the standard inetpub\wwwroot folder, you need elevated access to publish to this area of the file system. Launch Visual Studio in Administrator mode to allow you to publish to these folders.</dd>
   

@@ -17,6 +17,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
         public virtual string EntityLinking => Settings.GetSetting("CognitiveService.ApiKey.EntityLinking");
         public virtual string Emotion => Settings.GetSetting("CognitiveService.ApiKey.Emotion");
         public virtual string Face => Settings.GetSetting("CognitiveService.ApiKey.Face");
+        public virtual string FaceEndpoint => Settings.GetSetting("CognitiveService.ApiKey.Face.Endpoint");
         public virtual string LinguisticAnalysis => Settings.GetSetting("CognitiveService.ApiKey.LinguisticAnalysis");
         public virtual string Luis => Settings.GetSetting("CognitiveService.ApiKey.Luis");
         public virtual string QnA => Settings.GetSetting("CognitiveService.ApiKey.QnA");

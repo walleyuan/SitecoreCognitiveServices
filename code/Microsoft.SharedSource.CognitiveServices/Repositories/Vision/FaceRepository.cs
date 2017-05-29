@@ -5,7 +5,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
     public class FaceRepository : FaceServiceClient, IFaceRepository
     {
         public FaceRepository(
-            IApiKeys apiKeys) : base(apiKeys.Face)
+            IApiKeys apiKeys) : base(apiKeys.Face, apiKeys.FaceEndpoint)
         {
         }
     }

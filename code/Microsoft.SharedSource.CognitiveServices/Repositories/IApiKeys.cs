@@ -15,6 +15,7 @@ namespace Microsoft.SharedSource.CognitiveServices
         string EntityLinking { get; }
         string Emotion { get; }
         string Face { get; }
+        string FaceEndpoint { get; }
         string LinguisticAnalysis { get; }
         string Luis { get; }
         string QnA { get; }
