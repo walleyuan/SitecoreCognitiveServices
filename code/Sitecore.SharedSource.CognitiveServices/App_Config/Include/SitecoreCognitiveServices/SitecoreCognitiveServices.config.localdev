@@ -25,13 +25,14 @@
       <setting name="CognitiveService.ApiKey.BingAutosuggest" value="" />
       <setting name="CognitiveService.ApiKey.BingSearch" value="" />
       <setting name="CognitiveService.ApiKey.ComputerVision" value="" />
+      <setting name="CognitiveService.ApiKey.ComputerVision.Endpoint" value="https://westus.api.cognitive.microsoft.com/vision/v1.0" />
       <setting name="CognitiveService.ApiKey.ContentModerator" value="" />
       <setting name="CognitiveService.ApiKey.ContentModerator.ClientId" value="" />
       <setting name="CognitiveService.ApiKey.ContentModerator.PrivateKey" value="" />
       <setting name="CognitiveService.ApiKey.EntityLinking" value="" />
       <setting name="CognitiveService.ApiKey.Emotion" value="" />
       <setting name="CognitiveService.ApiKey.Face" value="" />
-      <setting name="CognitiveService.ApiKey.Face.Endpoint" value="https://westcentralus.api.cognitive.microsoft.com/face/v1.0" />
+      <setting name="CognitiveService.ApiKey.Face.Endpoint" value="https://westus.api.cognitive.microsoft.com/face/v1.0" />
       <setting name="CognitiveService.ApiKey.LinguisticAnalysis" value="" />
       <setting name="CognitiveService.ApiKey.Luis" value="" />
       <setting name="CognitiveService.ApiKey.QnA" value="" />

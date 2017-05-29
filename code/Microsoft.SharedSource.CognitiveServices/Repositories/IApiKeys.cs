@@ -9,6 +9,7 @@ namespace Microsoft.SharedSource.CognitiveServices
         string BingAutosuggest { get; }
         string BingSearch { get; }
         string ComputerVision { get; }
+        string ComputerVisionEndpoint { get; }
         string ContentModerator { get; }
         string ContentModeratorClientId { get; }
         string ContentModeratorPrivateKey { get; }

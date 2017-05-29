@@ -1,5 +1,6 @@
 ﻿using Microsoft.ProjectOxford.Vision.Contract;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,6 +24,17 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
         {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;
+
+            //Set the endpoint URL if provided
+            if (!String.IsNullOrEmpty(apiKeys.ComputerVisionEndpoint)) {
+                visionUrl = apiKeys.ComputerVisionEndpoint;
+
+                //Ensure terminating slash
+                if (!visionUrl.EndsWith("/"))
+                {
+                    visionUrl = String.Format("{0}/", visionUrl);
+                }
+            }
         }
 
         public virtual string GetImageUrlJson(string imageUrl)

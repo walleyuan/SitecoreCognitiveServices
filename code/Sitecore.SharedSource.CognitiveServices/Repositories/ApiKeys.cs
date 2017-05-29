@@ -11,6 +11,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Repositories
         public virtual string BingAutosuggest => Settings.GetSetting("CognitiveService.ApiKey.BingAutosuggest");
         public virtual string BingSearch => Settings.GetSetting("CognitiveService.ApiKey.BingSearch");
         public virtual string ComputerVision => Settings.GetSetting("CognitiveService.ApiKey.ComputerVision");
+        public virtual string ComputerVisionEndpoint => Settings.GetSetting("CognitiveService.ApiKey.ComputerVision.Endpoint");
         public virtual string ContentModerator => Settings.GetSetting("CognitiveService.ApiKey.ContentModerator");
         public virtual string ContentModeratorClientId => Settings.GetSetting("CognitiveService.ApiKey.ContentModerator.ClientId");
         public virtual string ContentModeratorPrivateKey => Settings.GetSetting("CognitiveService.ApiKey.ContentModerator.PrivateKey");
