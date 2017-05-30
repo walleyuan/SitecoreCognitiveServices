@@ -180,6 +180,8 @@
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Sitecore.SharedSource.CognitiveServices.ImageSearch.js" />
     <Content Include="sitecore\shell\Controls\Rich Text Editor\RichText Commands.js" />
     <Content Include="sitecore\shell\Themes\Standard\Default\Content Manager.css" />
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.ImageSearch.Lucene.config" />
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.ImageSearch.Solr.config.disabled" />
     <None Include="Properties\PublishProfiles\sc82u0.pubxml" />
     <None Include="Properties\PublishProfiles\sc82u1.pubxml" />
     <None Include="Properties\PublishProfiles\sc82u2.pubxml" />
