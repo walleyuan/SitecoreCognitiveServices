@@ -26,7 +26,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
 
                 return result;
             } catch (Exception ex) {
-                Logger.Error("SentimentService.GetSentiment failed", this, ex);
+                Logger.Error("LinguisticService.GetPOSTagsTextAnalysis failed", this, ex);
             }
 
             return null;
@@ -38,7 +38,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
 
                 return result;
             } catch (Exception ex) {
-                Logger.Error("SentimentService.GetSentiment failed", this, ex);
+                Logger.Error("LinguisticService.GetConstituencyTreeTextAnalysis failed", this, ex);
             }
 
             return null;
@@ -50,7 +50,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language
 
                 return result;
             } catch (Exception ex) {
-                Logger.Error("SentimentService.GetSentiment failed", this, ex);
+                Logger.Error("LinguisticService.GetTokensTextAnalysis failed", this, ex);
             }
 
             return null;

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Text.Sentiment;
 using Microsoft.ProjectOxford.Video.Contract;
 using Newtonsoft.Json;
@@ -8,10 +9,10 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
 {
     public class SentimentRepository : ISentimentRepository
     {
-        protected static readonly string baseUrl = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/";
-        protected static readonly string keyPhraseUrl = $"{baseUrl}keyPhrases";
-        protected static readonly string topicUrl = $"{baseUrl}topics";
-        protected static readonly string sentimentUrl = $"{baseUrl}sentiment";
+        protected readonly string baseUrl = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/";
+        protected readonly string keyPhraseUrl;
+        protected readonly string topicUrl;
+        protected readonly string sentimentUrl;
 
         protected readonly IApiKeys ApiKeys;
         protected readonly IRepositoryClient RepositoryClient;
@@ -22,6 +23,24 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;
+
+            //Set the endpoint URL if provided
+            if (!String.IsNullOrEmpty(apiKeys.TextAnalyticsEndpoint))
+            {
+                baseUrl = apiKeys.TextAnalyticsEndpoint;
+
+                //Ensure terminating slash
+                if (!baseUrl.EndsWith("/"))
+                {
+                    baseUrl = String.Format("{0}/", baseUrl);
+                }
+
+            }
+
+            //Initialize other URLs
+            keyPhraseUrl = $"{baseUrl}keyPhrases";
+            topicUrl = $"{baseUrl}topics";
+            sentimentUrl = $"{baseUrl}sentiment";
         }
 
         #region Sentiment

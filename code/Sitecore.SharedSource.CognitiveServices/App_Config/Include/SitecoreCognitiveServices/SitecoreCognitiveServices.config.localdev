@@ -25,18 +25,21 @@
       <setting name="CognitiveService.ApiKey.BingAutosuggest" value="" />
       <setting name="CognitiveService.ApiKey.BingSearch" value="" />
       <setting name="CognitiveService.ApiKey.ComputerVision" value="" />
+      <setting name="CognitiveService.ApiKey.ComputerVision.Endpoint" value="" />
       <setting name="CognitiveService.ApiKey.ContentModerator" value="" />
       <setting name="CognitiveService.ApiKey.ContentModerator.ClientId" value="" />
       <setting name="CognitiveService.ApiKey.ContentModerator.PrivateKey" value="" />
       <setting name="CognitiveService.ApiKey.EntityLinking" value="" />
       <setting name="CognitiveService.ApiKey.Emotion" value="" />
       <setting name="CognitiveService.ApiKey.Face" value="" />
+      <setting name="CognitiveService.ApiKey.Face.Endpoint" value="" />
       <setting name="CognitiveService.ApiKey.LinguisticAnalysis" value="" />
       <setting name="CognitiveService.ApiKey.Luis" value="" />
       <setting name="CognitiveService.ApiKey.QnA" value="" />
       <setting name="CognitiveService.ApiKey.Recommendations" value="" />
       <setting name="CognitiveService.ApiKey.SpeakerRecognition" value="" />
       <setting name="CognitiveService.ApiKey.TextAnalytics" value="" />
+      <setting name="CognitiveService.ApiKey.TextAnalytics.Endpoint" value="" />
       <setting name="CognitiveService.ApiKey.Video" value="" />
       <setting name="CognitiveService.ApiKey.WebLM" value="" />
 

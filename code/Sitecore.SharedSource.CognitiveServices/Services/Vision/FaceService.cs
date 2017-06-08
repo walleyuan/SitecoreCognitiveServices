@@ -32,7 +32,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             } 
             catch (Exception ex) 
             {
-                Logger.Error("SentimentService.GetSentiment failed", this, ex);
+                Logger.Error("FaceService.Detect failed", this, ex);
             }
 
             return null;
@@ -44,7 +44,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 
                 return result;
             } catch (Exception ex) {
-                Logger.Error("SentimentService.GetSentiment failed", this, ex);
+                Logger.Error("FaceService.Detect failed", this, ex);
             }
 
             return null;
