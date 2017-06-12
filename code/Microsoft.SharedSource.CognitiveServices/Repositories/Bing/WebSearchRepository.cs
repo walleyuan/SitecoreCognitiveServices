@@ -9,7 +9,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
 {
     public class WebSearchRepository : IWebSearchRepository
     {
-        public static readonly string webSearchUrl = "https://api.cognitive.microsoft.com/bing/v5.0/search";
+        public static readonly string webSearchUrl = "search";
 
         protected readonly IApiKeys ApiKeys;
         protected readonly IRepositoryClient RepositoryClient;
@@ -43,14 +43,18 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
 
         public virtual WebSearchResponse WebSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
         {
-            return Task.Run(async () => await WebSearchAsync(text, countOffset, languageCode, safeSearch)).Result;
+            var qs = GetWebSearchQuerystring(countOffset, languageCode, safeSearch);
+
+            var response = RepositoryClient.SendGet(ApiKeys.BingSearch, $"{ApiKeys.BingSearch}{webSearchUrl}?q={text}{qs}");
+
+            return JsonConvert.DeserializeObject<WebSearchResponse>(response);
         }
 
         public virtual async Task<WebSearchResponse> WebSearchAsync(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off)
         {
             var qs = GetWebSearchQuerystring(countOffset, languageCode, safeSearch);
 
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{webSearchUrl}?q={text}{qs}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{ApiKeys.BingSearch}{webSearchUrl}?q={text}{qs}");
             
             return JsonConvert.DeserializeObject<WebSearchResponse>(response);
         }

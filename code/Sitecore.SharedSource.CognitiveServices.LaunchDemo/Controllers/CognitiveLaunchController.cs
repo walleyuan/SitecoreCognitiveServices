@@ -431,7 +431,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
         public ActionResult Video(string url)
         {
             var vr = new VideoResult();
-            vr.Operation = VideoService.CreateOperation(url, new FaceDetectionOperationSettings());
+            vr.Operation = VideoService.FaceDetectionAndTracking(url);
             
             return View("Video", vr);
         }

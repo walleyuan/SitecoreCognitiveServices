@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.QnAMaker;
 using Newtonsoft.Json;
@@ -9,8 +6,6 @@ using Newtonsoft.Json;
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
     public class QnAMakerRepository : IQnAMakerRepository 
     {
-        public static readonly string qnaUrl = "https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases/";
-
         protected readonly IApiKeys ApiKeys;
         protected readonly IRepositoryClient RepositoryClient;
 
@@ -22,63 +17,63 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
         }
 
         public virtual KnowledgeBaseExtractionDetails CreateKnowledgeBase(KnowledgeBaseDetails request) {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.QnA, $"{qnaUrl}create", JsonConvert.SerializeObject(request));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.QnA, $"{ApiKeys.QnAEndpoint}create", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<KnowledgeBaseExtractionDetails>(response);
         }
 
         public virtual async Task<KnowledgeBaseExtractionDetails> CreateKnowledgeBaseAsync(KnowledgeBaseDetails request) {
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.QnA, $"{qnaUrl}create", JsonConvert.SerializeObject(request));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.QnA, $"{ApiKeys.QnAEndpoint}create", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<KnowledgeBaseExtractionDetails>(response);
         }
 
         public virtual void DeleteKnowledgeBase(Guid knowledgeBaseId) {
-            RepositoryClient.SendJsonDelete(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}");
+            RepositoryClient.SendJsonDelete(ApiKeys.QnA, $"{ApiKeys.QnAEndpoint}{knowledgeBaseId}");
         }
 
         public virtual async Task DeleteKnowledgeBaseAsync(Guid knowledgeBaseId) {
-            await RepositoryClient.SendJsonDeleteAsync(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}");
+            await RepositoryClient.SendJsonDeleteAsync(ApiKeys.QnA, $"{ApiKeys.QnAEndpoint}{knowledgeBaseId}");
         }
 
         public virtual string DownloadKnowledgeBase(Guid knowledgeBaseId) {
-            var response = RepositoryClient.SendGet(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}");
+            var response = RepositoryClient.SendGet(ApiKeys.QnA, $"{ApiKeys.QnAEndpoint}{knowledgeBaseId}");
 
             return response;
         }
 
         public virtual async Task<string> DownloadKnowledgeBaseAsync(Guid knowledgeBaseId) {
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.QnA, $"{ApiKeys.QnAEndpoint}{knowledgeBaseId}");
 
             return response;
         }
 
         public virtual GenerateAnswerResponse GenerateAnswer(Guid knowledgeBaseId, GenerateAnswerRequest request) {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}/generateAnswer", JsonConvert.SerializeObject(request));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.QnA, $"{ApiKeys.QnAEndpoint}{knowledgeBaseId}/generateAnswer", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<GenerateAnswerResponse>(response);
         }
 
         public virtual async Task<GenerateAnswerResponse> GenerateAnswerAsync(Guid knowledgeBaseId, GenerateAnswerRequest request) {
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}/generateAnswer", JsonConvert.SerializeObject(request));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.QnA, $"{ApiKeys.QnAEndpoint}{knowledgeBaseId}/generateAnswer", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<GenerateAnswerResponse>(response);
         }
 
         public virtual void PublishKnowledgeBase(Guid knowledgeBaseId) {
-            RepositoryClient.SendJsonPut(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}", "");
+            RepositoryClient.SendJsonPut(ApiKeys.QnA, $"{ApiKeys.QnAEndpoint}{knowledgeBaseId}", "");
         }
 
         public virtual async Task PublishKnowledgeBaseAsync(Guid knowledgeBaseId) {
-            await RepositoryClient.SendJsonPutAsync(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}", "");
+            await RepositoryClient.SendJsonPutAsync(ApiKeys.QnA, $"{ApiKeys.QnAEndpoint}{knowledgeBaseId}", "");
         }
 
         public virtual void UpdateKnowledgeBase(Guid knowledgeBaseId, PatchKnowledgeBaseRequest request) {
-            RepositoryClient.SendJsonPatch(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}", JsonConvert.SerializeObject(request));
+            RepositoryClient.SendJsonPatch(ApiKeys.QnA, $"{ApiKeys.QnAEndpoint}{knowledgeBaseId}", JsonConvert.SerializeObject(request));
         }
 
         public virtual async Task UpdateKnowledgeBaseAsync(Guid knowledgeBaseId, PatchKnowledgeBaseRequest request) {
-            await RepositoryClient.SendJsonPatchAsync(ApiKeys.QnA, $"{qnaUrl}{knowledgeBaseId}", JsonConvert.SerializeObject(request));
+            await RepositoryClient.SendJsonPatchAsync(ApiKeys.QnA, $"{ApiKeys.QnAEndpoint}{knowledgeBaseId}", JsonConvert.SerializeObject(request));
         }
     }
 }

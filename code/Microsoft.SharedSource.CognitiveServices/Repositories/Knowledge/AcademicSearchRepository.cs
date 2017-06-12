@@ -8,11 +8,11 @@ using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
     public class AcademicSearchRepository : IAcademicSearchRepository
     {
-        protected static readonly string calcUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram";
-        protected static readonly string evaluateUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate";
-        protected static readonly string graphUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search";
-        protected static readonly string interpretUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret";
-        protected static readonly string similarityUrl = "https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity";
+        protected static readonly string calcUrl = "calchistogram";
+        protected static readonly string evaluateUrl = "evaluate";
+        protected static readonly string graphUrl = "graph/search";
+        protected static readonly string interpretUrl = "interpret";
+        protected static readonly string similarityUrl = "similarity";
 
         protected readonly IApiKeys ApiKeys;
         protected readonly IRepositoryClient RepositoryClient;
@@ -60,7 +60,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
         {
             var qs = GetCalcQuerystring(attributes, count, offset);
             var modelName = GetModelName(model);
-            var response = RepositoryClient.SendGet(ApiKeys.Academic, $"{calcUrl}?expr={expression}&model={modelName}{qs}");
+            var response = RepositoryClient.SendGet(ApiKeys.Academic, $"{ApiKeys.AcademicEndpoint}{calcUrl}?expr={expression}&model={modelName}{qs}");
 
             return JsonConvert.DeserializeObject<CalcHistogramResponse>(response);
         }
@@ -69,7 +69,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
         {
             var qs = GetCalcQuerystring(attributes, count, offset);
             var modelName = GetModelName(model);
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.Academic, $"{calcUrl}?expr={expression}&model={modelName}{qs}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Academic, $"{ApiKeys.AcademicEndpoint}{calcUrl}?expr={expression}&model={modelName}{qs}");
 
             return JsonConvert.DeserializeObject<CalcHistogramResponse>(response);
         }
@@ -109,7 +109,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
         public virtual EvaluateResponse Evaluate(string expression, AcademicModelOptions model, int count = 10, int offset = 0, string attributes = "", string orderby = "") {
             var qs = GetEvaluateQuerystring(count, offset, orderby, attributes);
             var modelName = GetModelName(model);
-            var response = RepositoryClient.SendGet(ApiKeys.Academic, $"{evaluateUrl}?expr={expression}&model={modelName}{qs}");
+            var response = RepositoryClient.SendGet(ApiKeys.Academic, $"{ApiKeys.AcademicEndpoint}{evaluateUrl}?expr={expression}&model={modelName}{qs}");
 
             return JsonConvert.DeserializeObject<EvaluateResponse>(response);
         }
@@ -118,7 +118,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
 
             var qs = GetEvaluateQuerystring(count, offset, orderby, attributes);
             var modelName = GetModelName(model);
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.Academic, $"{evaluateUrl}?expr={expression}&model={modelName}{qs}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Academic, $"{ApiKeys.AcademicEndpoint}{evaluateUrl}?expr={expression}&model={modelName}{qs}");
 
             return JsonConvert.DeserializeObject<EvaluateResponse>(response);
         }
@@ -128,14 +128,14 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
         #region Graph Search
 
         public virtual GraphSearchResponse GraphSearch(GraphSearchRequest request) {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.Academic, $"{graphUrl}?mode=json", JsonConvert.SerializeObject(request));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.Academic, $"{ApiKeys.AcademicEndpoint}{graphUrl}?mode=json", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<GraphSearchResponse>(response);
         }
 
         public virtual async Task<GraphSearchResponse> GraphSearchAsync(GraphSearchRequest request) {
             
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.Academic, $"{graphUrl}?mode=json", JsonConvert.SerializeObject(request));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.Academic, $"{ApiKeys.AcademicEndpoint}{graphUrl}?mode=json", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<GraphSearchResponse>(response);
         }
@@ -174,7 +174,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
         {
             var qs = GetInterpretQuerystring(complete, count, offset, timeout);
             var modelName = GetModelName(model);
-            var response = RepositoryClient.SendGet(ApiKeys.Academic, $"{interpretUrl}?query={query}&model={modelName}{qs}");
+            var response = RepositoryClient.SendGet(ApiKeys.Academic, $"{ApiKeys.AcademicEndpoint}{interpretUrl}?query={query}&model={modelName}{qs}");
 
             return JsonConvert.DeserializeObject<InterpretResponse>(response);
         }
@@ -183,7 +183,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
         {
             var qs = GetInterpretQuerystring(complete, count, offset, timeout);
             var modelName = GetModelName(model);
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.Academic, $"{interpretUrl}?query={query}&model={modelName}{qs}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Academic, $"{ApiKeys.AcademicEndpoint}{interpretUrl}?query={query}&model={modelName}{qs}");
 
             return JsonConvert.DeserializeObject<InterpretResponse>(response);
         }
@@ -194,14 +194,14 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
         
         public virtual double Similarity(string s1, string s2)
         {
-            var response = RepositoryClient.SendEncodedFormPost(ApiKeys.Academic, similarityUrl, $"s1={s1}&s2={s2}");
+            var response = RepositoryClient.SendEncodedFormPost(ApiKeys.Academic, $"{ApiKeys.AcademicEndpoint}{similarityUrl}", $"s1={s1}&s2={s2}");
 
             return JsonConvert.DeserializeObject<double>(response);
         }
 
         public virtual async Task<double> SimilarityAsync(string s1, string s2)
         {
-            var response = await RepositoryClient.SendEncodedFormPostAsync(ApiKeys.Academic, similarityUrl, $"s1={s1}&s2={s2}");
+            var response = await RepositoryClient.SendEncodedFormPostAsync(ApiKeys.Academic, $"{ApiKeys.AcademicEndpoint}{similarityUrl}", $"s1={s1}&s2={s2}");
 
             return JsonConvert.DeserializeObject<double>(response);
         }

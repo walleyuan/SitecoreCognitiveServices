@@ -239,7 +239,15 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             return end;
         }
 
-        public virtual async Task<string> SendOperationPostAsync(string apiKey, string url, string data)
+        public virtual async Task<string> SendOperationPostAsync(string apiKey, string url, string data) {
+            return await SendOperationPostAsync(apiKey, url, data, "application/json");
+        }
+
+        public virtual async Task<string> SendOctetOperationPostAsync(string apiKey, string url, Stream stream) {
+            return await SendOperationPostAsync(apiKey, url, GetStreamString(stream), "application/octet-stream");
+        }
+
+        public virtual async Task<string> SendOperationPostAsync(string apiKey, string url, string data, string contentType)
         {
 
             if (string.IsNullOrWhiteSpace(url))
@@ -253,8 +261,8 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Headers.Add("Ocp-Apim-Subscription-Key", apiKey);
-            request.ContentType = "application/json";
-            request.Accept = "application/json";
+            request.ContentType = contentType;
+            request.Accept = contentType;
             request.ContentLength = (long)reqData.Length;
             request.Method = "POST";
 
@@ -270,6 +278,14 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
         }
 
         public virtual string SendOperationPost(string apiKey, string url, string data) {
+            return SendOperationPost(apiKey, url, data, "application/json");
+        }
+
+        public virtual string SendOctetOperationPost(string apiKey, string url, Stream stream) {
+            return SendOperationPost(apiKey, url, GetStreamString(stream), "application/octet-stream");
+        }
+
+        public virtual string SendOperationPost(string apiKey, string url, string data, string contentType) {
 
             if (string.IsNullOrWhiteSpace(url))
                 throw new ArgumentException("url");
@@ -282,8 +298,8 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Headers.Add("Ocp-Apim-Subscription-Key", apiKey);
-            request.ContentType = "application/json";
-            request.Accept = "application/json";
+            request.ContentType = contentType;
+            request.Accept = contentType;
             request.ContentLength = (long)reqData.Length;
             request.Method = "POST";
 

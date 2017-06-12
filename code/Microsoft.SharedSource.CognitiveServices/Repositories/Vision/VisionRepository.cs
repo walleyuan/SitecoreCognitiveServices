@@ -13,8 +13,6 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 {
     public class VisionRepository : IVisionRepository
     {
-        protected readonly string visionUrl = "https://api.projectoxford.ai/vision/v1.0/";
-        
         protected readonly IApiKeys ApiKeys;
         protected readonly IRepositoryClient RepositoryClient;
 
@@ -24,22 +22,11 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
         {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;
-
-            //Set the endpoint URL if provided
-            if (!String.IsNullOrEmpty(apiKeys.ComputerVisionEndpoint)) {
-                visionUrl = apiKeys.ComputerVisionEndpoint;
-
-                //Ensure terminating slash
-                if (!visionUrl.EndsWith("/"))
-                {
-                    visionUrl = String.Format("{0}/", visionUrl);
-                }
-            }
         }
 
         public virtual string GetImageUrlJson(string imageUrl)
         {
-            return $"{{\"url\":\"{imageUrl}\"}}";
+            return JsonConvert.SerializeObject(new Image { Url = imageUrl });
         }
 
         #region Analyze Image
@@ -230,7 +217,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
         public virtual async Task<AnalysisResult> AnalyzeImageAsync(string imageUrl, IEnumerable<VisualFeature> visualFeatures = null, IEnumerable<string> details = null)
         {
             var qs = GetAnalyzeQuerystring(visualFeatures, details);
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ComputerVision, $"{visionUrl}analyze{qs}", GetImageUrlJson(imageUrl));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}analyze{qs}", GetImageUrlJson(imageUrl));
 
             return JsonConvert.DeserializeObject<AnalysisResult>(response);
         }
@@ -238,7 +225,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
         public virtual AnalysisResult AnalyzeImage(string imageUrl, IEnumerable<VisualFeature> visualFeatures = null, IEnumerable<string> details = null)
         {
             var qs = GetAnalyzeQuerystring(visualFeatures, details);
-            var response = RepositoryClient.SendJsonPost(ApiKeys.ComputerVision, $"{visionUrl}analyze{qs}", GetImageUrlJson(imageUrl));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}analyze{qs}", GetImageUrlJson(imageUrl));
 
             return JsonConvert.DeserializeObject<AnalysisResult>(response);
         }
@@ -246,7 +233,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
         public virtual async Task<AnalysisResult> AnalyzeImageAsync(Stream imageStream, IEnumerable<VisualFeature> visualFeatures = null, IEnumerable<string> details = null)
         {
             var qs = GetAnalyzeQuerystring(visualFeatures, details);
-            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ComputerVision, $"{visionUrl}analyze{qs}", imageStream);
+            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}analyze{qs}", imageStream);
 
             return JsonConvert.DeserializeObject<AnalysisResult>(response);
         }
@@ -254,7 +241,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
         public virtual AnalysisResult AnalyzeImage(Stream imageStream, IEnumerable<VisualFeature> visualFeatures = null, IEnumerable<string> details = null)
         {
             var qs = GetAnalyzeQuerystring(visualFeatures, details);
-            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ComputerVision, $"{visionUrl}analyze{qs}", imageStream);
+            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}analyze{qs}", imageStream);
 
             return JsonConvert.DeserializeObject<AnalysisResult>(response);
         }
@@ -265,56 +252,56 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 
         public virtual async Task<AnalysisInDomainResult> AnalyzeImageInDomainAsync(string url, Model model)
         {
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ComputerVision, $"{visionUrl}models/{model.Name}/analyze", GetImageUrlJson(url));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}models/{model.Name}/analyze", GetImageUrlJson(url));
 
             return JsonConvert.DeserializeObject<AnalysisInDomainResult>(response);
         }
 
         public virtual AnalysisInDomainResult AnalyzeImageInDomain(string url, Model model)
         {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.ComputerVision, $"{visionUrl}models/{model.Name}/analyze", GetImageUrlJson(url));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}models/{model.Name}/analyze", GetImageUrlJson(url));
 
             return JsonConvert.DeserializeObject<AnalysisInDomainResult>(response);
         }
 
         public virtual async Task<AnalysisInDomainResult> AnalyzeImageInDomainAsync(string url, string modelName)
         {
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ComputerVision, $"{visionUrl}models/{modelName}/analyze", GetImageUrlJson(url));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}models/{modelName}/analyze", GetImageUrlJson(url));
 
             return JsonConvert.DeserializeObject<AnalysisInDomainResult>(response);
         }
 
         public virtual AnalysisInDomainResult AnalyzeImageInDomain(string url, string modelName)
         {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.ComputerVision, $"{visionUrl}models/{modelName}/analyze", GetImageUrlJson(url));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}models/{modelName}/analyze", GetImageUrlJson(url));
 
             return JsonConvert.DeserializeObject<AnalysisInDomainResult>(response);
         }
 
         public virtual async Task<AnalysisInDomainResult> AnalyzeImageInDomainAsync(Stream imageStream, Model model)
         {
-            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ComputerVision, $"{visionUrl}models/{model.Name}/analyze", imageStream);
+            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}models/{model.Name}/analyze", imageStream);
 
             return JsonConvert.DeserializeObject<AnalysisInDomainResult>(response);
         }
 
         public virtual AnalysisInDomainResult AnalyzeImageInDomain(Stream imageStream, Model model)
         {
-            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ComputerVision, $"{visionUrl}models/{model.Name}/analyze", imageStream);
+            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}models/{model.Name}/analyze", imageStream);
 
             return JsonConvert.DeserializeObject<AnalysisInDomainResult>(response);
         }
 
         public virtual async Task<AnalysisInDomainResult> AnalyzeImageInDomainAsync(Stream imageStream, string modelName)
         {
-            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ComputerVision, $"{visionUrl}models/{modelName}/analyze", imageStream);
+            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}models/{modelName}/analyze", imageStream);
 
             return JsonConvert.DeserializeObject<AnalysisInDomainResult>(response);
         }
 
         public virtual AnalysisInDomainResult AnalyzeImageInDomain(Stream imageStream, string modelName)
         {
-            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ComputerVision, $"{visionUrl}models/{modelName}/analyze", imageStream);
+            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}models/{modelName}/analyze", imageStream);
 
             return JsonConvert.DeserializeObject<AnalysisInDomainResult>(response);
         }
@@ -325,14 +312,14 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 
         public virtual async Task<ModelResult> ListModelsAsync()
         {
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.ComputerVision, $"{visionUrl}models");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}models");
 
             return JsonConvert.DeserializeObject<ModelResult>(response);
         }
 
         public virtual ModelResult ListModels()
         {
-            var response = RepositoryClient.SendGet(ApiKeys.ComputerVision, $"{visionUrl}models");
+            var response = RepositoryClient.SendGet(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}models");
 
             return JsonConvert.DeserializeObject<ModelResult>(response);
         }
@@ -343,28 +330,28 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 
         public virtual async Task<AnalysisResult> DescribeAsync(string url, int maxCandidates = 1)
         {
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ComputerVision, $"{visionUrl}describe?maxCandidates={maxCandidates}", GetImageUrlJson(url));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}describe?maxCandidates={maxCandidates}", GetImageUrlJson(url));
 
             return JsonConvert.DeserializeObject<AnalysisResult>(response);
         }
 
         public virtual AnalysisResult Describe(string url, int maxCandidates = 1)
         {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.ComputerVision, $"{visionUrl}describe?maxCandidates={maxCandidates}", GetImageUrlJson(url));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}describe?maxCandidates={maxCandidates}", GetImageUrlJson(url));
 
             return JsonConvert.DeserializeObject<AnalysisResult>(response);
         }
 
         public virtual async Task<AnalysisResult> DescribeAsync(Stream imageStream, int maxCandidates = 1)
         {
-            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ComputerVision, $"{visionUrl}describe?maxCandidates={maxCandidates}", imageStream);
+            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}describe?maxCandidates={maxCandidates}", imageStream);
 
             return JsonConvert.DeserializeObject<AnalysisResult>(response);
         }
 
         public virtual AnalysisResult Describe(Stream imageStream, int maxCandidates = 1)
         {
-            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ComputerVision, $"{visionUrl}describe?maxCandidates={maxCandidates}", imageStream);
+            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}describe?maxCandidates={maxCandidates}", imageStream);
 
             return JsonConvert.DeserializeObject<AnalysisResult>(response);
         }
@@ -375,28 +362,28 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 
         public virtual async Task<byte[]> GetThumbnailAsync(string url, int width, int height, bool smartCropping = true)
         {
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ComputerVision, $"{visionUrl}generateThumbnail?width={width}&height={height}&smartCropping={smartCropping}", GetImageUrlJson(url));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}generateThumbnail?width={width}&height={height}&smartCropping={smartCropping}", GetImageUrlJson(url));
 
             return Encoding.ASCII.GetBytes(response);
         }
 
         public virtual byte[] GetThumbnail(string url, int width, int height, bool smartCropping = true)
         {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.ComputerVision, $"{visionUrl}generateThumbnail?width={width}&height={height}&smartCropping={smartCropping}", GetImageUrlJson(url));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}generateThumbnail?width={width}&height={height}&smartCropping={smartCropping}", GetImageUrlJson(url));
 
             return Encoding.ASCII.GetBytes(response);
         }
 
         public virtual async Task<byte[]> GetThumbnailAsync(Stream stream, int width, int height, bool smartCropping = true)
         {
-            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ComputerVision, $"{visionUrl}generateThumbnail?width={width}&height={height}&smartCropping={smartCropping}", stream);
+            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}generateThumbnail?width={width}&height={height}&smartCropping={smartCropping}", stream);
 
             return Encoding.ASCII.GetBytes(response);
         }
 
         public virtual byte[] GetThumbnail(Stream stream, int width, int height, bool smartCropping = true)
         {
-            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ComputerVision, $"{visionUrl}generateThumbnail?width={width}&height={height}&smartCropping={smartCropping}", stream);
+            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}generateThumbnail?width={width}&height={height}&smartCropping={smartCropping}", stream);
 
             return Encoding.ASCII.GetBytes(response);
         }
@@ -407,28 +394,28 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 
         public virtual async Task<OcrResults> RecognizeTextAsync(string imageUrl, string languageCode = "unk", bool detectOrientation = true)
         {
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ComputerVision, $"{visionUrl}ocr?language={languageCode}&detectOrientation={detectOrientation}", GetImageUrlJson(imageUrl));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}ocr?language={languageCode}&detectOrientation={detectOrientation}", GetImageUrlJson(imageUrl));
 
             return JsonConvert.DeserializeObject<OcrResults>(response);
         }
 
         public virtual OcrResults RecognizeText(string imageUrl, string languageCode = "unk", bool detectOrientation = true)
         {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.ComputerVision, $"{visionUrl}ocr?language={languageCode}&detectOrientation={detectOrientation}", GetImageUrlJson(imageUrl));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}ocr?language={languageCode}&detectOrientation={detectOrientation}", GetImageUrlJson(imageUrl));
 
             return JsonConvert.DeserializeObject<OcrResults>(response);
         }
 
         public virtual async Task<OcrResults> RecognizeTextAsync(Stream imageStream, string languageCode = "unk", bool detectOrientation = true)
         {
-            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ComputerVision, $"{visionUrl}ocr?language={languageCode}&detectOrientation={detectOrientation}", imageStream);
+            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}ocr?language={languageCode}&detectOrientation={detectOrientation}", imageStream);
 
             return JsonConvert.DeserializeObject<OcrResults>(response);
         }
 
         public virtual OcrResults RecognizeText(Stream imageStream, string languageCode = "unk", bool detectOrientation = true)
         {
-            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ComputerVision, $"{visionUrl}ocr?language={languageCode}&detectOrientation={detectOrientation}", imageStream);
+            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}ocr?language={languageCode}&detectOrientation={detectOrientation}", imageStream);
 
             return JsonConvert.DeserializeObject<OcrResults>(response);
         }
@@ -439,28 +426,28 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 
         public virtual async Task<AnalysisResult> GetTagsAsync(string imageUrl)
         {
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ComputerVision, $"{visionUrl}tag", GetImageUrlJson(imageUrl));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}tag", GetImageUrlJson(imageUrl));
 
             return JsonConvert.DeserializeObject<AnalysisResult>(response);
         }
 
         public virtual AnalysisResult GetTags(string imageUrl)
         {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.ComputerVision, $"{visionUrl}tag", GetImageUrlJson(imageUrl));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}tag", GetImageUrlJson(imageUrl));
 
             return JsonConvert.DeserializeObject<AnalysisResult>(response);
         }
 
         public virtual async Task<AnalysisResult> GetTagsAsync(Stream imageStream)
         {
-            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ComputerVision, $"{visionUrl}tag", imageStream);
+            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}tag", imageStream);
 
             return JsonConvert.DeserializeObject<AnalysisResult>(response);
         }
 
         public virtual AnalysisResult GetTags(Stream imageStream)
         {
-            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ComputerVision, $"{visionUrl}tag", imageStream);
+            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}tag", imageStream);
 
             return JsonConvert.DeserializeObject<AnalysisResult>(response);
         }
@@ -471,14 +458,14 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 
         public virtual async Task<HandwrittenTextResponse> GetHandwrittenTextOperationResultAsync(string operationId)
         {
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.ComputerVision, $"{visionUrl}textOperations/{operationId}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}textOperations/{operationId}");
 
             return JsonConvert.DeserializeObject<HandwrittenTextResponse>(response);
         }
 
         public virtual HandwrittenTextResponse GetHandwrittenTextOperationResult(string operationId)
         {
-            var response = RepositoryClient.SendGet(ApiKeys.ComputerVision, $"{visionUrl}textOperations/{operationId}");
+            var response = RepositoryClient.SendGet(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}textOperations/{operationId}");
 
             return JsonConvert.DeserializeObject<HandwrittenTextResponse>(response);
         }
@@ -489,12 +476,12 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 
         public virtual async Task<string> RecognizeHandwrittenTextAsync(string imageUrl, bool handwriting = false)
         {
-            return await RepositoryClient.SendOperationPostAsync(ApiKeys.ComputerVision, $"{visionUrl}recognizeText?handwriting={handwriting}", GetImageUrlJson(imageUrl));
+            return await RepositoryClient.SendOperationPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}recognizeText?handwriting={handwriting}", GetImageUrlJson(imageUrl));
         }
 
         public virtual string RecognizeHandwrittenText(string imageUrl, bool handwriting = false)
         {
-            return RepositoryClient.SendOperationPost(ApiKeys.ComputerVision, $"{visionUrl}recognizeText?handwriting={handwriting}", GetImageUrlJson(imageUrl));
+            return RepositoryClient.SendOperationPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}recognizeText?handwriting={handwriting}", GetImageUrlJson(imageUrl));
         }
 
         #endregion Recognize Handwritten Text

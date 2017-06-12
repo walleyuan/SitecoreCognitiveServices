@@ -6,7 +6,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
 {
     public class LanguageRepository : ILanguageRepository
     {
-        protected static readonly string languageUrl = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages";
+        protected static readonly string languageUrl = "languages";
         protected readonly IRepositoryClient RepositoryClient;
         protected readonly IApiKeys ApiKeys;
 
@@ -21,8 +21,8 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         public virtual string GetLanguageUrl(LanguageRequest request)
         {
             return (request.NumberOfLanguagesToDetect > 1)
-                 ? $"{languageUrl}?numberOfLanguagesToDetect={request.NumberOfLanguagesToDetect}"
-                 : languageUrl;
+                 ? $"{ApiKeys.TextAnalyticsEndpoint}{languageUrl}?numberOfLanguagesToDetect={request.NumberOfLanguagesToDetect}"
+                 : $"{ApiKeys.TextAnalyticsEndpoint}{languageUrl}";
         }
 
         public virtual LanguageResponse GetLanguages(LanguageRequest request)

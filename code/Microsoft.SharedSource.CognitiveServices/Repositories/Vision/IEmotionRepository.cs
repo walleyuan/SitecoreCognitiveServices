@@ -1,30 +1,29 @@
-﻿using System.IO;
-using System.Threading.Tasks;
+﻿using Microsoft.ProjectOxford.Common;
+using Microsoft.ProjectOxford.Common.Contract;
 using Microsoft.ProjectOxford.Emotion.Contract;
+using Microsoft.SharedSource.CognitiveServices.Enums;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 {
     public interface IEmotionRepository
     {
-        #region Client Methods
-        /// <summary>
-        /// Stubs out the internal interface that Microsoft.ProjectOxford.Emotion.IEmotionServiceClient implements
-        /// </summary>
-        Task<Microsoft.ProjectOxford.Emotion.Contract.Emotion[]> RecognizeAsync(string imageUrl);
-
-        Task<Microsoft.ProjectOxford.Emotion.Contract.Emotion[]> RecognizeAsync(string imageUrl, Microsoft.ProjectOxford.Common.Rectangle[] faceRectangles);
-
-        Task<Microsoft.ProjectOxford.Emotion.Contract.Emotion[]> RecognizeAsync(Stream imageStream);
-
-        Task<Microsoft.ProjectOxford.Emotion.Contract.Emotion[]> RecognizeAsync(Stream imageStream, Microsoft.ProjectOxford.Common.Rectangle[] faceRectangles);
-
-        Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(Stream videoStream);
-
-        Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(byte[] videoBytes);
-
-        Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(string videoUrl);
-
-        Task<Microsoft.ProjectOxford.Common.Contract.VideoOperationResult> GetOperationResultAsync(VideoEmotionRecognitionOperation operation);
-        #endregion Client Methods
+        Emotion[] Recognize(string imageUrl);
+        Task<Emotion[]> RecognizeAsync(string imageUrl);
+        Emotion[] Recognize(string imageUrl, Rectangle[] faceRectangles);
+        Task<Emotion[]> RecognizeAsync(string imageUrl, Rectangle[] faceRectangles);
+        Emotion[] Recognize(Stream imageStream);
+        Task<Emotion[]> RecognizeAsync(Stream imageStream);
+        Emotion[] Recognize(Stream imageStream, Rectangle[] faceRectangles);
+        Task<Emotion[]> RecognizeAsync(Stream imageStream, Rectangle[] faceRectangles);
+        VideoEmotionRecognitionOperation RecognizeInVideo(Stream videoStream, VideoOutputStyleOptions outputStyle);
+        Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(Stream videoStream, VideoOutputStyleOptions outputStyle);
+        VideoEmotionRecognitionOperation RecognizeInVideo(byte[] videoBytes, VideoOutputStyleOptions outputStyle);
+        Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(byte[] videoBytes, VideoOutputStyleOptions outputStyle);
+        VideoEmotionRecognitionOperation RecognizeInVideo(string videoUrl, VideoOutputStyleOptions outputStyle);
+        Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(string videoUrl, VideoOutputStyleOptions outputStyle);
+        VideoOperationResult GetOperationResult(VideoEmotionRecognitionOperation operation);
+        Task<VideoOperationResult> GetOperationResultAsync(VideoEmotionRecognitionOperation operation);
     }
 }

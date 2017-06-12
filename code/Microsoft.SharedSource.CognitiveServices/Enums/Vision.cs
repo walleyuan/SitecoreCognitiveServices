@@ -47,4 +47,8 @@ namespace Microsoft.SharedSource.CognitiveServices.Enums
     }
 
     public enum ContentModeratorVideoModeOptions { Speed, Balance, Quality }
+
+    public enum VideoOutputStyleOptions { Aggregate, PerFrame }
+
+    public enum SensitivityOptions { low, medium, high }
 }

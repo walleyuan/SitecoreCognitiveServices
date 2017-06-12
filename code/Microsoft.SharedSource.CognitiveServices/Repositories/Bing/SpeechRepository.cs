@@ -9,8 +9,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
     public class SpeechRepository : ISpeechRepository
     {
         protected static readonly string contentType = "audio/wav; samplerate=16000";
-        protected static readonly string speechUrl = "https://speech.platform.bing.com/";
-
+        
         protected readonly IApiKeys ApiKeys;
         protected readonly IRepositoryClient RepositoryClient;
 
@@ -23,7 +22,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
 
         protected virtual string GetSpeechToTextUrl(ScenarioOptions scenario, BingSpeechLocaleOptions locale, SpeechOsOptions os, Guid fromDeviceId, int maxnbest, int profanitycheck)
         {
-            return $"{speechUrl}recognize?version=3.0&scenarios={scenario}&appid=D4D52672-91D7-4C74-8AD8-42B1D98141A5&requestid={Guid.NewGuid()}&format=json&locale={locale}&device.os={os}&instanceid={fromDeviceId}&maxnbest={maxnbest}&result.profanitymarkup={profanitycheck}";
+            return $"{ApiKeys.BingSpeechEndpoint}recognize?version=3.0&scenarios={scenario}&appid=D4D52672-91D7-4C74-8AD8-42B1D98141A5&requestid={Guid.NewGuid()}&format=json&locale={locale}&device.os={os}&instanceid={fromDeviceId}&maxnbest={maxnbest}&result.profanitymarkup={profanitycheck}";
         }
 
         public virtual SpeechToTextResponse SpeechToText(Stream audioStream, ScenarioOptions scenario, BingSpeechLocaleOptions locale, SpeechOsOptions os, Guid fromDeviceId, int maxnbest = 1, int profanitycheck = 1)
@@ -61,7 +60,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
         public virtual async Task<Stream> TextToSpeechAsync(string text, BingSpeechLocaleOptions locale, string voiceName, GenderOptions voiceType, AudioOutputFormatOptions outputFormat)
         {
             var response = await RepositoryClient.GetAudioStreamAsync(
-                $"{speechUrl}synthesize", 
+                $"{ApiKeys.BingSpeechEndpoint}synthesize", 
                 text, 
                 locale, 
                 voiceName, 

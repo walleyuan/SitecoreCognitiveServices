@@ -6,8 +6,6 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
 {
     public class AutoSuggestRepository : IAutoSuggestRepository
     {
-        public static readonly string suggestUrl = "https://api.cognitive.microsoft.com/bing/v5.0/suggestions/";
-
         protected readonly IApiKeys ApiKeys;
         protected readonly IRepositoryClient RepositoryClient;
 
@@ -21,14 +19,14 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
 
         public virtual AutoSuggestResponse GetSuggestions(string text)
         {
-            var response = RepositoryClient.SendGet(ApiKeys.BingAutosuggest, $"{suggestUrl}?q={text}");
+            var response = RepositoryClient.SendGet(ApiKeys.BingAutosuggest, $"{ApiKeys.BingAutosuggestEndpoint}?q={text}");
 
             return JsonConvert.DeserializeObject<AutoSuggestResponse>(response);
         }
 
         public virtual async Task<AutoSuggestResponse> GetSuggestionsAsync(string text)
         {
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingAutosuggest, $"{suggestUrl}?q={text}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingAutosuggest, $"{ApiKeys.BingAutosuggestEndpoint}?q={text}");
 
             return JsonConvert.DeserializeObject<AutoSuggestResponse>(response);
         }

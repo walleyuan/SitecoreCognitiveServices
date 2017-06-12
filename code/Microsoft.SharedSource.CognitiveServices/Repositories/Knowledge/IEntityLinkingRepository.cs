@@ -9,6 +9,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge
         /// <summary>
         /// Stubs out the internal interface that Microsoft.ProjectOxford.EntityLinking.EntityLinkingServiceClient implements
         /// </summary>
+        EntityLink[] Link(string text, string selection = "", int offset = 0);
         Task<EntityLink[]> LinkAsync(string text, string selection = "", int offset = 0);
     }
 }

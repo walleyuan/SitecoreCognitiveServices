@@ -8,7 +8,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
 {
     public class LinguisticRepository : ILinguisticRepository
     {
-        public static readonly string textAnalysisUrl = "https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze";
+        public static readonly string textAnalysisUrl = "analyze";
 
         protected readonly IApiKeys ApiKeys;
         protected readonly IRepositoryClient RepositoryClient;
@@ -31,7 +31,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         public virtual POSTagsTextAnalysisResponse GetPOSTagsTextAnalysis(TextAnalysisRequest request)
         {
             request.AnalyzerIds = new[] { AnalyzerIds[AnalyzerType.PartsOfSpeech] };
-            var response = RepositoryClient.SendJsonPost(ApiKeys.LinguisticAnalysis, textAnalysisUrl, JsonConvert.SerializeObject(request));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.LinguisticAnalysis, $"{ApiKeys.LinguisticAnalysisEndpoint}{textAnalysisUrl}", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<List<POSTagsTextAnalysisResponse>>(response).First();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         public virtual async Task<POSTagsTextAnalysisResponse> GetPOSTagsTextAnalysisAsync(TextAnalysisRequest request)
         {
             request.AnalyzerIds = new [] { AnalyzerIds[AnalyzerType.PartsOfSpeech] };
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.LinguisticAnalysis, textAnalysisUrl, JsonConvert.SerializeObject(request));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.LinguisticAnalysis, $"{ApiKeys.LinguisticAnalysisEndpoint}{textAnalysisUrl}", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<List<POSTagsTextAnalysisResponse>>(response).First();
         }
@@ -52,7 +52,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         public virtual ConstituencyTreeTextAnalysisResponse GetConstituencyTreeTextAnalysis(TextAnalysisRequest request)
         {
             request.AnalyzerIds = new[] { AnalyzerIds[AnalyzerType.ConstituencyTree] };
-            var response = RepositoryClient.SendJsonPost(ApiKeys.LinguisticAnalysis, textAnalysisUrl, JsonConvert.SerializeObject(request));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.LinguisticAnalysis, $"{ApiKeys.LinguisticAnalysisEndpoint}{textAnalysisUrl}", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<List<ConstituencyTreeTextAnalysisResponse>>(response).First();
         }
@@ -65,7 +65,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         public virtual async Task<ConstituencyTreeTextAnalysisResponse> GetConstituencyTreeTextAnalysisAsync(TextAnalysisRequest request)
         {
             request.AnalyzerIds = new [] { AnalyzerIds[AnalyzerType.ConstituencyTree] };
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.LinguisticAnalysis, textAnalysisUrl, JsonConvert.SerializeObject(request));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.LinguisticAnalysis, $"{ApiKeys.LinguisticAnalysisEndpoint}{textAnalysisUrl}", JsonConvert.SerializeObject(request));
             
             return JsonConvert.DeserializeObject<List<ConstituencyTreeTextAnalysisResponse>>(response).First();
         }
@@ -73,7 +73,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         public virtual TokensTextAnalysisResponse GetTokensTextAnalysis(TextAnalysisRequest request)
         {
             request.AnalyzerIds = new[] { AnalyzerIds[AnalyzerType.Token] };
-            var response = RepositoryClient.SendJsonPost(ApiKeys.LinguisticAnalysis, textAnalysisUrl, JsonConvert.SerializeObject(request));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.LinguisticAnalysis, $"{ApiKeys.LinguisticAnalysisEndpoint}{textAnalysisUrl}", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<List<TokensTextAnalysisResponse>>(response).First();
         }
@@ -85,7 +85,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         public virtual async Task<TokensTextAnalysisResponse> GetTokensTextAnalysisAsync(TextAnalysisRequest request)
         {
             request.AnalyzerIds = new [] { AnalyzerIds[AnalyzerType.Token] };
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.LinguisticAnalysis, textAnalysisUrl, JsonConvert.SerializeObject(request));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.LinguisticAnalysis, $"{ApiKeys.LinguisticAnalysisEndpoint}{textAnalysisUrl}", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<List<TokensTextAnalysisResponse>>(response).First();
         }

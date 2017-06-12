@@ -9,10 +9,9 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
 {
     public class SentimentRepository : ISentimentRepository
     {
-        protected readonly string baseUrl = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/";
-        protected readonly string keyPhraseUrl;
-        protected readonly string topicUrl;
-        protected readonly string sentimentUrl;
+        protected readonly string keyPhraseUrl = "keyPhrases";
+        protected readonly string topicUrl = "topics";
+        protected readonly string sentimentUrl = "sentiment";
 
         protected readonly IApiKeys ApiKeys;
         protected readonly IRepositoryClient RepositoryClient;
@@ -23,38 +22,20 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;
-
-            //Set the endpoint URL if provided
-            if (!String.IsNullOrEmpty(apiKeys.TextAnalyticsEndpoint))
-            {
-                baseUrl = apiKeys.TextAnalyticsEndpoint;
-
-                //Ensure terminating slash
-                if (!baseUrl.EndsWith("/"))
-                {
-                    baseUrl = String.Format("{0}/", baseUrl);
-                }
-
-            }
-
-            //Initialize other URLs
-            keyPhraseUrl = $"{baseUrl}keyPhrases";
-            topicUrl = $"{baseUrl}topics";
-            sentimentUrl = $"{baseUrl}sentiment";
         }
 
         #region Sentiment
 
         public virtual SentimentResponse GetSentiment(SentimentRequest request)
         {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.TextAnalytics, sentimentUrl, JsonConvert.SerializeObject(request));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.TextAnalytics, $"{ApiKeys.TextAnalyticsEndpoint}{sentimentUrl}", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<SentimentResponse>(response);
         }
 
         public virtual async Task<SentimentResponse> GetSentimentAsync(SentimentRequest request)
         {
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.TextAnalytics, sentimentUrl, JsonConvert.SerializeObject(request));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.TextAnalytics, $"{ApiKeys.TextAnalyticsEndpoint}{sentimentUrl}", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<SentimentResponse>(response);
         }
@@ -65,14 +46,14 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
 
         public virtual KeyPhraseSentimentResponse GetKeyPhrases(SentimentRequest request)
         {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.TextAnalytics, keyPhraseUrl, JsonConvert.SerializeObject(request));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.TextAnalytics, $"{ApiKeys.TextAnalyticsEndpoint}{keyPhraseUrl}", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<KeyPhraseSentimentResponse>(response);
         }
 
         public virtual async Task<KeyPhraseSentimentResponse> GetKeyPhrasesAsync(SentimentRequest request)
         {
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.TextAnalytics, keyPhraseUrl, JsonConvert.SerializeObject(request));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.TextAnalytics, $"{ApiKeys.TextAnalyticsEndpoint}{keyPhraseUrl}", JsonConvert.SerializeObject(request));
 
             return JsonConvert.DeserializeObject<KeyPhraseSentimentResponse>(response);
         }
@@ -83,7 +64,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
 
         public virtual string GetTopics(TopicRequest request) 
         {
-            return RepositoryClient.SendOperationPost(ApiKeys.TextAnalytics, topicUrl, JsonConvert.SerializeObject((object)request));
+            return RepositoryClient.SendOperationPost(ApiKeys.TextAnalytics, $"{ApiKeys.TextAnalyticsEndpoint}{topicUrl}", JsonConvert.SerializeObject((object)request));
         }
 
         /// <summary>
@@ -92,7 +73,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         /// <param name="request"></param>
         /// <returns></returns>
         public virtual async Task<string> GetTopicsAsync(TopicRequest request) {
-            return await RepositoryClient.SendOperationPostAsync(ApiKeys.TextAnalytics, topicUrl, JsonConvert.SerializeObject((object)request));
+            return await RepositoryClient.SendOperationPostAsync(ApiKeys.TextAnalytics, $"{ApiKeys.TextAnalyticsEndpoint}{topicUrl}", JsonConvert.SerializeObject((object)request));
         }
 
         #endregion Topics
@@ -101,7 +82,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
 
         public virtual OperationResult GetOperation(string operationLocationUrl)
         {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.TextAnalytics, operationLocationUrl, "{}");
+            var response = RepositoryClient.SendJsonPost(ApiKeys.TextAnalytics, $"{ApiKeys.TextAnalyticsEndpoint}{operationLocationUrl}", "{}");
 
             return JsonConvert.DeserializeObject<OperationResult>(response);
         }
@@ -113,7 +94,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         /// <returns></returns>
         public virtual async Task<OperationResult> GetOperationAsync(string operationLocationUrl)
         {
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.TextAnalytics, operationLocationUrl, "{}");
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.TextAnalytics, $"{ApiKeys.TextAnalyticsEndpoint}{operationLocationUrl}", "{}");
 
             return JsonConvert.DeserializeObject<OperationResult>(response);
         }

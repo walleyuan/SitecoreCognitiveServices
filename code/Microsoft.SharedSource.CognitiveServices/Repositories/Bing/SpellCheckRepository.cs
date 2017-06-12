@@ -8,8 +8,6 @@ using Microsoft.SharedSource.CognitiveServices.Models.Bing.SpellCheck;
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
     public class SpellCheckRepository : ISpellCheckRepository
     {
-        public static readonly string spellCheckUrl = "https://api.cognitive.microsoft.com/bing/v5.0/spellcheck/";
-
         protected readonly IApiKeys ApiKeys;
         protected readonly IRepositoryClient RepositoryClient;
 
@@ -39,7 +37,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
         {
             var qs = GetSpellCheckQuerystring(mode, languageCode);
 
-            var response = RepositoryClient.SendEncodedFormPost(ApiKeys.BingSpellCheck, $"{spellCheckUrl}{qs}", $"Text={text}");
+            var response = RepositoryClient.SendEncodedFormPost(ApiKeys.BingSpellCheck, $"{ApiKeys.BingSpellCheckEndpoint}{qs}", $"Text={text}");
 
             return JsonConvert.DeserializeObject<SpellCheckResponse>(response);
         }
@@ -48,7 +46,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
         {
             var qs = GetSpellCheckQuerystring(mode, languageCode);
                     
-            var response = await RepositoryClient.SendEncodedFormPostAsync(ApiKeys.BingSpellCheck, $"{spellCheckUrl}{qs}", $"Text={text}");
+            var response = await RepositoryClient.SendEncodedFormPostAsync(ApiKeys.BingSpellCheck, $"{ApiKeys.BingSpellCheckEndpoint}{qs}", $"Text={text}");
 
             return JsonConvert.DeserializeObject<SpellCheckResponse>(response);
         }
