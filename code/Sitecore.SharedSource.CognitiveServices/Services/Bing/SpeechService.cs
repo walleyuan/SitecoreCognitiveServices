@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Threading.Tasks;
 using Microsoft.SharedSource.CognitiveServices.Enums;
 using Microsoft.SharedSource.CognitiveServices.Models.Bing.Speech;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
@@ -35,7 +34,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Bing {
         public virtual Stream TextToSpeech(string text, BingSpeechLocaleOptions locale, string voiceName, GenderOptions voiceType, AudioOutputFormatOptions outputFormat)
         {
             try {
-                var result = Task.Run(async () => await SpeechRepository.TextToSpeechAsync(text, locale, voiceName, voiceType, outputFormat)).Result;
+                var result = SpeechRepository.TextToSpeech(text, locale, voiceName, voiceType, outputFormat);
 
                 return result;
             } catch (Exception ex) {

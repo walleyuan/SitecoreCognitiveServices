@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
@@ -26,7 +25,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         {
             try
             {
-                var result = Task.Run(async () => await FaceRepository.DetectAsync(stream, returnFaceId, returnFaceLandmarks, returnFaceAttributes)).Result;
+                var result = FaceRepository.Detect(stream, returnFaceId, returnFaceLandmarks, returnFaceAttributes);
 
                 return result;
             } 
@@ -40,7 +39,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 
         public virtual Face[] Detect(string imageUrl, bool returnFaceId = true, bool returnFaceLandmarks = false, IEnumerable<FaceAttributeType> returnFaceAttributes = null) {
             try {
-                var result = Task.Run(async () => await FaceRepository.DetectAsync(imageUrl, returnFaceId, returnFaceLandmarks, returnFaceAttributes)).Result;
+                var result = FaceRepository.Detect(imageUrl, returnFaceId, returnFaceLandmarks, returnFaceAttributes);
 
                 return result;
             } catch (Exception ex) {

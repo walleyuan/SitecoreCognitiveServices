@@ -56,7 +56,20 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
 
             return JsonConvert.DeserializeObject<SpeechToTextResponse>(response);
         }
-        
+
+        public virtual Stream TextToSpeech(string text, BingSpeechLocaleOptions locale, string voiceName, GenderOptions voiceType, AudioOutputFormatOptions outputFormat) {
+            var response = Task.Run(async() => await RepositoryClient.GetAudioStreamAsync(
+                $"{ApiKeys.BingSpeechEndpoint}synthesize",
+                text,
+                locale,
+                voiceName,
+                voiceType,
+                outputFormat,
+                RepositoryClient.SendBingSpeechTokenRequest(ApiKeys.BingSpeech))).Result;
+
+            return response;
+        }
+
         public virtual async Task<Stream> TextToSpeechAsync(string text, BingSpeechLocaleOptions locale, string voiceName, GenderOptions voiceType, AudioOutputFormatOptions outputFormat)
         {
             var response = await RepositoryClient.GetAudioStreamAsync(

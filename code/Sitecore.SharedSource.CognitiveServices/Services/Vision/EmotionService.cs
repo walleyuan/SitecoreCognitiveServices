@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Emotion.Contract;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
@@ -22,7 +21,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 
         public virtual Emotion[] Recognize(Stream stream) {
             try {
-                var result = Task.Run(async () => await EmotionRepository.RecognizeAsync(stream)).Result;
+                var result = EmotionRepository.Recognize(stream);
 
                 return result;
             } catch (Exception ex) {
@@ -33,7 +32,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         }
         public virtual Emotion[] Recognize(string imageUrl) {
             try {
-                var result = Task.Run(async () => await EmotionRepository.RecognizeAsync(imageUrl)).Result;
+                var result = EmotionRepository.Recognize(imageUrl);
 
                 return result;
             } catch (Exception ex) {

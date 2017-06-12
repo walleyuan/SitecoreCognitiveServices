@@ -246,7 +246,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
                 var emotionRepository = DependencyResolver.Current.GetService<IEmotionRepository>();
                 if (emotionRepository != null)
                 {
-                    Emotions = Task.Run(async () => await emotionRepository.RecognizeAsync(m.GetMediaStream())).Result;
+                    Emotions = emotionRepository.Recognize(m.GetMediaStream());
                 }
             }
             catch (Exception ex)
@@ -266,7 +266,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
                 var faceRepository = DependencyResolver.Current.GetService<IFaceRepository>();
                 if (faceRepository != null)
                 {
-                    Faces = Task.Run(async () => await faceRepository.DetectAsync(m.GetMediaStream(), true, true, new List<FaceAttributeType>()
+                    Faces = faceRepository.Detect(m.GetMediaStream(), true, true, new List<FaceAttributeType>()
                     {
                         FaceAttributeType.Age,
                         FaceAttributeType.FacialHair,
@@ -274,7 +274,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
                         FaceAttributeType.Glasses,
                         FaceAttributeType.HeadPose,
                         FaceAttributeType.Smile
-                    })).Result;
+                    });
                 }
             }
             catch (Exception ex)
@@ -295,7 +295,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
                 if (visionRepository != null)
                 {
 
-                    Visions = Task.Run(async () => await visionRepository.AnalyzeImageAsync(m.GetMediaStream(), new List<VisualFeature>() {
+                    Visions = visionRepository.AnalyzeImage(m.GetMediaStream(), new List<VisualFeature>() {
                         VisualFeature.Adult,
                         VisualFeature.Categories,
                         VisualFeature.Color,
@@ -303,9 +303,9 @@ namespace Sitecore.SharedSource.CognitiveServices.Search
                         VisualFeature.Faces,
                         VisualFeature.ImageType,
                         VisualFeature.Tags
-                    })).Result;
+                    });
 
-                    Text = Task.Run(async () => await visionRepository.RecognizeTextAsync(m.GetMediaStream(), "en", true)).Result;
+                    Text = visionRepository.RecognizeText(m.GetMediaStream(), "en", true);
                 }
             }
             catch (Exception ex)

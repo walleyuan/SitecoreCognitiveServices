@@ -21,7 +21,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
 
         public virtual EntityLink[] Link(string text, string selection = "", int offset = 0) {
             try {
-                var result = Task.Run(async () => await EntityLinkingRepository.LinkAsync(text, selection, offset)).Result;
+                var result = EntityLinkingRepository.Link(text, selection, offset);
 
                 return result;
             } catch (Exception ex) {

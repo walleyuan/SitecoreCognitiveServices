@@ -314,14 +314,8 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
             return opLocation;
         }
 
-        public virtual async Task<Stream> GetAudioStreamAsync(string url, string text, BingSpeechLocaleOptions locale, string voiceName, GenderOptions voiceType, AudioOutputFormatOptions outputFormat, string token)
-        {
-            HttpClientHandler handler = new HttpClientHandler() { CookieContainer = new CookieContainer(), UseProxy = false };
-            HttpClient client = new HttpClient(handler);
-
-            client.DefaultRequestHeaders.Clear();
-
-            Dictionary<string, string> Headers = new Dictionary<string, string>()
+        public virtual Dictionary<string, string> GetAudioHeaders(string token, AudioOutputFormatOptions outputFormat) {
+            return new Dictionary<string, string>()
             {
                 { "Content-Type", "application/ssml+xml" },
                 { "X-Microsoft-OutputFormat", JsonConvert.SerializeObject(outputFormat) },
@@ -330,13 +324,27 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
                 { "X-Search-ClientID", "1ECFAE91408841A480F00935DC390960" },
                 { "User-Agent", "TTSClient" }
             };
+        }
 
+        public virtual StringContent GetAudioContent(string text, BingSpeechLocaleOptions locale, string voiceName, GenderOptions voiceType) {
+            return new StringContent($"<speak version=\"1.0\" xmlns:lang=\"en-US\"><voice xmlns:lang=\"{JsonConvert.SerializeObject(locale)}\" xmlns:gender=\"{JsonConvert.SerializeObject(voiceType)}\" name=\"{voiceName}\">{text}</voice></speak>");
+        }
+        
+        public virtual async Task<Stream> GetAudioStreamAsync(string url, string text, BingSpeechLocaleOptions locale, string voiceName, GenderOptions voiceType, AudioOutputFormatOptions outputFormat, string token)
+        {
+            HttpClientHandler handler = new HttpClientHandler() { CookieContainer = new CookieContainer(), UseProxy = false };
+            HttpClient client = new HttpClient(handler);
+
+            client.DefaultRequestHeaders.Clear();
+
+            var Headers = GetAudioHeaders(token, outputFormat);
+            
             foreach (var header in Headers) {
                 client.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
             }
 
             var request = new HttpRequestMessage(HttpMethod.Post, url) {
-                Content = new StringContent($"<speak version=\"1.0\" xmlns:lang=\"en-US\"><voice xmlns:lang=\"{JsonConvert.SerializeObject(locale)}\" xmlns:gender=\"{JsonConvert.SerializeObject(voiceType)}\" name=\"{voiceName}\">{text}</voice></speak>")
+                Content = GetAudioContent(text, locale, voiceName, voiceType)
             };
 
             var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, CancellationToken.None);

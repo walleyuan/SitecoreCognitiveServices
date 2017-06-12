@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Threading.Tasks;
 using Microsoft.ProjectOxford.SpeakerRecognition.Contract.Identification;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Speech;
@@ -24,7 +23,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         {
             try
             {
-                var result = Task.Run(async () => await SpeakerIdentificationRepository.IdentifyAsync(audioStream, ids)).Result;
+                var result = SpeakerIdentificationRepository.Identify(audioStream, ids);
                 
                 return result;
             }
@@ -39,7 +38,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         public virtual CreateProfileResponse CreateProfile(string locale) {
             try
             {
-                var result = Task.Run(async () => await SpeakerIdentificationRepository.CreateProfileAsync(locale)).Result;
+                var result = SpeakerIdentificationRepository.CreateProfile(locale);
                 
                 return result;
             }
@@ -54,7 +53,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         public virtual void DeleteProfile(Guid id) {
             try
             {
-                Task.Run(async () => await SpeakerIdentificationRepository.DeleteProfileAsync(id));
+                SpeakerIdentificationRepository.DeleteProfile(id);
             }
             catch (Exception ex)
             {
@@ -65,7 +64,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         public virtual Profile GetProfile(Guid id) {
             try
             {
-                var result = Task.Run(async () => await SpeakerIdentificationRepository.GetProfileAsync(id)).Result;
+                var result = SpeakerIdentificationRepository.GetProfile(id);
                 
                 return result;
             }
@@ -80,7 +79,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         public virtual Profile[] GetProfiles() {
             try
             {
-                var result = Task.Run(async () => await SpeakerIdentificationRepository.GetProfilesAsync()).Result;
+                var result = SpeakerIdentificationRepository.GetProfiles();
                 
                 return result;
             }
@@ -95,7 +94,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         public virtual OperationLocation Enroll(Stream audioStream, Guid id) {
             try
             {
-                var result = Task.Run(async () => await SpeakerIdentificationRepository.EnrollAsync(audioStream, id)).Result;
+                var result = SpeakerIdentificationRepository.Enroll(audioStream, id);
                 
                 return result;
             }
@@ -110,7 +109,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         public virtual EnrollmentOperation CheckEnrollmentStatus(OperationLocation location) {
             try
             {
-                var result = Task.Run(async () => await SpeakerIdentificationRepository.CheckEnrollmentStatusAsync(location)).Result;
+                var result = SpeakerIdentificationRepository.CheckEnrollmentStatus(location);
                 
                 return result;
             }
@@ -125,7 +124,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         public virtual IdentificationOperation CheckIdentificationStatus(OperationLocation location) {
             try
             {
-                var result = Task.Run(async () => await SpeakerIdentificationRepository.CheckIdentificationStatusAsync(location)).Result;
+                var result = SpeakerIdentificationRepository.CheckIdentificationStatus(location);
                 
                 return result;
             }
@@ -140,7 +139,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         public virtual void ResetEnrollments(Guid id) {
             try
             {
-                Task.Run(async () => await SpeakerIdentificationRepository.ResetEnrollmentsAsync(id));
+                SpeakerIdentificationRepository.ResetEnrollments(id);
             }
             catch (Exception ex)
             {

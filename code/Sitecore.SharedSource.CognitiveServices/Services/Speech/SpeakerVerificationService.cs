@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Threading.Tasks;
 using Microsoft.ProjectOxford.SpeakerRecognition.Contract.Verification;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Speech;
@@ -24,7 +23,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         {
             try
             {
-                var result = Task.Run(async () => await SpeakerVerificationRepository.VerifyAsync(audioStream, id)).Result;
+                var result = SpeakerVerificationRepository.Verify(audioStream, id);
 
                 return result;
             }
@@ -40,7 +39,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         {
             try
             {
-                var result = Task.Run(async () => await SpeakerVerificationRepository.CreateProfileAsync(locale)).Result;
+                var result = SpeakerVerificationRepository.CreateProfile(locale);
                 
                 return result;
             }
@@ -56,7 +55,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         {
             try
             {
-                Task.Run(async () => await SpeakerVerificationRepository.DeleteProfileAsync(id));
+                SpeakerVerificationRepository.DeleteProfile(id);
             }
             catch (Exception ex)
             {
@@ -68,7 +67,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         {
             try
             {
-                var result = Task.Run(async () => await SpeakerVerificationRepository.GetProfileAsync(id)).Result;
+                var result = SpeakerVerificationRepository.GetProfile(id);
                 
                 return result;
             }
@@ -84,7 +83,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         {
             try
             {
-                var result = Task.Run(async () => await SpeakerVerificationRepository.GetProfilesAsync()).Result;
+                var result = SpeakerVerificationRepository.GetProfiles();
                 
                 return result;
             }
@@ -100,7 +99,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         {
             try
             {
-                var result = Task.Run(async () => await SpeakerVerificationRepository.GetPhrasesAsync(locale)).Result;
+                var result = SpeakerVerificationRepository.GetPhrases(locale);
                 
                 return result;
             }
@@ -116,7 +115,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         {
             try
             {
-                var result = Task.Run(async () => await SpeakerVerificationRepository.EnrollAsync(audioStream, id)).Result;
+                var result = SpeakerVerificationRepository.Enroll(audioStream, id);
                 
                 return result;
             }
@@ -132,7 +131,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
         {
             try
             {
-                Task.Run(async () => await SpeakerVerificationRepository.ResetEnrollmentsAsync(id));
+                SpeakerVerificationRepository.ResetEnrollments(id);
             }
             catch (Exception ex)
             {
