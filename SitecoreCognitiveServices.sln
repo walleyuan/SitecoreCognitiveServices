@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices", "code\Sitecore.SharedSource.CognitiveServices\Sitecore.SharedSource.CognitiveServices.csproj", "{FDC8D88E-569D-45DF-B1D9-0F0A75B640CC}"
 EndProject
@@ -28,6 +28,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.ImageSearch.Tests", "tests\Sitecore.SharedSource.CognitiveServices.ImageSearch.Tests\Sitecore.SharedSource.CognitiveServices.ImageSearch.Tests.csproj", "{5661CBBC-D134-49D6-A3BB-44EB0DC87759}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.ImageSearch", "code\Sitecore.SharedSource.CognitiveServices.ImageSearch\Sitecore.SharedSource.CognitiveServices.ImageSearch.csproj", "{449CE943-4EF2-4DDF-AD16-37DCC62CFCFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sitecore.SharedSource.CognitiveServices.OleChat.Json", "Sitecore.SharedSource.CognitiveServices.OleChat.Json", "{D59B5ED1-EEEA-4145-9337-B58694639E1D}"
+	ProjectSection(SolutionItems) = preProject
+		serialization\ole-chat.json = serialization\ole-chat.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +85,7 @@ Global
 		{FB32BF28-C112-4EA0-A45D-D117E69CAF87} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
 		{5661CBBC-D134-49D6-A3BB-44EB0DC87759} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
 		{449CE943-4EF2-4DDF-AD16-37DCC62CFCFD} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
+		{D59B5ED1-EEEA-4145-9337-B58694639E1D} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4

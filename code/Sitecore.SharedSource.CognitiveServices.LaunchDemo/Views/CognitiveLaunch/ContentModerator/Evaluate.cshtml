@@ -25,7 +25,7 @@
                             <div>Is Adult: @Model.IsImageAdultClassified</div>
                             <span>Adult Score: </span>
                             <span>
-                                @Html.Partial("~/Views/CognitiveAnalysis/Common/MeasureBar.cshtml", (float)@Model.AdultClassificationScore)
+                                @Html.Partial("~/Views/CognitiveLaunch/Common/MeasureBar.cshtml", (float)@Model.AdultClassificationScore)
                             </span>
                         </div>
                         <br />
@@ -33,7 +33,7 @@
                             <div>Is Racy: @Model.IsImageRacyClassified</div>
                             <span>Racy Score: </span>
                             <span>
-                                @Html.Partial("~/Views/CognitiveAnalysis/Common/MeasureBar.cshtml", (float)@Model.RacyClassificationScore)
+                                @Html.Partial("~/Views/CognitiveLaunch/Common/MeasureBar.cshtml", (float)@Model.RacyClassificationScore)
                             </span>
                         </div>
                     </div>

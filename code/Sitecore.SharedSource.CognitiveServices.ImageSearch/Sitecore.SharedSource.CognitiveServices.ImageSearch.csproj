@@ -1,4 +1,5 @@
-﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
   <PropertyGroup>
@@ -114,7 +115,35 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -123,29 +152,6 @@
     <Reference Include="Unicorn">
       <HintPath>..\..\packages\Unicorn.Core.3.3.2\lib\net452\Unicorn.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.Web.Razor">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Webpages">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Webpages.Deployment">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Webpages.Razor">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Helpers">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Web.Infrastructure">
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -176,7 +182,6 @@
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Chosen\index.proto.html" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Chosen\options.html" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Chosen\package.json" />
-    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\jquery-1.10.2.min.js" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Sitecore.SharedSource.CognitiveServices.ImageSearch.js" />
     <Content Include="sitecore\shell\Controls\Rich Text Editor\RichText Commands.js" />
     <Content Include="sitecore\shell\Themes\Standard\Default\Content Manager.css" />
@@ -188,25 +193,71 @@
     <None Include="Properties\PublishProfiles\sc82u3.pubxml" />
     <Content Include="Views\CognitiveImageSearch\RTESearch.cshtml" />
     <Content Include="Views\web.config" />
+    <Content Include="Views\CognitiveImageSearch\ImageDescription.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\ImageDescriptionThreshold.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Common\MeasureBar.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Common\Rectangle.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Emotion\Scores.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Face\Attributes.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Face\Landmarks.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Face\Rectangle.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\ImageAnalysis.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\ReanalyzeAll.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Vision\Adult.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Vision\Categories.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Vision\Color.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Vision\Description.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Vision\FaceRectangle.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Vision\Faces.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Vision\Rectangle.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Vision\Regions.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Vision\Tags.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Vision\Words.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\IocConfig.cs" />
+    <Compile Include="Commands\Reanalyze.cs" />
+    <Compile Include="Commands\ReanalyzeAll.cs" />
+    <Compile Include="Commands\SetAltTags.cs" />
+    <Compile Include="Commands\SetAltTagsAll.cs" />
+    <Compile Include="Commands\ViewAnalysis.cs" />
     <Compile Include="Controllers\CognitiveImageSearchController.cs" />
     <Compile Include="Enums\ImageSize.cs" />
+    <Compile Include="Factories\CognitiveImageAnalysisFactory.cs" />
     <Compile Include="Factories\CognitiveImageSearchFactory.cs" />
+    <Compile Include="Factories\ICognitiveImageAnalysisFactory.cs" />
     <Compile Include="Factories\ICognitiveImageSearchFactory.cs" />
+    <Compile Include="Factories\IImageDescriptionFactory.cs" />
+    <Compile Include="Factories\ImageDescriptionFactory.cs" />
+    <Compile Include="Factories\IReanalyzeAllFactory.cs" />
+    <Compile Include="Factories\ISetAltTagsAllFactory.cs" />
+    <Compile Include="Factories\ReanalyzeAllFactory.cs" />
+    <Compile Include="Factories\SetAltTagsAllFactory.cs" />
+    <Compile Include="IImageSearchSettings.cs" />
+    <Compile Include="ImageSearchSettings.cs" />
+    <Compile Include="Models\Analysis\CognitiveImageAnalysis.cs" />
+    <Compile Include="Models\Analysis\ICognitiveImageAnalysis.cs" />
     <Compile Include="Models\CognitiveImageSearch.cs" />
     <Compile Include="Models\CognitiveImageSearchJsonResult.cs" />
     <Compile Include="Models\ICognitiveImageSearch.cs" />
     <Compile Include="Models\ICognitiveImageSearchJsonResult.cs" />
+    <Compile Include="Models\Utility\IImageDescription.cs" />
+    <Compile Include="Models\Utility\ImageDescription.cs" />
+    <Compile Include="Models\Utility\IReanalyzeAll.cs" />
+    <Compile Include="Models\Utility\ISetAltTagsAll.cs" />
+    <Compile Include="Models\Utility\ReanalyzeAll.cs" />
+    <Compile Include="Models\Utility\SetAltTagsAll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search\CognitiveImageSearchContext.cs" />
     <Compile Include="Search\CognitiveImageSearchResult.cs" />
+    <Compile Include="Search\CognitiveIndexableImageItem.cs" />
+    <Compile Include="Search\ComputedFields\BaseComputedField.cs" />
     <Compile Include="Search\ComputedFields\Image\Adult\AdultScore.cs" />
     <Compile Include="Search\ComputedFields\Image\Adult\RacyScore.cs" />
     <Compile Include="Search\ComputedFields\Image\AgeMax.cs" />
     <Compile Include="Search\ComputedFields\Image\AgeMin.cs" />
+    <Compile Include="Search\ComputedFields\Image\EmotionAnalysis.cs" />
     <Compile Include="Search\ComputedFields\Image\Emotions\Anger.cs" />
     <Compile Include="Search\ComputedFields\Image\Emotions\Contempt.cs" />
     <Compile Include="Search\ComputedFields\Image\Emotions\Disgust.cs" />
@@ -215,12 +266,18 @@
     <Compile Include="Search\ComputedFields\Image\Emotions\Neutral.cs" />
     <Compile Include="Search\ComputedFields\Image\Emotions\Sadness.cs" />
     <Compile Include="Search\ComputedFields\Image\Emotions\Surprise.cs" />
+    <Compile Include="Search\ComputedFields\Image\FacialAnalysis.cs" />
     <Compile Include="Search\ComputedFields\Image\Gender.cs" />
     <Compile Include="Search\ComputedFields\Image\Glasses.cs" />
     <Compile Include="Search\ComputedFields\Image\Size.cs" />
     <Compile Include="Search\ComputedFields\Image\Tags.cs" />
+    <Compile Include="Search\ComputedFields\Image\TextAnalysis.cs" />
+    <Compile Include="Search\ComputedFields\Image\VisionAnalysis.cs" />
+    <Compile Include="Search\Crawlers\CognitiveCrawler.cs" />
     <Compile Include="Search\ICognitiveImageSearchContext.cs" />
     <Compile Include="Search\ICognitiveImageSearchResult.cs" />
+    <Compile Include="Search\IImageSearchService.cs" />
+    <Compile Include="Search\ImageSearchService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

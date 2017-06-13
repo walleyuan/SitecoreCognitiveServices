@@ -1,13 +1,11 @@
 ﻿using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.ImageSearch.Enums;
-using Sitecore.SharedSource.CognitiveServices.Search;
-using Sitecore.SharedSource.CognitiveServices.Search.ComputedFields;
 
 namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image
 {
     public class Size: BaseComputedField
     {
-        protected override object GetFieldValue(CognitiveIndexableItem cognitiveIndexable)
+        protected override object GetFieldValue(CognitiveIndexableImageItem cognitiveIndexable)
         {
             MediaItem mediaItem = new MediaItem(cognitiveIndexable.Item);
 

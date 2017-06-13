@@ -296,28 +296,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\CognitiveAnalysisControllerTests.cs" />
-    <Compile Include="Models\KeyPhraseAnalysisResultTests.cs" />
-    <Compile Include="Models\LinguisticAnalysisResultTests.cs" />
-    <Compile Include="Models\LinkAnalysisResultTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Config\Include\Rainbow.config" />
-    <None Include="App_Config\Include\Unicorn\Unicorn.AutoPublish.config" />
-    <None Include="App_Config\Include\Unicorn\Unicorn.config" />
-    <None Include="App_Config\Include\Unicorn\Unicorn.Configs.Default.example" />
-    <None Include="App_Config\Include\Unicorn\Unicorn.Configs.Dependency.config.example" />
-    <None Include="App_Config\Include\Unicorn\Unicorn.Configs.NewItemsOnly.example" />
-    <None Include="App_Config\Include\Unicorn\Unicorn.CustomSerializationFolder.config.example" />
-    <None Include="App_Config\Include\Unicorn\Unicorn.DataProvider.config" />
-    <None Include="App_Config\Include\Unicorn\Unicorn.Deployed.config.disabled" />
-    <None Include="App_Config\Include\Unicorn\Unicorn.Remote.config.disabled" />
-    <None Include="App_Config\Include\Unicorn\Unicorn.UI.config" />
-    <None Include="App_Config\Include\Unicorn\Unicorn.zSharedSecret.config.example" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

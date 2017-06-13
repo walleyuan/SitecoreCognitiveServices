@@ -1,0 +1,40 @@
+﻿@model Microsoft.ProjectOxford.Emotion.Contract.Scores
+
+@if (Model != null)
+{
+    <div class="scores">
+        <div class="bg-layer"></div>
+        <div class="score-set">
+            <label>Anger: </label>
+            @Html.Partial("~/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Anger)
+        </div>
+        <div class="score-set">
+            <label>Contempt: </label>
+            @Html.Partial("~/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Contempt)
+        </div>
+        <div class="score-set">
+            <label>Disgust: </label>
+            @Html.Partial("~/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Disgust)
+        </div>
+        <div class="score-set">
+            <label>Fear: </label>
+            @Html.Partial("~/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Fear)
+        </div>
+        <div class="score-set">
+            <label>Happiness: </label>
+            @Html.Partial("~/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Happiness)
+        </div>
+        <div class="score-set">
+            <label>Neutral: </label>
+            @Html.Partial("~/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Neutral)
+        </div>
+        <div class="score-set">
+            <label>Sadness: </label>
+            @Html.Partial("~/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Sadness)
+        </div>
+        <div class="score-set">
+            <label>Surprise: </label>
+            @Html.Partial("~/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Surprise)
+        </div>
+    </div>
+}

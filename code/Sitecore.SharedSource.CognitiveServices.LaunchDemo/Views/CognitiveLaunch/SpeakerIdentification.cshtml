@@ -232,7 +232,7 @@
                             <label>Identification Profile Id: </label> @Model.IdentificationStatus.ProcessingResult.IdentifiedProfileId
                         </div>
                         <div>
-                            <label>Confidence: </label> @Html.Partial("~/Views/CognitiveAnalysis/Common/MeasureBar.cshtml", (float)@Model.IdentificationStatus.ProcessingResult.Confidence)
+                            <label>Confidence: </label> @Html.Partial("~/Views/CognitiveLaunch/Common/MeasureBar.cshtml", (float)@Model.IdentificationStatus.ProcessingResult.Confidence)
                         </div>
                     </div>
                 }

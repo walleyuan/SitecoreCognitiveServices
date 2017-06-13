@@ -22,11 +22,11 @@
                 }
                 @if (@Model.Result != null && Model.Result.Faces != null)
                 {
-                    @Html.Partial("~/Views/CognitiveAnalysis/Vision/Faces.cshtml", Model.Result.Faces, new ViewDataDictionary(Model.Result.Faces))
+                    @Html.Partial("~/Views/CognitiveLaunch/Vision/Faces.cshtml", Model.Result.Faces, new ViewDataDictionary(Model.Result.Faces))
                 }
                 @if (@Model.Result != null && Model.Result.Tags != null)
                 {
-                    @Html.Partial("~/Views/CognitiveAnalysis/Vision/Tags.cshtml", Model.Result.Tags, new ViewDataDictionary(Model.Result.Tags))
+                    @Html.Partial("~/Views/CognitiveLaunch/Vision/Tags.cshtml", Model.Result.Tags, new ViewDataDictionary(Model.Result.Tags))
                 }
             </div>
         </fieldset>

@@ -1,0 +1,38 @@
+﻿
+@model Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Utility.IReanalyzeAll
+
+@{
+    ViewBag.Title = "Cognitive Services: Reanalyze All";
+    Layout = "~/Views/CognitiveCommon/CognitiveLayout.cshtml";
+}
+
+<link rel="stylesheet" href="/sitecore modules/Web/SitecoreCognitiveServices/css/Sitecore.SharedSource.CognitiveServices.ImageSearch.css?x=@(new System.Random().Next())" />
+
+<div class="frame">
+    @if (Model != null)
+    {
+        <form class="form reanalyze-all-form" method="post" action="/SitecoreCognitiveServices/CognitiveImageSearch/ReanalyzeAll">
+            <fieldset>
+                <div class="form-row">
+                    This will reanalyze all the descendant media items
+                </div>
+                <div>
+                    <input type="hidden" id="id" name="id" value="@Model.ItemId" />
+                    <input type="hidden" id="database" name="database" value="@Model.Database" />
+                    <input type="hidden" id="language" name="language" value="@Model.Language" />
+                </div>
+            </fieldset>
+            <div class="scWizardButtons">
+                <button class="form-submit scButton scButtonPrimary">Reanalyze Descendents</button>
+            </div>
+        </form>
+        <div class="progress-indicator">
+            <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
+        </div>
+        <div class="result-display">
+            There were <span class="result-count">@Model.ItemCount</span> items updated.
+        </div>
+    }
+</div>
+
+<script src="/sitecore modules/Web/SitecoreCognitiveServices/js/Sitecore.SharedSource.CognitiveServices.ImageSearch.js"></script>

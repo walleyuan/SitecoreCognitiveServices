@@ -1,0 +1,121 @@
+﻿@using Sitecore.Data.Managers
+@model Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Analysis.ICognitiveImageAnalysis
+
+@{
+    ViewBag.Title = "Cognitive Services: Image Analysis";
+    Layout = "~/Views/CognitiveCommon/CognitiveLayout.cshtml";
+}
+
+<link rel="stylesheet" href="/sitecore modules/Web/SitecoreCognitiveServices/css/Sitecore.SharedSource.CognitiveServices.ImageSearch.css?x=@(new System.Random().Next())" />
+
+<div class="frame">
+    <div class="tabbed-nav">
+        <div class="nav-btn selected" rel="visual" title="Visual Analysis">
+            <span>Visual Analysis</span>
+        </div>
+        <div class="nav-btn" rel="emotional" title="Emotional Analysis">
+            <span>Emotional Analysis</span>
+        </div>
+        <div class="nav-btn" rel="facial" title="Facial Analysis">
+            <span>Facial Analysis</span>
+        </div>
+        <div class="nav-btn" rel="textual" title="Textual Analysis">
+            <span>Textual Analysis</span>
+        </div>
+    </div>
+    <div class="image-analysis-wrapper">
+        <div class="image-wrapper">
+            <img src="@Model.ImageUrl" />
+        </div>
+        <div class="tab-content visual selected">
+            @Html.Partial("~/Views/CognitiveImageSearch/Vision/Faces.cshtml", Model.VisionAnalysis.Faces, new ViewDataDictionary(Model.VisionAnalysis.Faces))
+            <nav class="subnav-detail">
+                <div class="detail-wrap">
+                    <div class="detail-btn">
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/message.png", 32, 32))
+                    </div>
+                    @Html.Partial("~/Views/CognitiveImageSearch/Vision/Description.cshtml", Model.VisionAnalysis.Description, new ViewDataDictionary(Model.VisionAnalysis.Description))
+                </div>
+                <div class="detail-wrap">
+                    <div class="detail-btn">
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/tags.png", 32, 32))
+                    </div>
+                    @Html.Partial("~/Views/CognitiveImageSearch/Vision/Tags.cshtml", Model.VisionAnalysis.Tags, new ViewDataDictionary(Model.VisionAnalysis.Tags))
+                </div>
+                <div class="detail-wrap">
+                    <div class="detail-btn">
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/sign_warning.png", 32, 32))
+                    </div>
+                    @Html.Partial("~/Views/CognitiveImageSearch/Vision/Adult.cshtml", Model.VisionAnalysis.Adult, new ViewDataDictionary(Model.VisionAnalysis.Adult))
+                </div>
+                <div class="detail-wrap">
+                    <div class="detail-btn">
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/painters_palette.png", 32, 32))
+                    </div>
+                    @Html.Partial("~/Views/CognitiveImageSearch/Vision/Color.cshtml", Model.VisionAnalysis.Color, new ViewDataDictionary(Model.VisionAnalysis.Color))
+                </div>
+                <div class="detail-wrap">
+                    <div class="detail-btn">
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/elements_hierarchy.png", 32, 32))
+                    </div>
+                    @Html.Partial("~/Views/CognitiveImageSearch/Vision/Categories.cshtml", Model.VisionAnalysis.Categories, new ViewDataDictionary(Model.VisionAnalysis.Categories))
+                </div>
+            </nav>
+        </div>
+        <div class="tab-content emotional">
+            @foreach (var ea in Model.EmotionAnalysis)
+            {
+                <div class="emotion-block">
+                    @Html.Partial("~/Views/CognitiveImageSearch/Common/Rectangle.cshtml", ea.FaceRectangle)
+                    <div class="score-wrap" style="top: @{@ea.FaceRectangle.Top}px; left: @{@(ea.FaceRectangle.Left + ea.FaceRectangle.Width + 15)}px">
+                        @Html.Partial("~/Views/CognitiveImageSearch/Emotion/Scores.cshtml", ea.Scores)
+                    </div>
+                </div>
+    }
+        </div>
+        <div class="tab-content facial">
+            @foreach (var fa in Model.FacialAnalysis)
+            {
+                <div class="facial-block">
+                    <div class="attribute-wrap" style="top: @{@fa.FaceRectangle.Top}px; left: @{@(fa.FaceRectangle.Left + fa.FaceRectangle.Width + 15)}px">
+                        @Html.Partial("~/Views/CognitiveImageSearch/Face/Attributes.cshtml", fa.FaceAttributes, new ViewDataDictionary(fa.FaceAttributes))
+                    </div>
+                    <div class="landmark-wrap">
+                        @Html.Partial("~/Views/CognitiveImageSearch/Face/Landmarks.cshtml", fa.FaceLandmarks, new ViewDataDictionary(fa.FaceLandmarks))
+                    </div>
+                    @Html.Partial("~/Views/CognitiveImageSearch/Face/Rectangle.cshtml", fa.FaceRectangle)
+                </div>
+    }
+        </div>
+        <div class="tab-content textual">
+            @Html.Partial("~/Views/CognitiveImageSearch/Vision/Regions.cshtml", Model.TextAnalysis.Regions, new ViewDataDictionary(Model.TextAnalysis.Regions))
+            <nav class="subnav-detail">
+                <div class="detail-wrap">
+                    <div class="detail-btn">
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/font.png", 32, 32))
+                    </div>
+                    <div class="detail-box">
+                        <h3>Text</h3>
+                        <div class="detail-row">
+                            <label>Language: </label>
+                            <span>@Model.TextAnalysis.Language</span>
+                        </div>
+                        <div class="detail-row">
+                            <label>Orientation: </label>
+                            <span>@Model.TextAnalysis.Orientation</span>
+                        </div>
+                        @if (Model.TextAnalysis.TextAngle != null)
+                        {
+                            <div class="detail-row">
+                                <label>Angle: </label>
+                                <span>@Model.TextAnalysis.TextAngle</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<script src="/sitecore modules/Web/SitecoreCognitiveServices/js/Sitecore.SharedSource.CognitiveServices.ImageSearch.js"></script>

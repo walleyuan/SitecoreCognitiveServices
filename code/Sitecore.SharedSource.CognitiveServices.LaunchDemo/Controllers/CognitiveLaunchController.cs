@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.ProjectOxford.Face;
+﻿using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.SpeakerRecognition.Contract.Identification;
 using Microsoft.ProjectOxford.Text.Core;
 using Microsoft.ProjectOxford.Text.Language;
@@ -11,23 +6,25 @@ using Microsoft.ProjectOxford.Text.Sentiment;
 using Microsoft.ProjectOxford.Vision;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Microsoft.SharedSource.CognitiveServices.Enums;
-using Sitecore.SharedSource.CognitiveServices.Services.Bing;
-using Sitecore.SharedSource.CognitiveServices.Services.Vision;
-using Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
-using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
-using Sitecore.SharedSource.CognitiveServices.Services.Language;
-using Microsoft.ProjectOxford.Video.Contract;
-using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
 using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.WebLanguageModel;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
+using Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models;
+using Sitecore.SharedSource.CognitiveServices.Services.Bing;
+using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
+using Sitecore.SharedSource.CognitiveServices.Services.Language;
 using Sitecore.SharedSource.CognitiveServices.Services.Speech;
+using Sitecore.SharedSource.CognitiveServices.Services.Vision;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 using EvaluateResponse = Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator.EvaluateResponse;
 using Operation = Microsoft.ProjectOxford.Video.Contract.Operation;
 
-namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers
-{
+namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers {
     public class CognitiveLaunchController : Controller
     {
         protected readonly IVisionService VisionService;

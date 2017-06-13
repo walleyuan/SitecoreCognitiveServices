@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Sitecore.SharedSource.CognitiveServices.Search;
-using Sitecore.SharedSource.CognitiveServices.Search.ComputedFields;
 
 namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image
 {
     public class Tags : BaseComputedField
     {
-        protected override object GetFieldValue(CognitiveIndexableItem cognitiveIndexable)
+        protected override object GetFieldValue(CognitiveIndexableImageItem cognitiveIndexable)
         {
             var regions = cognitiveIndexable.Text?.Regions;
             if (regions == null)

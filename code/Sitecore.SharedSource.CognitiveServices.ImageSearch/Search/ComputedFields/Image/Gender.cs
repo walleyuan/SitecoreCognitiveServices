@@ -1,12 +1,10 @@
 ﻿using System.Linq;
-using Sitecore.SharedSource.CognitiveServices.Search;
-using Sitecore.SharedSource.CognitiveServices.Search.ComputedFields;
 
 namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image
 {
     public class Gender : BaseComputedField
     {
-        protected override object GetFieldValue(CognitiveIndexableItem cognitiveIndexable)
+        protected override object GetFieldValue(CognitiveIndexableImageItem cognitiveIndexable)
         {
             if (cognitiveIndexable.Faces == null || cognitiveIndexable.Faces.Length == 0)
             {

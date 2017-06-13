@@ -8,19 +8,12 @@ using Microsoft.SharedSource.CognitiveServices.Repositories.Language;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Speech;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
 using Sitecore.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.Factories;
 using Sitecore.SharedSource.CognitiveServices.Repositories;
-using Sitecore.SharedSource.CognitiveServices.Models.Analysis;
-using Sitecore.SharedSource.CognitiveServices.Models.Utility;
 using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
 using Sitecore.SharedSource.CognitiveServices.Services.Language;
 using Sitecore.SharedSource.CognitiveServices.Services.Speech;
 using Sitecore.SharedSource.CognitiveServices.Services.Vision;
-using Sitecore.SharedSource.CognitiveServices.Search;
 using Sitecore.SharedSource.CognitiveServices.Services.Bing;
-using Sitecore.SharedSource.CognitiveServices.Services.Search;
-using System.Web.Mvc;
-using Sitecore.SharedSource.CognitiveServices.Controllers;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
 
 namespace Sitecore.SharedSource.CognitiveServices.App_Start
@@ -68,7 +61,6 @@ namespace Sitecore.SharedSource.CognitiveServices.App_Start
             serviceCollection.AddTransient<IQnAMakerRepository, QnAMakerRepository>();
 
             //services
-            serviceCollection.AddTransient<ISearchService, SearchService>();
             serviceCollection.AddTransient<IEmotionService, EmotionService>();
             serviceCollection.AddTransient<IEntityLinkingService, EntityLinkingService>();
             serviceCollection.AddTransient<IFaceService, FaceService>();
@@ -92,28 +84,6 @@ namespace Sitecore.SharedSource.CognitiveServices.App_Start
             serviceCollection.AddTransient<ILuisService, LuisService>();
             serviceCollection.AddTransient<ISpeechService, SpeechService>();
             serviceCollection.AddTransient<IQnAMakerService, QnAMakerService>();
-
-            //factory models
-            serviceCollection.AddTransient<ICognitiveImageAnalysis, CognitiveImageAnalysis>();
-            serviceCollection.AddTransient<ICognitiveTextAnalysis, CognitiveTextAnalysis>();
-            serviceCollection.AddTransient<IImageDescription, ImageDescription>();
-            serviceCollection.AddTransient<IReanalyzeAll, ReanalyzeAll>();
-            serviceCollection.AddTransient<ISetAltTagsAll, SetAltTagsAll>();
-
-            //factories
-            serviceCollection.AddTransient<ICognitiveImageAnalysisFactory, CognitiveImageAnalysisFactory>();
-            serviceCollection.AddTransient<ICognitiveTextAnalysisFactory, CognitiveTextAnalysisFactory>();
-            serviceCollection.AddTransient<IImageDescriptionFactory, ImageDescriptionFactory>();
-            serviceCollection.AddTransient<IReanalyzeAllFactory, ReanalyzeAllFactory>();
-            serviceCollection.AddTransient<ISetAltTagsAllFactory, SetAltTagsAllFactory>();
-            
-            //search
-            serviceCollection.AddTransient<ICognitiveSearchContext, CognitiveSearchContext>();
-            serviceCollection.AddTransient<ICognitiveSearchResult, CognitiveSearchResult>();
-
-            //controllers
-            serviceCollection.AddTransient(typeof(CognitiveAnalysisController));
-            serviceCollection.AddTransient(typeof(CognitiveUtilityController));
         }
     }
 }

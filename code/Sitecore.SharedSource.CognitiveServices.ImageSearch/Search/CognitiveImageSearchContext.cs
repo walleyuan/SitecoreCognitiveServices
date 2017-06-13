@@ -7,16 +7,85 @@ using Sitecore.ContentSearch.Linq.Utilities;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.ContentSearch.Security;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Sitecore.SharedSource.CognitiveServices.Search;
+using Sitecore.Data.Items;
+using Sitecore.Data;
 
 namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
 {
-    public class CognitiveImageSearchContext : CognitiveSearchContext, ICognitiveImageSearchContext
+    public class CognitiveImageSearchContext : ICognitiveImageSearchContext
     {
+        protected readonly ISitecoreDataWrapper DataWrapper;
+        protected readonly IImageSearchSettings ImageSearchSettings;
+
         public CognitiveImageSearchContext(
             ISitecoreDataWrapper dataWrapper,
-            IApplicationSettings applicationSettings) : base(dataWrapper, applicationSettings) { }
-        
+            IImageSearchSettings imageSearchSettings) {
+            DataWrapper = dataWrapper;
+            ImageSearchSettings = imageSearchSettings;
+        }
+
+        public virtual ICognitiveImageSearchResult GetAnalysis(string itemId, string languageCode, string dbName) {
+            var index = ContentSearchManager.GetIndex(GetIndexName(dbName));
+            using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck)) {
+                return context.GetQueryable<CognitiveImageSearchResult>()
+                    .Where(a =>
+                        a.UniqueId.Contains(itemId.ToLower())
+                        && a.Language == languageCode)
+                    .Take(1)
+                    .FirstOrDefault();
+            }
+        }
+
+        public virtual void AddItemToIndex(string itemId, string dbName) {
+            ID id = DataWrapper.GetID(itemId);
+            if (id.IsNull)
+                return;
+
+            Item i = DataWrapper.GetDatabase(dbName).GetItem(id);
+            if (i == null)
+                return;
+
+            AddItemToIndex(i, dbName);
+        }
+
+        public virtual void AddItemToIndex(Item item, string dbName) {
+            if (item == null)
+                return;
+
+            var tempItem = (SitecoreIndexableItem)item;
+            ContentSearchManager.GetIndex(GetIndexName(dbName)).Refresh(tempItem);
+        }
+
+        public virtual void UpdateItemInIndex(string itemId, string dbName) {
+            ID id = DataWrapper.GetID(itemId);
+            if (id.IsNull)
+                return;
+
+            Item i = DataWrapper.GetDatabase(dbName).GetItem(id);
+            if (i == null)
+                return;
+
+            UpdateItemInIndex(i, dbName);
+        }
+
+        public virtual void UpdateItemInIndex(Item item, string dbName) {
+            if (item == null)
+                return;
+
+            var tempItem = (SitecoreIndexableItem)item;
+
+            var index = ContentSearchManager.GetIndex(GetIndexName(dbName));
+
+            index.Update(tempItem.UniqueId);
+        }
+
+        protected virtual string GetIndexName(string dbName) {
+            if (dbName == null) {
+                dbName = "master";
+            }
+            return string.Format(ImageSearchSettings.IndexNameFormat, dbName);
+        }
+
         public virtual List<ICognitiveImageSearchResult> GetMediaResults(string query, string languageCode, string dbName)
         {
             var index = ContentSearchManager.GetIndex(GetIndexName(dbName));

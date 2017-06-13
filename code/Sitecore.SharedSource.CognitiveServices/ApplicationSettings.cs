@@ -6,8 +6,6 @@ using System.Web;
 namespace Sitecore.SharedSource.CognitiveServices {
     public class ApplicationSettings : IApplicationSettings
     {
-        public virtual string IndexNameFormat => Sitecore.Configuration.Settings.GetSetting("CognitiveService.Search.IndexNameFormat");
-
         public virtual bool CatchAndReleaseExceptions
         {
             get
