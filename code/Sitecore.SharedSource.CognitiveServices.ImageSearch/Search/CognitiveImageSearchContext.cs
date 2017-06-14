@@ -85,23 +85,6 @@ namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
             }
             return string.Format(ImageSearchSettings.IndexNameFormat, dbName);
         }
-
-        public virtual List<ICognitiveImageSearchResult> GetMediaResults(string query, string languageCode, string dbName)
-        {
-            var index = ContentSearchManager.GetIndex(GetIndexName(dbName));
-            using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
-            {
-                return context.GetQueryable<CognitiveImageSearchResult>()
-                    .Where(a => a.Language == languageCode &&
-                    (a.Name.Contains(query) 
-                    || a.EmotionAnalysisValue.Contains(query) 
-                    || a.FacialAnalysisValue.Contains(query)
-                    || a.TextAnalysisValue.Contains(query)
-                    || a.VisionAnalysisValue.Contains(query)
-                    ))
-                    .ToList<ICognitiveImageSearchResult>();
-            }
-        }
         
         public virtual List<ICognitiveImageSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, int size, string languageCode, string dbName)
         {

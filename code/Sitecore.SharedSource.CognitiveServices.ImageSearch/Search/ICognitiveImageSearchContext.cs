@@ -12,7 +12,6 @@ namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
         void AddItemToIndex(Item item, string dbName);
         void UpdateItemInIndex(string itemId, string dbName);
         void UpdateItemInIndex(Item item, string dbName);
-        List<ICognitiveImageSearchResult> GetMediaResults(string query, string languageCode, string dbName);
         List<ICognitiveImageSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, int size, string languageCode, string dbName);
         Expression<Func<CognitiveImageSearchResult, bool>> GetDefaultFilter(string[] parameterValues, string fieldName);
         Expression<Func<CognitiveImageSearchResult, bool>> GetRangeFilter(string[] parameterValues, string fieldName);
