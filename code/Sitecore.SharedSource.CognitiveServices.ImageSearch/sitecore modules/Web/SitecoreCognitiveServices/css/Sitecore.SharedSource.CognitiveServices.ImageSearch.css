@@ -215,10 +215,10 @@ fieldset legend { margin-bottom: 10px;}
     transition: opacity .25s ease-in-out, width .25s ease-in-out; 
 }
 .result-filters:hover .filter-wrap { width: 250px; opacity:1; }
-.filter-tab { background: #777 none repeat scroll 0 0;
-    float: left;
-    margin-top: 13px;
-    padding: 6px 6px 2px 5px; }
+.filter-tab { background: #eee none repeat scroll 0 0; height:19px; 
+    float: left; margin-top: 13px; padding: 6px 6px 2px 5px; 
+    border-color: #bbb; border-style: solid; border-width: 1px 1px 1px 0; }
+.filter-tab img { filter: drop-shadow(-1px 2px 2px #444); }
 .result-column { position:absolute;top:53px; right:10px; left:10px;}
 .form fieldset.tag-filter { margin: 0 0 10px; padding: 0 0 0 28px; }
 .result-items { border: 1px solid #ccc;height: 435px;overflow-y: scroll; overflow: auto;padding: 5px 2px;}
