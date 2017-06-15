@@ -155,7 +155,9 @@ jQuery(document).ready(function () {
     jQuery(imageSearchForm + " .search-submit, " + imageSearchForm + " .cognitiveSearchButton")
         .click(function (event) {
             event.preventDefault();
-            
+                 
+            pageNum = 1;
+
             clearTimeout(queryObj);
             RunQuery();
         });
