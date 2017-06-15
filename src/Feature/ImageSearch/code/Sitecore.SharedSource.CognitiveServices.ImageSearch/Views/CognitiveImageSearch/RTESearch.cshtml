@@ -173,8 +173,21 @@
                     </fieldset>
 
                     <div class="result-label">
-                        <span class="result-count"></span> results
+                        <span class="result-count"></span> Results
                     </div>
+
+                    <div class="result-nav">
+                        <span class="result-nav-prev">
+                            @Html.Raw(ThemeManager.GetImage("Office/32x32/navigate_left.png", 16, 16))
+                        </span>
+                        <span class="result-nav-next">
+                            @Html.Raw(ThemeManager.GetImage("Office/32x32/navigate_right.png", 16, 16))
+                        </span>
+                        <span class="pager">
+                            Page <span class="pagenum"></span> of <span class="pagecount"></span>
+                        </span>
+                    </div>
+
                     <div class="result-items"></div>
                 </div>
             </div>

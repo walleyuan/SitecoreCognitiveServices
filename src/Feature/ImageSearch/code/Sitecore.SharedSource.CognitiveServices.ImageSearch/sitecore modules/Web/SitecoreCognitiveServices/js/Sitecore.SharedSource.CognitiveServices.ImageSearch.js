@@ -161,6 +161,10 @@ jQuery(document).ready(function () {
         });
 
     //performs image search
+    var pageNum = 1;
+    var pageSize = 600;
+    var pageCount = 1;
+    var searchResults;
     function RunQuery() {
         var textValue = jQuery(imageSearchForm + " .rte-search-input").val();
         var langValue = jQuery(imageSearchForm + " #language").attr("value");
@@ -185,12 +189,21 @@ jQuery(document).ready(function () {
                     glasses: glasses,
                     size: size,
                     language: langValue,
-                    db: dbValue
+                    db: dbValue,
+                    page: pageNum,
+                    pageLength: pageSize
                 }
             ).done(function (r) {
+                searchResults = r;
+
+                jQuery(".pagenum").text(pageNum);
+                pageCount = Math.ceil(r.ResultCount / pageSize);
+                jQuery(".pagecount").text(pageCount);
+
                 jQuery(".result-count").text(r.ResultCount);
                 jQuery(".result-items").text("");
                 jQuery(".search-results").show();
+
                 for (var i = 0; i < r.Results.length; i++) {
                     var d = r.Results[i];
                     if (d.Url != undefined) {
@@ -207,6 +220,25 @@ jQuery(document).ready(function () {
                 jQuery(rteSearchForm + " .progress-indicator").hide();
             });
     }
+
+    //changes the current page
+    var prevBtn = ".result-nav-prev";
+    var nextBtn = ".result-nav-next";
+    jQuery(prevBtn).click(function (e) {
+        if (pageNum < 2)
+            return;
+
+        pageNum--;
+        RunQuery();
+    });
+
+    jQuery(nextBtn).click(function (e) {
+        if ((pageNum+1) > pageCount)
+            return;
+
+        pageNum++;
+        RunQuery();
+    });
 
     function GetRangeParameters() {
         var params = [];

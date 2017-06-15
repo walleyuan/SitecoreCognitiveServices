@@ -70,7 +70,9 @@ namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Controllers
             int glasses,
             int size,
             string language, 
-            string db)
+            string db,
+            int page,
+            int pageLength)
         {
             List<ICognitiveImageSearchResult> csr = Searcher.GetMediaResults(
                 tagParameters, 
@@ -81,9 +83,12 @@ namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Controllers
                 language, 
                 db);
 
+            var skipCount = (page - 1) * pageLength;
+            var trimList = csr.Skip(skipCount).Take(pageLength);
+
             return Json(new
             {
-                Results = csr.Select(r => MediaSearchFactory.CreateMediaSearchJsonResult(DataWrapper, r)),
+                Results = trimList.Select(r => MediaSearchFactory.CreateMediaSearchJsonResult(DataWrapper, r)),
                 ResultCount = csr.Count
             });
         }
