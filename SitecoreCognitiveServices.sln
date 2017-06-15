@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices", "code\Sitecore.SharedSource.CognitiveServices\Sitecore.SharedSource.CognitiveServices.csproj", "{FDC8D88E-569D-45DF-B1D9-0F0A75B640CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices", "src\Foundation\SCSDK\code\Sitecore.SharedSource.CognitiveServices\Sitecore.SharedSource.CognitiveServices.csproj", "{FDC8D88E-569D-45DF-B1D9-0F0A75B640CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.Tests", "tests\Sitecore.SharedSource.CognitiveServices.Tests\Sitecore.SharedSource.CognitiveServices.Tests.csproj", "{C0B780DF-9D25-4EDF-89BE-76177B6BF498}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.Tests", "src\Foundation\SCSDK\tests\Sitecore.SharedSource.CognitiveServices.Tests\Sitecore.SharedSource.CognitiveServices.Tests.csproj", "{C0B780DF-9D25-4EDF-89BE-76177B6BF498}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.LaunchDemo", "code\Sitecore.SharedSource.CognitiveServices.LaunchDemo\Sitecore.SharedSource.CognitiveServices.LaunchDemo.csproj", "{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.LaunchDemo", "src\Feature\LaunchDemo\code\Sitecore.SharedSource.CognitiveServices.LaunchDemo\Sitecore.SharedSource.CognitiveServices.LaunchDemo.csproj", "{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SharedSource.CognitiveServices", "code\Microsoft.SharedSource.CognitiveServices\Microsoft.SharedSource.CognitiveServices.csproj", "{13ECB0DB-E99D-4D05-97E8-138EB3884353}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SharedSource.CognitiveServices", "src\Foundation\MSSDK\code\Microsoft.SharedSource.CognitiveServices\Microsoft.SharedSource.CognitiveServices.csproj", "{13ECB0DB-E99D-4D05-97E8-138EB3884353}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{BB8368FA-BE14-4A3A-8FAD-BDA6CBDB8C64}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,22 +17,30 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configurat
 		NuGet.config = NuGet.config
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature", "Feature", "{2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{76EB23E0-57D2-452E-BDB3-CE26B9E7234A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.OleChat", "code\Sitecore.SharedSource.CognitiveServices.OleChat\Sitecore.SharedSource.CognitiveServices.OleChat.csproj", "{B6AFA26B-B8D7-4DF6-8AB2-5AD3A8D216E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.OleChat", "src\Feature\OleChat\code\Sitecore.SharedSource.CognitiveServices.OleChat\Sitecore.SharedSource.CognitiveServices.OleChat.csproj", "{B6AFA26B-B8D7-4DF6-8AB2-5AD3A8D216E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.OleChat.Tests", "tests\Sitecore.SharedSource.CognitiveServices.OleChat.Tests\Sitecore.SharedSource.CognitiveServices.OleChat.Tests.csproj", "{FB32BF28-C112-4EA0-A45D-D117E69CAF87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.OleChat.Tests", "src\Feature\OleChat\tests\Sitecore.SharedSource.CognitiveServices.OleChat.Tests\Sitecore.SharedSource.CognitiveServices.OleChat.Tests.csproj", "{FB32BF28-C112-4EA0-A45D-D117E69CAF87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.ImageSearch.Tests", "tests\Sitecore.SharedSource.CognitiveServices.ImageSearch.Tests\Sitecore.SharedSource.CognitiveServices.ImageSearch.Tests.csproj", "{5661CBBC-D134-49D6-A3BB-44EB0DC87759}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.ImageSearch.Tests", "src\Feature\ImageSearch\tests\Sitecore.SharedSource.CognitiveServices.ImageSearch.Tests\Sitecore.SharedSource.CognitiveServices.ImageSearch.Tests.csproj", "{5661CBBC-D134-49D6-A3BB-44EB0DC87759}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.ImageSearch", "code\Sitecore.SharedSource.CognitiveServices.ImageSearch\Sitecore.SharedSource.CognitiveServices.ImageSearch.csproj", "{449CE943-4EF2-4DDF-AD16-37DCC62CFCFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.ImageSearch", "src\Feature\ImageSearch\code\Sitecore.SharedSource.CognitiveServices.ImageSearch\Sitecore.SharedSource.CognitiveServices.ImageSearch.csproj", "{449CE943-4EF2-4DDF-AD16-37DCC62CFCFD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sitecore.SharedSource.CognitiveServices.OleChat.Json", "Sitecore.SharedSource.CognitiveServices.OleChat.Json", "{D59B5ED1-EEEA-4145-9337-B58694639E1D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LaunchDemo", "LaunchDemo", "{D59B5ED1-EEEA-4145-9337-B58694639E1D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageSearch", "ImageSearch", "{C92BB4E6-842A-438A-8700-1FCE50AD123A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OleChat", "OleChat", "{D1A512A3-DD04-4E9C-B758-4C7953EE3606}"
 	ProjectSection(SolutionItems) = preProject
 		serialization\ole-chat.json = serialization\ole-chat.json
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSSDK", "MSSDK", "{F630EF68-B9D0-4993-B47E-25374CF51C0A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SCSDK", "SCSDK", "{F9BBFC7C-C4FA-4151-8A3E-CB2B6655A5B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,15 +85,19 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{FDC8D88E-569D-45DF-B1D9-0F0A75B640CC} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
-		{C0B780DF-9D25-4EDF-89BE-76177B6BF498} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
-		{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
-		{13ECB0DB-E99D-4D05-97E8-138EB3884353} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
-		{B6AFA26B-B8D7-4DF6-8AB2-5AD3A8D216E3} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
-		{FB32BF28-C112-4EA0-A45D-D117E69CAF87} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
-		{5661CBBC-D134-49D6-A3BB-44EB0DC87759} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
-		{449CE943-4EF2-4DDF-AD16-37DCC62CFCFD} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
+		{FDC8D88E-569D-45DF-B1D9-0F0A75B640CC} = {F9BBFC7C-C4FA-4151-8A3E-CB2B6655A5B4}
+		{C0B780DF-9D25-4EDF-89BE-76177B6BF498} = {F9BBFC7C-C4FA-4151-8A3E-CB2B6655A5B4}
+		{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3} = {D59B5ED1-EEEA-4145-9337-B58694639E1D}
+		{13ECB0DB-E99D-4D05-97E8-138EB3884353} = {F630EF68-B9D0-4993-B47E-25374CF51C0A}
+		{B6AFA26B-B8D7-4DF6-8AB2-5AD3A8D216E3} = {D1A512A3-DD04-4E9C-B758-4C7953EE3606}
+		{FB32BF28-C112-4EA0-A45D-D117E69CAF87} = {D1A512A3-DD04-4E9C-B758-4C7953EE3606}
+		{5661CBBC-D134-49D6-A3BB-44EB0DC87759} = {C92BB4E6-842A-438A-8700-1FCE50AD123A}
+		{449CE943-4EF2-4DDF-AD16-37DCC62CFCFD} = {C92BB4E6-842A-438A-8700-1FCE50AD123A}
 		{D59B5ED1-EEEA-4145-9337-B58694639E1D} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
+		{C92BB4E6-842A-438A-8700-1FCE50AD123A} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
+		{D1A512A3-DD04-4E9C-B758-4C7953EE3606} = {2227F8C8-D9C9-4828-89B4-AC059EBDCF9B}
+		{F630EF68-B9D0-4993-B47E-25374CF51C0A} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
+		{F9BBFC7C-C4FA-4151-8A3E-CB2B6655A5B4} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
