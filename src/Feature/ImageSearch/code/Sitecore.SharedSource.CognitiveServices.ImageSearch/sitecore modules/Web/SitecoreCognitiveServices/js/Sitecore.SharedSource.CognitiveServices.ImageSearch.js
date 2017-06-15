@@ -162,7 +162,7 @@ jQuery(document).ready(function () {
 
     //performs image search
     var pageNum = 1;
-    var pageSize = 600;
+    var pageSize = 35;
     var pageCount = 1;
     var searchResults;
     function RunQuery() {
