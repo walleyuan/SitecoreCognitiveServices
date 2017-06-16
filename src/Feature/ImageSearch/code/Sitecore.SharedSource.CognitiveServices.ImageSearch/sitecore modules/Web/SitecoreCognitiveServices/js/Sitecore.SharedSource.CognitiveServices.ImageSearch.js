@@ -121,7 +121,6 @@ jQuery(document).ready(function () {
     });
 
     //closes modal and send selected image back to RTE
-    var queryObj;
     var imageSearchForm = ".image-search-form";
     var rteSearchForm = ".rte-search-form";
     jQuery(imageSearchForm + " .form-submit")
@@ -143,23 +142,29 @@ jQuery(document).ready(function () {
             CloseRadWindow();
         });
 
-    //will perform search if you type and wait
-    var imageSearchInput = ".rte-search-input";
-    jQuery(imageSearchInput)
-        .on('input', function (e) {
-            clearTimeout(queryObj);
-            queryObj = setTimeout(RunQuery, 500);
-        });
+    function RefreshQuery(){
+        pageNum = 1;
+        RunQuery();
+    }
 
+    var imageSearchSelect = ".filter-section select";
+    jQuery(imageSearchSelect).change(function () {
+        RefreshQuery();
+    });
+    
+    jQuery(".slider-range, .chosen-results").mouseup(function (e) {
+        if(e.which != 1) 
+            return;
+        
+        RefreshQuery();
+    });
+    
     //performs search on 'enter-press' on the form
     jQuery(imageSearchForm + " .search-submit, " + imageSearchForm + " .cognitiveSearchButton")
         .click(function (event) {
             event.preventDefault();
                  
-            pageNum = 1;
-
-            clearTimeout(queryObj);
-            RunQuery();
+            RefreshQuery()
         });
 
     //performs image search
@@ -176,7 +181,7 @@ jQuery(document).ready(function () {
         var size = jQuery(imageSearchForm + " #size").val();
 
         jQuery(rteSearchForm + " .progress-indicator").show();
-        jQuery(".search-results").hide();
+        jQuery(".result-items").hide();
 
         var tags = GetTagParameters();
         var ranges = GetRangeParameters();
@@ -204,7 +209,7 @@ jQuery(document).ready(function () {
 
                 jQuery(".result-count").text(r.ResultCount);
                 jQuery(".result-items").text("");
-                jQuery(".search-results").show();
+                jQuery(".result-items").show();
 
                 for (var i = 0; i < r.Results.length; i++) {
                     var d = r.Results[i];
@@ -218,6 +223,11 @@ jQuery(document).ready(function () {
                         jQuery(".result-items .selected").removeClass("selected");
                         jQuery(this).addClass("selected");
                     });
+
+                jQuery(".search-choice-close")
+                    .on('click', function () {
+                        setTimeout(RefreshQuery, 100);
+                });
             }).always(function () {
                 jQuery(rteSearchForm + " .progress-indicator").hide();
             });
