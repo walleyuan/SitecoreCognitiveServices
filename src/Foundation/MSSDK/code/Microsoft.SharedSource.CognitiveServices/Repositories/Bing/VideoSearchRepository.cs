@@ -48,7 +48,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
         public virtual VideoSearchResponse VideoSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off) {
             var qs = GetVideoSearchQuerystring(countOffset, languageCode, safeSearch);
 
-            var response = RepositoryClient.SendGet(ApiKeys.BingSearch, $"{ApiKeys.BingSearch}{videoUrl}?q={text}{qs}");
+            var response = RepositoryClient.SendGet(ApiKeys.BingSearch, $"{ApiKeys.BingSearchEndpoint}{videoUrl}?q={text}{qs}");
 
             return JsonConvert.DeserializeObject<VideoSearchResponse>(response);
         }
@@ -57,7 +57,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
         {
             var qs = GetVideoSearchQuerystring(countOffset, languageCode, safeSearch);
 
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{ApiKeys.BingSearch}{videoUrl}?q={text}{qs}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{ApiKeys.BingSearchEndpoint}{videoUrl}?q={text}{qs}");
 
             return JsonConvert.DeserializeObject<VideoSearchResponse>(response);
         }
@@ -67,13 +67,13 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
         #region Trending Videos Search
 
         public virtual VideoSearchTrendResponse TrendingSearch() {
-            var response = RepositoryClient.SendGet(ApiKeys.BingSearch, $"{ApiKeys.BingSearch}{trendingUrl}");
+            var response = RepositoryClient.SendGet(ApiKeys.BingSearch, $"{ApiKeys.BingSearchEndpoint}{trendingUrl}");
 
             return JsonConvert.DeserializeObject<VideoSearchTrendResponse>(response);
         }
 
         public virtual async Task<VideoSearchTrendResponse> TrendingSearchAsync() {
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{ApiKeys.BingSearch}{trendingUrl}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{ApiKeys.BingSearchEndpoint}{trendingUrl}");
 
             return JsonConvert.DeserializeObject<VideoSearchTrendResponse>(response);
         }
@@ -83,14 +83,14 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
         #region Video Details Search
 
         public virtual VideoSearchDetailsResponse VideoDetailsSearch(string id, VideoDetailsModulesOptions modulesRequested) {
-            var response = RepositoryClient.SendGet(ApiKeys.BingSearch, $"{ApiKeys.BingSearch}{detailsUrl}?id={id}&modulesRequested={Enum.GetName(typeof(VideoDetailsModulesOptions), modulesRequested)}");
+            var response = RepositoryClient.SendGet(ApiKeys.BingSearch, $"{ApiKeys.BingSearchEndpoint}{detailsUrl}?id={id}&modulesRequested={Enum.GetName(typeof(VideoDetailsModulesOptions), modulesRequested)}");
 
             return JsonConvert.DeserializeObject<VideoSearchDetailsResponse>(response);
         }
 
         public virtual async Task<VideoSearchDetailsResponse> VideoDetailsSearchAsync(string id, VideoDetailsModulesOptions modulesRequested) {
             
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{ApiKeys.BingSearch}{detailsUrl}?id={id}&modulesRequested={Enum.GetName(typeof(VideoDetailsModulesOptions), modulesRequested)}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{ApiKeys.BingSearchEndpoint}{detailsUrl}?id={id}&modulesRequested={Enum.GetName(typeof(VideoDetailsModulesOptions), modulesRequested)}");
 
             return JsonConvert.DeserializeObject<VideoSearchDetailsResponse>(response);
         }

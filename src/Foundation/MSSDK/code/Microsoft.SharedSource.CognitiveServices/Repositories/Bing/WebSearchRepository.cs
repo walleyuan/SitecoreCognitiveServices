@@ -45,7 +45,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
         {
             var qs = GetWebSearchQuerystring(countOffset, languageCode, safeSearch);
 
-            var response = RepositoryClient.SendGet(ApiKeys.BingSearch, $"{ApiKeys.BingSearch}{webSearchUrl}?q={text}{qs}");
+            var response = RepositoryClient.SendGet(ApiKeys.BingSearch, $"{ApiKeys.BingSearchEndpoint}{webSearchUrl}?q={text}{qs}");
 
             return JsonConvert.DeserializeObject<WebSearchResponse>(response);
         }
@@ -54,7 +54,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
         {
             var qs = GetWebSearchQuerystring(countOffset, languageCode, safeSearch);
 
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{ApiKeys.BingSearch}{webSearchUrl}?q={text}{qs}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSearch, $"{ApiKeys.BingSearchEndpoint}{webSearchUrl}?q={text}{qs}");
             
             return JsonConvert.DeserializeObject<WebSearchResponse>(response);
         }
