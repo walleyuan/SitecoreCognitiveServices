@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
-using Microsoft.WindowsAzure.MediaServices.Client;
 using Newtonsoft.Json;
 using Microsoft.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Models.Common;
 using Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
 using System.Linq;
 using Chronic;
-using Microsoft.SharedSource.CognitiveServices.Models.Common;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
     public class ContentModeratorRepository : IContentModeratorRepository
@@ -255,16 +254,12 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
 
             return sb.ToString();
         }
-
-        protected virtual string GetCreateJobData(string content) {
-            return $"{{ \"ContentValue\": \"{content}\" }}";
-        }
-
+        
         public virtual CreateJobResponse CreateImageJob(string imageUrl, string teamName, string contentId, string workflowName, string callbackEndpoint = "") {
             var response = RepositoryClient.Send(
                 ApiKeys.ContentModerator,
                 $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/jobs?ContentType=Image&ContentId={contentId}&WorkflowName={workflowName}{GetCreateJobQuerystring(callbackEndpoint)}",
-                GetCreateJobData(imageUrl),
+                JsonConvert.SerializeObject(new JobRequest { ContentValue = imageUrl }),
                 "application/json",
                 "POST",
                 GetToken());
@@ -276,7 +271,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
             var response = await RepositoryClient.SendAsync(
                 ApiKeys.ContentModerator,
                 $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/jobs?ContentType=Image&ContentId={contentId}&WorkflowName={workflowName}{GetCreateJobQuerystring(callbackEndpoint)}",
-                GetCreateJobData(imageUrl),
+                JsonConvert.SerializeObject(new JobRequest { ContentValue = imageUrl }),
                 "application/json",
                 "POST",
                 GetToken());
@@ -312,7 +307,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
             var response = RepositoryClient.Send(
                 ApiKeys.ContentModerator,
                 $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/jobs?ContentType=Text&ContentId={contentId}&WorkflowName={workflowName}{GetCreateJobQuerystring(callbackEndpoint)}",
-                GetCreateJobData(text),
+                JsonConvert.SerializeObject(new JobRequest { ContentValue = text }),
                 "application/json",
                 "POST",
                 GetToken());
@@ -324,7 +319,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
             var response = await RepositoryClient.SendAsync(
                 ApiKeys.ContentModerator,
                 $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/jobs?ContentType=Text&ContentId={contentId}&WorkflowName={workflowName}{GetCreateJobQuerystring(callbackEndpoint)}",
-                GetCreateJobData(text),
+                JsonConvert.SerializeObject(new JobRequest { ContentValue = text }),
                 "application/json",
                 "POST",
                 GetToken());
@@ -332,68 +327,6 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
             return JsonConvert.DeserializeObject<CreateJobResponse>(response);
         }
         
-        public void RunContentModeratorJob(string mediaProcessorName, string inputFilePath, string outputDirectory, VideoModerationConfiguration configuration) {
-
-            ITokenProvider tp = new MediaServicesCredentials(ApiKeys.ContentModeratorClientId, ApiKeys.ContentModeratorPrivateKey);
-            CloudMediaContext cloudContext = new CloudMediaContext(tp);
-
-            // create asset with input file
-            IAsset asset = cloudContext
-                .Assets
-                .CreateFromFile(inputFilePath, AssetCreationOptions.None);
-
-            // grab instance of Azure Media Content Moderator MP
-            IMediaProcessor mp = cloudContext
-                .MediaProcessors
-                .GetLatestMediaProcessorByName(mediaProcessorName);
-
-            // create Job with Content Moderator task
-            IJob job = cloudContext
-                .Jobs
-                .Create($"Content Moderator {Path.GetFileName(inputFilePath)}_{Guid.NewGuid()}");
-
-            ITask contentModeratorTask = job
-                .Tasks
-                .AddNew("Adult classifier task", mp, JsonConvert.SerializeObject(configuration), TaskOptions.None);
-
-            contentModeratorTask
-                .InputAssets
-                .Add(asset);
-
-            contentModeratorTask
-                .OutputAssets
-                .AddNew("Adult classifier output", AssetCreationOptions.None);
-
-            job.Submit();
-            
-            Task progressPrintTask = new Task(() => {
-                IJob jobQuery = null;
-                do {
-                    var progressContext = cloudContext;
-                    jobQuery = progressContext
-                        .Jobs
-                        .First(j => j.Id == job.Id);
-                    Thread.Sleep(10000);
-                }
-                while (jobQuery.State != JobState.Finished
-                && jobQuery.State != JobState.Error
-                && jobQuery.State != JobState.Canceled);
-            });
-            progressPrintTask.Start();
-
-            Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
-            progressJobTask.Wait();
-
-            if (job.State == JobState.Error) {
-                ErrorDetail error = job.Tasks.First().ErrorDetails.First();
-            }
-            
-            job.OutputMediaAssets
-                .First()
-                .AssetFiles
-                .ForEach(file => file.Download(Path.Combine(outputDirectory, file.Name)));
-        }
-
         #endregion Create Job
 
         #region Get Job

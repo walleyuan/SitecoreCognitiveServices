@@ -1,7 +1,14 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Text {
-    public class SentimentDocumentResult {
+    public class KeyPhraseDocumentResult {
+        #region Properties
+
         /// <summary>
         /// Gets or sets the identifier of the document.
         /// </summary>
@@ -12,12 +19,14 @@ namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Text {
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the score (0 = negative; 1 = positive).
+        /// Gets or sets the key phrases.
         /// </summary>
         /// <value>
-        /// The score.
+        /// The key phrases.
         /// </value>
-        [JsonProperty("score")]
-        public float Score { get; set; }
+        [JsonProperty("keyPhrases")]
+        public List<string> KeyPhrases { get; set; }
+
+        #endregion Properties
     }
 }

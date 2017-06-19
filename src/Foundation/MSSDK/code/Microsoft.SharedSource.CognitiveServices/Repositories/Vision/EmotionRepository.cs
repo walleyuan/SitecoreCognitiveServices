@@ -28,7 +28,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 
             var qs = GetRectangleQS(faceRectangles);
 
-            var response = RepositoryClient.SendJsonPost(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognize{qs}", JsonConvert.SerializeObject(new Asset { Url = imageUrl }));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.Emotion, $"{ApiKeys.EmotionEndpoint}recognize{qs}", JsonConvert.SerializeObject(new Asset { Url = imageUrl }));
 
             return JsonConvert.DeserializeObject<Emotion[]>(response);
         }
@@ -45,7 +45,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 
             var qs = GetRectangleQS(faceRectangles);
 
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognize{qs}", JsonConvert.SerializeObject(new Asset { Url = imageUrl }));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.Emotion, $"{ApiKeys.EmotionEndpoint}recognize{qs}", JsonConvert.SerializeObject(new Asset { Url = imageUrl }));
 
             return JsonConvert.DeserializeObject<Emotion[]>(response);
         }
@@ -58,7 +58,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 
             var qs = GetRectangleQS(faceRectangles);
 
-            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognize{qs}", imageStream);
+            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.Emotion, $"{ApiKeys.EmotionEndpoint}recognize{qs}", imageStream);
 
             return JsonConvert.DeserializeObject<Emotion[]>(response);
         }
@@ -71,21 +71,21 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 
             var qs = GetRectangleQS(faceRectangles);
 
-            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognize{qs}", imageStream);
+            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.Emotion, $"{ApiKeys.EmotionEndpoint}recognize{qs}", imageStream);
 
             return JsonConvert.DeserializeObject<Emotion[]>(response);
         }
 
         public virtual VideoOperation RecognizeInVideo(Stream videoStream, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
 
-            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", videoStream);
+            var response = RepositoryClient.SendOctetStreamPost(ApiKeys.Emotion, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", videoStream);
 
             return JsonConvert.DeserializeObject<VideoOperation>(response);
         }
 
         public virtual async Task<VideoOperation> RecognizeInVideoAsync(Stream videoStream, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
             
-            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", videoStream);
+            var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.Emotion, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", videoStream);
 
             return JsonConvert.DeserializeObject<VideoOperation>(response);
         }
@@ -94,7 +94,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 
             using (MemoryStream memoryStream = new MemoryStream(videoBytes)) {
 
-                var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", memoryStream);
+                var response = RepositoryClient.SendOctetStreamPost(ApiKeys.Emotion, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", memoryStream);
 
                 return JsonConvert.DeserializeObject<VideoOperation>(response);
             }
@@ -104,7 +104,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 
             using (MemoryStream memoryStream = new MemoryStream(videoBytes)) {
 
-                var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", memoryStream);
+                var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.Emotion, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", memoryStream);
 
                 return JsonConvert.DeserializeObject<VideoOperation>(response);
             }
@@ -112,28 +112,28 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 
         public virtual VideoOperation RecognizeInVideo(string videoUrl, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
 
-            var response = RepositoryClient.SendJsonPost(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", JsonConvert.SerializeObject(new Asset { Url = videoUrl }));
+            var response = RepositoryClient.SendJsonPost(ApiKeys.Emotion, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", JsonConvert.SerializeObject(new Asset { Url = videoUrl }));
 
             return JsonConvert.DeserializeObject<VideoOperation>(response);
         }
 
         public virtual async Task<VideoOperation> RecognizeInVideoAsync(string videoUrl, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
 
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", JsonConvert.SerializeObject(new Asset { Url = videoUrl }));
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.Emotion, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", JsonConvert.SerializeObject(new Asset { Url = videoUrl }));
 
             return JsonConvert.DeserializeObject<VideoOperation>(response);
         }
 
         public virtual VideoOperationResult GetOperationResult(VideoOperation operation) {
 
-            var response = RepositoryClient.SendGet(ApiKeys.ContentModerator, operation.Url);
+            var response = RepositoryClient.SendGet(ApiKeys.Emotion, operation.Url);
 
             return JsonConvert.DeserializeObject<VideoOperationResult>(response);
         }
 
         public virtual async Task<VideoOperationResult> GetOperationResultAsync(VideoOperation operation) {
             
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.ContentModerator, operation.Url);
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Emotion, operation.Url);
 
             return JsonConvert.DeserializeObject<VideoOperationResult>(response);
         }

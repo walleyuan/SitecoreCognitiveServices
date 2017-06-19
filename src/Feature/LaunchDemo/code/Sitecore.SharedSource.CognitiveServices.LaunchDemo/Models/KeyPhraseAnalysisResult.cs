@@ -6,7 +6,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models {
     {
         public string FieldName { get; set; }
         public string FieldValue { get; set; }
-        public SentimentDocumentResult KeyPhraseAnalysis { get; set; }
+        public KeyPhraseDocumentResult KeyPhraseAnalysis { get; set; }
 
         public string HighlightPhrases(string htmlEntity, string cssClass)
         {
