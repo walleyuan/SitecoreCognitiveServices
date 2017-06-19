@@ -45,17 +45,17 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language {
 
         #region Querying
 
-        public virtual QueryResult Query(Guid appId, string query) {
+        public virtual LuisResult Query(Guid appId, string query) {
             var response = RepositoryClient.SendGet(ApiKeys.Luis, $"{ApiKeys.LuisEndpoint}{luisQueryUrl}{appId}?subscription-key={ApiKeys.Luis}&verbose=true&q={query}");
 
-            return JsonConvert.DeserializeObject<QueryResult>(response);
+            return JsonConvert.DeserializeObject<LuisResult>(response);
         }
 
-        public virtual async Task<QueryResult> QueryAsync(Guid appId, string query)
+        public virtual async Task<LuisResult> QueryAsync(Guid appId, string query)
         {
             var response = await RepositoryClient.SendGetAsync(ApiKeys.Luis, $"{ApiKeys.LuisEndpoint}{luisQueryUrl}{appId}?subscription-key={ApiKeys.Luis}&verbose=true&q={query}");
 
-            return JsonConvert.DeserializeObject<QueryResult>(response);
+            return JsonConvert.DeserializeObject<LuisResult>(response);
         }
 
         #endregion Querying

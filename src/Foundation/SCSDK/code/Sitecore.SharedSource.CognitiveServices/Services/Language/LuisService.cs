@@ -20,7 +20,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
             Logger = logger;
         }
 
-        public virtual QueryResult Query(Guid appId, string query)
+        public virtual LuisResult Query(Guid appId, string query)
         {
             try {
                 var result = LuisRepository.Query(appId, query);

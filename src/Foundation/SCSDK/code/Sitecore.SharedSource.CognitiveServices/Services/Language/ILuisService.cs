@@ -5,7 +5,7 @@ using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
     public interface ILuisService
     {
-        QueryResult Query(Guid appId, string query);
+        LuisResult Query(Guid appId, string query);
         string AddApplication(AddApplicationRequest request);
         void DeleteApplication(Guid appId);
         List<List<string>> DownloadApplicationQueryLogs(Guid appId);

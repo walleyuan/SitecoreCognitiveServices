@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language { 
     public interface ILuisRepository
     {
-        QueryResult Query(Guid appId, string query);
-        Task<QueryResult> QueryAsync(Guid appId, string query);
+        LuisResult Query(Guid appId, string query);
+        Task<LuisResult> QueryAsync(Guid appId, string query);
         string AddApplication(AddApplicationRequest request);
         Task<string> AddApplicationAsync(AddApplicationRequest request);
         void DeleteApplication(Guid appId);
