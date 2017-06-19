@@ -41,15 +41,6 @@
       <HintPath>..\..\..\..\..\packages\Chronic.Signed.0.3.2\lib\net40\Chronic.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Bot.Builder, Version=3.5.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\packages\Microsoft.Bot.Builder.3.5.8.0\lib\net46\Microsoft.Bot.Builder.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Bot.Builder.Autofac, Version=3.5.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\packages\Microsoft.Bot.Builder.3.5.8.0\lib\net46\Microsoft.Bot.Builder.Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Bot.Connector, Version=3.5.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\packages\Microsoft.Bot.Builder.3.5.8.0\lib\net46\Microsoft.Bot.Connector.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
       <Private>True</Private>
@@ -67,41 +58,6 @@
     </Reference>
     <Reference Include="Microsoft.Practices.TransientFaultHandling.Core, Version=5.1.1209.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4\Microsoft.Practices.TransientFaultHandling.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.ProjectOxford.Common, Version=1.0.308.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\packages\Microsoft.ProjectOxford.Common.1.0.308\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.ProjectOxford.Emotion, Version=1.0.331.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\packages\Microsoft.ProjectOxford.Emotion.1.0.331.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Emotion.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.ProjectOxford.EntityLinking, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\packages\Microsoft.ProjectOxford.EntityLinking.1.0.0.0\lib\portable-net45+win+wpa81+wp80\Microsoft.ProjectOxford.EntityLinking.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.ProjectOxford.Face, Version=1.2.1.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\packages\Microsoft.ProjectOxford.Face.1.2.1.2\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Microsoft.ProjectOxford.Face.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.ProjectOxford.SpeakerRecognition, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\packages\Microsoft.ProjectOxford.SpeakerRecognition.1.2.0\lib\portable45-net45+win8+wp8+wpa81\Microsoft.ProjectOxford.SpeakerRecognition.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.ProjectOxford.Text, Version=1.0.6.35777, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\packages\Microsoft.ProjectOxford.Text.1.0.6.35777\lib\net452\Microsoft.ProjectOxford.Text.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ProjectOxford.Video, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\packages\Microsoft.ProjectOxford.Video.1.1.0\lib\portable-net45+win+wpa81+wp80\Microsoft.ProjectOxford.Video.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.ProjectOxford.Vision, Version=1.0.370.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\packages\Microsoft.ProjectOxford.Vision.1.0.370\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Vision.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
@@ -129,8 +85,8 @@
       <HintPath>..\..\..\..\..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -177,7 +133,9 @@
     <Compile Include="CSV\ICSVParser.cs" />
     <Compile Include="Enums\Academic.cs" />
     <Compile Include="Enums\Bing.cs" />
+    <Compile Include="Enums\Common.cs" />
     <Compile Include="Enums\Language.cs" />
+    <Compile Include="Enums\Speech.cs" />
     <Compile Include="Enums\Vision.cs" />
     <Compile Include="Models\Bing\AutoSuggest\AutoSuggestEntry.cs" />
     <Compile Include="Models\Bing\AutoSuggest\AutoSuggestGroup.cs" />
@@ -266,6 +224,9 @@
     <Compile Include="Models\Knowledge\AcademicSearch\InterpretResult.cs" />
     <Compile Include="Models\Knowledge\AcademicSearch\InterpretRule.cs" />
     <Compile Include="Models\Knowledge\AcademicSearch\InterpretRuleOutput.cs" />
+    <Compile Include="Models\Knowledge\EntityLinking\EntityLink.cs" />
+    <Compile Include="Models\Knowledge\EntityLinking\Entry.cs" />
+    <Compile Include="Models\Knowledge\EntityLinking\Match.cs" />
     <Compile Include="Models\Knowledge\QnAMaker\AnswerEntity.cs" />
     <Compile Include="Models\Knowledge\QnAMaker\KnowledgeBaseDetails.cs" />
     <Compile Include="Models\Knowledge\QnAMaker\DataExtractionResult.cs" />
@@ -360,12 +321,17 @@
     <Compile Include="Models\Language\Luis\ComplexEntity.cs" />
     <Compile Include="Models\Language\Luis\ComplexEntityInfo.cs" />
     <Compile Include="Models\Language\Luis\ComplexEntityRequest.cs" />
+    <Compile Include="Models\Language\Luis\CompositeChild.cs" />
+    <Compile Include="Models\Language\Luis\CompositeEntity.cs" />
+    <Compile Include="Models\Language\Luis\DialogResponse.cs" />
     <Compile Include="Models\Language\Luis\EntityInfo.cs" />
     <Compile Include="Models\Language\Luis\Entitylabel.cs" />
     <Compile Include="Models\Language\Luis\EntityPrediction.cs" />
+    <Compile Include="Models\Language\Luis\EntityRecommendation.cs" />
     <Compile Include="Models\Language\Luis\ExternalApiKeyRequest.cs" />
     <Compile Include="Models\Language\Luis\ExternalApiKeySet.cs" />
     <Compile Include="Models\Language\Luis\IntentPrediction.cs" />
+    <Compile Include="Models\Language\Luis\IntentRecommendation.cs" />
     <Compile Include="Models\Language\Luis\LabeledExamples.cs" />
     <Compile Include="Models\Language\Luis\ModelFeature.cs" />
     <Compile Include="Models\Language\Luis\ModelTrainingStatus.cs" />
@@ -386,9 +352,28 @@
     <Compile Include="Models\Language\Luis\Utterance.cs" />
     <Compile Include="Models\Language\Luis\UtteranceEntity.cs" />
     <Compile Include="Models\Language\Luis\VersionRequest.cs" />
-    <Compile Include="Models\Language\Sentiment\KeyPhraseSentimentResponse.cs" />
-    <Compile Include="Models\Language\Sentiment\SentimentDocumentResult.cs" />
-    <Compile Include="Models\Language\Sentiment\TopicRequest.cs" />
+    <Compile Include="Models\Language\Text\Document.cs" />
+    <Compile Include="Models\Language\Text\KeyPhraseSentimentResponse.cs" />
+    <Compile Include="Models\Language\Text\LanguageNotSupportedException.cs" />
+    <Compile Include="Models\Language\Text\SentimentDocument.cs" />
+    <Compile Include="Models\Language\Text\SentimentDocumentResult.cs" />
+    <Compile Include="Models\Language\Text\SentimentRequest.cs" />
+    <Compile Include="Models\Language\Text\SentimentResponse.cs" />
+    <Compile Include="Models\Language\Text\TopicRequest.cs" />
+    <Compile Include="Models\Language\Text\DetectedLanguage.cs" />
+    <Compile Include="Models\Language\Text\DocumentCollectionDuplicateIdException.cs" />
+    <Compile Include="Models\Language\Text\DocumentCollectionMaxDocumentException.cs" />
+    <Compile Include="Models\Language\Text\DocumentCollectionMaxSizeException.cs" />
+    <Compile Include="Models\Language\Text\DocumentCollectionMinDocumentException.cs" />
+    <Compile Include="Models\Language\Text\DocumentError.cs" />
+    <Compile Include="Models\Language\Text\DocumentIdRequiredException.cs" />
+    <Compile Include="Models\Language\Text\DocumentMaxSizeException.cs" />
+    <Compile Include="Models\Language\Text\DocumentMinSizeException.cs" />
+    <Compile Include="Models\Language\Text\IDocument.cs" />
+    <Compile Include="Models\Language\Text\LanguageRequest.cs" />
+    <Compile Include="Models\Language\Text\LanguageResponse.cs" />
+    <Compile Include="Models\Language\Text\LanguageResponseDocument.cs" />
+    <Compile Include="Models\Language\Text\TextRequest.cs" />
     <Compile Include="Models\Language\WebLanguageModel\BreakIntoWordsCandidate.cs" />
     <Compile Include="Models\Language\WebLanguageModel\BreakIntoWordsResponse.cs" />
     <Compile Include="Models\Language\WebLanguageModel\ConditionalProbabilityQuery.cs" />
@@ -401,14 +386,43 @@
     <Compile Include="Models\Language\WebLanguageModel\JointProbabilityResponse.cs" />
     <Compile Include="Models\Language\WebLanguageModel\WebLMModel.cs" />
     <Compile Include="Models\Language\WebLanguageModel\WebLMModelResponse.cs" />
+    <Compile Include="Models\Common\OperationResult.cs" />
+    <Compile Include="Models\Speech\CreateProfileResponse.cs" />
+    <Compile Include="Models\Speech\Enrollment.cs" />
+    <Compile Include="Models\Speech\EnrollmentBase.cs" />
+    <Compile Include="Models\Speech\EnrollmentOperation.cs" />
+    <Compile Include="Models\Speech\Identification.cs" />
+    <Compile Include="Models\Speech\IdentificationOperation.cs" />
     <Compile Include="Models\Speech\LocaleSetting.cs" />
-    <Compile Include="Models\TokenResponse.cs" />
+    <Compile Include="Models\Common\Operation.cs" />
+    <Compile Include="Models\Speech\OperationLocation.cs" />
+    <Compile Include="Models\Speech\Profile.cs" />
+    <Compile Include="Models\Speech\ProfileBase.cs" />
+    <Compile Include="Models\Speech\Verification.cs" />
+    <Compile Include="Models\Speech\VerificationPhrase.cs" />
+    <Compile Include="Models\Common\TokenResponse.cs" />
+    <Compile Include="Models\Vision\Computer\Adult.cs" />
+    <Compile Include="Models\Vision\Computer\AnalysisInDomainResult.cs" />
+    <Compile Include="Models\Vision\Computer\AnalysisResult.cs" />
+    <Compile Include="Models\Vision\Computer\Caption.cs" />
+    <Compile Include="Models\Vision\Computer\Category.cs" />
+    <Compile Include="Models\Vision\Computer\Color.cs" />
+    <Compile Include="Models\Vision\Computer\Description.cs" />
     <Compile Include="Models\Vision\Computer\DetectionPoint.cs" />
     <Compile Include="Models\Vision\Computer\DetectionZone.cs" />
+    <Compile Include="Models\Vision\Computer\SimpleFace.cs" />
     <Compile Include="Models\Vision\Computer\FaceSimilarityRequest.cs" />
     <Compile Include="Models\Vision\Computer\FaceToFaceVerifyRequest.cs" />
     <Compile Include="Models\Vision\Computer\GroupRequest.cs" />
     <Compile Include="Models\Vision\Computer\IdentifyRequest.cs" />
+    <Compile Include="Models\Vision\Computer\ImageType.cs" />
+    <Compile Include="Models\Vision\Computer\Metadata.cs" />
+    <Compile Include="Models\Vision\Computer\Model.cs" />
+    <Compile Include="Models\Vision\Computer\ModelResult.cs" />
+    <Compile Include="Models\Vision\Computer\NameScorePair.cs" />
+    <Compile Include="Models\Vision\Computer\OcrResults.cs" />
+    <Compile Include="Models\Vision\Computer\Region.cs" />
+    <Compile Include="Models\Vision\Computer\Tag.cs" />
     <Compile Include="Models\Vision\Computer\Video.cs" />
     <Compile Include="Models\Vision\Computer\Image.cs" />
     <Compile Include="Models\Vision\Computer\HandwrittenTextResponse.cs" />
@@ -455,6 +469,31 @@
     <Compile Include="Models\Vision\ContentModerator\WorkflowExpression.cs" />
     <Compile Include="Models\Vision\ContentModerator\WorkflowExpressionResponse.cs" />
     <Compile Include="Models\Vision\Emotion\Asset.cs" />
+    <Compile Include="Models\Vision\Emotion\Emotion.cs" />
+    <Compile Include="Models\Vision\Emotion\Scores.cs" />
+    <Compile Include="Models\Common\VideoOperation.cs" />
+    <Compile Include="Models\Common\VideoOperationResult.cs" />
+    <Compile Include="Models\Vision\Face\AddPersistedFaceResult.cs" />
+    <Compile Include="Models\Vision\Face\Candidate.cs" />
+    <Compile Include="Models\Vision\Face\CreatePersonResult.cs" />
+    <Compile Include="Models\Vision\Face\Face.cs" />
+    <Compile Include="Models\Vision\Face\FaceAttributes.cs" />
+    <Compile Include="Models\Vision\Face\FaceLandmarks.cs" />
+    <Compile Include="Models\Vision\Face\FaceList.cs" />
+    <Compile Include="Models\Vision\Face\FaceListMetadata.cs" />
+    <Compile Include="Models\Vision\Face\FacialHair.cs" />
+    <Compile Include="Models\Vision\Face\FeatureCoordinate.cs" />
+    <Compile Include="Models\Vision\Face\GroupResult.cs" />
+    <Compile Include="Models\Vision\Face\HeadPose.cs" />
+    <Compile Include="Models\Vision\Face\IdentifyResult.cs" />
+    <Compile Include="Models\Vision\Face\Person.cs" />
+    <Compile Include="Models\Vision\Face\PersonFace.cs" />
+    <Compile Include="Models\Vision\Face\PersonGroup.cs" />
+    <Compile Include="Models\Vision\Face\SimilarFace.cs" />
+    <Compile Include="Models\Vision\Face\SimilarPersistedFace.cs" />
+    <Compile Include="Models\Vision\Face\TrainingStatus.cs" />
+    <Compile Include="Models\Vision\Face\VerifyResult.cs" />
+    <Compile Include="Models\Common\Rectangle.cs" />
     <Compile Include="Models\Vision\Video\FaceDetectionResult.cs" />
     <Compile Include="Models\Vision\Video\FaceEntity.cs" />
     <Compile Include="Models\Vision\Video\FaceFragment.cs" />
@@ -491,16 +530,14 @@
     <Compile Include="Repositories\Knowledge\IRecommendationsRepository.cs" />
     <Compile Include="Repositories\Knowledge\QnAMakerRepository.cs" />
     <Compile Include="Repositories\Knowledge\RecommendationsRepository.cs" />
-    <Compile Include="Repositories\Language\ILanguageRepository.cs" />
     <Compile Include="Repositories\Language\ILinguisticRepository.cs" />
     <Compile Include="Repositories\Language\ILuisRepository.cs" />
-    <Compile Include="Repositories\Language\ISentimentRepository.cs" />
+    <Compile Include="Repositories\Language\ITextAnalyticsRepository.cs" />
     <Compile Include="Repositories\Language\ITranslatorRepository.cs" />
     <Compile Include="Repositories\Language\IWebLanguageModelRepository.cs" />
-    <Compile Include="Repositories\Language\LanguageRepository.cs" />
     <Compile Include="Repositories\Language\LinguisticRepository.cs" />
     <Compile Include="Repositories\Language\LuisRepository.cs" />
-    <Compile Include="Repositories\Language\SentimentRepository.cs" />
+    <Compile Include="Repositories\Language\TextAnalyticsRepository.cs" />
     <Compile Include="Repositories\Language\TranslatorRepository.cs" />
     <Compile Include="Repositories\Language\WebLanguageModelRepository.cs" />
     <Compile Include="Repositories\RepositoryClient.cs" />
@@ -524,6 +561,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

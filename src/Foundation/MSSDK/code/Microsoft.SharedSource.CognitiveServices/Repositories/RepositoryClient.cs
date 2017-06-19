@@ -12,6 +12,7 @@ using System.Web.Script.Serialization;
 using Microsoft.SharedSource.CognitiveServices.Enums;
 using Microsoft.SharedSource.CognitiveServices.Models;
 using Newtonsoft.Json;
+using Microsoft.SharedSource.CognitiveServices.Models.Common;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories
 {

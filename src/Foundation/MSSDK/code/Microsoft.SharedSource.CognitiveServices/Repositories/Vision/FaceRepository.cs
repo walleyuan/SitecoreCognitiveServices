@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Microsoft.ProjectOxford.Face;
-using Microsoft.ProjectOxford.Face.Contract;
 using Newtonsoft.Json;
 using System.Linq;
 using System.Text;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
 using System.Globalization;
+using Microsoft.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Face;
+using Microsoft.SharedSource.CognitiveServices.Models.Common;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 {
@@ -263,31 +264,31 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
             return JsonConvert.DeserializeObject<Person[]>(response);
         }
 
-        public virtual string GetRectangle(FaceRectangle rectangle) {
+        public virtual string GetRectangle(Rectangle rectangle) {
             return (rectangle != null)
                 ? $"&targetFace={rectangle.Left},{rectangle.Top},{rectangle.Width},{rectangle.Height}"
                 : string.Empty;
         }
 
-        public virtual AddPersistedFaceResult AddPersonFace(string personGroupId, Guid personId, string imageUrl, string userData = "", FaceRectangle targetFace = null) {
+        public virtual AddPersistedFaceResult AddPersonFace(string personGroupId, Guid personId, string imageUrl, string userData = "", Rectangle targetFace = null) {
             var response = RepositoryClient.SendJsonPost(ApiKeys.Face, $"{ApiKeys.FaceEndpoint}persongroups/{personGroupId}/persons/{personId}/persistedfaces?userData={userData}{GetRectangle(targetFace)}", JsonConvert.SerializeObject(new Image { Url = imageUrl }));
 
             return JsonConvert.DeserializeObject<AddPersistedFaceResult>(response);
         }
 
-        public virtual async Task<AddPersistedFaceResult> AddPersonFaceAsync(string personGroupId, Guid personId, string imageUrl, string userData = "", FaceRectangle targetFace = null) {
+        public virtual async Task<AddPersistedFaceResult> AddPersonFaceAsync(string personGroupId, Guid personId, string imageUrl, string userData = "", Rectangle targetFace = null) {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.Face, $"{ApiKeys.FaceEndpoint}persongroups/{personGroupId}/persons/{personId}/persistedfaces?userData={userData}{GetRectangle(targetFace)}", JsonConvert.SerializeObject(new Image { Url = imageUrl }));
 
             return JsonConvert.DeserializeObject<AddPersistedFaceResult>(response);
         }
 
-        public virtual AddPersistedFaceResult AddPersonFace(string personGroupId, Guid personId, Stream imageStream, string userData = "", FaceRectangle targetFace = null) {
+        public virtual AddPersistedFaceResult AddPersonFace(string personGroupId, Guid personId, Stream imageStream, string userData = "", Rectangle targetFace = null) {
             var response = RepositoryClient.SendOctetStreamPost(ApiKeys.Face, $"{ApiKeys.FaceEndpoint}persongroups/{personGroupId}/persons/{personId}/persistedfaces?userData={userData}{GetRectangle(targetFace)}", imageStream);
 
             return JsonConvert.DeserializeObject<AddPersistedFaceResult>(response);
         }
 
-        public virtual async Task<AddPersistedFaceResult> AddPersonFaceAsync(string personGroupId, Guid personId, Stream imageStream, string userData = "", FaceRectangle targetFace = null) {
+        public virtual async Task<AddPersistedFaceResult> AddPersonFaceAsync(string personGroupId, Guid personId, Stream imageStream, string userData = "", Rectangle targetFace = null) {
             var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.Face, $"{ApiKeys.FaceEndpoint}persongroups/{personGroupId}/persons/{personId}/persistedfaces?userData={userData}{GetRectangle(targetFace)}", imageStream);
 
             return JsonConvert.DeserializeObject<AddPersistedFaceResult>(response);
@@ -449,25 +450,25 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
             return;
         }
 
-        public virtual AddPersistedFaceResult AddFaceToFaceList(string faceListId, string imageUrl, string userData = "", FaceRectangle targetFace = null) {
+        public virtual AddPersistedFaceResult AddFaceToFaceList(string faceListId, string imageUrl, string userData = "", Rectangle targetFace = null) {
             var response = RepositoryClient.SendJsonPost(ApiKeys.Face, $"{ApiKeys.FaceEndpoint}facelists/{faceListId}/persistedfaces/?userData={userData}{GetRectangle(targetFace)}", JsonConvert.SerializeObject(new Image { Url = imageUrl }));
 
             return JsonConvert.DeserializeObject<AddPersistedFaceResult>(response);
         }
 
-        public virtual async Task<AddPersistedFaceResult> AddFaceToFaceListAsync(string faceListId, string imageUrl, string userData = "", FaceRectangle targetFace = null) {
+        public virtual async Task<AddPersistedFaceResult> AddFaceToFaceListAsync(string faceListId, string imageUrl, string userData = "", Rectangle targetFace = null) {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.Face, $"{ApiKeys.FaceEndpoint}facelists/{faceListId}/persistedfaces/?userData={userData}{GetRectangle(targetFace)}", JsonConvert.SerializeObject(new Image { Url = imageUrl }));
 
             return JsonConvert.DeserializeObject<AddPersistedFaceResult>(response);
         }
 
-        public virtual AddPersistedFaceResult AddFaceToFaceList(string faceListId, Stream imageStream, string userData = null, FaceRectangle targetFace = null) {
+        public virtual AddPersistedFaceResult AddFaceToFaceList(string faceListId, Stream imageStream, string userData = null, Rectangle targetFace = null) {
             var response = RepositoryClient.SendOctetStreamPost(ApiKeys.Face, $"{ApiKeys.FaceEndpoint}facelists/{faceListId}/persistedfaces/?userData={userData}{GetRectangle(targetFace)}", imageStream);
 
             return JsonConvert.DeserializeObject<AddPersistedFaceResult>(response);
         }
 
-        public virtual async Task<AddPersistedFaceResult> AddFaceToFaceListAsync(string faceListId, Stream imageStream, string userData = null, FaceRectangle targetFace = null) {
+        public virtual async Task<AddPersistedFaceResult> AddFaceToFaceListAsync(string faceListId, Stream imageStream, string userData = null, Rectangle targetFace = null) {
             var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.Face, $"{ApiKeys.FaceEndpoint}facelists/{faceListId}/persistedfaces/?userData={userData}{GetRectangle(targetFace)}", imageStream);
 
             return JsonConvert.DeserializeObject<AddPersistedFaceResult>(response);

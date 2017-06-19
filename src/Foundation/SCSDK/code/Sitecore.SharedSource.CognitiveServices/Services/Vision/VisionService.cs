@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Microsoft.ProjectOxford.Vision;
-using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.Diagnostics;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+using Microsoft.SharedSource.CognitiveServices.Enums;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {
@@ -133,7 +133,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 
         #region Face
 
-        public virtual Face[] GetFaceAnalysis(string imageUrl)
+        public virtual SimpleFace[] GetFaceAnalysis(string imageUrl)
         {
             try
             {
@@ -149,7 +149,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
             return null;
         }
 
-        public virtual Face[] GetFaceAnalysis(Stream imageStream)
+        public virtual SimpleFace[] GetFaceAnalysis(Stream imageStream)
         {
             try
             {

@@ -27,7 +27,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             Settings = settings;
         }
 
-        public string Respond(QueryResult result, ItemContextParameters parameters) {
+        public string Respond(LuisResult result, ItemContextParameters parameters) {
 
             var sessions = DomainAccessGuard.Sessions.OrderByDescending(s => s.LastRequest);
             var sessionCount = sessions.Count();

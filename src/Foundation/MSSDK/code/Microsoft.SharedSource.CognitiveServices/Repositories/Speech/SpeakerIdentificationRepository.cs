@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Microsoft.ProjectOxford.SpeakerRecognition.Contract.Identification;
 using Newtonsoft.Json;
 using System;
 using System.IO;

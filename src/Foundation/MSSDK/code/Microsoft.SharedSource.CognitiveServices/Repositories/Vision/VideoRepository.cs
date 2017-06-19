@@ -1,6 +1,6 @@
-﻿using Microsoft.ProjectOxford.Video.Contract;
-using Microsoft.SharedSource.CognitiveServices.Enums;
+﻿using Microsoft.SharedSource.CognitiveServices.Enums;
 using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+using Microsoft.SharedSource.CognitiveServices.Models.Common;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
@@ -22,40 +22,40 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
             RepositoryClient = repoClient;
         }
         
-        public virtual Operation FaceDetectionAndTracking(string videoUrl) {
+        public virtual VideoOperation FaceDetectionAndTracking(string videoUrl) {
             var response = RepositoryClient.SendOperationPost(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}trackface", JsonConvert.SerializeObject(new Video { Url = videoUrl }));
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
 
-        public virtual async Task<Operation> FaceDetectionAndTrackingAsync(string videoUrl) {
+        public virtual async Task<VideoOperation> FaceDetectionAndTrackingAsync(string videoUrl) {
             var response = await RepositoryClient.SendOperationPostAsync(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}trackface", JsonConvert.SerializeObject(new Video { Url = videoUrl }));
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
 
-        public virtual Operation FaceDetectionAndTracking(Stream videoStream) {
+        public virtual VideoOperation FaceDetectionAndTracking(Stream videoStream) {
             var response = RepositoryClient.SendOctetOperationPost(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}trackface", videoStream);
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
 
-        public virtual async Task<Operation> FaceDetectionAndTrackingAsync(Stream videoStream) {
+        public virtual async Task<VideoOperation> FaceDetectionAndTrackingAsync(Stream videoStream) {
             var response = await RepositoryClient.SendOctetOperationPostAsync(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}trackface", videoStream);
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
 
-        public virtual OperationResult GetOperationResult(Operation operation) {
+        public virtual VideoOperationResult GetOperationResult(VideoOperation operation) {
             var response = RepositoryClient.SendGet(ApiKeys.Video, operation.Url);
 
-            return JsonConvert.DeserializeObject<OperationResult>(response);
+            return JsonConvert.DeserializeObject<VideoOperationResult>(response);
         }
 
-        public virtual async Task<OperationResult> GetOperationResultAsync(Operation operation) {
+        public virtual async Task<VideoOperationResult> GetOperationResultAsync(VideoOperation operation) {
             var response = await RepositoryClient.SendGetAsync(ApiKeys.Video, operation.Url);
 
-            return JsonConvert.DeserializeObject<OperationResult>(response);
+            return JsonConvert.DeserializeObject<VideoOperationResult>(response);
         }
 
         public virtual Stream GetResultVideo(string url) {
@@ -81,13 +81,13 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
             return sb.ToString();
         }
 
-        public virtual Operation MotionDetection(string videoUrl, SensitivityOptions sensitivityLevel = SensitivityOptions.medium, int frameSamplingValue = 1, List<DetectionZone> detectionZones = null, bool detectLightChange = false, double mergeTimeThreshold = 0.0) {
+        public virtual VideoOperation MotionDetection(string videoUrl, SensitivityOptions sensitivityLevel = SensitivityOptions.medium, int frameSamplingValue = 1, List<DetectionZone> detectionZones = null, bool detectLightChange = false, double mergeTimeThreshold = 0.0) {
 
             var qs = DetectMotionQS(sensitivityLevel, frameSamplingValue, detectionZones, detectLightChange, mergeTimeThreshold);
 
             var response = RepositoryClient.SendOperationPost(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}detectmotion{qs}", JsonConvert.SerializeObject(new Video { Url = videoUrl }));
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
 
         /// <param name="sensitivityLevel">Specify the detection sensitivity level: “low”, “medium”, “high”. Higher sensitivity means more motions will be detected at a cost that more false alarms will be reported. The default value is “medium”.</param>
@@ -95,91 +95,91 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
         /// <param name="detectionZones">Each detection zone is a list of points and each point is defined by a “x,y” pair. At most 8 detection zones are supported and each detection zone should be defined by at least 3 points and no more than 16 points. The default setting is “detectionZones=0,0;0.5,0;1,0;1,0.5;1,1;0.5,1;0,1;0,0.5”, i.e. the whole frame defined by an 8-point polygon.</param>
         /// <param name="detectLightChange">Specify whether light change events should be detected. The default value is false.</param>
         /// <param name="mergeTimeThreshold">Specify the threshold on whether successive motions should be merged together, if the interval between successive motions is &lt;= mergeTimeThreshold, they will be merged. The default value is 0.0 and upper bound is 10.0.</param>
-        public virtual async Task<Operation> MotionDetectionAsync(string videoUrl, SensitivityOptions sensitivityLevel = SensitivityOptions.medium, int frameSamplingValue = 1,  List<DetectionZone> detectionZones = null, bool detectLightChange = false, double mergeTimeThreshold = 0.0) {
+        public virtual async Task<VideoOperation> MotionDetectionAsync(string videoUrl, SensitivityOptions sensitivityLevel = SensitivityOptions.medium, int frameSamplingValue = 1,  List<DetectionZone> detectionZones = null, bool detectLightChange = false, double mergeTimeThreshold = 0.0) {
 
             var qs = DetectMotionQS(sensitivityLevel, frameSamplingValue, detectionZones, detectLightChange, mergeTimeThreshold);
 
             var response = await RepositoryClient.SendOperationPostAsync(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}detectmotion{qs}", JsonConvert.SerializeObject(new Video { Url = videoUrl }));
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
 
-        public virtual Operation MotionDetection(Stream videoStream, SensitivityOptions sensitivityLevel = SensitivityOptions.medium, int frameSamplingValue = 1, List<DetectionZone> detectionZones = null, bool detectLightChange = false, double mergeTimeThreshold = 0.0) {
+        public virtual VideoOperation MotionDetection(Stream videoStream, SensitivityOptions sensitivityLevel = SensitivityOptions.medium, int frameSamplingValue = 1, List<DetectionZone> detectionZones = null, bool detectLightChange = false, double mergeTimeThreshold = 0.0) {
 
             var qs = DetectMotionQS(sensitivityLevel, frameSamplingValue, detectionZones, detectLightChange, mergeTimeThreshold);
 
             var response = RepositoryClient.SendOctetOperationPost(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}detectmotion{qs}", videoStream);
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
 
-        public virtual async Task<Operation> MotionDetectionAsync(Stream videoStream, SensitivityOptions sensitivityLevel = SensitivityOptions.medium, int frameSamplingValue = 1, List<DetectionZone> detectionZones = null, bool detectLightChange = false, double mergeTimeThreshold = 0.0) {
+        public virtual async Task<VideoOperation> MotionDetectionAsync(Stream videoStream, SensitivityOptions sensitivityLevel = SensitivityOptions.medium, int frameSamplingValue = 1, List<DetectionZone> detectionZones = null, bool detectLightChange = false, double mergeTimeThreshold = 0.0) {
 
             var qs = DetectMotionQS(sensitivityLevel, frameSamplingValue, detectionZones, detectLightChange, mergeTimeThreshold);
 
             var response = await RepositoryClient.SendOctetOperationPostAsync(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}detectmotion{qs}", videoStream);
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
 
-        public virtual Operation Stabilization(string videoUrl) {
+        public virtual VideoOperation Stabilization(string videoUrl) {
             var response = RepositoryClient.SendOperationPost(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}stabilize", JsonConvert.SerializeObject(new Video { Url = videoUrl }));
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
 
-        public virtual async Task<Operation> StabilizationAsync(string videoUrl) {
+        public virtual async Task<VideoOperation> StabilizationAsync(string videoUrl) {
             var response = await RepositoryClient.SendOperationPostAsync(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}stabilize", JsonConvert.SerializeObject(new Video { Url = videoUrl }));
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
 
-        public virtual Operation Stabilization(Stream videoStream) {
+        public virtual VideoOperation Stabilization(Stream videoStream) {
             var response = RepositoryClient.SendOctetOperationPost(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}stabilize", videoStream);
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
 
-        public virtual async Task<Operation> StabilizationAsync(Stream videoStream) {
+        public virtual async Task<VideoOperation> StabilizationAsync(Stream videoStream) {
             var response = await RepositoryClient.SendOctetOperationPostAsync(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}stabilize", videoStream);
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
 
         public virtual string ThumbnailQS(int maxMotionThumbnailDurationInSecs, bool outputAudio, bool fadeInFadeOut) {
             return $"?maxMotionThumbnailDurationInSecs={maxMotionThumbnailDurationInSecs}&outputAudio={outputAudio}&fadeInFadeOut{fadeInFadeOut}";
         }
 
-        public virtual Operation Thumbnail(string videoUrl, int maxMotionThumbnailDurationInSecs = 0, bool outputAudio = true, bool fadeInFadeOut = true) {
+        public virtual VideoOperation Thumbnail(string videoUrl, int maxMotionThumbnailDurationInSecs = 0, bool outputAudio = true, bool fadeInFadeOut = true) {
             var qs = ThumbnailQS(maxMotionThumbnailDurationInSecs, outputAudio, fadeInFadeOut);
 
             var response = RepositoryClient.SendOperationPost(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}generatethumbnail{qs}", JsonConvert.SerializeObject(new Video { Url = videoUrl }));
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
 
-        public virtual async Task<Operation> ThumbnailAsync(string videoUrl, int maxMotionThumbnailDurationInSecs = 0, bool outputAudio = true, bool fadeInFadeOut = true) {
+        public virtual async Task<VideoOperation> ThumbnailAsync(string videoUrl, int maxMotionThumbnailDurationInSecs = 0, bool outputAudio = true, bool fadeInFadeOut = true) {
             var qs = ThumbnailQS(maxMotionThumbnailDurationInSecs, outputAudio, fadeInFadeOut);
 
             var response = await RepositoryClient.SendOperationPostAsync(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}generatethumbnail{qs}", JsonConvert.SerializeObject(new Video { Url = videoUrl }));
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
 
-        public virtual Operation Thumbnail(Stream videoStream, int maxMotionThumbnailDurationInSecs = 0, bool outputAudio = true, bool fadeInFadeOut = true) {
+        public virtual VideoOperation Thumbnail(Stream videoStream, int maxMotionThumbnailDurationInSecs = 0, bool outputAudio = true, bool fadeInFadeOut = true) {
             var qs = ThumbnailQS(maxMotionThumbnailDurationInSecs, outputAudio, fadeInFadeOut);
 
             var response = RepositoryClient.SendOctetOperationPost(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}generatethumbnail{qs}", videoStream);
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
 
-        public virtual async Task<Operation> ThumbnailAsync(Stream videoStream, int maxMotionThumbnailDurationInSecs = 0, bool outputAudio = true, bool fadeInFadeOut = true) {
+        public virtual async Task<VideoOperation> ThumbnailAsync(Stream videoStream, int maxMotionThumbnailDurationInSecs = 0, bool outputAudio = true, bool fadeInFadeOut = true) {
             var qs = ThumbnailQS(maxMotionThumbnailDurationInSecs, outputAudio, fadeInFadeOut);
 
             var response = await RepositoryClient.SendOctetOperationPostAsync(ApiKeys.Video, $"{ApiKeys.VideoEndpoint}generatethumbnail{qs}", videoStream);
 
-            return new Operation(response);
+            return new VideoOperation(response);
         }
     }
 }

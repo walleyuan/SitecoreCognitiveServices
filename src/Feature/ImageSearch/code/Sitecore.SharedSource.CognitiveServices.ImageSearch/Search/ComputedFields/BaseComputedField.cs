@@ -60,10 +60,10 @@ namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFie
 
         protected void LogError(Exception ex, Item indexItem)
         {
-            Microsoft.ProjectOxford.Common.ClientException exception = ex.InnerException as Microsoft.ProjectOxford.Common.ClientException;
+            Exception exception = ex.InnerException as Exception;
 
             if (exception != null)
-                Log.Error($"ImageItemAnalysis failed to index {indexItem.Paths.Path}: {exception.Error.Message}", exception, GetType());
+                Log.Error($"ImageItemAnalysis failed to index {indexItem.Paths.Path}: {exception.Message}", exception, GetType());
             else
                 Log.Error(ex.Message, ex, GetType());
         }

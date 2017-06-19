@@ -1,5 +1,4 @@
-﻿using Microsoft.ProjectOxford.EntityLinking;
-using Microsoft.ProjectOxford.EntityLinking.Contract;
+﻿using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.EntityLinking;
 using Newtonsoft.Json;
 using System.Text;
 using System.Threading.Tasks;

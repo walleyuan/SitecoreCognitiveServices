@@ -1,6 +1,6 @@
 ﻿
+using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.EntityLinking;
 using System.Linq;
-using Microsoft.ProjectOxford.EntityLinking.Contract;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models {
     public class LinkAnalysisResult : ILinkAnalysisResult

@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using Microsoft.ProjectOxford.Emotion.Contract;
-using Microsoft.ProjectOxford.Vision.Contract;
+﻿using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Face;
+using System.Collections.Generic;
 
 namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
 {
@@ -9,7 +10,7 @@ namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
         string EmotionAnalysisValue { get; set; }
         Emotion[] EmotionAnalysis { get; }
         string FacialAnalysisValue { get; set; }
-        Microsoft.ProjectOxford.Face.Contract.Face[] FacialAnalysis { get; }
+        Face[] FacialAnalysis { get; }
         string TextAnalysisValue { get; set; }
         OcrResults TextAnalysis { get; }
         string VisionAnalysisValue { get; set; }

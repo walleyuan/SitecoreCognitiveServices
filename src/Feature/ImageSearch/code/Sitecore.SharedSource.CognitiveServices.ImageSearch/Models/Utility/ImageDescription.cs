@@ -1,4 +1,4 @@
-﻿using Microsoft.ProjectOxford.Vision.Contract;
+﻿using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
 
 namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Utility
 {

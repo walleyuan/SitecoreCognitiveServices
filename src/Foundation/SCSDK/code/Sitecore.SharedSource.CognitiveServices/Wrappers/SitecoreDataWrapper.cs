@@ -1,5 +1,4 @@
-﻿extern alias MicrosoftProjectOxfordCommon;
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections.Generic;
 using Sitecore.Data;

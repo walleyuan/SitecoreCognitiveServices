@@ -7,7 +7,7 @@ using Sitecore.SharedSource.CognitiveServices.ImageSearch.Factories;
 using Sitecore.SharedSource.CognitiveServices.ImageSearch.Search;
 using Sitecore.Data.Items;
 using Sitecore.SharedSource.CognitiveServices.ImageSearch.Services.Search;
-using Microsoft.ProjectOxford.Vision.Contract;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
 
 namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Controllers
 {

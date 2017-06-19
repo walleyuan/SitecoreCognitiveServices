@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.SharedSource.CognitiveServices.ImageSearch.Factories;
 using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Analysis;
 using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Utility;
 using Sitecore.SharedSource.CognitiveServices.ImageSearch.Search;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
 
 namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Services.Search {
     public class ImageSearchService : IImageSearchService 

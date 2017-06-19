@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using Sitecore.ContentSearch;
-using Microsoft.ProjectOxford.Vision.Contract;
-using Microsoft.ProjectOxford.Emotion.Contract;
 using System.Web.Script.Serialization;
 using Sitecore.ContentSearch.SearchTypes;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Face;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
 
 namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
 {
@@ -19,7 +20,7 @@ namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
         [IndexField("FacialAnalysis")]
         public string FacialAnalysisValue { get; set; }
 
-        public Microsoft.ProjectOxford.Face.Contract.Face[] FacialAnalysis => SaturateValue<Microsoft.ProjectOxford.Face.Contract.Face[]>(FacialAnalysisValue) ?? new Microsoft.ProjectOxford.Face.Contract.Face[0];
+        public Face[] FacialAnalysis => SaturateValue<Face[]>(FacialAnalysisValue) ?? new Face[0];
 
         [IndexField("TextAnalysis")]
         public string TextAnalysisValue { get; set; }

@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer {
+    public class NameScorePair {
+        public string Name { get; set; }
+
+        public double Score { get; set; }
+    }
+}

@@ -1,8 +1,8 @@
 ﻿
+using Microsoft.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Face;
 using System.Collections.Generic;
 using System.IO;
-using Microsoft.ProjectOxford.Face;
-using Microsoft.ProjectOxford.Face.Contract;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {

@@ -1,12 +1,10 @@
 ﻿using System.Linq;
-using Microsoft.ProjectOxford.Common;
-using Microsoft.ProjectOxford.Common.Contract;
-using Microsoft.ProjectOxford.Emotion.Contract;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
 using Newtonsoft.Json;
 using Microsoft.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Models.Common;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 {
@@ -78,62 +76,62 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
             return JsonConvert.DeserializeObject<Emotion[]>(response);
         }
 
-        public virtual VideoEmotionRecognitionOperation RecognizeInVideo(Stream videoStream, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
+        public virtual VideoOperation RecognizeInVideo(Stream videoStream, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
 
             var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", videoStream);
 
-            return JsonConvert.DeserializeObject<VideoEmotionRecognitionOperation>(response);
+            return JsonConvert.DeserializeObject<VideoOperation>(response);
         }
 
-        public virtual async Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(Stream videoStream, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
+        public virtual async Task<VideoOperation> RecognizeInVideoAsync(Stream videoStream, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
             
             var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", videoStream);
 
-            return JsonConvert.DeserializeObject<VideoEmotionRecognitionOperation>(response);
+            return JsonConvert.DeserializeObject<VideoOperation>(response);
         }
 
-        public virtual VideoEmotionRecognitionOperation RecognizeInVideo(byte[] videoBytes, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
+        public virtual VideoOperation RecognizeInVideo(byte[] videoBytes, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
 
             using (MemoryStream memoryStream = new MemoryStream(videoBytes)) {
 
                 var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", memoryStream);
 
-                return JsonConvert.DeserializeObject<VideoEmotionRecognitionOperation>(response);
+                return JsonConvert.DeserializeObject<VideoOperation>(response);
             }
         }
 
-        public virtual async Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(byte[] videoBytes, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
+        public virtual async Task<VideoOperation> RecognizeInVideoAsync(byte[] videoBytes, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
 
             using (MemoryStream memoryStream = new MemoryStream(videoBytes)) {
 
                 var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", memoryStream);
 
-                return JsonConvert.DeserializeObject<VideoEmotionRecognitionOperation>(response);
+                return JsonConvert.DeserializeObject<VideoOperation>(response);
             }
         }
 
-        public virtual VideoEmotionRecognitionOperation RecognizeInVideo(string videoUrl, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
+        public virtual VideoOperation RecognizeInVideo(string videoUrl, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
 
             var response = RepositoryClient.SendJsonPost(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", JsonConvert.SerializeObject(new Asset { Url = videoUrl }));
 
-            return JsonConvert.DeserializeObject<VideoEmotionRecognitionOperation>(response);
+            return JsonConvert.DeserializeObject<VideoOperation>(response);
         }
 
-        public virtual async Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(string videoUrl, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
+        public virtual async Task<VideoOperation> RecognizeInVideoAsync(string videoUrl, VideoOutputStyleOptions outputStyle = VideoOutputStyleOptions.Aggregate) {
 
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ContentModerator, $"{ApiKeys.EmotionEndpoint}recognizeInVideo?outputStyle{outputStyle}", JsonConvert.SerializeObject(new Asset { Url = videoUrl }));
 
-            return JsonConvert.DeserializeObject<VideoEmotionRecognitionOperation>(response);
+            return JsonConvert.DeserializeObject<VideoOperation>(response);
         }
 
-        public virtual VideoOperationResult GetOperationResult(VideoEmotionRecognitionOperation operation) {
+        public virtual VideoOperationResult GetOperationResult(VideoOperation operation) {
 
             var response = RepositoryClient.SendGet(ApiKeys.ContentModerator, operation.Url);
 
             return JsonConvert.DeserializeObject<VideoOperationResult>(response);
         }
 
-        public virtual async Task<VideoOperationResult> GetOperationResultAsync(VideoEmotionRecognitionOperation operation) {
+        public virtual async Task<VideoOperationResult> GetOperationResultAsync(VideoOperation operation) {
             
             var response = await RepositoryClient.SendGetAsync(ApiKeys.ContentModerator, operation.Url);
 

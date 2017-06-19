@@ -51,4 +51,35 @@ namespace Microsoft.SharedSource.CognitiveServices.Enums
     public enum VideoOutputStyleOptions { Aggregate, PerFrame }
 
     public enum SensitivityOptions { low, medium, high }
+
+    public enum VisualFeature { ImageType, Color, Faces, Adult, Categories, Tags, Description }
+
+    public enum VideoOperationStatus {
+        NotStarted,
+        Uploading,
+        Running,
+        Failed,
+        Succeeded,
+    }
+
+    public enum Glasses {
+        NoGlasses,
+        Sunglasses,
+        ReadingGlasses,
+        SwimmingGoggles,
+    }
+
+    public enum FindSimilarMatchMode {
+        matchPerson,
+        matchFace,
+    }
+
+    public enum FaceAttributeType {
+        Age,
+        Gender,
+        FacialHair,
+        Smile,
+        HeadPose,
+        Glasses,
+    }
 }

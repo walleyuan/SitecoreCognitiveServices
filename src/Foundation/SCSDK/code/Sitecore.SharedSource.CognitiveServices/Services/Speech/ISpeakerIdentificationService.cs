@@ -1,7 +1,7 @@
 ﻿
+using Microsoft.SharedSource.CognitiveServices.Models.Speech;
 using System;
 using System.IO;
-using Microsoft.ProjectOxford.SpeakerRecognition.Contract.Identification;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
 {

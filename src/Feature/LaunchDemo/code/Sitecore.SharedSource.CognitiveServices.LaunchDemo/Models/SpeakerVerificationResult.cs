@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.SharedSource.CognitiveServices.Models.Speech;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Microsoft.ProjectOxford.SpeakerRecognition.Contract.Verification;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models
 {

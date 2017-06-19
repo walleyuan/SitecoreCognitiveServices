@@ -31,7 +31,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             Provider = provider;
             }
         
-        public string Respond(QueryResult result, ItemContextParameters parameters)
+        public string Respond(LuisResult result, ItemContextParameters parameters)
         {
             var intents = Provider.GetServices<IIntentFactory<IIntent>>()
                 .Select(a => a.Create())

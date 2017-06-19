@@ -24,7 +24,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             Settings = settings;
         }
 
-        public string Respond(QueryResult result, ItemContextParameters parameters)
+        public string Respond(LuisResult result, ItemContextParameters parameters)
         {
             string fullName = Sitecore.Context.User.Profile.FullName;
             

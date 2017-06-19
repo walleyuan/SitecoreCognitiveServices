@@ -1,4 +1,4 @@
-﻿using Microsoft.ProjectOxford.Face;
+﻿using Microsoft.SharedSource.CognitiveServices.Enums;
 using System;
 
 namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer {

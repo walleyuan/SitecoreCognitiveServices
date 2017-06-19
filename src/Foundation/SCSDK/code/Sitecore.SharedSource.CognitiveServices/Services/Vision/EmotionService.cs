@@ -1,8 +1,8 @@
 using System;
 using System.IO;
-using Microsoft.ProjectOxford.Emotion.Contract;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {

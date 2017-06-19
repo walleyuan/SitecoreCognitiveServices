@@ -1,9 +1,8 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
-using Microsoft.ProjectOxford.Vision;
-using Microsoft.ProjectOxford.Vision.Contract;
 using System.Collections.Generic;
 using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+using Microsoft.SharedSource.CognitiveServices.Enums;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 {
@@ -25,10 +24,10 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
         Color GetColorAnalysis(Stream stream);
         Task<Color> GetColorAnalysisAsync(string imageUrl);
         Color GetColorAnalysis(string imageUrl);
-        Task<Face[]> GetFaceAnalysisAsync(Stream stream);
-        Face[] GetFaceAnalysis(Stream stream);
-        Task<Face[]> GetFaceAnalysisAsync(string imageUrl);
-        Face[] GetFaceAnalysis(string imageUrl);
+        Task<SimpleFace[]> GetFaceAnalysisAsync(Stream stream);
+        SimpleFace[] GetFaceAnalysis(Stream stream);
+        Task<SimpleFace[]> GetFaceAnalysisAsync(string imageUrl);
+        SimpleFace[] GetFaceAnalysis(string imageUrl);
         Task<ImageType> GetImageTypeAnalysisAsync(Stream stream);
         ImageType GetImageTypeAnalysis(Stream stream);
         Task<ImageType> GetImageTypeAnalysisAsync(string imageUrl);

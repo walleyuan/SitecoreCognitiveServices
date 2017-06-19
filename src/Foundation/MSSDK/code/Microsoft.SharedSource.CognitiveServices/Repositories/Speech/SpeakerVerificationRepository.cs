@@ -1,5 +1,4 @@
-﻿using Microsoft.ProjectOxford.SpeakerRecognition.Contract.Verification;
-using Microsoft.SharedSource.CognitiveServices.Models.Speech;
+﻿using Microsoft.SharedSource.CognitiveServices.Models.Speech;
 using Newtonsoft.Json;
 using System;
 using System.IO;

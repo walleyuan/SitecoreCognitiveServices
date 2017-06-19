@@ -1,6 +1,6 @@
 ﻿
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
 using System.IO;
-using Microsoft.ProjectOxford.Emotion.Contract;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {

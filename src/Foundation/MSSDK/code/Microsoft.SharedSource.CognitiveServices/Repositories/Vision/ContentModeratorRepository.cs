@@ -8,10 +8,10 @@ using System.Web;
 using Microsoft.WindowsAzure.MediaServices.Client;
 using Newtonsoft.Json;
 using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models;
 using Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
 using System.Linq;
 using Chronic;
+using Microsoft.SharedSource.CognitiveServices.Models.Common;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
     public class ContentModeratorRepository : IContentModeratorRepository

@@ -1,5 +1,4 @@
-﻿
-using Microsoft.ProjectOxford.EntityLinking.Contract;
+﻿using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.EntityLinking;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
 {

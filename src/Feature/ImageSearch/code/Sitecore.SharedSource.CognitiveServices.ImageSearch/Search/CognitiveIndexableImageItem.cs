@@ -4,10 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
-using Microsoft.ProjectOxford.Emotion.Contract;
-using Microsoft.ProjectOxford.Face;
-using Microsoft.ProjectOxford.Vision;
-using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.Configuration;
 using Sitecore.ContentSearch;
 using Sitecore.Data.Fields;
@@ -15,7 +11,10 @@ using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
-using Face = Microsoft.ProjectOxford.Face.Contract.Face;
+using Microsoft.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Face;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
 
 namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
 {

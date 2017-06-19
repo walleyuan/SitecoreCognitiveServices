@@ -1,14 +1,11 @@
-﻿using Microsoft.ProjectOxford.Face;
-using Microsoft.ProjectOxford.SpeakerRecognition.Contract.Identification;
-using Microsoft.ProjectOxford.Text.Core;
-using Microsoft.ProjectOxford.Text.Language;
-using Microsoft.ProjectOxford.Text.Sentiment;
-using Microsoft.ProjectOxford.Vision;
-using Microsoft.ProjectOxford.Vision.Contract;
-using Microsoft.SharedSource.CognitiveServices.Enums;
+﻿using Microsoft.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Models.Common;
 using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic;
+using Microsoft.SharedSource.CognitiveServices.Models.Language.Text;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.WebLanguageModel;
+using Microsoft.SharedSource.CognitiveServices.Models.Speech;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
 using Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
 using Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models;
 using Sitecore.SharedSource.CognitiveServices.Services.Bing;
@@ -22,7 +19,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EvaluateResponse = Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator.EvaluateResponse;
-using Operation = Microsoft.ProjectOxford.Video.Contract.Operation;
+using Operation = Microsoft.SharedSource.CognitiveServices.Models.Common.Operation;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers {
     public class CognitiveLaunchController : Controller
@@ -38,9 +35,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers {
         protected readonly IEmotionService EmotionService;
         protected readonly IFaceService FaceService;
         protected readonly ILinguisticService LinguisticService;
-        protected readonly ISentimentService SentimentService;
+        protected readonly ITextAnalyticsService TextAnalyticsService;
         protected readonly IEntityLinkingService EntityLinkingService;
-        protected readonly ILanguageService LanguageService;
         protected readonly IContentModeratorService ContentModeratorService;
         protected readonly IAcademicSearchService AcademicSearchService;
         protected readonly IWebLanguageModelService WebLanguageModelService;
@@ -59,9 +55,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers {
             IEmotionService emotionService,
             IFaceService faceService,
             ILinguisticService linguisticService,
-            ISentimentService sentimentService,
+            ITextAnalyticsService textAnalyticsService,
             IEntityLinkingService entityLinkingService,
-            ILanguageService languageService,
             IContentModeratorService contentModeratorService,
             IAcademicSearchService academicSearchService,
             IWebLanguageModelService webLanguageModelService,
@@ -79,9 +74,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers {
             EmotionService = emotionService;
             FaceService = faceService;
             LinguisticService = linguisticService;
-            SentimentService = sentimentService;
+            TextAnalyticsService = textAnalyticsService;
             EntityLinkingService = entityLinkingService;
-            LanguageService = languageService;
             ContentModeratorService = contentModeratorService;
             AcademicSearchService = academicSearchService;
             WebLanguageModelService = webLanguageModelService;
@@ -442,8 +436,8 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers {
         public ActionResult VideoOperation(string operationUrl)
         {
             var vr = new VideoResult();
-            vr.Operation = new Operation(operationUrl);
-            vr.OperationResult = VideoService.GetOperationResult(new Operation(operationUrl));
+            vr.Operation = new VideoOperation(operationUrl);
+            vr.OperationResult = VideoService.GetOperationResult(new VideoOperation(operationUrl));
             
             return View("Video", vr);
         }
@@ -697,7 +691,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers {
                 Id = "Sample Text"
             });
             
-            var result = SentimentService.GetKeyPhrases(sr);
+            var result = TextAnalyticsService.GetKeyPhrases(sr);
             
             List<KeyPhraseAnalysisResult> fieldResults = result
                 .Documents
@@ -758,7 +752,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers {
                 Id = "Sample Text"
             });
 
-            var result = SentimentService.GetSentiment(sr);
+            var result = TextAnalyticsService.GetSentiment(sr);
             
             return View("Sentiment", result);
         }
@@ -783,7 +777,7 @@ namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers {
                 Id = "Sample Text"
             });
 
-            var result = LanguageService.GetLanguages(lr);
+            var result = TextAnalyticsService.GetLanguages(lr);
             return View("Language", result);
         }
 

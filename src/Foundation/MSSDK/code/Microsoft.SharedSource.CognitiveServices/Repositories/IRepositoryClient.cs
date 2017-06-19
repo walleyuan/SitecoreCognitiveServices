@@ -2,6 +2,7 @@
 using Microsoft.SharedSource.CognitiveServices.Models;
 using System.IO;
 using Microsoft.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Models.Common;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories
 {

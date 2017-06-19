@@ -27,7 +27,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             Settings = settings;
         }
 
-        public string Respond(QueryResult result, ItemContextParameters parameters) {
+        public string Respond(LuisResult result, ItemContextParameters parameters) {
 
             if (!Sitecore.Context.User.IsAdministrator)
                 return "Sorry, you can only perform this action if you're an admin";

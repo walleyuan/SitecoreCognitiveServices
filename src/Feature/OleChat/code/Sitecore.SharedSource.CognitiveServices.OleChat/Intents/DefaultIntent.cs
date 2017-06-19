@@ -25,7 +25,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             Settings = settings;
         }
         
-        public string Respond(QueryResult result, ItemContextParameters parameters) {
+        public string Respond(LuisResult result, ItemContextParameters parameters) {
             return "Sorry, can you try again? I didn't quite understand you.";
         }
     }

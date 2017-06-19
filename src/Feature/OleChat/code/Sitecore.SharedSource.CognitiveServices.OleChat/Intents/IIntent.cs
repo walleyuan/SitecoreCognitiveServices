@@ -7,6 +7,6 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
         Guid ApplicationId { get; }
         string Name { get; }
         string Description { get; }
-        string Respond(QueryResult result, ItemContextParameters parameters);
+        string Respond(LuisResult result, ItemContextParameters parameters);
     }
 }

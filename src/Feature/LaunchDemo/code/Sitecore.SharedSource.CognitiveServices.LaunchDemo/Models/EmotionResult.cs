@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Microsoft.ProjectOxford.Emotion.Contract;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.ProjectOxford.Vision.Contract;
 using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Utility;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
 
 namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Factories
 {

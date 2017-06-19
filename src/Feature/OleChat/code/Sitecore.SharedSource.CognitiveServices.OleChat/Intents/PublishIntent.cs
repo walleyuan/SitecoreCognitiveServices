@@ -34,7 +34,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             PublishWrapper = publishWrapper;
         }
 
-        public string Respond(QueryResult result, ItemContextParameters parameters) {
+        public string Respond(LuisResult result, ItemContextParameters parameters) {
             
             var entities = result?.Entities;
             if (entities == null)

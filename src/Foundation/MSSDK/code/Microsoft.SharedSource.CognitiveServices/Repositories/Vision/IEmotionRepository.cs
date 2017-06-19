@@ -1,7 +1,7 @@
-﻿using Microsoft.ProjectOxford.Common;
-using Microsoft.ProjectOxford.Common.Contract;
-using Microsoft.ProjectOxford.Emotion.Contract;
-using Microsoft.SharedSource.CognitiveServices.Enums;
+﻿using Microsoft.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Models.Common;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -17,13 +17,13 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
         Task<Emotion[]> RecognizeAsync(Stream imageStream);
         Emotion[] Recognize(Stream imageStream, Rectangle[] faceRectangles);
         Task<Emotion[]> RecognizeAsync(Stream imageStream, Rectangle[] faceRectangles);
-        VideoEmotionRecognitionOperation RecognizeInVideo(Stream videoStream, VideoOutputStyleOptions outputStyle);
-        Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(Stream videoStream, VideoOutputStyleOptions outputStyle);
-        VideoEmotionRecognitionOperation RecognizeInVideo(byte[] videoBytes, VideoOutputStyleOptions outputStyle);
-        Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(byte[] videoBytes, VideoOutputStyleOptions outputStyle);
-        VideoEmotionRecognitionOperation RecognizeInVideo(string videoUrl, VideoOutputStyleOptions outputStyle);
-        Task<VideoEmotionRecognitionOperation> RecognizeInVideoAsync(string videoUrl, VideoOutputStyleOptions outputStyle);
-        VideoOperationResult GetOperationResult(VideoEmotionRecognitionOperation operation);
-        Task<VideoOperationResult> GetOperationResultAsync(VideoEmotionRecognitionOperation operation);
+        VideoOperation RecognizeInVideo(Stream videoStream, VideoOutputStyleOptions outputStyle);
+        Task<VideoOperation> RecognizeInVideoAsync(Stream videoStream, VideoOutputStyleOptions outputStyle);
+        VideoOperation RecognizeInVideo(byte[] videoBytes, VideoOutputStyleOptions outputStyle);
+        Task<VideoOperation> RecognizeInVideoAsync(byte[] videoBytes, VideoOutputStyleOptions outputStyle);
+        VideoOperation RecognizeInVideo(string videoUrl, VideoOutputStyleOptions outputStyle);
+        Task<VideoOperation> RecognizeInVideoAsync(string videoUrl, VideoOutputStyleOptions outputStyle);
+        VideoOperationResult GetOperationResult(VideoOperation operation);
+        Task<VideoOperationResult> GetOperationResultAsync(VideoOperation operation);
     }
 }

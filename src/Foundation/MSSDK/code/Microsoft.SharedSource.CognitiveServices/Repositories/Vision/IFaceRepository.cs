@@ -1,22 +1,24 @@
-﻿using System;
+﻿using Microsoft.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Models.Common;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Face;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Microsoft.ProjectOxford.Face;
-using Microsoft.ProjectOxford.Face.Contract;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 {
     public interface IFaceRepository
     {
-        AddPersistedFaceResult AddFaceToFaceList(string faceListId, string imageUrl, string userData = null, FaceRectangle targetFace = null);
-        Task<AddPersistedFaceResult> AddFaceToFaceListAsync(string faceListId, string imageUrl, string userData = null, FaceRectangle targetFace = null);
-        AddPersistedFaceResult AddFaceToFaceList(string faceListId, Stream imageStream, string userData = null, FaceRectangle targetFace = null);
-        Task<AddPersistedFaceResult> AddFaceToFaceListAsync(string faceListId, Stream imageStream, string userData = null, FaceRectangle targetFace = null);
-        AddPersistedFaceResult AddPersonFace(string personGroupId, Guid personId, string imageUrl, string userData = null, FaceRectangle targetFace = null);
-        Task<AddPersistedFaceResult> AddPersonFaceAsync(string personGroupId, Guid personId, string imageUrl, string userData = null, FaceRectangle targetFace = null);
-        AddPersistedFaceResult AddPersonFace(string personGroupId, Guid personId, Stream imageStream, string userData = null, FaceRectangle targetFace = null);
-        Task<AddPersistedFaceResult> AddPersonFaceAsync(string personGroupId, Guid personId, Stream imageStream, string userData = null, FaceRectangle targetFace = null);
+        AddPersistedFaceResult AddFaceToFaceList(string faceListId, string imageUrl, string userData = null, Rectangle targetFace = null);
+        Task<AddPersistedFaceResult> AddFaceToFaceListAsync(string faceListId, string imageUrl, string userData = null, Rectangle targetFace = null);
+        AddPersistedFaceResult AddFaceToFaceList(string faceListId, Stream imageStream, string userData = null, Rectangle targetFace = null);
+        Task<AddPersistedFaceResult> AddFaceToFaceListAsync(string faceListId, Stream imageStream, string userData = null, Rectangle targetFace = null);
+        AddPersistedFaceResult AddPersonFace(string personGroupId, Guid personId, string imageUrl, string userData = null, Rectangle targetFace = null);
+        Task<AddPersistedFaceResult> AddPersonFaceAsync(string personGroupId, Guid personId, string imageUrl, string userData = null, Rectangle targetFace = null);
+        AddPersistedFaceResult AddPersonFace(string personGroupId, Guid personId, Stream imageStream, string userData = null, Rectangle targetFace = null);
+        Task<AddPersistedFaceResult> AddPersonFaceAsync(string personGroupId, Guid personId, Stream imageStream, string userData = null, Rectangle targetFace = null);
         void CreateFaceList(string faceListId, string name, string userData);
         Task CreateFaceListAsync(string faceListId, string name, string userData);
         CreatePersonResult CreatePerson(string personGroupId, string name, string userData = null);

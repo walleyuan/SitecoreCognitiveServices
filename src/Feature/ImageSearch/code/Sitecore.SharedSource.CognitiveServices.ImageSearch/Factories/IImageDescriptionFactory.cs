@@ -1,4 +1,4 @@
-﻿using Microsoft.ProjectOxford.Vision.Contract;
+﻿using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
 using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models;
 using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Utility;
 using Sitecore.SharedSource.CognitiveServices.ImageSearch.Search;

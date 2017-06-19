@@ -39,9 +39,8 @@ namespace Sitecore.SharedSource.CognitiveServices.App_Start
             serviceCollection.AddTransient<IEmotionRepository, EmotionRepository>();
             serviceCollection.AddTransient<IEntityLinkingRepository, EntityLinkingRepository>();
             serviceCollection.AddTransient<IFaceRepository, FaceRepository>();
-            serviceCollection.AddTransient<ILanguageRepository, LanguageRepository>();
             serviceCollection.AddTransient<ILinguisticRepository, LinguisticRepository>();
-            serviceCollection.AddTransient<ISentimentRepository, SentimentRepository>();
+            serviceCollection.AddTransient<ITextAnalyticsRepository, TextAnalyticsRepository>();
             serviceCollection.AddTransient<ISpeakerIdentificationRepository, SpeakerIdentificationRepository>();
             serviceCollection.AddTransient<ISpeakerVerificationRepository, SpeakerVerificationRepository>();
             serviceCollection.AddTransient<IVideoRepository, VideoRepository>();
@@ -64,9 +63,8 @@ namespace Sitecore.SharedSource.CognitiveServices.App_Start
             serviceCollection.AddTransient<IEmotionService, EmotionService>();
             serviceCollection.AddTransient<IEntityLinkingService, EntityLinkingService>();
             serviceCollection.AddTransient<IFaceService, FaceService>();
-            serviceCollection.AddTransient<ILanguageService, LanguageService>();
             serviceCollection.AddTransient<ILinguisticService, LinguisticService>();
-            serviceCollection.AddTransient<ISentimentService, SentimentService>();
+            serviceCollection.AddTransient<ITextAnalyticsService, TextAnalyticsService>();
             serviceCollection.AddTransient<ISpeakerIdentificationService, SpeakerIdentificationService>();
             serviceCollection.AddTransient<ISpeakerVerificationService, SpeakerVerificationService>();
             serviceCollection.AddTransient<IVideoService, VideoService>();

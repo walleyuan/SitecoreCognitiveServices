@@ -1,13 +1,12 @@
-﻿using Microsoft.ProjectOxford.Vision.Contract;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.ProjectOxford.Vision;
 using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+using Microsoft.SharedSource.CognitiveServices.Enums;
 
 namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
 {
@@ -151,25 +150,25 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
             return result.Color;
         }
 
-        public virtual async Task<Face[]> GetFaceAnalysisAsync(Stream stream)
+        public virtual async Task<SimpleFace[]> GetFaceAnalysisAsync(Stream stream)
         {
             var result = await AnalyzeImageAsync(stream, new List<VisualFeature>() { VisualFeature.Faces });
             return result.Faces;
         }
 
-        public virtual Face[] GetFaceAnalysis(Stream stream)
+        public virtual SimpleFace[] GetFaceAnalysis(Stream stream)
         {
             var result = AnalyzeImage(stream, new List<VisualFeature>() { VisualFeature.Faces });
             return result.Faces;
         }
 
-        public virtual async Task<Face[]> GetFaceAnalysisAsync(string imageUrl)
+        public virtual async Task<SimpleFace[]> GetFaceAnalysisAsync(string imageUrl)
         {
             var result = await AnalyzeImageAsync(imageUrl, new List<VisualFeature>() { VisualFeature.Faces });
             return result.Faces;
         }
 
-        public virtual Face[] GetFaceAnalysis(string imageUrl)
+        public virtual SimpleFace[] GetFaceAnalysis(string imageUrl)
         {
             var result = AnalyzeImage(imageUrl, new List<VisualFeature>() { VisualFeature.Faces });
             return result.Faces;

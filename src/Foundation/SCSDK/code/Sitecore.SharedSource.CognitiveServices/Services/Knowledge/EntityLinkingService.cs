@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Threading.Tasks;
-using Microsoft.ProjectOxford.EntityLinking.Contract;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge;
+using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.EntityLinking;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
 {

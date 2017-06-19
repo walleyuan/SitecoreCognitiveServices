@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.SharedSource.CognitiveServices.Enums;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+using System.Collections.Generic;
 using System.IO;
-using Microsoft.ProjectOxford.Vision;
-using Microsoft.ProjectOxford.Vision.Contract;
+using Microsoft.SharedSource.CognitiveServices.Models.Vision.Face;
 
 namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
 {
@@ -13,8 +14,8 @@ namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
         Category[] GetCategoryAnalysis(Stream imageStream);
         Color GetColorAnalysis(string imageUrl);
         Color GetColorAnalysis(Stream imageStream);
-        Face[] GetFaceAnalysis(string imageUrl);
-        Face[] GetFaceAnalysis(Stream imageStream);
+        SimpleFace[] GetFaceAnalysis(string imageUrl);
+        SimpleFace[] GetFaceAnalysis(Stream imageStream);
         AnalysisResult GetFullAnalysis(string imageUrl);
         AnalysisResult GetFullAnalysis(Stream imageStream);
         ImageType GetImageTypeAnalysis(string imageUrl);

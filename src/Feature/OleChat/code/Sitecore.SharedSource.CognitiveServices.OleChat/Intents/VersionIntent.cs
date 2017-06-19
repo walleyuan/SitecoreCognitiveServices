@@ -28,7 +28,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             Settings = settings;
         }
 
-        public string Respond(QueryResult result, ItemContextParameters parameters) {
+        public string Respond(LuisResult result, ItemContextParameters parameters) {
 
             var path = HttpContext.Current.Server.MapPath("~/sitecore/shell/sitecore.version.xml");
             if (!System.IO.File.Exists(path))

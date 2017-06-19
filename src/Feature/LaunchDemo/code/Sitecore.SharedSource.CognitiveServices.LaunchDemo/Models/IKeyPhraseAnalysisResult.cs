@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.SharedSource.CognitiveServices.Models.Language;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Sentiment;
+using Microsoft.SharedSource.CognitiveServices.Models.Language.Text;
 
 namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models {
     public interface IKeyPhraseAnalysisResult
