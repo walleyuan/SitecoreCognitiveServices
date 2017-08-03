@@ -294,6 +294,7 @@
     <Content Include="App_Config\Include\SitecoreCognitiveServices\UnicornSerializationRoot.config" />
     <None Include="Properties\PublishProfiles\sc82u0.pubxml" />
     <None Include="Properties\PublishProfiles\sc82u1.pubxml" />
+    <None Include="Properties\PublishProfiles\sc82u4.pubxml" />
     <None Include="Properties\PublishProfiles\sc82u3.pubxml" />
     <None Include="Properties\PublishProfiles\sc82u2.pubxml" />
     <Content Include="ReadMe.txt" />

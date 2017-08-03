@@ -199,6 +199,7 @@
     <Content Include="Views\CognitiveImageSearch\Vision\Regions.cshtml" />
     <Content Include="Views\CognitiveImageSearch\Vision\Tags.cshtml" />
     <Content Include="Views\CognitiveImageSearch\Vision\Words.cshtml" />
+    <None Include="Properties\PublishProfiles\sc82u4.pubxml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
