@@ -4,6 +4,7 @@
 # Prevent API Keys and local dev paths being submitted to source control
 SitecoreCognitiveServices.config
 UnicornSerializationRoot.config
+gulp-config.js
 
 # User-specific files
 *.suo
@@ -257,3 +258,5 @@ paket-files/
 Keys.txt
 *.example
 *.disabled
+publishsettings.targets
+scripts/nant/properties/local.properties

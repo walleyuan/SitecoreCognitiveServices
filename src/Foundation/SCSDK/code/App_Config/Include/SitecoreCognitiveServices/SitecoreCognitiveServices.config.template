@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns:patch="http://www.sitecore.net/xmlconfig/">
+  <sitecore>
+    <pipelines>
+      <initialize>
+        <processor type="Sitecore.SharedSource.CognitiveServices.App_Start.LoadRoutes,Sitecore.SharedSource.CognitiveServices" patch:after="processor[@type='Sitecore.Pipelines.Loader.EnsureAnonymousUsers, Sitecore.Kernel']" />
+      </initialize>
+    </pipelines>
+    <services>
+      <configurator type="Sitecore.SharedSource.CognitiveServices.App_Start.IocConfig, Sitecore.SharedSource.CognitiveServices" />
+    </services>
+    <settings>
+      <!-- API Keys -->
+      <setting name="CognitiveService.ApiKey.Academic" value="${CognitiveService.ApiKey.Academic}" />
+      <setting name="CognitiveService.ApiKey.Academic.Endpoint" value="${CognitiveService.ApiKey.Academic.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.BingAutosuggest" value="${CognitiveService.ApiKey.BingAutosuggest}" />
+      <setting name="CognitiveService.ApiKey.BingAutosuggest.Endpoint" value="${CognitiveService.ApiKey.BingAutosuggest.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.BingSearch" value="${CognitiveService.ApiKey.BingSearch}" />
+      <setting name="CognitiveService.ApiKey.BingSearch.Endpoint" value="${CognitiveService.ApiKey.BingSearch.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.BingSpeech" value="${CognitiveService.ApiKey.BingSpeech}" />
+      <setting name="CognitiveService.ApiKey.BingSpeech.Endpoint" value="${CognitiveService.ApiKey.BingSpeech.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.BingSpellCheck" value="${CognitiveService.ApiKey.BingSpellCheck}" />
+      <setting name="CognitiveService.ApiKey.BingSpellCheck.Endpoint" value="${CognitiveService.ApiKey.BingSpellCheck.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.ComputerVision" value="${CognitiveService.ApiKey.ComputerVision}" />
+      <setting name="CognitiveService.ApiKey.ComputerVision.Endpoint" value="${CognitiveService.ApiKey.ComputerVision.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.ContentModerator" value="${CognitiveService.ApiKey.ContentModerator}" />
+      <setting name="CognitiveService.ApiKey.ContentModerator.ClientId" value="${CognitiveService.ApiKey.ContentModerator.ClientId}" />
+      <setting name="CognitiveService.ApiKey.ContentModerator.PrivateKey" value="${CognitiveService.ApiKey.ContentModerator.PrivateKey}" />
+      <setting name="CognitiveService.ApiKey.ContentModerator.Endpoint" value="${CognitiveService.ApiKey.ContentModerator.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.Emotion" value="${CognitiveService.ApiKey.Emotion}" />
+      <setting name="CognitiveService.ApiKey.Emotion.Endpoint" value="${CognitiveService.ApiKey.Emotion.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.EntityLinking" value="${CognitiveService.ApiKey.EntityLinking}" />
+      <setting name="CognitiveService.ApiKey.EntityLinking.Endpoint" value="${CognitiveService.ApiKey.EntityLinking.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.Face" value="${CognitiveService.ApiKey.Face}" />
+      <setting name="CognitiveService.ApiKey.Face.Endpoint" value="${CognitiveService.ApiKey.Face.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.LinguisticAnalysis" value="${CognitiveService.ApiKey.LinguisticAnalysis}" />
+      <setting name="CognitiveService.ApiKey.LinguisticAnalysis.Endpoint" value="${CognitiveService.ApiKey.LinguisticAnalysis.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.Luis" value="${CognitiveService.ApiKey.Luis}" />
+      <setting name="CognitiveService.ApiKey.Luis.Endpoint" value="${CognitiveService.ApiKey.Luis.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.QnA" value="${CognitiveService.ApiKey.QnA}" />
+      <setting name="CognitiveService.ApiKey.QnA.Endpoint" value="${CognitiveService.ApiKey.QnA.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.Recommendations" value="${CognitiveService.ApiKey.Recommendations}" />
+      <setting name="CognitiveService.ApiKey.Recommendations.Endpoint" value="${CognitiveService.ApiKey.Recommendations.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.SpeakerRecognition" value="${CognitiveService.ApiKey.SpeakerRecognition}" />
+      <setting name="CognitiveService.ApiKey.SpeakerRecognition.Endpoint" value="${CognitiveService.ApiKey.SpeakerRecognition.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.TextAnalytics" value="${CognitiveService.ApiKey.TextAnalytics}" />
+      <setting name="CognitiveService.ApiKey.TextAnalytics.Endpoint" value="${CognitiveService.ApiKey.TextAnalytics.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.Video" value="${CognitiveService.ApiKey.Video}" />
+      <setting name="CognitiveService.ApiKey.Video.Endpoint" value="${CognitiveService.ApiKey.Video.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.WebLM" value="${CognitiveService.ApiKey.WebLM}" />
+      <setting name="CognitiveService.ApiKey.WebLM.Endpoint" value="${CognitiveService.ApiKey.WebLM.Endpoint}" />
+
+      <!-- Module Settings-->
+      <setting name="CognitiveService.Language" value="${CognitiveService.Language}" />
+      <setting name="CognitiveService.TextualFieldTypes" value="Rich Text|Single-Line Text|Multi-Line Text|html|text|memo" />
+      <setting name="CognitiveService.CatchAndReleaseExceptions" value="${CognitiveService.CatchAndReleaseExceptions}" />
+
+      <!-- Search -->
+      <setting name="CognitiveService.Search.IndexNameFormat" value="cognitive_{0}_index" />
+    </settings>
+  </sitecore>
+</configuration>
