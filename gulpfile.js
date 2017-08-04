@@ -203,7 +203,7 @@ gulp.task("Publish-LaunchDemo", function (callback) {
         "Sync-Unicorn", callback);
 });
 
-gulp.task("Publish-ImageSearch", function () {
+gulp.task("Publish-ImageSearch", function (callback) {
     publishProject("Feature\\ImageSearch");
     runSequence(
         "Publish-SCSDK",
