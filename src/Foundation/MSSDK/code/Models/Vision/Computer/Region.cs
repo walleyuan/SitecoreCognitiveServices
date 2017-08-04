@@ -13,12 +13,6 @@ namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer {
         public Line[] Lines { get; set; }
 
         [JsonIgnore]
-        public Rectangle Rectangle
-        {
-            get
-            {
-                return Rectangle.FromString(this.BoundingBox);
-            }
-        }
+        public Rectangle Rectangle => Rectangle.FromString(BoundingBox);
     }
 }
