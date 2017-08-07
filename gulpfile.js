@@ -23,12 +23,19 @@ module.exports.config = config;
   Initial setup
 *****************************/
 
-gulp.task("Nant", function (cb) {
-    var env = "local";
-    exec("nant init -D:env=" + env, function (err, stdout, stderr) {
+gulp.task("Create-Local-Properties", function (callback) {
+    exec("Powershell.exe -File scripts\\nant\\LocalProperties.ps1", function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
-        cb(err);
+        callback(err);
+    });
+});
+
+gulp.task("Nant", function (callback) {
+    exec("nant init -D:env=local", function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        callback(err);
     });
 });
 
