@@ -28,7 +28,18 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
 
         public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
-            return "Your're welcome!";
+            List<string> responses = new List<string>()
+            {
+                "Your're welcome!",
+                "It's what I do.",
+                "I'm happy to help.",
+                "You're too kind.",
+                "I aim to please",
+                "Anything for you.",
+                "If I had a heart, it'd be touched."
+            };
+
+            return responses[new Random().Next(0, responses.Count)];
         }
     }
 }

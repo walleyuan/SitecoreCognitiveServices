@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
@@ -24,8 +25,19 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
         public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             string fullName = Sitecore.Context.User.Profile.FullName;
-            
-            return $"Hi {fullName}, how can I help you?";
+
+            List<string> responses = new List<string>()
+            {
+                $"Hi {fullName}, how can I help you?",
+                "What's up?",
+                "Yes.",
+                "What can I do for you?",
+                "Hey.",
+                "Hi.",
+                "Can I help you with something?"
+            };
+
+            return responses[new Random().Next(0, responses.Count)];
         }
     }
 }

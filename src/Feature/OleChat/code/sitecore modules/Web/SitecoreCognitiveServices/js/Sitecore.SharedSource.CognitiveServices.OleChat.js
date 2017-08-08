@@ -13,6 +13,9 @@ jQuery(document).ready(function () {
         .click(function (event) {
             event.preventDefault();
             var queryValue = jQuery(chatInput).val();
+            if (queryValue === "")
+                return;
+            
             var langValue = jQuery(".chat-lang").val();
             var dbValue = jQuery(".chat-db").val();
             var idValue = jQuery(".chat-id").val();
