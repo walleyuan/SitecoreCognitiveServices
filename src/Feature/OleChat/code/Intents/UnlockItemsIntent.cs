@@ -8,31 +8,28 @@ using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.ContentSearch.Security;
 using Sitecore.Data.Items;
 using Sitecore.SecurityModel;
+using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
 
 namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
     public interface IUnlockItemsIntent : IIntent { }
 
-    public class UnlockItemsIntent : IUnlockItemsIntent {
+    public class UnlockItemsIntent : BaseIntent, IUnlockItemsIntent {
 
         protected readonly ITextTranslatorWrapper Translator;
-        protected readonly IOleSettings Settings;
+        
+        public override string Name => "unlock items";
 
-        public Guid ApplicationId => Settings.OleApplicationId;
-
-        public string Name => "unlock items";
-
-        public string Description => "Unlock your items";
+        public override string Description => "Unlock your items";
 
         public UnlockItemsIntent(
             ITextTranslatorWrapper translator,
-            IOleSettings settings) {
+            IOleSettings settings) : base(settings) {
             Translator = translator;
-            Settings = settings;
             }
         
-        public string Respond(LuisResult result, ItemContextParameters parameters)
+        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             var items = GetCurrentUserUnlockedItems(parameters.Database);
 
@@ -46,7 +43,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
                     }
                 }
             }
-
+            
             return $"I've unlocked {items.Count} for you";
         }
 

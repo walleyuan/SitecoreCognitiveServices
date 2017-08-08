@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Factories;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
 
@@ -10,32 +11,28 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
     public interface IAboutIntent : IIntent { }
 
-    public class AboutIntent : IAboutIntent {
-
+    public class AboutIntent : BaseIntent, IAboutIntent
+    {
         protected readonly ITextTranslatorWrapper Translator;
-        protected readonly IOleSettings Settings;
         protected readonly IServiceProvider Provider;
+        
+        public override string Name => "about";
 
-        public Guid ApplicationId => Settings.OleApplicationId;
-
-        public string Name => "about";
-
-        public string Description => "Tell you about my abilities";
+        public override string Description => "Tell you about my abilities";
 
         public AboutIntent(
             ITextTranslatorWrapper translator,
             IOleSettings settings,
-            IServiceProvider provider) {
+            IServiceProvider provider) : base(settings) {
             Translator = translator;
-            Settings = settings;
             Provider = provider;
-            }
+        }
         
-        public string Respond(LuisResult result, ItemContextParameters parameters)
+        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             var intents = Provider.GetServices<IIntentFactory<IIntent>>()
                 .Select(a => a.Create())
-                .Where(g => g.ApplicationId.Equals(ApplicationId) && !g.Name.Equals("none"));
+                .Where(g => g.ApplicationId.Equals(ApplicationId) && !g.Description.Equals(""));
                 
             var list = intents.Select(i => $"<li>{i.Description}</li>");
 

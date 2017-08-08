@@ -41,7 +41,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
 
         public string GetDefaultResponse(Guid appId)
         {
-            return GetIntent(appId, "default")?.Respond(null, null) ?? string.Empty;
+            return GetIntent(appId, "default")?.Respond(null, null, null) ?? string.Empty;
         }
     }
 }

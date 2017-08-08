@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
 
 namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
@@ -7,6 +9,8 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
         Guid ApplicationId { get; }
         string Name { get; }
         string Description { get; }
-        string Respond(LuisResult result, ItemContextParameters parameters);
+        List<ConversationParameter> RequiredParameters { get; }
+        string Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation);
+        string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation);
     }
 }

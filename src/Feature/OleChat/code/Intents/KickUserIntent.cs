@@ -2,6 +2,7 @@
 using System.Linq;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
 using Sitecore.Web.Authentication;
 
@@ -9,25 +10,21 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
     public interface IKickUserIntent : IIntent { }
 
-    public class KickUserIntent : IKickUserIntent 
+    public class KickUserIntent : BaseIntent, IKickUserIntent 
     {
         protected readonly ITextTranslatorWrapper Translator;
-        protected readonly IOleSettings Settings;
+        
+        public override string Name => "kick user";
 
-        public Guid ApplicationId => Settings.OleApplicationId;
-
-        public string Name => "kick user";
-
-        public string Description => "Kick a user from the system";
+        public override string Description => "Kick a user from the system";
 
         public KickUserIntent(
             ITextTranslatorWrapper translator,
-            IOleSettings settings) {
+            IOleSettings settings) : base(settings) {
             Translator = translator;
-            Settings = settings;
         }
 
-        public string Respond(LuisResult result, ItemContextParameters parameters) {
+        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
 
             if (!Sitecore.Context.User.IsAdministrator)
                 return "Sorry, you can only perform this action if you're an admin";

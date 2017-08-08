@@ -4,31 +4,28 @@ using System.Web;
 using System.Xml.Linq;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
 
 namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
     public interface IVersionIntent : IIntent { }
 
-    public class VersionIntent : IVersionIntent 
+    public class VersionIntent : BaseIntent, IVersionIntent 
     {
         protected readonly ITextTranslatorWrapper Translator;
-        protected readonly IOleSettings Settings;
+        
+        public override string Name => "version";
 
-        public Guid ApplicationId => Settings.OleApplicationId;
-
-        public string Name => "version";
-
-        public string Description => "Provide my version information";
+        public override string Description => "Provide my version information";
 
         public VersionIntent(
             ITextTranslatorWrapper translator,
-            IOleSettings settings) {
+            IOleSettings settings) : base(settings) {
             Translator = translator;
-            Settings = settings;
         }
 
-        public string Respond(LuisResult result, ItemContextParameters parameters) {
+        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
 
             var path = HttpContext.Current.Server.MapPath("~/sitecore/shell/sitecore.version.xml");
             if (!System.IO.File.Exists(path))
@@ -41,7 +38,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             var major = version.Descendants("major").First().Value;
             var minor = version.Descendants("minor").First().Value;
             var revision = version.Descendants("revision").First().Value;
-
+            
             return $"My version is {major}.{minor} rev {revision}";
         }
     }

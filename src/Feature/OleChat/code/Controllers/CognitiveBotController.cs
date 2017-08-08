@@ -7,36 +7,26 @@ using Newtonsoft.Json;
 using Sitecore.Data.Managers;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
-using Sitecore.SharedSource.CognitiveServices.Services.Language;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Intents;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis.Connector;
+using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
 
 namespace Sitecore.SharedSource.CognitiveServices.OleChat.Controllers {
 
     public class CognitiveBotController : Controller
     {
-        protected readonly IIntentProvider IntentProvider;
-        protected readonly ILuisService LuisService;
+        protected readonly IConversationService ConversationService;
         protected readonly IWebUtilWrapper WebUtil;
-        protected readonly IOleSettings OleSettings;
 
         protected readonly ItemContextParameters Parameters;
 
-        protected readonly Guid AppId;
 
         public CognitiveBotController(
-            IIntentProvider intentProvider, 
-            ILuisService luisService,
-            IWebUtilWrapper webUtil,
-            IOleSettings oleSettings)
+            IConversationService conversationService, 
+            IWebUtilWrapper webUtil)
         {
-            IntentProvider = intentProvider;
-            LuisService = luisService;
+            ConversationService = conversationService;
             WebUtil = webUtil;
-            OleSettings = oleSettings;
-
-            AppId = OleSettings.OleApplicationId;
-
+            
             Parameters = new ItemContextParameters()
             {
                 Id = WebUtil.GetQueryString("id"),
@@ -61,22 +51,14 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Controllers {
                 : new ItemContextParameters();
 
             if (activity.Type == ActivityTypes.Message)
-                return HandleMessage(activity, parameters);
+            {
+                var response = ConversationService.HandleMessage(activity, parameters);
+                var reply = activity.CreateReply(response, "en-US");
+
+                return Json(reply);
+            }
 
             return null;
-        }
-
-        public ActionResult HandleMessage(Activity activity, ItemContextParameters parameters) { 
-
-            var result = LuisService.Query(AppId, activity.Text); // determine which intent to use
-            var intent = IntentProvider.GetIntent(AppId, result.TopScoringIntent.Intent); // try to find the matching intent object
-
-            var text = (intent != null) // respond with the selected intent or fallback to default
-                ? intent.Respond(result, parameters)
-                : IntentProvider.GetDefaultResponse(AppId);
-
-            var reply = activity.CreateReply(text, "en-US");
-            return Json(reply);
         }
     }
 }

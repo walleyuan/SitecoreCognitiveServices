@@ -6,31 +6,28 @@ using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.ContentSearch.Security;
+using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
 
 namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
     public interface ILockedItemCountIntent : IIntent { }
 
-    public class LockedItemCountIntent : ILockedItemCountIntent {
+    public class LockedItemCountIntent : BaseIntent, ILockedItemCountIntent {
 
         protected readonly ITextTranslatorWrapper Translator;
-        protected readonly IOleSettings Settings;
+        
+        public override string Name => "locked item count";
 
-        public Guid ApplicationId => Settings.OleApplicationId;
-
-        public string Name => "locked item count";
-
-        public string Description => "Count your locked items";
+        public override string Description => "Count your locked items";
 
         public LockedItemCountIntent(
             ITextTranslatorWrapper translator,
-            IOleSettings settings) {
+            IOleSettings settings) : base(settings) {
             Translator = translator;
-            Settings = settings;
             }
         
-        public string Respond(LuisResult result, ItemContextParameters parameters)
+        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             var items = GetCurrentUserUnlockedItems(parameters.Database);
             

@@ -1,31 +1,29 @@
 ﻿using System;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
+using Sitecore.SharedSource.CognitiveServices.Wrappers;
 
 namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
     public interface IDefaultIntent : IIntent { }
 
-    public class DefaultIntent : IDefaultIntent {
-
+    public class DefaultIntent : BaseIntent, IDefaultIntent
+    {
         protected readonly ITextTranslatorWrapper Translator;
-        protected readonly IOleSettings Settings;
+        
+        public override string Name => "none";
 
-        public Guid ApplicationId => Settings.OleApplicationId;
-
-        public string Name => "none";
-
-        public string Description => "";
+        public override string Description => "";
 
         public DefaultIntent(
             ITextTranslatorWrapper translator,
-            IOleSettings settings) {
+            IOleSettings settings) : base(settings) {
             Translator = translator;
-            Settings = settings;
         }
         
-        public string Respond(LuisResult result, ItemContextParameters parameters) {
+        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        {
             return "Sorry, can you try again? I didn't quite understand you.";
         }
     }

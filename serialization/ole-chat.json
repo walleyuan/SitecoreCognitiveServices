@@ -1,501 +1,624 @@
 {
-  "luis_schema_version": "2.0.0",
-  "versionId": "1.0",
-  "name": "Ole Chat",
-  "desc": "This is Sitecore's AI chat bot",
-  "culture": "en-us",
-  "intents": [
-    {
-      "name": "About"
-    },
-    {
-      "name": "Greet"
-    },
-    {
-      "name": "Kick User"
-    },
-    {
-      "name": "Locked Item Count"
-    },
-    {
-      "name": "Logged In Users"
-    },
-    {
-      "name": "None"
-    },
-    {
-      "name": "Publish"
-    },
-    {
-      "name": "Unlock Items"
-    },
-    {
-      "name": "Version"
-    }
-  ],
-  "entities": [
-    {
-      "name": "Content",
-      "children": [
-        "item",
-        "image",
-        "media",
-        "template",
-        "datasource",
-        "rendering",
-        "layout"
-      ]
-    },
-    {
-      "name": "Database Name"
-    },
-    {
-      "name": "Domain User"
-    },
-    {
-      "name": "Item Path"
-    },
-    {
-      "name": "Language"
-    },
-    {
-      "name": "Recursion"
-    },
-    {
-      "name": "Users",
-      "children": [
-        "editors",
-        "users",
-        "content editors",
-        "people"
-      ]
-    }
-  ],
-  "composites": [],
-  "closedLists": [],
-  "bing_entities": [],
-  "actions": [],
-  "model_features": [],
-  "regex_features": [
-    {
-      "name": "Domain User",
-      "pattern": "([a-zA-Z0-9]+\\\\[a-zA-Z0-9]+)",
-      "activated": true
-    }
-  ],
-  "utterances": [
-    {
-      "text": "who is this",
-      "intent": "Greet",
-      "entities": []
-    },
-    {
-      "text": "hey",
-      "intent": "Greet",
-      "entities": []
-    },
-    {
-      "text": "hi there",
-      "intent": "Greet",
-      "entities": []
-    },
-    {
-      "text": "hello",
-      "intent": "Greet",
-      "entities": []
-    },
-    {
-      "text": "hi",
-      "intent": "Greet",
-      "entities": []
-    },
-    {
-      "text": "is anyone there",
-      "intent": "Greet",
-      "entities": []
-    },
-    {
-      "text": "dude",
-      "intent": "Greet",
-      "entities": []
-    },
-    {
-      "text": "what's up",
-      "intent": "Greet",
-      "entities": []
-    },
-    {
-      "text": "ole",
-      "intent": "Greet",
-      "entities": []
-    },
-    {
-      "text": "what version are you",
-      "intent": "Version",
-      "entities": []
-    },
-    {
-      "text": "what's the sitecore version",
-      "intent": "Version",
-      "entities": []
-    },
-    {
-      "text": "what version is sitecore",
-      "intent": "Version",
-      "entities": []
-    },
-    {
-      "text": "what's your sitecore version",
-      "intent": "Version",
-      "entities": []
-    },
-    {
-      "text": "what's your version",
-      "intent": "Version",
-      "entities": []
-    },
-    {
-      "text": "how many people are in sitecore",
-      "intent": "Logged In Users",
-      "entities": [
+    "luis_schema_version": "2.1.0",
+    "versionId": "1.0",
+    "name": "Ole Chat",
+    "desc": "This is Sitecore's AI chat bot",
+    "culture": "en-us",
+    "intents": [
         {
-          "entity": "Users",
-          "startPos": 9,
-          "endPos": 14
-        }
-      ]
-    },
-    {
-      "text": "how many people are using the system",
-      "intent": "Logged In Users",
-      "entities": [
-        {
-          "entity": "Users",
-          "startPos": 9,
-          "endPos": 14
-        }
-      ]
-    },
-    {
-      "text": "how many users are logged in",
-      "intent": "Logged In Users",
-      "entities": [
-        {
-          "entity": "Users",
-          "startPos": 9,
-          "endPos": 13
-        }
-      ]
-    },
-    {
-      "text": "how many people are logged in",
-      "intent": "Logged In Users",
-      "entities": [
-        {
-          "entity": "Users",
-          "startPos": 9,
-          "endPos": 14
-        }
-      ]
-    },
-    {
-      "text": "log out sitecore\\admin",
-      "intent": "Kick User",
-      "entities": [
-        {
-          "entity": "Domain User",
-          "startPos": 8,
-          "endPos": 21
-        }
-      ]
-    },
-    {
-      "text": "kick out sitecore\\admin",
-      "intent": "Kick User",
-      "entities": [
-        {
-          "entity": "Domain User",
-          "startPos": 9,
-          "endPos": 22
-        }
-      ]
-    },
-    {
-      "text": "kick sitecore\\someuser out",
-      "intent": "Kick User",
-      "entities": [
-        {
-          "entity": "Domain User",
-          "startPos": 5,
-          "endPos": 21
-        }
-      ]
-    },
-    {
-      "text": "kick out somedomain\\someuser",
-      "intent": "Kick User",
-      "entities": [
-        {
-          "entity": "Domain User",
-          "startPos": 9,
-          "endPos": 27
-        }
-      ]
-    },
-    {
-      "text": "kick domain\\user out",
-      "intent": "Kick User",
-      "entities": [
-        {
-          "entity": "Domain User",
-          "startPos": 5,
-          "endPos": 15
-        }
-      ]
-    },
-    {
-      "text": "logout sitecore\\someuser",
-      "intent": "Kick User",
-      "entities": [
-        {
-          "entity": "Domain User",
-          "startPos": 7,
-          "endPos": 23
-        }
-      ]
-    },
-    {
-      "text": "log out somedomain\\someuser",
-      "intent": "Kick User",
-      "entities": [
-        {
-          "entity": "Domain User",
-          "startPos": 8,
-          "endPos": 26
-        }
-      ]
-    },
-    {
-      "text": "publish the /sitecore/content/home to the web database",
-      "intent": "Publish",
-      "entities": [
-        {
-          "entity": "Database Name",
-          "startPos": 42,
-          "endPos": 44
+            "name": "About"
         },
         {
-          "entity": "Item Path",
-          "startPos": 12,
-          "endPos": 33
+            "name": "Greet"
+        },
+        {
+            "name": "Kick User"
+        },
+        {
+            "name": "Locked Item Count"
+        },
+        {
+            "name": "Logged In Users"
+        },
+        {
+            "name": "None"
+        },
+        {
+            "name": "Publish"
+        },
+        {
+            "name": "Quit"
+        },
+        {
+            "name": "Unlock Items"
+        },
+        {
+            "name": "Version"
         }
-      ]
-    },
-    {
-      "text": "would you publish /sitecore/templates/userdefined to the web database",
-      "intent": "Publish",
-      "entities": [
+    ],
+    "entities": [
         {
-          "entity": "Database Name",
-          "startPos": 57,
-          "endPos": 59
+            "name": "Content",
+            "children": [
+                "item",
+                "image",
+                "media",
+                "template",
+                "datasource",
+                "rendering",
+                "layout"
+            ]
         },
         {
-          "entity": "Item Path",
-          "startPos": 18,
-          "endPos": 48
+            "name": "Database Name"
+        },
+        {
+            "name": "Domain User"
+        },
+        {
+            "name": "Item Path"
+        },
+        {
+            "name": "Language"
+        },
+        {
+            "name": "Recursion"
+        },
+        {
+            "name": "Users",
+            "children": [
+                "editors",
+                "users",
+                "content editors",
+                "people"
+            ]
         }
-      ]
-    },
-    {
-      "text": "publish /sitecore/content/home to the web database recursively",
-      "intent": "Publish",
-      "entities": [
+    ],
+    "composites": [],
+    "closedLists": [],
+    "bing_entities": [],
+    "actions": [],
+    "model_features": [],
+    "regex_features": [
         {
-          "entity": "Database Name",
-          "startPos": 38,
-          "endPos": 40
-        },
-        {
-          "entity": "Recursion",
-          "startPos": 51,
-          "endPos": 61
-        },
-        {
-          "entity": "Item Path",
-          "startPos": 8,
-          "endPos": 29
+            "name": "Domain User",
+            "pattern": "([a-zA-Z0-9]+\\\\[a-zA-Z0-9]+)",
+            "activated": true
         }
-      ]
-    },
-    {
-      "text": "can you publish /sitecore/system/modules to web",
-      "intent": "Publish",
-      "entities": [
+    ],
+    "utterances": [
         {
-          "entity": "Database Name",
-          "startPos": 44,
-          "endPos": 46
+            "text": "hello",
+            "intent": "Greet",
+            "entities": []
         },
         {
-          "entity": "Item Path",
-          "startPos": 16,
-          "endPos": 39
+            "text": "hi there",
+            "intent": "Greet",
+            "entities": []
+        },
+        {
+            "text": "stop",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "hi",
+            "intent": "Greet",
+            "entities": []
+        },
+        {
+            "text": "quit",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "who is this",
+            "intent": "Greet",
+            "entities": []
+        },
+        {
+            "text": "hey",
+            "intent": "Greet",
+            "entities": []
+        },
+        {
+            "text": "exit",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "what's up",
+            "intent": "Greet",
+            "entities": []
+        },
+        {
+            "text": "what can i do?",
+            "intent": "About",
+            "entities": []
+        },
+        {
+            "text": "start over",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "what can you do?",
+            "intent": "About",
+            "entities": []
+        },
+        {
+            "text": "nevermind",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "forget it",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "i'm finished",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "dude",
+            "intent": "Greet",
+            "entities": []
+        },
+        {
+            "text": "what are you capable of?",
+            "intent": "About",
+            "entities": []
+        },
+        {
+            "text": "what version are you",
+            "intent": "Version",
+            "entities": []
+        },
+        {
+            "text": "what kind of functions do you have?",
+            "intent": "About",
+            "entities": []
+        },
+        {
+            "text": "what functions do you have?",
+            "intent": "About",
+            "entities": []
+        },
+        {
+            "text": "what's available?",
+            "intent": "About",
+            "entities": []
+        },
+        {
+            "text": "let's do something else",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "ole",
+            "intent": "Greet",
+            "entities": []
+        },
+        {
+            "text": "is anyone there",
+            "intent": "Greet",
+            "entities": []
+        },
+        {
+            "text": "what's the sitecore version",
+            "intent": "Version",
+            "entities": []
+        },
+        {
+            "text": "what version is sitecore",
+            "intent": "Version",
+            "entities": []
+        },
+        {
+            "text": "what's your sitecore version",
+            "intent": "Version",
+            "entities": []
+        },
+        {
+            "text": "what's your version",
+            "intent": "Version",
+            "entities": []
+        },
+        {
+            "text": "how many people are in sitecore",
+            "intent": "Logged In Users",
+            "entities": [
+                {
+                    "entity": "Users",
+                    "startPos": 9,
+                    "endPos": 14
+                }
+            ]
+        },
+        {
+            "text": "how many people are using the system",
+            "intent": "Logged In Users",
+            "entities": [
+                {
+                    "entity": "Users",
+                    "startPos": 9,
+                    "endPos": 14
+                }
+            ]
+        },
+        {
+            "text": "how many users are logged in",
+            "intent": "Logged In Users",
+            "entities": [
+                {
+                    "entity": "Users",
+                    "startPos": 9,
+                    "endPos": 13
+                }
+            ]
+        },
+        {
+            "text": "how many people are logged in",
+            "intent": "Logged In Users",
+            "entities": [
+                {
+                    "entity": "Users",
+                    "startPos": 9,
+                    "endPos": 14
+                }
+            ]
+        },
+        {
+            "text": "log out sitecore\\admin",
+            "intent": "Kick User",
+            "entities": [
+                {
+                    "entity": "Domain User",
+                    "startPos": 8,
+                    "endPos": 21
+                }
+            ]
+        },
+        {
+            "text": "kick out sitecore\\admin",
+            "intent": "Kick User",
+            "entities": [
+                {
+                    "entity": "Domain User",
+                    "startPos": 9,
+                    "endPos": 22
+                }
+            ]
+        },
+        {
+            "text": "kick sitecore\\someuser out",
+            "intent": "Kick User",
+            "entities": [
+                {
+                    "entity": "Domain User",
+                    "startPos": 5,
+                    "endPos": 21
+                }
+            ]
+        },
+        {
+            "text": "kick out somedomain\\someuser",
+            "intent": "Kick User",
+            "entities": [
+                {
+                    "entity": "Domain User",
+                    "startPos": 9,
+                    "endPos": 27
+                }
+            ]
+        },
+        {
+            "text": "kick domain\\user out",
+            "intent": "Kick User",
+            "entities": [
+                {
+                    "entity": "Domain User",
+                    "startPos": 5,
+                    "endPos": 15
+                }
+            ]
+        },
+        {
+            "text": "logout sitecore\\someuser",
+            "intent": "Kick User",
+            "entities": [
+                {
+                    "entity": "Domain User",
+                    "startPos": 7,
+                    "endPos": 23
+                }
+            ]
+        },
+        {
+            "text": "log out somedomain\\someuser",
+            "intent": "Kick User",
+            "entities": [
+                {
+                    "entity": "Domain User",
+                    "startPos": 8,
+                    "endPos": 26
+                }
+            ]
+        },
+        {
+            "text": "publish the /sitecore/content/home to the web database",
+            "intent": "Publish",
+            "entities": [
+                {
+                    "entity": "Database Name",
+                    "startPos": 42,
+                    "endPos": 44
+                },
+                {
+                    "entity": "Item Path",
+                    "startPos": 12,
+                    "endPos": 33
+                }
+            ]
+        },
+        {
+            "text": "publish /sitecore/media library/somefolder to the master database",
+            "intent": "Publish",
+            "entities": [
+                {
+                    "entity": "Database Name",
+                    "startPos": 50,
+                    "endPos": 55
+                },
+                {
+                    "entity": "Item Path",
+                    "startPos": 8,
+                    "endPos": 41
+                }
+            ]
+        },
+        {
+            "text": "publish /sitecore/content/somesite to master recursively",
+            "intent": "Publish",
+            "entities": [
+                {
+                    "entity": "Database Name",
+                    "startPos": 38,
+                    "endPos": 43
+                },
+                {
+                    "entity": "Recursion",
+                    "startPos": 45,
+                    "endPos": 55
+                },
+                {
+                    "entity": "Item Path",
+                    "startPos": 8,
+                    "endPos": 33
+                }
+            ]
+        },
+        {
+            "text": "would you publish /sitecore/templates/userdefined to the web database",
+            "intent": "Publish",
+            "entities": [
+                {
+                    "entity": "Database Name",
+                    "startPos": 57,
+                    "endPos": 59
+                },
+                {
+                    "entity": "Item Path",
+                    "startPos": 18,
+                    "endPos": 48
+                }
+            ]
+        },
+        {
+            "text": "publish /sitecore/content/home to the web database recursively",
+            "intent": "Publish",
+            "entities": [
+                {
+                    "entity": "Database Name",
+                    "startPos": 38,
+                    "endPos": 40
+                },
+                {
+                    "entity": "Recursion",
+                    "startPos": 51,
+                    "endPos": 61
+                },
+                {
+                    "entity": "Item Path",
+                    "startPos": 8,
+                    "endPos": 29
+                }
+            ]
+        },
+        {
+            "text": "can you publish /sitecore/system/modules to web",
+            "intent": "Publish",
+            "entities": [
+                {
+                    "entity": "Database Name",
+                    "startPos": 44,
+                    "endPos": 46
+                },
+                {
+                    "entity": "Item Path",
+                    "startPos": 16,
+                    "endPos": 39
+                }
+            ]
+        },
+        {
+            "text": "can you publish /sitecore/templates to web recursively",
+            "intent": "Publish",
+            "entities": [
+                {
+                    "entity": "Database Name",
+                    "startPos": 39,
+                    "endPos": 41
+                },
+                {
+                    "entity": "Recursion",
+                    "startPos": 43,
+                    "endPos": 53
+                },
+                {
+                    "entity": "Item Path",
+                    "startPos": 16,
+                    "endPos": 34
+                }
+            ]
+        },
+        {
+            "text": "what actions can you do",
+            "intent": "About",
+            "entities": []
+        },
+        {
+            "text": "what intents do you have",
+            "intent": "About",
+            "entities": []
+        },
+        {
+            "text": "what functions do you support",
+            "intent": "About",
+            "entities": []
+        },
+        {
+            "text": "can you unlock all my content",
+            "intent": "Unlock Items",
+            "entities": []
+        },
+        {
+            "text": "unlock my locked items",
+            "intent": "Unlock Items",
+            "entities": []
+        },
+        {
+            "text": "unlock my items",
+            "intent": "Unlock Items",
+            "entities": []
+        },
+        {
+            "text": "can you unlock my items?",
+            "intent": "Unlock Items",
+            "entities": []
+        },
+        {
+            "text": "what locked items do i have?",
+            "intent": "Locked Item Count",
+            "entities": []
+        },
+        {
+            "text": "how many locked",
+            "intent": "Locked Item Count",
+            "entities": []
+        },
+        {
+            "text": "what's my locked items",
+            "intent": "Locked Item Count",
+            "entities": []
+        },
+        {
+            "text": "how many items are locked",
+            "intent": "Locked Item Count",
+            "entities": []
+        },
+        {
+            "text": "what are my locked items",
+            "intent": "Locked Item Count",
+            "entities": []
+        },
+        {
+            "text": "how many items do i have locked",
+            "intent": "Locked Item Count",
+            "entities": []
+        },
+        {
+            "text": "can you publish /sitecore/content/home to web",
+            "intent": "Publish",
+            "entities": [
+                {
+                    "entity": "Database Name",
+                    "startPos": 42,
+                    "endPos": 44
+                },
+                {
+                    "entity": "Item Path",
+                    "startPos": 16,
+                    "endPos": 37
+                }
+            ]
+        },
+        {
+            "text": "kick user sitecore\\mark",
+            "intent": "Kick User",
+            "entities": [
+                {
+                    "entity": "Domain User",
+                    "startPos": 10,
+                    "endPos": 22
+                }
+            ]
+        },
+        {
+            "text": "how many locked items do i have",
+            "intent": "Locked Item Count",
+            "entities": []
+        },
+        {
+            "text": "publish /sitecore/home to the web database",
+            "intent": "Publish",
+            "entities": [
+                {
+                    "entity": "Database Name",
+                    "startPos": 30,
+                    "endPos": 32
+                },
+                {
+                    "entity": "Item Path",
+                    "startPos": 8,
+                    "endPos": 21
+                }
+            ]
+        },
+        {
+            "text": "can you publish the /sitecore/content/home to web",
+            "intent": "Publish",
+            "entities": [
+                {
+                    "entity": "Database Name",
+                    "startPos": 46,
+                    "endPos": 48
+                },
+                {
+                    "entity": "Item Path",
+                    "startPos": 20,
+                    "endPos": 41
+                }
+            ]
+        },
+        {
+            "text": "hey ole",
+            "intent": "Greet",
+            "entities": []
+        },
+        {
+            "text": "kick user sitecore\\admin",
+            "intent": "Kick User",
+            "entities": [
+                {
+                    "entity": "Domain User",
+                    "startPos": 10,
+                    "endPos": 23
+                }
+            ]
         }
-      ]
-    },
-    {
-      "text": "can you publish /sitecore/templates to web recursively",
-      "intent": "Publish",
-      "entities": [
-        {
-          "entity": "Database Name",
-          "startPos": 39,
-          "endPos": 41
-        },
-        {
-          "entity": "Recursion",
-          "startPos": 43,
-          "endPos": 53
-        },
-        {
-          "entity": "Item Path",
-          "startPos": 16,
-          "endPos": 34
-        }
-      ]
-    },
-    {
-      "text": "publish /sitecore/content/somesite to master recursively",
-      "intent": "Publish",
-      "entities": [
-        {
-          "entity": "Database Name",
-          "startPos": 38,
-          "endPos": 43
-        },
-        {
-          "entity": "Recursion",
-          "startPos": 45,
-          "endPos": 55
-        },
-        {
-          "entity": "Item Path",
-          "startPos": 8,
-          "endPos": 33
-        }
-      ]
-    },
-    {
-      "text": "publish /sitecore/media library/somefolder to the master database",
-      "intent": "Publish",
-      "entities": [
-        {
-          "entity": "Database Name",
-          "startPos": 50,
-          "endPos": 55
-        },
-        {
-          "entity": "Item Path",
-          "startPos": 8,
-          "endPos": 41
-        }
-      ]
-    },
-    {
-      "text": "what functions do you have?",
-      "intent": "About",
-      "entities": []
-    },
-    {
-      "text": "what are you capable of?",
-      "intent": "About",
-      "entities": []
-    },
-    {
-      "text": "what kind of functions do you have?",
-      "intent": "About",
-      "entities": []
-    },
-    {
-      "text": "what's available?",
-      "intent": "About",
-      "entities": []
-    },
-    {
-      "text": "what can you do?",
-      "intent": "About",
-      "entities": []
-    },
-    {
-      "text": "what can i do?",
-      "intent": "About",
-      "entities": []
-    },
-    {
-      "text": "what actions can you do",
-      "intent": "About",
-      "entities": []
-    },
-    {
-      "text": "what intents do you have",
-      "intent": "About",
-      "entities": []
-    },
-    {
-      "text": "what functions do you support",
-      "intent": "About",
-      "entities": []
-    },
-    {
-      "text": "can you unlock all my content",
-      "intent": "Unlock Items",
-      "entities": []
-    },
-    {
-      "text": "unlock my locked items",
-      "intent": "Unlock Items",
-      "entities": []
-    },
-    {
-      "text": "unlock my items",
-      "intent": "Unlock Items",
-      "entities": []
-    },
-    {
-      "text": "can you unlock my items?",
-      "intent": "Unlock Items",
-      "entities": []
-    },
-    {
-      "text": "what locked items do i have?",
-      "intent": "Locked Item Count",
-      "entities": []
-    },
-    {
-      "text": "what's my locked items",
-      "intent": "Locked Item Count",
-      "entities": []
-    },
-    {
-      "text": "how many items are locked",
-      "intent": "Locked Item Count",
-      "entities": []
-    },
-    {
-      "text": "how many items do i have locked",
-      "intent": "Locked Item Count",
-      "entities": []
-    },
-    {
-      "text": "what are my locked items",
-      "intent": "Locked Item Count",
-      "entities": []
-    },
-    {
-      "text": "how many locked",
-      "intent": "Locked Item Count",
-      "entities": []
-    }
-  ]
+    ]
 }
