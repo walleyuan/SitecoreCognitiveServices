@@ -257,6 +257,6 @@ fieldset legend { margin-bottom: 10px;}
 .chat-form .bot { text-align:right; padding-left:32px; }
 .chat-form .user span.message { background-color:#474747;}
 .chat-form .bot span.message { background:#dc291e; padding-right:40px; }
-.chat-form .bot span.icon { background:url('/temp/iconcache/office/24x24/man_8.png') top right no-repeat; border-radius: 12px; position:absolute; top:7px; right:7px; height: 24px; width: 24px; }
+.chat-form .bot span.icon { background:url('/~/icon/Office/24x24/man_8.png.aspx') top right no-repeat; border-radius: 12px; position:absolute; top:6px; right:7px; height: 24px; width: 24px; }
 .chat-form ul { list-style-type: disc; padding-left:26px; font-size:16px; }
 .chat-form li {}
