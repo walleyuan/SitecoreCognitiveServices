@@ -30,6 +30,9 @@
             "name": "Quit"
         },
         {
+            "name": "Thanks"
+        },
+        {
             "name": "Unlock Items"
         },
         {
@@ -113,6 +116,16 @@
             "entities": []
         },
         {
+            "text": "thank you",
+            "intent": "Thanks",
+            "entities": []
+        },
+        {
+            "text": "thanks",
+            "intent": "Thanks",
+            "entities": []
+        },
+        {
             "text": "who is this",
             "intent": "Greet",
             "entities": []
@@ -153,6 +166,11 @@
             "entities": []
         },
         {
+            "text": "thank you so much",
+            "intent": "Thanks",
+            "entities": []
+        },
+        {
             "text": "forget it",
             "intent": "Quit",
             "entities": []
@@ -160,6 +178,11 @@
         {
             "text": "i'm finished",
             "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "thank you for helping me",
+            "intent": "Thanks",
             "entities": []
         },
         {
@@ -178,6 +201,11 @@
             "entities": []
         },
         {
+            "text": "you're great",
+            "intent": "Thanks",
+            "entities": []
+        },
+        {
             "text": "what kind of functions do you have?",
             "intent": "About",
             "entities": []
@@ -190,6 +218,11 @@
         {
             "text": "what's available?",
             "intent": "About",
+            "entities": []
+        },
+        {
+            "text": "you're helpful",
+            "intent": "Thanks",
             "entities": []
         },
         {
@@ -292,6 +325,11 @@
                     "endPos": 22
                 }
             ]
+        },
+        {
+            "text": "you're so nice",
+            "intent": "Thanks",
+            "entities": []
         },
         {
             "text": "kick sitecore\\someuser out",
@@ -619,6 +657,17 @@
                     "endPos": 23
                 }
             ]
+        },
+        {
+            "text": "what a great tool",
+            "intent": "Thanks",
+            "entities": []
+        },
+        {
+            "text": "you're so doing awesome",
+            "intent": "Thanks",
+            "entities": []
+        },
         }
     ]
 }
