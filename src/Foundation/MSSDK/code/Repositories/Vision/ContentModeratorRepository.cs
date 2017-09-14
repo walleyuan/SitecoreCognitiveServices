@@ -259,7 +259,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
             var response = RepositoryClient.Send(
                 ApiKeys.ContentModerator,
                 $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/jobs?ContentType=Image&ContentId={contentId}&WorkflowName={workflowName}{GetCreateJobQuerystring(callbackEndpoint)}",
-                JsonConvert.SerializeObject(new JobRequest { ContentValue = imageUrl }),
+                Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(new JobRequest { ContentValue = imageUrl })),
                 "application/json",
                 "POST",
                 GetToken());
@@ -271,7 +271,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
             var response = await RepositoryClient.SendAsync(
                 ApiKeys.ContentModerator,
                 $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/jobs?ContentType=Image&ContentId={contentId}&WorkflowName={workflowName}{GetCreateJobQuerystring(callbackEndpoint)}",
-                JsonConvert.SerializeObject(new JobRequest { ContentValue = imageUrl }),
+                Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(new JobRequest { ContentValue = imageUrl })),
                 "application/json",
                 "POST",
                 GetToken());
@@ -283,7 +283,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
             var response = RepositoryClient.Send(
                 ApiKeys.ContentModerator,
                 $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/jobs?ContentType=Image&ContentId={contentId}&WorkflowName={workflowName}{GetCreateJobQuerystring(callbackEndpoint)}",
-                RepositoryClient.GetStreamString(stream),
+                RepositoryClient.GetByteArray(stream),
                 RepositoryClient.GetImageStreamContentType(stream),
                 "POST",
                 GetToken());
@@ -295,7 +295,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
             var response = await RepositoryClient.SendAsync(
                 ApiKeys.ContentModerator,
                 $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/jobs?ContentType=Image&ContentId={contentId}&WorkflowName={workflowName}{GetCreateJobQuerystring(callbackEndpoint)}",
-                RepositoryClient.GetStreamString(stream),
+                RepositoryClient.GetByteArray(stream),
                 RepositoryClient.GetImageStreamContentType(stream),
                 "POST",
                 GetToken());
@@ -307,7 +307,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
             var response = RepositoryClient.Send(
                 ApiKeys.ContentModerator,
                 $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/jobs?ContentType=Text&ContentId={contentId}&WorkflowName={workflowName}{GetCreateJobQuerystring(callbackEndpoint)}",
-                JsonConvert.SerializeObject(new JobRequest { ContentValue = text }),
+                Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(new JobRequest { ContentValue = text })),
                 "application/json",
                 "POST",
                 GetToken());
@@ -319,7 +319,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
             var response = await RepositoryClient.SendAsync(
                 ApiKeys.ContentModerator,
                 $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/jobs?ContentType=Text&ContentId={contentId}&WorkflowName={workflowName}{GetCreateJobQuerystring(callbackEndpoint)}",
-                JsonConvert.SerializeObject(new JobRequest { ContentValue = text }),
+                Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(new JobRequest { ContentValue = text })),
                 "application/json",
                 "POST",
                 GetToken());
@@ -332,13 +332,13 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
         #region Get Job
 
         public virtual GetJobResponse GetJob(string teamName, string jobId) {
-            var response = RepositoryClient.Send(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/jobs/{jobId}", "", "application/json", "GET", GetToken());
+            var response = RepositoryClient.Send(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/jobs/{jobId}", null, "application/json", "GET", GetToken());
 
             return JsonConvert.DeserializeObject<GetJobResponse>(response);
         }
 
         public virtual async Task<GetJobResponse> GetJobAsync(string teamName, string jobId) {
-            var response = await RepositoryClient.SendAsync(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/jobs/{jobId}", "", "application/json", "GET", GetToken());
+            var response = await RepositoryClient.SendAsync(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/jobs/{jobId}", null, "application/json", "GET", GetToken());
 
             return JsonConvert.DeserializeObject<GetJobResponse>(response);
         }
@@ -351,11 +351,11 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
             StringBuilder sb = new StringBuilder();
             if (!string.IsNullOrEmpty(subTeam))
                 sb.Append($"?subTeam={subTeam}");
-
+            
             var response = RepositoryClient.Send(
                 ApiKeys.ContentModerator,
                 $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/reviews{sb}",
-                JsonConvert.SerializeObject(requests),
+                Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(requests)),
                 "application/json",
                 "POST",
                 GetToken());
@@ -371,7 +371,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
             var response = await RepositoryClient.SendAsync(
                 ApiKeys.ContentModerator,
                 $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/reviews{sb}",
-                JsonConvert.SerializeObject(requests),
+                Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(requests)),
                 "application/json",
                 "POST",
                 GetToken());
@@ -384,13 +384,13 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
         #region Get Review
 
         public virtual GetReviewResponse GetReview(string teamName, string reviewId) {
-            var response = RepositoryClient.Send(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/reviews/{reviewId}", "", "application/json", "GET", GetToken());
+            var response = RepositoryClient.Send(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/reviews/{reviewId}", null, "application/json", "GET", GetToken());
 
             return JsonConvert.DeserializeObject<GetReviewResponse>(response);
         }
 
         public virtual async Task<GetReviewResponse> GetReviewAsync(string teamName, string reviewId) {
-            var response = await RepositoryClient.SendAsync(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/reviews/{reviewId}", "", "application/json", "GET", GetToken());
+            var response = await RepositoryClient.SendAsync(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/reviews/{reviewId}", null, "application/json", "GET", GetToken());
 
             return JsonConvert.DeserializeObject<GetReviewResponse>(response);
         }
@@ -405,7 +405,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
             var response = RepositoryClient.Send(
                 ApiKeys.ContentModerator,
                 $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/workflows/{workflowName}",
-                data,
+                Encoding.ASCII.GetBytes(data),
                 "application/json",
                 "PUT",
                 GetToken());
@@ -419,7 +419,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
             var response = await RepositoryClient.SendAsync(
                 ApiKeys.ContentModerator,
                 $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/workflows/{workflowName}",
-                data,
+                Encoding.ASCII.GetBytes(data),
                 "application/json",
                 "PUT",
                 GetToken());
@@ -432,25 +432,25 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
         #region Get Workflow
 
         public virtual WorkflowExpressionResponse GetWorkflow(string teamName, string workflowName) {
-            var response = RepositoryClient.Send(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/workflows/{workflowName}", "", "application/json", "GET", GetToken());
+            var response = RepositoryClient.Send(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/workflows/{workflowName}", null, "application/json", "GET", GetToken());
 
             return JsonConvert.DeserializeObject<WorkflowExpressionResponse>(response);
         }
 
         public virtual async Task<WorkflowExpressionResponse> GetWorkflowAsync(string teamName, string workflowName) {
-            var response = await RepositoryClient.SendAsync(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/workflows/{workflowName}", "", "application/json", "GET", GetToken());
+            var response = await RepositoryClient.SendAsync(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/workflows/{workflowName}", null, "application/json", "GET", GetToken());
 
             return JsonConvert.DeserializeObject<WorkflowExpressionResponse>(response);
         }
 
         public virtual List<WorkflowExpressionResponse> GetAllWorkflows(string teamName) {
-            var response = RepositoryClient.Send(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/workflows", "", "application/json", "GET", GetToken());
+            var response = RepositoryClient.Send(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/workflows", null, "application/json", "GET", GetToken());
 
             return JsonConvert.DeserializeObject<List<WorkflowExpressionResponse>>(response);
         }
 
         public virtual async Task<List<WorkflowExpressionResponse>> GetAllWorkflowsAsync(string teamName) {
-            var response = await RepositoryClient.SendAsync(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/workflows", "", "application/json", "GET", GetToken());
+            var response = await RepositoryClient.SendAsync(ApiKeys.ContentModerator, $"{ApiKeys.ContentModeratorEndpoint}{reviewUrl}{teamName}/workflows", null, "application/json", "GET", GetToken());
 
             return JsonConvert.DeserializeObject<List<WorkflowExpressionResponse>>(response);
         }

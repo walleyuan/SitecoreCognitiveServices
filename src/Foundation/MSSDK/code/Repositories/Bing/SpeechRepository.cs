@@ -29,7 +29,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
         {
             string url = GetSpeechToTextUrl(scenario, locale, os, fromDeviceId, maxnbest, profanitycheck);
             string token = RepositoryClient.SendBingSpeechTokenRequest(ApiKeys.BingSpeech);
-            string data = RepositoryClient.GetStreamString(audioStream);
+            byte[] data = RepositoryClient.GetByteArray(audioStream);
 
             var response = RepositoryClient.Send(ApiKeys.BingSpeech, url, data, contentType, "POST", token, true, "speech.platform.bing.com");
 
@@ -50,7 +50,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
 
             string url = GetSpeechToTextUrl(scenario, locale, os, fromDeviceId, maxnbest, profanitycheck);
             string token = RepositoryClient.SendBingSpeechTokenRequest(ApiKeys.BingSpeech);
-            string data = RepositoryClient.GetStreamString(audioStream);
+            byte[] data = RepositoryClient.GetByteArray(audioStream);
 
             var response = await RepositoryClient.SendAsync(ApiKeys.BingSpeech, url, data, contentType, "POST", token, true, "speech.platform.bing.com");
 
