@@ -30,6 +30,9 @@
             "name": "Quit"
         },
         {
+            "name": "Search"
+        },
+        {
             "name": "Thanks"
         },
         {
@@ -66,6 +69,16 @@
         },
         {
             "name": "Recursion"
+        },
+        {
+            "name": "Search",
+            "children": [
+                "modifier",
+                "scope",
+                "template name",
+                "search value",
+                "field name"
+            ]
         },
         {
             "name": "Users",
@@ -233,6 +246,11 @@
         {
             "text": "ole",
             "intent": "Greet",
+            "entities": []
+        },
+        {
+            "text": "can you find something for me",
+            "intent": "Search",
             "entities": []
         },
         {
@@ -668,6 +686,131 @@
             "intent": "Thanks",
             "entities": []
         },
+        {
+            "text": "how many pages reference 'something'",
+            "intent": "Search",
+            "entities": [
+                {
+                    "entity": "Search::modifier",
+                    "startPos": 15,
+                    "endPos": 23
+                },
+                {
+                    "entity": "Search::scope",
+                    "startPos": 0,
+                    "endPos": 7
+                },
+                {
+                    "entity": "Search::template name",
+                    "startPos": 9,
+                    "endPos": 13
+                },
+                {
+                    "entity": "Search::search value",
+                    "startPos": 25,
+                    "endPos": 35
+                }
+            ]
+        },
+        {
+            "text": "find me the pages with 'something' in the content field",
+            "intent": "Search",
+            "entities": [
+                {
+                    "entity": "Search::modifier",
+                    "startPos": 35,
+                    "endPos": 36
+                },
+                {
+                    "entity": "Search::template name",
+                    "startPos": 12,
+                    "endPos": 16
+                },
+                {
+                    "entity": "Search::search value",
+                    "startPos": 23,
+                    "endPos": 33
+                },
+                {
+                    "entity": "Search::field name",
+                    "startPos": 42,
+                    "endPos": 48
+                }
+            ]
+        },
+        {
+            "text": "how many pages are on the site",
+            "intent": "Search",
+            "entities": [
+                {
+                    "entity": "Search::scope",
+                    "startPos": 0,
+                    "endPos": 7
+                },
+                {
+                    "entity": "Search::template name",
+                    "startPos": 9,
+                    "endPos": 13
+                }
+            ]
+        },
+        {
+            "text": "are there any article pages",
+            "intent": "Search",
+            "entities": [
+                {
+                    "entity": "Search::scope",
+                    "startPos": 10,
+                    "endPos": 12
+                },
+                {
+                    "entity": "Search::template name",
+                    "startPos": 14,
+                    "endPos": 20
+                }
+            ]
+        },
+        {
+            "text": "can you find the first article for me",
+            "intent": "Search",
+            "entities": [
+                {
+                    "entity": "Search::scope",
+                    "startPos": 17,
+                    "endPos": 21
+                },
+                {
+                    "entity": "Search::template name",
+                    "startPos": 23,
+                    "endPos": 29
+                }
+            ]
+        },
+        {
+            "text": "what pages have content field starting with 'something'",
+            "intent": "Search",
+            "entities": [
+                {
+                    "entity": "Search::modifier",
+                    "startPos": 30,
+                    "endPos": 37
+                },
+                {
+                    "entity": "Search::template name",
+                    "startPos": 5,
+                    "endPos": 9
+                },
+                {
+                    "entity": "Search::search value",
+                    "startPos": 44,
+                    "endPos": 54
+                },
+                {
+                    "entity": "Search::field name",
+                    "startPos": 16,
+                    "endPos": 22
+                }
+            ]
         }
     ]
 }
