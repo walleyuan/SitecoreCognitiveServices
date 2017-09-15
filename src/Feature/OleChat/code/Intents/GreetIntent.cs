@@ -30,7 +30,6 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             {
                 $"Hi {fullName}, how can I help you?",
                 "What's up?",
-                "Yes.",
                 "What can I do for you?",
                 "Hey.",
                 "Hi.",

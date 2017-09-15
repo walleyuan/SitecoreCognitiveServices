@@ -8,6 +8,9 @@ jQuery(document).ready(function () {
     var chatConversation = ".chat-conversation";
     var chatConversationData = {};
 
+    //initiate conversation
+    SendChatRequest("Hello");
+
     //sends chat text on 'enter-press' on the form
     jQuery(chatForm + " .chat-submit")
         .click(function (event) {
@@ -15,21 +18,26 @@ jQuery(document).ready(function () {
             var queryValue = jQuery(chatInput).val();
             if (queryValue === "")
                 return;
-            
-            var langValue = jQuery(".chat-lang").val();
-            var dbValue = jQuery(".chat-db").val();
-            var idValue = jQuery(".chat-id").val();
 
             jQuery(chatInput).val("");
             UpdateChatWindow(queryValue, "user");
-            
-            jQuery
-                .post(jQuery(chatForm).attr("action"), GenerateActivity(queryValue, langValue, dbValue, idValue))
-                .done(function(r) {
-                    chatConversationData = r.conversation;
-                    UpdateChatWindow(r.Text, "bot");
-                });
+
+            SendChatRequest(queryValue);
         });
+
+    function SendChatRequest(queryValue)
+    {
+        var langValue = jQuery(".chat-lang").val();
+        var dbValue = jQuery(".chat-db").val();
+        var idValue = jQuery(".chat-id").val();
+        
+        jQuery
+            .post(jQuery(chatForm).attr("action"), GenerateActivity(queryValue, langValue, dbValue, idValue))
+            .done(function (r) {
+                chatConversationData = r.conversation;
+                UpdateChatWindow(r.Text, "bot");
+            });
+    }
 
     function UpdateChatWindow(text, type) {
         var convoBox = jQuery(chatConversation);
