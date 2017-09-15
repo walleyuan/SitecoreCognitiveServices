@@ -214,7 +214,7 @@ jQuery(document).ready(function () {
                 for (var i = 0; i < r.Results.length; i++) {
                     var d = r.Results[i];
                     if (d.Url != undefined) {
-                        jQuery(".result-items").append("<div class='result-img-wrap'><img src=\"" + d.Url + "\" alt=\"" + d.Alt + "\" /></div>");
+                        jQuery(".result-items").append("<div class='result-img-wrap'><img src=\"" + d.Url + "\" alt=\"" + d.Alt + "\" title=\"" + d.Alt + "\" /></div>");
                     }
                 }
 

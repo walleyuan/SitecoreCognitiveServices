@@ -92,8 +92,8 @@ namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
             {
                 IQueryable<CognitiveImageSearchResult> queryable = context.GetQueryable<CognitiveImageSearchResult>()
-                    .Where(a => a.Language == languageCode);
-                
+                    .Where(a => a.Language == languageCode && !(a.Path.StartsWith("/sitecore/") || a.TemplateName.Equals("Media folder") || a.TemplateName.Equals("Node")));
+
                 if (gender != 0)
                 {
                     queryable = queryable.Where(x => x.Gender == gender);
