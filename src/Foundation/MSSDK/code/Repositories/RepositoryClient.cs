@@ -28,55 +28,55 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
 
         public virtual async Task<string> SendPostMultiPartAsync(string apiKey, string url, string data)
         {
-            return await SendAsync(apiKey, url, Encoding.ASCII.GetBytes(data), "multipart/form-data", "POST");
+            return await SendAsync(apiKey, url, GetByteArray(data), "multipart/form-data", "POST");
         }
 
         public virtual string SendPostMultiPart(string apiKey, string url, string data) {
-            return Send(apiKey, url, Encoding.ASCII.GetBytes(data), "multipart/form-data", "POST");
+            return Send(apiKey, url, GetByteArray(data), "multipart/form-data", "POST");
         }
 
         public virtual async Task<string> SendEncodedFormPostAsync(string apiKey, string url, string data)
         {
-            return await SendAsync(apiKey, url, Encoding.ASCII.GetBytes(data), "application/x-www-form-urlencoded", "POST");
+            return await SendAsync(apiKey, url, GetByteArray(data), "application/x-www-form-urlencoded", "POST");
         }
 
         public virtual string SendEncodedFormPost(string apiKey, string url, string data) {
-            return Send(apiKey, url, Encoding.ASCII.GetBytes(data), "application/x-www-form-urlencoded", "POST");
+            return Send(apiKey, url, GetByteArray(data), "application/x-www-form-urlencoded", "POST");
         }
 
         public virtual async Task<string> SendTextPostAsync(string apiKey, string url, string data)
         {
-            return await SendAsync(apiKey, url, Encoding.ASCII.GetBytes(data), "text/plain", "POST");
+            return await SendAsync(apiKey, url, GetByteArray(data), "text/plain", "POST");
         }
 
         public virtual string SendTextPost(string apiKey, string url, string data) {
-            return Send(apiKey, url, Encoding.ASCII.GetBytes(data), "text/plain", "POST");
+            return Send(apiKey, url, GetByteArray(data), "text/plain", "POST");
         }
 
         public virtual async Task<string> SendJsonPostAsync(string apiKey, string url, string data)
         {
-            return await SendAsync(apiKey, url, Encoding.ASCII.GetBytes(data), "application/json", "POST");
+            return await SendAsync(apiKey, url, GetByteArray(data), "application/json", "POST");
         }
 
         public virtual string SendJsonPost(string apiKey, string url, string data) {
-            return Send(apiKey, url, Encoding.ASCII.GetBytes(data), "application/json", "POST");
+            return Send(apiKey, url, GetByteArray(data), "application/json", "POST");
         }
 
         public virtual async Task<string> SendJsonPutAsync(string apiKey, string url, string data)
         {
-            return await SendAsync(apiKey, url, Encoding.ASCII.GetBytes(data), "application/json", "PUT");
+            return await SendAsync(apiKey, url, GetByteArray(data), "application/json", "PUT");
         }
 
         public virtual string SendJsonPut(string apiKey, string url, string data) {
-            return Send(apiKey, url, Encoding.ASCII.GetBytes(data), "application/json", "PUT");
+            return Send(apiKey, url, GetByteArray(data), "application/json", "PUT");
         }
 
         public virtual async Task<string> SendJsonPatchAsync(string apiKey, string url, string data) {
-            return await SendAsync(apiKey, url, Encoding.ASCII.GetBytes(data), "application/json", "PATCH");
+            return await SendAsync(apiKey, url, GetByteArray(data), "application/json", "PATCH");
         }
 
         public virtual string SendJsonPatch(string apiKey, string url, string data) {
-            return Send(apiKey, url, Encoding.ASCII.GetBytes(data), "application/json", "PATCH");
+            return Send(apiKey, url, GetByteArray(data), "application/json", "PATCH");
         }
 
         public virtual async Task<string> SendJsonDeleteAsync(string apiKey, string url)
@@ -108,11 +108,11 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
 
         public virtual async Task<string> SendJsonUpdateAsync(string apiKey, string url, string data)
         {
-            return await SendAsync(apiKey, url, Encoding.ASCII.GetBytes(data), "application/json", "UPDATE");
+            return await SendAsync(apiKey, url, GetByteArray(data), "application/json", "UPDATE");
         }
 
         public virtual string SendJsonUpdate(string apiKey, string url, string data) {
-            return Send(apiKey, url, Encoding.ASCII.GetBytes(data), "application/json", "UPDATE");
+            return Send(apiKey, url, GetByteArray(data), "application/json", "UPDATE");
         }
 
         public virtual async Task<string> SendImagePostAsync(string apiKey, string url, Stream stream)
@@ -236,7 +236,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
         }
 
         public virtual async Task<string> SendOperationPostAsync(string apiKey, string url, string data) {
-            return await SendOperationPostAsync(apiKey, url, Encoding.ASCII.GetBytes(data), "application/json");
+            return await SendOperationPostAsync(apiKey, url, GetByteArray(data), "application/json");
         }
 
         public virtual async Task<string> SendOctetOperationPostAsync(string apiKey, string url, Stream stream) {
@@ -269,7 +269,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
         }
 
         public virtual string SendOperationPost(string apiKey, string url, string data) {
-            return SendOperationPost(apiKey, url, Encoding.ASCII.GetBytes(data), "application/json");
+            return SendOperationPost(apiKey, url, GetByteArray(data), "application/json");
         }
 
         public virtual string SendOctetOperationPost(string apiKey, string url, Stream stream) {
@@ -404,6 +404,11 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
                 stream.CopyTo(memoryStream);
                 return memoryStream.ToArray();
             }
+        }
+
+        public virtual byte[] GetByteArray(string value)
+        {
+            return Encoding.ASCII.GetBytes(value);
         }
     }
 }

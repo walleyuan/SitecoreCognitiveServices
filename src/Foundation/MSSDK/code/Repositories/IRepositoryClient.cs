@@ -45,5 +45,6 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories
         string SendBingSpeechTokenRequest(string apiKey);
         string GetImageStreamContentType(Stream stream);
         byte[] GetByteArray(Stream stream);
+        byte[] GetByteArray(string value);
     }
 }
