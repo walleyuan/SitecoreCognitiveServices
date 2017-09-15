@@ -22,9 +22,9 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             Translator = translator;
         }
         
-        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
-            return "Sorry, can you try again? I didn't quite understand you.";
+            return CreateConversationResponse("Sorry, can you try again? I didn't quite understand you.");
         }
     }
 }

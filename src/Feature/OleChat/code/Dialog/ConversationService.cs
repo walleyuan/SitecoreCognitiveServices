@@ -36,7 +36,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Dialog
             AppId = OleSettings.OleApplicationId;
         }
 
-        public string HandleMessage(Activity activity, ItemContextParameters parameters)
+        public ConversationResponse HandleMessage(Activity activity, ItemContextParameters parameters)
         {
             IConversation conversation = (ConversationHistory.Conversations.Any())
                 ? ConversationHistory.Conversations.Last()

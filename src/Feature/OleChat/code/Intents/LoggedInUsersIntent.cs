@@ -24,7 +24,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             Translator = translator;
         }
 
-        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
+        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
 
             var sessions = DomainAccessGuard.Sessions.OrderByDescending(s => s.LastRequest);
             var sessionCount = sessions.Count();
@@ -32,7 +32,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             var conjunction = (sessionCount != 1) ? "are" : "is";
             var plurality = (sessionCount != 1) ? "s" : "";
             
-            return $"There {conjunction} {sessionCount} user{plurality}. <br/><ul><li>{string.Join("</li><li>", userNames)}</li></ul>";
+            return CreateConversationResponse($"There {conjunction} {sessionCount} user{plurality}. <br/><ul><li>{string.Join("</li><li>", userNames)}</li></ul>");
         }
     }
 }

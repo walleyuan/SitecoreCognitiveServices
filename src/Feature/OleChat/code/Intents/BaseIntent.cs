@@ -13,7 +13,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
         public abstract string Name { get; }
         public abstract string Description { get; }
         
-        public abstract string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation);
+        public abstract ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation);
 
         #region Base Intent
 
@@ -27,12 +27,12 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
             Settings = settings;
         }
         
-        public virtual string Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        public virtual ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             foreach (ConversationParameter p in RequiredParameters)
             {
                 if (!TryGetParam(p.ParamName, result, conversation, parameters, p.ParamValidation))
-                    return RequestParam(p.ParamName, p.ParamMessage, conversation);
+                    return RequestParam(p, conversation);
             }
 
             conversation.IsEnded = true;
@@ -79,11 +79,23 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
             return c.Context.ContainsKey(ReqParam) && c.Context[ReqParam].Equals(paramName);
         }
 
-        public virtual string RequestParam(string paramName, string message, IConversation c)
+        public virtual ConversationResponse RequestParam(ConversationParameter param, IConversation c)
         {
-            c.Context[ReqParam] = paramName;
+            c.Context[ReqParam] = param.ParamName;
 
-            return message;
+            return new ConversationResponse
+            {
+                Message = param.ParamMessage,
+                Options = param.ParamOptions?.Invoke()
+            };
+        }
+
+        public virtual ConversationResponse CreateConversationResponse(string message)
+        {
+            return new ConversationResponse
+            {
+                Message = message
+            };
         }
 
         #endregion

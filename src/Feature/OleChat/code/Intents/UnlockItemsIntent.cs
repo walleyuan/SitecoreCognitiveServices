@@ -29,7 +29,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             Translator = translator;
             }
         
-        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             var items = GetCurrentUserUnlockedItems(parameters.Database);
 
@@ -44,7 +44,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
                 }
             }
             
-            return $"I've unlocked {items.Count} for you";
+            return CreateConversationResponse($"I've unlocked {items.Count} for you");
         }
 
         protected List<SearchResultItem> GetCurrentUserUnlockedItems(string db)

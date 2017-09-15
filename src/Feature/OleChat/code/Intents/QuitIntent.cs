@@ -32,9 +32,9 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
             Provider = provider;
         }
 
-        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
-            return "Alright let's move on.";
+            return CreateConversationResponse("Alright let's move on.");
         }
     }
 }

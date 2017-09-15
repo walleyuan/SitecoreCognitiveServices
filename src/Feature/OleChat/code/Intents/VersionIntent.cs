@@ -25,11 +25,11 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             Translator = translator;
         }
 
-        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
+        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
 
             var path = HttpContext.Current.Server.MapPath("~/sitecore/shell/sitecore.version.xml");
             if (!System.IO.File.Exists(path))
-                return string.Empty;
+                return CreateConversationResponse(string.Empty);
 
             string xmlText = System.IO.File.ReadAllText(path);
             XDocument xdoc = XDocument.Parse(xmlText);
@@ -39,7 +39,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             var minor = version.Descendants("minor").First().Value;
             var revision = version.Descendants("revision").First().Value;
             
-            return $"My version is {major}.{minor} rev {revision}";
+            return CreateConversationResponse($"My version is {major}.{minor} rev {revision}");
         }
     }
 }

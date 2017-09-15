@@ -28,7 +28,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             Provider = provider;
         }
         
-        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             var intents = Provider.GetServices<IIntentFactory<IIntent>>()
                 .Select(a => a.Create())
@@ -38,7 +38,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
             var str = string.Join("", list);
 
-            return $"Here's the list of things I can do: <br/><ul>{str}</ul>";
+            return CreateConversationResponse($"Here's the list of things I can do: <br/><ul>{str}</ul>");
         }
     }
 }

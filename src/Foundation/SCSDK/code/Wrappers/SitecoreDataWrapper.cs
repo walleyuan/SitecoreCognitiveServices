@@ -19,6 +19,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Wrappers
         }
 
         public virtual Database GetDatabase(string dbName) => Sitecore.Configuration.Factory.GetDatabase(dbName);
+        public virtual List<Database> GetDatabases() => Sitecore.Configuration.Factory.GetDatabases();
         public virtual ID GetID(string itemId)
         {
             ID idObj;

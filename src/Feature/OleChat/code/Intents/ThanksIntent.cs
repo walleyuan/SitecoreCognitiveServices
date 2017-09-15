@@ -26,7 +26,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
             Translator = translator;
         }
 
-        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             List<string> responses = new List<string>()
             {
@@ -39,7 +39,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
                 "If I had a heart, it'd be touched."
             };
 
-            return responses[new Random().Next(0, responses.Count)];
+            return CreateConversationResponse(responses[new Random().Next(0, responses.Count)]);
         }
     }
 }

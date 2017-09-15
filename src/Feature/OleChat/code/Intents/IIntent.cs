@@ -10,7 +10,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
         string Name { get; }
         string Description { get; }
         List<ConversationParameter> RequiredParameters { get; }
-        string Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation);
-        string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation);
+        ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation);
+        ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation);
     }
 }

@@ -22,7 +22,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             Translator = translator;
         }
 
-        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             string fullName = Sitecore.Context.User.Profile.FullName;
 
@@ -36,7 +36,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
                 "Can I help you with something?"
             };
 
-            return responses[new Random().Next(0, responses.Count)];
+            return CreateConversationResponse(responses[new Random().Next(0, responses.Count)]);
         }
     }
 }

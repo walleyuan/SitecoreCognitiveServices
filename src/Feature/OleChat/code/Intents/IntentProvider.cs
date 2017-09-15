@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Factories;
+using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
 
 namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
 {
@@ -39,9 +40,9 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
                 : null;
         }
 
-        public string GetDefaultResponse(Guid appId)
+        public ConversationResponse GetDefaultResponse(Guid appId)
         {
-            return GetIntent(appId, "default")?.Respond(null, null, null) ?? string.Empty;
+            return GetIntent(appId, "default")?.Respond(null, null, null) ?? new ConversationResponse { Message = string.Empty };
         }
     }
 }

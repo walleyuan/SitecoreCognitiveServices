@@ -24,23 +24,23 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             Translator = translator;
         }
 
-        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
+        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
 
             if (!Sitecore.Context.User.IsAdministrator)
-                return "Sorry, you can only perform this action if you're an admin";
+                return CreateConversationResponse("Sorry, you can only perform this action if you're an admin");
             
             var user = result?.Entities?.FirstOrDefault(x => x.Type.Equals("Domain User"))?.Entity;
             if (string.IsNullOrEmpty(user))
-                return "Sorry, that's not a valid user name.";
+                return CreateConversationResponse("Sorry, that's not a valid user name.");
 
             var username = user.Replace(" ", "");
             var session = DomainAccessGuard.Sessions.FirstOrDefault(s => string.Equals(s.UserName, username, StringComparison.OrdinalIgnoreCase));
             if (session == null)
-                return "Sorry, I couldn't find that user.";
+                return CreateConversationResponse("Sorry, I couldn't find that user.");
 
             DomainAccessGuard.Kick(session.SessionID);
             
-            return $"The user {username} has been kicked out.";
+            return CreateConversationResponse($"The user {username} has been kicked out.");
         }
     }
 }

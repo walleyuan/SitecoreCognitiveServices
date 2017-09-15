@@ -8,6 +8,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Wrappers
     public interface ISitecoreDataWrapper
     {
         Database GetDatabase(string dbName);
+        List<Database> GetDatabases();
         ID GetID(string itemId);
         Item GetItemByUri(string itemUri);
         Item GetItemByIdValue(string itemId, string database);

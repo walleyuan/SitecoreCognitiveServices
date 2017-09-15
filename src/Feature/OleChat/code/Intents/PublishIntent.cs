@@ -25,9 +25,9 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
         public override List<ConversationParameter> RequiredParameters => new List<ConversationParameter>()
         {
-            new ConversationParameter(DBKey, "What database did you want to publish to?", IsDbValid),
-            new ConversationParameter(ItemKey, "What was the item path you wanted to publish?", IsPathValid),
-            new ConversationParameter(RecursionKey, "Do you want to publish all children?", IsRecursionValid)
+            new ConversationParameter(DBKey, "What database did you want to publish to?", IsDbValid, DbOptions),
+            new ConversationParameter(ItemKey, "What was the item path you wanted to publish?", IsPathValid, null),
+            new ConversationParameter(RecursionKey, "Do you want to publish all children?", IsRecursionValid, RecursionOptions)
         };
 
         #region Local Properties
@@ -49,14 +49,14 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             PublishWrapper = publishWrapper;
         }
         
-        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             var toDb = (Database) conversation.Data[DBKey];
             var rootItem = (Item) conversation.Data[ItemKey];
             var recursion = (bool) conversation.Data[RecursionKey];
             PublishWrapper.PublishItem(rootItem, new[] { toDb }, new[] { rootItem.Language }, recursion, false);
 
-            return $"I've published {rootItem.DisplayName} to the {toDb.Name} database in {rootItem.Language.Name} {(recursion ? " with it's children" : string.Empty)}";
+            return CreateConversationResponse($"I've published {rootItem.DisplayName} to the {toDb.Name} database in {rootItem.Language.Name} {(recursion ? " with it's children" : string.Empty)}");
         }
 
         public virtual bool IsDbValid(string paramValue, ItemContextParameters parameters, IConversation conversation)
@@ -78,6 +78,11 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
             conversation.Data[DBKey] = toDb;
             return true;
+        }
+
+        public virtual Dictionary<string, string> DbOptions()
+        {
+            return DataWrapper.GetDatabases().ToDictionary(a => a.Name, a => a.Name);
         }
 
         public virtual bool IsPathValid(string paramValue, ItemContextParameters parameters, IConversation conversation)
@@ -126,6 +131,11 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             conversation.Data[RecursionKey] = responses.Contains(paramValue.ToLower());
 
             return true;
+        }
+
+        public virtual Dictionary<string, string> RecursionOptions()
+        {
+            return new Dictionary<string, string>{ { "Yes", "Yes" }, { "No", "No" } };
         }
     }
 }

@@ -9,6 +9,6 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Dialog
 {
     public interface IConversationService
     {
-        string HandleMessage(Activity activity, ItemContextParameters parameters);
+        ConversationResponse HandleMessage(Activity activity, ItemContextParameters parameters);
     }
 }

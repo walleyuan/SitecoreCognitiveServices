@@ -20,7 +20,7 @@ jQuery(document).ready(function () {
                 return;
 
             jQuery(chatInput).val("");
-            UpdateChatWindow(queryValue, "user");
+            UpdateChatWindow(queryValue, null, "user");
 
             SendChatRequest(queryValue);
         });
@@ -35,13 +35,21 @@ jQuery(document).ready(function () {
             .post(jQuery(chatForm).attr("action"), GenerateActivity(queryValue, langValue, dbValue, idValue))
             .done(function (r) {
                 chatConversationData = r.conversation;
-                UpdateChatWindow(r.Text, "bot");
+                UpdateChatWindow(r.Text, r.Entities, "bot");
             });
     }
 
-    function UpdateChatWindow(text, type) {
+    function UpdateChatWindow(text, options, type) {
         var convoBox = jQuery(chatConversation);
         convoBox.append("<div class='" + type + "'><span class='message'>" + text + "<span class='icon'></span></span></div>");
+        if (options != null) {
+            var optionList = "";
+            for (i = 0; i < options.length; i++) 
+            {
+                optionList += "<div class='user-option'>" + options[i].Type + "</div>";
+            }
+            convoBox.append("<div class='" + type + "'><span class='message'>" + optionList + "<span class='icon'></span></span></div>");
+        }
         convoBox.scrollTop(convoBox[0].scrollHeight - convoBox.height());
     }
 
