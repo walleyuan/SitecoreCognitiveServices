@@ -241,6 +241,11 @@
             "entities": []
         },
         {
+            "text": "kick user",
+            "intent": "Kick User",
+            "entities": []
+        },
+        {
             "text": "what's the sitecore version",
             "intent": "Version",
             "entities": []
@@ -668,6 +673,25 @@
             "intent": "Thanks",
             "entities": []
         },
+        {
+            "text": "kicked out",
+            "intent": "Kick User",
+            "entities": []
+        },
+        {
+            "text": "kicking out",
+            "intent": "Kick User",
+            "entities": []
+        },
+        {
+            "text": "kick out",
+            "intent": "Kick User",
+            "entities": []
+        },
+        {
+            "text": "kick member",
+            "intent": "Kick User",
+            "entities": []
         }
     ]
 }
