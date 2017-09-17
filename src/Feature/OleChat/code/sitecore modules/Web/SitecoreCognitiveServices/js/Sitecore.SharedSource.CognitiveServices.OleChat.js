@@ -42,7 +42,7 @@ jQuery(document).ready(function () {
     function UpdateChatWindow(text, options, type) {
         var convoBox = jQuery(chatConversation);
         convoBox.append("<div class='" + type + "'><span class='message'>" + text + "<span class='icon'></span></span></div>");
-        if (options != null) {
+        if (options != null && options.length > 0) {
             var optionList = "";
             for (i = 0; i < options.length; i++) 
             {
