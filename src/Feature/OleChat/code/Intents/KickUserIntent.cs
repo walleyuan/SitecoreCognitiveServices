@@ -64,7 +64,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             if (string.IsNullOrEmpty(username))
                 return false;
 
-            string regex = @"/^[a-zA-Z][a-zA-Z0-9‌​\-\.]{0,61}[a-zA-Z]\\\w‌​[\w\.\- ]*$/";
+            string regex = @"^(\w[\w\s]*)([\\]{1})(\w[\w\s\.\@]*)$";
             Match m = Regex.Match(username, regex);
             if(string.IsNullOrEmpty(m.Value))
                 return false;
