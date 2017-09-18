@@ -43,10 +43,6 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
 
         public ConversationResponse HandleMessage(Activity activity, ItemContextParameters parameters)
         {
-            IConversation conversation = (ConversationHistory.Conversations.Any())
-                ? ConversationHistory.Conversations.Last()
-                : null;
-
             // determine which intent user wants and context
             var result = LuisService.Query(AppId, activity.Text);
             var intent = IntentProvider.GetIntent(AppId, result.TopScoringIntent.Intent);
@@ -55,13 +51,19 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
             if(intent == null)
                 return IntentProvider.GetDefaultResponse(AppId);
 
+            IConversation conversation = (ConversationHistory.Conversations.Any())
+                ? ConversationHistory.Conversations.Last()
+                : null;
+
             var requestedQuit = intent.Name.Equals("quit");
             var inConversation = conversation != null && !conversation.IsEnded;
 
             // if the user is trying to end or finish a conversation 
-            if (inConversation && requestedQuit)
+            if (inConversation && requestedQuit) { 
                 conversation.IsEnded = true;
-            
+                inConversation = false;
+            }
+
             // start a new conversation if not in one
             if (!inConversation)
             {
@@ -69,6 +71,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
                 ConversationHistory.Conversations.Add(conversation);                
             }
 
+            // check and request all required parameters of a conversation
             foreach (ConversationParameter p in conversation.Intent.RequiredParameters)
             {
                 if (!TryGetParam(p.ParamName, result, conversation, parameters, p.ParamValidation))

@@ -33,6 +33,9 @@
             "name": "Quit"
         },
         {
+            "name": "Rebuild Index"
+        },
+        {
             "name": "Thanks"
         },
         {
@@ -62,6 +65,9 @@
             "name": "Domain User"
         },
         {
+            "name": "Index Name"
+        },
+        {
             "name": "Item Path"
         },
         {
@@ -69,6 +75,16 @@
         },
         {
             "name": "Recursion"
+        },
+        {
+            "name": "Search",
+            "children": [
+                "modifier",
+                "scope",
+                "template name",
+                "search value",
+                "field name"
+            ]
         },
         {
             "name": "Users",
@@ -139,6 +155,11 @@
             "entities": []
         },
         {
+            "text": "stop it",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
             "text": "exit",
             "intent": "Quit",
             "entities": []
@@ -181,6 +202,11 @@
         {
             "text": "logout",
             "intent": "Logout",
+            "entities": []
+        },
+        {
+            "text": "i'm done",
+            "intent": "Quit",
             "entities": []
         },
         {
@@ -246,6 +272,11 @@
         {
             "text": "what's available?",
             "intent": "About",
+            "entities": []
+        },
+        {
+            "text": "drop it",
+            "intent": "Quit",
             "entities": []
         },
         {
@@ -632,6 +663,11 @@
             "entities": []
         },
         {
+            "text": "rebuild index",
+            "intent": "Rebuild Index",
+            "entities": []
+        },
+        {
             "text": "can you publish /sitecore/content/home to web",
             "intent": "Publish",
             "entities": [
@@ -744,6 +780,96 @@
         {
             "text": "kick member",
             "intent": "Kick User",
+            "entities": []
+        },
+        {
+            "text": "i want to rebuild the web index",
+            "intent": "Rebuild Index",
+            "entities": [
+                {
+                    "entity": "Index Name",
+                    "startPos": 22,
+                    "endPos": 24
+                }
+            ]
+        },
+        {
+            "text": "i want to rebuild and index",
+            "intent": "Rebuild Index",
+            "entities": []
+        },
+        {
+            "text": "how do i rebuild the web index",
+            "intent": "Rebuild Index",
+            "entities": [
+                {
+                    "entity": "Index Name",
+                    "startPos": 21,
+                    "endPos": 23
+                }
+            ]
+        },
+        {
+            "text": "how do i rebuild an index",
+            "intent": "Rebuild Index",
+            "entities": []
+        },
+        {
+            "text": "can you rebuild an index",
+            "intent": "Rebuild Index",
+            "entities": []
+        },
+        {
+            "text": "can you rebuild the web index",
+            "intent": "Rebuild Index",
+            "entities": [
+                {
+                    "entity": "Index Name",
+                    "startPos": 20,
+                    "endPos": 22
+                }
+            ]
+        },
+        {
+            "text": "rebuild web index",
+            "intent": "Rebuild Index",
+            "entities": [
+                {
+                    "entity": "Index Name",
+                    "startPos": 8,
+                    "endPos": 10
+                }
+            ]
+        },
+        {
+            "text": "build web index",
+            "intent": "Rebuild Index",
+            "entities": [
+                {
+                    "entity": "Index Name",
+                    "startPos": 6,
+                    "endPos": 8
+                }
+            ]
+        },
+        {
+            "text": "index build",
+            "intent": "Rebuild Index",
+            "entities": []
+        },
+        {
+            "text": "build index",
+            "intent": "Rebuild Index",
+            "entities": []
+        },
+        {
+            "text": "index rebuild",
+            "intent": "Rebuild Index",
+            "entities": []
+        },
+        {
+            "text": "rebuild the index",
+            "intent": "Rebuild Index",
             "entities": []
         }
     ]
