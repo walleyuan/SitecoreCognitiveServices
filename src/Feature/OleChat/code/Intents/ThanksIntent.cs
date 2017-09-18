@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
@@ -21,7 +22,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public ThanksIntent(
             ITextTranslatorWrapper translator,
-            IOleSettings settings) : base(settings)
+            IConversationResponseFactory responseFactory,
+            IOleSettings settings) : base(settings, responseFactory)
         {
             Translator = translator;
         }
@@ -39,7 +41,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
                 "If I had a heart, it'd be touched."
             };
 
-            return CreateConversationResponse(responses[new Random().Next(0, responses.Count)]);
+            return ConversationResponseFactory.Create(responses[new Random().Next(0, responses.Count)]);
         }
     }
 }

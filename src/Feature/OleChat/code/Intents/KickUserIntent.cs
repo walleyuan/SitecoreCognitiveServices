@@ -8,6 +8,7 @@ using Sitecore.Web.Authentication;
 using System.Collections.Generic;
 using Sitecore.Security.Accounts;
 using System.Text.RegularExpressions;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
@@ -36,7 +37,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
         public KickUserIntent(
             ITextTranslatorWrapper translator,
             IAuthenticationWrapper authWrapper,
-            IOleSettings settings) : base(settings) {
+            IConversationResponseFactory responseFactory,
+            IOleSettings settings) : base(settings, responseFactory) {
             Translator = translator;
             AuthenticationWrapper = authWrapper;
         }
@@ -44,13 +46,13 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
         public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
             
             if (!AuthenticationWrapper.IsCurrentUserAdministrator())
-                return CreateConversationResponse("Sorry, you can only perform this action if you're an admin");
+                return ConversationResponseFactory.Create("Sorry, you can only perform this action if you're an admin");
 
             var userSession = (DomainAccessGuard.Session)conversation.Data[UserKey];
             var name = userSession.UserName;
             AuthenticationWrapper.Kick(userSession.SessionID);
             
-            return CreateConversationResponse($"The user {name} has been kicked out.");
+            return ConversationResponseFactory.Create($"The user {name} has been kicked out.");
         }
 
         public virtual bool IsUserValid(string paramValue, ItemContextParameters parameters, IConversation conversation)

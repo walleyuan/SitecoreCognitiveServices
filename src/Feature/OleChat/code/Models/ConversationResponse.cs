@@ -9,6 +9,6 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Models
     {
         public string Message { get; set; }
         public Dictionary<string, string> Options { get; set; }
-        public KeyValuePair<string, string> Action { get; set; }
+        public string Action { get; set; }
     }
 }

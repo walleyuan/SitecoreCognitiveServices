@@ -7,6 +7,7 @@ using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
@@ -42,7 +43,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             ITextTranslatorWrapper translator,
             IOleSettings settings,
             ISitecoreDataWrapper dataWrapper,
-            IPublishWrapper publishWrapper) : base(settings)
+            IConversationResponseFactory responseFactory,
+            IPublishWrapper publishWrapper) : base(settings, responseFactory)
         {
             Translator = translator;
             DataWrapper = dataWrapper;
@@ -56,7 +58,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             var recursion = (bool) conversation.Data[RecursionKey];
             PublishWrapper.PublishItem(rootItem, new[] { toDb }, new[] { rootItem.Language }, recursion, false);
 
-            return CreateConversationResponse($"I've published {rootItem.DisplayName} to the {toDb.Name} database in {rootItem.Language.Name} {(recursion ? " with it's children" : string.Empty)}");
+            return ConversationResponseFactory.Create($"I've published {rootItem.DisplayName} to the {toDb.Name} database in {rootItem.Language.Name} {(recursion ? " with it's children" : string.Empty)}");
         }
 
         public virtual bool IsDbValid(string paramValue, ItemContextParameters parameters, IConversation conversation)

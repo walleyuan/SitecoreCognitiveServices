@@ -3,6 +3,7 @@ using System.Linq;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
@@ -21,7 +22,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
         public LoggedInUsersIntent(
             ITextTranslatorWrapper translator,
             IAuthenticationWrapper authWrapper,
-            IOleSettings settings) : base(settings) {
+            IConversationResponseFactory responseFactory,
+            IOleSettings settings) : base(settings, responseFactory) {
             Translator = translator;
             AuthenticationWrapper = authWrapper;
         }
@@ -34,7 +36,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             var conjunction = (sessionCount != 1) ? "are" : "is";
             var plurality = (sessionCount != 1) ? "s" : "";
             
-            return CreateConversationResponse($"There {conjunction} {sessionCount} user{plurality}. <br/><ul><li>{string.Join("</li><li>", userNames)}</li></ul>");
+            return ConversationResponseFactory.Create($"There {conjunction} {sessionCount} user{plurality}. <br/><ul><li>{string.Join("</li><li>", userNames)}</li></ul>");
         }
     }
 }

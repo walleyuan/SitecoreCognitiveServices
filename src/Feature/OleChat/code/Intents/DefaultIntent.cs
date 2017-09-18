@@ -1,6 +1,7 @@
 ﻿using System;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
@@ -18,13 +19,14 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
         public DefaultIntent(
             ITextTranslatorWrapper translator,
-            IOleSettings settings) : base(settings) {
+            IConversationResponseFactory responseFactory,
+            IOleSettings settings) : base(settings, responseFactory) {
             Translator = translator;
         }
         
         public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
-            return CreateConversationResponse("Sorry, can you try again? I didn't quite understand you.");
+            return ConversationResponseFactory.Create("Sorry, can you try again? I didn't quite understand you.");
         }
     }
 }

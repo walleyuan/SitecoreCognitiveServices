@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
@@ -24,7 +25,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
         public VersionIntent(
             ITextTranslatorWrapper translator,
             HttpContextBase context,
-            IOleSettings settings) : base(settings) {
+            IConversationResponseFactory responseFactory,
+            IOleSettings settings) : base(settings, responseFactory) {
             Translator = translator;
             Context = context;
         }
@@ -33,7 +35,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
             var path = Context.Server.MapPath("~/sitecore/shell/sitecore.version.xml");
             if (!File.Exists(path))
-                return CreateConversationResponse(string.Empty);
+                return ConversationResponseFactory.Create(string.Empty);
 
             string xmlText = File.ReadAllText(path);
             XDocument xdoc = XDocument.Parse(xmlText);
@@ -43,7 +45,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             var minor = version.Descendants("minor").First().Value;
             var revision = version.Descendants("revision").First().Value;
             
-            return CreateConversationResponse($"My version is {major}.{minor} rev {revision}");
+            return ConversationResponseFactory.Create($"My version is {major}.{minor} rev {revision}");
         }
     }
 }

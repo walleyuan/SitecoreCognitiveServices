@@ -9,6 +9,11 @@ using SitecoreCognitiveServices.Feature.OleChat.Intents;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Factories
 {
+    public interface IConversationFactory
+    {
+        IConversation Create(LuisResult result, IIntent intent);
+    }
+
     public class ConversationFactory : IConversationFactory
     {
         protected readonly IServiceProvider Provider;

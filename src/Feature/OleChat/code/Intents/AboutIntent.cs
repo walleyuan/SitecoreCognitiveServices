@@ -23,7 +23,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
         public AboutIntent(
             ITextTranslatorWrapper translator,
             IOleSettings settings,
-            IServiceProvider provider) : base(settings) {
+            IConversationResponseFactory responseFactory,
+            IServiceProvider provider) : base(settings, responseFactory) {
             Translator = translator;
             Provider = provider;
         }
@@ -38,7 +39,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
             var str = string.Join("", list);
 
-            return CreateConversationResponse($"Here's the list of things I can do: <br/><ul>{str}</ul>");
+            return ConversationResponseFactory.Create($"Here's the list of things I can do: <br/><ul>{str}</ul>");
         }
     }
 }

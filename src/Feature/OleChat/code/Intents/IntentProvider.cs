@@ -10,13 +10,18 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
     public class IntentProvider : IIntentProvider
     {
         private readonly Dictionary<Guid, Dictionary<string, IIntent>> _intentDictionary;
-        
-        public IntentProvider(IServiceProvider provider)
+        protected readonly IConversationResponseFactory ConversationResponseFactory;
+
+        public IntentProvider(
+            IServiceProvider provider,
+            IConversationResponseFactory reponseFactory)
         {
             _intentDictionary = provider.GetServices<IIntentFactory<IIntent>>()
                 .Select(a => a.Create())
                 .GroupBy(g => g.ApplicationId)
                 .ToDictionary(a => a.Key, a => a.ToDictionary(b => b.Name));
+
+            ConversationResponseFactory = reponseFactory;
         }
 
         public Dictionary<string, IIntent> GetAllIntents(Guid appId)
@@ -42,7 +47,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public ConversationResponse GetDefaultResponse(Guid appId)
         {
-            return GetIntent(appId, "default")?.Respond(null, null, null) ?? new ConversationResponse { Message = string.Empty };
+            return GetIntent(appId, "default")?.Respond(null, null, null) ?? ConversationResponseFactory.Create(string.Empty);
         }
     }
 }

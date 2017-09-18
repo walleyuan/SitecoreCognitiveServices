@@ -41,6 +41,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.App_Start
             serviceCollection.AddTransient<IIntentFactory<IIntent>, QuitIntentFactory>();
             serviceCollection.AddTransient<IIntentFactory<IIntent>, ThanksIntentFactory>();
             serviceCollection.AddTransient<IIntentFactory<IIntent>, LogoutIntentFactory>();
+            serviceCollection.AddTransient<IConversationResponseFactory, ConversationResponseFactory>();
 
             //intent provider
             serviceCollection.AddSingleton<IIntentProvider, IntentProvider>();

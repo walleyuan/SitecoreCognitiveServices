@@ -6,6 +6,7 @@ using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
@@ -25,7 +26,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             ITextTranslatorWrapper translator,
             HttpContextBase context,
             IAuthenticationWrapper authWrapper,
-            IOleSettings settings) : base(settings) {
+            IConversationResponseFactory responseFactory,
+            IOleSettings settings) : base(settings, responseFactory) {
             Translator = translator;
             Context = context;
             AuthenticationWrapper = authWrapper;
@@ -43,10 +45,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
                 cookie.Value = null;
             }
 
-            return new ConversationResponse{
-                Message = "You have been logged out.",
-                Action = new KeyValuePair<string, string>("logout", "")
-            };
+            return ConversationResponseFactory.Create("You have been logged out.", "logout");
         }
     }
 }

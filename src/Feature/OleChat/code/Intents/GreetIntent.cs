@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
@@ -20,7 +21,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
         public GreetIntent(
             ITextTranslatorWrapper translator,
             IAuthenticationWrapper authWrapper,
-            IOleSettings settings) : base(settings) {
+            IConversationResponseFactory responseFactory,
+            IOleSettings settings) : base(settings, responseFactory) {
             Translator = translator;
             AuthenticationWrapper = authWrapper;
         }
@@ -39,7 +41,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
                 "Can I help you with something?"
             };
 
-            return CreateConversationResponse(responses[new Random().Next(0, responses.Count)]);
+            return ConversationResponseFactory.Create(responses[new Random().Next(0, responses.Count)]);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Common;
-using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
 using System;
 using System.Collections.Generic;

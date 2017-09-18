@@ -13,6 +13,7 @@ using Sitecore.Jobs;
 using Sitecore.Diagnostics;
 using Sitecore.Globalization;
 using Sitecore.ContentSearch.Maintenance;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
@@ -41,7 +42,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
         
         public RebuildIndexIntent(
             ITextTranslatorWrapper translator,
-            IOleSettings settings) : base(settings)
+            IConversationResponseFactory responseFactory,
+            IOleSettings settings) : base(settings, responseFactory)
         {
             Translator = translator;
         }
@@ -94,7 +96,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
             //////////////////
 
-            return CreateConversationResponse($"message");
+            return ConversationResponseFactory.Create($"message");
         }
 
         public virtual bool IsIndexValid(string paramValue, ItemContextParameters parameters, IConversation conversation)

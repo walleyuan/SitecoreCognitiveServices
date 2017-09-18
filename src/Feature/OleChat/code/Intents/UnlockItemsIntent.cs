@@ -8,6 +8,7 @@ using Sitecore.ContentSearch.Security;
 using Sitecore.Data.Items;
 using Sitecore.SecurityModel;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
@@ -28,7 +29,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             ITextTranslatorWrapper translator,
             IAuthenticationWrapper authWrapper,
             IContentSearchWrapper searchWrapper,
-            IOleSettings settings) : base(settings) {
+            IConversationResponseFactory responseFactory,
+            IOleSettings settings) : base(settings, responseFactory) {
             Translator = translator;
             AuthenticationWrapper = authWrapper;
             ContentSearchWrapper = searchWrapper;
@@ -49,7 +51,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
                 }
             }
             
-            return CreateConversationResponse($"I've unlocked {items.Count} for you");
+            return ConversationResponseFactory.Create($"I've unlocked {items.Count} for you");
         }
 
         protected List<SearchResultItem> GetCurrentUserUnlockedItems(string db)

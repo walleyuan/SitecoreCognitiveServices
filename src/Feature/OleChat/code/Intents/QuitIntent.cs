@@ -26,7 +26,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
         public QuitIntent(
             ITextTranslatorWrapper translator,
             IOleSettings settings,
-            IServiceProvider provider) : base(settings)
+            IConversationResponseFactory responseFactory,
+            IServiceProvider provider) : base(settings, responseFactory)
         {
             Translator = translator;
             Provider = provider;
@@ -34,7 +35,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
-            return CreateConversationResponse("Alright let's move on.");
+            return ConversationResponseFactory.Create("Alright let's move on.");
         }
     }
 }

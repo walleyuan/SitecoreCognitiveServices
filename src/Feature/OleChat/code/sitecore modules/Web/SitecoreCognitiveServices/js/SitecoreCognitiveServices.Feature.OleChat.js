@@ -42,19 +42,24 @@ jQuery(document).ready(function () {
         var convoBox = jQuery(chatConversation);
         convoBox.append("<div class='" + type + "'><span class='message'>" + text + "<span class='icon'></span></span></div>");
 
-        var options = (channelData != null) ? channelData.Options : null;
-        if (options != null && options.length > 0) {
-            var optionList = "";
-            for (i = 0; i < options.length; i++) 
-            {
-                optionList += "<div class='user-option' data-userinput='" + options[i].Value + "'>" + options[i].DisplayText + "</div>";
+        if (channelData != null) {
+            //options
+            var options = channelData.Options;
+            if (options != null && options.length > 0) {
+                var optionList = "";
+                for (i = 0; i < options.length; i++) {
+                    optionList += "<div class='user-option' data-userinput='" + options[i].Value + "'>" + options[i].DisplayText + "</div>";
+                }
+                convoBox.append("<div class='" + type + "'><span class='message'>" + optionList + "<span class='icon'></span></span></div>");
             }
-            convoBox.append("<div class='" + type + "'><span class='message'>" + optionList + "<span class='icon'></span></span></div>");
+
+            //actions
+            var action = channelData.Action;
+            if (action != null && action === "logout") {
+                location.reload();
+            }    
         }
-        var action = (channelData != null) ? channelData.Action : null;
-        if (action != null && action.Key != null && action.Key === "logout") {
-            location.reload();
-        }
+        
         convoBox.scrollTop(convoBox[0].scrollHeight - convoBox.height());
     }
 

@@ -162,9 +162,9 @@
     <Compile Include="Dialog\IConversation.cs" />
     <Compile Include="Dialog\IConversationHistory.cs" />
     <Compile Include="Dialog\IConversationService.cs" />
+    <Compile Include="Factories\ConversationResponseFactory.cs" />
     <Compile Include="Factories\LogoutIntentFactory.cs" />
     <Compile Include="Factories\ConversationFactory.cs" />
-    <Compile Include="Factories\IConversationFactory.cs" />
     <Compile Include="Factories\QuitIntentFactory.cs" />
     <Compile Include="Factories\ThanksIntentFactory.cs" />
     <Compile Include="Intents\BaseIntent.cs" />
