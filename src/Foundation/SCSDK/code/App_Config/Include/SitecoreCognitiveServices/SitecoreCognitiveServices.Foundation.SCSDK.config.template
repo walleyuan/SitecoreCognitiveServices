@@ -3,11 +3,11 @@
   <sitecore>
     <pipelines>
       <initialize>
-        <processor type="Sitecore.SharedSource.CognitiveServices.App_Start.LoadRoutes,Sitecore.SharedSource.CognitiveServices" patch:after="processor[@type='Sitecore.Pipelines.Loader.EnsureAnonymousUsers, Sitecore.Kernel']" />
+        <processor type="SitecoreCognitiveServices.Foundation.SCSDK.App_Start.LoadRoutes,SitecoreCognitiveServices.Foundation.SCSDK" patch:after="processor[@type='Sitecore.Pipelines.Loader.EnsureAnonymousUsers, Sitecore.Kernel']" />
       </initialize>
     </pipelines>
     <services>
-      <configurator type="Sitecore.SharedSource.CognitiveServices.App_Start.IocConfig, Sitecore.SharedSource.CognitiveServices" />
+      <configurator type="SitecoreCognitiveServices.Foundation.SCSDK.App_Start.IocConfig, SitecoreCognitiveServices.Foundation.SCSDK" />
     </services>
     <settings>
       <!-- API Keys -->

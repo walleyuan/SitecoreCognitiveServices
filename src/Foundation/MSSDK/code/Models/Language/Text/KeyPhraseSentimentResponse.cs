@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Text {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text {
     public class KeyPhraseSentimentResponse
     {
         [JsonProperty("documents")]

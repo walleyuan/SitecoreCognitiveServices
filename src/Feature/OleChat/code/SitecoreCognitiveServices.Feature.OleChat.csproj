@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sitecore.SharedSource.CognitiveServices.OleChat</RootNamespace>
-    <AssemblyName>Sitecore.SharedSource.CognitiveServices.OleChat</AssemblyName>
+    <RootNamespace>SitecoreCognitiveServices.Feature.OleChat</RootNamespace>
+    <AssemblyName>SitecoreCognitiveServices.Feature.OleChat</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -149,8 +149,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\Sitecore.SharedSource.CognitiveServices.OleChat.css" />
-    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Sitecore.SharedSource.CognitiveServices.OleChat.js" />
+    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\SitecoreCognitiveServices.Feature.OleChat.css" />
+    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\SitecoreCognitiveServices.Feature.OleChat.js" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <None Include="Web.config" />
   </ItemGroup>
@@ -208,11 +208,11 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.OleChat.config">
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Feature.OleChat.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\CognitiveBot\OleChat.cshtml" />
-    <Content Include="App_Config\Include\SitecoreCognitiveServices\Unicorn.Configs.SitecoreCognitiveServices.OleChat.config" />
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\Unicorn.Configs.SitecoreCognitiveServices.Feature.OleChat.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -221,13 +221,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Foundation\MSSDK\code\Microsoft.SharedSource.CognitiveServices.csproj">
+    <ProjectReference Include="..\..\..\Foundation\MSSDK\code\MicrosoftCognitiveServices.Foundation.MSSDK.csproj">
       <Project>{13ecb0db-e99d-4d05-97e8-138eb3884353}</Project>
-      <Name>Microsoft.SharedSource.CognitiveServices</Name>
+      <Name>MicrosoftCognitiveServices.Foundation.MSSDK</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Foundation\SCSDK\code\Sitecore.SharedSource.CognitiveServices.csproj">
+    <ProjectReference Include="..\..\..\Foundation\SCSDK\code\SitecoreCognitiveServices.Foundation.SCSDK.csproj">
       <Project>{fdc8d88e-569d-45df-b1d9-0f0a75b640cc}</Project>
-      <Name>Sitecore.SharedSource.CognitiveServices</Name>
+      <Name>SitecoreCognitiveServices.Foundation.SCSDK</Name>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>

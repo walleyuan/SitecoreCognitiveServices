@@ -1,22 +1,22 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.SharedSource.CognitiveServices;
-using Microsoft.SharedSource.CognitiveServices.CSV;
-using Microsoft.SharedSource.CognitiveServices.Repositories;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Language;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Speech;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
+using MicrosoftCognitiveServices.Foundation.MSSDK;
+using MicrosoftCognitiveServices.Foundation.MSSDK.CSV;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Language;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Speech;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Vision;
 using Sitecore.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.Repositories;
-using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
-using Sitecore.SharedSource.CognitiveServices.Services.Language;
-using Sitecore.SharedSource.CognitiveServices.Services.Speech;
-using Sitecore.SharedSource.CognitiveServices.Services.Vision;
-using Sitecore.SharedSource.CognitiveServices.Services.Bing;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
+using SitecoreCognitiveServices.Foundation.SCSDK.Repositories;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.Knowledge;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.Language;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.Speech;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.Vision;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
-namespace Sitecore.SharedSource.CognitiveServices.App_Start
+namespace SitecoreCognitiveServices.Foundation.SCSDK.App_Start
 {
     public class IocConfig : IServicesConfigurator
     {

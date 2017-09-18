@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Sitecore;
 using Sitecore.Configuration;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.ComputedFields;
@@ -11,7 +12,7 @@ using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields
 {
     public abstract class BaseComputedField : IComputedIndexField
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Language {
     public interface ILuisService
     {
         LuisResult Query(Guid appId, string query);

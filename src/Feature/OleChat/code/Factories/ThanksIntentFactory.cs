@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.Extensions.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Intents;
+using SitecoreCognitiveServices.Feature.OleChat.Intents;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Factories
+namespace SitecoreCognitiveServices.Feature.OleChat.Factories
 {
     public class ThanksIntentFactory : IIntentFactory<IThanksIntent>
     {

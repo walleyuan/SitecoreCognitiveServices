@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sitecore.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Intents;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Factories;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Controllers;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Intents;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
+using SitecoreCognitiveServices.Feature.OleChat.Controllers;
+using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.App_Start
+namespace SitecoreCognitiveServices.Feature.OleChat.App_Start
 {
     public class IocConfig : IServicesConfigurator
     {

@@ -1,11 +1,11 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
 using System.Collections.Generic;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
-using Microsoft.SharedSource.CognitiveServices.Models.Common;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Vision
 {
     public interface IVideoRepository
     {

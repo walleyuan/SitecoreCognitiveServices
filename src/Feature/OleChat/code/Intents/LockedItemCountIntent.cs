@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.ContentSearch.Security;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
+using SitecoreCognitiveServices.Feature.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Models;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
     public interface ILockedItemCountIntent : IIntent { }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Luis {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis {
     public class PatternFeature {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image
 {
     public class Glasses : BaseComputedField
     {

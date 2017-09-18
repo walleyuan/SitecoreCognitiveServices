@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sitecore.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers;
+using SitecoreCognitiveServices.Project.LaunchDemo.Controllers;
 using System.Web.Mvc;
 
-namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.App_Start
+namespace SitecoreCognitiveServices.Project.LaunchDemo.App_Start
 {
     public class IocConfig : IServicesConfigurator
     {

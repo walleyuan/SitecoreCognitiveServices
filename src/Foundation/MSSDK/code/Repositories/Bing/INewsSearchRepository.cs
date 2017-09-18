@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.NewsSearch;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.NewsSearch;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing {
     public interface INewsSearchRepository
     {
         NewsSearchCategoryResponse CategorySearch(NewsCategoryOptions category);

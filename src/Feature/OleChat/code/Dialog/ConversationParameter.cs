@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
+using SitecoreCognitiveServices.Feature.OleChat.Models;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Dialog
+namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
 {
     public class ConversationParameter
     {

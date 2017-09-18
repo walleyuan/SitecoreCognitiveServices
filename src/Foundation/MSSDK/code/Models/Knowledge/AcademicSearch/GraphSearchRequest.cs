@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch {
     public class GraphSearchRequest {
         [JsonProperty(PropertyName = "path")]
         public string Path { get; set; }

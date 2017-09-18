@@ -1,5 +1,5 @@
 ﻿
-namespace Microsoft.SharedSource.CognitiveServices.Models.Bing.VideoSearch {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.VideoSearch {
     public class VideoSearchQuery {
         public string Text { get; set; }
         public string DisplayText { get; set; }

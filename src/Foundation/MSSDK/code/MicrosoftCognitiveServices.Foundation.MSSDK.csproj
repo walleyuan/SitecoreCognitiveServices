@@ -7,8 +7,8 @@
     <ProjectGuid>{13ECB0DB-E99D-4D05-97E8-138EB3884353}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.SharedSource.CognitiveServices</RootNamespace>
-    <AssemblyName>Microsoft.SharedSource.CognitiveServices</AssemblyName>
+    <RootNamespace>MicrosoftCognitiveServices.Foundation.MSSDK</RootNamespace>
+    <AssemblyName>MicrosoftCognitiveServices.Foundation.MSSDK</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.Recommendations;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.Recommendations;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge
 {
     public class RecommendationsRepository : IRecommendationsRepository
     {

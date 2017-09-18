@@ -1,9 +1,9 @@
 ﻿using System;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge;
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.EntityLinking;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Knowledge
 {
     public class EntityLinkingService : IEntityLinkingService
     {

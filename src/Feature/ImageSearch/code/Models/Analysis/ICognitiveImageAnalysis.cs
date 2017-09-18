@@ -1,9 +1,9 @@
 ﻿
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Face;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Analysis
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis
 {
     public interface ICognitiveImageAnalysis
     {

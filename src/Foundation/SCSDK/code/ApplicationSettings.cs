@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Sitecore.SharedSource.CognitiveServices {
+namespace SitecoreCognitiveServices.Foundation.SCSDK {
     public class ApplicationSettings : IApplicationSettings
     {
         public virtual bool CatchAndReleaseExceptions

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Factories;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
+using SitecoreCognitiveServices.Feature.OleChat.Models;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
     public class IntentProvider : IIntentProvider
     {

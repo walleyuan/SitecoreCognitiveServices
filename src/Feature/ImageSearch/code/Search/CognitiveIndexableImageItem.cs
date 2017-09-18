@@ -9,14 +9,14 @@ using Sitecore.ContentSearch;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Face;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Vision;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Search
 {
     public class CognitiveIndexableImageItem : SitecoreIndexableItem
     {

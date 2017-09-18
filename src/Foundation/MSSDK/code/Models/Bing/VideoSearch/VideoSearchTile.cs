@@ -1,5 +1,5 @@
 ﻿
-namespace Microsoft.SharedSource.CognitiveServices.Models.Bing.VideoSearch {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.VideoSearch {
     public class VideoSearchTile {
         public VideoSearchQuery Query { get; set; }
         public VideoSearchImage Image { get; set; }

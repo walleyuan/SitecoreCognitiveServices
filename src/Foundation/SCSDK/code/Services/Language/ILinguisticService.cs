@@ -1,7 +1,7 @@
 ﻿
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Language
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Language
 {
     public interface ILinguisticService
     {

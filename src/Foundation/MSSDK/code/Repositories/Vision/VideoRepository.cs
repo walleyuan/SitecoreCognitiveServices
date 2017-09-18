@@ -1,6 +1,6 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
-using Microsoft.SharedSource.CognitiveServices.Models.Common;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Vision
 {
     public class VideoRepository : IVideoRepository
     {

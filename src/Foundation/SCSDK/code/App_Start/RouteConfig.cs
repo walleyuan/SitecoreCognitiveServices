@@ -7,7 +7,7 @@ using System.Web.Routing;
 using Sitecore.Diagnostics;
 using Sitecore.Pipelines;
 
-namespace Sitecore.SharedSource.CognitiveServices.App_Start
+namespace SitecoreCognitiveServices.Foundation.SCSDK.App_Start
 {
     public class RouteConfig
     {

@@ -6,7 +6,7 @@ using System.Web;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Microsoft.SharedSource.CognitiveServices.Enums
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Enums
 {
     public enum ContentModeratorTag
     {

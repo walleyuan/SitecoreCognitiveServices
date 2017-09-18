@@ -6,13 +6,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Common;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator;
 using System.Linq;
 using Chronic;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Vision {
     public class ContentModeratorRepository : IContentModeratorRepository
     {
         protected static readonly string moderatorUrl = "moderate/v1.0";

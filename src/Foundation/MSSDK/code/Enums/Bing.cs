@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace Microsoft.SharedSource.CognitiveServices.Enums
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Enums
 {
     public enum SafeSearchOptions { Off, Moderate, Strict }
     public enum AspectOptions { Square, Wide, Tall, All }

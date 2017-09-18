@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Models;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models;
 using System.IO;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Common;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories
 {
     public interface IRepositoryClient
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.NewsSearch;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.NewsSearch;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Bing.WebSearch {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.WebSearch {
     public class WebSearchNewsResult
     {
         public string Name { get; set; }

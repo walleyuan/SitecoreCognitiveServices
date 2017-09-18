@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Bing.Speech {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.Speech {
     public class ResultProperties {
         /// <summary>
         /// set when the header result is determined to be of high-confidence. 

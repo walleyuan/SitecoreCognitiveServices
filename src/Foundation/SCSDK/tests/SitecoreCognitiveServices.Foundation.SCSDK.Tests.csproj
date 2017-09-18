@@ -9,8 +9,8 @@
     <ProjectGuid>{C0B780DF-9D25-4EDF-89BE-76177B6BF498}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sitecore.SharedSource.CognitiveServices.Tests</RootNamespace>
-    <AssemblyName>Sitecore.SharedSource.CognitiveServices.Tests</AssemblyName>
+    <RootNamespace>SitecoreCognitiveServices.Foundation.SCSDK.Tests</RootNamespace>
+    <AssemblyName>SitecoreCognitiveServices.Foundation.SCSDK.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -230,13 +230,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MSSDK\code\Microsoft.SharedSource.CognitiveServices.csproj">
+    <ProjectReference Include="..\..\MSSDK\code\MicrosoftCognitiveServices.Foundation.MSSDK.csproj">
       <Project>{13ecb0db-e99d-4d05-97e8-138eb3884353}</Project>
-      <Name>Microsoft.SharedSource.CognitiveServices</Name>
+      <Name>MicrosoftCognitiveServices.Foundation.MSSDK</Name>
     </ProjectReference>
-    <ProjectReference Include="..\code\Sitecore.SharedSource.CognitiveServices.csproj">
+    <ProjectReference Include="..\code\SitecoreCognitiveServices.Foundation.SCSDK.csproj">
       <Project>{FDC8D88E-569D-45DF-B1D9-0F0A75B640CC}</Project>
-      <Name>Sitecore.SharedSource.CognitiveServices</Name>
+      <Name>SitecoreCognitiveServices.Foundation.SCSDK</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

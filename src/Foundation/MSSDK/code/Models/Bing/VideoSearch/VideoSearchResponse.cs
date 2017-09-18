@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Bing.VideoSearch {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.VideoSearch {
     public class VideoSearchResponse {
         public string _type { get; set; }
         public MediaInstrumentation Instrumentation { get; set; }

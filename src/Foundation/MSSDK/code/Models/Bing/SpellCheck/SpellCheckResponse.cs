@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Bing.SpellCheck
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.SpellCheck
 {
     public class SpellCheckResponse
     {

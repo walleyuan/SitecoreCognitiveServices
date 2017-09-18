@@ -1,10 +1,10 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models
+namespace SitecoreCognitiveServices.Project.LaunchDemo.Models
 {
     public class EmotionResult
     {

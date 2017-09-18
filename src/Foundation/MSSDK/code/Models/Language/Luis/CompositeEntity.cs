@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Luis {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis {
     public class CompositeEntity {
         /// <summary>
         /// Type of parent entity.

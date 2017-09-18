@@ -1,11 +1,11 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Enums;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.Face {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Face {
     public class TrainingStatus {
         public Status Status { get; set; }
 

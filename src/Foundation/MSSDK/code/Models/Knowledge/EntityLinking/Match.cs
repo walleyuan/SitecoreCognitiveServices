@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Knowledge.EntityLinking {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking {
     [DataContract]
     public class Match {
         [DataMember(Name = "text")]

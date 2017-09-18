@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
+using SitecoreCognitiveServices.Feature.OleChat.Models;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
     public interface IIntentProvider
     {

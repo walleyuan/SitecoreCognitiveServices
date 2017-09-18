@@ -1,14 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Vision;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using System.Collections.Generic;
-using Microsoft.SharedSource.CognitiveServices.Models.Common;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Vision
 {
     public class VideoService : IVideoService
     {

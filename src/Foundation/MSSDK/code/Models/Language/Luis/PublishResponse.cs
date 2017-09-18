@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Luis {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis {
     public class PublishResponse {
         public string EndpointUrl { get; set; }
         [JsonProperty(PropertyName = "subscription-key")]

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Language;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Language;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Language {
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Language {
     public class LuisService : ILuisService
     {
 

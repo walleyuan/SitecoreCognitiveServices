@@ -1,15 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Factories;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Search;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Controllers;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models;
+using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
+using SitecoreCognitiveServices.Feature.ImageSearch.Search;
+using SitecoreCognitiveServices.Feature.ImageSearch.Controllers;
 using Sitecore.DependencyInjection;
 using System.Web.Mvc;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Analysis;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Utility;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Services.Search;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
+using SitecoreCognitiveServices.Feature.ImageSearch.Services.Search;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.App_Start
+namespace SitecoreCognitiveServices.Feature.ImageSearch.App_Start
 {
     public class IocConfig : IServicesConfigurator
     {

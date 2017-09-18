@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Microsoft.SharedSource.CognitiveServices.Models.Language;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
 
-namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models {
+namespace SitecoreCognitiveServices.Project.LaunchDemo.Models {
     public class LinguisticAnalysisResult : ILinguisticAnalysisResult
     {
         public string FieldName { get; set; }

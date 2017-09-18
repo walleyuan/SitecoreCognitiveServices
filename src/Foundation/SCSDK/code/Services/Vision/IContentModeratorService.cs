@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Vision
 {
     public interface IContentModeratorService
     {

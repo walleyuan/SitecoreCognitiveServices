@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Common {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common {
     public class Rectangle {
         public int Left { get; set; }
 

@@ -1,7 +1,7 @@
 ﻿
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Text;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text;
 
-namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models {
+namespace SitecoreCognitiveServices.Project.LaunchDemo.Models {
     public class KeyPhraseAnalysisResult : IKeyPhraseAnalysisResult
     {
         public string FieldName { get; set; }

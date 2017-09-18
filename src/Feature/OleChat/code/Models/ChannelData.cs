@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis.Connector;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis.Connector;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Models
+namespace SitecoreCognitiveServices.Feature.OleChat.Models
 {
     public class ChannelData
     {

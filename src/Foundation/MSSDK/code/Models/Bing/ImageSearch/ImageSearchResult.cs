@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Bing.ImageSearch {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.ImageSearch {
     public class ImageSearchResult
     {
         public string Name { get; set; }

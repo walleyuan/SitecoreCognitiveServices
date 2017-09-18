@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Text {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text {
     public abstract class TextRequest {
         [JsonProperty("documents")]
         public virtual List<IDocument> Documents { get; set; }

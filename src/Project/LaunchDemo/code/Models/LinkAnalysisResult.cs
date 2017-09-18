@@ -1,8 +1,8 @@
 ﻿
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.EntityLinking;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking;
 using System.Linq;
 
-namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models {
+namespace SitecoreCognitiveServices.Project.LaunchDemo.Models {
     public class LinkAnalysisResult : ILinkAnalysisResult
     {
         public string FieldName { get; set; }

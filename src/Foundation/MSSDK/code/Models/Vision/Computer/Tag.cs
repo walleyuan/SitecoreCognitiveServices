@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer {
     public class Tag {
         public string Name { get; set; }
 

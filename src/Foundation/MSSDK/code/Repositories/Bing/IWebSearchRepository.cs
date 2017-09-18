@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.WebSearch;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.WebSearch;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing {
     public interface IWebSearchRepository
     {
         WebSearchResponse WebSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off);

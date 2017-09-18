@@ -1,9 +1,9 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language { 
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Language { 
     public interface ILuisRepository
     {
         LuisResult Query(Guid appId, string query);

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.VideoSearch;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.VideoSearch;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Bing.WebSearch {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.WebSearch {
     public class WebSearchVideos
     {
         public string Id { get; set; }

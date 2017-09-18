@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator;
 
-namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models
+namespace SitecoreCognitiveServices.Project.LaunchDemo.Models
 {
     public class TermListResult
     {

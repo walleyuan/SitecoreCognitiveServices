@@ -2,13 +2,13 @@
 using System.Web.Mvc;
 using NSubstitute;
 using NUnit.Framework;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Controllers;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Factories;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Services.Search;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Search;
+using SitecoreCognitiveServices.Feature.ImageSearch.Controllers;
+using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
+using SitecoreCognitiveServices.Feature.ImageSearch.Services.Search;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Tests.Controllers
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Tests.Controllers
 {
     [TestFixture]
     public class CognitiveImageSearchControllerTests

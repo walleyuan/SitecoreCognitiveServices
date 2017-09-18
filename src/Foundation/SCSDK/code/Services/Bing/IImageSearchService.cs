@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.ImageSearch;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.ImageSearch;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing
 {
     public interface IImageSearchService
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Models
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Models
 {
     public interface ICognitiveImageSearchJsonResult
     {

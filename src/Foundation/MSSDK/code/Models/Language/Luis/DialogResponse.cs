@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Luis {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis {
     public class DialogResponse {
         /// <summary>
         /// Prompt that should be asked.

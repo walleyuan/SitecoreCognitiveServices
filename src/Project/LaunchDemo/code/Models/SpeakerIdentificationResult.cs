@@ -1,10 +1,10 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Speech;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Speech;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models
+namespace SitecoreCognitiveServices.Project.LaunchDemo.Models
 {
     public class SpeakerIdentificationResult
     {

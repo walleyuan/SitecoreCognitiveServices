@@ -2,9 +2,9 @@
 using Sitecore.Shell.Framework.Commands;
 using Sitecore.Web.UI.Sheer;
 using Sitecore.Data.Items;
-using Sitecore.SharedSource.CognitiveServices.Commands;
+using SitecoreCognitiveServices.Foundation.SCSDK.Commands;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Commands
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
 {
     [Serializable]
     public class Reanalyze : BaseCommand

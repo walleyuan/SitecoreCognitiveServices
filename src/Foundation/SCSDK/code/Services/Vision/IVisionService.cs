@@ -1,10 +1,10 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using System.Collections.Generic;
 using System.IO;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Face;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Vision
 {
     public interface IVisionService
     {

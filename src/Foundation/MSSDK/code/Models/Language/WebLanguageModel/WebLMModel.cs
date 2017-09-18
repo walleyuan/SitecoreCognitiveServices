@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.WebLanguageModel {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.WebLanguageModel {
     public class WebLMModel
     {
         public string Corpus { get; set; }

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.Recommendations;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.Recommendations;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Knowledge
 {
     public interface IRecommendationsService
     {

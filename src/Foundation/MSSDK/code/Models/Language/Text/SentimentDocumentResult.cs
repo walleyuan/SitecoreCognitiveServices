@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Text {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text {
     public class SentimentDocumentResult {
         /// <summary>
         /// Gets or sets the identifier of the document.

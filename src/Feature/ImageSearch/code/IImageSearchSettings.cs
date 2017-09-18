@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch {
+namespace SitecoreCognitiveServices.Feature.ImageSearch {
     public interface IImageSearchSettings {
         string IndexNameFormat { get; }
     }

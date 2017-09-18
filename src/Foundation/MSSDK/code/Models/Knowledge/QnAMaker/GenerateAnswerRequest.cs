@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Knowledge.QnAMaker {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.QnAMaker {
     public class GenerateAnswerRequest {
         /// <summary>
         /// User question to be queried against your knowledge base.

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using Sitecore;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.SecurityModel;
 using Sitecore.Shell.Framework.Commands;
 
-namespace Sitecore.SharedSource.CognitiveServices.Wrappers
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
 {
     public interface ISitecoreDataWrapper
     {

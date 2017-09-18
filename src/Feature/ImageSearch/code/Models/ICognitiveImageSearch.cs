@@ -1,7 +1,7 @@
 ﻿
 using System.Collections.Generic;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Models
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Models
 {
     public interface ICognitiveImageSearch
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Sitecore.ContentSearch;
 
-namespace Sitecore.SharedSource.CognitiveServices.Wrappers
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
 {
     public interface IContentSearchWrapper
     {

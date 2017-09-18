@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Luis {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis {
     public class LuisResult {
         [JsonProperty(PropertyName = "query")]
         public string Query { get; set; }

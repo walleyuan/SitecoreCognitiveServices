@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Speech;
-using Microsoft.SharedSource.CognitiveServices.Models.Speech;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Speech;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Speech;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Speech
 {
     public class SpeakerIdentificationService : ISpeakerIdentificationService
     {

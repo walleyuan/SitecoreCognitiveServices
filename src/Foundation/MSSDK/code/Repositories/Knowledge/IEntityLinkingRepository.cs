@@ -1,8 +1,8 @@
 ﻿
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.EntityLinking;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge
 {
     public interface IEntityLinkingRepository
     {

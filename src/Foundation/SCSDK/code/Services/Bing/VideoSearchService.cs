@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.VideoSearch;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.VideoSearch;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Bing {
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing {
     public class VideoSearchService : IVideoSearchService {
 
         protected IVideoSearchRepository VideoSearchRepository;

@@ -1,8 +1,8 @@
 ﻿
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge;
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
 
-namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models
+namespace SitecoreCognitiveServices.Project.LaunchDemo.Models
 {
     public class AcademicResult
     {

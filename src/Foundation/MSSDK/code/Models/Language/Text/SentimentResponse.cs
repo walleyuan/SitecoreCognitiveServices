@@ -1,4 +1,4 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Language.Text;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Text {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text {
     public class SentimentResponse {
         [JsonProperty("documents")]
         public List<SentimentDocumentResult> Documents { get; set; }

@@ -1,8 +1,8 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Speech;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Speech;
 using System;
 using System.IO;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Speech
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Speech
 {
     public interface ISpeakerVerificationService
     {

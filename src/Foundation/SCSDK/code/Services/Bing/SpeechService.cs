@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.Speech;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.Speech;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Bing {
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing {
     public class SpeechService : ISpeechService {
 
         protected ISpeechRepository SpeechRepository;

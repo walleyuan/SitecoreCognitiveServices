@@ -5,12 +5,12 @@ using System.Web.Http;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using Sitecore.Data.Managers;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis.Connector;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using SitecoreCognitiveServices.Feature.OleChat.Models;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis.Connector;
+using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Controllers {
+namespace SitecoreCognitiveServices.Feature.OleChat.Controllers {
 
     public class CognitiveBotController : Controller
     {

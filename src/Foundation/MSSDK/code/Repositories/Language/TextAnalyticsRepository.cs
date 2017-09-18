@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Text;
-using Microsoft.SharedSource.CognitiveServices.Models;
-using Microsoft.SharedSource.CognitiveServices.Models.Common;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Language
 {
     public class TextAnalyticsRepository : ITextAnalyticsRepository
     {

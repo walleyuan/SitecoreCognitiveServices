@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.QnAMaker;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.QnAMaker;
 using Newtonsoft.Json;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge {
     public class QnAMakerRepository : IQnAMakerRepository 
     {
         protected readonly IApiKeys ApiKeys;

@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Intents;
+using SitecoreCognitiveServices.Feature.OleChat.Intents;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Factories
+namespace SitecoreCognitiveServices.Feature.OleChat.Factories
 {
     public class QuitIntentFactory : IIntentFactory<IQuitIntent>
     {

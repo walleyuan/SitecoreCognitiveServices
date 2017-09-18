@@ -1,9 +1,9 @@
 ﻿using System;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.VideoSearch;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.VideoSearch;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Bing {
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing {
     public interface IVideoSearchService
     {
         VideoSearchResponse VideoSearch(string text, int countOffset = 0, string languageCode = "", SafeSearchOptions safeSearch = SafeSearchOptions.Off);

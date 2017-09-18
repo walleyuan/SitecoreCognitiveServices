@@ -1,7 +1,7 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Bing;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.AutoSuggest;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.AutoSuggest;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing
 {
     public interface IAutoSuggestService
     {

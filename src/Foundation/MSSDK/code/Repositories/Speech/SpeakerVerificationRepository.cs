@@ -1,10 +1,10 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Speech;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Speech;
 using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Speech
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Speech
 {
     public class SpeakerVerificationRepository : ISpeakerVerificationRepository
     {

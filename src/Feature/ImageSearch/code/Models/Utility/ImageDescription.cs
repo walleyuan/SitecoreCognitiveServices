@@ -1,6 +1,6 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Utility
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility
 {
     public class ImageDescription : IImageDescription
     {

@@ -1,4 +1,4 @@
-﻿namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Enums
+﻿namespace SitecoreCognitiveServices.Feature.ImageSearch.Enums
 {
     public enum ImageSize
     {

@@ -1,27 +1,27 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Common;
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Text;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.WebLanguageModel;
-using Microsoft.SharedSource.CognitiveServices.Models.Speech;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
-using Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models;
-using Sitecore.SharedSource.CognitiveServices.Services.Bing;
-using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
-using Sitecore.SharedSource.CognitiveServices.Services.Language;
-using Sitecore.SharedSource.CognitiveServices.Services.Speech;
-using Sitecore.SharedSource.CognitiveServices.Services.Vision;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.WebLanguageModel;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Speech;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator;
+using SitecoreCognitiveServices.Project.LaunchDemo.Models;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.Knowledge;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.Language;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.Speech;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.Vision;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EvaluateResponse = Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator.EvaluateResponse;
-using Operation = Microsoft.SharedSource.CognitiveServices.Models.Common.Operation;
+using EvaluateResponse = MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator.EvaluateResponse;
+using Operation = MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common.Operation;
 
-namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Controllers {
+namespace SitecoreCognitiveServices.Project.LaunchDemo.Controllers {
     public class CognitiveLaunchController : Controller
     {
         protected readonly IVisionService VisionService;

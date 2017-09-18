@@ -1,7 +1,7 @@
-﻿using Microsoft.SharedSource.CognitiveServices;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK;
 using Sitecore.Configuration;
 
-namespace Sitecore.SharedSource.CognitiveServices.Repositories
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Repositories
 {
     public class ApiKeys : IApiKeys
     {

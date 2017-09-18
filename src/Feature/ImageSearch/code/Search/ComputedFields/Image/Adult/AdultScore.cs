@@ -1,5 +1,5 @@
 ﻿
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Adult
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Adult
 {
     public class AdultScore : BaseComputedField
     {

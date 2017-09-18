@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.Data.Items;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Analysis;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Search;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
+using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Factories
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
 {
     public class CognitiveImageAnalysisFactory : ICognitiveImageAnalysisFactory
     {

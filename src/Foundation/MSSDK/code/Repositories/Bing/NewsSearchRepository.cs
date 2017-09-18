@@ -2,10 +2,10 @@
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.NewsSearch;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.NewsSearch;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing {
     public class NewsSearchRepository : INewsSearchRepository {
 
         public static readonly string categoryUrl = "news/";

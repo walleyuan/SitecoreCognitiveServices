@@ -17,7 +17,7 @@
                 <Database>master</Database>
                 <Root>/sitecore/content</Root>
               </crawler>-->
-              <crawler type="Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.Crawlers.CognitiveCrawler, Sitecore.SharedSource.CognitiveServices.ImageSearch">
+              <crawler type="SitecoreCognitiveServices.Feature.ImageSearch.Search.Crawlers.CognitiveCrawler, SitecoreCognitiveServices.Feature.ImageSearch">
                 <Database>master</Database>
                 <Root>/sitecore/media library</Root>
               </crawler>
@@ -108,26 +108,26 @@
 					-->
           <fields hint="raw:AddComputedIndexField">
             <!-- primary media fields that require web service calls -->
-            <field fieldName="EmotionAnalysis" returnType="string">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.EmotionAnalysis,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="FacialAnalysis" returnType="string">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.FacialAnalysis,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="TextAnalysis" returnType="string">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.TextAnalysis,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="VisionAnalysis" returnType="string">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.VisionAnalysis,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="Tags" returnType="stringArray">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Tags,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="Anger" returnType="double">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Emotions.Anger,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="Contempt" returnType="double">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Emotions.Contempt,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="Disgust" returnType="double">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Emotions.Disgust,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="Fear" returnType="double">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Emotions.Fear,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="Happiness" returnType="double">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Emotions.Happiness,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="Neutral" returnType="double">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Emotions.Neutral,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="Sadness" returnType="double">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Emotions.Sadness,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="Surprise" returnType="double">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Emotions.Surprise,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="AgeMin" returnType="double">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.AgeMin,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="AgeMax" returnType="double">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.AgeMax,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="Gender" returnType="int">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Gender,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="Adult" returnType="double">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Adult.AdultScore,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="Racy" returnType="double">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Adult.RacyScore,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="Size" returnType="int">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Size,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
-            <field fieldName="Glasses" returnType="intCollection">Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Glasses,Sitecore.SharedSource.CognitiveServices.ImageSearch</field>
+            <field fieldName="EmotionAnalysis" returnType="string">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.EmotionAnalysis,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="FacialAnalysis" returnType="string">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.FacialAnalysis,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="TextAnalysis" returnType="string">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.TextAnalysis,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="VisionAnalysis" returnType="string">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.VisionAnalysis,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="Tags" returnType="stringArray">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Tags,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="Anger" returnType="double">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Emotions.Anger,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="Contempt" returnType="double">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Emotions.Contempt,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="Disgust" returnType="double">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Emotions.Disgust,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="Fear" returnType="double">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Emotions.Fear,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="Happiness" returnType="double">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Emotions.Happiness,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="Neutral" returnType="double">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Emotions.Neutral,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="Sadness" returnType="double">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Emotions.Sadness,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="Surprise" returnType="double">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Emotions.Surprise,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="AgeMin" returnType="double">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.AgeMin,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="AgeMax" returnType="double">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.AgeMax,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="Gender" returnType="int">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Gender,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="Adult" returnType="double">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Adult.AdultScore,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="Racy" returnType="double">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Adult.RacyScore,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="Size" returnType="int">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Size,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="Glasses" returnType="intCollection">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Glasses,SitecoreCognitiveServices.Feature.ImageSearch</field>
           </fields>
 
           <!-- INDEX FIELD STORAGE MAPPER 

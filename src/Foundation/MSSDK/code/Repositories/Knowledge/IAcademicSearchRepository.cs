@@ -1,9 +1,9 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge {
     public interface IAcademicSearchRepository
     {
         CalcHistogramResponse CalcHistogram(string expression, AcademicModelOptions model, string attributes = "", int count = 10, int offset = 0);

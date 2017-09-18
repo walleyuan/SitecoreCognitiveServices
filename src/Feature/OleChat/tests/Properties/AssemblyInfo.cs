@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Sitecore.SharedSource.CognitiveServices.OleChat.Tests")]
+[assembly: AssemblyTitle("SitecoreCognitiveServices.Foundation.SCSDK.OleChat.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Sitecore.SharedSource.CognitiveServices.OleChat.Tests")]
+[assembly: AssemblyProduct("SitecoreCognitiveServices.Foundation.SCSDK.OleChat.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

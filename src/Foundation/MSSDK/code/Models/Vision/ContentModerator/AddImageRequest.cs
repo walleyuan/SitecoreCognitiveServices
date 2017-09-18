@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator {
     public class AddImageRequest
     {
         public string DataRepresentation = "URL";

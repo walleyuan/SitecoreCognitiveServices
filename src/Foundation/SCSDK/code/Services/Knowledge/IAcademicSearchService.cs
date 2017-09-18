@@ -1,8 +1,8 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge;
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Knowledge
 {
     public interface IAcademicSearchService
     {

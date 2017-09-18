@@ -1,7 +1,7 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Common;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Text;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Language
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Language
 {
     public interface ITextAnalyticsService
     {

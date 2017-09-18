@@ -1,11 +1,11 @@
 ﻿using System.IO;
 using System.Collections.Generic;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
-using Microsoft.SharedSource.CognitiveServices.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Models.Common;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Vision
 {
     public interface IVideoService
     {

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic {
     public class ConstituencyTreeTextAnalysisResponse {
         [JsonProperty("analyzerId")]
         public string AnalyzerId { get; set; }

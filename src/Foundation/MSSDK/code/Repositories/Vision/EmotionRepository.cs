@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Common;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Vision
 {
     public class EmotionRepository : IEmotionRepository
     {

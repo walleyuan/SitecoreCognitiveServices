@@ -1,5 +1,5 @@
 ﻿
-namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer {
 
     public class UserDataRequest {
         public string Name { get; set; }

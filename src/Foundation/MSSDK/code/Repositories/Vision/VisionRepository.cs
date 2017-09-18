@@ -5,10 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
-using Microsoft.SharedSource.CognitiveServices.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Vision
 {
     public class VisionRepository : IVisionRepository
     {

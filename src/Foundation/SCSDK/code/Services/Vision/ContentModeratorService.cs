@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Vision;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Vision
 {
     public class ContentModeratorService : IContentModeratorService
     {

@@ -1,11 +1,11 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Enums;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Common {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common {
     public class OperationResult {
         public OperationStatus Status { get; set; }
 

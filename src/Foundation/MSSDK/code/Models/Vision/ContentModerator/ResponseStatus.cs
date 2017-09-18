@@ -1,5 +1,5 @@
 ﻿
-namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator
 {
     public class ResponseStatus
     {

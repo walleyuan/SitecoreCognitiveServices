@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Utility;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Factories
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
 {
     public class ImageDescriptionFactory : IImageDescriptionFactory
     {

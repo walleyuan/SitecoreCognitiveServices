@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Speech {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Speech {
     public class Profile : ProfileBase {
         [JsonProperty("identificationProfileId")]
         public Guid ProfileId { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Knowledge.Recommendations
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.Recommendations
 {
     public class UploadUsageFileResponse
     {

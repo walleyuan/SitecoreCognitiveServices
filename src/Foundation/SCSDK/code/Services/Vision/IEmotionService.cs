@@ -1,8 +1,8 @@
 ﻿
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 using System.IO;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Vision
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Vision
 {
     public interface IEmotionService
     {

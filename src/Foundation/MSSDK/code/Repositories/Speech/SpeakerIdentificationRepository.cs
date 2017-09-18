@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Models.Speech;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Speech;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Speech
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Speech
 {
     public class SpeakerIdentificationRepository : ISpeakerIdentificationRepository
     {

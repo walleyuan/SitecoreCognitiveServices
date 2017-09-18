@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer {
 
     public class FaceToFaceVerifyRequest {
         public Guid FaceId1 { get; set; }

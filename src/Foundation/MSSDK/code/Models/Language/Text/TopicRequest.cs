@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Text;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Text {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text {
     public class TopicRequest : TextRequest
     {
         public TopicRequest() {

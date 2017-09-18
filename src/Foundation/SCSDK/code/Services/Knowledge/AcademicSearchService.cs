@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Knowledge
 {
     public class AcademicSearchService : IAcademicSearchService
     {

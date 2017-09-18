@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic {
     public class TokensTextAnalysisResponse {
         [JsonProperty("analyzerId")]
         public string AnalyzerId { get; set; }

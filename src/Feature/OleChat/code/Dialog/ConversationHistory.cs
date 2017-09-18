@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.SessionState;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Dialog
+namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
 {
     public class ConversationHistory : IConversationHistory
     {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.Recommendations;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.Recommendations;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge {
     public interface IRecommendationsRepository
     {
         CreateBusinessRuleResponse CreateBusinessRule(string modelId, CreateBusinessRuleRequest request);

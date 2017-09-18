@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Language {
     public class TranslatorRepository : ITranslatorRepository {
         //https://github.com/MicrosoftTranslator/Csharp-Cmd-Line-Speech-Translate
         //http://docs.microsofttranslator.com/speech-translate.html#!/Speech_translation/SpeechTranslate_Get

@@ -12,8 +12,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sitecore.SharedSource.CognitiveServices.ImageSearch</RootNamespace>
-    <AssemblyName>Sitecore.SharedSource.CognitiveServices.ImageSearch</AssemblyName>
+    <RootNamespace>SitecoreCognitiveServices.Feature.ImageSearch</RootNamespace>
+    <AssemblyName>SitecoreCognitiveServices.Feature.ImageSearch</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -141,14 +141,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.ImageSearch.config">
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Feature.ImageSearch.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="App_Config\Include\SitecoreCognitiveServices\Unicorn.Configs.SitecoreCognitiveServices.ImageSearch.config" />
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\Unicorn.Configs.SitecoreCognitiveServices.Feature.ImageSearch.config" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\chosen-sprite%402x.png" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\chosen-sprite.png" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\chosen.css" />
-    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\Sitecore.SharedSource.CognitiveServices.ImageSearch.css" />
+    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\SitecoreCognitiveServices.Feature.ImageSearch.css" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Chosen\bower.json" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Chosen\chosen-sprite%402x.png" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Chosen\chosen-sprite.png" />
@@ -168,11 +168,11 @@
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Chosen\index.proto.html" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Chosen\options.html" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Chosen\package.json" />
-    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Sitecore.SharedSource.CognitiveServices.ImageSearch.js" />
+    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\SitecoreCognitiveServices.Feature.ImageSearch.js" />
     <Content Include="sitecore\shell\Controls\Rich Text Editor\RichText Commands.js" />
     <Content Include="sitecore\shell\Themes\Standard\Default\Content Manager.css" />
-    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.ImageSearch.Lucene.config" />
-    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.ImageSearch.Solr.config.disabled" />
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Feature.ImageSearch.Lucene.config" />
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Feature.ImageSearch.Solr.config.disabled" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <Content Include="Views\CognitiveImageSearch\RTESearch.cshtml" />
     <Content Include="Views\web.config" />
@@ -272,13 +272,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Foundation\MSSDK\code\Microsoft.SharedSource.CognitiveServices.csproj">
+    <ProjectReference Include="..\..\..\Foundation\MSSDK\code\MicrosoftCognitiveServices.Foundation.MSSDK.csproj">
       <Project>{13ecb0db-e99d-4d05-97e8-138eb3884353}</Project>
-      <Name>Microsoft.SharedSource.CognitiveServices</Name>
+      <Name>MicrosoftCognitiveServices.Foundation.MSSDK</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Foundation\SCSDK\code\Sitecore.SharedSource.CognitiveServices.csproj">
+    <ProjectReference Include="..\..\..\Foundation\SCSDK\code\SitecoreCognitiveServices.Foundation.SCSDK.csproj">
       <Project>{fdc8d88e-569d-45df-b1d9-0f0a75b640cc}</Project>
-      <Name>Sitecore.SharedSource.CognitiveServices</Name>
+      <Name>SitecoreCognitiveServices.Foundation.SCSDK</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sitecore.SharedSource.CognitiveServices.LaunchDemo</RootNamespace>
-    <AssemblyName>Sitecore.SharedSource.CognitiveServices.LaunchDemo</AssemblyName>
+    <RootNamespace>SitecoreCognitiveServices.Project.LaunchDemo</RootNamespace>
+    <AssemblyName>SitecoreCognitiveServices.Project.LaunchDemo</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -209,10 +209,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CognitiveLaunchAssets\CognitiveLaunch.css" />
-    <Content Include="CognitiveLaunchAssets\CognitiveLaunch.js" />
-    <Content Include="CognitiveLaunchAssets\jquery-1.10.2.min.js" />
-    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.LaunchDemo.config">
+    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\SitecoreCognitiveServices.Project.LaunchDemo.css" />
+    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\SitecoreCognitiveServices.Project.LaunchDemo.js" />
+    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\jquery-1.10.2.min.js" />
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Project.LaunchDemo.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\CognitiveLaunch\CognitiveLaunchLayout.cshtml" />
@@ -273,13 +273,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Foundation\MSSDK\code\Microsoft.SharedSource.CognitiveServices.csproj">
+    <ProjectReference Include="..\..\..\Foundation\MSSDK\code\MicrosoftCognitiveServices.Foundation.MSSDK.csproj">
       <Project>{13ecb0db-e99d-4d05-97e8-138eb3884353}</Project>
-      <Name>Microsoft.SharedSource.CognitiveServices</Name>
+      <Name>MicrosoftCognitiveServices.Foundation.MSSDK</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Foundation\SCSDK\code\Sitecore.SharedSource.CognitiveServices.csproj">
+    <ProjectReference Include="..\..\..\Foundation\SCSDK\code\SitecoreCognitiveServices.Foundation.SCSDK.csproj">
       <Project>{fdc8d88e-569d-45df-b1d9-0f0a75b640cc}</Project>
-      <Name>Sitecore.SharedSource.CognitiveServices</Name>
+      <Name>SitecoreCognitiveServices.Foundation.SCSDK</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

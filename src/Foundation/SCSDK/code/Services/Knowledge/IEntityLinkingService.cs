@@ -1,6 +1,6 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.EntityLinking;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Knowledge
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Knowledge
 {
     public interface IEntityLinkingService
     {

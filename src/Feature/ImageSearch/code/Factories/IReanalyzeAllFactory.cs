@@ -1,7 +1,7 @@
-﻿using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Utility;
+﻿using SitecoreCognitiveServices.Feature.ImageSearch.Models;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Factories
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
 {
     public interface IReanalyzeAllFactory
     {

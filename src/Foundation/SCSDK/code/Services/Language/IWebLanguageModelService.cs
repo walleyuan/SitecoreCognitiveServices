@@ -1,8 +1,8 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Language;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.WebLanguageModel;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.WebLanguageModel;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Language
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Language
 {
     public interface IWebLanguageModelService
     {

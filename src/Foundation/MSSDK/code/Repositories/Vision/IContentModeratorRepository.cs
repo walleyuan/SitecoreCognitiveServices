@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Vision {
     public interface IContentModeratorRepository
     {
         EvaluateResponse Evaluate(string imageUrl);

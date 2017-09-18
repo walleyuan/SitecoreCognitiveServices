@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.AutoSuggest;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.AutoSuggest;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing {
     public interface IAutoSuggestRepository
     {
         AutoSuggestResponse GetSuggestions(string text);

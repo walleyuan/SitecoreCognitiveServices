@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Microsoft.SharedSource.CognitiveServices.Models.Language;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.WebLanguageModel;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.WebLanguageModel;
 
-namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models
+namespace SitecoreCognitiveServices.Project.LaunchDemo.Models
 {
     public class WebLanguageModelResult
     {

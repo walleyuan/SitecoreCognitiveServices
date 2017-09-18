@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.IO;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.Speech;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.Speech;
 using Newtonsoft.Json;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing {
     public class SpeechRepository : ISpeechRepository
     {
         protected static readonly string contentType = "audio/wav; samplerate=16000";

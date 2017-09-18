@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Utility;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Factories
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
 {
     public class SetAltTagsAllFactory : ISetAltTagsAllFactory
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.Face {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Face {
     public class FaceListMetadata {
         public string FaceListId { get; set; }
 

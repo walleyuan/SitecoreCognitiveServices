@@ -1,11 +1,11 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Common;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.Face {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Face {
     public class Face {
         public Guid FaceId { get; set; }
 

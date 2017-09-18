@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.CSV;
+using MicrosoftCognitiveServices.Foundation.MSSDK.CSV;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Language {
     public class LuisRepository : ILuisRepository
     {
         protected static readonly string luisQueryUrl = "v2.0/apps/";

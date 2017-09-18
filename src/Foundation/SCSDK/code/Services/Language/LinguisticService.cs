@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Language;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Language;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Language
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Language
 {
     public class LinguisticService : ILinguisticService
     {

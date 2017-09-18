@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Luis.Connector {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis.Connector {
     public class Activity : IActivity, IConversationUpdateActivity, IContactRelationUpdateActivity, IInstallationUpdateActivity, IMessageActivity, ITypingActivity, IEndOfConversationActivity, IEventActivity, IInvokeActivity {
         /// <summary>
         /// Content-type for an Activity

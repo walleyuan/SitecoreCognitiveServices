@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Models
+namespace SitecoreCognitiveServices.Feature.OleChat.Models
 {
     public class ConversationResponse
     {

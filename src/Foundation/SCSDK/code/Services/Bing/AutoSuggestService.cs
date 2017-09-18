@@ -1,9 +1,9 @@
 ﻿using System;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.AutoSuggest;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.AutoSuggest;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Bing
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing
 {
     public class AutoSuggestService : IAutoSuggestService
     {

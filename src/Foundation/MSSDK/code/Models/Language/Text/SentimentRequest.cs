@@ -1,11 +1,11 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Language.Text;
+﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Text {
+namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text {
     public class SentimentRequest : TextRequest {
         public List<string> ValidLanguages { get; set; }
 

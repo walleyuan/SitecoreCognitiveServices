@@ -1,10 +1,10 @@
 ﻿using System;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Language;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Text;
-using Microsoft.SharedSource.CognitiveServices.Models.Common;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Language;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
 
-namespace Sitecore.SharedSource.CognitiveServices.Services.Language
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Language
 {
     public class TextAnalyticsService : ITextAnalyticsService
     {

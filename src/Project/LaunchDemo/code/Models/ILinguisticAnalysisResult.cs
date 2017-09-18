@@ -1,8 +1,8 @@
 ﻿
-using Microsoft.SharedSource.CognitiveServices.Models.Language;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
 
-namespace Sitecore.SharedSource.CognitiveServices.LaunchDemo.Models {
+namespace SitecoreCognitiveServices.Project.LaunchDemo.Models {
     public interface ILinguisticAnalysisResult
     {
         string FieldName { get; set; }

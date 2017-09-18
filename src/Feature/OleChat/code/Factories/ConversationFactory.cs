@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Intents;
+using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
+using SitecoreCognitiveServices.Feature.OleChat.Intents;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Factories
+namespace SitecoreCognitiveServices.Feature.OleChat.Factories
 {
     public class ConversationFactory : IConversationFactory
     {

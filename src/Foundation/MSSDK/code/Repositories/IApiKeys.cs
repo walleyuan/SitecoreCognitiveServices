@@ -1,5 +1,5 @@
 ﻿
-namespace Microsoft.SharedSource.CognitiveServices
+namespace MicrosoftCognitiveServices.Foundation.MSSDK
 {
     public interface IApiKeys
     {

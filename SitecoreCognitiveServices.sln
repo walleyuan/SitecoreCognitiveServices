@@ -43,23 +43,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{
 		src\Foundation\SCSDK\code\Properties\PublishProfiles\deploy.pubxml.template = src\Foundation\SCSDK\code\Properties\PublishProfiles\deploy.pubxml.template
 		gulp-config.js.template = gulp-config.js.template
 		publishsettings.targets.template = publishsettings.targets.template
-		src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.config.template = src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.config.template
+		src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Foundation.SCSDK.config.template = src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Foundation.SCSDK.config.template
 		src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\UnicornSerializationRoot.config.template = src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\UnicornSerializationRoot.config.template
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.ImageSearch", "src\Feature\ImageSearch\code\Sitecore.SharedSource.CognitiveServices.ImageSearch.csproj", "{449CE943-4EF2-4DDF-AD16-37DCC62CFCFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Feature.ImageSearch", "src\Feature\ImageSearch\code\SitecoreCognitiveServices.Feature.ImageSearch.csproj", "{449CE943-4EF2-4DDF-AD16-37DCC62CFCFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.ImageSearch.Tests", "src\Feature\ImageSearch\tests\Sitecore.SharedSource.CognitiveServices.ImageSearch.Tests.csproj", "{5661CBBC-D134-49D6-A3BB-44EB0DC87759}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Feature.ImageSearch.Tests", "src\Feature\ImageSearch\tests\SitecoreCognitiveServices.Feature.ImageSearch.Tests.csproj", "{5661CBBC-D134-49D6-A3BB-44EB0DC87759}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.OleChat", "src\Feature\OleChat\code\Sitecore.SharedSource.CognitiveServices.OleChat.csproj", "{B6AFA26B-B8D7-4DF6-8AB2-5AD3A8D216E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Feature.OleChat", "src\Feature\OleChat\code\SitecoreCognitiveServices.Feature.OleChat.csproj", "{B6AFA26B-B8D7-4DF6-8AB2-5AD3A8D216E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.OleChat.Tests", "src\Feature\OleChat\tests\Sitecore.SharedSource.CognitiveServices.OleChat.Tests.csproj", "{FB32BF28-C112-4EA0-A45D-D117E69CAF87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Feature.OleChat.Tests", "src\Feature\OleChat\tests\SitecoreCognitiveServices.Feature.OleChat.Tests.csproj", "{FB32BF28-C112-4EA0-A45D-D117E69CAF87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices", "src\Foundation\SCSDK\code\Sitecore.SharedSource.CognitiveServices.csproj", "{FDC8D88E-569D-45DF-B1D9-0F0A75B640CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.SCSDK", "src\Foundation\SCSDK\code\SitecoreCognitiveServices.Foundation.SCSDK.csproj", "{FDC8D88E-569D-45DF-B1D9-0F0A75B640CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.Tests", "src\Foundation\SCSDK\tests\Sitecore.SharedSource.CognitiveServices.Tests.csproj", "{C0B780DF-9D25-4EDF-89BE-76177B6BF498}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.SCSDK.Tests", "src\Foundation\SCSDK\tests\SitecoreCognitiveServices.Foundation.SCSDK.Tests.csproj", "{C0B780DF-9D25-4EDF-89BE-76177B6BF498}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SharedSource.CognitiveServices", "src\Foundation\MSSDK\code\Microsoft.SharedSource.CognitiveServices.csproj", "{13ECB0DB-E99D-4D05-97E8-138EB3884353}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicrosoftCognitiveServices.Foundation.MSSDK", "src\Foundation\MSSDK\code\MicrosoftCognitiveServices.Foundation.MSSDK.csproj", "{13ECB0DB-E99D-4D05-97E8-138EB3884353}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Properties", "Properties", "{36A40F78-1E26-4067-89AA-81962EF1BE63}"
 	ProjectSection(SolutionItems) = preProject
@@ -70,7 +70,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Properties", "Properties", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{55176B29-8A0D-458B-8CC0-D0CAF93D40BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.SharedSource.CognitiveServices.LaunchDemo", "src\Project\LaunchDemo\code\Sitecore.SharedSource.CognitiveServices.LaunchDemo.csproj", "{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Project.LaunchDemo", "src\Project\LaunchDemo\code\SitecoreCognitiveServices.Project.LaunchDemo.csproj", "{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

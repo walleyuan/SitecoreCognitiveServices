@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sitecore.SharedSource.CognitiveServices</RootNamespace>
-    <AssemblyName>Sitecore.SharedSource.CognitiveServices</AssemblyName>
+    <RootNamespace>SitecoreCognitiveServices.Foundation.SCSDK</RootNamespace>
+    <AssemblyName>SitecoreCognitiveServices.Foundation.SCSDK</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -279,7 +279,7 @@
     <Compile Include="ApplicationSettings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.config">
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Foundation.SCSDK.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Config\Include\Rainbow.config" />
@@ -287,7 +287,7 @@
     <Content Include="App_Config\Include\Unicorn\Unicorn.DataProvider.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.AutoPublish.config" />
-    <Content Include="App_Config\Include\SitecoreCognitiveServices\Unicorn.Configs.SitecoreCognitiveServices.config" />
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\Unicorn.Configs.SitecoreCognitiveServices.Foundation.SCSDK.config" />
     <Content Include="App_Config\Include\SitecoreCognitiveServices\UnicornSerializationRoot.config" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <Content Include="ReadMe.txt" />
@@ -298,9 +298,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MSSDK\code\Microsoft.SharedSource.CognitiveServices.csproj">
+    <ProjectReference Include="..\..\MSSDK\code\MicrosoftCognitiveServices.Foundation.MSSDK.csproj">
       <Project>{13ecb0db-e99d-4d05-97e8-138eb3884353}</Project>
-      <Name>Microsoft.SharedSource.CognitiveServices</Name>
+      <Name>MicrosoftCognitiveServices.Foundation.MSSDK</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
