@@ -26,6 +26,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.App_Start
             serviceCollection.AddTransient<ILockedItemCountIntent, LockedItemCountIntent>();
             serviceCollection.AddTransient<IQuitIntent, QuitIntent>();
             serviceCollection.AddTransient<IThanksIntent, ThanksIntent>();
+            serviceCollection.AddTransient<ILogoutIntent, LogoutIntent>();
 
             //intent factories
             serviceCollection.AddTransient<IIntentFactory<IIntent>, DefaultIntentFactory>();
@@ -39,6 +40,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.App_Start
             serviceCollection.AddTransient<IIntentFactory<IIntent>, LockedItemCountIntentFactory>();
             serviceCollection.AddTransient<IIntentFactory<IIntent>, QuitIntentFactory>();
             serviceCollection.AddTransient<IIntentFactory<IIntent>, ThanksIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, LogoutIntentFactory>();
 
             //intent provider
             serviceCollection.AddSingleton<IIntentProvider, IntentProvider>();

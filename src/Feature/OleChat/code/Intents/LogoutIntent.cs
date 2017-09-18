@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+using Sitecore.Security.Authentication;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
+using Sitecore.Web.Authentication;
 
 namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
@@ -23,11 +27,22 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
             Translator = translator;
         }
 
-        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
-
-            Sitecore.Security.Authentication.AuthenticationManager.Logout();
+        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        {
+            AuthenticationManager.Logout();
             
-            return CreateConversationResponse($"You have been logged out.");
+            HttpCookieCollection ResponseCookies = HttpContext.Current.Response.Cookies;
+            HttpCookie cookie = ResponseCookies["sitecore_userticket"];
+            if (cookie != null)
+            {
+                cookie.Expires = DateTime.Now.AddYears(-1);
+                cookie.Value = null;
+            }
+
+            return new ConversationResponse{
+                Message = "You have been logged out.",
+                Action = new KeyValuePair<string, string>("logout", "")
+            };
         }
     }
 }

@@ -21,6 +21,9 @@
             "name": "Logged In Users"
         },
         {
+            "name": "Logout"
+        },
+        {
             "name": "None"
         },
         {
@@ -141,6 +144,16 @@
             "entities": []
         },
         {
+            "text": "log out",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
+            "text": "log me out",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
             "text": "what's up",
             "intent": "Greet",
             "entities": []
@@ -163,6 +176,11 @@
         {
             "text": "nevermind",
             "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "logout",
+            "intent": "Logout",
             "entities": []
         },
         {
@@ -196,6 +214,11 @@
             "entities": []
         },
         {
+            "text": "i want to log out",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
             "text": "what version are you",
             "intent": "Version",
             "entities": []
@@ -216,8 +239,23 @@
             "entities": []
         },
         {
+            "text": "i want to logout",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
             "text": "what's available?",
             "intent": "About",
+            "entities": []
+        },
+        {
+            "text": "can you log me out",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
+            "text": "can i log out",
+            "intent": "Logout",
             "entities": []
         },
         {
@@ -238,6 +276,11 @@
         {
             "text": "is anyone there",
             "intent": "Greet",
+            "entities": []
+        },
+        {
+            "text": "can i logout",
+            "intent": "Logout",
             "entities": []
         },
         {
@@ -519,6 +562,11 @@
             ]
         },
         {
+            "text": "i need to logout",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
             "text": "what actions can you do",
             "intent": "About",
             "entities": []
@@ -662,6 +710,11 @@
                     "endPos": 23
                 }
             ]
+        },
+        {
+            "text": "i need to log out",
+            "intent": "Logout",
+            "entities": []
         },
         {
             "text": "what a great tool",

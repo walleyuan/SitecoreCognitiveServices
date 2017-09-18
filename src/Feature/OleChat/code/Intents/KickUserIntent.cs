@@ -24,7 +24,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
         public override List<ConversationParameter> RequiredParameters => new List<ConversationParameter>()
         {
-            new ConversationParameter(UserKey, "What user do you want to kick?", IsUserValid, null)
+            new ConversationParameter(UserKey, "What user do you want to kick? (ie: domain\\username)", IsUserValid, null)
         };
 
         #region Local Properties

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis.Connector;
 
 namespace Sitecore.SharedSource.CognitiveServices.OleChat.Models
 {
-    public class ConversationResponse
+    public class ChannelData
     {
-        public string Message { get; set; }
-        public Dictionary<string, string> Options { get; set; }
+        public List<Option> Options { get; set; }
         public KeyValuePair<string, string> Action { get; set; }
     }
 }

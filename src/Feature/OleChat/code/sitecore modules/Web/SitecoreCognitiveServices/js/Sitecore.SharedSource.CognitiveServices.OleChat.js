@@ -25,12 +25,11 @@ jQuery(document).ready(function () {
             SendChatRequest(queryValue);
         });
 
-    function SendChatRequest(queryValue)
-    {
+    function SendChatRequest(queryValue) {
         var langValue = jQuery(".chat-lang").val();
         var dbValue = jQuery(".chat-db").val();
         var idValue = jQuery(".chat-id").val();
-        
+
         jQuery
             .post(jQuery(chatForm).attr("action"), GenerateActivity(queryValue, langValue, dbValue, idValue))
             .done(function (r) {
@@ -39,16 +38,22 @@ jQuery(document).ready(function () {
             });
     }
 
-    function UpdateChatWindow(text, options, type) {
+    function UpdateChatWindow(text, channelData, type) {
         var convoBox = jQuery(chatConversation);
         convoBox.append("<div class='" + type + "'><span class='message'>" + text + "<span class='icon'></span></span></div>");
+
+        var options = (channelData != null) ? channelData.Options : null;
         if (options != null && options.length > 0) {
             var optionList = "";
             for (i = 0; i < options.length; i++) 
             {
-                optionList += "<div class='user-option'>" + options[i].Type + "</div>";
+                optionList += "<div class='user-option' data-userinput='" + options[i].Value + "'>" + options[i].DisplayText + "</div>";
             }
             convoBox.append("<div class='" + type + "'><span class='message'>" + optionList + "<span class='icon'></span></span></div>");
+        }
+        var action = (channelData != null) ? channelData.Action : null;
+        if (action != null && action.Key != null && action.Key === "logout") {
+            location.reload();
         }
         convoBox.scrollTop(convoBox[0].scrollHeight - convoBox.height());
     }
