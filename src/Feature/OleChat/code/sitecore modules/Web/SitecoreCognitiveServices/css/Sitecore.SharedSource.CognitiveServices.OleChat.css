@@ -246,7 +246,7 @@ fieldset legend { margin-bottom: 10px;}
 .rte-search-form select, 
 .rte-search-form textarea { min-height: auto; padding: 0px; }
 
-.chat-form .chat-input { position: fixed; right: 10px; left: 10px; bottom: 10px; width:98%; }
+.chat-form .chat-input { position: fixed; right: 10px; left: 10px; bottom: 10px; width:98%; font-size: 18px; font-weight: bold; padding: 4px 6px; }
 .chat-form .chat-submit { display:none; }
 .chat-form .chat-conversation { position: fixed; bottom: 55px; right: 10px; left: 10px; top: 10px; border: 1px solid #ccc; overflow-x: hidden; overflow-y: auto; padding: 10px; }
 .chat-form .user,

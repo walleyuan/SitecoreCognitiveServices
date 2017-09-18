@@ -54,7 +54,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Controllers {
             {
                 var response = ConversationService.HandleMessage(activity, parameters);
                 var reply = activity.CreateReply(response.Message, "en-US");
-                reply.Entities = response.Options?.Select(o => new Entity(o.Key)).ToList() ?? new List<Entity>();
+                reply.ChannelData = response.Options?.Select(o => new Entity(o.Key)).ToList() ?? new List<Entity>();
 
                 return Json(reply);
             }

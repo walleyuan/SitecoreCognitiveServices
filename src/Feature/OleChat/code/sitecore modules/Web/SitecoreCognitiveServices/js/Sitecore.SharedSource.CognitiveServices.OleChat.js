@@ -35,7 +35,7 @@ jQuery(document).ready(function () {
             .post(jQuery(chatForm).attr("action"), GenerateActivity(queryValue, langValue, dbValue, idValue))
             .done(function (r) {
                 chatConversationData = r.conversation;
-                UpdateChatWindow(r.Text, r.Entities, "bot");
+                UpdateChatWindow(r.Text, r.ChannelData, "bot");
             });
     }
 
