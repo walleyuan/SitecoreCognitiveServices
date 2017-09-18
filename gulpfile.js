@@ -204,7 +204,7 @@ gulp.task("Publish-OleChat", function (callback) {
 });
 
 gulp.task("Publish-LaunchDemo", function (callback) {
-    publishProject("Feature\\LaunchDemo");
+    publishProject("Project\\LaunchDemo");
     return runSequence(
         "Publish-SCSDK",
         "Sync-Unicorn", callback);
