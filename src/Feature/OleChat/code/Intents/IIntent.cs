@@ -11,6 +11,5 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
         string Description { get; }
         List<ConversationParameter> RequiredParameters { get; }
         ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation);
-        ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation);
     }
 }

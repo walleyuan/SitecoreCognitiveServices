@@ -28,7 +28,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             AuthenticationWrapper = authWrapper;
         }
 
-        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
+        public override ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
 
             var sessions = AuthenticationWrapper.GetDomainAccessSessions().OrderByDescending(s => s.LastRequest);
             var sessionCount = sessions.Count();

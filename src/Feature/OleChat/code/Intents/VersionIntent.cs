@@ -31,7 +31,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             Context = context;
         }
 
-        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
+        public override ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
 
             var path = Context.Server.MapPath("~/sitecore/shell/sitecore.version.xml");
             if (!File.Exists(path))

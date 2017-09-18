@@ -43,7 +43,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             AuthenticationWrapper = authWrapper;
         }
 
-        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
+        public override ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
             
             if (!AuthenticationWrapper.IsCurrentUserAdministrator())
                 return ConversationResponseFactory.Create("Sorry, you can only perform this action if you're an admin");

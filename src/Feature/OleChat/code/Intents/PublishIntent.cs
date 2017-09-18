@@ -51,7 +51,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             PublishWrapper = publishWrapper;
         }
         
-        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        public override ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             var toDb = (Database) conversation.Data[DBKey];
             var rootItem = (Item) conversation.Data[ItemKey];
@@ -73,8 +73,11 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             if (string.IsNullOrEmpty(paramValue))
                 return false;
 
-            toDb = DataWrapper.GetDatabase(paramValue);
-            
+            try { 
+                toDb = DataWrapper.GetDatabase(paramValue);
+            }
+            catch { }
+
             if (toDb == null)
                 return false;
 

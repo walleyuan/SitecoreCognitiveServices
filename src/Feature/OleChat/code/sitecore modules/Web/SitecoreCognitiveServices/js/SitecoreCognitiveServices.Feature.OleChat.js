@@ -48,9 +48,19 @@ jQuery(document).ready(function () {
             if (options != null && options.length > 0) {
                 var optionList = "";
                 for (i = 0; i < options.length; i++) {
-                    optionList += "<div class='user-option' data-userinput='" + options[i].Value + "'>" + options[i].DisplayText + "</div>";
+                    optionList += "<li class='user-option' data-option='" + options[i].Value + "'>" + options[i].DisplayText + "</li>";
                 }
-                convoBox.append("<div class='" + type + "'><span class='message'>" + optionList + "<span class='icon'></span></span></div>");
+                convoBox.append("<div class='" + type + "'><span class='message'><ol>" + optionList + "</ol><span class='icon'></span></span></div>");
+
+                jQuery(".user-option")
+                    .on('click', function () {
+                        jQuery(this).parent().addClass("disabled");
+                        jQuery("ol.disabled .user-option").off("click");
+
+                        var optionValue = jQuery(this).data("option");
+                        UpdateChatWindow(optionValue, null, "user");
+                        SendChatRequest(optionValue);
+                    });
             }
 
             //actions

@@ -36,7 +36,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             ContentSearchWrapper = searchWrapper;
         }
         
-        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        public override ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             var items = GetCurrentUserUnlockedItems(parameters.Database);
 

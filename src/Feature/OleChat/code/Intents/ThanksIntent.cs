@@ -28,7 +28,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
             Translator = translator;
         }
 
-        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        public override ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             List<string> responses = new List<string>()
             {

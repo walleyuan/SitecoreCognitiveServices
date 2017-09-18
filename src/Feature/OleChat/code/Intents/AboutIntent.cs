@@ -29,7 +29,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             Provider = provider;
         }
         
-        public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        public override ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             var intents = Provider.GetServices<IIntentFactory<IIntent>>()
                 .Select(a => a.Create())
