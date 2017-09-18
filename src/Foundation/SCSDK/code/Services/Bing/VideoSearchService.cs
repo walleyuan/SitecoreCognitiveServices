@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.VideoSearch;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.VideoSearch;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing {
     public class VideoSearchService : IVideoSearchService {

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text {
     public class DocumentError {
         [JsonProperty("id")]
         public string Id { get; set; }

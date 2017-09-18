@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.ImageSearch;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.ImageSearch;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.WebSearch {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.WebSearch {
     public class WebSearchImages
     {
         public string Id { get; set; }

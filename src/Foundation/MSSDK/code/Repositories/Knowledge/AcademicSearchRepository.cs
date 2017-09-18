@@ -2,10 +2,10 @@
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Knowledge {
     public class AcademicSearchRepository : IAcademicSearchRepository
     {
         protected static readonly string calcUrl = "calchistogram";

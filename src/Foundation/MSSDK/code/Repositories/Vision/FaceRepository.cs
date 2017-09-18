@@ -6,12 +6,12 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.Text;
 using System.Globalization;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Common;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Vision
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision
 {
     public class FaceRepository : IFaceRepository
     {

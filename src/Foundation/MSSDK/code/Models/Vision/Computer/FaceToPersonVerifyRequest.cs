@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer {
 
     public class FaceToPersonVerifyRequest {
         public Guid FaceId { get; set; }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Language {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language {
     public interface ITranslatorRepository {
         //https://github.com/MicrosoftTranslator/Csharp-Cmd-Line-Speech-Translate
     }

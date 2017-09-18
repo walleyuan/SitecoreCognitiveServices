@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.ImageSearch;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.ImageSearch;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing
 {

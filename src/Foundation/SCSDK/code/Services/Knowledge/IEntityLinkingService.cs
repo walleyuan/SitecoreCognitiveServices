@@ -1,4 +1,4 @@
-﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Knowledge
 {

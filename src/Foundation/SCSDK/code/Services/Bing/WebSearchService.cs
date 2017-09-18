@@ -1,9 +1,9 @@
 ﻿using System;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing;
 using System.Threading.Tasks;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.WebSearch;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.WebSearch;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing
 {

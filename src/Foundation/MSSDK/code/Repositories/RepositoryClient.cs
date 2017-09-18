@@ -9,12 +9,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models;
 using Newtonsoft.Json;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Common;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories
 {
     public class RepositoryClient : IRepositoryClient
     {

@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Newtonsoft.Json;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.AutoSuggest;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.AutoSuggest;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing
 {
     public class AutoSuggestRepository : IAutoSuggestRepository
     {

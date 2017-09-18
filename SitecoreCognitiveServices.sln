@@ -59,7 +59,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.SCSDK.Tests", "src\Foundation\SCSDK\tests\SitecoreCognitiveServices.Foundation.SCSDK.Tests.csproj", "{C0B780DF-9D25-4EDF-89BE-76177B6BF498}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicrosoftCognitiveServices.Foundation.MSSDK", "src\Foundation\MSSDK\code\MicrosoftCognitiveServices.Foundation.MSSDK.csproj", "{13ECB0DB-E99D-4D05-97E8-138EB3884353}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.MSSDK", "src\Foundation\MSSDK\code\SitecoreCognitiveServices.Foundation.MSSDK.csproj", "{13ECB0DB-E99D-4D05-97E8-138EB3884353}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Properties", "Properties", "{36A40F78-1E26-4067-89AA-81962EF1BE63}"
 	ProjectSection(SolutionItems) = preProject

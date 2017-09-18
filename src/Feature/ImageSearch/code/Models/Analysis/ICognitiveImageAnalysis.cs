@@ -1,7 +1,7 @@
 ﻿
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis
 {

@@ -1,8 +1,8 @@
 ﻿
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking;
 using System.Threading.Tasks;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Knowledge
 {
     public interface IEntityLinkingRepository
     {

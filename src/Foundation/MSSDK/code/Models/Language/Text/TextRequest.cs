@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text {
     public abstract class TextRequest {
         [JsonProperty("documents")]
         public virtual List<IDocument> Documents { get; set; }

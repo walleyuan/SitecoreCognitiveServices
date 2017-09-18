@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.Speech {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.Speech {
     public class HeaderProperties {
         public string RequestId { get; set; }
         /// <summary>

@@ -6,7 +6,7 @@ using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
 using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
 using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Services.Search {
     public class ImageSearchService : IImageSearchService 

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.Speech;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.Speech;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing {

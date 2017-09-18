@@ -1,5 +1,5 @@
 ﻿
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator
 {
     public class DetectLanguageResponse
     {

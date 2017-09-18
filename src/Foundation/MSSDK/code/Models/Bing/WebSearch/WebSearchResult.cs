@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.WebSearch {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.WebSearch {
     public class WebSearchResult
     {
         public string Id { get; set; }

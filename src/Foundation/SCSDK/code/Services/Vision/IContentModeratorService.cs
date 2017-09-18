@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Vision
 {

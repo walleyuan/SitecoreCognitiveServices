@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text {
     public class DocumentCollectionMinDocumentException : Exception {
         public int DocumentCount { get; set; }
 

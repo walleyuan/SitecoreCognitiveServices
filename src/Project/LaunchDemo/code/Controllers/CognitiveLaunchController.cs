@@ -1,12 +1,12 @@
-﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.WebLanguageModel;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Speech;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Common;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.WebLanguageModel;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Speech;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator;
 using SitecoreCognitiveServices.Project.LaunchDemo.Models;
 using SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing;
 using SitecoreCognitiveServices.Foundation.SCSDK.Services.Knowledge;
@@ -18,8 +18,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EvaluateResponse = MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator.EvaluateResponse;
-using Operation = MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common.Operation;
+using EvaluateResponse = SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator.EvaluateResponse;
+using Operation = SitecoreCognitiveServices.Foundation.MSSDK.Models.Common.Operation;
 
 namespace SitecoreCognitiveServices.Project.LaunchDemo.Controllers {
     public class CognitiveLaunchController : Controller

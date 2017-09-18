@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.SpellCheck {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.SpellCheck {
     public class SpellCheckToken
     {
         public int Offset { get; set; }

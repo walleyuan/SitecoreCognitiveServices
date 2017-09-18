@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.NewsSearch {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.NewsSearch {
     public class NewsProvider
     {
         public string _type { get; set; }

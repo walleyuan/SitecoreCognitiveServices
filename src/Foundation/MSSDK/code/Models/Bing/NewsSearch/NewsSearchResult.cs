@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.NewsSearch {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.NewsSearch {
     public class NewsSearchResult {
         public string Name { get; set; }
         public string Url { get; set; }

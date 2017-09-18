@@ -1,5 +1,5 @@
 ﻿
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text;
 
 namespace SitecoreCognitiveServices.Project.LaunchDemo.Models {
     public class KeyPhraseAnalysisResult : IKeyPhraseAnalysisResult

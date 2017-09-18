@@ -6,7 +6,7 @@ using System.Web;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Enums
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Enums
 {
     public enum ContentModeratorTag
     {

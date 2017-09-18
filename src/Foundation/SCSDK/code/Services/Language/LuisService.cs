@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Language;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Language {

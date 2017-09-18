@@ -1,4 +1,4 @@
-﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 using System;
 using System.Collections.Generic;
 using System.Linq;

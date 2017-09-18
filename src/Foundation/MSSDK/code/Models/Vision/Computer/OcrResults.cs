@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer {
     public class OcrResults {
         public string Language { get; set; }
 

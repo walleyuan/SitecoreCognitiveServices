@@ -1,8 +1,8 @@
 using System;
 using System.IO;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Vision;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Vision
 {

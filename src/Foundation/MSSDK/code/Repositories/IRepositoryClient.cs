@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models;
 using System.IO;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Common;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories
 {
     public interface IRepositoryClient
     {

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text {
     public class SentimentDocumentResult {
         /// <summary>
         /// Gets or sets the identifier of the document.

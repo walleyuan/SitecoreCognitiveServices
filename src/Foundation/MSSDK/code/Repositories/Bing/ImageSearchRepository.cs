@@ -4,10 +4,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.ImageSearch;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.ImageSearch;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing
 {
     public class ImageSearchRepository : IImageSearchRepository
     {

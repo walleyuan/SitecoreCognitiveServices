@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.ContentSearch.Security;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;

@@ -1,5 +1,5 @@
 ﻿
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Language
 {

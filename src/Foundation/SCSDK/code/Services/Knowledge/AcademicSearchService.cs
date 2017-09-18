@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Knowledge;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Knowledge
 {

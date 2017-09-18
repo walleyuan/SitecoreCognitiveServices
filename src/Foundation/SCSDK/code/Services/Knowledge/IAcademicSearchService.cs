@@ -1,6 +1,6 @@
-﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Knowledge
 {

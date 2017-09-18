@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.Recommendations;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.Recommendations;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Knowledge;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Knowledge
 {

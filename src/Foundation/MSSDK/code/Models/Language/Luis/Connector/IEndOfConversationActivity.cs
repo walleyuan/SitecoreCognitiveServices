@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis.Connector {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis.Connector {
     public interface IEndOfConversationActivity : IActivity {
         /// <summary>
         /// Code indicating why the conversation has ended

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using Microsoft.Extensions.DependencyInjection;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Feature.OleChat.Intents;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Factories

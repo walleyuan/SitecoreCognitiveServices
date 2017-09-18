@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Enums
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Enums
 {
     public enum SafeSearchOptions { Off, Moderate, Strict }
     public enum AspectOptions { Square, Wide, Tall, All }

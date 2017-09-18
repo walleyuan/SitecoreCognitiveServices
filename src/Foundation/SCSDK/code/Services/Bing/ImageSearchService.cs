@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing;
 using System.Threading.Tasks;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.ImageSearch;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.ImageSearch;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing
 {

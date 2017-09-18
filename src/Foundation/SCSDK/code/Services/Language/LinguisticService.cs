@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Language;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Language
 {

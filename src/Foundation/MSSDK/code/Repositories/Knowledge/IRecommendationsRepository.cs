@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.Recommendations;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.Recommendations;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Knowledge {
     public interface IRecommendationsRepository
     {
         CreateBusinessRuleResponse CreateBusinessRule(string modelId, CreateBusinessRuleRequest request);

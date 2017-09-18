@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator
 {
     public class GetJobResponse
     {

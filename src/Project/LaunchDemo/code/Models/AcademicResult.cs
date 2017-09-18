@@ -1,6 +1,6 @@
 ﻿
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
 
 namespace SitecoreCognitiveServices.Project.LaunchDemo.Models
 {

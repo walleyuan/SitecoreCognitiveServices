@@ -1,6 +1,6 @@
 ﻿
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text;
 
 namespace SitecoreCognitiveServices.Project.LaunchDemo.Models {
     public interface IKeyPhraseAnalysisResult

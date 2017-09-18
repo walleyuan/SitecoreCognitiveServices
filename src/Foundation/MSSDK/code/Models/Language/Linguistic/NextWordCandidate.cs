@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic {
     public class NextWordCandidate
     {
         public string Word { get; set; }

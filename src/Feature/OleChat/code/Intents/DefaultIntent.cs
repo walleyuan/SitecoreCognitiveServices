@@ -1,5 +1,5 @@
 ﻿using System;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;

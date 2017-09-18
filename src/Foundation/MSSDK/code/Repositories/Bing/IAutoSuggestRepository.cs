@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.AutoSuggest;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.AutoSuggest;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing {
     public interface IAutoSuggestRepository
     {
         AutoSuggestResponse GetSuggestions(string text);

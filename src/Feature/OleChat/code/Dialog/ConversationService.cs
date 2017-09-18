@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis.Connector;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis.Connector;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Intents;
 using SitecoreCognitiveServices.Feature.OleChat.Models;

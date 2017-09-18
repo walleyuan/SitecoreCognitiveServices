@@ -1,10 +1,10 @@
-﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Speech;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Speech;
 using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Speech
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Speech
 {
     public class SpeakerVerificationRepository : ISpeakerVerificationRepository
     {

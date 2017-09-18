@@ -1,5 +1,5 @@
 ﻿
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking;
 using System.Linq;
 
 namespace SitecoreCognitiveServices.Project.LaunchDemo.Models {

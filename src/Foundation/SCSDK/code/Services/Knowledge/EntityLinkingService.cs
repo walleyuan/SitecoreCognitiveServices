@@ -1,7 +1,7 @@
 ﻿using System;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Knowledge;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Knowledge
 {

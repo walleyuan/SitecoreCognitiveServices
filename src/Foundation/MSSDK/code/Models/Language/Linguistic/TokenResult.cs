@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic {
     public class TokenResult
     {
         [JsonProperty("Len")]

@@ -1,6 +1,6 @@
 ﻿using System;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.QnAMaker;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.QnAMaker;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Knowledge;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Knowledge {

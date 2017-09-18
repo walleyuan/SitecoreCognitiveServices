@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Common;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Language
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language
 {
     public class TextAnalyticsRepository : ITextAnalyticsRepository
     {

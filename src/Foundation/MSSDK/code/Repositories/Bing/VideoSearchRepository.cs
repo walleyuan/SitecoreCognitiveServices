@@ -2,10 +2,10 @@
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.VideoSearch;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.VideoSearch;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Bing {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing {
     public class VideoSearchRepository : IVideoSearchRepository {
 
         public static readonly string videoUrl = "videos/search";

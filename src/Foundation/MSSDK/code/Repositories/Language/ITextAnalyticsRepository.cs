@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Common;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Language
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language
 {
     public interface ITextAnalyticsRepository
     {

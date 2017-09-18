@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.QnAMaker;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.QnAMaker;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Knowledge {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Knowledge {
     public interface IQnAMakerRepository
     {
         KnowledgeBaseExtractionDetails CreateKnowledgeBase(KnowledgeBaseDetails request);

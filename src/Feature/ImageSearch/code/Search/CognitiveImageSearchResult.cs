@@ -2,9 +2,9 @@
 using Sitecore.ContentSearch;
 using System.Web.Script.Serialization;
 using Sitecore.ContentSearch.SearchTypes;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Search
 {

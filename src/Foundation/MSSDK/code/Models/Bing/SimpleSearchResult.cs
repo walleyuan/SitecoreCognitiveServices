@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing
 {
     public class SimpleSearchResult
     {

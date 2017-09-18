@@ -273,9 +273,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Foundation\MSSDK\code\MicrosoftCognitiveServices.Foundation.MSSDK.csproj">
+    <ProjectReference Include="..\..\..\Foundation\MSSDK\code\SitecoreCognitiveServices.Foundation.MSSDK.csproj">
       <Project>{13ecb0db-e99d-4d05-97e8-138eb3884353}</Project>
-      <Name>MicrosoftCognitiveServices.Foundation.MSSDK</Name>
+      <Name>SitecoreCognitiveServices.Foundation.MSSDK</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Foundation\SCSDK\code\SitecoreCognitiveServices.Foundation.SCSDK.csproj">
       <Project>{fdc8d88e-569d-45df-b1d9-0f0a75b640cc}</Project>

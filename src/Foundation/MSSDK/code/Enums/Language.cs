@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Enums
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Enums
 {
     public enum WebLMModelOptions { title, anchor, query, body }
 }

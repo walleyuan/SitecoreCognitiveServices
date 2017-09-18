@@ -1,4 +1,4 @@
-﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Speech {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Speech {
     public class ProfileBase {
         public string Locale { get; set; }
 

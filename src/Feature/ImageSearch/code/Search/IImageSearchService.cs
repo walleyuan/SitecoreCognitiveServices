@@ -1,4 +1,4 @@
-﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using Sitecore.Data.Items;
 using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
 using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;

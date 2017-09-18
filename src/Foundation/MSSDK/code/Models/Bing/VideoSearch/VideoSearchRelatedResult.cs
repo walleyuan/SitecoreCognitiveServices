@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.VideoSearch {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.VideoSearch {
     public class VideoSearchRelatedResult {
         public string Name { get; set; }
         public string WebSearchUrl { get; set; }

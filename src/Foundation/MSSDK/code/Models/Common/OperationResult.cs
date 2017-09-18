@@ -1,11 +1,11 @@
-﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Common {
     public class OperationResult {
         public OperationStatus Status { get; set; }
 

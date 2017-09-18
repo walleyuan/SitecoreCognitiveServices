@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.ImageSearch {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.ImageSearch {
     public class ImageSearchResult
     {
         public string Name { get; set; }

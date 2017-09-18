@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.Recommendations
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.Recommendations
 {
     public class UploadUsageFileResponse
     {

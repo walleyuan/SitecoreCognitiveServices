@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Language
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language
 {
     public class LinguisticRepository : ILinguisticRepository
     {

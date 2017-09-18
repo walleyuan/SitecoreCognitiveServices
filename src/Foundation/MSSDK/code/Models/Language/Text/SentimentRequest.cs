@@ -1,11 +1,11 @@
-﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Text {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text {
     public class SentimentRequest : TextRequest {
         public List<string> ValidLanguages { get; set; }
 

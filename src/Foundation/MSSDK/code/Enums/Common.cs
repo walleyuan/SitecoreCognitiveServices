@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Enums {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Enums {
     public enum Status {
         NotStarted,
         Running,

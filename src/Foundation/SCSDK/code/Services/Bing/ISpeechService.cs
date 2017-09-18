@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.Speech;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.Speech;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing {
     public interface ISpeechService {

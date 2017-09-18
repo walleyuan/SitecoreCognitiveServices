@@ -4,9 +4,9 @@ using System.IO;
 using System.Threading.Tasks;
 using Sitecore.Diagnostics;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Vision;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Vision
 {

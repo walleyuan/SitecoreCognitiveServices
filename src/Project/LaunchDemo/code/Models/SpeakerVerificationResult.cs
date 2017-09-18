@@ -1,4 +1,4 @@
-﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Speech;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Speech;
 using System;
 using System.Collections.Generic;
 using System.Linq;

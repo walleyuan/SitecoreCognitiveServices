@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic {
     public class ResultSet {
         [JsonProperty("Len")]
         public string Len { get; set; }

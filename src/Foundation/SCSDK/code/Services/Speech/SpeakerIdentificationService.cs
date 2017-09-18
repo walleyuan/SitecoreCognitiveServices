@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Speech;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Speech;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Speech;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Speech;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Speech
 {

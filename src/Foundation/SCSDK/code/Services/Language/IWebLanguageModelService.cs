@@ -1,6 +1,6 @@
-﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.WebLanguageModel;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.WebLanguageModel;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Language
 {

@@ -1,6 +1,6 @@
 ﻿
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
 
 namespace SitecoreCognitiveServices.Project.LaunchDemo.Models {
     public interface ILinguisticAnalysisResult

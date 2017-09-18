@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis {
     public class CompositeChild {
         /// <summary>
         /// Type of child entity.

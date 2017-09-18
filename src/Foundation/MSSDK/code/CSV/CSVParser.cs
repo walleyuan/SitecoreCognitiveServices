@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.VisualBasic.FileIO;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.CSV {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.CSV {
     public class CSVParser : ICSVParser {
         public List<List<string>> ParseCSV(string csv) {
 

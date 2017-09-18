@@ -298,9 +298,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MSSDK\code\MicrosoftCognitiveServices.Foundation.MSSDK.csproj">
+    <ProjectReference Include="..\..\MSSDK\code\SitecoreCognitiveServices.Foundation.MSSDK.csproj">
       <Project>{13ecb0db-e99d-4d05-97e8-138eb3884353}</Project>
-      <Name>MicrosoftCognitiveServices.Foundation.MSSDK</Name>
+      <Name>SitecoreCognitiveServices.Foundation.MSSDK</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

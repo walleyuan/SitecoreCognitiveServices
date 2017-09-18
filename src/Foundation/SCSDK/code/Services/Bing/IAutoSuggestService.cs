@@ -1,5 +1,5 @@
-﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.AutoSuggest;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.AutoSuggest;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Bing
 {

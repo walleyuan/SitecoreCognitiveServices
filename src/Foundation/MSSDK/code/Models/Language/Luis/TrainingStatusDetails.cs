@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis {
     public class TrainingStatusDetails {
         public int StatusId { get; set; }
         public string Status { get; set; }

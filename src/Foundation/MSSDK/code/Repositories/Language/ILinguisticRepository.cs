@@ -1,11 +1,11 @@
 ﻿
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Repositories.Language
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language
 {
     public interface ILinguisticRepository
     {

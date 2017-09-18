@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Language {
     public interface ILuisService

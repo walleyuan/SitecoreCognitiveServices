@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Video;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Common;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Video;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Common;
 
 namespace SitecoreCognitiveServices.Project.LaunchDemo.Models
 {

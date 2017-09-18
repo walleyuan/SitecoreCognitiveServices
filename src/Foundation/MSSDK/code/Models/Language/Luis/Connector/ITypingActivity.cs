@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis.Connector {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis.Connector {
     public interface ITypingActivity : IActivity {
     }
 }

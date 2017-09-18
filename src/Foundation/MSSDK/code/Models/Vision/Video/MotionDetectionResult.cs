@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Video
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Video
 {
     public class MotionDetectionResult
     {

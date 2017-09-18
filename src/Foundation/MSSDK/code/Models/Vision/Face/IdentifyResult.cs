@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Face {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face {
     public class IdentifyResult {
         public Guid FaceId { get; set; }
 

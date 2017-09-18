@@ -1,5 +1,5 @@
 ﻿
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 using System.IO;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Vision

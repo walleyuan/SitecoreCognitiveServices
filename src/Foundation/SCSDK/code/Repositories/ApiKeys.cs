@@ -1,4 +1,4 @@
-﻿using MicrosoftCognitiveServices.Foundation.MSSDK;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK;
 using Sitecore.Configuration;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Repositories

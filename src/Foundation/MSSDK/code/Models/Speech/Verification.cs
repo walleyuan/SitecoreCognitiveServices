@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Speech {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Speech {
     public class Verification {
         [JsonConverter(typeof(StringEnumConverter))]
         public Result Result { get; set; }

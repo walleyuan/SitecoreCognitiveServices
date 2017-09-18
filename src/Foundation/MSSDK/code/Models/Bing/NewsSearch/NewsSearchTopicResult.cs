@@ -1,5 +1,5 @@
 ﻿
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Bing.NewsSearch {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.NewsSearch {
     public class NewsSearchTopicResult {
         public string Name { get; set; }
         public NewsSearchTopicImage Image { get; set; }

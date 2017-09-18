@@ -1,6 +1,6 @@
 ﻿
 
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking;
 
 namespace SitecoreCognitiveServices.Project.LaunchDemo.Models {
     public interface ILinkAnalysisResult

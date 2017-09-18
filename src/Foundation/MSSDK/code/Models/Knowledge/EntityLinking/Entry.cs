@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking {
     [DataContract]
     public class Entry {
         [DataMember(Name = "offset")]

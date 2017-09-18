@@ -1,4 +1,4 @@
-﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using System;
 using System.Collections.Generic;
 using System.Linq;

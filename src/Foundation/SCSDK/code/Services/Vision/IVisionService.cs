@@ -1,8 +1,8 @@
-﻿using MicrosoftCognitiveServices.Foundation.MSSDK.Enums;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using System.Collections.Generic;
 using System.IO;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.Vision
 {

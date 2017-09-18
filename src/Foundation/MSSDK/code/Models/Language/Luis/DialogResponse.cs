@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis {
     public class DialogResponse {
         /// <summary>
         /// Prompt that should be asked.

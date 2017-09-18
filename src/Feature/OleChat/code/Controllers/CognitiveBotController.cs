@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using Sitecore.Data.Managers;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
-using MicrosoftCognitiveServices.Foundation.MSSDK.Models.Language.Luis.Connector;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis.Connector;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Controllers {
