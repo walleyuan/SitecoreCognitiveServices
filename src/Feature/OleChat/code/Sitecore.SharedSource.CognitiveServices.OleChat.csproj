@@ -167,6 +167,8 @@
     <Compile Include="Factories\QuitIntentFactory.cs" />
     <Compile Include="Factories\ThanksIntentFactory.cs" />
     <Compile Include="Intents\BaseIntent.cs" />
+    <Compile Include="Intents\LogoutIntent.cs" />
+    <Compile Include="Intents\RebuildIndexIntent.cs" />
     <Compile Include="Intents\QuitIntent.cs" />
     <Compile Include="Intents\ThanksIntent.cs" />
     <Compile Include="Models\ConversationResponse.cs" />
