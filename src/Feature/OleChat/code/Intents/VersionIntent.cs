@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Xml.Linq;
@@ -14,24 +15,27 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
     public class VersionIntent : BaseIntent, IVersionIntent 
     {
         protected readonly ITextTranslatorWrapper Translator;
-        
+        protected readonly HttpContextBase Context;
+
         public override string Name => "version";
 
         public override string Description => "Provide my version information";
 
         public VersionIntent(
             ITextTranslatorWrapper translator,
+            HttpContextBase context,
             IOleSettings settings) : base(settings) {
             Translator = translator;
+            Context = context;
         }
 
         public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
 
-            var path = HttpContext.Current.Server.MapPath("~/sitecore/shell/sitecore.version.xml");
-            if (!System.IO.File.Exists(path))
+            var path = Context.Server.MapPath("~/sitecore/shell/sitecore.version.xml");
+            if (!File.Exists(path))
                 return CreateConversationResponse(string.Empty);
 
-            string xmlText = System.IO.File.ReadAllText(path);
+            string xmlText = File.ReadAllText(path);
             XDocument xdoc = XDocument.Parse(xmlText);
 
             var version = xdoc.Descendants("version").First();

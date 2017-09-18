@@ -11,20 +11,23 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
     public class GreetIntent : BaseIntent, IGreetIntent
     {
         protected readonly ITextTranslatorWrapper Translator;
-        
+        protected readonly IAuthenticationWrapper AuthenticationWrapper;
+
         public override string Name => "greet";
 
         public override string Description => "Greet a user";
 
         public GreetIntent(
             ITextTranslatorWrapper translator,
+            IAuthenticationWrapper authWrapper,
             IOleSettings settings) : base(settings) {
             Translator = translator;
+            AuthenticationWrapper = authWrapper;
         }
 
         public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
-            string fullName = Sitecore.Context.User.Profile.FullName;
+            string fullName = AuthenticationWrapper.GetCurrentUser().Profile.FullName;
 
             List<string> responses = new List<string>()
             {

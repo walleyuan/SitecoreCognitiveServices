@@ -1,6 +1,12 @@
 ﻿
 namespace Sitecore.SharedSource.CognitiveServices.Wrappers
 {
+    public interface IWebUtilWrapper
+    {
+        string GetQueryString(string key, string defaultValue = "");
+        string UrlEncode(string value);
+    }
+
     public class WebUtilWrapper : IWebUtilWrapper
     {
         public virtual string GetQueryString(string key, string defaultValue = "")

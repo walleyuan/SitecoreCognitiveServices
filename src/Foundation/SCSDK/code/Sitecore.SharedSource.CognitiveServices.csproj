@@ -220,16 +220,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\BaseCommand.cs" />
-    <Compile Include="Wrappers\ILogWrapper.cs" />
-    <Compile Include="Wrappers\ITextTranslatorWrapper.cs" />
+    <Compile Include="Wrappers\AuthenticationWrapper.cs" />
+    <Compile Include="Wrappers\ContentSearchWrapper.cs" />
     <Compile Include="Wrappers\LogWrapper.cs" />
-    <Compile Include="Wrappers\ISitecoreDataWrapper.cs" />
     <Compile Include="Wrappers\SitecoreDataWrapper.cs" />
     <Compile Include="Wrappers\TextTranslatorWrapper.cs" />
     <Compile Include="IApplicationSettings.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\IocConfig.cs" />
-    <Compile Include="Wrappers\IWebUtilWrapper.cs" />
     <Compile Include="Wrappers\WebUtilWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ApiKeys.cs" />
@@ -257,7 +255,6 @@
     <Compile Include="Services\Language\ILuisService.cs" />
     <Compile Include="Services\Language\LuisService.cs" />
     <Compile Include="Services\Language\WebLanguageModelService.cs" />
-    <Compile Include="Wrappers\IPublishWrapper.cs" />
     <Compile Include="Wrappers\PublishWrapper.cs" />
     <Compile Include="Services\Language\ILinguisticService.cs" />
     <Compile Include="Services\Language\LinguisticService.cs" />

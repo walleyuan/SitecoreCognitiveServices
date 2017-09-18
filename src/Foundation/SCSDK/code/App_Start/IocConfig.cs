@@ -34,6 +34,8 @@ namespace Sitecore.SharedSource.CognitiveServices.App_Start
             serviceCollection.AddTransient<ILogWrapper, LogWrapper>();
             serviceCollection.AddTransient<ITextTranslatorWrapper, TextTranslatorWrapper>();
             serviceCollection.AddTransient<IPublishWrapper, PublishWrapper>();
+            serviceCollection.AddTransient<IAuthenticationWrapper, AuthenticationWrapper>();
+            serviceCollection.AddTransient<IContentSearchWrapper, ContentSearchWrapper>();
 
             //repositories
             serviceCollection.AddTransient<IEmotionRepository, EmotionRepository>();

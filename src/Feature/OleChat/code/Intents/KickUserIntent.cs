@@ -6,7 +6,6 @@ using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
 using Sitecore.Web.Authentication;
 using System.Collections.Generic;
-using Sitecore.Data;
 using Sitecore.Security.Accounts;
 using System.Text.RegularExpressions;
 
@@ -17,7 +16,8 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
     public class KickUserIntent : BaseIntent, IKickUserIntent 
     {
         protected readonly ITextTranslatorWrapper Translator;
-        
+        protected readonly IAuthenticationWrapper AuthenticationWrapper;
+
         public override string Name => "kick user";
 
         public override string Description => "Kick a user from the system";
@@ -35,18 +35,20 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
         public KickUserIntent(
             ITextTranslatorWrapper translator,
+            IAuthenticationWrapper authWrapper,
             IOleSettings settings) : base(settings) {
             Translator = translator;
+            AuthenticationWrapper = authWrapper;
         }
 
         public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
             
-            if (!Sitecore.Context.User.IsAdministrator)
+            if (!AuthenticationWrapper.IsCurrentUserAdministrator())
                 return CreateConversationResponse("Sorry, you can only perform this action if you're an admin");
 
             var userSession = (DomainAccessGuard.Session)conversation.Data[UserKey];
             var name = userSession.UserName;
-            DomainAccessGuard.Kick(userSession.SessionID);
+            AuthenticationWrapper.Kick(userSession.SessionID);
             
             return CreateConversationResponse($"The user {name} has been kicked out.");
         }
@@ -70,7 +72,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
                 return false;
 
             if (User.Exists(username))
-                userSession = DomainAccessGuard.Sessions.FirstOrDefault(
+                userSession = AuthenticationWrapper.GetDomainAccessSessions().FirstOrDefault(
                     s => string.Equals(s.UserName, username, StringComparison.OrdinalIgnoreCase));
             
             if (userSession == null)

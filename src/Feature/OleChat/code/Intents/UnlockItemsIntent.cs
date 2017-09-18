@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
-using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.ContentSearch.Security;
 using Sitecore.Data.Items;
@@ -18,16 +17,22 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
     public class UnlockItemsIntent : BaseIntent, IUnlockItemsIntent {
 
         protected readonly ITextTranslatorWrapper Translator;
-        
+        protected readonly IAuthenticationWrapper AuthenticationWrapper;
+        protected readonly IContentSearchWrapper ContentSearchWrapper;
+
         public override string Name => "unlock items";
 
         public override string Description => "Unlock your items";
 
         public UnlockItemsIntent(
             ITextTranslatorWrapper translator,
+            IAuthenticationWrapper authWrapper,
+            IContentSearchWrapper searchWrapper,
             IOleSettings settings) : base(settings) {
             Translator = translator;
-            }
+            AuthenticationWrapper = authWrapper;
+            ContentSearchWrapper = searchWrapper;
+        }
         
         public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
@@ -49,9 +54,9 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
         protected List<SearchResultItem> GetCurrentUserUnlockedItems(string db)
         {
-            var userMod = Sitecore.Context.User.DisplayName.Replace("\\", "").ToLower();
+            var userMod = AuthenticationWrapper.GetCurrentUser().DisplayName.Replace("\\", "").ToLower();
 
-            using (var context = ContentSearchManager.GetIndex($"sitecore_{db}_index").CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck)) {
+            using (var context = ContentSearchWrapper.GetIndex($"sitecore_{db}_index").CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck)) {
                 return context
                     .GetQueryable<SearchResultItem>()
                     .Where(a => a.LockOwner.Equals(userMod)).ToList();

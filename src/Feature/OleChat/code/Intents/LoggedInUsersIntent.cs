@@ -4,7 +4,6 @@ using Sitecore.SharedSource.CognitiveServices.Wrappers;
 using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
 using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
-using Sitecore.Web.Authentication;
 
 namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
@@ -13,6 +12,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
     public class LoggedInUsersIntent : BaseIntent, ILoggedInUsersIntent 
     {
         protected readonly ITextTranslatorWrapper Translator;
+        protected readonly IAuthenticationWrapper AuthenticationWrapper;
         
         public override string Name => "logged in users";
 
@@ -20,13 +20,15 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
         public LoggedInUsersIntent(
             ITextTranslatorWrapper translator,
+            IAuthenticationWrapper authWrapper,
             IOleSettings settings) : base(settings) {
             Translator = translator;
+            AuthenticationWrapper = authWrapper;
         }
 
         public override ConversationResponse ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
 
-            var sessions = DomainAccessGuard.Sessions.OrderByDescending(s => s.LastRequest);
+            var sessions = AuthenticationWrapper.GetDomainAccessSessions().OrderByDescending(s => s.LastRequest);
             var sessionCount = sessions.Count();
             var userNames = sessions.Select(a => a.UserName);
             var conjunction = (sessionCount != 1) ? "are" : "is";
