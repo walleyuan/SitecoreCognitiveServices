@@ -20,13 +20,20 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         protected readonly IOleSettings Settings;
         protected readonly IConversationResponseFactory ConversationResponseFactory;
+        protected readonly IIntentOptionSetFactory IntentOptionSetFactory;
+
         public virtual Guid ApplicationId => Settings.OleApplicationId;
+
         public virtual List<ConversationParameter> RequiredParameters => new List<ConversationParameter>();
         
-        protected BaseIntent(IOleSettings settings, IConversationResponseFactory responseFactory)
+        protected BaseIntent(
+            IIntentOptionSetFactory optionSetFactory,
+            IConversationResponseFactory responseFactory,
+            IOleSettings settings)
         {
             Settings = settings;
             ConversationResponseFactory = responseFactory;
+            IntentOptionSetFactory = optionSetFactory;
         }
         
         #endregion

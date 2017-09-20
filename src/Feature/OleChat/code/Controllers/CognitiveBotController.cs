@@ -56,12 +56,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Controllers {
                 var reply = activity.CreateReply(response.Message, "en-US");
                 reply.ChannelData = new ChannelData
                 {
-                    Options = response.Options?.Select(
-                        o => new Option
-                        {
-                            DisplayText = o.Key,
-                            Value = o.Value
-                        }).ToList() ?? new List<Option>(),
+                    OptionSet = response.OptionsSet,
                     Action = response.Action
                 };
 

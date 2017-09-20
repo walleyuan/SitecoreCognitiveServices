@@ -22,8 +22,9 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public ThanksIntent(
             ITextTranslatorWrapper translator,
+            IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
-            IOleSettings settings) : base(settings, responseFactory)
+            IOleSettings settings) : base(optionSetFactory, responseFactory, settings)
         {
             Translator = translator;
         }

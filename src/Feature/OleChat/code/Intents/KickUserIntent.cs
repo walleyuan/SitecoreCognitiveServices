@@ -37,8 +37,9 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
         public KickUserIntent(
             ITextTranslatorWrapper translator,
             IAuthenticationWrapper authWrapper,
+            IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
-            IOleSettings settings) : base(settings, responseFactory) {
+            IOleSettings settings) : base(optionSetFactory, responseFactory, settings) {
             Translator = translator;
             AuthenticationWrapper = authWrapper;
         }

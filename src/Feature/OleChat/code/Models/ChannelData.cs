@@ -8,7 +8,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Models
 {
     public class ChannelData
     {
-        public List<Option> Options { get; set; }
+        public IntentOptionSet OptionSet { get; set; }
         public string Action { get; set; }
     }
 }

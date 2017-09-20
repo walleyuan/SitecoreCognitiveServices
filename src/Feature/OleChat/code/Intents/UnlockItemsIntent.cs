@@ -29,8 +29,9 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             ITextTranslatorWrapper translator,
             IAuthenticationWrapper authWrapper,
             IContentSearchWrapper searchWrapper,
+            IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
-            IOleSettings settings) : base(settings, responseFactory) {
+            IOleSettings settings) : base(optionSetFactory, responseFactory, settings) {
             Translator = translator;
             AuthenticationWrapper = authWrapper;
             ContentSearchWrapper = searchWrapper;

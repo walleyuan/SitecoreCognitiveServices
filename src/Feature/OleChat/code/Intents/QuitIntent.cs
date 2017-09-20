@@ -26,8 +26,9 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
         public QuitIntent(
             ITextTranslatorWrapper translator,
             IOleSettings settings,
+            IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
-            IServiceProvider provider) : base(settings, responseFactory)
+            IServiceProvider provider) : base(optionSetFactory, responseFactory, settings)
         {
             Translator = translator;
             Provider = provider;

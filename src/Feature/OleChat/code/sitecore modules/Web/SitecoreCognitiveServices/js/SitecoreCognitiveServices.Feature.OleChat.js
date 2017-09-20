@@ -51,23 +51,32 @@ jQuery(document).ready(function () {
 
         if (channelData != null) {
             //options
-            var options = channelData.Options;
-            if (options != null && options.length > 0) {
+            var optionSet = channelData.OptionSet;
+            if (optionSet != null && optionSet.Options != null && optionSet.Options.length > 0) {
                 var optionList = "";
-                for (i = 0; i < options.length; i++) {
-                    optionList += "<li class='user-option' data-option='" + options[i].Value + "'>" + options[i].DisplayText + "</li>";
+
+                if (optionSet.OptionType === "Link") {
+                    for (i = 0; i < optionSet.Options.length; i++) {
+                        optionList += "<li class='user-option' data-option='" + optionSet.Options[i].Value + "'>" + optionSet.Options[i].DisplayText + "</li>";
+                    }
+                    convoBox.append("<div class='" + type + "'><span class='message'><ol>" + optionList + "</ol><span class='icon'></span></span></div>");
+
+                    jQuery(".user-option")
+                        .on('click', function () {
+                            jQuery(this).parent().addClass("disabled");
+                            jQuery("ol.disabled .user-option").off("click");
+
+                            var optionValue = jQuery(this).data("option");
+                            UpdateChatWindow(optionValue, null, "user");
+                            SendChatRequest(optionValue);
+                        });
                 }
-                convoBox.append("<div class='" + type + "'><span class='message'><ol>" + optionList + "</ol><span class='icon'></span></span></div>");
+                if (optionSet.OptionType === "Radio") {
 
-                jQuery(".user-option")
-                    .on('click', function () {
-                        jQuery(this).parent().addClass("disabled");
-                        jQuery("ol.disabled .user-option").off("click");
+                }
+                if (optionSet.OptionType === "Checkbox") {
 
-                        var optionValue = jQuery(this).data("option");
-                        UpdateChatWindow(optionValue, null, "user");
-                        SendChatRequest(optionValue);
-                    });
+                }
             }
 
             //actions

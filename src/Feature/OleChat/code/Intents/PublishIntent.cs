@@ -44,8 +44,9 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             ITextTranslatorWrapper translator,
             IOleSettings settings,
             ISitecoreDataWrapper dataWrapper,
+            IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
-            IPublishWrapper publishWrapper) : base(settings, responseFactory)
+            IPublishWrapper publishWrapper) : base(optionSetFactory, responseFactory, settings)
         {
             Translator = translator;
             DataWrapper = dataWrapper;
@@ -59,7 +60,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             var recursion = (bool) conversation.Data[RecursionKey];
             PublishWrapper.PublishItem(rootItem, new[] { toDb }, new[] { rootItem.Language }, recursion, false);
 
-            return ConversationResponseFactory.Create($"I've published {rootItem.DisplayName} to the {toDb.Name} database in {rootItem.Language.Name} {(recursion ? " with it's children" : string.Empty)}");
+            return ConversationResponseFactory.Create($"I've published {rootItem.DisplayName} to the {toDb.Name} database in {rootItem.Language.GetDisplayName()} {(recursion ? " with it's children" : string.Empty)}");
         }
 
         public virtual bool IsDbValid(string paramValue, ItemContextParameters parameters, IConversation conversation)
@@ -86,9 +87,11 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             return true;
         }
 
-        public virtual Dictionary<string, string> DbOptions(ItemContextParameters parameters)
+        public virtual IntentOptionSet DbOptions(ItemContextParameters parameters)
         {
-            return DataWrapper.GetDatabases().ToDictionary(a => a.Name, a => a.Name);
+            var options = DataWrapper.GetDatabases().ToDictionary(a => a.Name, a => a.Name);
+
+            return IntentOptionSetFactory.Create(IntentOptionType.Link, options);
         }
 
         public virtual bool IsPathValid(string paramValue, ItemContextParameters parameters, IConversation conversation)
@@ -139,25 +142,29 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             return true;
         }
 
-        public virtual Dictionary<string, string> RecursionOptions(ItemContextParameters parameters)
+        public virtual IntentOptionSet RecursionOptions(ItemContextParameters parameters)
         {
-            return new Dictionary<string, string>{ { "Yes", "Yes" }, { "No", "No" } };
+            var options = new Dictionary<string, string>{ { "Yes", "Yes" }, { "No", "No" } };
+
+            return IntentOptionSetFactory.Create(IntentOptionType.Link, options);
         }
 
         public virtual bool IsLanguageValid(string paramValue, ItemContextParameters parameters, IConversation conversation)
         {
             var langs = LanguageOptions(parameters);
 
-            return (langs.ContainsKey(paramValue));
+            return langs.Options.Any(a => a.Value.Equals(paramValue));
         }
 
-        public virtual Dictionary<string, string> LanguageOptions(ItemContextParameters parameters)
+        public virtual IntentOptionSet LanguageOptions(ItemContextParameters parameters)
         {
             var dbName = (!string.IsNullOrEmpty(parameters.Database)) ? parameters.Database : "master";
 
             var db = DataWrapper.GetDatabase(dbName);
              
-            return DataWrapper.GetLanguages(db).ToDictionary(a => a.Name, a => a.Name);
+            var options = DataWrapper.GetLanguages(db).ToDictionary(a => a.GetDisplayName(), a => a.Name);
+
+            return IntentOptionSetFactory.Create(IntentOptionType.Link, options);
         }
     }
 }

@@ -37,8 +37,9 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
         public RebuildIndexIntent(
             ITextTranslatorWrapper translator,
             IContentSearchWrapper searchWrapper,
+            IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
-            IOleSettings settings) : base(settings, responseFactory)
+            IOleSettings settings) : base(optionSetFactory, responseFactory, settings)
         {
             Translator = translator;
             ContentSearchWrapper = searchWrapper;
@@ -90,11 +91,13 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             return true;
         }
 
-        public virtual Dictionary<string, string> IndexOptions(ItemContextParameters parameters)
+        public virtual IntentOptionSet IndexOptions(ItemContextParameters parameters)
         {
             var indexes = ContentSearchWrapper.GetIndexNames().Concat(new [] { "All" });
 
-            return indexes.ToDictionary(a => a);
+            var options = indexes.ToDictionary(a => a);
+
+            return IntentOptionSetFactory.Create(IntentOptionType.Link, options);
         }
     }
 }

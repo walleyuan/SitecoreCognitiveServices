@@ -162,7 +162,10 @@
     <Compile Include="Dialog\IConversation.cs" />
     <Compile Include="Dialog\IConversationHistory.cs" />
     <Compile Include="Dialog\IConversationService.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="Factories\ConversationResponseFactory.cs" />
+    <Compile Include="Factories\IntentOptionFactory.cs" />
+    <Compile Include="Factories\IntentOptionSetFactory.cs" />
     <Compile Include="Factories\LogoutIntentFactory.cs" />
     <Compile Include="Factories\ConversationFactory.cs" />
     <Compile Include="Factories\QuitIntentFactory.cs" />
@@ -175,7 +178,8 @@
     <Compile Include="Intents\ThanksIntent.cs" />
     <Compile Include="Models\ChannelData.cs" />
     <Compile Include="Models\ConversationResponse.cs" />
-    <Compile Include="Models\Option.cs" />
+    <Compile Include="Models\IntentOptionSet.cs" />
+    <Compile Include="Models\IntentOption.cs" />
     <Compile Include="OleSettings.cs" />
     <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="Commands\OleChat.cs" />

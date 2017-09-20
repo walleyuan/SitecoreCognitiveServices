@@ -9,32 +9,43 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Factories
     public interface IConversationResponseFactory
     {
         ConversationResponse Create(string message);
-        ConversationResponse Create(string message, Dictionary<string, string> options);
+        ConversationResponse Create(string message, IntentOptionSet options);
         ConversationResponse Create(string message, string action);
     }
 
     public class ConversationResponseFactory : IConversationResponseFactory
     {
+        protected readonly IIntentOptionSetFactory IntentOptionSetFactory;
+
+        public ConversationResponseFactory(IIntentOptionSetFactory optionSetFactory)
+        {
+            IntentOptionSetFactory = optionSetFactory;
+        }
+
         public ConversationResponse Create(string message)
         {
-            return new ConversationResponse {Message = message};
+            return new ConversationResponse {
+                Message = message,
+                Action = string.Empty,
+                OptionsSet = IntentOptionSetFactory.Create(IntentOptionType.None)
+            };
         }
 
-        public ConversationResponse Create(string message, Dictionary<string, string> options)
+        public ConversationResponse Create(string message, IntentOptionSet options)
         {
-            return new ConversationResponse
-            {
-                Message = message,
-                Options = options
-            };
+            var response = Create(message);
+            response.OptionsSet = options;
+
+            return response;
         }
 
-        public ConversationResponse Create(string message, string action) {
-            return new ConversationResponse
-            {
-                Message = message,
-                Action = action
-            };
+        public ConversationResponse Create(string message, string action)
+        {
+            var response = Create(message);
+            response.Action = action;
+            response.OptionsSet = IntentOptionSetFactory.Create(IntentOptionType.None);
+
+            return response;
         }
     }
 }
