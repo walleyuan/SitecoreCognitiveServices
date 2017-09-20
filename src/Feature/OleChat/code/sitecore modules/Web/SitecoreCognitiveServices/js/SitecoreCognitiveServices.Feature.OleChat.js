@@ -84,7 +84,15 @@ jQuery(document).ready(function () {
             //actions
             var action = channelData.Action;
             if (action != null && action === "logout") {
-                location.reload();
+
+                var formData = {};
+                formData.__RequestVerificationToken = jQuery("input[name=__RequestVerificationToken]").val();
+                
+                jQuery
+                    .post("/sitecore/shell/api/sitecore/Authentication/Logout?sc_database=master", formData)
+                    .done(function(msg) {
+                        location.href = "/sitecore/login";   
+                    });
             }    
         }
         

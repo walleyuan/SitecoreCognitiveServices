@@ -36,16 +36,6 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
         public override ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
-            AuthenticationWrapper.Logout();
-            
-            var responseCookies = Context.Response.Cookies;
-            var cookie = responseCookies["sitecore_userticket"];
-            if (cookie != null)
-            {
-                cookie.Expires = DateTime.Now.AddYears(-1);
-                cookie.Value = null;
-            }
-
             return ConversationResponseFactory.Create("You have been logged out.", "logout");
         }
     }

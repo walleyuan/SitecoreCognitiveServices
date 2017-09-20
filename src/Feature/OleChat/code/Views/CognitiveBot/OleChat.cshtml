@@ -10,13 +10,14 @@
 
 <div class="frame">
     <form class="form chat-form" method="post" action="/SitecoreCognitiveServices/CognitiveBot/Post">
+        @Html.AntiForgeryToken()
         <div class="chat-conversation"></div>
         <div class="chat-input-wrap">
-            <input class="chat-input" type="text" />
+            <input class="chat-input" type="text"/>
         </div>
-        <input type="hidden" name="chat-db" class="chat-db" value="@Model.Database" />
-        <input type="hidden" name="chat-lang" class="chat-lang" value="@Model.Language" />
-        <input type="hidden" name="chat-id" class="chat-id" value="@Model.Id" />
+        <input type="hidden" name="chat-db" class="chat-db" value="@Model.Database"/>
+        <input type="hidden" name="chat-lang" class="chat-lang" value="@Model.Language"/>
+        <input type="hidden" name="chat-id" class="chat-id" value="@Model.Id"/>
         <button class="chat-submit scButton">Send</button>
     </form>
 </div>
