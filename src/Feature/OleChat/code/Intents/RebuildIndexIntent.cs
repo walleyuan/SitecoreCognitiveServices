@@ -90,7 +90,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             return true;
         }
 
-        public virtual Dictionary<string, string> IndexOptions()
+        public virtual Dictionary<string, string> IndexOptions(ItemContextParameters parameters)
         {
             var indexes = ContentSearchWrapper.GetIndexNames().Concat(new [] { "All" });
 

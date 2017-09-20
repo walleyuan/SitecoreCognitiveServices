@@ -7,6 +7,8 @@ using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.SecurityModel;
 using Sitecore.Shell.Framework.Commands;
+using Sitecore.Data.Managers;
+using Sitecore.Globalization;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
 {
@@ -25,6 +27,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
         IEnumerable<TemplateItem> GetBaseTemplates(Item i);
         IEnumerable<TemplateItem> GetBaseTemplates(TemplateItem t);
         void SetImageDescription(MediaItem mediaItem, string altDescription);
+        IEnumerable<Language> GetLanguages(Database db);
     }
 
     public class SitecoreDataWrapper : ISitecoreDataWrapper
@@ -156,6 +159,11 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
                     }
                 }
             }
+        }
+
+        public virtual IEnumerable<Language> GetLanguages(Database db)
+        {
+            return LanguageManager.GetLanguages(db).ToList();
         }
     }
 }

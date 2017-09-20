@@ -26,8 +26,9 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
         public override List<ConversationParameter> RequiredParameters => new List<ConversationParameter>()
         {
-            new ConversationParameter(DBKey, "What database did you want to publish to?", IsDbValid, DbOptions),
             new ConversationParameter(ItemKey, "What was the item path you wanted to publish?", IsPathValid, null),
+            new ConversationParameter(DBKey, "What database did you want to publish to?", IsDbValid, DbOptions),
+            new ConversationParameter(ItemKey, "What language(s) should I publish to?", IsLanguageValid, LanguageOptions),
             new ConversationParameter(RecursionKey, "Do you want to publish all children?", IsRecursionValid, RecursionOptions)
         };
 
@@ -85,7 +86,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             return true;
         }
 
-        public virtual Dictionary<string, string> DbOptions()
+        public virtual Dictionary<string, string> DbOptions(ItemContextParameters parameters)
         {
             return DataWrapper.GetDatabases().ToDictionary(a => a.Name, a => a.Name);
         }
@@ -138,9 +139,25 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             return true;
         }
 
-        public virtual Dictionary<string, string> RecursionOptions()
+        public virtual Dictionary<string, string> RecursionOptions(ItemContextParameters parameters)
         {
             return new Dictionary<string, string>{ { "Yes", "Yes" }, { "No", "No" } };
+        }
+
+        public virtual bool IsLanguageValid(string paramValue, ItemContextParameters parameters, IConversation conversation)
+        {
+            var langs = LanguageOptions(parameters);
+
+            return (langs.ContainsKey(paramValue));
+        }
+
+        public virtual Dictionary<string, string> LanguageOptions(ItemContextParameters parameters)
+        {
+            var dbName = (!string.IsNullOrEmpty(parameters.Database)) ? parameters.Database : "master";
+
+            var db = DataWrapper.GetDatabase(dbName);
+             
+            return DataWrapper.GetLanguages(db).ToDictionary(a => a.Name, a => a.Name);
         }
     }
 }

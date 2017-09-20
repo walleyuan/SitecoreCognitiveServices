@@ -35,6 +35,13 @@ jQuery(document).ready(function () {
             .done(function (r) {
                 chatConversationData = r.conversation;
                 UpdateChatWindow(r.Text, r.ChannelData, "bot");
+            })
+            .fail(function (xhr, status, error) {
+                var statusMsg = (xhr.status != null) 
+                    ? xhr.status + ":" + error
+                    : error;
+
+                UpdateChatWindow("I'm having some trouble connecting...<br/><br/>" + statusMsg, null, "bot");
             });
     }
 

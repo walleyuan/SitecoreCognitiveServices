@@ -75,7 +75,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
             foreach (ConversationParameter p in conversation.Intent.RequiredParameters)
             {
                 if (!TryGetParam(p.ParamName, result, conversation, parameters, p.ParamValidation))
-                    return RequestParam(p, conversation);
+                    return RequestParam(p, conversation, parameters);
             }
 
             conversation.IsEnded = true;
@@ -122,11 +122,11 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
             return c.Context.ContainsKey(ReqParam) && c.Context[ReqParam].Equals(paramName);
         }
 
-        public virtual ConversationResponse RequestParam(ConversationParameter param, IConversation c)
+        public virtual ConversationResponse RequestParam(ConversationParameter param, IConversation c, ItemContextParameters parameters)
         {
             c.Context[ReqParam] = param.ParamName;
 
-            return ConversationResponseFactory.Create(param.ParamMessage, param.ParamOptions?.Invoke());
+            return ConversationResponseFactory.Create(param.ParamMessage, param.ParamOptions?.Invoke(parameters));
         }
     }
 }
