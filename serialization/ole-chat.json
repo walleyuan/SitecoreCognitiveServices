@@ -130,7 +130,22 @@
             "entities": []
         },
         {
+            "text": "end",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
             "text": "quit",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "cancel",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "end it",
             "intent": "Quit",
             "entities": []
         },

@@ -55,7 +55,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
                 ? ConversationHistory.Conversations.Last()
                 : null;
 
-            var requestedQuit = intent.Name.Equals("quit");
+            var requestedQuit = intent.Name.Equals("quit") && result.TopScoringIntent.Score > 0.4;
             var inConversation = conversation != null && !conversation.IsEnded;
 
             // if the user is trying to end or finish a conversation 

@@ -8,6 +8,8 @@ jQuery(document).ready(function () {
     var chatConversation = ".chat-conversation";
     var chatConversationData = {};
 
+    jQuery(chatInput).focus();
+
     //initiate conversation
     SendChatRequest("Hello");
 
