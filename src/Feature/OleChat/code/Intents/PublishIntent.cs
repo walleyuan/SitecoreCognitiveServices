@@ -81,20 +81,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
         public virtual IntentOptionSet DbOptions(ItemContextParameters parameters)
         {
             var dbName = (!string.IsNullOrEmpty(parameters.Database)) ? parameters.Database : "master";
-            var db = DataWrapper.GetDatabase(dbName);
-
-            var publishingTargets = new List<string>();
-
-            var publishingTargetsItem = db.GetItem("/sitecore/system/publishing targets");
-            if (publishingTargetsItem != null)
-            {
-                publishingTargets = publishingTargetsItem
-                    .GetChildren()
-                    .Select(
-                        child => child?.Fields["target database"]?.Value ?? string.Empty
-                    ).Where(a => !string.IsNullOrEmpty(a))
-                    .ToList();
-            }
+            var publishingTargets = PublishWrapper.GetPublishingTargets(dbName);
             
             var options = publishingTargets.ToDictionary(a => a, a => a);
 
