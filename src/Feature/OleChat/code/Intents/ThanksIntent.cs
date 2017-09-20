@@ -33,7 +33,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
         {
             List<string> responses = new List<string>()
             {
-                "Your're welcome!",
+                "You're welcome!",
                 "It's what I do.",
                 "I'm happy to help.",
                 "You're too kind.",

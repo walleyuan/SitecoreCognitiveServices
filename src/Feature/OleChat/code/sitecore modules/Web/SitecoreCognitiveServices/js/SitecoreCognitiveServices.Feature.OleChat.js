@@ -32,6 +32,9 @@ jQuery(document).ready(function () {
         var dbValue = jQuery(".chat-db").val();
         var idValue = jQuery(".chat-id").val();
 
+        jQuery(".message ol").addClass("disabled");
+        jQuery(".message ol .user-option").off("click");
+
         jQuery
             .post(jQuery(chatForm).attr("action"), GenerateActivity(queryValue, langValue, dbValue, idValue))
             .done(function (r) {
@@ -65,9 +68,7 @@ jQuery(document).ready(function () {
 
                     jQuery(".user-option")
                         .on('click', function () {
-                            jQuery(this).parent().addClass("disabled");
-                            jQuery("ol.disabled .user-option").off("click");
-
+                            
                             var optionValue = jQuery(this).data("option");
                             UpdateChatWindow(optionValue, null, "user");
                             SendChatRequest(optionValue);

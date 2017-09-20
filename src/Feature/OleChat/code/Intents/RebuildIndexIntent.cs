@@ -25,7 +25,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
         public override List<ConversationParameter> RequiredParameters => new List<ConversationParameter>()
         {
-            new ConversationParameter(IndexKey, "What index do you want to rebuild?", IsIndexValid, IndexOptions)
+            new ConversationParameter(IndexKey, "What index do you want to rebuild?", GetValidIndex, IndexOptions)
         };
 
         #region Local Properties
@@ -64,31 +64,17 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             return ConversationResponseFactory.Create(message);
         }
 
-        public virtual bool IsIndexValid(string paramValue, ItemContextParameters parameters, IConversation conversation)
+        public virtual string GetValidIndex(string paramValue, ItemContextParameters parameters, IConversation conversation)
         {
-            var index = (conversation.Data.ContainsKey(IndexKey))
-                ? (string)conversation.Data[IndexKey]
-                : null;
-
-            if (index != null)
-                return true;
-
-            if (string.IsNullOrEmpty(paramValue))
-                return false;
-
             try
             {
                 var searchIndex = ContentSearchManager.GetIndex(paramValue);
                 if (searchIndex == null)
-                    return false;
+                    return null;
             }
-            catch
-            {
-                return false;
-            }
+            catch { }
 
-            conversation.Data[IndexKey] = paramValue;
-            return true;
+            return paramValue;
         }
 
         public virtual IntentOptionSet IndexOptions(ItemContextParameters parameters)

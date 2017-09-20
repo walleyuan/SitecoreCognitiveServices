@@ -25,7 +25,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
         public override List<ConversationParameter> RequiredParameters => new List<ConversationParameter>()
         {
-            new ConversationParameter(UserKey, "What user do you want to kick? (ie: domain\\username)", IsUserValid, null)
+            new ConversationParameter(UserKey, "What user do you want to kick? (ie: domain\\username)", GetValidUser, null)
         };
 
         #region Local Properties
@@ -56,33 +56,23 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             return ConversationResponseFactory.Create($"The user {name} has been kicked out.");
         }
 
-        public virtual bool IsUserValid(string paramValue, ItemContextParameters parameters, IConversation conversation)
+        public virtual DomainAccessGuard.Session GetValidUser(string paramValue, ItemContextParameters parameters, IConversation conversation)
         {
-            var userSession = (conversation.Data.ContainsKey(UserKey))
-                ? (DomainAccessGuard.Session)conversation.Data[UserKey] 
-                : null;
-
-            if (userSession != null)
-                return true;
-            
             var username = paramValue.Replace(" ", "");
             if (string.IsNullOrEmpty(username))
-                return false;
+                return null;
 
             string regex = @"^(\w[\w\s]*)([\\]{1})(\w[\w\s\.\@]*)$";
             Match m = Regex.Match(username, regex);
             if(string.IsNullOrEmpty(m.Value))
-                return false;
+                return null;
 
+            DomainAccessGuard.Session userSession = null;
             if (User.Exists(username))
                 userSession = AuthenticationWrapper.GetDomainAccessSessions().FirstOrDefault(
                     s => string.Equals(s.UserName, username, StringComparison.OrdinalIgnoreCase));
-            
-            if (userSession == null)
-                return false;
 
-            conversation.Data[UserKey] = userSession;
-            return true;
+            return userSession;
         }
     }
 }

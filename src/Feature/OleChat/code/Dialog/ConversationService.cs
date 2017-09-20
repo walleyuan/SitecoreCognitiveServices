@@ -74,7 +74,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
             // check and request all required parameters of a conversation
             foreach (ConversationParameter p in conversation.Intent.RequiredParameters)
             {
-                if (!TryGetParam(p.ParamName, result, conversation, parameters, p.ParamValidation))
+                if (!TryGetParam(p.ParamName, result, conversation, parameters, p.ParamGetter))
                     return RequestParam(p, conversation, parameters);
             }
 
@@ -83,19 +83,29 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
             return conversation.Intent.Respond(result, parameters, conversation);
         }
         
-        public virtual bool TryGetParam(string paramName, LuisResult result, IConversation c, ItemContextParameters parameters, Func<string, ItemContextParameters, IConversation, bool> isParameterValid)
+        public virtual bool TryGetParam(string paramName, LuisResult result, IConversation c, ItemContextParameters parameters, Func<string, ItemContextParameters, IConversation, object> GetValidParameter)
         {
-            string value = GetValue(paramName, result, c);
-            if (isParameterValid(value, parameters, c))
-            {
-                if (IsParamRequest(paramName, c)) // clear any request for this property
-                    c.Context.Remove(ReqParam);
+            var storedValue = c.Data.ContainsKey(paramName)
+                ? c.Data[paramName]
+                : null;
 
-                c.Context[paramName] = value;
+            if (storedValue != null)
                 return true;
-            }
 
-            return false;
+            string value = GetValue(paramName, result, c);
+            if (string.IsNullOrEmpty(value))
+                return false;
+
+            var validParam = GetValidParameter(value, parameters, c);
+            if (validParam == null)
+                return false;
+            
+            if (IsParamRequest(paramName, c)) // clear any request for this property
+                c.Context.Remove(ReqParam);
+
+            c.Context[paramName] = value;
+            c.Data[paramName] = validParam;
+            return true;
         }
 
         public virtual string GetValue(string paramName, LuisResult result, IConversation c)

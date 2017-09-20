@@ -8,17 +8,17 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
 {
     public class ConversationParameter
     {
-        public ConversationParameter(string name, string message, Func<string, ItemContextParameters, IConversation, bool> validation, Func<ItemContextParameters, IntentOptionSet> options)
+        public ConversationParameter(string name, string message, Func<string, ItemContextParameters, IConversation, object> paramGetter, Func<ItemContextParameters, IntentOptionSet> options)
         {
             ParamName = name;
             ParamMessage = message;
-            ParamValidation = validation;
+            ParamGetter = paramGetter;
             ParamOptions = options;
         }
 
         public string ParamName { get; set; }
         public string ParamMessage { get; set; }
-        public Func<string, ItemContextParameters, IConversation, bool> ParamValidation { get; set; }
+        public Func<string, ItemContextParameters, IConversation, object> ParamGetter { get; set; }
         public Func<ItemContextParameters, IntentOptionSet> ParamOptions { get; set; }
     }
 }
