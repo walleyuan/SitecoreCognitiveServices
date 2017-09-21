@@ -80,10 +80,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
         public virtual IntentOptionSet IndexOptions(ItemContextParameters parameters)
         {
             var indexes = ContentSearchWrapper.GetIndexNames().Concat(new [] { "All" });
-
-            var options = indexes.ToDictionary(a => a);
-
-            return IntentOptionSetFactory.Create(IntentOptionType.Link, options);
+            
+            return IntentOptionSetFactory.Create(IntentOptionType.Link, indexes.ToList());
         }
     }
 }

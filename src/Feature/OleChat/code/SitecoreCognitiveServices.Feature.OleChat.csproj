@@ -164,7 +164,6 @@
     <Compile Include="Dialog\IConversationService.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Factories\ConversationResponseFactory.cs" />
-    <Compile Include="Factories\IntentOptionFactory.cs" />
     <Compile Include="Factories\IntentOptionSetFactory.cs" />
     <Compile Include="Factories\LogoutIntentFactory.cs" />
     <Compile Include="Factories\ConversationFactory.cs" />

@@ -16,20 +16,11 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Models
                 return Enum.GetName(typeof(IntentOptionType), Type);
             }
         }
-        public List<IntentOption> Options { get; set; }
-
-        protected readonly IIntentOptionFactory IntentOptionFactory;
-
-        public IntentOptionSet(IIntentOptionFactory optionFactory)
+        public List<string> Options { get; set; }
+        
+        public void AddOption(string value)
         {
-            IntentOptionFactory = optionFactory;
-            Options = new List<IntentOption>();
-        }
-
-        public void AddOption(string displayText, string value)
-        {
-            var option = IntentOptionFactory.Create(displayText, value);
-            Options.Add(option);
+            Options.Add(value);
         }
     }
 }

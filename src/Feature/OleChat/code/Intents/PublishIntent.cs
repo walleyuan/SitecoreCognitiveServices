@@ -63,7 +63,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             var recursion = (string) conversation.Data[RecursionKey];
             PublishWrapper.PublishItem(rootItem, new[] { toDb }, new[] { langItem }, recursion.Equals("y"), false);
 
-            return ConversationResponseFactory.Create($"I've published {rootItem.DisplayName} to the {toDb.Name} database in {rootItem.Language.GetDisplayName()} {(recursion.Equals("y") ? " with it's children" : string.Empty)}");
+            return ConversationResponseFactory.Create($"I've published {rootItem.DisplayName} to the {toDb.Name} database in {rootItem.Language.Name.ToUpper()} {(recursion.Equals("y") ? " with it's children" : string.Empty)}");
         }
 
         #region DB
@@ -83,9 +83,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             var dbName = (!string.IsNullOrEmpty(parameters.Database)) ? parameters.Database : "master";
             var publishingTargets = PublishWrapper.GetPublishingTargets(dbName);
             
-            var options = publishingTargets.ToDictionary(a => a, a => a);
-
-            return IntentOptionSetFactory.Create(IntentOptionType.Link, options);
+            return IntentOptionSetFactory.Create(IntentOptionType.Link, publishingTargets.ToList());
         }
 
         #endregion
@@ -122,7 +120,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
         public virtual IntentOptionSet RecursionOptions(ItemContextParameters parameters)
         {
-            var options = new Dictionary<string, string>{ { "Yes", "Yes" }, { "No", "No" } };
+            var options = new List<string>{ "Yes", "No" };
 
             return IntentOptionSetFactory.Create(IntentOptionType.Link, options);
         }
@@ -145,7 +143,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
             var dbName = (!string.IsNullOrEmpty(parameters.Database)) ? parameters.Database : "master";
             var db = DataWrapper.GetDatabase(dbName);
              
-            var options = DataWrapper.GetLanguages(db).ToDictionary(a => a.GetDisplayName(), a => a.Name);
+            var options = DataWrapper.GetLanguages(db).Select(a => a.Name).ToList();
 
             return IntentOptionSetFactory.Create(IntentOptionType.Link, options);
         }

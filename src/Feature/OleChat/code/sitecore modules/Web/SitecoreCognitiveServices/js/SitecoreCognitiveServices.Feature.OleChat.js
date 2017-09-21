@@ -62,7 +62,7 @@ jQuery(document).ready(function () {
 
                 if (optionSet.OptionType === "Link") {
                     for (i = 0; i < optionSet.Options.length; i++) {
-                        optionList += "<li class='user-option' data-option='" + optionSet.Options[i].Value + "'>" + optionSet.Options[i].DisplayText + "</li>";
+                        optionList += "<li class='user-option' data-option='" + optionSet.Options[i] + "'>" + optionSet.Options[i] + "</li>";
                     }
                     convoBox.append("<div class='" + type + "'><span class='message'><ol>" + optionList + "</ol><span class='icon'></span></span></div>");
 
