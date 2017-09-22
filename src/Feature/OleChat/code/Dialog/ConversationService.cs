@@ -8,6 +8,7 @@ using SitecoreCognitiveServices.Feature.OleChat.Intents;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Foundation.SCSDK.Services.Language;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
 {
@@ -19,7 +20,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
         protected readonly IConversationHistory ConversationHistory;
         protected readonly IConversationFactory ConversationFactory;
         protected readonly IConversationResponseFactory ConversationResponseFactory;
-        
+        protected readonly ITextAnalyticsService TextAnalyticsService;
+
         protected readonly Guid AppId;
         protected string ReqParam = "RequestParam";
 
@@ -29,7 +31,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
             IOleSettings oleSettings,
             IConversationHistory convoHistory,
             IConversationFactory convoFactory,
-            IConversationResponseFactory responseFactory)
+            IConversationResponseFactory responseFactory,
+            ITextAnalyticsService textAnalyticsService)
         {
             IntentProvider = intentProvider;
             LuisService = luisService;
@@ -37,12 +40,21 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
             ConversationHistory = convoHistory;
             ConversationFactory = convoFactory;
             ConversationResponseFactory = responseFactory;
+            TextAnalyticsService = textAnalyticsService;
 
             AppId = OleSettings.OleApplicationId;
         }
 
         public ConversationResponse HandleMessage(Activity activity, ItemContextParameters parameters)
         {
+            //is a user frustrated
+            var sentiment = GetSentiment(activity.Text);
+            var sentimentScore = (sentiment.Documents.Any())
+                ? sentiment.Documents.First().Score
+                : 1;
+            if (sentimentScore <= 0.4)
+                return IntentProvider.GetIntent(AppId, "frustrated user").Respond(null, null, null);
+
             // determine which intent user wants and context
             var result = LuisService.Query(AppId, activity.Text);
             var intent = IntentProvider.GetIntent(AppId, result.TopScoringIntent.Intent);
@@ -83,6 +95,14 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
             return conversation.Intent.Respond(result, parameters, conversation);
         }
         
+        public virtual SentimentResponse GetSentiment(string text)
+        {
+            var sr = new SentimentRequest();
+            sr.Documents.Add(new Document() { Text = text, Id = "Ole" });
+
+            return TextAnalyticsService.GetSentiment(sr);
+        }
+
         public virtual bool TryGetParam(string paramName, LuisResult result, IConversation c, ItemContextParameters parameters, Func<string, ItemContextParameters, IConversation, object> GetValidParameter)
         {
             var storedValue = c.Data.ContainsKey(paramName)

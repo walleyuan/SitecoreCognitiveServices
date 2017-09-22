@@ -164,6 +164,7 @@
     <Compile Include="Dialog\IConversationService.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Factories\ConversationResponseFactory.cs" />
+    <Compile Include="Factories\FrustratedUserIntentFactory.cs" />
     <Compile Include="Factories\IntentOptionSetFactory.cs" />
     <Compile Include="Factories\LogoutIntentFactory.cs" />
     <Compile Include="Factories\ConversationFactory.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Factories\RebuildIndexIntentFactory.cs" />
     <Compile Include="Factories\ThanksIntentFactory.cs" />
     <Compile Include="Intents\BaseIntent.cs" />
+    <Compile Include="Intents\FrustratedUserIntent.cs" />
     <Compile Include="Intents\LogoutIntent.cs" />
     <Compile Include="Intents\RebuildIndexIntent.cs" />
     <Compile Include="Intents\QuitIntent.cs" />
