@@ -49,7 +49,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
         {
             //is a user frustrated
             var sentiment = GetSentiment(activity.Text);
-            var sentimentScore = (sentiment.Documents.Any())
+            var sentimentScore = (sentiment?.Documents != null && sentiment.Documents.Any())
                 ? sentiment.Documents.First().Score
                 : 1;
             if (sentimentScore <= 0.4)
