@@ -28,6 +28,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.App_Start
             serviceCollection.AddTransient<IThanksIntent, ThanksIntent>();
             serviceCollection.AddTransient<ILogoutIntent, LogoutIntent>();
             serviceCollection.AddTransient<IRebuildIndexIntent, RebuildIndexIntent>();
+            serviceCollection.AddTransient<IFrustratedUserIntent, FrustratedUserIntent>();
 
             //intent factories
             serviceCollection.AddTransient<IIntentFactory<IIntent>, DefaultIntentFactory>();
