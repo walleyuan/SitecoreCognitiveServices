@@ -32,8 +32,8 @@ jQuery(document).ready(function () {
         var dbValue = jQuery(".chat-db").val();
         var idValue = jQuery(".chat-id").val();
 
-        jQuery(".message ol").addClass("disabled");
-        jQuery(".message ol .user-option").off("click");
+        jQuery(".message ul").addClass("disabled");
+        jQuery(".message ul .user-option").off("click");
 
         jQuery
             .post(jQuery(chatForm).attr("action"), GenerateActivity(queryValue, langValue, dbValue, idValue))
@@ -64,7 +64,7 @@ jQuery(document).ready(function () {
                     for (i = 0; i < optionSet.Options.length; i++) {
                         optionList += "<li class='user-option' data-option='" + optionSet.Options[i] + "'>" + optionSet.Options[i] + "</li>";
                     }
-                    convoBox.append("<div class='" + type + "'><span class='message'><ol>" + optionList + "</ol><span class='icon'></span></span></div>");
+                    convoBox.append("<div class='" + type + "'><span class='message'><ul>" + optionList + "</ul><span class='icon'></span></span></div>");
 
                     jQuery(".user-option")
                         .on('click', function () {
