@@ -47,21 +47,23 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
 
         public ConversationResponse HandleMessage(Activity activity, ItemContextParameters parameters)
         {
-            //is a user frustrated
-            var sentiment = GetSentiment(activity.Text);
-            var sentimentScore = (sentiment?.Documents != null && sentiment.Documents.Any())
-                ? sentiment.Documents.First().Score
-                : 1;
-            if (sentimentScore <= 0.4)
-                return IntentProvider.GetIntent(AppId, "frustrated user").Respond(null, null, null);
-
             // determine which intent user wants and context
             var result = LuisService.Query(AppId, activity.Text);
             var intent = IntentProvider.GetIntent(AppId, result.TopScoringIntent.Intent);
 
             // respond with fallback / default
-            if(intent == null)
-                return IntentProvider.GetDefaultResponse(AppId);
+            if (intent == null)
+            {
+                // is a user frustrated
+                var sentiment = GetSentiment(activity.Text);
+                var sentimentScore = (sentiment?.Documents != null && sentiment.Documents.Any())
+                    ? sentiment.Documents.First().Score
+                    : 1;
+
+                return (sentimentScore <= 0.4)
+                    ? IntentProvider.GetIntent(AppId, "frustrated user").Respond(null, null, null)
+                    : IntentProvider.GetDefaultResponse(AppId);
+            }
 
             IConversation conversation = (ConversationHistory.Conversations.Any())
                 ? ConversationHistory.Conversations.Last()

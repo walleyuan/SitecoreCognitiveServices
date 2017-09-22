@@ -254,7 +254,7 @@ fieldset legend { margin-bottom: 10px;}
 .chat-form .bot { margin-bottom:5px; padding-bottom:5px; }
 .chat-form .user span.message,
 .chat-form .bot span.message { display:inline-block; padding:5px 10px; border-radius: 5px;  color:#fff; font-size:19px; text-align:left; position:relative;}
-.chat-form .message ul { list-style-type: decimal; margin-left: 20px; }
+.chat-form .message ul { }
 .chat-form .message ul .user-option { text-decoration: underline; cursor: pointer; }
 .chat-form .message ul.disabled .user-option { text-decoration: none; cursor: default; }
 .chat-form .user { text-align:right; padding-left:32px; }
