@@ -52,7 +52,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
             var intent = IntentProvider.GetIntent(AppId, result.TopScoringIntent.Intent);
 
             // respond with fallback / default
-            if (intent == null)
+            if (intent == null || result.TopScoringIntent.Score < 0.1)
             {
                 // is a user frustrated
                 var sentiment = GetSentiment(activity.Text);
