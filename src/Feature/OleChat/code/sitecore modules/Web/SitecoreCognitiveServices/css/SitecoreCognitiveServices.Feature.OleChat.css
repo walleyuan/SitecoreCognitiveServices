@@ -255,12 +255,12 @@ fieldset legend { margin-bottom: 10px;}
 .chat-form .user span.message,
 .chat-form .bot span.message { display:inline-block; padding:5px 10px; border-radius: 5px;  color:#fff; font-size:19px; text-align:left; position:relative;}
 .chat-form .message ul { }
-.chat-form .message ul .user-option { text-decoration: underline; cursor: pointer; }
+.chat-form .message ul .user-option { text-decoration: underline; cursor: pointer; font-size: 19px; }
 .chat-form .message ul.disabled .user-option { text-decoration: none; cursor: default; }
 .chat-form .user { text-align:right; padding-left:32px; }
 .chat-form .bot { text-align:left; }
 .chat-form .user span.message { background-color:#474747;}
 .chat-form .bot span.message { background:#dc291e; padding-left:40px; }
-.chat-form .bot span.icon { background:url('/~/icon/Office/24x24/man_8.png.aspx') top left no-repeat; border-radius: 12px; position:absolute; top:6px; left:7px; height: 24px; width: 24px; }
+.chat-form .bot span.icon { background:url('/~/icon/Office/24x24/man_8.png.aspx') top left no-repeat; border-radius: 12px; position:absolute; top:4px; left:7px; height: 24px; width: 24px; }
 .chat-form ul { list-style-type: disc; padding-left:26px; font-size:16px; }
 .chat-form li {}

@@ -47,54 +47,59 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
 
         public ConversationResponse HandleMessage(Activity activity, ItemContextParameters parameters)
         {
-            // determine which intent user wants and context
-            var result = LuisService.Query(AppId, activity.Text);
-            var intent = IntentProvider.GetIntent(AppId, result.TopScoringIntent.Intent);
-
-            // respond with fallback / default
-            if (intent == null || result.TopScoringIntent.Score < 0.1)
-            {
-                // is a user frustrated
-                var sentiment = GetSentiment(activity.Text);
-                var sentimentScore = (sentiment?.Documents != null && sentiment.Documents.Any())
-                    ? sentiment.Documents.First().Score
-                    : 1;
-
-                return (sentimentScore <= 0.4)
-                    ? IntentProvider.GetIntent(AppId, "frustrated user").Respond(null, null, null)
-                    : IntentProvider.GetDefaultResponse(AppId);
-            }
-
             IConversation conversation = (ConversationHistory.Conversations.Any())
                 ? ConversationHistory.Conversations.Last()
                 : null;
-
-            var requestedQuit = intent.Name.Equals("quit") && result.TopScoringIntent.Score > 0.4;
+        
             var inConversation = conversation != null && !conversation.IsEnded;
+            
+            // determine which intent user wants and context
+            var result = LuisService.Query(AppId, activity.Text);
+            var requestedQuit = 
+                result.TopScoringIntent.Intent.ToLower().Equals("quit") && 
+                result.TopScoringIntent.Score > 0.4;
+
+            var intent = IntentProvider.GetIntent(AppId, result.TopScoringIntent.Intent);
 
             // if the user is trying to end or finish a conversation 
             if (inConversation && requestedQuit) { 
                 conversation.IsEnded = true;
-                inConversation = false;
+                return intent.Respond(null, null, null);
             }
-
+            
             // start a new conversation if not in one
-            if (!inConversation)
+            if (!inConversation && intent != null && result.TopScoringIntent.Score > 0.4)
             {
                 conversation = ConversationFactory.Create(result, intent);
-                ConversationHistory.Conversations.Add(conversation);                
+                ConversationHistory.Conversations.Add(conversation);
+                inConversation = true;
             }
 
-            // check and request all required parameters of a conversation
-            foreach (ConversationParameter p in conversation.Intent.RequiredParameters)
-            {
-                if (!TryGetParam(p.ParamName, result, conversation, parameters, p.ParamGetter))
-                    return RequestParam(p, conversation, parameters);
+            if (inConversation) { 
+                
+                // check and request all required parameters of a conversation
+                foreach (ConversationParameter p in conversation.Intent.RequiredParameters)
+                {
+                    if (!TryGetParam(p.ParamName, result, conversation, parameters, p.ParamGetter))
+                        return RequestParam(p, conversation, parameters);
+                }
+
+                conversation.IsEnded = true;
+
+                return conversation.Intent.Respond(result, parameters, conversation);
             }
 
-            conversation.IsEnded = true;
+            // respond with fallback / default
+            var sentiment = GetSentiment(activity.Text);
+            var sentimentScore = (sentiment?.Documents != null && sentiment.Documents.Any())
+                ? sentiment.Documents.First().Score
+                : 1;
 
-            return conversation.Intent.Respond(result, parameters, conversation);
+            // is a user frustrated or is their intention unclear
+            return (sentimentScore <= 0.4)
+                ? IntentProvider.GetIntent(AppId, "frustrated user").Respond(null, null, null)
+                : IntentProvider.GetDefaultResponse(AppId);
+            
         }
         
         public virtual SentimentResponse GetSentiment(string text)

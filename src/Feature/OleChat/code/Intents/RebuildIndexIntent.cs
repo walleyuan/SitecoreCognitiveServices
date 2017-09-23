@@ -72,7 +72,9 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
                 if (searchIndex == null)
                     return null;
             }
-            catch { }
+            catch {
+                return null;
+            }
 
             return paramValue;
         }
