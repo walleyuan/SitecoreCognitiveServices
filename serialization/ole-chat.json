@@ -195,6 +195,11 @@
             "entities": []
         },
         {
+            "text": "please stop",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
             "text": "what can i do?",
             "intent": "About",
             "entities": []
@@ -235,6 +240,21 @@
             "entities": []
         },
         {
+            "text": "please cancel",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "i want to quit",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "let it go",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
             "text": "i'm finished",
             "intent": "Quit",
             "entities": []
@@ -262,6 +282,11 @@
         {
             "text": "what version are you",
             "intent": "Version",
+            "entities": []
+        },
+        {
+            "text": "i want to stop",
+            "intent": "Quit",
             "entities": []
         },
         {
@@ -295,6 +320,11 @@
             "entities": []
         },
         {
+            "text": "i want to cancel",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
             "text": "can you log me out",
             "intent": "Logout",
             "entities": []
@@ -307,6 +337,21 @@
         {
             "text": "you're helpful",
             "intent": "Thanks",
+            "entities": []
+        },
+        {
+            "text": "let me go",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "i don't want to do this anymore",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "please quit",
+            "intent": "Quit",
             "entities": []
         },
         {
