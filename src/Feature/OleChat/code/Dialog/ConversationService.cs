@@ -99,7 +99,6 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
             return (sentimentScore <= 0.4)
                 ? IntentProvider.GetIntent(AppId, "frustrated user").Respond(null, null, null)
                 : IntentProvider.GetDefaultResponse(AppId);
-            
         }
         
         public virtual SentimentResponse GetSentiment(string text)
