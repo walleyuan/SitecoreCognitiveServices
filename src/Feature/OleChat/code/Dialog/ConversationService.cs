@@ -89,7 +89,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
                 return conversation.Intent.Respond(result, parameters, conversation);
             }
 
-            // respond with fallback / default
+            // determine mood of comment
             var sentiment = GetSentiment(activity.Text);
             var sentimentScore = (sentiment?.Documents != null && sentiment.Documents.Any())
                 ? sentiment.Documents.First().Score
