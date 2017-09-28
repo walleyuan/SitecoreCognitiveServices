@@ -175,8 +175,11 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search
 
         private bool MeetsRestrictions(MediaItem mediaItem)
         {
-            int height = Int32.Parse(mediaItem.InnerItem["Height"]);
-            int width = Int32.Parse(mediaItem.InnerItem["Width"]);
+            var h = mediaItem.InnerItem["Height"];
+            var w = mediaItem.InnerItem["Width"];
+
+            int height = (h != null) ? Int32.Parse(h) : 0;
+            int width = (w != null) ? Int32.Parse(w) : 0;
 
             if (height <= 36 || height > 4096)
             {
