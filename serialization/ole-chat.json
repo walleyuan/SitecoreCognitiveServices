@@ -931,6 +931,21 @@
             "text": "rebuild the index",
             "intent": "Rebuild Index",
             "entities": []
+        },
+        {
+            "text": "publish one single item",
+            "intent": "Publish",
+            "entities": []
+        },
+        {
+            "text": "publish an article",
+            "intent": "Publish",
+            "entities": []
+        },
+        {
+            "text": "publish an item",
+            "intent": "Publish",
+            "entities": []
         }
     ]
 }
