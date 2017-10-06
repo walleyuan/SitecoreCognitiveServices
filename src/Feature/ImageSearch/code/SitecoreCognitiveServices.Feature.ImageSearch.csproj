@@ -148,6 +148,7 @@
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\chosen-sprite%402x.png" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\chosen-sprite.png" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\chosen.css" />
+    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\jquery-ui-1.12.1.min.css" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\SitecoreCognitiveServices.Feature.ImageSearch.css" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Chosen\bower.json" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Chosen\chosen-sprite%402x.png" />
@@ -168,6 +169,7 @@
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Chosen\index.proto.html" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Chosen\options.html" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\Chosen\package.json" />
+    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\jquery-ui-1.12.1.min.js" />
     <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\SitecoreCognitiveServices.Feature.ImageSearch.js" />
     <Content Include="sitecore\shell\Controls\Rich Text Editor\RichText Commands.js" />
     <Content Include="sitecore\shell\Themes\Standard\Default\Content Manager.css" />
