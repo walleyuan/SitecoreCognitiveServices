@@ -1,8 +1,8 @@
 ﻿---
-ID: "9eb9704a-40d1-45ee-8419-b4ff3b8c9cdd"
-Parent: "7e9759ca-21fc-4091-abe1-931d6bca4615"
+ID: "9c074209-5d61-4f07-aee0-40d0d83715ac"
+Parent: "2d40c1c7-d718-4c57-a077-18048dec3f44"
 Template: "3c8bd8a1-280b-4278-bb8b-21fa3b87af0f"
-Path: /sitecore/system/Settings/Html Editor Profiles/Rich Text Default/Toolbar 1/Insert Cognitive Sitecore Media
+Path: /sitecore/system/Settings/Html Editor Profiles/Rich Text Full/Toolbar 1/Insert Image with Cognitive Search
 DB: core
 BranchID: "b9ed3ccb-9ec5-4c8c-825b-3dbc2eb0e676"
 SharedFields:
@@ -17,7 +17,7 @@ SharedFields:
   Value: InsertCognitiveSitecoreMedia
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 813
+  Value: 1550
 Languages:
 - Language: da
   Fields:
@@ -53,7 +53,7 @@ Languages:
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Insert Cognitive Sitecore Media
+    Value: Insert Image with Cognitive Search
   Versions:
   - Version: 1
     Fields:
