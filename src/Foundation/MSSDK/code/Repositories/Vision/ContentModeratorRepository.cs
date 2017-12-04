@@ -22,14 +22,14 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision {
 
         protected static readonly string moderateSessionTokenKey = "ModerateSessionTokenKey";
 
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         protected HttpContextBase Context { get; set; }
 
         public ContentModeratorRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repoClient,
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repoClient,
             HttpContextBase context) {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;

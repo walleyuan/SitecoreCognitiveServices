@@ -12,12 +12,12 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing {
         public static readonly string trendingUrl = "news/trendingtopics";
         public static readonly string newsUrl = "news/search";
 
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public NewsSearchRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repositoryClient)
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repositoryClient)
         {
             ApiKeys = apiKeys;
             RepositoryClient = repositoryClient;

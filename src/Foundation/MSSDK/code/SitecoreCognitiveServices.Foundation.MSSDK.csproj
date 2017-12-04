@@ -518,8 +518,8 @@
     <Compile Include="Repositories\Bing\SpellCheckRepository.cs" />
     <Compile Include="Repositories\Bing\VideoSearchRepository.cs" />
     <Compile Include="Repositories\Bing\WebSearchRepository.cs" />
-    <Compile Include="Repositories\IApiKeys.cs" />
-    <Compile Include="Repositories\IRepositoryClient.cs" />
+    <Compile Include="Repositories\IMicrosoftCognitiveServicesApiKeys.cs" />
+    <Compile Include="Repositories\IMicrosoftCognitiveServicesRepositoryClient.cs" />
     <Compile Include="Repositories\Knowledge\AcademicSearchRepository.cs" />
     <Compile Include="Repositories\Knowledge\EntityLinkingRepository.cs" />
     <Compile Include="Repositories\Knowledge\IAcademicSearchRepository.cs" />
@@ -539,7 +539,7 @@
     <Compile Include="Repositories\Language\TextAnalyticsRepository.cs" />
     <Compile Include="Repositories\Language\TranslatorRepository.cs" />
     <Compile Include="Repositories\Language\WebLanguageModelRepository.cs" />
-    <Compile Include="Repositories\RepositoryClient.cs" />
+    <Compile Include="Repositories\MicrosoftCognitiveServicesRepositoryClient.cs" />
     <Compile Include="Repositories\Speech\ICustomSpeechRepository.cs" />
     <Compile Include="Repositories\Speech\ISpeakerIdentificationRepository.cs" />
     <Compile Include="Repositories\Speech\ISpeakerVerificationRepository.cs" />

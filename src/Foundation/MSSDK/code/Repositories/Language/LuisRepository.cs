@@ -16,13 +16,13 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language {
         protected static readonly string luisSubKeyUrl = $"{luisRoot}subscriptions/";
         protected static readonly string luisProgKeyUrl = $"{luisRoot}programmatickey";
 
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
         protected readonly ICSVParser CSVParser;
 
         public LuisRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repoClient,
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repoClient,
             ICSVParser csvParser)
         {
             ApiKeys = apiKeys;

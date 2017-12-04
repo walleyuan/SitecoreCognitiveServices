@@ -6,12 +6,12 @@ using Newtonsoft.Json;
 namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Knowledge {
     public class QnAMakerRepository : IQnAMakerRepository 
     {
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public QnAMakerRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repositoryClient) {
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repositoryClient) {
             ApiKeys = apiKeys;
             RepositoryClient = repositoryClient;
         }

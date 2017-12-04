@@ -6,12 +6,12 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing
 {
     public class AutoSuggestRepository : IAutoSuggestRepository
     {
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public AutoSuggestRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repositoryClient)
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repositoryClient)
         {
             ApiKeys = apiKeys;
             RepositoryClient = repositoryClient;

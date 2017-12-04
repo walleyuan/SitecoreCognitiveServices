@@ -8,12 +8,12 @@ using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.SpellCheck;
 namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing {
     public class SpellCheckRepository : ISpellCheckRepository
     {
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public SpellCheckRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repoClient)
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repoClient)
         {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;

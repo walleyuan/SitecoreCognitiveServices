@@ -10,12 +10,12 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing {
     {
         protected static readonly string contentType = "audio/wav; samplerate=16000";
         
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public SpeechRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repositoryClient) {
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repositoryClient) {
             ApiKeys = apiKeys;
             RepositoryClient = repositoryClient;
         }

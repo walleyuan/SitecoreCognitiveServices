@@ -7,7 +7,7 @@ using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Intents;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
-using SitecoreCognitiveServices.Foundation.SCSDK.Services.Language;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
