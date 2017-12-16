@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Luis {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis {
     public class ApplicationDefinition {
         [JsonProperty(PropertyName = "luis_schema_version")]
         public string LuisSchemaVersion { get; set; }

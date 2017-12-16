@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer
 {
     public class RecognitionResult
     {

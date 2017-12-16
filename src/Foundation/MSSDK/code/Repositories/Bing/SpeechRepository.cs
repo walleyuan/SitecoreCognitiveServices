@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.IO;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.Speech;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.Speech;
 using Newtonsoft.Json;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing {
     public class SpeechRepository : ISpeechRepository
     {
         protected static readonly string contentType = "audio/wav; samplerate=16000";
         
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public SpeechRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repositoryClient) {
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repositoryClient) {
             ApiKeys = apiKeys;
             RepositoryClient = repositoryClient;
         }
@@ -29,7 +29,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
         {
             string url = GetSpeechToTextUrl(scenario, locale, os, fromDeviceId, maxnbest, profanitycheck);
             string token = RepositoryClient.SendBingSpeechTokenRequest(ApiKeys.BingSpeech);
-            string data = RepositoryClient.GetStreamString(audioStream);
+            byte[] data = RepositoryClient.GetByteArray(audioStream);
 
             var response = RepositoryClient.Send(ApiKeys.BingSpeech, url, data, contentType, "POST", token, true, "speech.platform.bing.com");
 
@@ -50,7 +50,7 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
 
             string url = GetSpeechToTextUrl(scenario, locale, os, fromDeviceId, maxnbest, profanitycheck);
             string token = RepositoryClient.SendBingSpeechTokenRequest(ApiKeys.BingSpeech);
-            string data = RepositoryClient.GetStreamString(audioStream);
+            byte[] data = RepositoryClient.GetByteArray(audioStream);
 
             var response = await RepositoryClient.SendAsync(ApiKeys.BingSpeech, url, data, contentType, "POST", token, true, "speech.platform.bing.com");
 

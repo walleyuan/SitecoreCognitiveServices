@@ -1,19 +1,19 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Speech;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Speech;
 using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Speech
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Speech
 {
     public class SpeakerVerificationRepository : ISpeakerVerificationRepository
     {
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public SpeakerVerificationRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repoClient) {
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repoClient) {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;
         }

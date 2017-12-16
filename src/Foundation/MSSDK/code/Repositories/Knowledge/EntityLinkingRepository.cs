@@ -1,18 +1,18 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.EntityLinking;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking;
 using Newtonsoft.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Knowledge
 {
     public class EntityLinkingRepository : IEntityLinkingRepository
     {
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public EntityLinkingRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repoClient) {
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repoClient) {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;
         }

@@ -2,22 +2,22 @@
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.NewsSearch;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.NewsSearch;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing {
     public class NewsSearchRepository : INewsSearchRepository {
 
         public static readonly string categoryUrl = "news/";
         public static readonly string trendingUrl = "news/trendingtopics";
         public static readonly string newsUrl = "news/search";
 
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public NewsSearchRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repositoryClient)
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repositoryClient)
         {
             ApiKeys = apiKeys;
             RepositoryClient = repositoryClient;

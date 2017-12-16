@@ -1,7 +1,7 @@
 ﻿using Sitecore.Data.Items;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Enums;
+using SitecoreCognitiveServices.Feature.ImageSearch.Enums;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image
 {
     public class Size: BaseComputedField
     {

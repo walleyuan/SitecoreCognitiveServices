@@ -1,0 +1,23 @@
+﻿@model List<SitecoreCognitiveServices.Project.LaunchDemo.Models.KeyPhraseAnalysisResult>
+
+@using System.Linq
+
+@if (Model != null)
+{
+    <div class="key-phrase-wrap">
+        @foreach (var f in Model)
+        {
+            <div class="phrase-link">
+                <h3>
+                    @f.FieldName
+                </h3>
+                <div class="phrase-content">
+                    <h4>Content</h4>
+                    <div class="phrase-content-wrap">
+                        @Html.Raw(f.HighlightPhrases("span", "phrase-entity"))
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

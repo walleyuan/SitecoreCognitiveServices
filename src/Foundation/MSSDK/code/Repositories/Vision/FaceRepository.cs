@@ -6,21 +6,21 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.Text;
 using System.Globalization;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Face;
-using Microsoft.SharedSource.CognitiveServices.Models.Common;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Common;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision
 {
     public class FaceRepository : IFaceRepository
     {
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public FaceRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repoClient) {
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repoClient) {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;
         }

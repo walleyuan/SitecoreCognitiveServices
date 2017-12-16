@@ -2,20 +2,20 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Linguistic;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Linguistic;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language
 {
     public class LinguisticRepository : ILinguisticRepository
     {
         public static readonly string textAnalysisUrl = "analyze";
 
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public LinguisticRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repoClient) {
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repoClient) {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;
         }

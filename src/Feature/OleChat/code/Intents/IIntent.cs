@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
+using SitecoreCognitiveServices.Feature.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Models;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
     public interface IIntent {
         Guid ApplicationId { get; }
         string Name { get; }
         string Description { get; }
         List<ConversationParameter> RequiredParameters { get; }
-        string Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation);
-        string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation);
+        ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation);
     }
 }

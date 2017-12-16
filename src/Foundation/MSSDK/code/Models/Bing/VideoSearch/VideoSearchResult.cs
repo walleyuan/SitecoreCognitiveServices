@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Bing.VideoSearch {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.VideoSearch {
     public class VideoSearchResult 
     {
         public string Name { get; set; }

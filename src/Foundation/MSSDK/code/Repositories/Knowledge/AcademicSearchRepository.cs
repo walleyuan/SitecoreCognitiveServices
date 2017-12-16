@@ -2,10 +2,10 @@
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Knowledge.AcademicSearch;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.AcademicSearch;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Knowledge {
     public class AcademicSearchRepository : IAcademicSearchRepository
     {
         protected static readonly string calcUrl = "calchistogram";
@@ -14,12 +14,12 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge {
         protected static readonly string interpretUrl = "interpret";
         protected static readonly string similarityUrl = "similarity";
 
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public AcademicSearchRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repoClient)
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repoClient)
         {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;

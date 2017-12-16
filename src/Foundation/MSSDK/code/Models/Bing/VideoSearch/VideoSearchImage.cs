@@ -1,5 +1,5 @@
 ﻿
-namespace Microsoft.SharedSource.CognitiveServices.Models.Bing.VideoSearch {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.VideoSearch {
     public class VideoSearchImage {
         public string Description { get; set; }
         public string ThumbnailUrl { get; set; }

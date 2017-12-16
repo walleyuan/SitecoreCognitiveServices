@@ -3,18 +3,18 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Models.Speech;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Speech;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Speech
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Speech
 {
     public class SpeakerIdentificationRepository : ISpeakerIdentificationRepository
     {
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public SpeakerIdentificationRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repoClient) {
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repoClient) {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;
         }

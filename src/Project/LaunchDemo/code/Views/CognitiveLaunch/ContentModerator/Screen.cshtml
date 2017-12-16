@@ -1,0 +1,121 @@
+﻿@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator.ScreenResponse
+@{
+    ViewBag.Title = "Content Moderator - Screen";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form cm-screen-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/ContentModeratorScreen">
+        <fieldset>
+            <legend>Screen Text</legend>
+            <div class="form-row">
+                <label>provide text to screen</label>
+                <br/>
+                <textarea name="text">cna you eamil some.name@microsoft.com or call me at 1-781-999-4213. I also live at 123 evergreen terrace, junction rapid, co 02111</textarea>
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Screen Text"/>
+            </div>
+            <br/>
+            <div class="screen-result">
+                <h2>Screen Text</h2>
+                @if (Model != null)
+                {
+                    if (Model.OriginalText != null)
+                    {
+                        <div>
+                            <label>Original:</label> @Model.OriginalText    
+                        </div><hr />
+                    }
+                    if (Model.AutoCorrectedText != null)
+                    {
+                        <div>
+                            <label>Auto Corrected:</label> @Model.AutoCorrectedText    
+                        </div><hr />
+                    }
+                    if (Model.Language != null)
+                    {
+                        <div>
+                            <label>Language:</label> @Model.Language
+                        </div><hr />
+                    }
+                    if (Model.Terms != null)
+                    {
+                        <div>
+                            <label>Terms:</label> @string.Join(", ", Model.Terms)
+                        </div><hr />
+                    }
+                    if (Model.PII != null)
+                    {
+                         <div>
+                             <h3>Personal Identifiable Information: </h3>
+                             @if(Model.PII.Address != null && Model.PII.Address.Any()) { 
+                                 <h4>Addresses</h4>
+                                 foreach (var a in Model.PII.Address)
+                                  {
+                                      <div>
+                                          <div>
+                                              Text: @a.Text
+                                          </div>
+                                          <div>
+                                              Subtype: @a.SubType
+                                          </div>
+                                      </div>
+                                      <hr/>
+                                  }
+                             }
+                             @if (Model.PII.Email != null && Model.PII.Email.Any())
+                             {
+                                 <h4>Emails</h4>
+                                 foreach (var a in Model.PII.Email)
+                                 {
+                                    <div>
+                                        <div>
+                                            Text: @a.Text
+                                        </div>
+                                        <div>
+                                            Subtype: @a.SubType
+                                        </div>
+                                    </div>
+                                    <hr />
+                                 }
+                             }
+                             @if (Model.PII.IPA != null && Model.PII.IPA.Any())
+                             {
+                                 <h4>Initial Privacy Assessment</h4>
+                                 foreach (var a in Model.PII.IPA)
+                                 {
+                                    <div>
+                                        <div>
+                                            Text: @a.Text
+                                        </div>
+                                        <div>
+                                            Subtype: @a.SubType
+                                        </div>
+                                    </div>
+                                    <hr />
+                                 }
+                             }
+                             @if (Model.PII.Phone != null && Model.PII.Phone.Any())
+                             {
+                                 <h4>Phone Numbers</h4>
+                                 foreach (var a in Model.PII.Phone)
+                                 {
+                                    <div>
+                                        <div>
+                                            Text: @a.Text
+                                        </div>
+                                        <div>
+                                            Subtype: @a.SubType
+                                        </div>
+                                    </div>
+                                    <hr />
+                                 }
+                             }
+                         </div>
+                    }
+                }
+            </div>
+        </fieldset>
+    </form>
+</div>

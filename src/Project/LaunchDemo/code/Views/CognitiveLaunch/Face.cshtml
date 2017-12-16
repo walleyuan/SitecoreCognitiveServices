@@ -1,0 +1,40 @@
+﻿@model SitecoreCognitiveServices.Project.LaunchDemo.Models.FaceResult
+@{
+    ViewBag.Title = "Face";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form face-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/Face">
+        <fieldset>
+            <legend>Face</legend>
+            <div class="form-row">
+                <label>provide a photo url</label>
+                <input type="text" name="url"/>
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Analyze Photo Face"/>
+            </div>
+            <div class="image-sample">
+                @if (Model.ImageUrl != null)
+                {
+                    <img src="@Model.ImageUrl" />
+                }
+                @if(Model.Result != null) { 
+                    foreach (var fa in Model.Result)
+                    {
+                        <div class="facial-block">
+                            <div class="attribute-wrap" style="top: @{@fa.FaceRectangle.Top}px; left: @{@(fa.FaceRectangle.Left + fa.FaceRectangle.Width + 15)}px">
+                                @Html.Partial("~/Views/CognitiveLaunch/Face/Attributes.cshtml", fa.FaceAttributes, new ViewDataDictionary(fa.FaceAttributes))
+                            </div>
+                            <div class="landmark-wrap">
+                                @Html.Partial("~/Views/CognitiveLaunch/Face/Landmarks.cshtml", fa.FaceLandmarks, new ViewDataDictionary(fa.FaceLandmarks))
+                            </div>
+                            @Html.Partial("~/Views/CognitiveLaunch/Face/Rectangle.cshtml", fa.FaceRectangle)
+                        </div>
+                    }
+                }
+            </div>
+        </fieldset>
+    </form>
+</div>

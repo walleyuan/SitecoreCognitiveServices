@@ -21,45 +21,50 @@ and running. There are additional default properties from dev.properties that yo
   <property name="Gulp.DeployFolder" value="D:\\inetpub\\wwwroot\\sc82u4" />
   
   <!-- API Keys -->
-  <property name="CognitiveService.ApiKey.Academic" value="" />
-  <property name="CognitiveService.ApiKey.Academic.Endpoint" value="https://westus.api.cognitive.microsoft.com/academic/v1.0/" />
-  <property name="CognitiveService.ApiKey.BingAutosuggest" value="" />
-  <property name="CognitiveService.ApiKey.BingAutosuggest.Endpoint" value="https://api.cognitive.microsoft.com/bing/v5.0/suggestions/" />
-  <property name="CognitiveService.ApiKey.BingSearch" value="" />
-  <property name="CognitiveService.ApiKey.BingSearch.Endpoint" value="https://api.cognitive.microsoft.com/bing/v5.0/" />
-  <property name="CognitiveService.ApiKey.BingSpeech" value="" />
-  <property name="CognitiveService.ApiKey.BingSpeech.Endpoint" value="https://speech.platform.bing.com/" />
-  <property name="CognitiveService.ApiKey.BingSpellCheck" value="" />
-  <property name="CognitiveService.ApiKey.BingSpellCheck.Endpoint" value="https://api.cognitive.microsoft.com/bing/v5.0/spellcheck/" />
-  <property name="CognitiveService.ApiKey.ComputerVision" value="" />
-  <property name="CognitiveService.ApiKey.ComputerVision.Endpoint" value="https://api.projectoxford.ai/vision/v1.0/" />
-  <property name="CognitiveService.ApiKey.ContentModerator" value="" />
-  <property name="CognitiveService.ApiKey.ContentModerator.ClientId" value="" />
-  <property name="CognitiveService.ApiKey.ContentModerator.PrivateKey" value="" />
-  <property name="CognitiveService.ApiKey.ContentModerator.Endpoint" value="https://westus.api.cognitive.microsoft.com/contentmoderator/" />
-  <property name="CognitiveService.ApiKey.Emotion" value="" />
-  <property name="CognitiveService.ApiKey.Emotion.Endpoint" value="https://westus.api.cognitive.microsoft.com/emotion/v1.0/" />
-  <property name="CognitiveService.ApiKey.EntityLinking" value="" />
-  <property name="CognitiveService.ApiKey.EntityLinking.Endpoint" value="https://api.projectoxford.ai/entitylinking/v1.0/" />
-  <property name="CognitiveService.ApiKey.Face" value="" />
-  <property name="CognitiveService.ApiKey.Face.Endpoint" value="https://api.projectoxford.ai/face/v1.0/" />
-  <property name="CognitiveService.ApiKey.LinguisticAnalysis" value="" />
-  <property name="CognitiveService.ApiKey.LinguisticAnalysis.Endpoint" value="https://westus.api.cognitive.microsoft.com/linguistics/v1.0/" />
-  <property name="CognitiveService.ApiKey.Luis" value="" />
-  <property name="CognitiveService.ApiKey.Luis.Endpoint" value="https://westus.api.cognitive.microsoft.com/luis/" />
-  <property name="CognitiveService.ApiKey.QnA" value="" />
-  <property name="CognitiveService.ApiKey.QnA.Endpoint" value="https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases/" />
-  <property name="CognitiveService.ApiKey.Recommendations" value="" />
-  <property name="CognitiveService.ApiKey.Recommendations.Endpoint" value="https://westus.api.cognitive.microsoft.com/recommendations/v4.0/" />
-  <property name="CognitiveService.ApiKey.SpeakerRecognition" value="" />
-  <property name="CognitiveService.ApiKey.SpeakerRecognition.Endpoint" value="https://westus.api.cognitive.microsoft.com/spid/v1.0/" />
-  <property name="CognitiveService.ApiKey.TextAnalytics" value="" />
-  <property name="CognitiveService.ApiKey.TextAnalytics.Endpoint" value="https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/" />
-  <property name="CognitiveService.ApiKey.Video" value="" />
-  <property name="CognitiveService.ApiKey.Video.Endpoint" value="https://api.projectoxford.ai/video/v1.0/" />
-  <property name="CognitiveService.ApiKey.WebLM" value="" />
-  <property name="CognitiveService.ApiKey.WebLM.Endpoint" value="https://westus.api.cognitive.microsoft.com/text/weblm/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.Academic" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.Academic.Endpoint" value="https://westus.api.cognitive.microsoft.com/academic/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingAutosuggest" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingAutosuggest.Endpoint" value="https://api.cognitive.microsoft.com/bing/v5.0/suggestions/" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingSearch" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingSearch.Endpoint" value="https://api.cognitive.microsoft.com/bing/v5.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingSpeech" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingSpeech.Endpoint" value="https://speech.platform.bing.com/" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingSpellCheck" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingSpellCheck.Endpoint" value="https://api.cognitive.microsoft.com/bing/v5.0/spellcheck/" />
+  <property name="CognitiveService.ApiKey.MSSDK.ComputerVision" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.ComputerVision.Endpoint" value="https://api.projectoxford.ai/vision/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.ContentModerator" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.ContentModerator.ClientId" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.ContentModerator.PrivateKey" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.ContentModerator.Endpoint" value="https://westus.api.cognitive.microsoft.com/contentmoderator/" />
+  <property name="CognitiveService.ApiKey.MSSDK.Emotion" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.Emotion.Endpoint" value="https://westus.api.cognitive.microsoft.com/emotion/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.EntityLinking" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.EntityLinking.Endpoint" value="https://api.projectoxford.ai/entitylinking/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.Face" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.Face.Endpoint" value="https://api.projectoxford.ai/face/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.LinguisticAnalysis" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.LinguisticAnalysis.Endpoint" value="https://westus.api.cognitive.microsoft.com/linguistics/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.Luis" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.Luis.Endpoint" value="https://westus.api.cognitive.microsoft.com/luis/" />
+  <property name="CognitiveService.ApiKey.MSSDK.QnA" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.QnA.Endpoint" value="https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases/" />
+  <property name="CognitiveService.ApiKey.MSSDK.Recommendations" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.Recommendations.Endpoint" value="https://westus.api.cognitive.microsoft.com/recommendations/v4.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.SpeakerRecognition" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.SpeakerRecognition.Endpoint" value="https://westus.api.cognitive.microsoft.com/spid/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.TextAnalytics" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.TextAnalytics.Endpoint" value="https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.Video" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.Video.Endpoint" value="https://api.projectoxford.ai/video/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.WebLM" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.WebLM.Endpoint" value="https://westus.api.cognitive.microsoft.com/text/weblm/v1.0/" />
 
+  <property name="CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Endpoint" value="https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/" />
+  <property name="CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Username" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Password" value="" />
+    
   <!-- Module Settings-->
   <property name="CognitiveService.Language" value="en" />
   <property name="CognitiveService.CatchAndReleaseExceptions" value="false" />

@@ -1,9 +1,9 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Utility;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Search;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
+using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Factories
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
 {
     public interface IImageDescriptionFactory
     {

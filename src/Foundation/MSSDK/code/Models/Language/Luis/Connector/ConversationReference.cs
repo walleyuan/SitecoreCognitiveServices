@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Luis.Connector {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis.Connector {
     public class ConversationReference : IEquatable<ConversationReference> {
         /// <summary>
         /// (Optional) ID of the activity to refer to

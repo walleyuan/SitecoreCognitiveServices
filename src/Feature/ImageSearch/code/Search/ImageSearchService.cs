@@ -2,13 +2,13 @@
 using System.Linq;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Factories;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Analysis;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Utility;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Search;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
+using SitecoreCognitiveServices.Feature.ImageSearch.Search;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Services.Search {
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Services.Search {
     public class ImageSearchService : IImageSearchService 
     {
         protected readonly ICognitiveImageSearchContext Searcher;

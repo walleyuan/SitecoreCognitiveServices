@@ -1,5 +1,5 @@
 ﻿
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Utility
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility
 {
     public class SetAltTagsAll : ISetAltTagsAll
     {

@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Knowledge.EntityLinking {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.EntityLinking {
     [DataContract]
     public class EntityLink {
         [DataMember(Name = "name")]

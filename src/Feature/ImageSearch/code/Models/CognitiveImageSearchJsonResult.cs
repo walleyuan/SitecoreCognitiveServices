@@ -1,5 +1,5 @@
 ﻿
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Models
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Models
 {
     public class CognitiveImageSearchJsonResult : ICognitiveImageSearchJsonResult
     {

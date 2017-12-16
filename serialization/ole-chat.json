@@ -21,6 +21,9 @@
             "name": "Logged In Users"
         },
         {
+            "name": "Logout"
+        },
+        {
             "name": "None"
         },
         {
@@ -30,6 +33,9 @@
             "name": "Quit"
         },
         {
+            "name": "Rebuild Index"
+        },
+	{
             "name": "Search"
         },
         {
@@ -60,6 +66,9 @@
         },
         {
             "name": "Domain User"
+        },
+        {
+            "name": "Index Name"
         },
         {
             "name": "Item Path"
@@ -124,7 +133,22 @@
             "entities": []
         },
         {
+            "text": "end",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
             "text": "quit",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "cancel",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "end it",
             "intent": "Quit",
             "entities": []
         },
@@ -149,13 +173,33 @@
             "entities": []
         },
         {
+            "text": "stop it",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
             "text": "exit",
             "intent": "Quit",
             "entities": []
         },
         {
+            "text": "log out",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
+            "text": "log me out",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
             "text": "what's up",
             "intent": "Greet",
+            "entities": []
+        },
+        {
+            "text": "please stop",
+            "intent": "Quit",
             "entities": []
         },
         {
@@ -179,12 +223,37 @@
             "entities": []
         },
         {
+            "text": "logout",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
+            "text": "i'm done",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
             "text": "thank you so much",
             "intent": "Thanks",
             "entities": []
         },
         {
             "text": "forget it",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "please cancel",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "i want to quit",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "let it go",
             "intent": "Quit",
             "entities": []
         },
@@ -209,8 +278,18 @@
             "entities": []
         },
         {
+            "text": "i want to log out",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
             "text": "what version are you",
             "intent": "Version",
+            "entities": []
+        },
+        {
+            "text": "i want to stop",
+            "intent": "Quit",
             "entities": []
         },
         {
@@ -229,13 +308,53 @@
             "entities": []
         },
         {
+            "text": "i want to logout",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
             "text": "what's available?",
             "intent": "About",
             "entities": []
         },
         {
+            "text": "drop it",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "i want to cancel",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "can you log me out",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
+            "text": "can i log out",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
             "text": "you're helpful",
             "intent": "Thanks",
+            "entities": []
+        },
+        {
+            "text": "let me go",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "i don't want to do this anymore",
+            "intent": "Quit",
+            "entities": []
+        },
+        {
+            "text": "please quit",
+            "intent": "Quit",
             "entities": []
         },
         {
@@ -256,6 +375,16 @@
         {
             "text": "is anyone there",
             "intent": "Greet",
+            "entities": []
+        },
+        {
+            "text": "can i logout",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
+            "text": "kick user",
+            "intent": "Kick User",
             "entities": []
         },
         {
@@ -532,6 +661,11 @@
             ]
         },
         {
+            "text": "i need to logout",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
             "text": "what actions can you do",
             "intent": "About",
             "entities": []
@@ -594,6 +728,11 @@
         {
             "text": "how many items do i have locked",
             "intent": "Locked Item Count",
+            "entities": []
+        },
+        {
+            "text": "rebuild index",
+            "intent": "Rebuild Index",
             "entities": []
         },
         {
@@ -677,6 +816,11 @@
             ]
         },
         {
+            "text": "i need to log out",
+            "intent": "Logout",
+            "entities": []
+        },
+        {
             "text": "what a great tool",
             "intent": "Thanks",
             "entities": []
@@ -686,7 +830,7 @@
             "intent": "Thanks",
             "entities": []
         },
-        {
+	{
             "text": "how many pages reference 'something'",
             "intent": "Search",
             "entities": [
@@ -735,10 +879,10 @@
                     "entity": "Search::field name",
                     "startPos": 42,
                     "endPos": 48
-                }
-            ]
+		 }
+	    ]
         },
-        {
+	{
             "text": "how many pages are on the site",
             "intent": "Search",
             "entities": [
@@ -751,10 +895,10 @@
                     "entity": "Search::template name",
                     "startPos": 9,
                     "endPos": 13
-                }
-            ]
+		}
+	    ]
         },
-        {
+	{
             "text": "are there any article pages",
             "intent": "Search",
             "entities": [
@@ -767,10 +911,10 @@
                     "entity": "Search::template name",
                     "startPos": 14,
                     "endPos": 20
-                }
-            ]
+		}
+	    ]
         },
-        {
+	{
             "text": "can you find the first article for me",
             "intent": "Search",
             "entities": [
@@ -810,6 +954,132 @@
                     "startPos": 16,
                     "endPos": 22
                 }
+            ]
+        },
+        {
+            "text": "kicked out",
+            "intent": "Kick User",
+            "entities": []
+        },
+        {
+            "text": "kicking out",
+            "intent": "Kick User",
+            "entities": []
+        },
+        {
+            "text": "kick out",
+            "intent": "Kick User",
+            "entities": []
+        },
+        {
+            "text": "kick member",
+            "intent": "Kick User",
+            "entities": []
+        },
+        {
+            "text": "i want to rebuild the web index",
+            "intent": "Rebuild Index",
+            "entities": [
+                {
+                    "entity": "Index Name",
+                    "startPos": 22,
+                    "endPos": 24
+                }
+            ]
+        },
+        {
+            "text": "i want to rebuild and index",
+            "intent": "Rebuild Index",
+            "entities": []
+        },
+        {
+            "text": "how do i rebuild the web index",
+            "intent": "Rebuild Index",
+            "entities": [
+                {
+                    "entity": "Index Name",
+                    "startPos": 21,
+                    "endPos": 23
+                }
+            ]
+        },
+        {
+            "text": "how do i rebuild an index",
+            "intent": "Rebuild Index",
+            "entities": []
+        },
+        {
+            "text": "can you rebuild an index",
+            "intent": "Rebuild Index",
+            "entities": []
+        },
+        {
+            "text": "can you rebuild the web index",
+            "intent": "Rebuild Index",
+            "entities": [
+                {
+                    "entity": "Index Name",
+                    "startPos": 20,
+                    "endPos": 22
+                }
+            ]
+        },
+        {
+            "text": "rebuild web index",
+            "intent": "Rebuild Index",
+            "entities": [
+                {
+                    "entity": "Index Name",
+                    "startPos": 8,
+                    "endPos": 10
+                }
+            ]
+        },
+        {
+            "text": "build web index",
+            "intent": "Rebuild Index",
+            "entities": [
+                {
+                    "entity": "Index Name",
+                    "startPos": 6,
+                    "endPos": 8
+                }
+            ]
+        },
+        {
+            "text": "index build",
+            "intent": "Rebuild Index",
+            "entities": []
+        },
+        {
+            "text": "build index",
+            "intent": "Rebuild Index",
+            "entities": []
+        },
+        {
+            "text": "index rebuild",
+            "intent": "Rebuild Index",
+            "entities": []
+        },
+        {
+            "text": "rebuild the index",
+            "intent": "Rebuild Index",
+            "entities": []
+        },
+        {
+            "text": "publish one single item",
+            "intent": "Publish",
+            "entities": []
+        },
+        {
+            "text": "publish an article",
+            "intent": "Publish",
+            "entities": []
+        },
+        {
+            "text": "publish an item",
+            "intent": "Publish",
+            "entities": []
             ]
         }
     ]

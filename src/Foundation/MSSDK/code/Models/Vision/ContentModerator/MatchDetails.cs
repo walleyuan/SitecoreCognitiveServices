@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Microsoft.SharedSource.CognitiveServices.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator
 {
     public class MatchDetails
     {

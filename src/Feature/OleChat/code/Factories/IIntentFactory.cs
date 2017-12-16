@@ -1,6 +1,6 @@
-﻿using Sitecore.SharedSource.CognitiveServices.OleChat.Intents;
+﻿using SitecoreCognitiveServices.Feature.OleChat.Intents;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Factories {
+namespace SitecoreCognitiveServices.Feature.OleChat.Factories {
     public interface IIntentFactory<out T> where T : IIntent {
         T Create();
     }

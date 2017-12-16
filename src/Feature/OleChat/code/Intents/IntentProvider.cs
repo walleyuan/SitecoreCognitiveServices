@@ -2,20 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Factories;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
+using SitecoreCognitiveServices.Feature.OleChat.Models;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
     public class IntentProvider : IIntentProvider
     {
         private readonly Dictionary<Guid, Dictionary<string, IIntent>> _intentDictionary;
-        
-        public IntentProvider(IServiceProvider provider)
+        protected readonly IConversationResponseFactory ConversationResponseFactory;
+
+        public IntentProvider(
+            IServiceProvider provider,
+            IConversationResponseFactory reponseFactory)
         {
             _intentDictionary = provider.GetServices<IIntentFactory<IIntent>>()
                 .Select(a => a.Create())
                 .GroupBy(g => g.ApplicationId)
                 .ToDictionary(a => a.Key, a => a.ToDictionary(b => b.Name));
+
+            ConversationResponseFactory = reponseFactory;
         }
 
         public Dictionary<string, IIntent> GetAllIntents(Guid appId)
@@ -39,9 +45,9 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
                 : null;
         }
 
-        public string GetDefaultResponse(Guid appId)
+        public ConversationResponse GetDefaultResponse(Guid appId)
         {
-            return GetIntent(appId, "default")?.Respond(null, null, null) ?? string.Empty;
+            return GetIntent(appId, "none")?.Respond(null, null, null) ?? ConversationResponseFactory.Create(string.Empty);
         }
     }
 }

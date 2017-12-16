@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Text {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text {
     public class Document : IDocument {
         [JsonProperty("id")]
         public string Id { get; set; }

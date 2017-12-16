@@ -2,11 +2,11 @@
 using Sitecore.ContentSearch;
 using System.Web.Script.Serialization;
 using Sitecore.ContentSearch.SearchTypes;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Face;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Search
 {
     public class CognitiveImageSearchResult : SearchResultItem, ICognitiveImageSearchResult {
 

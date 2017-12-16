@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Text;
-using Microsoft.SharedSource.CognitiveServices.Models;
-using Microsoft.SharedSource.CognitiveServices.Models.Common;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Common;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language
 {
     public class TextAnalyticsRepository : ITextAnalyticsRepository
     {
@@ -14,12 +14,12 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language
         protected static readonly string topicUrl = "topics";
         protected static readonly string sentimentUrl = "sentiment";
 
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public TextAnalyticsRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repoClient)
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repoClient)
         {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;

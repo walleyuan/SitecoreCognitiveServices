@@ -1,35 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
-using Sitecore.ContentSearch;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.ContentSearch.Security;
 using Sitecore.Data.Items;
 using Sitecore.SecurityModel;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
+using SitecoreCognitiveServices.Feature.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
+using SitecoreCognitiveServices.Feature.OleChat.Models;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
     public interface IUnlockItemsIntent : IIntent { }
 
     public class UnlockItemsIntent : BaseIntent, IUnlockItemsIntent {
 
         protected readonly ITextTranslatorWrapper Translator;
-        
+        protected readonly IAuthenticationWrapper AuthenticationWrapper;
+        protected readonly IContentSearchWrapper ContentSearchWrapper;
+
         public override string Name => "unlock items";
 
         public override string Description => "Unlock your items";
 
         public UnlockItemsIntent(
             ITextTranslatorWrapper translator,
-            IOleSettings settings) : base(settings) {
+            IAuthenticationWrapper authWrapper,
+            IContentSearchWrapper searchWrapper,
+            IIntentOptionSetFactory optionSetFactory,
+            IConversationResponseFactory responseFactory,
+            IOleSettings settings) : base(optionSetFactory, responseFactory, settings) {
             Translator = translator;
-            }
+            AuthenticationWrapper = authWrapper;
+            ContentSearchWrapper = searchWrapper;
+        }
         
-        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        public override ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             var items = GetCurrentUserUnlockedItems(parameters.Database);
 
@@ -44,14 +52,14 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
                 }
             }
             
-            return $"I've unlocked {items.Count} for you";
+            return ConversationResponseFactory.Create($"I've unlocked {items.Count} for you");
         }
 
         protected List<SearchResultItem> GetCurrentUserUnlockedItems(string db)
         {
-            var userMod = Sitecore.Context.User.DisplayName.Replace("\\", "").ToLower();
+            var userMod = AuthenticationWrapper.GetCurrentUser().DisplayName.Replace("\\", "").ToLower();
 
-            using (var context = ContentSearchManager.GetIndex($"sitecore_{db}_index").CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck)) {
+            using (var context = ContentSearchWrapper.GetIndex($"sitecore_{db}_index").CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck)) {
                 return context
                     .GetQueryable<SearchResultItem>()
                     .Where(a => a.LockOwner.Equals(userMod)).ToList();

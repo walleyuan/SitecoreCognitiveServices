@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Knowledge.QnAMaker {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.QnAMaker {
     public class KnowledgeBaseDetails {
         public string Name { get; set; }
         public QnAPair[] QnAPairs { get; set; }

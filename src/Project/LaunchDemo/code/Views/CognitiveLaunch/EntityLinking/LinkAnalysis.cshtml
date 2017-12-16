@@ -1,0 +1,40 @@
+﻿@model List<SitecoreCognitiveServices.Project.LaunchDemo.Models.LinkAnalysisResult>
+    
+@using System.Linq
+
+@if (Model != null)
+{
+    <div class="entity-links-wrap">
+        @foreach (var f in Model)
+        {
+            <div class="entity-link">
+                <h3>
+                    @f.FieldName
+                </h3>
+                <div class="entity-list">
+                    @if (@f.EntityAnalysis.Any(a => a.Score > 0.5))
+                    {
+                        <h4>Links</h4>
+                    }
+                    @foreach (var l in @f.EntityAnalysis.Where(a => a.Score > 0.5).OrderByDescending(a => a.Score))
+                    {
+                        <div class="entity-subject">
+                            <span>
+                                @l.Name: 
+                            </span>
+                            <span>
+                                @Html.Partial("~/Views/CognitiveLaunch/Common/MeasureBar.cshtml", (float) l.Score)
+                            </span>
+                        </div>
+                    }
+                </div>
+                <div class="entity-content">
+                    <h4>Content</h4>
+                    <div class="entity-content-wrap">
+                        @Html.Raw(f.HighlightLinks("span", "entity-match", 0.5))
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

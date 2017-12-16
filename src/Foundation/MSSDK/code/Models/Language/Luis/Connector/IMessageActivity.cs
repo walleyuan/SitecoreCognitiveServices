@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Luis.Connector {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis.Connector {
     public interface IMessageActivity : IActivity {
         /// <summary>
         /// The language code of the Text field

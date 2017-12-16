@@ -1,0 +1,138 @@
+﻿@model SitecoreCognitiveServices.Project.LaunchDemo.Models.WebLanguageModelResult
+@{
+    ViewBag.Title = "Web Language Model";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form weblm-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/WebLanguageModelBreakIntoWords">
+        <fieldset>
+            <legend>Break Into Words</legend>
+            <div class="form-row">
+                <label>provide a phrase with no spaces</label>
+                <input type="text" name="text"/>
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Break Up Words"/>
+            </div>
+            @if (Model.BreakIntoWords != null && Model.BreakIntoWords.Candidates != null && Model.BreakIntoWords.Candidates.Any())
+            {
+                foreach (var w in Model.BreakIntoWords.Candidates)
+                {
+                    <div>@w.Words : @w.Probability.ToString("0")%</div>
+                }
+            }
+        </fieldset>
+    </form>
+    <form class="form weblm-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/WebLanguageModelCalculateConditionalProbability">
+        <fieldset>
+            <legend>Calculate Conditional Probability</legend>
+            <div class="form-row">
+                <label>provide a phrase</label>
+                <input type="text" name="phrase" />
+            </div>
+            <div class="form-row">
+                <label>provide a final word</label>
+                <input type="text" name="word" />
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Check Probability" />
+            </div>
+            @if (Model.ConditionalProbability != null && Model.ConditionalProbability.Results != null && Model.ConditionalProbability.Results.Any())
+            {
+                foreach (var r in Model.ConditionalProbability.Results)
+                {
+                    <div>
+                        <div>
+                            <label>Words: </label> @r.Words
+                        </div>
+                        <div>
+                            <label>Word: </label> @r.Word
+                        </div>
+                        <div>
+                            <label>Probability: </label> @r.Probability.ToString("0")%
+                        </div>
+                    </div>
+                }
+            }
+        </fieldset>
+    </form>
+    <form class="form weblm-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/WebLanguageModelCalculateJointProbability">
+        <fieldset>
+            <legend>Calculate Joint Probability</legend>
+            <div class="form-row">
+                <label>provide a phrase</label>
+                <input type="text" name="phrase1" />
+            </div>
+            <div class="form-row">
+                <label>provide another phrase</label>
+                <input type="text" name="phrase2" />
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Compare Phrases" />
+            </div>
+            @if (Model.JointProbability != null && Model.JointProbability.Results != null && Model.JointProbability.Results.Any())
+            {
+                foreach (var r in Model.JointProbability.Results)
+                {
+                    <div>@r.Words : @r.Probability.ToString("0")%</div>
+                }
+            }
+        </fieldset>
+    </form>
+    <form class="form weblm-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/WebLanguageModelGenerateNextWords">
+        <fieldset>
+            <legend>Generate Next Words</legend>
+            <div class="form-row">
+                <label>provide an incomplete phrase</label>
+                <input type="text" name="phrase" />
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Get Next Words" />
+            </div>
+            @if (Model.NextWords != null && Model.NextWords.Candidates != null && Model.NextWords.Candidates.Any())
+            {
+                foreach (var c in Model.NextWords.Candidates)
+                {
+                    <div>@c.Word : @c.Probability.ToString("0")%</div>
+                }
+            }
+        </fieldset>
+    </form>
+    <form class="form weblm-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/WebLanguageModelListAvailable">
+        <fieldset>
+            <legend>List Available Models</legend>
+            <div class="form-row">
+                <input type="hidden" name="placeholder" />
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="List Available Models" />
+            </div>
+            @if (Model.WebLMModels != null && Model.WebLMModels.Models != null && Model.WebLMModels.Models.Any())
+            {
+                foreach (var m in Model.WebLMModels.Models)
+                {
+                    <div>
+                        <div>
+                            <label>Model: </label> @m.Model
+                        </div>
+                        <div>
+                            <label>Corpus: </label> @m.Corpus
+                        </div>
+                        <div>
+                            <label>Max Order: </label> @m.MaxOrder
+                        </div>
+                        <div>
+                            <ul>
+                                @foreach (var o in m.SupportedOperations)
+                                {
+                                    <li>@o</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+            }
+        </fieldset>
+    </form>
+</div>

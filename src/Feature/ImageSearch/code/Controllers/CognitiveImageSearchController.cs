@@ -2,14 +2,14 @@
 using System.Linq;
 using System.Web.Mvc;
 using Sitecore.Diagnostics;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Factories;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Search;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
+using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 using Sitecore.Data.Items;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Services.Search;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+using SitecoreCognitiveServices.Feature.ImageSearch.Services.Search;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Controllers
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
 {
     public class CognitiveImageSearchController : Controller
     {

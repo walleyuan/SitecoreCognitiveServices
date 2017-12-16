@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Enums {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Enums {
     public enum Result {
         Accept,
         Reject,

@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sitecore.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Intents;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Factories;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Controllers;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Intents;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
+using SitecoreCognitiveServices.Feature.OleChat.Controllers;
+using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.App_Start
+namespace SitecoreCognitiveServices.Feature.OleChat.App_Start
 {
     public class IocConfig : IServicesConfigurator
     {
@@ -26,6 +26,9 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.App_Start
             serviceCollection.AddTransient<ILockedItemCountIntent, LockedItemCountIntent>();
             serviceCollection.AddTransient<IQuitIntent, QuitIntent>();
             serviceCollection.AddTransient<IThanksIntent, ThanksIntent>();
+            serviceCollection.AddTransient<ILogoutIntent, LogoutIntent>();
+            serviceCollection.AddTransient<IRebuildIndexIntent, RebuildIndexIntent>();
+            serviceCollection.AddTransient<IFrustratedUserIntent, FrustratedUserIntent>();
 
             //intent factories
             serviceCollection.AddTransient<IIntentFactory<IIntent>, DefaultIntentFactory>();
@@ -39,7 +42,13 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.App_Start
             serviceCollection.AddTransient<IIntentFactory<IIntent>, LockedItemCountIntentFactory>();
             serviceCollection.AddTransient<IIntentFactory<IIntent>, QuitIntentFactory>();
             serviceCollection.AddTransient<IIntentFactory<IIntent>, ThanksIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, LogoutIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, RebuildIndexIntentFactory>();
+            serviceCollection.AddTransient<IIntentFactory<IIntent>, FrustratedUserIntentFactory>();
 
+            serviceCollection.AddTransient<IConversationResponseFactory, ConversationResponseFactory>();
+            serviceCollection.AddTransient<IIntentOptionSetFactory, IntentOptionSetFactory>();
+            
             //intent provider
             serviceCollection.AddSingleton<IIntentProvider, IntentProvider>();
 

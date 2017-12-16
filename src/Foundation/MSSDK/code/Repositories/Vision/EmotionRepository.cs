@@ -1,21 +1,21 @@
 ﻿using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Common;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Common;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision
 {
     public class EmotionRepository : IEmotionRepository
     {
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
         
         public EmotionRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repoClient) {
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repoClient) {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;
         }

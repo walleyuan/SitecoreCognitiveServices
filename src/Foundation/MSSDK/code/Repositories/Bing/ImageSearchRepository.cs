@@ -4,22 +4,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.ImageSearch;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.ImageSearch;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing
 {
     public class ImageSearchRepository : IImageSearchRepository
     {
         public static readonly string imageSearchUrl = "https://api.cognitive.microsoft.com/bing/v5.0/images/search";
         public static readonly string imageTrendUrl = "https://api.cognitive.microsoft.com/bing/v5.0/images/trending";
 
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public ImageSearchRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repoClient)
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repoClient)
         {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;

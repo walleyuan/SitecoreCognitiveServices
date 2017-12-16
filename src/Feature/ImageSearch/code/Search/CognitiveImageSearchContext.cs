@@ -6,11 +6,11 @@ using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.Linq.Utilities;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.ContentSearch.Security;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using Sitecore.Data.Items;
 using Sitecore.Data;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Search
 {
     public class CognitiveImageSearchContext : ICognitiveImageSearchContext
     {
@@ -92,8 +92,8 @@ namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
             {
                 IQueryable<CognitiveImageSearchResult> queryable = context.GetQueryable<CognitiveImageSearchResult>()
-                    .Where(a => a.Language == languageCode);
-                
+                    .Where(a => a.Language == languageCode && !(a.Path.StartsWith("/sitecore/") || a.TemplateName.Equals("Media folder") || a.TemplateName.Equals("Node")));
+
                 if (gender != 0)
                 {
                     queryable = queryable.Where(x => x.Gender == gender);

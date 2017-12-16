@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Language;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.WebLanguageModel;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.WebLanguageModel;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language {
     public interface IWebLanguageModelRepository {
         BreakIntoWordsResponse BreakIntoWords(WebLMModelOptions model, string text, int order = 5, int maxNumOfCandidatesReturned = 5);
         Task<BreakIntoWordsResponse> BreakIntoWordsAsync(WebLMModelOptions model, string text, int order = 5, int maxNumOfCandidatesReturned = 5);

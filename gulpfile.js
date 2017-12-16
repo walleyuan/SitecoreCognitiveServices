@@ -58,7 +58,8 @@ gulp.task("Publish-All-Projects", function (callback) {
   return runSequence(
     "Build-Solution",
     "Publish-Foundation",
-    "Publish-Feature", callback);
+    "Publish-Feature",
+    "Publish-Project", callback);
 });
 
 gulp.task("Sync-Unicorn", function (callback) {
@@ -154,6 +155,10 @@ gulp.task("Publish-Feature", function () {
   return publishProjects("./src/Feature");
 });
 
+gulp.task("Publish-Project", function () {
+    return publishProjects("./src/Project");
+});
+
 gulp.task("Publish-All-Views", function () {
   var root = "./src";
   var roots = [root + "/**/Views", "!" + root + "/**/obj/**/Views"];
@@ -204,7 +209,7 @@ gulp.task("Publish-OleChat", function (callback) {
 });
 
 gulp.task("Publish-LaunchDemo", function (callback) {
-    publishProject("Feature\\LaunchDemo");
+    publishProject("Project\\LaunchDemo");
     return runSequence(
         "Publish-SCSDK",
         "Sync-Unicorn", callback);

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion {
     public class Scores {
         public float Anger { get; set; }
 

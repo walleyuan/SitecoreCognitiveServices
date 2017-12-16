@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Text;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Language.Text {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text {
     public class TopicRequest : TextRequest
     {
         public TopicRequest() {

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
+using SitecoreCognitiveServices.Feature.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
+using SitecoreCognitiveServices.Feature.OleChat.Models;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
     public interface IThanksIntent : IIntent { }
 
@@ -21,16 +22,18 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
 
         public ThanksIntent(
             ITextTranslatorWrapper translator,
-            IOleSettings settings) : base(settings)
+            IIntentOptionSetFactory optionSetFactory,
+            IConversationResponseFactory responseFactory,
+            IOleSettings settings) : base(optionSetFactory, responseFactory, settings)
         {
             Translator = translator;
         }
 
-        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        public override ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             List<string> responses = new List<string>()
             {
-                "Your're welcome!",
+                "You're welcome!",
                 "It's what I do.",
                 "I'm happy to help.",
                 "You're too kind.",
@@ -39,7 +42,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
                 "If I had a heart, it'd be touched."
             };
 
-            return responses[new Random().Next(0, responses.Count)];
+            return ConversationResponseFactory.Create(responses[new Random().Next(0, responses.Count)]);
         }
     }
 }

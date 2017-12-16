@@ -1,17 +1,17 @@
 ﻿using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.AutoSuggest;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.AutoSuggest;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Bing
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing
 {
     public class AutoSuggestRepository : IAutoSuggestRepository
     {
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public AutoSuggestRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repositoryClient)
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repositoryClient)
         {
             ApiKeys = apiKeys;
             RepositoryClient = repositoryClient;

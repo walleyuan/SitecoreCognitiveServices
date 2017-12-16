@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Common {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Common {
     public class VideoOperation {
         public string Url { get; set; }
         public VideoOperation(string url) {

@@ -1,10 +1,10 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using Sitecore.Data.Items;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Analysis;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Utility;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Search;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
+using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Services.Search {
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Services.Search {
     public interface IImageSearchService
     {
         void UpdateItemInIndex(string itemId, string db);

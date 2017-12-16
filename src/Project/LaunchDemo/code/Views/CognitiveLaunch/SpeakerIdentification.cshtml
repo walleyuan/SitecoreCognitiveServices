@@ -1,0 +1,243 @@
+﻿@using SitecoreCognitiveServices.Foundation.MSSDK.Models.Speech
+@using System.Linq
+@model SitecoreCognitiveServices.Project.LaunchDemo.Models.SpeakerIdentificationResult
+@{
+    ViewBag.Title = "Speaker Identification";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form identification-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/SpeakerIdentificationGetProfiles">
+        <fieldset>
+            <legend>Get Profiles</legend>
+            <div class="form-row">
+                <input type="hidden" name="placeholder" value="" />
+            </div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Get Profiles</button>
+            </div>
+            @if (Model.Profiles != null)
+            {
+                if (Model.Profiles.Any())
+                {
+                    foreach (var p in Model.Profiles)
+                    {
+                        <div>
+                            <h3>Profile</h3>
+                            <div>
+                                <label>Profile Id: </label> @p.ProfileId
+                            </div>
+                            <div>
+                                <label>Enrollment Speech Seconds: </label> @p.EnrollmentSpeechSeconds
+                            </div>
+                            <div>
+                                <label>Remaining Enrollment Speech Seconds: </label> @p.RemainingEnrollmentSpeechSeconds
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div>There are no profiles</div>
+                }
+            }
+        </fieldset>
+    </form>
+    <form class="form identification-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/SpeakerIdentificationCreateProfile">
+        <fieldset>
+            <legend>Create Profile</legend>
+            <div class="form-row">
+                <label>Locale</label>
+                <select name="locale">
+                    <option value="en-US">en-US</option>
+                    <option value="zh-CN">zh-CN</option>
+                </select>
+            </div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Create Profile</button>
+            </div>
+            @if (Model.NewProfile != null)
+            {
+                <div>
+                    <label>Profile Id: </label> @Model.NewProfile.ProfileId
+                </div>
+            }
+        </fieldset>
+    </form>
+    <form class="form identification-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/SpeakerIdentificationGetProfile">
+        <fieldset>
+            <legend>Get Profile</legend>
+            <div class="form-row">
+                <label>Profile Id</label>
+                <input type="text" name="profileId" />
+            </div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Get Profile</button>
+            </div>
+            @if (Model.Profile != null)
+            {
+                <div>
+                    <h3>Profile</h3>
+                    <div>
+                        <label>Profile Id: </label> @Model.Profile.ProfileId
+                    </div>
+                    <div>
+                        <label>Enrollment Speech Seconds: </label> @Model.Profile.EnrollmentSpeechSeconds
+                    </div>
+                    <div>
+                        <label>Remaining Enrollment Speech Seconds: </label> @Model.Profile.RemainingEnrollmentSpeechSeconds
+                    </div>
+                </div>
+            }
+        </fieldset>
+    </form>
+    <form class="form identification-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/SpeakerIdentificationDeleteProfile">
+        <fieldset>
+            <legend>Delete Profile</legend>
+            <div class="form-row">
+                <label>Profile Id</label>
+                <input type="text" name="profileId" />
+            </div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Delete Profile</button>
+            </div>
+        </fieldset>
+    </form>
+    <form class="form identification-form" method="post" enctype="multipart/form-data" action="/SitecoreCognitiveServices/CognitiveLaunch/SpeakerIdentificationEnroll">
+        <fieldset>
+            <legend>Enroll Audio</legend>
+            <div class="form-row">
+                <label>Profile Id</label>
+                <input type="text" name="profileId"/>
+            </div>
+            <div class="form-row">
+                <label>Audio File (16Khz Sample/Project Rate .wav)</label>
+                <input type="file" name="file"/>
+            </div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Enroll Audio</button>
+            </div>
+            @if (Model.EnrollOperation != null)
+            {
+                <div>
+                    <label>Operation Url: </label> @Model.EnrollOperation.Url
+                </div>
+            }
+        </fieldset>
+    </form>
+    <form class="form identification-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/SpeakerIdentificationCheckEnrollmentStatus">
+        <fieldset>
+            <legend>Check Enrollment Status</legend>
+            <div class="form-row">
+                <label>Operation Url</label>
+                <input type="text" name="url"/>
+            </div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Check Enrollment Status</button>
+            </div>
+            @if (Model.EnrollmentStatus != null)
+            {
+                if (Model.EnrollmentStatus.Status == Status.Failed)
+                {
+                    <div>Enrollment Failed</div>
+                }
+                else if (Model.EnrollmentStatus.Status == Status.Running)
+                {
+                    <div>Enrollment Running</div>
+                }
+                else if (Model.EnrollmentStatus.Status == Status.Succeeded)
+                {
+                    <div>Enrollment Succeeded</div>
+                }
+                if (Model.EnrollmentStatus.ProcessingResult != null)
+                {
+                    <div>
+                        <h3>Enrollment Status Details</h3>
+                        <div>
+                            <label>Speech Time: </label> @Model.EnrollmentStatus.ProcessingResult.SpeechTime
+                        </div>
+                        <div>
+                            <label>Enrollment Speech Time: </label> @Model.EnrollmentStatus.ProcessingResult.EnrollmentSpeechTime
+                        </div>
+                        <div>
+                            <label>Remaining Enrollment Speech Time: </label> @Model.EnrollmentStatus.ProcessingResult.RemainingEnrollmentSpeechTime
+                        </div>
+                    </div>
+                }
+            }
+        </fieldset>
+    </form>
+    <form class="form identification-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/SpeakerIdentificationResetEnrollment">
+        <fieldset>
+            <legend>Reset Enrollment</legend>
+            <div class="form-row">
+                <label>Profile Id</label>
+                <input type="text" name="profileId" />
+            </div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Reset Enrollment</button>
+            </div>
+        </fieldset>
+    </form>
+    <form class="form identification-form" method="post" enctype="multipart/form-data" action="/SitecoreCognitiveServices/CognitiveLaunch/SpeakerIdentificationIdentify">
+        <fieldset>
+            <legend>Identify Audio</legend>
+            <div class="form-row">
+                <label>Profile Id</label>
+                <input type="text" name="profileId" />
+            </div>
+            <div class="form-row">
+                <label>Audio File (16Khz Sample/Project Rate .wav)</label>
+                <input type="file" name="file" />
+            </div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Identify Audio</button>
+            </div>
+            @if (Model.IdentifyOperation != null)
+            {
+                <div>
+                    <label>Operation Url: </label> @Model.IdentifyOperation.Url
+                </div>
+            }
+        </fieldset>
+    </form>
+    <form class="form identification-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/SpeakerIdentificationCheckIdentificationStatus">
+        <fieldset>
+            <legend>Check Identification Status</legend>
+            <div class="form-row">
+                <label>Operation Url</label>
+                <input type="text" name="url"/>
+            </div>
+            <div class="scWizardButtons">
+                <button class="form-submit">Check Identification Status</button>
+            </div>
+            @if (Model.IdentificationStatus != null)
+            {
+                if (Model.IdentificationStatus.Status == Status.Failed)
+                {
+                    <div>Identification Failed</div>
+                }
+                else if (Model.IdentificationStatus.Status == Status.Running)
+                {
+                    <div>Identification Running</div>
+                }
+                else if (Model.IdentificationStatus.Status == Status.Succeeded)
+                {
+                    <div>Identification Succeeded</div>
+                }
+                if (Model.IdentificationStatus.ProcessingResult != null)
+                {
+                    <div>
+                        <h3>Identification Status Details</h3>
+                        <div>
+                            <label>Identification Profile Id: </label> @Model.IdentificationStatus.ProcessingResult.IdentifiedProfileId
+                        </div>
+                        <div>
+                            <label>Confidence: </label> @Html.Partial("~/Views/CognitiveLaunch/Common/MeasureBar.cshtml", (float)@Model.IdentificationStatus.ProcessingResult.Confidence)
+                        </div>
+                    </div>
+                }
+            }
+        </fieldset>
+    </form>
+</div>

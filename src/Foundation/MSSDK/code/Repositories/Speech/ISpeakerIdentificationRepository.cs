@@ -1,9 +1,9 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Models.Speech;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Speech;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Speech
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Speech
 {
     public interface ISpeakerIdentificationRepository
     {

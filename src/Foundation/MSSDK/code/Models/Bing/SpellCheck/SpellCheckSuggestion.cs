@@ -1,5 +1,5 @@
 ﻿
-namespace Microsoft.SharedSource.CognitiveServices.Models.Bing.SpellCheck {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.SpellCheck {
     public class SpellCheckSuggestion
     {
         public string Suggestion { get; set; }

@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Getting Started - About Launch Sitecore | Launch Sitecore</title>
+    <meta name="title" content="Getting Started" />
+    <meta name="description" content="An article section covering the discussions and considerations important for setting the project up for success." />
+    <meta name="robots" content="follow, index" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.css" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/custom.css" />
+    <link rel="stylesheet" href="/assets/css/responsive.css" />
+    <style type="text/css">
+        a, a:hover {
+            color: #008998;
+        }
+
+        .btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:active:hover {
+            background-color: #008998;
+            border-color: #008998;
+        }
+
+        header .nav > li > a:hover, header .nav > li > a:focus {
+            color: #008998;
+        }
+
+        header .nav > .open > a, header .nav > .open > a:hover, header .nav > .open > a:focus {
+            color: #008998 !important;
+        }
+
+        .navbar .nav .open .dropdown-menu .active a {
+            color: #008998;
+        }
+
+        .navbar .nav .open .dropdown-menu .active a:hover {
+            color: #008998;
+        }
+
+        .navbar .nav .active > a, .navbar .nav .active > a:hover, .navbar .nav .active a > i, .navbar .nav .active a > i:hover {
+            color: #008998;
+        }
+
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+            color: #008998;
+        }
+
+        .navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle {
+            color: #008998;
+        }
+
+        .navbar .nav > li .dropdown-menu li a:hover {
+            color: #008998;
+        }
+
+        .navbar .nav > li:hover a, .navbar .nav > li:hover a i {
+            color: #008998;
+        }
+
+        .text-divider5 span, .text-divider6 span {
+            background-color: #008998;
+        }
+    </style>
+    <link href="~/sitecore modules/Web/SitecoreCognitiveServices/css/SitecoreCognitiveServices.Project.LaunchDemo.css?x=@(new System.Random().Next())" rel="stylesheet" type="text/css" />
+</head>
+<body style="background-color:">
+    <div id="out_container" class="full-width">
+        <div class="container"></div>
+        <!-- HEADER AREA -->
+        <header>
+            <div class="row" style="background-color:#651F76">
+                <div class="col-md-12">
+                    <div class="container">
+                        <!-- HEADER: LOGO AREA -->
+                        <div class="col-sm-4 col-md-4 logo">
+                            <a class="logo" href="/">
+                                <img src="/-/media/launch-sitecore/site-images/logos/inverse-logo.ashx?h=72&amp;la=en&amp;mh=72&amp;mw=250&amp;w=196&amp;hash=86B78ECF1112ACB1745E8D6F297BF93BA2234CFE" alt="logo" width="196" height="72" />
+                            </a>
+                        </div>
+                        <div class="col-sm-4 col-md-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
+                            <form action="/api/sitecore/Account/LogOff" id="logoutForm" method="post"><input name="__RequestVerificationToken" type="hidden" value="h4CPkyRJ4An5tsq2xDlArTJ3HnjqdQytib-PP73aEIOL8IPl0ZoXTOuISXEssrcoBvp_LxRsgnKykC9RTkpTzHnxwYKA2l_UeKsXrGR8gPlb6crKpgQgveUmQpPw-cIn0" /></form><ul class="nav nav-pills pull-right">
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">logout</a></li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        sites
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="/">Launch Sitecore</a></li>
+                                        <li><a href="/developing-in-sitecore">Developing in Sitecore</a></li>
+                                        <li><a href="http://www.sitecore.net" target="_blank">Sitecore Website</a></li>
+                                        <li><a href="http://doc.sitecore.net" target="_blank">Documentation Site</a></li>
+                                    </ul>
+                                </li>
+                            </ul> <!-- Tertiary Nav -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- HEADER: PRIMARY SITE NAVIGATION -->
+            <div class="row" style="background-color:#212B34">
+                <div class="container">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="navbar navbar-default">
+                            <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#">navigate</a>
+                                </div>
+
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <!-- The Main Nav - /sitecore/layout/Renderings/LaunchSitecore/Renderings/Navigation/Main Navigation -->
+                                    <ul class="nav navbar-nav">
+                                        <li class="dropdown">
+                                            <a href="/about-launch-sitecore" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                                About Launch Sitecore<b class="caret"></b>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/about-launch-sitecore/getting-started">Getting Started</a></li>
+                                                <li><a href="/about-launch-sitecore/our-strategy">Our Strategy</a></li>
+                                                <li><a href="/about-launch-sitecore/building-the-site">Building the Site</a></li>
+                                                <li><a href="/about-launch-sitecore/optimizing-the-experience">Optimizing the Experience</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="/team">Team</a></li>
+                                        <li><a href="/glossary">Glossary</a></li>
+                                        <li><a href="/SitecoreCognitiveServices/cognitivelaunch/websearch">Cognitive API Examples</a></li>
+                                    </ul>
+
+
+                                    <form action="/Search" method="post" id="searchform" class="navbar-form navbar-right" role="search">
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="Search" id="SearchStr" name="SearchStr" />
+                                        </div>
+                                        <button type="submit" class="btn btn-default" style="display:none">Submit</button>
+                                    </form> <!-- Search Box -->
+                                </div><!-- /.navbar-collapse -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- MAIN CONTENT AREA -->
+        <div class="main-content">
+            <div class="container">
+                <div id="breadcrumb">
+                    <ul>
+                        <li class="home"><a href="/">Home</a></li>
+                        <li class="">Cognitive API Examples</li>
+                    </ul>
+                    <div class="pull-right addtofavsbutton">
+                        <form method="post" id="addtofavsForm">
+                            <input type="hidden" value="{A5CDBC19-FFEA-4801-81A6-2B87F318B275}" id="itemId" />
+                        </form>
+                        <a href="javascript:document.getElementById('addtofavsForm').submit()">Add to Favorites</a>
+                    </div>
+                </div>
+                <div class="row clear-both">
+                    <div id="left-sidebar" class="col-md-3 sidebar">
+                        <div class="side-nav sidebar-block">
+                            <h2>Cognitive API Examples</h2>
+                            <ul>
+                                <li>
+                                    Vision
+                                    <ul>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/computervision">Computer Vision</a>
+                                        </li>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/emotion">Emotion</a>
+                                        </li>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/face">Face</a>
+                                        </li>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/video">Video</a>
+                                        </li>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/moderator">Giphy Moderator</a>
+                                        </li>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/contentmoderatorevaluate">Content Moderator</a>
+                                            <ul>
+                                                <br />
+                                                Moderate
+                                                <li><a href="/SitecoreCognitiveServices/cognitivelaunch/contentmoderatorevaluate">Evaluate</a></li>
+                                                <li><a href="/SitecoreCognitiveServices/cognitivelaunch/contentmoderatorscreen">Screen</a></li>
+                                            </ul>
+                                            <ul>
+                                                <br />
+                                                Review
+                                                <li><a href="/SitecoreCognitiveServices/cognitivelaunch/contentmoderatorworkflow">Workflows</a></li>
+                                                <li><a href="/SitecoreCognitiveServices/cognitivelaunch/contentmoderatorjob">Jobs</a></li>
+                                                <li><a href="/SitecoreCognitiveServices/cognitivelaunch/contentmoderatorreview">Reviews</a></li>
+                                            </ul>
+                                            <ul>
+                                                <br />
+                                                List Management
+                                                <li><a href="/SitecoreCognitiveServices/cognitivelaunch/contentmoderatorimagelist">Image Lists</a></li>
+                                                <li><a href="/SitecoreCognitiveServices/cognitivelaunch/contentmoderatortermlist">Term Lists</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Speech
+                                    <ul>
+                                        @*<li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/customspeech">Custom Speech Service</a>
+                                        </li>*@
+                                        <li>
+                                            Speaker Recognition
+                                            <ul>
+                                                <li><a href="/SitecoreCognitiveServices/cognitivelaunch/speakeridentification">Speaker Identification</a></li>
+                                                <li><a href="/SitecoreCognitiveServices/cognitivelaunch/speakerverification">Speaker Verification</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Language
+                                    <ul>
+                                        @*<li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/luis">Language Understanding</a>
+                                        </li>*@
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/linguistic">Linguistic Analysis</a>
+                                        </li>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/keyphrase">Key Phrase Analysis</a>
+                                        </li>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/sentiment">Sentiment Analysis</a>
+                                        </li>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/language">Language Analysis</a>
+                                        </li>
+                                        @*<li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/translator">Translator</a>
+                                        </li>*@
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/weblanguagemodel">Web Language Model</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Knowledge
+                                    <ul>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/academicsearch">Academic</a>
+                                        </li>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/link">Entity Linking</a>
+                                        </li>
+                                        @*<li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/knowledgeexploration">Knowledge Exploration</a>
+                                        </li>*@
+                                        @*<li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/qnamaker">Q and A Maker</a>
+                                        </li>*@
+                                        @*<li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/recommendations">Recommendations</a>
+                                        </li>*@
+                                    </ul>
+                                </li>
+                                <li>
+                                    Bing
+                                    <ul>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/websearch">Bing Web Search</a>
+                                        </li>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/newssearch">Bing News Search</a>
+                                        </li>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/videosearch">Bing Video Search</a>
+                                        </li>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/suggestions">Bing Auto Suggest</a>
+                                        </li>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/spellcheck">Bing Spell Check</a>
+                                        </li>
+                                        <li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/imagesearch">Bing Image Search</a>
+                                        </li>
+                                        @*<li>
+                                            <a href="/SitecoreCognitiveServices/cognitivelaunch/bingspeech">Bing Speech</a>
+                                        </li>*@
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-9 main-column two-columns-left">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FOOTER STARTS HERE -->
+        <footer id="footer">
+            <div class="footer-wrapper" style="background-color:#212B34">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="row">
+                                <ul class="list-inline">
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="/audience">Audience Landing Pages</a></li>
+                                    <li><a href="/about-launch-sitecore">About Launch Sitecore</a></li>
+                                    <li><a href="/team">Team</a></li>
+                                    <li><a href="/glossary">Glossary</a></li>
+                                    <li><a href="/login">Login</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom" style="background-color:#000000">
+                <div class="container">
+                    <div class="row">
+                        <!-- FOOTER: COPYRIGHT TEXT -->
+                        <div class="col-sm-12 col-md-12">
+                            <p>Copyright &#169; 1999-2015 Sitecore</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- END FOOTER -->
+    </div>
+    <div id="mtp-toggle">
+        <i class="moon-droplet"></i>
+    </div>
+    <div id="mtp-wrapper">
+        <div id="mtp-content">
+            <div id="pnlDetails">
+                <h3 class="center-title">
+                    Visit Details
+                    <span class="pagecounts">
+                        <img src="/assets/img/page.png" alt="Pages" title="Pages Viewed" />3
+                        <img src="/assets/img/value.png" alt="Value" title=" Engagement Value" />0
+                    </span>
+                </h3>
+                <div style="clear: both"></div>
+                <div id="accordion" class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a href="#collapseOne" data-parent="#accordion" data-toggle="collapse" class="panel-title collapsed">
+                                Pattern
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="patternwrapper">
+                                    <div>
+                                        <div class="image-wrapper"><img src="/assets/img/nope.png" alt="Unknown" /></div>
+                                        <h4>No Match</h4>
+                                        <h5>Unknown</h5>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a href="#collapseTwo" data-parent="#accordion" data-toggle="collapse" class="panel-title collapsed">
+                                Campaign
+                            </a>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapseTwo">
+                            <div class="panel-body">
+                                <ul>
+                                    <li>Visit is not associated with a campaign.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a href="#collapseThree" data-parent="#accordion" data-toggle="collapse" class="panel-title collapsed">
+                                Location
+                            </a>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapseThree">
+                            <div class="panel-body">
+                                <ul>
+                                    <li>City: Pending</li>
+                                    <li>Postal Code: Pending</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a href="#collapseFour" data-parent="#accordion" data-toggle="collapse" class="panel-title collapsed">
+                                Pages
+                            </a>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapseFour">
+                            <div class="panel-body">
+                                <div style="overflow-y:auto; overflow-x:hidden; max-height:200px; margin-left: -10px; margin-right: -25px;">
+                                    <ul>
+                                        <li><a href="/about-launch-sitecore/getting-started">.../getting-started (0.00s)</a></li>
+                                        <li><a href="/">Home (0.00s)</a></li>
+                                        <li><a href="/">Home (368.93s)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a href="#collapseFive" data-parent="#accordion" data-toggle="collapse" class="panel-title collapsed">
+                                Goals
+                            </a>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapseFive">
+                            <div class="panel-body">
+                                <ul>
+                                    <li>No Goals</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a href="#collapseSix" data-parent="#accordion" data-toggle="collapse" class="panel-title collapsed">
+                                Engagement
+                            </a>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapseSix">
+                            <div class="panel-body">
+                                <ul>
+                                    <li>No Engagement States</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Visit Details -->
+        </div>
+    </div>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write("<script src='/assets/js/jquery-1.11.1.min.js'><\/script>")</script>
+    <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+    <script src='/assets/js/scrollReveal.js'></script>
+    <script>window.sr = new scrollReveal();</script>
+    <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/jquery-1.10.2.min.js"></script>
+    <script src="~/sitecore modules/Web/SitecoreCognitiveServices/js/SitecoreCognitiveServices.Project.LaunchDemo.js"></script>
+</body>
+</html>

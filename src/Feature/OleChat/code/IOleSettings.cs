@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sitecore.SharedSource.CognitiveServices {
+namespace SitecoreCognitiveServices.Feature.OleChat {
     public interface IOleSettings {
         Guid OleApplicationId { get; }
     }

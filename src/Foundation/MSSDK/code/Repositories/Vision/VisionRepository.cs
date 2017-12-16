@@ -5,19 +5,19 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
-using Microsoft.SharedSource.CognitiveServices.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision
 {
     public class VisionRepository : IVisionRepository
     {
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public VisionRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repoClient)
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repoClient)
         {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;
@@ -363,28 +363,28 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
         {
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}generateThumbnail?width={width}&height={height}&smartCropping={smartCropping}", GetImageUrlJson(url));
 
-            return Encoding.ASCII.GetBytes(response);
+            return RepositoryClient.GetByteArray(response);
         }
 
         public virtual byte[] GetThumbnail(string url, int width, int height, bool smartCropping = true)
         {
             var response = RepositoryClient.SendJsonPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}generateThumbnail?width={width}&height={height}&smartCropping={smartCropping}", GetImageUrlJson(url));
 
-            return Encoding.ASCII.GetBytes(response);
+            return RepositoryClient.GetByteArray(response);
         }
 
         public virtual async Task<byte[]> GetThumbnailAsync(Stream stream, int width, int height, bool smartCropping = true)
         {
             var response = await RepositoryClient.SendOctetStreamPostAsync(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}generateThumbnail?width={width}&height={height}&smartCropping={smartCropping}", stream);
 
-            return Encoding.ASCII.GetBytes(response);
+            return RepositoryClient.GetByteArray(response);
         }
 
         public virtual byte[] GetThumbnail(Stream stream, int width, int height, bool smartCropping = true)
         {
             var response = RepositoryClient.SendOctetStreamPost(ApiKeys.ComputerVision, $"{ApiKeys.ComputerVisionEndpoint}generateThumbnail?width={width}&height={height}&smartCropping={smartCropping}", stream);
 
-            return Encoding.ASCII.GetBytes(response);
+            return RepositoryClient.GetByteArray(response);
         }
 
         #endregion Get Thumbnail

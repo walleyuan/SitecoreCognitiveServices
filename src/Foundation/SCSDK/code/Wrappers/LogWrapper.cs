@@ -4,8 +4,15 @@ using System.Net;
 using System.Text;
 using Sitecore.Diagnostics;
 
-namespace Sitecore.SharedSource.CognitiveServices.Wrappers
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
 {
+    public interface ILogWrapper
+    {
+        void Error(string message, object owner, Exception ex = null);
+        void Warn(string message, object owner, Exception ex = null);
+        void Info(string message, object owner);
+    }
+
     public class LogWrapper : ILogWrapper
     {
         protected readonly IApplicationSettings Settings;

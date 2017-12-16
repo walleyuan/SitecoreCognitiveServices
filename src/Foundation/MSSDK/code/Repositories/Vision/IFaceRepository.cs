@@ -1,13 +1,12 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Common;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Face;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Common;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision
 {
     public interface IFaceRepository
     {

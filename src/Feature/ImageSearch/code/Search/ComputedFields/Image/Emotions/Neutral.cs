@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image.Emotions
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Emotions
 {
     public class Neutral : BaseComputedField
     {

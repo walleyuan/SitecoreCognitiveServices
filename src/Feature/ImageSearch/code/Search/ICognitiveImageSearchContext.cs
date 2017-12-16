@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using System;
 using Sitecore.Data.Items;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Search
 {
     public interface ICognitiveImageSearchContext
     {

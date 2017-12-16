@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.ContentModerator
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator
 {
     public class Condition : IExpression
     {

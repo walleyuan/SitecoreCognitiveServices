@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.SharedSource.CognitiveServices.CSV;
+using SitecoreCognitiveServices.Foundation.MSSDK.CSV;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language {
     public class LuisRepository : ILuisRepository
     {
         protected static readonly string luisQueryUrl = "v2.0/apps/";
@@ -16,13 +16,13 @@ namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language {
         protected static readonly string luisSubKeyUrl = $"{luisRoot}subscriptions/";
         protected static readonly string luisProgKeyUrl = $"{luisRoot}programmatickey";
 
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
         protected readonly ICSVParser CSVParser;
 
         public LuisRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repoClient,
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repoClient,
             ICSVParser csvParser)
         {
             ApiKeys = apiKeys;

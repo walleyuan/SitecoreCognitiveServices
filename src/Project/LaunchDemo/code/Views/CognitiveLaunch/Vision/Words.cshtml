@@ -1,0 +1,24 @@
+﻿@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.Word[]
+
+@if (Model != null)
+{
+    <div>
+        @foreach (var w in Model)
+        {
+            <div class="word-block">
+                <div class="word-wrap" style="top: @{@w.Rectangle.Top}px; left: @{@(w.Rectangle.Left + w.Rectangle.Width + 10)}px">
+                    <div class="bg-layer"></div>                                                                  
+                    <div class="word">
+                        <label>Text: </label>
+                        <span>@w.Text</span>
+                    </div>
+                    @*<div>
+                        <label>Bounding Box: </label>
+                        <span>@w.BoundingBox</span>
+                    </div>*@
+                </div>
+                @Html.Partial("~/Views/CognitiveLaunch/Vision/Rectangle.cshtml", w.Rectangle)
+            </div>
+    }
+    </div>
+}

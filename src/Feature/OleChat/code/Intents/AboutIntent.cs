@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Dialog;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Factories;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Models;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
+using SitecoreCognitiveServices.Feature.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Factories;
+using SitecoreCognitiveServices.Feature.OleChat.Models;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
     public interface IAboutIntent : IIntent { }
 
@@ -23,12 +23,14 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
         public AboutIntent(
             ITextTranslatorWrapper translator,
             IOleSettings settings,
-            IServiceProvider provider) : base(settings) {
+            IIntentOptionSetFactory optionSetFactory,
+            IConversationResponseFactory responseFactory,
+            IServiceProvider provider) : base(optionSetFactory, responseFactory, settings) {
             Translator = translator;
             Provider = provider;
         }
         
-        public override string ProcessResponse(LuisResult result, ItemContextParameters parameters, IConversation conversation)
+        public override ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
             var intents = Provider.GetServices<IIntentFactory<IIntent>>()
                 .Select(a => a.Create())
@@ -38,7 +40,7 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents {
 
             var str = string.Join("", list);
 
-            return $"Here's the list of things I can do: <br/><ul>{str}</ul>";
+            return ConversationResponseFactory.Create($"Here's the list of things I can do: <br/><ul>{str}</ul>");
         }
     }
 }

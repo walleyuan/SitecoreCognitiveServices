@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Vision.Face {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face {
     public class Candidate {
         public Guid PersonId { get; set; }
 

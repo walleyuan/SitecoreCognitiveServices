@@ -1,14 +1,35 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using Sitecore;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.SecurityModel;
 using Sitecore.Shell.Framework.Commands;
+using Sitecore.Data.Managers;
+using Sitecore.Globalization;
 
-namespace Sitecore.SharedSource.CognitiveServices.Wrappers
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
 {
+    public interface ISitecoreDataWrapper
+    {
+        Database GetDatabase(string dbName);
+        List<Database> GetDatabases();
+        ID GetID(string itemId);
+        Item GetItemByUri(string itemUri);
+        Item GetItemByIdValue(string itemId, string database);
+        bool IsMediaFile(Item i);
+        bool IsMediaFolder(Item i);
+        IEnumerable<MediaItem> GetMediaFileDescendents(string id, string db);
+        Item ExtractItem(CommandContext context);
+        string GetFieldDimension(Item i, string fieldName, int minimum, int offset);
+        IEnumerable<TemplateItem> GetBaseTemplates(Item i);
+        IEnumerable<TemplateItem> GetBaseTemplates(TemplateItem t);
+        void SetImageDescription(MediaItem mediaItem, string altDescription);
+        IEnumerable<Language> GetLanguages(Database db);
+    }
+
     public class SitecoreDataWrapper : ISitecoreDataWrapper
     {
         protected readonly ILogWrapper Logger;
@@ -19,6 +40,7 @@ namespace Sitecore.SharedSource.CognitiveServices.Wrappers
         }
 
         public virtual Database GetDatabase(string dbName) => Sitecore.Configuration.Factory.GetDatabase(dbName);
+        public virtual List<Database> GetDatabases() => Sitecore.Configuration.Factory.GetDatabases();
         public virtual ID GetID(string itemId)
         {
             ID idObj;
@@ -137,6 +159,11 @@ namespace Sitecore.SharedSource.CognitiveServices.Wrappers
                     }
                 }
             }
+        }
+
+        public virtual IEnumerable<Language> GetLanguages(Database db)
+        {
+            return LanguageManager.GetLanguages(db).ToList();
         }
     }
 }

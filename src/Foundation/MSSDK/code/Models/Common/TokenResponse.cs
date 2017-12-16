@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Common {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Common {
     public class TokenResponse
     {
         public string Token_Type { get; set; }

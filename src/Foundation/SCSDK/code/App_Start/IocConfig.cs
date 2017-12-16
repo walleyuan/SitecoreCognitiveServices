@@ -1,22 +1,22 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.SharedSource.CognitiveServices;
-using Microsoft.SharedSource.CognitiveServices.CSV;
-using Microsoft.SharedSource.CognitiveServices.Repositories;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Bing;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Knowledge;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Language;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Speech;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
+using SitecoreCognitiveServices.Foundation.MSSDK;
+using SitecoreCognitiveServices.Foundation.MSSDK.CSV;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Bing;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Knowledge;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Speech;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision;
 using Sitecore.DependencyInjection;
-using Sitecore.SharedSource.CognitiveServices.Repositories;
-using Sitecore.SharedSource.CognitiveServices.Services.Knowledge;
-using Sitecore.SharedSource.CognitiveServices.Services.Language;
-using Sitecore.SharedSource.CognitiveServices.Services.Speech;
-using Sitecore.SharedSource.CognitiveServices.Services.Vision;
-using Sitecore.SharedSource.CognitiveServices.Services.Bing;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
+using SitecoreCognitiveServices.Foundation.SCSDK.Repositories;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Knowledge;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Speech;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Bing;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
-namespace Sitecore.SharedSource.CognitiveServices.App_Start
+namespace SitecoreCognitiveServices.Foundation.SCSDK.App_Start
 {
     public class IocConfig : IServicesConfigurator
     {
@@ -24,8 +24,8 @@ namespace Sitecore.SharedSource.CognitiveServices.App_Start
         {
             //system
             serviceCollection.AddSingleton<IApplicationSettings, ApplicationSettings>();
-            serviceCollection.AddSingleton<IApiKeys, ApiKeys>();
-            serviceCollection.AddTransient<IRepositoryClient, RepositoryClient>();
+            serviceCollection.AddSingleton<IMicrosoftCognitiveServicesApiKeys, ApiKeys.MicrosoftCognitiveServicesApiKeys>();
+            serviceCollection.AddTransient<IMicrosoftCognitiveServicesRepositoryClient, MicrosoftCognitiveServicesRepositoryClient>();
             serviceCollection.AddTransient<ICSVParser, CSVParser>();
 
             //sitecore wrappers
@@ -34,8 +34,10 @@ namespace Sitecore.SharedSource.CognitiveServices.App_Start
             serviceCollection.AddTransient<ILogWrapper, LogWrapper>();
             serviceCollection.AddTransient<ITextTranslatorWrapper, TextTranslatorWrapper>();
             serviceCollection.AddTransient<IPublishWrapper, PublishWrapper>();
+            serviceCollection.AddTransient<IAuthenticationWrapper, AuthenticationWrapper>();
+            serviceCollection.AddTransient<IContentSearchWrapper, ContentSearchWrapper>();
 
-            //repositories
+            //mssdk repositories
             serviceCollection.AddTransient<IEmotionRepository, EmotionRepository>();
             serviceCollection.AddTransient<IEntityLinkingRepository, EntityLinkingRepository>();
             serviceCollection.AddTransient<IFaceRepository, FaceRepository>();
@@ -58,8 +60,8 @@ namespace Sitecore.SharedSource.CognitiveServices.App_Start
             serviceCollection.AddTransient<ILuisRepository, LuisRepository>();
             serviceCollection.AddTransient<ISpeechRepository, SpeechRepository>();
             serviceCollection.AddTransient<IQnAMakerRepository, QnAMakerRepository>();
-
-            //services
+            
+            //mssdk services
             serviceCollection.AddTransient<IEmotionService, EmotionService>();
             serviceCollection.AddTransient<IEntityLinkingService, EntityLinkingService>();
             serviceCollection.AddTransient<IFaceService, FaceService>();

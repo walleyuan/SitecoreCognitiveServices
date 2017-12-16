@@ -9,14 +9,14 @@ using Sitecore.ContentSearch;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
-using Microsoft.SharedSource.CognitiveServices.Repositories.Vision;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Face;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Emotion;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
+using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Search
 {
     public class CognitiveIndexableImageItem : SitecoreIndexableItem
     {
@@ -91,7 +91,7 @@ namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
             }
             catch (Exception ex)
             {
-                Log.Error(String.Format("Error recognizing Emotions. Item: {0}, Message: {1}", m.InnerItem.ID, ex.Message), ex);
+                Log.Error($"Error recognizing Emotions. Item: {m.InnerItem.ID}, Message: {ex.Message}", ex);
             }
         }
 
@@ -119,7 +119,7 @@ namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
             }
             catch (Exception ex)
             {
-                Log.Error(String.Format("Error detecting Faces. Item: {0}, Message: {1}", m.InnerItem.ID, ex.Message), ex);
+                Log.Error($"Error detecting Faces. Item: {m.InnerItem.ID}, Message: {ex.Message}", ex);
             }
         }
 
@@ -150,7 +150,7 @@ namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
             }
             catch (Exception ex)
             {
-                Log.Error(String.Format("Error analyzing using Computer Vision API. Item: {0}, Message: {1}", m.InnerItem.ID, ex.Message), ex);
+                Log.Error($"Error analyzing using Computer Vision API. Item: {m.InnerItem.ID}, Message: {ex.Message}", ex);
             }
 
         }
@@ -175,8 +175,11 @@ namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search
 
         private bool MeetsRestrictions(MediaItem mediaItem)
         {
-            int height = Int32.Parse(mediaItem.InnerItem["Height"]);
-            int width = Int32.Parse(mediaItem.InnerItem["Width"]);
+            var h = mediaItem.InnerItem["Height"];
+            var w = mediaItem.InnerItem["Width"];
+
+            int height = (h != null) ? Int32.Parse(h) : 0;
+            int width = (w != null) ? Int32.Parse(w) : 0;
 
             if (height <= 36 || height > 4096)
             {

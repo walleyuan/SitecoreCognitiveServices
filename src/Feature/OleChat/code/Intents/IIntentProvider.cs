@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using SitecoreCognitiveServices.Feature.OleChat.Models;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
     public interface IIntentProvider
     {
@@ -9,6 +10,6 @@ namespace Sitecore.SharedSource.CognitiveServices.OleChat.Intents
 
         IIntent GetIntent(Guid appId, string intentName);
 
-        string GetDefaultResponse(Guid appId);
+        ConversationResponse GetDefaultResponse(Guid appId);
     }
 }

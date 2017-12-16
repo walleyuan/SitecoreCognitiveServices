@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.Luis;
-using Sitecore.SharedSource.CognitiveServices.OleChat.Intents;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
+using SitecoreCognitiveServices.Feature.OleChat.Intents;
 
-namespace Sitecore.SharedSource.CognitiveServices.OleChat.Dialog
+namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
 {
     public class Conversation : IConversation
     {

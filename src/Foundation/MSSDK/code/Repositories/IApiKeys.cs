@@ -1,5 +1,5 @@
 ﻿
-namespace Microsoft.SharedSource.CognitiveServices
+namespace SitecoreCognitiveServices.Foundation.MSSDK
 {
     public interface IApiKeys
     {

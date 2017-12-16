@@ -1,8 +1,8 @@
-﻿using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Models.Analysis;
-using Sitecore.SharedSource.CognitiveServices.ImageSearch.Search;
+﻿using SitecoreCognitiveServices.Feature.ImageSearch.Models;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
+using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Factories
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
 {
     public interface ICognitiveImageAnalysisFactory
     {

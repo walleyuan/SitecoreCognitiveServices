@@ -7,7 +7,7 @@ using Sitecore.Diagnostics;
 using Sitecore.Events;
 using Sitecore.Globalization;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.Crawlers
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.Crawlers
 {
     public class CognitiveCrawler : SitecoreItemCrawler
     {

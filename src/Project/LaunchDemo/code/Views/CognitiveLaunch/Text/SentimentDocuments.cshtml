@@ -1,0 +1,30 @@
+﻿@using Sitecore.Data.Managers
+@model List<SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text.SentimentDocumentResult>
+
+@if (Model != null)
+{
+    <div class="sentiment-wrap">
+        @foreach (var d in Model)
+        {
+            <div class="sentiment-detail">
+                <h4>@d.Id: </h4>
+                <span class="sentiment-box" title="@((d.Score*100).ToString("0"))%">
+                    <div class="bar-value bar-@d.Score.ToString("0.0").Replace(".", "")"></div>
+                </span>
+                <span>
+                    @if(d.Score > 0.8){
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/emoticon_grin.png", 32, 32))
+                    } else if(d.Score <= 0.8 && d.Score > 0.6){
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/emoticon_smile.png", 32, 32))
+                    } else if(d.Score <= 0.6 && d.Score > 0.4){
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/emoticon_straight_face.png", 32, 32))
+                    } else if(d.Score <= 0.4 && d.Score > 0.2){
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/emoticon_frown.png", 32, 32))
+                    } else if(d.Score <= 0.2){
+                        @Html.Raw(ThemeManager.GetImage("Office/32x32/emoticon_angry.png", 32, 32))
+                    }
+                </span>
+            </div>
+        }
+    </div>
+}

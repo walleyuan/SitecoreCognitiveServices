@@ -1,7 +1,7 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Enums;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 using System;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Common {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Common {
     public abstract class VideoOperationResult {
         public VideoOperationStatus Status { get; set; }
 

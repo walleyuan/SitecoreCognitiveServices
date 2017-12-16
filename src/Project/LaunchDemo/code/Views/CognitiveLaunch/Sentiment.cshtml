@@ -1,0 +1,27 @@
+﻿@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text.SentimentResponse
+@{
+    ViewBag.Title = "Sentiment Analysis";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form sentiment-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/Sentiment">
+        <fieldset>
+            <legend>Sentiment Analysis</legend>
+            <div class="form-row">
+                <label>provide text</label>
+                <br/>
+                <textarea type="text" name="text"></textarea>
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Analyze Text"/>
+            </div>
+            <div class="text-sample">
+                @if (Model != null)
+                {
+                    @Html.Partial("~/Views/CognitiveLaunch/Text/SentimentDocuments.cshtml", Model.Documents)
+                }
+            </div>
+        </fieldset>
+    </form>
+</div>

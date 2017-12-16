@@ -1,4 +1,4 @@
-﻿using Microsoft.SharedSource.CognitiveServices.Enums;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Speech {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Speech {
     public class Identification {
         public Guid IdentifiedProfileId { get; set; }
 

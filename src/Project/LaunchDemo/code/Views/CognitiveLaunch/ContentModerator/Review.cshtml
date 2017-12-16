@@ -1,0 +1,94 @@
+﻿@model SitecoreCognitiveServices.Project.LaunchDemo.Models.ReviewResult
+@{
+    ViewBag.Title = "Content Moderator - Review";
+    Layout = "~/Views/CognitiveLaunch/CognitiveLaunchLayout.cshtml";
+}
+
+<div class="frame">
+    <form class="form cm-review-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/ContentModeratorReviewCreate">
+        <fieldset>
+            <legend>Create Review</legend>
+            <div class="form-row">
+                <label>Team Name</label>
+                <input type="text" name="teamName"/>
+            </div>
+            <div class="form-row">
+                <label>Image Url</label>
+                <input type="text" name="imageUrl" />
+            </div>
+            <div class="form-row">
+                <label>Content Id</label>
+                <input type="text" name="contentId" />
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Create Review"/>
+            </div>
+            @if (Model.CreateReviews != null)
+            {
+                <br/>
+                foreach (var s in Model.CreateReviews)
+                {
+                    <div>Review Id: @s</div>
+                }
+            }
+        </fieldset>
+    </form>
+    <form class="form cm-review-form" method="post" action="/SitecoreCognitiveServices/CognitiveLaunch/ContentModeratorReviewGet">
+        <fieldset>
+            <legend>Get Review</legend>
+            <div class="form-row">
+                <label>Team Name</label>
+                <input type="text" name="teamName" />
+            </div>
+            <div class="form-row">
+                <label>Review Id</label>
+                <input type="text" name="reviewId" />
+            </div>
+            <div class="scWizardButtons">
+                <input type="submit" value="Get Review" />
+            </div>
+            @if (Model.Review != null)
+            {
+                <br/>
+                <div>
+                    <div>
+                        <label>Status: </label> @Model.Review.ContentModeratorReviewStatus
+                    </div>
+                    <div>
+                        <label>Created By: </label> @Model.Review.CreatedBy
+                    </div>
+                    <div>
+                        <label>Review Id: </label> @Model.Review.ReviewId
+                    </div>
+                    <div>
+                        <label>Type: </label> @Model.Review.Type
+                    </div>
+                    @if (Model.Review.Metadata != null && Model.Review.Metadata.Any())
+                    {
+                        <div>
+                            <div>Metadata</div>
+                            <ul>
+                                @foreach (var a in Model.Review.Metadata)
+                                {
+                                    <li>@a.Key - @a.Value</li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                    @if (Model.Review.ReviewerResultTags != null && Model.Review.ReviewerResultTags.Any())
+                    {
+                        <div>
+                            <div>Reviewer Result Tags</div>
+                            <ul>
+                                @foreach (var a in Model.Review.ReviewerResultTags)
+                                {
+                                    <li>@a.Key - @a.Value</li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+            }
+        </fieldset>
+    </form>
+</div>

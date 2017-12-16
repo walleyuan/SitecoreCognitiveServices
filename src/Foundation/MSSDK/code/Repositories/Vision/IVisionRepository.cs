@@ -1,10 +1,10 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using Microsoft.SharedSource.CognitiveServices.Models.Vision.Computer;
-using Microsoft.SharedSource.CognitiveServices.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Vision
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision
 {
     public interface IVisionRepository
     {

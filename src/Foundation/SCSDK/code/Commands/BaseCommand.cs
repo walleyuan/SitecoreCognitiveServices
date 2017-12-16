@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web.Mvc;
 using Sitecore.Shell.Framework.Commands;
-using Sitecore.SharedSource.CognitiveServices.Wrappers;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
-namespace Sitecore.SharedSource.CognitiveServices.Commands
+namespace SitecoreCognitiveServices.Foundation.SCSDK.Commands
 {
     [Serializable]
     public class BaseCommand : Command

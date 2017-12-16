@@ -1,7 +1,7 @@
 ﻿
-using Microsoft.SharedSource.CognitiveServices.Models.Bing.ImageSearch;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.ImageSearch;
 
-namespace Microsoft.SharedSource.CognitiveServices.Models.Bing.VideoSearch {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Bing.VideoSearch {
     public class VideoSearchShortResult {
         public string Text { get; set; }
         public string DisplayText { get; set; }

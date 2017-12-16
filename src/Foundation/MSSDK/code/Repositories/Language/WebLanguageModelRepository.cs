@@ -1,17 +1,17 @@
 ﻿using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Microsoft.SharedSource.CognitiveServices.Enums;
-using Microsoft.SharedSource.CognitiveServices.Models.Language.WebLanguageModel;
+using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.WebLanguageModel;
 
-namespace Microsoft.SharedSource.CognitiveServices.Repositories.Language {
+namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language {
     public class WebLanguageModelRepository : IWebLanguageModelRepository {
         
-        protected readonly IApiKeys ApiKeys;
-        protected readonly IRepositoryClient RepositoryClient;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMicrosoftCognitiveServicesRepositoryClient RepositoryClient;
 
         public WebLanguageModelRepository(
-            IApiKeys apiKeys,
-            IRepositoryClient repoClient)
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMicrosoftCognitiveServicesRepositoryClient repoClient)
         {
             ApiKeys = apiKeys;
             RepositoryClient = repoClient;

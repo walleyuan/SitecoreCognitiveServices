@@ -1,6 +1,6 @@
 ﻿using System.Web.Script.Serialization;
 
-namespace Sitecore.SharedSource.CognitiveServices.ImageSearch.Search.ComputedFields.Image
+namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image
 {
     public class TextAnalysis : BaseComputedField
     {

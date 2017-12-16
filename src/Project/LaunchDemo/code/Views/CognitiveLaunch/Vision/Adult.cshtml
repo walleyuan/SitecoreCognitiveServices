@@ -1,0 +1,37 @@
+﻿@using Sitecore.Data.Managers
+@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.Adult
+
+@if (Model != null)
+{
+    <div class="detail-box detail-adult">
+        <h3>Adult</h3>
+        <div class="detail-row">
+            <label>Adult: </label>
+            @Html.Partial("~/Views/CognitiveLaunch/Common/MeasureBar.cshtml", (float)Model.AdultScore)
+            <span class="tf-icon">
+                @if (Model.IsAdultContent)
+                {
+                    @Html.Raw(ThemeManager.GetImage("Apps/16x16/Right.png", 16, 16))
+                }
+                else
+                {
+                    @Html.Raw(ThemeManager.GetImage("Apps/16x16/Wrong.png", 16, 16))
+                }
+            </span>
+        </div>
+        <div class="detail-row">
+            <label>Racy: </label>
+            @Html.Partial("~/Views/CognitiveLaunch/Common/MeasureBar.cshtml", (float)Model.RacyScore)
+            <span class="tf-icon">
+                @if (Model.IsRacyContent)
+                {
+                    @Html.Raw(ThemeManager.GetImage("Apps/16x16/Right.png", 16, 16))
+                }
+                else
+                {
+                    @Html.Raw(ThemeManager.GetImage("Apps/16x16/Wrong.png", 16, 16))
+                }
+            </span>
+        </div>
+    </div>
+}
