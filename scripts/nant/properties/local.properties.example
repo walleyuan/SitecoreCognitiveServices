@@ -60,6 +60,11 @@ and running. There are additional default properties from dev.properties that yo
   <property name="CognitiveService.ApiKey.MSSDK.WebLM" value="" />
   <property name="CognitiveService.ApiKey.MSSDK.WebLM.Endpoint" value="https://westus.api.cognitive.microsoft.com/text/weblm/v1.0/" />
 
+  <property name="CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Endpoint" value="https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/" />
+  <property name="CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Username" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Password" value="" />
+    
   <!-- Module Settings-->
   <property name="CognitiveService.Language" value="en" />
   <property name="CognitiveService.CatchAndReleaseExceptions" value="false" />

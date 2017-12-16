@@ -72,6 +72,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{5517
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Project.LaunchDemo", "src\Project\LaunchDemo\code\SitecoreCognitiveServices.Project.LaunchDemo.csproj", "{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IBMSDK", "IBMSDK", "{91665DC0-B470-488C-9047-A89614668F85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.IBMSDK", "src\Foundation\IBMSDK\code\SitecoreCognitiveServices.Foundation.IBMSDK.csproj", "{369FD581-2F6F-47F0-80F3-25F8209FFDD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -110,6 +114,10 @@ Global
 		{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{369FD581-2F6F-47F0-80F3-25F8209FFDD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{369FD581-2F6F-47F0-80F3-25F8209FFDD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{369FD581-2F6F-47F0-80F3-25F8209FFDD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{369FD581-2F6F-47F0-80F3-25F8209FFDD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -131,6 +139,8 @@ Global
 		{13ECB0DB-E99D-4D05-97E8-138EB3884353} = {F630EF68-B9D0-4993-B47E-25374CF51C0A}
 		{36A40F78-1E26-4067-89AA-81962EF1BE63} = {BB8368FA-BE14-4A3A-8FAD-BDA6CBDB8C64}
 		{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3} = {D59B5ED1-EEEA-4145-9337-B58694639E1D}
+		{91665DC0-B470-488C-9047-A89614668F85} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
+		{369FD581-2F6F-47F0-80F3-25F8209FFDD0} = {91665DC0-B470-488C-9047-A89614668F85}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
