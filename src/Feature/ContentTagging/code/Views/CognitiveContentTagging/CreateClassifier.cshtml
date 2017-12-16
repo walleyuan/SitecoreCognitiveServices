@@ -1,0 +1,30 @@
+﻿@model SitecoreCognitiveServices.Feature.ContentTagging.Models.CreateClassifierModel
+
+@{
+    ViewBag.Title = "Cognitive Services: ContentTagging";
+    Layout = "~/Views/CognitiveCommon/CognitiveLayout.cshtml";
+}
+
+<link href="/sitecore modules/Web/SitecoreCognitiveServices/css/SitecoreCognitiveServices.Feature.ContentTagging.css?x=@(new System.Random().Next())" rel="stylesheet" type="text/css" />
+<script src="/sitecore modules/Web/SitecoreCognitiveServices/js/SitecoreCognitiveServices.Feature.ContentTagging.js"></script>
+
+<div class="frame">
+    <form class="form chat-form" method="post" action="/SitecoreCognitiveServices/CognitiveContentTagging/Post">
+        @Html.AntiForgeryToken()
+        
+        (text field to start) 
+        <br/>
+        select the folder path 
+        <br/>
+        optionally select template type
+        <br/>
+        select the field to use as content (text field to start)
+        <br/>
+        select the field to use as tags (text field to start)
+
+        <input type="hidden" name="tagging-db" class="tagging-db" value="@Model.Database"/>
+        <input type="hidden" name="tagging-lang" class="tagging-lang" value="@Model.Language"/>
+        <input type="hidden" name="tagging-id" class="tagging-id" value="@Model.Id"/>
+        <button class="tagging-submit scButton">Send</button>
+    </form>
+</div>
