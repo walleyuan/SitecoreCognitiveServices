@@ -42,7 +42,7 @@
 			<echo message="Targeting architecture: ${_target.arch}..." />
 		</if>
 
-		<msbuild project="Launch.sln" verbosity="minimal" >
+		<msbuild project="SitecoreCognitiveServices.sln" verbosity="minimal" >
 			<property name="Configuration" value="${build.configuration}" />
 			<property name="TargetArch" value="${_target.arch}" />
 		</msbuild>

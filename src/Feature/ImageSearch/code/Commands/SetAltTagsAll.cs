@@ -8,18 +8,8 @@ using SitecoreCognitiveServices.Foundation.SCSDK.Commands;
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
 {
     [Serializable]
-    public class SetAltTagsAll : BaseCommand
+    public class SetAltTagsAll : BaseImageSearchCommand
     {
-        public override void Execute(CommandContext context)
-        {
-            Item ctxItem = DataWrapper.ExtractItem(context);
-            if (ctxItem == null)
-                return;
-
-            context.Parameters.Add(idParam, ctxItem.ID.ToString());
-            Sitecore.Context.ClientPage.Start(this, "Run", context.Parameters);
-        }
-
         public virtual void Run(ClientPipelineArgs args)
         {
             if (args.IsPostBack)

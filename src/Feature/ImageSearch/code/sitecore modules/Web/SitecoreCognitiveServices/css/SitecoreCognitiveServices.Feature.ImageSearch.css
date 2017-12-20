@@ -1,5 +1,6 @@
 ﻿body { color: #131313; font-family: "Open Sans",Arial,sans-serif; font-size: 12px;background: #fff;height: auto;}
 .frame {padding: 10px;}
+.analysis-warning { color: #dc291e; font-weight:bold; font-size: 15px; margin: 50px;}
 h1 {}
 h1.modal-heading { background: #2b2b2b none repeat scroll 0 0; color: #fff; font-size: 18px; height: 45px; line-height: 38px; padding: 0 0 0 15px; }
 .tabbed-nav {border-left: 5px solid #dc291e;}

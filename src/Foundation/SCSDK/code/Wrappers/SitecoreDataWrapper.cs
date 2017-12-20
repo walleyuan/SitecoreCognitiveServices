@@ -120,6 +120,14 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
             return context.Items[0];
         }
 
+        /// <summary>
+        /// tries to parse a size value from the field on the item but falls back to minimum if it cannot. adds offset to the size if found.
+        /// </summary>
+        /// <param name="i"></param>
+        /// <param name="fieldName"></param>
+        /// <param name="minimum"></param>
+        /// <param name="offset"></param>
+        /// <returns></returns>
         public virtual string GetFieldDimension(Item i, string fieldName, int minimum, int offset)
         {
             if (i.Fields[fieldName] == null)
@@ -135,7 +143,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
         }
 
         public virtual IEnumerable<TemplateItem> GetBaseTemplates(Item i) {
-            return i.Template.BaseTemplates.SelectMany(a => GetBaseTemplates(a));
+            return i.Template.BaseTemplates.SelectMany(GetBaseTemplates);
         }
 
         public virtual IEnumerable<TemplateItem> GetBaseTemplates(TemplateItem t) {
@@ -144,7 +152,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
                 return new TemplateItem[0];
 
             return new[] { t }
-                    .Concat(t.BaseTemplates.SelectMany(a => GetBaseTemplates(a)));
+                    .Concat(t.BaseTemplates.SelectMany(GetBaseTemplates));
         }
 
         public virtual void SetImageDescription(MediaItem mediaItem, string altDescription) {

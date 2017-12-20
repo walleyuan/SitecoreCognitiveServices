@@ -7,21 +7,8 @@ using SitecoreCognitiveServices.Foundation.SCSDK.Commands;
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
 {
     [Serializable]
-    public class Reanalyze : BaseCommand
+    public class Reanalyze : BaseImageSearchCommand
     {
-        public override void Execute(CommandContext context)
-        {
-            Item ctxItem = DataWrapper.ExtractItem(context);
-            if (ctxItem == null)
-                return;
-
-            context.Parameters.Add(idParam, ctxItem.ID.ToString());
-            context.Parameters.Add(heightParam, DataWrapper.GetFieldDimension(ctxItem, "height", 500, 56));
-            context.Parameters.Add(widthParam, DataWrapper.GetFieldDimension(ctxItem, "width", 810, 20));
-           
-            Sitecore.Context.ClientPage.Start(this, "Run", context.Parameters);
-        }
-
         public virtual void Run(ClientPipelineArgs args)
         {
             if (args.IsPostBack)
@@ -31,14 +18,12 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
             string db = Sitecore.Context.ContentDatabase.Name;
             Item i = DataWrapper.GetItemByIdValue(id, db);
             string langCode = i.Language.Name;
-            string height = args.Parameters[heightParam];
-            string width = args.Parameters[widthParam];
             
-            ModalDialogOptions mdo = new ModalDialogOptions($"/SitecoreCognitiveServices/CognitiveImageSearch/Reanalyze?id={id}&language={langCode}&db={db}")
+            ModalDialogOptions mdo = new ModalDialogOptions($"/SitecoreCognitiveServices/CognitiveImageSearch/Analyze?id={id}&language={langCode}&db={db}")
             {
                 Header = "Cognitive Analysis",
-                Height = height,
-                Width = width,
+                Height = DataWrapper.GetFieldDimension(i, "height", 500, 56),
+                Width = DataWrapper.GetFieldDimension(i, "width", 810, 20),
                 Message = "View the cognitive analysis of the current item",
                 Response = true
             };
@@ -49,8 +34,12 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
         public override CommandState QueryState(CommandContext context)
         {
             Item ctxItem = DataWrapper?.ExtractItem(context);
-
-            return (ctxItem != null && DataWrapper.IsMediaFile(ctxItem))
+            if (ctxItem == null || !DataWrapper.IsMediaFile(ctxItem))
+                return CommandState.Hidden;
+            
+            return _searchService
+                .GetImageAnalysis(ctxItem.ID.ToString(), ctxItem.Language.Name, ctxItem.Database.Name)
+                .HasAnyAnalysis()
                 ? CommandState.Enabled
                 : CommandState.Hidden;
         }

@@ -202,6 +202,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\IocConfig.cs" />
+    <Compile Include="Commands\Analyze.cs" />
+    <Compile Include="Commands\BaseImageSearchCommand.cs" />
     <Compile Include="Commands\Reanalyze.cs" />
     <Compile Include="Commands\ReanalyzeAll.cs" />
     <Compile Include="Commands\SetAltTags.cs" />

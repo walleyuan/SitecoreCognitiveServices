@@ -167,7 +167,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             return View("ImageAnalysis", ImageAnalysisFactory.Create(csr));
         }
 
-        public ActionResult Reanalyze(string id, string language, string db) {
+        public ActionResult Analyze(string id, string language, string db) {
             Item item = DataWrapper.GetItemByIdValue(id, db);
 
             SearchService.UpdateItemInIndex(item, db);

@@ -1,14 +1,13 @@
-﻿using Sitecore.Text;
-using System;
+﻿using System;
+using System.Web.Mvc;
 using Sitecore.Shell.Framework.Commands;
 using Sitecore.Web.UI.Sheer;
 using Sitecore.Data.Items;
-using SitecoreCognitiveServices.Foundation.SCSDK.Commands;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
 {
     [Serializable]
-    public class ViewAnalysis : BaseImageSearchCommand
+    public class Analyze : BaseImageSearchCommand
     {
         public virtual void Run(ClientPipelineArgs args)
         {
@@ -20,11 +19,11 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
             Item i = DataWrapper.GetItemByIdValue(id, db);
             string langCode = i.Language.Name;
             
-            ModalDialogOptions mdo = new ModalDialogOptions($"/SitecoreCognitiveServices/CognitiveImageSearch/ImageAnalysis?id={id}&language={langCode}&db={db}")
+            ModalDialogOptions mdo = new ModalDialogOptions($"/SitecoreCognitiveServices/CognitiveImageSearch/Analyze?id={id}&language={langCode}&db={db}")
             {
                 Header = "Cognitive Analysis",
-                Height = DataWrapper.GetFieldDimension(i, "height", 500, 60),
-                Width = DataWrapper.GetFieldDimension(i, "width", 810, 41),
+                Height = DataWrapper.GetFieldDimension(i, "height", 500, 56),
+                Width = DataWrapper.GetFieldDimension(i, "width", 810, 20),
                 Message = "View the cognitive analysis of the current item",
                 Response = true
             };
@@ -40,7 +39,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
             
             return _searchService
                 .GetImageAnalysis(ctxItem.ID.ToString(), ctxItem.Language.Name, ctxItem.Database.Name)
-                .HasAnyAnalysis()
+                .HasNoAnalysis()
                 ? CommandState.Enabled
                 : CommandState.Hidden;
         }

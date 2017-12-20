@@ -7,7 +7,10 @@
 }
 
 <link rel="stylesheet" href="/sitecore modules/Web/SitecoreCognitiveServices/css/SitecoreCognitiveServices.Feature.ImageSearch.css?x=@(new System.Random().Next())" />
-
+@if (Model.HasNoAnalysis())
+{
+    <div class="analysis-warning">There's no analysis for this item. It may not match the requirements of the Cognitive Services API.</div>
+} else { 
 <div class="frame">
     <div class="tabbed-nav">
         <div class="nav-btn selected" rel="visual" title="Visual Analysis">
@@ -71,7 +74,7 @@
                         @Html.Partial("~/Views/CognitiveImageSearch/Emotion/Scores.cshtml", ea.Scores)
                     </div>
                 </div>
-    }
+            }
         </div>
         <div class="tab-content facial">
             @foreach (var fa in Model.FacialAnalysis)
@@ -85,7 +88,7 @@
                     </div>
                     @Html.Partial("~/Views/CognitiveImageSearch/Face/Rectangle.cshtml", fa.FaceRectangle)
                 </div>
-    }
+            }
         </div>
         <div class="tab-content textual">
             @Html.Partial("~/Views/CognitiveImageSearch/Vision/Regions.cshtml", Model.TextAnalysis.Regions, new ViewDataDictionary(Model.TextAnalysis.Regions))
@@ -119,3 +122,4 @@
 </div>
 
 <script src="/sitecore modules/Web/SitecoreCognitiveServices/js/SitecoreCognitiveServices.Feature.ImageSearch.js"></script>
+}

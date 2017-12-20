@@ -4,9 +4,6 @@
 and running. There are additional default properties from dev.properties that you may wish to override. -->
 <project>
   
-  <!-- Include Common Dev Properties -->
-  <include buildfile="default.properties" failonerror="true" />
-  
   <!-- Local site instance settings -->
   <property name="Build.Configuration" value="Debug" />
   <!-- Visual Studio Target Number: 2012 = 11.0, 2013 = 12.0, 2015 = 14.0, 2017 = 15.0-->

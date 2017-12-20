@@ -15,6 +15,9 @@
 	<!-- Tell the user which environment we're using -->
 	<echo message="Using environment: ${env}" />
 
+    <!-- Include Common Dev Properties -->
+    <include buildfile="properties/default.properties" failonerror="true" />
+  
 	<!-- Load the properties for the configured environment -->
 	<include buildfile="properties/${env}.properties" failonerror="true" />
 

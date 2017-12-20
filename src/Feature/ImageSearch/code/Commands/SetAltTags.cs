@@ -8,18 +8,8 @@ using SitecoreCognitiveServices.Foundation.SCSDK.Commands;
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
 {
     [Serializable]
-    public class SetAltTags : BaseCommand
+    public class SetAltTags : BaseImageSearchCommand
     {
-        public override void Execute(CommandContext context)
-        {
-            Item ctxItem = DataWrapper.ExtractItem(context);
-            if (ctxItem == null)
-                return;
-
-            context.Parameters.Add(idParam, ctxItem.ID.ToString());
-            Sitecore.Context.ClientPage.Start(this, "Run", context.Parameters);
-        }
-
         public virtual void Run(ClientPipelineArgs args)
         {
             if (args.IsPostBack)
@@ -45,8 +35,12 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
         public override CommandState QueryState(CommandContext context)
         {
             Item ctxItem = DataWrapper?.ExtractItem(context);
-
-            return (ctxItem != null && DataWrapper.IsMediaFile(ctxItem))
+            if (ctxItem == null || !DataWrapper.IsMediaFile(ctxItem))
+                return CommandState.Hidden;
+            
+            return _searchService
+                .GetImageAnalysis(ctxItem.ID.ToString(), ctxItem.Language.Name, ctxItem.Database.Name)
+                .HasAnyAnalysis()
                 ? CommandState.Enabled
                 : CommandState.Hidden;
         }
