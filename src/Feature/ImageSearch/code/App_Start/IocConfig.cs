@@ -5,6 +5,7 @@ using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 using SitecoreCognitiveServices.Feature.ImageSearch.Controllers;
 using Sitecore.DependencyInjection;
 using System.Web.Mvc;
+using SitecoreCognitiveServices.Feature.ImageSearch.Analysis;
 using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
 using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
 using SitecoreCognitiveServices.Feature.ImageSearch.Services.Search;
@@ -39,6 +40,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.App_Start
             serviceCollection.AddTransient<IImageSearchService, ImageSearchService>();
             serviceCollection.AddTransient<ICognitiveImageSearchContext, CognitiveImageSearchContext>();
             serviceCollection.AddTransient<ICognitiveImageSearchResult, CognitiveImageSearchResult>();
+
+            //analysis
+            serviceCollection.AddTransient<IAnalysisService, AnalysisService>();
 
             //controllers
             serviceCollection.AddTransient(typeof(CognitiveImageSearchController));

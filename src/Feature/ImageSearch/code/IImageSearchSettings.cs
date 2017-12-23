@@ -7,5 +7,7 @@ using System.Threading.Tasks;
 namespace SitecoreCognitiveServices.Feature.ImageSearch {
     public interface IImageSearchSettings {
         string IndexNameFormat { get; }
+        string ImageAnalysisFolder { get; }
+        string ImageAnalysisTemplate { get; }
     }
 }

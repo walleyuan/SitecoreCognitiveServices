@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using Sitecore.Diagnostics;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 using Sitecore.Data.Items;
+using SitecoreCognitiveServices.Feature.ImageSearch.Analysis;
 using SitecoreCognitiveServices.Feature.ImageSearch.Services.Search;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
@@ -13,6 +15,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
 {
     public class CognitiveImageSearchController : Controller
     {
+        #region Constructor
+
         protected readonly IImageSearchService SearchService;
         protected readonly ICognitiveImageSearchContext Searcher;
         protected readonly ISitecoreDataWrapper DataWrapper;
@@ -21,6 +25,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
         protected readonly ISetAltTagsAllFactory SetAltTagsAllFactory;
         protected readonly ICognitiveImageAnalysisFactory ImageAnalysisFactory;
         protected readonly IReanalyzeAllFactory ReanalyzeAllFactory;
+        protected readonly IAnalysisService AnalysisService;
 
         public CognitiveImageSearchController(
             IImageSearchService searchService,
@@ -30,7 +35,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             ICognitiveImageSearchFactory msFactory,
             ISetAltTagsAllFactory satarFactory,
             ICognitiveImageAnalysisFactory iaFactory,
-            IReanalyzeAllFactory pFactory)
+            IReanalyzeAllFactory pFactory,
+            IAnalysisService analysisService)
         {
             Assert.IsNotNull(searchService, typeof(IImageSearchService));
             Assert.IsNotNull(searcher, typeof(ICognitiveImageSearchContext));
@@ -40,6 +46,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             Assert.IsNotNull(satarFactory, typeof(ISetAltTagsAllFactory));
             Assert.IsNotNull(iaFactory, typeof(ICognitiveImageAnalysisFactory));
             Assert.IsNotNull(pFactory, typeof(IReanalyzeAllFactory));
+            Assert.IsNotNull(analysisService, typeof(IAnalysisService));
 
             SearchService = searchService;
             Searcher = searcher;
@@ -49,7 +56,10 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             SetAltTagsAllFactory = satarFactory;
             ImageAnalysisFactory = iaFactory;
             ReanalyzeAllFactory = pFactory;
+            AnalysisService = analysisService;
         }
+
+        #endregion
 
         #region Image Search
 
@@ -105,9 +115,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             MediaItem m = item;
 
             var desc = SearchService.GetImageDescription(m, language);
-            if(desc == null)
-                return View("ImageDescription");
-
+            
             return View("ImageDescription", desc);
         }
 
@@ -161,7 +169,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
 
         #region Analysis
 
-        public ActionResult ImageAnalysis(string id, string language, string db) {
+        public ActionResult ImageAnalysis(string id, string language, string db)
+        {
             ICognitiveImageSearchResult csr = SearchService.GetCognitiveSearchResult(id, language, db);
 
             return View("ImageAnalysis", ImageAnalysisFactory.Create(csr));
@@ -170,6 +179,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
         public ActionResult Analyze(string id, string language, string db) {
             Item item = DataWrapper.GetItemByIdValue(id, db);
 
+            AnalysisService.AnalyzeImage(item);
             SearchService.UpdateItemInIndex(item, db);
 
             return View("ImageAnalysis", SearchService.GetImageAnalysis(id, language, db));
@@ -186,6 +196,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             if (item == null)
                 return ViewReanalyzeAll(id, language, db);
 
+            AnalysisService.AnalyzeImagesRecursively(item, db);
             var count = SearchService.UpdateItemInIndexRecursively(item, db);
 
             var result = ReanalyzeAllFactory.Create(id, db, language, count);

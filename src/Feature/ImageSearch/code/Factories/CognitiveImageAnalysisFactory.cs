@@ -4,6 +4,10 @@ using Sitecore.Data.Items;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
 {
@@ -44,6 +48,25 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
             analysis.ImageHeight = GetNumber(i, "height", 0);
             analysis.ImageWidth = GetNumber(i, "width", 0);
             analysis.ImageUrl = $"/sitecore/shell/Applications/-/media/{i.ID.Guid:N}.ashx";
+
+            return analysis;
+        }
+
+        public virtual ICognitiveImageAnalysis Create(MediaItem mediaItem, Emotion[] emotionAnalysis, Face[] facialAnalysis, OcrResults textAnalysis, AnalysisResult visionAnalysis)
+        {
+            var analysis = Create();
+            
+            analysis.EmotionAnalysis = emotionAnalysis ?? new Emotion[0];
+            analysis.FacialAnalysis = facialAnalysis ?? new Face[0];
+            analysis.TextAnalysis = textAnalysis ?? new OcrResults();
+            analysis.VisionAnalysis = visionAnalysis ?? new AnalysisResult();
+
+            if (mediaItem == null)
+                return analysis;
+
+            analysis.ImageHeight = GetNumber(mediaItem, "height", 0);
+            analysis.ImageWidth = GetNumber(mediaItem, "width", 0);
+            analysis.ImageUrl = $"/sitecore/shell/Applications/-/media/{mediaItem.ID.Guid:N}.ashx";
 
             return analysis;
         }
