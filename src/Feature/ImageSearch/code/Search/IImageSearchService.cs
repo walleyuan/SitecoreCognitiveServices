@@ -20,6 +20,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
         /// </summary>
         /// <param name="itemName">Should be the short id of a media item</param>
         Item GetAnalysisItem(string itemName, string languageCode, string dbName);
+        /// <summary>
+        /// Cognitive image search result has custom index fields that store the analysis in computed fields
+        /// </summary>
         ICognitiveImageSearchResult GetCognitiveSearchResult(string itemId, string language, string db);
         ICognitiveImageAnalysis GetImageAnalysis(string id, string language, string db);
         IImageDescription GetImageDescription(MediaItem m, string language);
