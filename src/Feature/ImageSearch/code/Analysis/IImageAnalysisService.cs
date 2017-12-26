@@ -12,7 +12,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
 {
     public interface IImageAnalysisService
     {
-        ICognitiveImageAnalysis GetAnalysis(string id, string dbName);
         ICognitiveImageAnalysis AnalyzeImage(Item imageItem);
         int AnalyzeImagesRecursively(Item item, string db);
         Emotion[] GetEmotionAnalysis(MediaItem m);

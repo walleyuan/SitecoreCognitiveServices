@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
-using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
-using Sitecore.Diagnostics;
 using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
 using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
+using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
-using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
@@ -22,45 +21,32 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
         #region Constructor
 
         protected readonly IImageSearchSettings _settings;
+        protected readonly IImageSearchService _searchService;
         protected readonly ISitecoreDataWrapper _dataWrapper;
-        protected readonly IEmotionRepository _emotionRepository;
-        protected readonly IFaceRepository _faceRepository;
-        protected readonly IVisionRepository _visionRepository;
+        protected readonly IEmotionService _emotionService;
+        protected readonly IFaceService _faceService;
+        protected readonly IVisionService _visionService;
         protected readonly ICognitiveImageAnalysisFactory _imageAnalysisFactory;
         
         public ImageAnalysisService(
             IImageSearchSettings settings,
+            IImageSearchService searchService,
             ISitecoreDataWrapper dataWrapper,
-            IEmotionRepository emotionRepository,
-            IFaceRepository faceRepository,
-            IVisionRepository visionRepository,
+            IEmotionService emotionService,
+            IFaceService faceService,
+            IVisionService visionService,
             ICognitiveImageAnalysisFactory imageAnalysisFactory)
         {
             _settings = settings;
+            _searchService = searchService;
             _dataWrapper = dataWrapper;
-            _emotionRepository = emotionRepository;
-            _faceRepository = faceRepository;
-            _visionRepository = visionRepository;
+            _emotionService = emotionService;
+            _faceService = faceService;
+            _visionService = visionService;
             _imageAnalysisFactory = imageAnalysisFactory;
         }
 
         #endregion
-
-        public ICognitiveImageAnalysis GetAnalysis(string id, string dbName)
-        {
-            
-            var item = _dataWrapper.GetItemByIdValue(_settings.ImageAnalysisTemplate, dbName);
-            MediaItem m = item;
-
-            var imageAnalysis = _imageAnalysisFactory.Create(
-                m,
-                JsonConvert.DeserializeObject<Emotion[]>(item.Fields["Emotion Analysis"].Value),
-                JsonConvert.DeserializeObject<Face[]>(item.Fields["Facial Analysis"].Value),
-                JsonConvert.DeserializeObject<OcrResults>(item.Fields["Text Analysis"].Value),
-                JsonConvert.DeserializeObject<AnalysisResult>(item.Fields["Vision Analysis"].Value));
-            
-            return imageAnalysis;
-        }
         
         public ICognitiveImageAnalysis AnalyzeImage(Item imageItem)
         {
@@ -108,74 +94,38 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
 
         public virtual Emotion[] GetEmotionAnalysis(MediaItem m)
         {
-            try
-            {
-                return _emotionRepository.Recognize(m.GetMediaStream());
-            }
-            catch (Exception ex)
-            {
-                Log.Error($"Error recognizing Emotions. Item: {m.InnerItem.ID}, Message: {ex.Message}", ex);
-            }
-
-            return null;
+            return _emotionService.Recognize(m.GetMediaStream());
         }
         
         public virtual Face[] GetFaceAnalysis(MediaItem m)
         {
-            try
+            return _faceService.Detect(m.GetMediaStream(), true, true, new List<FaceAttributeType>()
             {
-                return _faceRepository.Detect(m.GetMediaStream(), true, true, new List<FaceAttributeType>()
-                {
-                    FaceAttributeType.Age,
-                    FaceAttributeType.FacialHair,
-                    FaceAttributeType.Gender,
-                    FaceAttributeType.Glasses,
-                    FaceAttributeType.HeadPose,
-                    FaceAttributeType.Smile
-                });
-            }
-            catch (Exception ex)
-            {
-                Log.Error($"Error detecting Faces. Item: {m.InnerItem.ID}, Message: {ex.Message}", ex);
-            }
-
-            return null;
+                FaceAttributeType.Age,
+                FaceAttributeType.FacialHair,
+                FaceAttributeType.Gender,
+                FaceAttributeType.Glasses,
+                FaceAttributeType.HeadPose,
+                FaceAttributeType.Smile
+            });
         }
 
         public virtual AnalysisResult GetVisionAnalysis(MediaItem m)
         {
-            try
-            {
-                return _visionRepository.AnalyzeImage(m.GetMediaStream(), new List<VisualFeature>() {
-                    VisualFeature.Adult,
-                    VisualFeature.Categories,
-                    VisualFeature.Color,
-                    VisualFeature.Description,
-                    VisualFeature.Faces,
-                    VisualFeature.ImageType,
-                    VisualFeature.Tags
-                });
-            }
-            catch (Exception ex)
-            {
-                Log.Error($"Error analyzing using Vision API. Item: {m.InnerItem.ID}, Message: {ex.Message}", ex);
-            }
-
-            return null;
+            return _visionService.AnalyzeImage(m.GetMediaStream(), new List<VisualFeature>() {
+                VisualFeature.Adult,
+                VisualFeature.Categories,
+                VisualFeature.Color,
+                VisualFeature.Description,
+                VisualFeature.Faces,
+                VisualFeature.ImageType,
+                VisualFeature.Tags
+            });
         }
 
         public virtual OcrResults GetTextAnalysis(MediaItem m)
         {
-            try
-            {
-                return _visionRepository.RecognizeText(m.GetMediaStream(), "en", true);
-            }
-            catch (Exception ex)
-            {
-                Log.Error($"Error analyzing using Text API. Item: {m.InnerItem.ID}, Message: {ex.Message}", ex);
-            }
-
-            return null;
+            return _visionService.RecognizeText(m.GetMediaStream(), "en", true);
         }
 
         #endregion

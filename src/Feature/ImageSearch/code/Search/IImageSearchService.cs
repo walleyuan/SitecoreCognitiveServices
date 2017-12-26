@@ -15,7 +15,11 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
         void UpdateItemInIndex(Item item, string dbName);
         int UpdateItemInIndexRecursively(Item item, string db);
         List<ICognitiveImageSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, int size, string languageCode, string dbName);
-        ICognitiveImageSearchResult GetAnalysis(string itemId, string languageCode, string dbName);
+        /// <summary>
+        /// Finds the analysis item in the content tree.
+        /// </summary>
+        /// <param name="itemName">Should be the short id of a media item</param>
+        Item GetAnalysisItem(string itemName, string languageCode, string dbName);
         ICognitiveImageSearchResult GetCognitiveSearchResult(string itemId, string language, string db);
         ICognitiveImageAnalysis GetImageAnalysis(string id, string language, string db);
         IImageDescription GetImageDescription(MediaItem m, string language);
@@ -23,5 +27,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
         List<KeyValuePair<string, int>> GetTags(string languageCode, string dbName);
         Expression<Func<CognitiveImageSearchResult, bool>> GetDefaultFilter(string[] parameterValues, string fieldName);
         Expression<Func<CognitiveImageSearchResult, bool>> GetRangeFilter(string[] parameterValues, string fieldName);
+        string GetSitecoreIndexName(string dbName);
+        string GetCognitiveIndexName(string dbName);
     }
 }
