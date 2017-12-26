@@ -8,7 +8,6 @@ using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 using Sitecore.Data.Items;
 using SitecoreCognitiveServices.Feature.ImageSearch.Analysis;
-using SitecoreCognitiveServices.Feature.ImageSearch.Services.Search;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
@@ -18,38 +17,34 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
         #region Constructor
 
         protected readonly IImageSearchService SearchService;
-        protected readonly ICognitiveImageSearchContext Searcher;
         protected readonly ISitecoreDataWrapper DataWrapper;
         protected readonly IWebUtilWrapper WebUtil;
         protected readonly ICognitiveImageSearchFactory MediaSearchFactory;
         protected readonly ISetAltTagsAllFactory SetAltTagsAllFactory;
         protected readonly ICognitiveImageAnalysisFactory ImageAnalysisFactory;
         protected readonly IReanalyzeAllFactory ReanalyzeAllFactory;
-        protected readonly IAnalysisService AnalysisService;
+        protected readonly IImageAnalysisService AnalysisService;
 
         public CognitiveImageSearchController(
             IImageSearchService searchService,
-            ICognitiveImageSearchContext searcher,
             ISitecoreDataWrapper dataWrapper,
             IWebUtilWrapper webUtil,
             ICognitiveImageSearchFactory msFactory,
             ISetAltTagsAllFactory satarFactory,
             ICognitiveImageAnalysisFactory iaFactory,
             IReanalyzeAllFactory pFactory,
-            IAnalysisService analysisService)
+            IImageAnalysisService analysisService)
         {
             Assert.IsNotNull(searchService, typeof(IImageSearchService));
-            Assert.IsNotNull(searcher, typeof(ICognitiveImageSearchContext));
             Assert.IsNotNull(dataWrapper, typeof(ISitecoreDataWrapper));
             Assert.IsNotNull(webUtil, typeof(IWebUtilWrapper));
             Assert.IsNotNull(msFactory, typeof(ICognitiveImageSearchFactory));
             Assert.IsNotNull(satarFactory, typeof(ISetAltTagsAllFactory));
             Assert.IsNotNull(iaFactory, typeof(ICognitiveImageAnalysisFactory));
             Assert.IsNotNull(pFactory, typeof(IReanalyzeAllFactory));
-            Assert.IsNotNull(analysisService, typeof(IAnalysisService));
+            Assert.IsNotNull(analysisService, typeof(IImageAnalysisService));
 
             SearchService = searchService;
-            Searcher = searcher;
             DataWrapper = dataWrapper;
             WebUtil = webUtil;
             MediaSearchFactory = msFactory;
@@ -68,7 +63,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             var lang = WebUtil.GetQueryString("lang");
             var db = WebUtil.GetQueryString("db", "master");
 
-            var ms = MediaSearchFactory.Create(db, lang, Searcher);
+            var ms = MediaSearchFactory.Create(db, lang, SearchService);
 
             return View("RTESearch", ms);
         }
@@ -84,7 +79,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             int page,
             int pageLength)
         {
-            List<ICognitiveImageSearchResult> csr = Searcher.GetMediaResults(
+            List<ICognitiveImageSearchResult> csr = SearchService.GetMediaResults(
                 tagParameters, 
                 rangeParameters, 
                 gender, 

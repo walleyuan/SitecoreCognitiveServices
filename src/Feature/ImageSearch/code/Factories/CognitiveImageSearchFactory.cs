@@ -21,12 +21,12 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
             return Provider.GetService<ICognitiveImageSearch>();
         }
 
-        public virtual ICognitiveImageSearch Create(string db, string language, ICognitiveImageSearchContext searcher)
+        public virtual ICognitiveImageSearch Create(string db, string language, IImageSearchService searchService)
         {
             var r = Create();
             r.Database = db;
             r.Language = language;
-            r.Tags = searcher.GetTags(language, db);
+            r.Tags = searchService.GetTags(language, db);
 
             return r;
         }

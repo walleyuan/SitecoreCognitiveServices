@@ -10,7 +10,7 @@ using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
 {
-    public interface IAnalysisService
+    public interface IImageAnalysisService
     {
         ICognitiveImageAnalysis GetAnalysis(string id, string dbName);
         ICognitiveImageAnalysis AnalyzeImage(Item imageItem);

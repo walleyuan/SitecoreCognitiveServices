@@ -17,7 +17,7 @@ using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
 {
-    public class AnalysisService : IAnalysisService
+    public class ImageAnalysisService : IImageAnalysisService
     {
         #region Constructor
 
@@ -28,7 +28,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
         protected readonly IVisionRepository _visionRepository;
         protected readonly ICognitiveImageAnalysisFactory _imageAnalysisFactory;
         
-        public AnalysisService(
+        public ImageAnalysisService(
             IImageSearchSettings settings,
             ISitecoreDataWrapper dataWrapper,
             IEmotionRepository emotionRepository,

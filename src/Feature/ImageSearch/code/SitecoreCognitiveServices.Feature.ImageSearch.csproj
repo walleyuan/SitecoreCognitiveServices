@@ -201,6 +201,8 @@
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analysis\ImageAnalysisService.cs" />
+    <Compile Include="Analysis\IImageAnalysisService.cs" />
     <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="Commands\Analyze.cs" />
     <Compile Include="Commands\BaseImageSearchCommand.cs" />
@@ -236,7 +238,6 @@
     <Compile Include="Models\Utility\ReanalyzeAll.cs" />
     <Compile Include="Models\Utility\SetAltTagsAll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Search\CognitiveImageSearchContext.cs" />
     <Compile Include="Search\CognitiveImageSearchResult.cs" />
     <Compile Include="Search\CognitiveIndexableImageItem.cs" />
     <Compile Include="Search\ComputedFields\BaseComputedField.cs" />
@@ -261,7 +262,6 @@
     <Compile Include="Search\ComputedFields\Image\TextAnalysis.cs" />
     <Compile Include="Search\ComputedFields\Image\VisionAnalysis.cs" />
     <Compile Include="Search\Crawlers\CognitiveCrawler.cs" />
-    <Compile Include="Search\ICognitiveImageSearchContext.cs" />
     <Compile Include="Search\ICognitiveImageSearchResult.cs" />
     <Compile Include="Search\IImageSearchService.cs" />
     <Compile Include="Search\ImageSearchService.cs" />

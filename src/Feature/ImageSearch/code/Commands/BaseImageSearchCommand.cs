@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Sitecore.Data.Items;
 using Sitecore.Shell.Framework.Commands;
-using SitecoreCognitiveServices.Feature.ImageSearch.Services.Search;
+using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 using SitecoreCognitiveServices.Foundation.SCSDK.Commands;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands

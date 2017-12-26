@@ -7,7 +7,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
     public interface ICognitiveImageSearchFactory
     {
         ICognitiveImageSearch Create();
-        ICognitiveImageSearch Create(string db, string language, ICognitiveImageSearchContext searcher);
+        ICognitiveImageSearch Create(string db, string language, IImageSearchService searchService);
         ICognitiveImageSearchJsonResult CreateMediaSearchJsonResult(ISitecoreDataWrapper dataWrapper, ICognitiveImageSearchResult searchResult);
     }
 }
