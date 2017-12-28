@@ -18,8 +18,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields
     {
         public virtual string FieldName { get; set; }
         public virtual string ReturnType { get; set; }
-        public List<string> TextualFieldTypes => Settings.GetSetting("CognitiveService.ImageSearch.TextualFieldTypes").Split('|').ToList();
-
+        
         public object ComputeFieldValue(IIndexable indexable)
         {
             Assert.ArgumentNotNull(indexable, "indexable");
@@ -67,45 +66,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields
                 Log.Error($"ImageItemAnalysis failed to index {indexItem.Paths.Path}: {exception.Message}", exception, GetType());
             else
                 Log.Error(ex.Message, ex, GetType());
-        }
-
-        /// <summary>
-        /// This will get all text based content fields (as opposed to system fields) from the provided item
-        /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
-        public IEnumerable<Field> GetTextualFields(Item item)
-        {
-            IEnumerable<Field> fields = item.Fields
-                    .Where(f => !f.Name.StartsWith("__") && TextualFieldTypes.Contains(f.Type));
-
-            return fields;
-        }
-
-        protected string RemoveHtmlMarkup(string value)
-        {
-            return Regex.Replace(value, "<.*?>", string.Empty);
-        }
-
-        protected string GetFormattedString(string value, int sizeLimit)
-        {
-            string plainString = RemoveHtmlMarkup(value);
-
-            var contentSize = Encoding.Unicode.GetByteCount(plainString);
-            if (contentSize < sizeLimit)
-                return plainString;
-
-            string[] sentences = plainString.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries);
-            StringBuilder sb = new StringBuilder();
-            foreach (string s in sentences)
-            {
-                if (Encoding.Unicode.GetByteCount($"{sb} {s}.") > sizeLimit)
-                    break;
-
-                sb.Append(sb.Length == 0 ? $"{s}." : $" {s}");
-            }
-
-            return sb.ToString();
         }
     }
 }

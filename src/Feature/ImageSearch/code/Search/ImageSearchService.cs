@@ -99,6 +99,45 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
 
         #region Querying
         
+        public virtual ICognitiveImageAnalysis GetImageAnalysis(string id, string language, string db)
+        {
+            ICognitiveImageSearchResult csr = GetCognitiveSearchResult(id, language, db);
+
+            return ImageAnalysisFactory.Create(csr);
+        }
+
+        public virtual Item GetImageAnalysisItem(string itemName, string languageCode, string dbName)
+        {
+            var index = ContentSearchManager.GetIndex(GetSitecoreIndexName(dbName));
+            using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
+            {
+                return context.GetQueryable<CognitiveImageSearchResult>()
+                    .Where(a =>
+                        a.Name == itemName
+                        && a.Language == languageCode)
+                    .Take(1)
+                    .FirstOrDefault()
+                    ?.GetItem();
+            }
+        }
+
+        public virtual ICognitiveImageSearchResult GetCognitiveSearchResult(string itemId, string language, string dbName) {
+            Assert.IsTrue(!string.IsNullOrEmpty(itemId), "The item id parameter is required");
+            Assert.IsTrue(!string.IsNullOrEmpty(language), "The language parameter is required");
+            Assert.IsTrue(!string.IsNullOrEmpty(dbName), "The database parameter is required");
+
+            var index = ContentSearchManager.GetIndex(GetCognitiveIndexName(dbName));
+            using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
+            {
+                return context.GetQueryable<CognitiveImageSearchResult>()
+                    .Where(a =>
+                        a.UniqueId.Contains(itemId.ToLower())
+                        && a.Language == language)
+                    .Take(1)
+                    .FirstOrDefault();
+            }
+        }
+
         public virtual List<ICognitiveImageSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, int size, string languageCode, string dbName)
         {
             var index = ContentSearchManager.GetIndex(GetCognitiveIndexName(dbName));
@@ -162,45 +201,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
             }
         }
         
-        public virtual Item GetAnalysisItem(string itemName, string languageCode, string dbName)
-        {
-            var index = ContentSearchManager.GetIndex(GetSitecoreIndexName(dbName));
-            using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
-            {
-                return context.GetQueryable<CognitiveImageSearchResult>()
-                    .Where(a =>
-                        a.Name == itemName
-                        && a.Language == languageCode)
-                    .Take(1)
-                    .FirstOrDefault()
-                    ?.GetItem();
-            }
-        }
-
-        public virtual ICognitiveImageSearchResult GetCognitiveSearchResult(string itemId, string language, string dbName) {
-            Assert.IsTrue(!string.IsNullOrEmpty(itemId), "The item id parameter is required");
-            Assert.IsTrue(!string.IsNullOrEmpty(language), "The language parameter is required");
-            Assert.IsTrue(!string.IsNullOrEmpty(dbName), "The database parameter is required");
-
-            var index = ContentSearchManager.GetIndex(GetCognitiveIndexName(dbName));
-            using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
-            {
-                return context.GetQueryable<CognitiveImageSearchResult>()
-                    .Where(a =>
-                        a.UniqueId.Contains(itemId.ToLower())
-                        && a.Language == language)
-                    .Take(1)
-                    .FirstOrDefault();
-            }
-        }
-
-        public virtual ICognitiveImageAnalysis GetImageAnalysis(string id, string language, string db)
-        {
-            ICognitiveImageSearchResult csr = GetCognitiveSearchResult(id, language, db);
-
-            return ImageAnalysisFactory.Create(csr);
-        }
-
         public virtual IImageDescription GetImageDescription(MediaItem m, string language) {
 
             ICognitiveImageSearchResult csr = GetCognitiveSearchResult(m.ID.ToString(), language, m.Database.Name);
@@ -262,20 +262,12 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
 
         public virtual string GetSitecoreIndexName(string dbName)
         {
-            if (dbName == null)
-            {
-                dbName = "master";
-            }
-            return string.Format(ImageSearchSettings.SitecoreIndexNameFormat, dbName);
+            return string.Format(ImageSearchSettings.SitecoreIndexNameFormat, dbName ?? "master");
         }
 
         public virtual string GetCognitiveIndexName(string dbName)
         {
-            if (dbName == null)
-            {
-                dbName = "master";
-            }
-            return string.Format(ImageSearchSettings.CognitiveIndexNameFormat, dbName);
+            return string.Format(ImageSearchSettings.CognitiveIndexNameFormat, dbName ?? "master");
         }
 
         /// <summary>
