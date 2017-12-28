@@ -10,5 +10,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
         string CognitiveIndexNameFormat { get; }
         string ImageAnalysisFolder { get; }
         string ImageAnalysisTemplate { get; }
+        string VisualAnalysisField { get; }
+        string TextualAnalysisField { get; }
+        string FacialAnalysisField { get; }
+        string EmotionalAnalysisField { get; }
     }
 }

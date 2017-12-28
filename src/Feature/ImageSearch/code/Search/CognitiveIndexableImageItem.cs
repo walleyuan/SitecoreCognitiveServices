@@ -1,19 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using Newtonsoft.Json;
-using Sitecore.Configuration;
 using Sitecore.ContentSearch;
-using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
-using Sitecore.Diagnostics;
-using SitecoreCognitiveServices.Feature.ImageSearch.Analysis;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
-using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision;
-using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
@@ -41,10 +33,14 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search
             if (imageAnalysisItem == null)
                 return;
 
-            Text = JsonConvert.DeserializeObject<OcrResults>(imageAnalysisItem.Fields["Text Analysis"]?.Value ?? string.Empty);
-            Visions = JsonConvert.DeserializeObject<AnalysisResult>(imageAnalysisItem.Fields["Vision Analysis"]?.Value ?? string.Empty);
-            Faces = JsonConvert.DeserializeObject<Face[]>(imageAnalysisItem.Fields["Facial Analysis"]?.Value ?? string.Empty);
-            Emotions = JsonConvert.DeserializeObject<Emotion[]>(imageAnalysisItem.Fields["Emotion Analysis"]?.Value ?? string.Empty);
+            var settings = DependencyResolver.Current.GetService<IImageSearchSettings>();
+            if (settings == null)
+                return;
+
+            Visions = JsonConvert.DeserializeObject<AnalysisResult>(imageAnalysisItem.Fields[settings.VisualAnalysisField]?.Value ?? string.Empty);
+            Text = JsonConvert.DeserializeObject<OcrResults>(imageAnalysisItem.Fields[settings.TextualAnalysisField]?.Value ?? string.Empty);
+            Faces = JsonConvert.DeserializeObject<Face[]>(imageAnalysisItem.Fields[settings.FacialAnalysisField]?.Value ?? string.Empty);
+            Emotions = JsonConvert.DeserializeObject<Emotion[]>(imageAnalysisItem.Fields[settings.EmotionalAnalysisField]?.Value ?? string.Empty);
         }
     }
 }

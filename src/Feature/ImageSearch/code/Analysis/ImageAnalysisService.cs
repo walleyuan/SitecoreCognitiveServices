@@ -70,10 +70,10 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
 
             using (new EditContext(newItem, true, false))
             {
-                newItem.Fields["Vision Analysis"].Value = JsonConvert.SerializeObject(imageAnalysis.VisionAnalysis);
-                newItem.Fields["Emotion Analysis"].Value = JsonConvert.SerializeObject(imageAnalysis.EmotionAnalysis);
-                newItem.Fields["Facial Analysis"].Value = JsonConvert.SerializeObject(imageAnalysis.FacialAnalysis);
-                newItem.Fields["Text Analysis"].Value = JsonConvert.SerializeObject(imageAnalysis.TextAnalysis);
+                newItem.Fields[_settings.VisualAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.VisionAnalysis);
+                newItem.Fields[_settings.TextualAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.TextAnalysis);
+                newItem.Fields[_settings.FacialAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.FacialAnalysis);
+                newItem.Fields[_settings.EmotionalAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.EmotionAnalysis);
             }
 
             return imageAnalysis;
