@@ -186,15 +186,15 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             return View("AnalyzeAll", result);
         }
 
-        public ActionResult AnalyzeAll(string id, string language, string db) {
-            Item item = DataWrapper.GetItemByIdValue(id, db);
+        public ActionResult AnalyzeAll(string id, string language, string database) {
+            Item item = DataWrapper.GetItemByIdValue(id, database);
             if (item == null)
-                return ViewAnalyzeAll(id, language, db);
+                return ViewAnalyzeAll(id, language, database);
 
-            AnalysisService.AnalyzeImagesRecursively(item, db);
-            var count = SearchService.UpdateItemInIndexRecursively(item, db);
+            AnalysisService.AnalyzeImagesRecursively(item, database);
+            var count = SearchService.UpdateItemInIndexRecursively(item, database);
 
-            var result = AnalyzeAllFactory.Create(id, db, language, count);
+            var result = AnalyzeAllFactory.Create(id, database, language, count);
 
             return Json(result);
         }

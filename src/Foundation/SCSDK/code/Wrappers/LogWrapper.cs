@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using Sitecore.Diagnostics;
+using Sitecore.Web.UI.WebControls;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
 {
@@ -49,27 +50,43 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
             Log.Info(message, owner);
         }
 
-        protected virtual string ProcessWebException(string message, Exception e)
+        protected virtual string HandleWebException(WebException exception, string message)
         {
-            if (!(e is WebException))
+            if (exception == null)
                 return message;
 
-            var we = (WebException) e;
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(message);
-            sb.AppendLine($"{e}");
-
-            string strResponse = string.Empty;
-            using (HttpWebResponse response = (HttpWebResponse)we.Response) {
-                using (Stream responseStream = response.GetResponseStream()) {
-                    using (StreamReader sr = new StreamReader(responseStream, System.Text.Encoding.ASCII)) {
-                        sb.AppendLine(sr.ReadToEnd());
-                    }
+            sb.AppendLine($"{exception}");
+            
+            try
+            {
+                Stream responseStream = exception?.Response.GetResponseStream();
+                using (StreamReader sr = new StreamReader(responseStream, Encoding.ASCII))
+                {
+                    sb.AppendLine(sr.ReadToEnd());
                 }
+                sb.AppendLine($"Http status code={exception.Status}, error message={message}");
             }
-            sb.AppendLine($"Http status code={we.Status}, error message={strResponse}");
+            catch (NullReferenceException)
+            {
+                sb.AppendLine($"WebException response was null, error message={message}");
+            }
 
             return sb.ToString();
+        }
+
+        protected virtual string ProcessWebException(string message, Exception e)
+        {
+            WebException webexInner = e.InnerException as WebException;
+            if (webexInner != null)
+                return HandleWebException(webexInner, message);
+
+            WebException webex = e as WebException;
+            if (webex != null)
+                return HandleWebException(webex, message);
+            
+            return message;
         }
     }
 }
