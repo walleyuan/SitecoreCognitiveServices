@@ -1,7 +1,7 @@
 ﻿
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility
 {
-    public interface IReanalyzeAll
+    public interface IAnalyzeAll
     {
         string ItemId { get; set; }
         string Database { get; set; }

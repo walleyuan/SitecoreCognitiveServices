@@ -16,21 +16,21 @@ jQuery(document).ready(function () {
 
 //reanalyze
 jQuery(document).ready(function () {
-    //handles reanalyze all form
-    var reanlyzeAllForm = ".reanalyze-all-form";
-    jQuery(reanlyzeAllForm + " button")
+    //handles analyze all form
+    var anlyzeAllForm = ".analyze-all-form";
+    jQuery(anlyzeAllForm + " button")
         .click(function (event) {
             event.preventDefault();
 
-            var idValue = jQuery(reanlyzeAllForm + " #id").attr("value");
-            var langValue = jQuery(reanlyzeAllForm + " #language").attr("value");
-            var dbValue = jQuery(reanlyzeAllForm + " #database").attr("value");
+            var idValue = jQuery(anlyzeAllForm + " #id").attr("value");
+            var langValue = jQuery(anlyzeAllForm + " #language").attr("value");
+            var dbValue = jQuery(anlyzeAllForm + " #database").attr("value");
 
             jQuery(".form").hide();
             jQuery(".progress-indicator").show();
 
             jQuery.post(
-                jQuery(reanlyzeAllForm).attr("action"),
+                jQuery(anlyzeAllForm).attr("action"),
                 {
                     id: idValue,
                     language: langValue,

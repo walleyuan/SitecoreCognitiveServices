@@ -3,8 +3,8 @@ using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
 {
-    public interface IReanalyzeAllFactory
+    public interface IAnalyzeAllFactory
     {
-        IReanalyzeAll Create(string itemId, string db, string language, int itemCount);
+        IAnalyzeAll Create(string itemId, string db, string language, int itemCount);
     }
 }

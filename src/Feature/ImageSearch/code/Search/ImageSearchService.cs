@@ -18,6 +18,8 @@ using Sitecore.Data;
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
     public class ImageSearchService : IImageSearchService 
     {
+        #region Constructor
+
         protected readonly ISitecoreDataWrapper DataWrapper;
         protected readonly IImageSearchSettings ImageSearchSettings;
         protected readonly IImageDescriptionFactory ImageDescriptionFactory;
@@ -35,6 +37,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
             ImageAnalysisFactory = imageAnalysisFactory;
         }
 
+        #endregion
+        
         #region Indexing
 
         public virtual void AddItemToIndex(string itemId, string dbName)

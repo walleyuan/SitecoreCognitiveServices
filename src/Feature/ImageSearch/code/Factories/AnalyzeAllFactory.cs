@@ -4,18 +4,18 @@ using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
 {
-    public class ReanalyzeAllFactory : IReanalyzeAllFactory
+    public class AnalyzeAllFactory : IAnalyzeAllFactory
     {
         protected readonly IServiceProvider Provider;
 
-        public ReanalyzeAllFactory(IServiceProvider provider)
+        public AnalyzeAllFactory(IServiceProvider provider)
         {
             Provider = provider;
         }
 
-        public virtual IReanalyzeAll Create(string itemId, string db, string language, int itemCount)
+        public virtual IAnalyzeAll Create(string itemId, string db, string language, int itemCount)
         {
-            var obj = Provider.GetService<IReanalyzeAll>();
+            var obj = Provider.GetService<IAnalyzeAll>();
 
             obj.ItemId = itemId;
             obj.Database = db;

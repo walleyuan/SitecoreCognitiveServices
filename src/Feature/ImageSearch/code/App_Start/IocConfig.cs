@@ -23,14 +23,14 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.App_Start
             serviceCollection.AddTransient<ICognitiveImageSearchJsonResult, CognitiveImageSearchJsonResult>();
             serviceCollection.AddTransient<ICognitiveImageAnalysis, CognitiveImageAnalysis>();
             serviceCollection.AddTransient<IImageDescription, ImageDescription>();
-            serviceCollection.AddTransient<IReanalyzeAll, ReanalyzeAll>();
+            serviceCollection.AddTransient<IAnalyzeAll, AnalyzeAll>();
             serviceCollection.AddTransient<ISetAltTagsAll, SetAltTagsAll>();
 
             //factories
             serviceCollection.AddTransient<ICognitiveImageSearchFactory, CognitiveImageSearchFactory>();
             serviceCollection.AddTransient<ICognitiveImageAnalysisFactory, CognitiveImageAnalysisFactory>();
             serviceCollection.AddTransient<IImageDescriptionFactory, ImageDescriptionFactory>();
-            serviceCollection.AddTransient<IReanalyzeAllFactory, ReanalyzeAllFactory>();
+            serviceCollection.AddTransient<IAnalyzeAllFactory, AnalyzeAllFactory>();
             serviceCollection.AddTransient<ISetAltTagsAllFactory, SetAltTagsAllFactory>();
 
             //search

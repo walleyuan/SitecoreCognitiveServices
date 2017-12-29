@@ -8,7 +8,7 @@ using SitecoreCognitiveServices.Foundation.SCSDK.Commands;
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
 {
     [Serializable]
-    public class ReanalyzeAll : BaseImageSearchCommand
+    public class AnalyzeAll : BaseImageSearchCommand
     {
         public virtual void Run(ClientPipelineArgs args)
         {
@@ -20,9 +20,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
             Item i = DataWrapper.GetItemByIdValue(id, db);
             string langCode = i.Language.Name;
             
-            ModalDialogOptions mdo = new ModalDialogOptions($"/SitecoreCognitiveServices/CognitiveImageSearch/ViewReanalyzeAll?id={id}&language={langCode}&db={db}")
+            ModalDialogOptions mdo = new ModalDialogOptions($"/SitecoreCognitiveServices/CognitiveImageSearch/ViewAnalyzeAll?id={id}&language={langCode}&db={db}")
             {
-                Header = "Reanalyze Descendents",
+                Header = "Analyze Descendants",
                 Height = "200",
                 Width = "350",
                 Message = "",

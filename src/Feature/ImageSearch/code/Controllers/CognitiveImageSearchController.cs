@@ -22,7 +22,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
         protected readonly ICognitiveImageSearchFactory MediaSearchFactory;
         protected readonly ISetAltTagsAllFactory SetAltTagsAllFactory;
         protected readonly ICognitiveImageAnalysisFactory ImageAnalysisFactory;
-        protected readonly IReanalyzeAllFactory ReanalyzeAllFactory;
+        protected readonly IAnalyzeAllFactory AnalyzeAllFactory;
         protected readonly IImageAnalysisService AnalysisService;
 
         public CognitiveImageSearchController(
@@ -32,7 +32,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             ICognitiveImageSearchFactory msFactory,
             ISetAltTagsAllFactory satarFactory,
             ICognitiveImageAnalysisFactory iaFactory,
-            IReanalyzeAllFactory pFactory,
+            IAnalyzeAllFactory pFactory,
             IImageAnalysisService analysisService)
         {
             Assert.IsNotNull(searchService, typeof(IImageSearchService));
@@ -41,7 +41,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             Assert.IsNotNull(msFactory, typeof(ICognitiveImageSearchFactory));
             Assert.IsNotNull(satarFactory, typeof(ISetAltTagsAllFactory));
             Assert.IsNotNull(iaFactory, typeof(ICognitiveImageAnalysisFactory));
-            Assert.IsNotNull(pFactory, typeof(IReanalyzeAllFactory));
+            Assert.IsNotNull(pFactory, typeof(IAnalyzeAllFactory));
             Assert.IsNotNull(analysisService, typeof(IImageAnalysisService));
 
             SearchService = searchService;
@@ -50,7 +50,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             MediaSearchFactory = msFactory;
             SetAltTagsAllFactory = satarFactory;
             ImageAnalysisFactory = iaFactory;
-            ReanalyzeAllFactory = pFactory;
+            AnalyzeAllFactory = pFactory;
             AnalysisService = analysisService;
         }
 
@@ -180,21 +180,21 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             return View("ImageAnalysis", SearchService.GetImageAnalysis(id, language, db));
         }
 
-        public ActionResult ViewReanalyzeAll(string id, string language, string db) {
-            var result = ReanalyzeAllFactory.Create(id, db, language, 0);
+        public ActionResult ViewAnalyzeAll(string id, string language, string db) {
+            var result = AnalyzeAllFactory.Create(id, db, language, 0);
 
-            return View("ReanalyzeAll", result);
+            return View("AnalyzeAll", result);
         }
 
-        public ActionResult ReanalyzeAll(string id, string language, string db) {
+        public ActionResult AnalyzeAll(string id, string language, string db) {
             Item item = DataWrapper.GetItemByIdValue(id, db);
             if (item == null)
-                return ViewReanalyzeAll(id, language, db);
+                return ViewAnalyzeAll(id, language, db);
 
             AnalysisService.AnalyzeImagesRecursively(item, db);
             var count = SearchService.UpdateItemInIndexRecursively(item, db);
 
-            var result = ReanalyzeAllFactory.Create(id, db, language, count);
+            var result = AnalyzeAllFactory.Create(id, db, language, count);
 
             return Json(result);
         }

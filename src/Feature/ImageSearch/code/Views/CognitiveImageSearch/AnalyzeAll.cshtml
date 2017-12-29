@@ -1,8 +1,8 @@
 ﻿
-@model SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility.IReanalyzeAll
+@model SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility.IAnalyzeAll
 
 @{
-    ViewBag.Title = "Cognitive Services: Reanalyze All";
+    ViewBag.Title = "Cognitive Services: Analyze All";
     Layout = "~/Views/CognitiveCommon/CognitiveLayout.cshtml";
 }
 
@@ -11,10 +11,10 @@
 <div class="frame">
     @if (Model != null)
     {
-        <form class="form reanalyze-all-form" method="post" action="/SitecoreCognitiveServices/CognitiveImageSearch/ReanalyzeAll">
+        <form class="form analyze-all-form" method="post" action="/SitecoreCognitiveServices/CognitiveImageSearch/AnalyzeAll">
             <fieldset>
                 <div class="form-row">
-                    This will reanalyze all the descendant media items
+                    This will analyze all the descendant media items
                 </div>
                 <div>
                     <input type="hidden" id="id" name="id" value="@Model.ItemId" />
@@ -23,7 +23,7 @@
                 </div>
             </fieldset>
             <div class="scWizardButtons">
-                <button class="form-submit scButton scButtonPrimary">Reanalyze Descendents</button>
+                <button class="form-submit scButton scButtonPrimary">Analyze Descendents</button>
             </div>
         </form>
         <div class="progress-indicator">
