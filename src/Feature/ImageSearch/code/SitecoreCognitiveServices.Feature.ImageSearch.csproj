@@ -187,7 +187,7 @@
     <Content Include="Views\CognitiveImageSearch\Face\Landmarks.cshtml" />
     <Content Include="Views\CognitiveImageSearch\Face\Rectangle.cshtml" />
     <Content Include="Views\CognitiveImageSearch\ImageAnalysis.cshtml" />
-    <Content Include="Views\CognitiveImageSearch\ReanalyzeAll.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\AnalyzeAll.cshtml" />
     <Content Include="Views\CognitiveImageSearch\Vision\Adult.cshtml" />
     <Content Include="Views\CognitiveImageSearch\Vision\Categories.cshtml" />
     <Content Include="Views\CognitiveImageSearch\Vision\Color.cshtml" />
@@ -207,7 +207,7 @@
     <Compile Include="Commands\Analyze.cs" />
     <Compile Include="Commands\BaseImageSearchCommand.cs" />
     <Compile Include="Commands\Reanalyze.cs" />
-    <Compile Include="Commands\ReanalyzeAll.cs" />
+    <Compile Include="Commands\AnalyzeAll.cs" />
     <Compile Include="Commands\SetAltTags.cs" />
     <Compile Include="Commands\SetAltTagsAll.cs" />
     <Compile Include="Commands\ViewAnalysis.cs" />
@@ -219,9 +219,9 @@
     <Compile Include="Factories\ICognitiveImageSearchFactory.cs" />
     <Compile Include="Factories\IImageDescriptionFactory.cs" />
     <Compile Include="Factories\ImageDescriptionFactory.cs" />
-    <Compile Include="Factories\IReanalyzeAllFactory.cs" />
+    <Compile Include="Factories\IAnalyzeAllFactory.cs" />
     <Compile Include="Factories\ISetAltTagsAllFactory.cs" />
-    <Compile Include="Factories\ReanalyzeAllFactory.cs" />
+    <Compile Include="Factories\AnalyzeAllFactory.cs" />
     <Compile Include="Factories\SetAltTagsAllFactory.cs" />
     <Compile Include="IImageSearchSettings.cs" />
     <Compile Include="ImageSearchSettings.cs" />
@@ -233,9 +233,9 @@
     <Compile Include="Models\ICognitiveImageSearchJsonResult.cs" />
     <Compile Include="Models\Utility\IImageDescription.cs" />
     <Compile Include="Models\Utility\ImageDescription.cs" />
-    <Compile Include="Models\Utility\IReanalyzeAll.cs" />
+    <Compile Include="Models\Utility\IAnalyzeAll.cs" />
     <Compile Include="Models\Utility\ISetAltTagsAll.cs" />
-    <Compile Include="Models\Utility\ReanalyzeAll.cs" />
+    <Compile Include="Models\Utility\AnalyzeAll.cs" />
     <Compile Include="Models\Utility\SetAltTagsAll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search\CognitiveImageSearchResult.cs" />
