@@ -2,6 +2,6 @@
 <configuration xmlns:patch="http://www.sitecore.net/xmlconfig/">
 	<sitecore>
 		<!-- Change the serializationRootPath value to match your local environment. -->
-		<sc.variable name="serializationRootPath" value="${Project.Serialization}" />
+		<sc.variable name="CognitiveSerializationRootPath" value="${Project.Serialization}" />
 	</sitecore>
 </configuration>
