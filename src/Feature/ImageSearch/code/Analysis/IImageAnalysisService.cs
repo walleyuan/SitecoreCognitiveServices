@@ -14,10 +14,10 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
     {
         ICognitiveImageAnalysis AnalyzeImage(Item imageItem);
         int AnalyzeImagesRecursively(Item item, string db);
-        Emotion[] GetEmotionAnalysis(MediaItem m);
-        Face[] GetFaceAnalysis(MediaItem m);
-        AnalysisResult GetVisionAnalysis(MediaItem m);
-        OcrResults GetTextAnalysis(MediaItem m);
+        Emotion[] GetEmotionalAnalysis(MediaItem m);
+        Face[] GetFacialAnalysis(MediaItem m);
+        AnalysisResult GetVisualAnalysis(MediaItem m);
+        OcrResults GetTextualAnalysis(MediaItem m);
         Item GetImageAnalysisFolder(string dbName);
         Item GetImageAnalysisTemplate(string dbName);
     }

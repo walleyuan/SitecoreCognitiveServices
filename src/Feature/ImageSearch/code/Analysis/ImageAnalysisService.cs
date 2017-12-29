@@ -53,10 +53,10 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
             MediaItem m = imageItem;
             var imageAnalysis = _imageAnalysisFactory.Create(
                 m, 
-                GetEmotionAnalysis(m), 
-                GetFaceAnalysis(m),
-                GetTextAnalysis(m),
-                GetVisionAnalysis(m));
+                GetEmotionalAnalysis(m), 
+                GetFacialAnalysis(m),
+                GetTextualAnalysis(m),
+                GetVisualAnalysis(m));
             
             Item parent = GetImageAnalysisFolder(imageItem.Database.Name);
             if (parent == null)
@@ -92,12 +92,12 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
 
         #region API Calls
 
-        public virtual Emotion[] GetEmotionAnalysis(MediaItem m)
+        public virtual Emotion[] GetEmotionalAnalysis(MediaItem m)
         {
             return _emotionService.Recognize(m.GetMediaStream());
         }
         
-        public virtual Face[] GetFaceAnalysis(MediaItem m)
+        public virtual Face[] GetFacialAnalysis(MediaItem m)
         {
             return _faceService.Detect(m.GetMediaStream(), true, true, new List<FaceAttributeType>()
             {
@@ -110,7 +110,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
             });
         }
 
-        public virtual AnalysisResult GetVisionAnalysis(MediaItem m)
+        public virtual AnalysisResult GetVisualAnalysis(MediaItem m)
         {
             return _visionService.AnalyzeImage(m.GetMediaStream(), new List<VisualFeature>() {
                 VisualFeature.Adult,
@@ -123,7 +123,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
             });
         }
 
-        public virtual OcrResults GetTextAnalysis(MediaItem m)
+        public virtual OcrResults GetTextualAnalysis(MediaItem m)
         {
             return _visionService.RecognizeText(m.GetMediaStream(), "en", true);
         }
