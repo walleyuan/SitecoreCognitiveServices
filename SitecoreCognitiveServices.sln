@@ -66,6 +66,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Properties", "Properties", 
 		scripts\nant\properties\default.properties = scripts\nant\properties\default.properties
 		scripts\nant\global.properties = scripts\nant\global.properties
 		scripts\nant\properties\local.properties = scripts\nant\properties\local.properties
+		scripts\nant\properties\local.properties.example = scripts\nant\properties\local.properties.example
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{55176B29-8A0D-458B-8CC0-D0CAF93D40BF}"

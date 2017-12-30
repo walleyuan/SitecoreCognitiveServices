@@ -13,43 +13,61 @@
       <!-- Microsoft Cognitive Services -->
       <setting name="CognitiveService.ApiKey.MSSDK.Academic" value="${CognitiveService.ApiKey.MSSDK.Academic}" />
       <setting name="CognitiveService.ApiKey.MSSDK.Academic.Endpoint" value="${CognitiveService.ApiKey.MSSDK.Academic.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.Academic.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.Academic.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.BingAutosuggest" value="${CognitiveService.ApiKey.MSSDK.BingAutosuggest}" />
       <setting name="CognitiveService.ApiKey.MSSDK.BingAutosuggest.Endpoint" value="${CognitiveService.ApiKey.MSSDK.BingAutosuggest.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.BingAutosuggest.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.BingAutosuggest.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.BingSearch" value="${CognitiveService.ApiKey.MSSDK.BingSearch}" />
       <setting name="CognitiveService.ApiKey.MSSDK.BingSearch.Endpoint" value="${CognitiveService.ApiKey.MSSDK.BingSearch.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.BingSearch.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.BingSearch.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.BingSpeech" value="${CognitiveService.ApiKey.MSSDK.BingSpeech}" />
       <setting name="CognitiveService.ApiKey.MSSDK.BingSpeech.Endpoint" value="${CognitiveService.ApiKey.MSSDK.BingSpeech.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.BingSpeech.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.BingSpeech.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.BingSpellCheck" value="${CognitiveService.ApiKey.MSSDK.BingSpellCheck}" />
       <setting name="CognitiveService.ApiKey.MSSDK.BingSpellCheck.Endpoint" value="${CognitiveService.ApiKey.MSSDK.BingSpellCheck.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.BingSpellCheck.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.BingSpellCheck.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.ComputerVision" value="${CognitiveService.ApiKey.MSSDK.ComputerVision}" />
       <setting name="CognitiveService.ApiKey.MSSDK.ComputerVision.Endpoint" value="${CognitiveService.ApiKey.MSSDK.ComputerVision.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.ComputerVision.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.ComputerVision.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.ContentModerator" value="${CognitiveService.ApiKey.MSSDK.ContentModerator}" />
       <setting name="CognitiveService.ApiKey.MSSDK.ContentModerator.ClientId" value="${CognitiveService.ApiKey.MSSDK.ContentModerator.ClientId}" />
       <setting name="CognitiveService.ApiKey.MSSDK.ContentModerator.PrivateKey" value="${CognitiveService.ApiKey.MSSDK.ContentModerator.PrivateKey}" />
       <setting name="CognitiveService.ApiKey.MSSDK.ContentModerator.Endpoint" value="${CognitiveService.ApiKey.MSSDK.ContentModerator.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.ContentModerator.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.ContentModerator.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.Emotion" value="${CognitiveService.ApiKey.MSSDK.Emotion}" />
       <setting name="CognitiveService.ApiKey.MSSDK.Emotion.Endpoint" value="${CognitiveService.ApiKey.MSSDK.Emotion.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.Emotion.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.Emotion.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.EntityLinking" value="${CognitiveService.ApiKey.MSSDK.EntityLinking}" />
       <setting name="CognitiveService.ApiKey.MSSDK.EntityLinking.Endpoint" value="${CognitiveService.ApiKey.MSSDK.EntityLinking.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.EntityLinking.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.EntityLinking.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.Face" value="${CognitiveService.ApiKey.MSSDK.Face}" />
       <setting name="CognitiveService.ApiKey.MSSDK.Face.Endpoint" value="${CognitiveService.ApiKey.MSSDK.Face.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.Face.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.Face.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.LinguisticAnalysis" value="${CognitiveService.ApiKey.MSSDK.LinguisticAnalysis}" />
       <setting name="CognitiveService.ApiKey.MSSDK.LinguisticAnalysis.Endpoint" value="${CognitiveService.ApiKey.MSSDK.LinguisticAnalysis.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.LinguisticAnalysis.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.LinguisticAnalysis.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.Luis" value="${CognitiveService.ApiKey.MSSDK.Luis}" />
       <setting name="CognitiveService.ApiKey.MSSDK.Luis.Endpoint" value="${CognitiveService.ApiKey.MSSDK.Luis.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.Luis.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.Luis.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.QnA" value="${CognitiveService.ApiKey.MSSDK.QnA}" />
       <setting name="CognitiveService.ApiKey.MSSDK.QnA.Endpoint" value="${CognitiveService.ApiKey.MSSDK.QnA.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.QnA.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.QnA.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.Recommendations" value="${CognitiveService.ApiKey.MSSDK.Recommendations}" />
       <setting name="CognitiveService.ApiKey.MSSDK.Recommendations.Endpoint" value="${CognitiveService.ApiKey.MSSDK.Recommendations.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.Recommendations.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.Recommendations.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.SpeakerRecognition" value="${CognitiveService.ApiKey.MSSDK.SpeakerRecognition}" />
       <setting name="CognitiveService.ApiKey.MSSDK.SpeakerRecognition.Endpoint" value="${CognitiveService.ApiKey.MSSDK.SpeakerRecognition.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.SpeakerRecognition.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.SpeakerRecognition.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.TextAnalytics" value="${CognitiveService.ApiKey.MSSDK.TextAnalytics}" />
       <setting name="CognitiveService.ApiKey.MSSDK.TextAnalytics.Endpoint" value="${CognitiveService.ApiKey.MSSDK.TextAnalytics.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.TextAnalytics.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.TextAnalytics.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.Video" value="${CognitiveService.ApiKey.MSSDK.Video}" />
       <setting name="CognitiveService.ApiKey.MSSDK.Video.Endpoint" value="${CognitiveService.ApiKey.MSSDK.Video.Endpoint}" />
+      <setting name="CognitiveService.ApiKey.MSSDK.Video.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.Video.RetryInSeconds}" />
       <setting name="CognitiveService.ApiKey.MSSDK.WebLM" value="${CognitiveService.ApiKey.MSSDK.WebLM}" />
       <setting name="CognitiveService.ApiKey.MSSDK.WebLM.Endpoint" value="${CognitiveService.ApiKey.MSSDK.WebLM.Endpoint}" />
-
+      <setting name="CognitiveService.ApiKey.MSSDK.WebLM.RetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.WebLM.RetryInSeconds}" />
+        
       <!-- Module Settings-->
       <setting name="CognitiveService.Language" value="${CognitiveService.Language}" />
       <setting name="CognitiveService.TextualFieldTypes" value="Rich Text|Single-Line Text|Multi-Line Text|html|text|memo" />
