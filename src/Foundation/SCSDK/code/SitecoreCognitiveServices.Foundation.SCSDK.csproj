@@ -223,7 +223,7 @@
     <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="Wrappers\WebUtilWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ApiKeys.cs" />
+    <Compile Include="Repositories\MicrosoftCognitiveServicesApiKeys.cs" />
     <Compile Include="Services\MSSDK\Bing\ISpeechService.cs" />
     <Compile Include="Services\MSSDK\Bing\IVideoSearchService.cs" />
     <Compile Include="Services\MSSDK\Bing\NewsSearchService.cs" />
