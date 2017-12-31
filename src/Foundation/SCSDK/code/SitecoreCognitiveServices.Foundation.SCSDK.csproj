@@ -213,6 +213,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Policies\IMSSDKPolicyService.cs" />
+    <Compile Include="Policies\MSSDKPolicyService.cs" />
     <Compile Include="Wrappers\AuthenticationWrapper.cs" />
     <Compile Include="Wrappers\ContentSearchWrapper.cs" />
     <Compile Include="Wrappers\LogWrapper.cs" />

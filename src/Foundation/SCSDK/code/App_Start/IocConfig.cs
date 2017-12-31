@@ -8,6 +8,7 @@ using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language;
 using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Speech;
 using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision;
 using Sitecore.DependencyInjection;
+using SitecoreCognitiveServices.Foundation.SCSDK.Policies;
 using SitecoreCognitiveServices.Foundation.SCSDK.Repositories;
 using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Knowledge;
 using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language;
@@ -27,6 +28,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.App_Start
             serviceCollection.AddSingleton<IMicrosoftCognitiveServicesApiKeys, ApiKeys.MicrosoftCognitiveServicesApiKeys>();
             serviceCollection.AddTransient<IMicrosoftCognitiveServicesRepositoryClient, MicrosoftCognitiveServicesRepositoryClient>();
             serviceCollection.AddTransient<ICSVParser, CSVParser>();
+            serviceCollection.AddTransient<IMSSDKPolicyService, MSSDKPolicyService>();
 
             //sitecore wrappers
             serviceCollection.AddTransient<ISitecoreDataWrapper, SitecoreDataWrapper>();
