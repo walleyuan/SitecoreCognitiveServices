@@ -44,7 +44,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Policies
 
             if (policyResult.Outcome == OutcomeType.Failure)
             {
-                Logger.Error($"{requestType} failed.", policyResult.FinalException);
+                Logger.Error($"{requestType} failed.", this, policyResult.FinalException);
                 return default(T);
             }
 
