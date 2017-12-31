@@ -74,6 +74,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
                 newItem.Fields[_settings.TextualAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.TextAnalysis);
                 newItem.Fields[_settings.FacialAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.FacialAnalysis);
                 newItem.Fields[_settings.EmotionalAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.EmotionAnalysis);
+                newItem.Fields[_settings.AnalyzedImageField].Value = newItem.ID.ToString();
             }
 
             return imageAnalysis;
