@@ -34,7 +34,7 @@ jQuery(document).ready(function () {
                 {
                     id: idValue,
                     language: langValue,
-                    db: dbValue
+                    database: dbValue
                 }
             ).done(function (r) {
                 jQuery(".result-count").text(r.ItemCount);
