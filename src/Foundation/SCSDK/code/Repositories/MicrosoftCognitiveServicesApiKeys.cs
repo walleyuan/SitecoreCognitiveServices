@@ -33,7 +33,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Repositories
             public virtual int ContentModeratorRetryInSeconds => Convert.ToInt32(Settings.GetSetting("CognitiveService.ApiKey.MSSDK.ContentModerator.RetryInSeconds"));
             public virtual string EntityLinking => Settings.GetSetting("CognitiveService.ApiKey.MSSDK.EntityLinking");
             public virtual string EntityLinkingEndpoint => Settings.GetSetting("CognitiveService.ApiKey.MSSDK.EntityLinking.Endpoint");
-            public virtual int EntityLinkingRetryInSeconds => Convert.ToInt32(Settings.GetSetting("CognitiveService.ApiKey.MSSDK.EntityLinking.RetryInSeconds");
+            public virtual int EntityLinkingRetryInSeconds => Convert.ToInt32(Settings.GetSetting("CognitiveService.ApiKey.MSSDK.EntityLinking.RetryInSeconds"));
             public virtual string Emotion => Settings.GetSetting("CognitiveService.ApiKey.MSSDK.Emotion");
             public virtual string EmotionEndpoint => Settings.GetSetting("CognitiveService.ApiKey.MSSDK.Emotion.Endpoint");
             public virtual int EmotionRetryInSeconds => Convert.ToInt32(Settings.GetSetting("CognitiveService.ApiKey.MSSDK.Emotion.RetryInSeconds"));
