@@ -75,19 +75,18 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
 
         protected virtual string ProcessException(string message, Exception e)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(message);
-            sb.AppendLine($"{e}");
-
             WebException webexInner = e.InnerException as WebException;
             if (webexInner != null)
-                sb.Append(HandleWebException(webexInner));
+                return HandleWebException(webexInner);
 
             WebException webex = e as WebException;
             if (webex != null)
-                sb.Append(HandleWebException(webex));
-            
-            return sb.ToString();
+                return HandleWebException(webex);
+
+            return new StringBuilder()
+                .AppendLine(message)
+                .AppendLine($"{e}")
+                .ToString();
         }
     }
 }

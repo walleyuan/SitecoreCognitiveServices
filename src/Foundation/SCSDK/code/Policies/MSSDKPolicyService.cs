@@ -21,14 +21,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Policies
         
         public T ExecuteAndCapture<T>(string requestType, int retryInSeconds, Func<T> action)
         {
-            var badRequestPolicy = Policy<T>
-                .Handle<WebException>(ex => ex.Message.Contains("(400) Bad Request"))
-                .Fallback(default(T), (exception, context) =>
-                {
-                    Logger.Info($"{requestType} failed because the image was outside of the API bounds", this);
-                });
-
-            var retryPolicy = Policy
+            var policyResult = Policy
                 .Handle<WebException>(ex => ex.Message.Contains("(429) Too Many Requests"))
                 .WaitAndRetry(
                     1,
@@ -36,15 +29,22 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Policies
                     (exception, span) =>
                     {
                         //{ "statusCode": 429, "message": "Rate limit is exceeded. Try again in 38 seconds." }
-                        Logger.Info($"{requestType} failed. will retry", this);
-                    });
-
-            var policyResult = retryPolicy.Wrap(badRequestPolicy)
+                        Logger.Info($"{requestType} failed: Too Many Requests. will retry", this);
+                    })
                 .ExecuteAndCapture(action);
 
             if (policyResult.Outcome == OutcomeType.Failure)
             {
-                Logger.Error($"{requestType} failed.", this, policyResult.FinalException);
+                var additionalInfo = (policyResult.FinalException.Message.Contains("(400) Bad Request"))
+                    ? "; image didn't fit the API requirements"
+                    : string.Empty;
+
+                additionalInfo += (policyResult.FinalException.Message.Contains("(401) Unauthorized"))
+                    ? "; api key or url is incorrect"
+                    : string.Empty;
+
+                Logger.Error($"{requestType} failed{additionalInfo}", this, policyResult.FinalException);
+
                 return default(T);
             }
 
