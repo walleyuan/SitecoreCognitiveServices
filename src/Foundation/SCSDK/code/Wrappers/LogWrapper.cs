@@ -28,7 +28,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
             if(ex == null) { 
                 Log.Error(message, owner);
             } else {  
-                Log.Error(ProcessWebException(message, ex), ex, owner);
+                Log.Error(ProcessException(message, ex), ex, owner);
 
                 if (!Settings.CatchAndReleaseExceptions)
                     return;
@@ -50,14 +50,12 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
             Log.Info(message, owner);
         }
 
-        protected virtual string HandleWebException(WebException exception, string message)
+        protected virtual string HandleWebException(WebException exception)
         {
             if (exception == null)
-                return message;
+                return string.Empty;
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(message);
-            sb.AppendLine($"{exception}");
             
             try
             {
@@ -75,17 +73,21 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
             return sb.ToString();
         }
 
-        protected virtual string ProcessWebException(string message, Exception e)
+        protected virtual string ProcessException(string message, Exception e)
         {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(message);
+            sb.AppendLine($"{e}");
+
             WebException webexInner = e.InnerException as WebException;
             if (webexInner != null)
-                return HandleWebException(webexInner, message);
+                sb.Append(HandleWebException(webexInner));
 
             WebException webex = e as WebException;
             if (webex != null)
-                return HandleWebException(webex, message);
+                sb.Append(HandleWebException(webex));
             
-            return message;
+            return sb.ToString();
         }
     }
 }
