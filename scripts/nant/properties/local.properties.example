@@ -34,7 +34,7 @@ and running. There are additional default properties from dev.properties that yo
   <property name="CognitiveService.ApiKey.MSSDK.BingSpellCheck.Endpoint" value="https://api.cognitive.microsoft.com/bing/v5.0/spellcheck/" />
   <property name="CognitiveService.ApiKey.MSSDK.BingSpellCheck.RetryInSeconds" value="1" />
   <property name="CognitiveService.ApiKey.MSSDK.ComputerVision" value="" />
-  <property name="CognitiveService.ApiKey.MSSDK.ComputerVision.Endpoint" value="https://api.projectoxford.ai/vision/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.ComputerVision.Endpoint" value="https://westus.api.cognitive.microsoft.com/vision/v1.0/" />
   <property name="CognitiveService.ApiKey.MSSDK.ComputerVision.RetryInSeconds" value="1" />
   <property name="CognitiveService.ApiKey.MSSDK.ContentModerator" value="" />
   <property name="CognitiveService.ApiKey.MSSDK.ContentModerator.ClientId" value="" />
@@ -48,7 +48,7 @@ and running. There are additional default properties from dev.properties that yo
   <property name="CognitiveService.ApiKey.MSSDK.EntityLinking.Endpoint" value="https://api.projectoxford.ai/entitylinking/v1.0/" />
   <property name="CognitiveService.ApiKey.MSSDK.EntityLinking.RetryInSeconds" value="1" />
   <property name="CognitiveService.ApiKey.MSSDK.Face" value="" />
-  <property name="CognitiveService.ApiKey.MSSDK.Face.Endpoint" value="https://api.projectoxford.ai/face/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.Face.Endpoint" value="https://eastus2.api.cognitive.microsoft.com/face/v1.0/" />
   <property name="CognitiveService.ApiKey.MSSDK.Face.RetryInSeconds" value="1" />
   <property name="CognitiveService.ApiKey.MSSDK.LinguisticAnalysis" value="" />
   <property name="CognitiveService.ApiKey.MSSDK.LinguisticAnalysis.Endpoint" value="https://westus.api.cognitive.microsoft.com/linguistics/v1.0/" />
