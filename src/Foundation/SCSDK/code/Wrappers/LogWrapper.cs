@@ -66,11 +66,10 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
                 {
                     sb.AppendLine(sr.ReadToEnd());
                 }
-                sb.AppendLine($"Http status code={exception.Status}, error message={message}");
             }
             catch (NullReferenceException)
             {
-                sb.AppendLine($"WebException response was null, error message={message}");
+                sb.AppendLine("WebException response was null");
             }
 
             return sb.ToString();
