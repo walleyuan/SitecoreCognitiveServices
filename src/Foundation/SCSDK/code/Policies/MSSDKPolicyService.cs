@@ -39,7 +39,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Policies
                         Logger.Info($"{requestType} failed. will retry", this);
                     });
 
-            var policyResult = badRequestPolicy.Wrap(retryPolicy)
+            var policyResult = retryPolicy.Wrap(badRequestPolicy)
                 .ExecuteAndCapture(action);
 
             if (policyResult.Outcome == OutcomeType.Failure)

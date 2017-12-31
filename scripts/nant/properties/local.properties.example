@@ -35,7 +35,7 @@ and running. There are additional default properties from dev.properties that yo
   <property name="CognitiveService.ApiKey.MSSDK.BingSpellCheck.RetryInSeconds" value="0" />
   <property name="CognitiveService.ApiKey.MSSDK.ComputerVision" value="" />
   <property name="CognitiveService.ApiKey.MSSDK.ComputerVision.Endpoint" value="https://westus.api.cognitive.microsoft.com/vision/v1.0/" />
-  <property name="CognitiveService.ApiKey.MSSDK.ComputerVision.RetryInSeconds" value="3" />
+  <property name="CognitiveService.ApiKey.MSSDK.ComputerVision.RetryInSeconds" value="45" />
   <property name="CognitiveService.ApiKey.MSSDK.ContentModerator" value="" />
   <property name="CognitiveService.ApiKey.MSSDK.ContentModerator.ClientId" value="" />
   <property name="CognitiveService.ApiKey.MSSDK.ContentModerator.PrivateKey" value="" />
