@@ -1,21 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using SitecoreCognitiveServices.Foundation.MSSDK;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Knowledge.Recommendations;
 using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Knowledge;
+using SitecoreCognitiveServices.Foundation.SCSDK.Policies;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Knowledge
 {
     public class RecommendationsService : IRecommendationsService
     {
-        protected IRecommendationsRepository RecommendationsRepository;
-        protected ILogWrapper Logger;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMSSDKPolicyService PolicyService;
+        protected readonly IRecommendationsRepository RecommendationsRepository;
+        protected readonly ILogWrapper Logger;
 
         public RecommendationsService(
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMSSDKPolicyService policyService,
             IRecommendationsRepository recommendationsRepository,
             ILogWrapper logger)
         {
+            ApiKeys = apiKeys;
+            PolicyService = policyService;
             RecommendationsRepository = recommendationsRepository;
             Logger = logger;
         }
@@ -24,106 +32,93 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Knowledge
 
         public virtual CreateBusinessRuleResponse CreateBusinessRule(string modelId, CreateBusinessRuleRequest request)
         {
-            try
-            {
-                var result = RecommendationsRepository.CreateBusinessRule(modelId, request);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.CreateBusinessRule failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.CreateBusinessRule",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.CreateBusinessRule(modelId, request);
+                    return result;
+                },
+                null);
         }
 
         public virtual RecommendationModel CreateModel(CreateModelRequest request)
         {
-            try
-            {
-                var result = RecommendationsRepository.CreateModel(request);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.CreateModel failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.CreateModel",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.CreateModel(request);
+                    return result;
+                },
+                null);
         }
 
         public virtual CreateBuildResponse CreateBuild(string modelId, CreateBuildRequest request)
         {
-            try
-            {
-                var result = RecommendationsRepository.CreateBuild(modelId, request);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.CreateBuild failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.CreateBuild",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.CreateBuild(modelId, request);
+                    return result;
+                },
+                null);
         }
 
         public virtual void StartBatchJob(BatchJobRequest request)
         {
-            try
-            {
-                RecommendationsRepository.StartBatchJob(request);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.StartBatchJob failed", this, ex);
-            }
+            PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.StartBatchJob",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    RecommendationsRepository.StartBatchJob(request);
+                    return true;
+                },
+                false);
         }
 
         public virtual UploadCatalogFileResponse UploadCatalogFile(string modelId, string catalogDisplayName, Stream stream)
         {
-            try
-            {
-                var result = RecommendationsRepository.UploadCatalogFile(modelId, catalogDisplayName, stream);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.UploadCatalogFile failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.UploadCatalogFile",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.UploadCatalogFile(modelId, catalogDisplayName, stream);
+                    return result;
+                },
+                null);
         }
 
         public virtual void UploadUsageEvent(string modelId, UploadUsageEventRequest request)
         {
-            try
-            {
-                RecommendationsRepository.UploadUsageEvent(modelId, request);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.UploadUsageEvent failed", this, ex);
-            }
+            PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.UploadUsageEvent",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    RecommendationsRepository.UploadUsageEvent(modelId, request);
+                    return true;
+                },
+                false);
         }
 
         public virtual UploadUsageFileResponse UploadUsageFile(string modelId, string usageDisplayName, Stream stream)
         {
-            try
-            {
-                var result = RecommendationsRepository.UploadUsageFile(modelId, usageDisplayName, stream);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.UploadUsageFile failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.UploadUsageFile",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.UploadUsageFile(modelId, usageDisplayName, stream);
+                    return result;
+                },
+                null);
         }
 
         #endregion Post
@@ -132,102 +127,106 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Knowledge
 
         public virtual void CancelOperation(string operationId)
         {
-            try
-            {
-                RecommendationsRepository.CancelOperation(operationId);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.CancelOperation failed", this, ex);
-            }
+            PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.CancelOperation",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    RecommendationsRepository.CancelOperation(operationId);
+                    return true;
+                },
+                false);
         }
 
         public virtual void DeleteAllBusinessRules(string modelId)
         {
-            try
-            {
-                RecommendationsRepository.DeleteAllBusinessRules(modelId);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.DeleteAllBusinessRules failed", this, ex);
-            }
+            PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.DeleteAllBusinessRules",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    RecommendationsRepository.DeleteAllBusinessRules(modelId);
+                    return true;
+                },
+                false);
         }
 
         public virtual void DeleteAllUsageFiles(string modelId)
         {
-            try
-            {
-                RecommendationsRepository.DeleteAllUsageFiles(modelId);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.DeleteAllUsageFiles failed", this, ex);
-            }
+            PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.DeleteAllUsageFiles",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    RecommendationsRepository.DeleteAllUsageFiles(modelId);
+                    return true;
+                },
+                false);
         }
 
         public virtual void DeleteBuild(string modelId, int buildId)
         {
-            try
-            {
-                RecommendationsRepository.DeleteBuild(modelId, buildId);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.DeleteBuild failed", this, ex);
-            }
+            PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.DeleteBuild",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    RecommendationsRepository.DeleteBuild(modelId, buildId);
+                    return true;
+                },
+                false);
         }
 
         public virtual void DeleteBusinessRule(string modelId, string ruleId)
         {
-            try
-            {
-                RecommendationsRepository.DeleteBusinessRule(modelId, ruleId);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.DeleteBusinessRule failed", this, ex);
-            }
+            PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.DeleteBusinessRule",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    RecommendationsRepository.DeleteBusinessRule(modelId, ruleId);
+                    return true;
+                },
+                false);
         }
 
         public virtual DeleteCatalogItemsResponse DeleteCatalogItems(string modelId, bool deleteAll = false)
         {
-            try
-            {
-                var result = RecommendationsRepository.DeleteCatalogItems(modelId, deleteAll);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.DeleteCatalogItems failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.DeleteCatalogItems",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.DeleteCatalogItems(modelId, deleteAll);
+                    return result;
+                },
+                null);
         }
 
         public virtual void DeleteModel(string id)
         {
-            try
-            {
-                RecommendationsRepository.DeleteModel(id);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.DeleteModel failed", this, ex);
-            }
+            PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.DeleteModel",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    RecommendationsRepository.DeleteModel(id);
+                    return true;
+                },
+                false);
         }
 
         public virtual void DeleteUsageFile(string modelId, string fileId)
         {
-            try
-            {
-                RecommendationsRepository.DeleteUsageFile(modelId, fileId);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.DeleteUsageFile failed", this, ex);
-            }
+            PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.DeleteUsageFile",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    RecommendationsRepository.DeleteUsageFile(modelId, fileId);
+                    return true;
+                },
+                false);
         }
 
         #endregion Delete
@@ -236,30 +235,28 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Knowledge
 
         public virtual UpdateCatalogItemsResponse UpdateCatalogItems(string modelId, Stream fileStream)
         {
-            try
-            {
-                var result = RecommendationsRepository.UpdateCatalogItems(modelId, fileStream);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.UpdateCatalogItems failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.UpdateCatalogItems",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.UpdateCatalogItems(modelId, fileStream);
+                    return result;
+                },
+                null);
         }
 
         public virtual void UpdateModel(string modelId, UpdateModelRequest request)
         {
-            try
-            {
-                RecommendationsRepository.UpdateModel(modelId, request);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.UpdateModel failed", this, ex);
-            }
+            PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.UpdateModel",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    RecommendationsRepository.UpdateModel(modelId, request);
+                    return true;
+                },
+                false);
         }
 
         #endregion Update
@@ -268,306 +265,249 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Knowledge
 
         public virtual string DownloadUsageFile(string modelId, string fileId)
         {
-            try
-            {
-                var result = RecommendationsRepository.DownloadUsageFile(modelId, fileId);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.DownloadUsageFile failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.DownloadUsageFile",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.DownloadUsageFile(modelId, fileId);
+                    return result;
+                },
+                null);
         }
 
         public virtual GetBatchJobResponse GetAllBatchJobs(string jobId)
         {
-            try
-            {
-                var result = RecommendationsRepository.GetAllBatchJobs(jobId);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetAllBatchJobs failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetAllBatchJobs",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetAllBatchJobs(jobId);
+                    return result;
+                },
+                null);
         }
 
         public virtual GetAllBuildsResponse GetAllBuilds(string modelId, bool onlyLastRequestedBuild = false)
         {
-            try
-            {
-                var result = RecommendationsRepository.GetAllBuilds(modelId, onlyLastRequestedBuild);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetAllBuilds failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetAllBuilds",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetAllBuilds(modelId, onlyLastRequestedBuild);
+                    return result;
+                },
+                null);
         }
 
         public virtual GetAllBusinessRulesResponse GetAllBusinessRules(string modelId)
         {
-            try
-            {
-                var result = RecommendationsRepository.GetAllBusinessRules(modelId);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetAllBusinessRules failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetAllBusinessRules",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetAllBusinessRules(modelId);
+                    return result;
+                },
+                null);
         }
 
         public virtual GetAllCatalogItemsResponse GetAllCatalogItems(string modelId, int top = 0, int skip = 0, int maxpagesize = 0)
         {
-            try
-            {
-                var result = RecommendationsRepository.GetAllCatalogItems(modelId, top, skip, maxpagesize);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetAllCatalogItems failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetAllCatalogItems",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetAllCatalogItems(modelId, top, skip, maxpagesize);
+                    return result;
+                },
+                null);
         }
 
         public virtual GetAllModelsResponse GetAllModels()
         {
-            try
-            {
-                var result = RecommendationsRepository.GetAllModels();
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetAllModels failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetAllModels",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetAllModels();
+                    return result;
+                },
+                null);
         }
 
         public virtual Build GetBuildById(string modelId, int buildId)
         {
-            try
-            {
-                var result = RecommendationsRepository.GetBuildById(modelId, buildId);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetBuildById failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetBuildById",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetBuildById(modelId, buildId);
+                    return result;
+                },
+                null);
         }
 
         public virtual BuildDataStatisticsResponse GetBuildDataStatistics(string modelId, int buildId)
         {
-            try
-            {
-                var result = RecommendationsRepository.GetBuildDataStatistics(modelId, buildId);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetBuildDataStatistics failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetBuildDataStatistics",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetBuildDataStatistics(modelId, buildId);
+                    return result;
+                },
+                null);
         }
 
         public virtual BuildMetricsResponse GetBuildMetrics(string modelId, int buildId)
         {
-            try
-            {
-                var result = RecommendationsRepository.GetBuildMetrics(modelId, buildId);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetBuildMetrics failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetBuildMetrics",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetBuildMetrics(modelId, buildId);
+                    return result;
+                },
+                null);
         }
 
         public virtual BusinessRule GetBusinessRule(string modelId, string ruleId)
         {
-            try
-            {
-                var result = RecommendationsRepository.GetBusinessRule(modelId, ruleId);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetBusinessRule failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetBusinessRule",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetBusinessRule(modelId, ruleId);
+                    return result;
+                },
+                null);
         }
 
         public virtual ItemRecommendationResponse GetItemToItemRecommendations(string modelId, List<string> itemIds, int numberOfResults, int minimalScore, int buildId = 0)
         {
-            try
-            {
-                var result = RecommendationsRepository.GetItemToItemRecommendations(modelId, itemIds, numberOfResults, minimalScore, buildId);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetItemToItemRecommendations failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetItemToItemRecommendations",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetItemToItemRecommendations(modelId, itemIds, numberOfResults, minimalScore, buildId);
+                    return result;
+                },
+                null);
         }
 
         public virtual RecommendationModel GetModel(string modelId)
         {
-            try
-            {
-                var result = RecommendationsRepository.GetModel(modelId);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetModel failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetModel",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetModel(modelId);
+                    return result;
+                },
+                null);
         }
 
         public virtual ModelFeatureResponse GetModelFeatures(string modelId, int rankBuildId = 0)
         {
-            try
-            {
-                var result = RecommendationsRepository.GetModelFeatures(modelId, rankBuildId);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetModelFeatures failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetModelFeatures",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetModelFeatures(modelId, rankBuildId);
+                    return result;
+                },
+                null);
         }
 
         public virtual GetOperationStatusResponse GetOperationStatus(string operationId)
         {
-            try
-            {
-                var result = RecommendationsRepository.GetOperationStatus(operationId);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetOperationStatus failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetOperationStatus",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetOperationStatus(operationId);
+                    return result;
+                },
+                null);
         }
 
         public virtual SearchCatalogItemsResponse GetSpecificCatalogItemsBySearchTerm(string modelId, List<string> ids = null, string searchTerm = "")
         {
-            try
-            {
-                var result = RecommendationsRepository.GetSpecificCatalogItemsBySearchTerm(modelId, ids, searchTerm);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetSpecificCatalogItemsBySearchTerm failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetSpecificCatalogItemsBySearchTerm",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetSpecificCatalogItemsBySearchTerm(modelId, ids, searchTerm);
+                    return result;
+                },
+                null);
         }
 
         public virtual BuildUsageStatisticsResponse GetUsageStatisticsForABuild(string modelId, int buildId, string interval, List<string> eventTypes)
         {
-            try
-            {
-                var result = RecommendationsRepository.GetUsageStatisticsForABuild(modelId, buildId, interval, eventTypes);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetUsageStatisticsForABuild failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetUsageStatisticsForABuild",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetUsageStatisticsForABuild(modelId, buildId, interval, eventTypes);
+                    return result;
+                },
+                null);
         }
 
         public virtual ModelUsageStatisticsResponse GetUsageStatisticsForAModel(string modelId, string interval, List<string> eventTypes)
         {
-            try
-            {
-                var result = RecommendationsRepository.GetUsageStatisticsForAModel(modelId, interval, eventTypes);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetUsageStatisticsForAModel failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetUsageStatisticsForAModel",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetUsageStatisticsForAModel(modelId, interval, eventTypes);
+                    return result;
+                },
+                null);
         }
 
         public virtual ItemRecommendationResponse GetUserToItemRecommendations(string modelId, string userId, int numberOfResults, List<string> itemIds = null, bool includeMetadata = false, int buildId = 0)
         {
-            try
-            {
-                var result = RecommendationsRepository.GetUserToItemRecommendations(modelId, userId, numberOfResults, itemIds, includeMetadata, buildId);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.GetUserToItemRecommendations failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.GetUserToItemRecommendations",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.GetUserToItemRecommendations(modelId, userId, numberOfResults, itemIds, includeMetadata, buildId);
+                    return result;
+                },
+                null);
         }
 
         public virtual List<UsageFile> ListUsageFiles(string modelId)
         {
-            try
-            {
-                var result = RecommendationsRepository.ListUsageFiles(modelId);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("RecommendationsService.ListUsageFiles failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "RecommendationsService.ListUsageFiles",
+                ApiKeys.RecommendationsRetryInSeconds,
+                () =>
+                {
+                    var result = RecommendationsRepository.ListUsageFiles(modelId);
+                    return result;
+                },
+                null);
         }
 
         #endregion Get

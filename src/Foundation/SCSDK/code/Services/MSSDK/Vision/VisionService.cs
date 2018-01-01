@@ -3,22 +3,31 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Sitecore.Diagnostics;
+using SitecoreCognitiveServices.Foundation.MSSDK;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
+using SitecoreCognitiveServices.Foundation.SCSDK.Policies;
+using Polly;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
 {
     public class VisionService : IVisionService
     {
-        protected IVisionRepository VisionRepository;
-        protected ILogWrapper Logger;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMSSDKPolicyService PolicyService;
+        protected readonly IVisionRepository VisionRepository;
+        protected readonly ILogWrapper Logger;
 
         public VisionService(
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMSSDKPolicyService policyService,
             IVisionRepository visionRepository,
             ILogWrapper logger)
         {
+            ApiKeys = apiKeys;
+            PolicyService = policyService;
             VisionRepository = visionRepository;
             Logger = logger;
         }
@@ -27,34 +36,28 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
 
         public virtual Adult GetAdultAnalysis(string imageUrl)
         {
-            try
-            {
-                var result = VisionRepository.GetAdultAnalysis(imageUrl);
-                
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error($"VisionService.GetAdultAnalysis failed on: {imageUrl}", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetAdultAnalysis",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetAdultAnalysis(imageUrl);
+                    return result;
+                },
+                null);
         }
 
         public virtual Adult GetAdultAnalysis(Stream imageStream)
         {
-            try
-            {
-                var result = VisionRepository.GetAdultAnalysis(imageStream);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.GetAdultAnalysis failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetAdultAnalysis",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetAdultAnalysis(imageStream);
+                    return result;
+                },
+                null);
         }
 
         #endregion Adult
@@ -63,34 +66,28 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
 
         public virtual Category[] GetCategoryAnalysis(string imageUrl)
         {
-            try
-            {
-                var result = VisionRepository.GetCategoryAnalysis(imageUrl);
-                
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error($"VisionService.GetCategoryAnalysis failed on: {imageUrl}", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetCategoryAnalysis",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetCategoryAnalysis(imageUrl);
+                    return result;
+                },
+                null);
         }
 
         public virtual Category[] GetCategoryAnalysis(Stream imageStream)
         {
-            try
-            {
-                var result = VisionRepository.GetCategoryAnalysis(imageStream);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.GetCategoryAnalysis failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetCategoryAnalysis",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetCategoryAnalysis(imageStream);
+                    return result;
+                },
+                null);
         }
 
         #endregion Categories
@@ -99,34 +96,28 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
 
         public virtual Color GetColorAnalysis(string imageUrl)
         {
-            try
-            {
-                var result = VisionRepository.GetColorAnalysis(imageUrl);
-                
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error($"VisionService.GetColorAnalysis failed on: {imageUrl}", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetColorAnalysis",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetColorAnalysis(imageUrl);
+                    return result;
+                },
+                null);
         }
 
         public virtual Color GetColorAnalysis(Stream imageStream)
         {
-            try
-            {
-                var result = VisionRepository.GetColorAnalysis(imageStream);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.GetColorAnalysis failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetColorAnalysis",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetColorAnalysis(imageStream);
+                    return result;
+                },
+                null);
         }
 
         #endregion Color
@@ -135,34 +126,28 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
 
         public virtual SimpleFace[] GetFaceAnalysis(string imageUrl)
         {
-            try
-            {
-                var result = VisionRepository.GetFaceAnalysis(imageUrl);
-                
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error($"VisionService.GetFaceAnalysis failed on: {imageUrl}", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetFaceAnalysis",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetFaceAnalysis(imageUrl);
+                    return result;
+                },
+                null);
         }
 
         public virtual SimpleFace[] GetFaceAnalysis(Stream imageStream)
         {
-            try
-            {
-                var result = VisionRepository.GetFaceAnalysis(imageStream);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.GetFaceAnalysis failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetFaceAnalysis",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetFaceAnalysis(imageStream);
+                    return result;
+                },
+                null);
         }
 
         #endregion Face
@@ -171,34 +156,28 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
 
         public virtual AnalysisResult GetFullAnalysis(string imageUrl)
         {
-            try
-            {
-                var result = VisionRepository.GetFullAnalysis(imageUrl);
-                
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.GetFullAnalysis failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetFullAnalysis",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetFullAnalysis(imageUrl);
+                    return result;
+                },
+                null);
         }
 
         public virtual AnalysisResult GetFullAnalysis(Stream imageStream)
         {
-            try
-            {
-                var result = VisionRepository.GetFullAnalysis(imageStream);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.GetFullAnalysis failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetFullAnalysis",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetFullAnalysis(imageStream);
+                    return result;
+                },
+                null);
         }
 
         #endregion Full Analysis
@@ -207,34 +186,28 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
 
         public virtual ImageType GetImageTypeAnalysis(string imageUrl)
         {
-            try
-            {
-                var result = VisionRepository.GetImageTypeAnalysis(imageUrl);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error($"VisionService.GetImageTypeAnalysis failed on: {imageUrl}", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetImageTypeAnalysis",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetImageTypeAnalysis(imageUrl);
+                    return result;
+                },
+                null);
         }
 
         public virtual ImageType GetImageTypeAnalysis(Stream imageStream)
         {
-            try
-            {
-                var result = VisionRepository.GetImageTypeAnalysis(imageStream);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.GetImageTypeAnalysis failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetImageTypeAnalysis",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetImageTypeAnalysis(imageStream);
+                    return result;
+                },
+                null);
         }
 
         #endregion Image Type
@@ -243,35 +216,28 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
         
         public virtual AnalysisResult AnalyzeImage(Stream stream, List<VisualFeature> features = null, IEnumerable<string> details = null)
         {
-            try
-            {
-                var result =
-                    VisionRepository.AnalyzeImage(stream, features, details);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.AnalyzeImage failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.AnalyzeImage",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.AnalyzeImage(stream, features, details);
+                    return result;
+                },
+                null);
         }
 
         public virtual AnalysisResult AnalyzeImage(string imageUrl, List<VisualFeature> features = null, IEnumerable<string> details = null)
         {
-            try
-            {
-                var result = VisionRepository.AnalyzeImage(imageUrl, features, details);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error($"VisionService.AnalyzeImage failed on: {imageUrl}", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.AnalyzeImage",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.AnalyzeImage(imageUrl, features, details);
+                    return result;
+                },
+                null);
         }
 
         #endregion Analyze Image
@@ -280,66 +246,54 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
 
         public virtual AnalysisInDomainResult AnalyzeImageInDomain(string url, Model model)
         {
-            try
-            {
-                var result = VisionRepository.AnalyzeImageInDomain(url, model);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.AnalyzeImageInDomain failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.AnalyzeImageInDomain",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.AnalyzeImageInDomain(url, model);
+                    return result;
+                },
+                null);
         }
 
         public virtual AnalysisInDomainResult AnalyzeImageInDomain(Stream imageStream, Model model)
         {
-            try
-            {
-                var result = VisionRepository.AnalyzeImageInDomain(imageStream, model);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.AnalyzeImageInDomain failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.AnalyzeImageInDomain",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.AnalyzeImageInDomain(imageStream, model);
+                    return result;
+                },
+                null);
         }
 
         public virtual AnalysisInDomainResult AnalyzeImageInDomain(string url, string modelName)
         {
-            try
-            {
-                var result = VisionRepository.AnalyzeImageInDomain(url, modelName);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.AnalyzeImageInDomain failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.AnalyzeImageInDomain",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.AnalyzeImageInDomain(url, modelName);
+                    return result;
+                },
+                null);
         }
 
         public virtual AnalysisInDomainResult AnalyzeImageInDomain(Stream imageStream, string modelName)
         {
-            try
-            {
-                var result = VisionRepository.AnalyzeImageInDomain(imageStream, modelName);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.AnalyzeImageInDomain failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.AnalyzeImageInDomain",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.AnalyzeImageInDomain(imageStream, modelName);
+                    return result;
+                },
+                null);
         }
 
         #endregion Analyze Image In Domain
@@ -348,18 +302,15 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
 
         public virtual ModelResult ListModels()
         {
-            try
-            {
-                var result = VisionRepository.ListModels();
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.ListModels failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.ListModels",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.ListModels();
+                    return result;
+                },
+                null);
         }
 
         #endregion List Models
@@ -370,36 +321,30 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
         {
             Assert.IsNotNull(url, GetType());
 
-            try
-            {
-                var result = VisionRepository.Describe(url, maxCandidates).Description;
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.Describe failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.Describe",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.Describe(url, maxCandidates).Description;
+                    return result;
+                },
+                null);
         }
 
         public virtual Description Describe(Stream imageStream, int maxCandidates = 1)
         {
             Assert.IsNotNull(imageStream, GetType());
 
-            try
-            {
-                var result = VisionRepository.Describe(imageStream, maxCandidates).Description;
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.Describe failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.Describe",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.Describe(imageStream, maxCandidates).Description;
+                    return result;
+                },
+                null);
         }
 
         #endregion Describe
@@ -408,34 +353,28 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
         
         public virtual byte[] GetThumbnail(string url, int width, int height, bool smartCropping = true)
         {
-            try
-            {
-                var result = VisionRepository.GetThumbnail(url, width, height, smartCropping);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.GetThumbnail failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetThumbnail",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetThumbnail(url, width, height, smartCropping);
+                    return result;
+                },
+                null);
         }
 
         public virtual byte[] GetThumbnail(Stream stream, int width, int height, bool smartCropping = true)
         {
-            try
-            {
-                var result = VisionRepository.GetThumbnail(stream, width, height, smartCropping);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.GetThumbnail failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetThumbnail",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetThumbnail(stream, width, height, smartCropping);
+                    return result;
+                },
+                null);
         }
 
         #endregion Get Thumbnail
@@ -444,34 +383,28 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
 
         public virtual OcrResults RecognizeText(Stream stream, string language = "unk", bool detectOrientation = true)
         {
-            try
-            {
-                var result = VisionRepository.RecognizeText(stream, language, detectOrientation);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.RecognizeText failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.RecognizeText",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.RecognizeText(stream, language, detectOrientation);
+                    return result;
+                },
+                null);
         }
 
         public virtual OcrResults RecognizeText(string imageUrl, string language = "unk", bool detectOrientation = true)
         {
-            try
-            {
-                var result = VisionRepository.RecognizeText(imageUrl, language, detectOrientation);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error($"VisionService.RecognizeText failed on: {imageUrl}", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.RecognizeText",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.RecognizeText(imageUrl, language, detectOrientation);
+                    return result;
+                },
+                null);
         }
         
         #endregion Recognize Text
@@ -480,34 +413,28 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
 
         public virtual Tag[] GetTags(string url)
         {
-            try
-            {
-                var result = VisionRepository.GetTags(url).Tags;
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.GetTags failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetTags",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetTags(url).Tags;
+                    return result;
+                },
+                null);
         }
         
         public virtual Tag[] GetTags(Stream imageStream)
         {
-            try
-            {
-                var result = VisionRepository.GetTags(imageStream).Tags;
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("VisionService.GetTags failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "VisionService.GetTags",
+                ApiKeys.ComputerVisionRetryInSeconds,
+                () =>
+                {
+                    var result = VisionRepository.GetTags(imageStream).Tags;
+                    return result;
+                },
+                null);
         }
 
         #endregion Get Tags

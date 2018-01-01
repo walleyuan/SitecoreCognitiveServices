@@ -1,142 +1,134 @@
 ﻿using System;
 using System.IO;
+using SitecoreCognitiveServices.Foundation.MSSDK;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Speech;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Speech;
+using SitecoreCognitiveServices.Foundation.SCSDK.Policies;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Speech
 {
     public class SpeakerVerificationService : ISpeakerVerificationService
     {
-        protected ISpeakerVerificationRepository SpeakerVerificationRepository;
-        protected ILogWrapper Logger;
+        protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
+        protected readonly IMSSDKPolicyService PolicyService;
+        protected readonly ISpeakerVerificationRepository SpeakerVerificationRepository;
+        protected readonly ILogWrapper Logger;
 
         public SpeakerVerificationService(
+            IMicrosoftCognitiveServicesApiKeys apiKeys,
+            IMSSDKPolicyService policyService,
             ISpeakerVerificationRepository speakerVerificationRepository,
             ILogWrapper logger)
         {
+            ApiKeys = apiKeys;
+            PolicyService = policyService;
             SpeakerVerificationRepository = speakerVerificationRepository;
             Logger = logger;
         }
 
         public virtual Verification Verify(Stream audioStream, Guid id)
         {
-            try
-            {
-                var result = SpeakerVerificationRepository.Verify(audioStream, id);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("SpeakerVerificationService.Verify failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "SpeakerVerificationService.Verify",
+                ApiKeys.SpeakerRecognitionRetryInSeconds,
+                () =>
+                {
+                    var result = SpeakerVerificationRepository.Verify(audioStream, id);
+                    return result;
+                },
+                null);
         }
 
         public virtual CreateProfileResponse CreateProfile(string locale)
         {
-            try
-            {
-                var result = SpeakerVerificationRepository.CreateProfile(locale);
-                
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("SpeakerVerificationService.CreateProfile failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "SpeakerVerificationService.CreateProfile",
+                ApiKeys.SpeakerRecognitionRetryInSeconds,
+                () =>
+                {
+                    var result = SpeakerVerificationRepository.CreateProfile(locale);
+                    return result;
+                },
+                null);
         }
 
         public virtual void DeleteProfile(Guid id)
         {
-            try
-            {
-                SpeakerVerificationRepository.DeleteProfile(id);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("SpeakerVerificationService.DeleteProfile failed", this, ex);
-            }
+            PolicyService.ExecuteRetryAndCapture400Errors(
+                "SpeakerVerificationService.DeleteProfile",
+                ApiKeys.SpeakerRecognitionRetryInSeconds,
+                () =>
+                {
+                    SpeakerVerificationRepository.DeleteProfile(id);
+                    return true;
+                },
+                false);
         }
 
         public virtual Profile GetProfile(Guid id)
         {
-            try
-            {
-                var result = SpeakerVerificationRepository.GetProfile(id);
-                
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("SpeakerVerificationService.GetProfile failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "SpeakerVerificationService.GetProfile",
+                ApiKeys.SpeakerRecognitionRetryInSeconds,
+                () =>
+                {
+                    var result = SpeakerVerificationRepository.GetProfile(id);
+                    return result;
+                },
+                null);
         }
 
         public virtual Profile[] GetProfiles()
         {
-            try
-            {
-                var result = SpeakerVerificationRepository.GetProfiles();
-                
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("SpeakerVerificationService.GetProfiles failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "SpeakerVerificationService.GetProfiles",
+                ApiKeys.SpeakerRecognitionRetryInSeconds,
+                () =>
+                {
+                    var result = SpeakerVerificationRepository.GetProfiles();
+                    return result;
+                },
+                null);
         }
 
         public virtual VerificationPhrase[] GetPhrases(string locale)
         {
-            try
-            {
-                var result = SpeakerVerificationRepository.GetPhrases(locale);
-                
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("SpeakerVerificationService.GetPhrases failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "SpeakerVerificationService.GetPhrases",
+                ApiKeys.SpeakerRecognitionRetryInSeconds,
+                () =>
+                {
+                    var result = SpeakerVerificationRepository.GetPhrases(locale);
+                    return result;
+                },
+                null);
         }
 
         public virtual Enrollment Enroll(Stream audioStream, Guid id)
         {
-            try
-            {
-                var result = SpeakerVerificationRepository.Enroll(audioStream, id);
-                
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("SpeakerVerificationService.Enroll failed", this, ex);
-            }
-
-            return null;
+            return PolicyService.ExecuteRetryAndCapture400Errors(
+                "SpeakerVerificationService.Enroll",
+                ApiKeys.SpeakerRecognitionRetryInSeconds,
+                () =>
+                {
+                    var result = SpeakerVerificationRepository.Enroll(audioStream, id);
+                    return result;
+                },
+                null);
         }
 
         public virtual void ResetEnrollments(Guid id)
         {
-            try
-            {
-                SpeakerVerificationRepository.ResetEnrollments(id);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error("SpeakerVerificationService.ResetEnrollments failed", this, ex);
-            }
+            PolicyService.ExecuteRetryAndCapture400Errors(
+                "SpeakerVerificationService.ResetEnrollments",
+                ApiKeys.SpeakerRecognitionRetryInSeconds,
+                () =>
+                {
+                    SpeakerVerificationRepository.ResetEnrollments(id);
+                    return true;
+                },
+                false);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Policies
             Logger = logger;
         }
         
-        public T ExecuteAndCapture<T>(string requestType, int retryInSeconds, Func<T> action)
+        public T ExecuteRetryAndCapture400Errors<T>(string requestType, int retryInSeconds, Func<T> action, T defaultValue)
         {
             var policyResult = Policy
                 .Handle<WebException>(ex => ex.Message.Contains("(429) Too Many Requests"))
@@ -45,7 +45,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Policies
 
                 Logger.Error($"{requestType} failed{additionalInfo}", this, policyResult.FinalException);
 
-                return default(T);
+                return defaultValue;
             }
 
             Logger.Info($"{requestType} Succeeded", this);
