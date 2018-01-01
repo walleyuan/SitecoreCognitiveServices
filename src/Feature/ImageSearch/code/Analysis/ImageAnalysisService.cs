@@ -57,24 +57,23 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
                 GetFacialAnalysis(m),
                 GetTextualAnalysis(m),
                 GetVisualAnalysis(m));
-            
-            Item parent = GetImageAnalysisFolder(imageItem.Database.Name);
-            if (parent == null)
-                return imageAnalysis;
-            
-            Item templateItem = GetImageAnalysisTemplate(imageItem.Database.Name);
-            if (templateItem == null)
-                return imageAnalysis;
-            
-            Item newItem = parent.Add(imageItem.ID.ToShortID().ToString(), (TemplateItem)templateItem);
 
-            using (new EditContext(newItem, true, false))
+            var analysisItem = _searchService.GetImageAnalysisItem(
+                    imageItem.ID.ToShortID().ToString(), 
+                    imageItem.Language.Name, 
+                    imageItem.Database.Name) 
+                ?? CreateAnalysisItem(imageItem);
+
+            if (analysisItem == null)
+                return imageAnalysis;
+
+            using (new EditContext(analysisItem, true, false))
             {
-                newItem.Fields[_settings.VisualAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.VisionAnalysis);
-                newItem.Fields[_settings.TextualAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.TextAnalysis);
-                newItem.Fields[_settings.FacialAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.FacialAnalysis);
-                newItem.Fields[_settings.EmotionalAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.EmotionAnalysis);
-                newItem.Fields[_settings.AnalyzedImageField].Value = imageItem.ID.ToString();
+                analysisItem.Fields[_settings.VisualAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.VisionAnalysis);
+                analysisItem.Fields[_settings.TextualAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.TextAnalysis);
+                analysisItem.Fields[_settings.FacialAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.FacialAnalysis);
+                analysisItem.Fields[_settings.EmotionalAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.EmotionAnalysis);
+                analysisItem.Fields[_settings.AnalyzedImageField].Value = imageItem.ID.ToString();
             }
 
             return imageAnalysis;
@@ -82,9 +81,10 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
 
         public virtual int AnalyzeImagesRecursively(Item item, string db)
         {
-            var list = item.Axes.GetDescendants()
-                .Where(a => !a.TemplateID.Guid.Equals(Sitecore.TemplateIDs.MediaFolder.Guid))
-                .ToList();
+            var list = _searchService.GetMediaItems(
+                item.Paths.FullPath, 
+                item.Language.Name, 
+                item.Database.Name);
 
             list.ForEach(b => AnalyzeImage(b));
 
@@ -132,6 +132,21 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
         #endregion
 
         #region Helpers
+        
+        public virtual Item CreateAnalysisItem(Item imageItem)
+        {
+            Item parent = GetImageAnalysisFolder(imageItem.Database.Name);
+            if (parent == null)
+                return null;
+
+            Item templateItem = GetImageAnalysisTemplate(imageItem.Database.Name);
+            if (templateItem == null)
+                return null;
+
+            Item newItem = parent.Add(imageItem.ID.ToShortID().ToString(), (TemplateItem)templateItem);
+
+            return newItem;
+        }
 
         public Item GetImageAnalysisFolder(string dbName)
         {

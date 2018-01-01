@@ -18,6 +18,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
         Face[] GetFacialAnalysis(MediaItem m);
         AnalysisResult GetVisualAnalysis(MediaItem m);
         OcrResults GetTextualAnalysis(MediaItem m);
+        Item CreateAnalysisItem(Item imageItem);
         Item GetImageAnalysisFolder(string dbName);
         Item GetImageAnalysisTemplate(string dbName);
     }

@@ -90,10 +90,11 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
         
         public virtual int UpdateItemInIndexRecursively(Item item, string db)
         {
-            var list = item.Axes.GetDescendants()
-                .Where(a => !a.TemplateID.Guid.Equals(Sitecore.TemplateIDs.MediaFolder.Guid))
-                .ToList();
-
+            var list = GetMediaItems(
+                item.Paths.FullPath, 
+                item.Language.Name, 
+                item.Database.Name);
+            
             list.ForEach(b => UpdateItemInIndex(b, db));
 
             return list.Count;
@@ -204,7 +205,22 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
                 return queryable.ToList<ICognitiveImageSearchResult>();
             }
         }
-        
+
+        public virtual List<Item> GetMediaItems(string folderPath, string languageCode, string dbName)
+        {
+            var index = ContentSearchManager.GetIndex(GetSitecoreIndexName(dbName));
+            using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
+            {
+                return context.GetQueryable<CognitiveImageSearchResult>()
+                    .Where(a =>
+                        a.TemplateName != "Media folder"
+                        && a.Path.StartsWith(folderPath)
+                        && a.Language == languageCode)
+                    .Select(b => b.GetItem())
+                    .ToList();
+            }
+        }
+
         public virtual IImageDescription GetImageDescription(MediaItem m, string language) {
 
             ICognitiveImageSearchResult csr = GetCognitiveSearchResult(m.ID.ToString(), language, m.Database.Name);
