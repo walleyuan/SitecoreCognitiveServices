@@ -131,7 +131,7 @@ jQuery(document).ready(function () {
             if (img.length)
                 CloseRadWindow(jQuery(".result-items .selected").html());
             else
-                alert("You need to select an image.");
+                alert(jQuery(".select-an-image").text());
         });
 
     //closes modal on cancel press
