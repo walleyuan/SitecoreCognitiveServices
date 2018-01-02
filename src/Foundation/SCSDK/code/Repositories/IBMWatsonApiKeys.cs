@@ -38,10 +38,13 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Repositories
                 .GetItem(Settings.IBMSDKId)
                 [fieldName];
         }
-        
+
         public int GetIntValue(string fieldName)
         {
-            return Convert.ToInt32(GetStringValue(fieldName));
+            var value = GetStringValue(fieldName);
+            return string.IsNullOrEmpty(value)
+                ? 0
+                : Convert.ToInt32(value);
         }
     }
 }

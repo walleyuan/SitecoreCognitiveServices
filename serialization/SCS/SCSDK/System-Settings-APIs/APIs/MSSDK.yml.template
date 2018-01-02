@@ -70,19 +70,19 @@ SharedFields:
   Value: "${CognitiveService.ApiKey.MSSDK.BingSearch}"
 - ID: "63795eef-0d7b-4c96-95ab-e5dc85c45c95"
   Hint: Bing Spell Check Retry In Seconds
-  Value: ${CognitiveService.ApiKey.MSSDK.BingSpellCheck.RetryInSeconds}c
+  Value: ${CognitiveService.ApiKey.MSSDK.BingSpellCheck.RetryInSeconds}
 - ID: "6a9cc2e1-739e-4b97-8fc8-27359b0c54ae"
   Hint: Bing Autosuggest
   Value: "${CognitiveService.ApiKey.MSSDK.BingAutosuggest}"
 - ID: "6acbfbb7-11a8-4aa5-bf27-d37bf3e5311b"
   Hint: Q n A Retry In Seconds
-  Value: ${CognitiveService.ApiKey.MSSDK.QnA.RetryInSeconds}r
+  Value: ${CognitiveService.ApiKey.MSSDK.QnA.RetryInSeconds}
 - ID: "6b7cbcd9-09f6-4bb8-a0f2-8e6d5204f088"
   Hint: Computer Vision Retry In Seconds
   Value: ${CognitiveService.ApiKey.MSSDK.ComputerVision.RetryInSeconds}
 - ID: "73e90d65-9402-4242-9040-de777b5aadc2"
   Hint: Recommendations Retry In Seconds
-  Value: ${CognitiveService.ApiKey.MSSDK.Recommendations.RetryInSeconds}s
+  Value: ${CognitiveService.ApiKey.MSSDK.Recommendations.RetryInSeconds}
 - ID: "7542bda3-15b0-464a-9013-cd2a5d4001f8"
   Hint: Bing Spell Check
   Value: "${CognitiveService.ApiKey.MSSDK.BingSpellCheck}"
@@ -94,7 +94,7 @@ SharedFields:
   Value: "${CognitiveService.ApiKey.MSSDK.SpeakerRecognition}"
 - ID: "7cd0e9eb-a524-4423-8263-37f25ba340be"
   Hint: Bing Speech Retry In Seconds
-  Value: ${CognitiveService.ApiKey.MSSDK.BingSpeech.RetryInSeconds}s
+  Value: ${CognitiveService.ApiKey.MSSDK.BingSpeech.RetryInSeconds}
 - ID: "7dfdc980-f998-4135-abfd-8491d6e5f329"
   Hint: Linguistic Analysis
   Value: "${CognitiveService.ApiKey.MSSDK.LinguisticAnalysis}"
@@ -142,7 +142,7 @@ SharedFields:
   Value: ${CognitiveService.ApiKey.MSSDK.Video.RetryInSeconds}
 - ID: "d3a017fc-e32f-4636-bc87-fba7ea5eaa92"
   Hint: Entity Linking Retry In Seconds
-  Value: ${CognitiveService.ApiKey.MSSDK.EntityLinking.RetryInSeconds}fa
+  Value: ${CognitiveService.ApiKey.MSSDK.EntityLinking.RetryInSeconds}
 - ID: "dd55db0c-e0f0-49ab-979a-63a465c1a94c"
   Hint: Emotion Endpoint
   Value: "${CognitiveService.ApiKey.MSSDK.Emotion.Endpoint}"

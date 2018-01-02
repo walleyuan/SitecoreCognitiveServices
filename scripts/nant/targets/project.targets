@@ -21,7 +21,7 @@
 				<include name="${dir.src}/Foundation/**/tests/**/*.template" />				
 				<include name="${dir.src}/Project/**/code/**/*.template" />	
 				<include name="${dir.src}/Project/**/tests/**/*.template" />
-				<include name="${dir.src}/serialization/SCS/**/*.template" />
+				<include name="${dir.src}/../serialization/SCS/**/*.template" />
 				<include name="..\..\*.template" /> <!-- root directory -->
 			</fileset>
 		</nvelocity>
