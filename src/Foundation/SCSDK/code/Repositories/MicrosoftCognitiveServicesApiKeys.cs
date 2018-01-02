@@ -86,13 +86,15 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Repositories
                 .GetItem(Settings.MSSDKId)
                 [fieldName];
         }
-        
+
         public int GetIntValue(string fieldName)
         {
-            var value = GetStringValue(fieldName);
-            return string.IsNullOrEmpty(value)
-                ? 0
-                : Convert.ToInt32(value);
+            var fieldValue = GetStringValue(fieldName);
+
+            int value;
+            return int.TryParse(fieldValue, out value)
+                ? value
+                : 0;
         }
     }
 }
