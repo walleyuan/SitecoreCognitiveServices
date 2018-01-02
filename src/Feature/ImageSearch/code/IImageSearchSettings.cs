@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sitecore.Data;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch {
     public interface IImageSearchSettings {
@@ -15,5 +16,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
         string FacialAnalysisField { get; }
         string EmotionalAnalysisField { get; }
         string AnalyzedImageField { get; }
+        ID ImageAnalysisFolderId { get; }
     }
 }

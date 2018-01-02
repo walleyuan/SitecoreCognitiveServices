@@ -59,5 +59,7 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK
         string WebLM { get; }
         string WebLMEndpoint { get; }
         int WebLMRetryInSeconds { get; }
+        string GetStringValue(string fieldName);
+        int GetIntValue(string fieldName);
     }
 }

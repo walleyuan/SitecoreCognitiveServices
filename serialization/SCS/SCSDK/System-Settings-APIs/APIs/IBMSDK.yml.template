@@ -1,0 +1,34 @@
+﻿---
+ID: "503a5b1d-6f2f-41ec-9a77-ae1daa37a987"
+Parent: "a5b69884-d96c-4394-bb4d-0d1711e0b0e8"
+Template: "1bf5b824-d391-4eac-b33b-9dd514dcec86"
+Path: /sitecore/system/Modules/Sitecore Cognitive Services/APIs/IBMSDK
+DB: master
+SharedFields:
+- ID: "304be91f-3a79-47a4-9bcf-a141d9fb4010"
+  Hint: Natural Language Classifier Retry In Seconds
+  Value: ${CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.RetryInSeconds}
+- ID: "6b41bd56-8cbc-4bf7-9892-699b2882ae06"
+  Hint: Natural Language Classifier Username
+  Value: "${CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Username}"
+- ID: "c3e64633-5f61-4fbb-8e3f-b9facfa42ca0"
+  Hint: Natural Language Classifier Endpoint
+  Value: "${CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Endpoint}"
+- ID: "da40bbc5-afa3-4f4e-9ce3-e7626c4163ec"
+  Hint: Natural Language Classifier
+  Value: "${CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier}"
+- ID: "f75da91b-ffde-41b5-9b8e-54ce9e0c5251"
+  Hint: Natural Language Classifier Password
+  Value: "${CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Password}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180101T190851Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin

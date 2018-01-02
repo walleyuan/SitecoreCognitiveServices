@@ -16,6 +16,8 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
     {
         Database GetDatabase(string dbName);
         List<Database> GetDatabases();
+        Database ContentDatabase { get; }
+        Database ContextDatabase { get; }
         ID GetID(string itemId);
         Item GetItemByUri(string itemUri);
         Item GetItemByIdValue(string itemId, string database);
@@ -40,7 +42,13 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
         }
 
         public virtual Database GetDatabase(string dbName) => Sitecore.Configuration.Factory.GetDatabase(dbName);
+
         public virtual List<Database> GetDatabases() => Sitecore.Configuration.Factory.GetDatabases();
+        
+        public virtual Database ContentDatabase => Sitecore.Context.ContentDatabase;
+
+        public virtual Database ContextDatabase => Sitecore.Context.Database;
+
         public virtual ID GetID(string itemId)
         {
             ID idObj;

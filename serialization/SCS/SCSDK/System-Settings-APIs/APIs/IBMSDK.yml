@@ -1,0 +1,18 @@
+﻿---
+ID: "503a5b1d-6f2f-41ec-9a77-ae1daa37a987"
+Parent: "a5b69884-d96c-4394-bb4d-0d1711e0b0e8"
+Template: "1bf5b824-d391-4eac-b33b-9dd514dcec86"
+Path: /sitecore/system/Modules/Sitecore Cognitive Services/APIs/IBMSDK
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180101T190851Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin

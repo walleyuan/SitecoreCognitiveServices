@@ -215,6 +215,7 @@
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Policies\IMSSDKPolicyService.cs" />
     <Compile Include="Policies\MSSDKPolicyService.cs" />
+    <Compile Include="Repositories\IBMWatsonApiKeys.cs" />
     <Compile Include="Wrappers\AuthenticationWrapper.cs" />
     <Compile Include="Wrappers\ContentSearchWrapper.cs" />
     <Compile Include="Wrappers\LogWrapper.cs" />
@@ -293,6 +294,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\IBMSDK\code\SitecoreCognitiveServices.Foundation.IBMSDK.csproj">
+      <Project>{369fd581-2f6f-47f0-80f3-25f8209ffdd0}</Project>
+      <Name>SitecoreCognitiveServices.Foundation.IBMSDK</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MSSDK\code\SitecoreCognitiveServices.Foundation.MSSDK.csproj">
       <Project>{13ecb0db-e99d-4d05-97e8-138eb3884353}</Project>
       <Name>SitecoreCognitiveServices.Foundation.MSSDK</Name>

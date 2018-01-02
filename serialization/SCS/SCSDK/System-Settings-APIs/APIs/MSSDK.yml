@@ -1,8 +1,8 @@
 ﻿---
-ID: "00e3de41-11a3-4295-9767-9dd3dc832c02"
-Parent: "08477468-d438-43d4-9d6a-6d84a611971c"
-Template: "487de98d-61b3-4053-a65c-3a22f3af730b"
-Path: /sitecore/system/Modules/Sitecore Cognitive Services
+ID: "03baf8ae-03cb-4e30-875c-0901eba6a163"
+Parent: "a5b69884-d96c-4394-bb4d-0d1711e0b0e8"
+Template: "8934c2b6-9c60-4e19-a03a-c09a991bd3e3"
+Path: /sitecore/system/Modules/Sitecore Cognitive Services/APIs/MSSDK
 DB: master
 Languages:
 - Language: en
@@ -11,7 +11,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20171108T215139Z
+      Value: 20180101T190855Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

@@ -118,7 +118,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
             {
                 return context.GetQueryable<CognitiveImageSearchResult>()
                     .Where(a =>
-                        a.Name == itemName
+                        a.Paths.Contains(ImageSearchSettings.ImageAnalysisFolderId)
+                        && a.Name == itemName
                         && a.Language == languageCode)
                     .Take(1)
                     .FirstOrDefault()
