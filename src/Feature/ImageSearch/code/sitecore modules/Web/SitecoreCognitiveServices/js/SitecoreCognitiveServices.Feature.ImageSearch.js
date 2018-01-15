@@ -129,7 +129,7 @@ jQuery(document).ready(function () {
 
             var img = jQuery(".result-items .selected");
             if (img.length)
-                CloseRadWindow(jQuery(".result-items .selected").html());
+                CloseModalAndReturnValue();
             else
                 alert(jQuery(".select-an-image").text());
         });
@@ -139,7 +139,7 @@ jQuery(document).ready(function () {
         .click(function (event) {
             event.preventDefault();
 
-            CloseRadWindow();
+            CloseModal();
         });
 
     function RefreshQuery(){
@@ -163,8 +163,8 @@ jQuery(document).ready(function () {
     jQuery(imageSearchForm + " .search-submit, " + imageSearchForm + " .cognitiveSearchButton")
         .click(function (event) {
             event.preventDefault();
-                 
-            RefreshQuery()
+
+            RefreshQuery();
         });
 
     //performs image search
@@ -173,7 +173,6 @@ jQuery(document).ready(function () {
     var pageCount = 1;
     var searchResults;
     function RunQuery() {
-        var textValue = jQuery(imageSearchForm + " .rte-search-input").val();
         var langValue = jQuery(imageSearchForm + " #language").attr("value");
         var dbValue = jQuery(imageSearchForm + " #database").attr("value");
         var gender = jQuery(imageSearchForm + " #gender").val();
@@ -214,7 +213,7 @@ jQuery(document).ready(function () {
                 for (var i = 0; i < r.Results.length; i++) {
                     var d = r.Results[i];
                     if (d.Url != undefined) {
-                        jQuery(".result-items").append("<div class='result-img-wrap'><img src=\"" + d.Url + "\" alt=\"" + d.Alt + "\" title=\"" + d.Alt + "\" /></div>");
+                        jQuery(".result-items").append("<div class='result-img-wrap'><img src=\"" + d.Url + "\" alt=\"" + d.Alt + "\" title=\"" + d.Alt + "\" id=\"" + d.Id + "\" /></div>");
                     }
                 }
 
@@ -303,6 +302,26 @@ jQuery(document).ready(function () {
         return params;
     }
 
+    function CloseModal() {
+        var src = urlParams["src"];
+        if (src == "RTE") {
+            CloseRadWindow();
+        } else if (src == "FieldEditor") {
+            window.top.dialogClose(s);
+        }
+    }
+
+    function CloseModalAndReturnValue() {
+        var src = urlParams["src"];
+        if (src == "RTE") {
+            CloseRadWindow(jQuery(".result-items .selected").html());
+        } else if (src == "FieldEditor") {
+            var value = jQuery(".result-items .selected img").attr("id");
+            window.top.returnValue = value;
+            window.top.dialogClose(value);
+        }
+    }
+
     //get results for the first load
     if (jQuery(imageSearchForm).length)
         RunQuery();
@@ -322,3 +341,16 @@ function CloseRadWindow(value) {
 
     radWindow.Close(value);
 }
+
+var urlParams;
+(window.onpopstate = function () {
+    var match,
+        pl = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query = window.location.search.substring(1);
+
+    urlParams = {};
+    while (match = search.exec(query))
+        urlParams[decode(match[1])] = decode(match[2]);
+})();

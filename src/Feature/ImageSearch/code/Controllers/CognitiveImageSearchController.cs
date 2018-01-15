@@ -58,14 +58,14 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
 
         #region Image Search
 
-        public ActionResult RTESearch()
+        public ActionResult SearchForm()
         {
             var lang = WebUtil.GetQueryString("lang");
             var db = WebUtil.GetQueryString("db", "master");
 
             var ms = MediaSearchFactory.Create(db, lang, SearchService);
 
-            return View("RTESearch", ms);
+            return View("SearchForm", ms);
         }
 
         public ActionResult RTESearchQuery(

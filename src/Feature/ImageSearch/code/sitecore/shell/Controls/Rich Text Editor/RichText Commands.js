@@ -4,7 +4,7 @@ Telerik.Web.UI.Editor.CommandList["InsertCognitiveSitecoreMedia"] = function (co
     scEditor = editor;
 
     editor.showExternalDialog(
-      "/SitecoreCognitiveServices/CognitiveImageSearch/RTESearch?&lang=" + scLanguage + "&db=" + scDatabase,
+      "/SitecoreCognitiveServices/CognitiveImageSearch/SearchForm?src=RTE&lang=" + scLanguage + "&db=" + scDatabase,
       null, //argument
       1000,
       600,

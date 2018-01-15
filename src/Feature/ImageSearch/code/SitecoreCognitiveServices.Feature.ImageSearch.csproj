@@ -24,6 +24,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -176,7 +177,7 @@
     <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Feature.ImageSearch.Lucene.config" />
     <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Feature.ImageSearch.Solr.config.disabled" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
-    <Content Include="Views\CognitiveImageSearch\RTESearch.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\SearchForm.cshtml" />
     <Content Include="Views\web.config" />
     <Content Include="Views\CognitiveImageSearch\ImageDescription.cshtml" />
     <Content Include="Views\CognitiveImageSearch\ImageDescriptionThreshold.cshtml" />

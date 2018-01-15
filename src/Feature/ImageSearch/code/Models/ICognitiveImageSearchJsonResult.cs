@@ -9,5 +9,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Models
     {
         string Url { get; set; }
         string Alt { get; set; }
+        string Id { get; set; }
     }
 }

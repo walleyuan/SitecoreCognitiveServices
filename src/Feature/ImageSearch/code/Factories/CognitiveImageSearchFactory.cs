@@ -53,6 +53,14 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
             {
                 obj.Alt = string.Empty;
             }
+            try
+            {
+                obj.Id = m.ID.ToString();
+            }
+            catch (Exception ex)
+            {
+                obj.Id = string.Empty;
+            }
 
             return obj;
         }
