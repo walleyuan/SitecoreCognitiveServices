@@ -11,7 +11,7 @@ SharedFields:
 - ID: "1bb289d6-44d7-4fcc-af15-db32b841f957"
   Hint: Click
   Value: |
-    chrome:field:editcontrol({command:"webedit:chooseimagewithcognitivesearch"})
+    chrome:field:editcontrol({command:"cognitive:webeditimagesearch"})
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 0

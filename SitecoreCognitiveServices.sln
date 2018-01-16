@@ -77,6 +77,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IBMSDK", "IBMSDK", "{91665D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.IBMSDK", "src\Foundation\IBMSDK\code\SitecoreCognitiveServices.Foundation.IBMSDK.csproj", "{369FD581-2F6F-47F0-80F3-25F8209FFDD0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIs", "APIs", "{7793F3F0-1D38-495B-8E47-2F1F94C37D3F}"
+	ProjectSection(SolutionItems) = preProject
+		serialization\SCS\SCSDK\System-Settings-APIs\APIs\IBMSDK.yml.template = serialization\SCS\SCSDK\System-Settings-APIs\APIs\IBMSDK.yml.template
+		serialization\SCS\SCSDK\System-Settings-APIs\APIs\MSSDK.yml.template = serialization\SCS\SCSDK\System-Settings-APIs\APIs\MSSDK.yml.template
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -142,6 +148,7 @@ Global
 		{9CA71E35-CA1A-4277-B6F8-DAD07F86AAE3} = {D59B5ED1-EEEA-4145-9337-B58694639E1D}
 		{91665DC0-B470-488C-9047-A89614668F85} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
 		{369FD581-2F6F-47F0-80F3-25F8209FFDD0} = {91665DC0-B470-488C-9047-A89614668F85}
+		{7793F3F0-1D38-495B-8E47-2F1F94C37D3F} = {4784AB7A-0B87-436A-8E96-D4D63BB9C0E2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4

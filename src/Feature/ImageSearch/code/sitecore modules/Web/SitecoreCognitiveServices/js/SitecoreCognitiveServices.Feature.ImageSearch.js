@@ -307,7 +307,7 @@ jQuery(document).ready(function () {
         if (src == "RTE") {
             CloseRadWindow();
         } else if (src == "FieldEditor") {
-            window.top.dialogClose(s);
+            window.top.dialogClose("");
         }
     }
 
