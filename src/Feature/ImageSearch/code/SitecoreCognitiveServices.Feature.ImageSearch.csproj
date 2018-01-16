@@ -76,6 +76,9 @@
       <HintPath>..\..\..\..\packages\Rainbow.Storage.Yaml.1.4.1\lib\net452\Rainbow.Storage.Yaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Sitecore.Client, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Sitecore.Client.NoReferences.8.2.170614\lib\NET452\Sitecore.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.ContentSearch, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\Sitecore.ContentSearch.NoReferences.8.2.170614\lib\NET452\Sitecore.ContentSearch.dll</HintPath>
     </Reference>
