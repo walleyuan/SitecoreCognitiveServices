@@ -45,7 +45,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
 
         public virtual List<Database> GetDatabases() => Sitecore.Configuration.Factory.GetDatabases();
         
-        public virtual Database ContentDatabase => Sitecore.Context.ContentDatabase;
+        public virtual Database ContentDatabase => Sitecore.Context.ContentDatabase ?? ContextDatabase;
 
         public virtual Database ContextDatabase => Sitecore.Context.Database;
 

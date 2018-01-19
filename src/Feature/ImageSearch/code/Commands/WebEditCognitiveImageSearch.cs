@@ -26,7 +26,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
             
             if (args.IsPostBack)
             {
-                if (args.Result.Equals(string.Empty))
+                if (!args.HasResult || args.Result.Equals(string.Empty))
                     return;
 
                 string controlIdParam = args.Parameters["controlid"];
