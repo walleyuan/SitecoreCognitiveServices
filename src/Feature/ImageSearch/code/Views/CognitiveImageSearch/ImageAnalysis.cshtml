@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/sitecore modules/Web/SitecoreCognitiveServices/css/SitecoreCognitiveServices.Feature.ImageSearch.css?x=@(new System.Random().Next())" />
 @if (Model.HasNoAnalysis())
 {
-    <div class="analysis-warning">There's no analysis for this item. It may not match the requirements of the Cognitive Services API.</div>
+    <div class="analysis-warning">There's no analysis for this item. It may not have been analyed yet or may not match the minimum size requirements of the Cognitive Services API.</div>
 } else { 
 <div class="frame">
     <div class="tabbed-nav">

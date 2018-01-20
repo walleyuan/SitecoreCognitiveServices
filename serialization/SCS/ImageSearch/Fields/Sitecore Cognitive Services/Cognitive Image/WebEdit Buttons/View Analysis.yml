@@ -1,23 +1,23 @@
 ﻿---
-ID: "fa132569-83ce-407f-a93a-8f941688cb03"
+ID: "2e838bd6-bdad-47a8-8f72-8b4a8f4290bb"
 Parent: "b1efa69e-8653-4e51-991c-e4ecf24ea30b"
 Template: "02404208-46d4-49bf-988b-eb363a52a1c9"
-Path: /sitecore/system/Field types/Sitecore Cognitive Services/Cognitive Image/WebEdit Buttons/Choose Image with Cognitive Search
+Path: /sitecore/system/Field types/Sitecore Cognitive Services/Cognitive Image/WebEdit Buttons/View Analysis
 DB: core
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: Apps/32x32/dna.png
+  Value: Apps/32x32/Investigation.png
 - ID: "1bb289d6-44d7-4fcc-af15-db32b841f957"
   Hint: Click
   Value: |
-    chrome:field:editcontrol({command:"cognitive:webeditimagesearch"})
+    chrome:field:editcontrol({command:"cognitive:webeditviewanalysis"})
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 0
 - ID: "e8cc41c7-c304-4282-b782-e21ca32d324c"
   Hint: Icon
-  Value: Apps/32x32/dna.png
+  Value: Apps/32x32/Investigation.png
 Languages:
 - Language: da
   Fields:
@@ -65,10 +65,10 @@ Languages:
   Fields:
   - ID: "371e0d96-4f00-4b80-ad14-6284e00493ba"
     Hint: Tooltip
-    Value: Choose an image with Cognitive Search.
+    Value: View Analysis
   - ID: "c523aba8-d1a1-4dcb-aeee-52635a4ab2ae"
     Hint: Header
-    Value: Choose Image with Cognitive Search
+    Value: View Analysis
   Versions:
   - Version: 1
     Fields:

@@ -213,6 +213,7 @@
     <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="Commands\Analyze.cs" />
     <Compile Include="Commands\BaseImageSearchCommand.cs" />
+    <Compile Include="Commands\WebEditCognitiveAnalysis.cs" />
     <Compile Include="Commands\WebEditCognitiveImageSearch.cs" />
     <Compile Include="Fields\CognitiveImage.cs" />
     <Compile Include="Commands\Reanalyze.cs" />
@@ -246,6 +247,7 @@
     <Compile Include="Models\Utility\ISetAltTagsAll.cs" />
     <Compile Include="Models\Utility\AnalyzeAll.cs" />
     <Compile Include="Models\Utility\SetAltTagsAll.cs" />
+    <Compile Include="Pipelines\RenderField\GetImageFieldValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search\CognitiveImageSearchResult.cs" />
     <Compile Include="Search\CognitiveIndexableImageItem.cs" />
