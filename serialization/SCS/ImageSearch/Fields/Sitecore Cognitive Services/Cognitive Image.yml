@@ -10,7 +10,7 @@ SharedFields:
   Value: Applications/16x16/photo_scenery.png
 - ID: "0f0a5388-0467-4a45-95c0-729b1d6db9fd"
   Hint: Control
-  Value: "cognitive:ImageSearch"
+  Value: "cognitive:CognitiveImage"
 Languages:
 - Language: da
   Fields:

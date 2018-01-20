@@ -15,7 +15,7 @@ SharedFields:
   Value: 0
 - ID: "cab694fc-e37c-44eb-9012-488b775cf638"
   Hint: Message
-  Value: "cognitiveimagesearch:browse(id=$Target)"
+  Value: "cognitive:browse(id=$Target)"
 Languages:
 - Language: da
   Fields:

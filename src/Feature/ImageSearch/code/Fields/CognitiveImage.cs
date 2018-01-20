@@ -6,9 +6,14 @@ using Sitecore.Web.UI.Sheer;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Fields
 {
-    public class ImageSearch : Sitecore.Shell.Applications.ContentEditor.Image
+    public class CognitiveImage : Sitecore.Shell.Applications.ContentEditor.Image
     {
-        public ImageSearch() : base() { }
+        public CognitiveImage()
+        {
+            Class = "scContentControlImage";
+            Change = "#";
+            Activation = true;
+        }
         
         public override void HandleMessage(Message message)
         {
@@ -17,7 +22,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Fields
             if (message["id"] != ID)
                 return;
 
-            if (message.Name.Equals("cognitiveimagesearch:browse"))
+            if (message.Name.Equals("cognitive:browse"))
                 BrowseCognitive();
             else
                 base.HandleMessage(message);
