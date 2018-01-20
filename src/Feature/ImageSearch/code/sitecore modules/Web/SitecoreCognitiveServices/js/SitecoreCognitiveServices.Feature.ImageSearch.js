@@ -17,20 +17,20 @@ jQuery(document).ready(function () {
 //reanalyze
 jQuery(document).ready(function () {
     //handles analyze all form
-    var anlyzeAllForm = ".analyze-all-form";
-    jQuery(anlyzeAllForm + " button")
+    var analyzeAllForm = ".analyze-all-form";
+    jQuery(analyzeAllForm + " button")
         .click(function (event) {
             event.preventDefault();
 
-            var idValue = jQuery(anlyzeAllForm + " #id").attr("value");
-            var langValue = jQuery(anlyzeAllForm + " #language").attr("value");
-            var dbValue = jQuery(anlyzeAllForm + " #database").attr("value");
+            var idValue = jQuery(analyzeAllForm + " #id").attr("value");
+            var langValue = jQuery(analyzeAllForm + " #language").attr("value");
+            var dbValue = jQuery(analyzeAllForm + " #database").attr("value");
 
             jQuery(".form").hide();
             jQuery(".progress-indicator").show();
 
             jQuery.post(
-                jQuery(anlyzeAllForm).attr("action"),
+                jQuery(analyzeAllForm).attr("action"),
                 {
                     id: idValue,
                     language: langValue,

@@ -35,7 +35,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
             Assert.ArgumentNotNull(args, "args");
 
             var fieldId = args.Parameters["id"];
-            var fieldInfo = ((FieldInfo) ((Hashtable) args.Properties["Info"])[fieldId]);
+            var fieldInfo = (FieldInfo) ((Hashtable) args.Properties["Info"])[fieldId];
 
             if (!args.IsPostBack)
             {
