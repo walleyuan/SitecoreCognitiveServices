@@ -317,8 +317,9 @@ jQuery(document).ready(function () {
             CloseRadWindow(jQuery(".result-items .selected").html());
         } else if (src == "FieldEditor") {
             var value = jQuery(".result-items .selected img").attr("id");
+            window.returnValue = value;
             window.top.returnValue = value;
-            window.top.dialogClose(value);
+            window.top.dialogClose();
         }
     }
 

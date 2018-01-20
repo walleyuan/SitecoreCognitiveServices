@@ -214,7 +214,7 @@
     <Compile Include="Commands\Analyze.cs" />
     <Compile Include="Commands\BaseImageSearchCommand.cs" />
     <Compile Include="Commands\WebEditCognitiveImageSearch.cs" />
-    <Compile Include="Commands\ContentEditorCognitiveImageSearch.cs" />
+    <Compile Include="Fields\ImageSearch.cs" />
     <Compile Include="Commands\Reanalyze.cs" />
     <Compile Include="Commands\AnalyzeAll.cs" />
     <Compile Include="Commands\SetAltTags.cs" />
