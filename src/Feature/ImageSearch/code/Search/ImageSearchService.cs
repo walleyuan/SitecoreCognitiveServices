@@ -213,11 +213,10 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
             {
                 return context.GetQueryable<CognitiveImageSearchResult>()
-                    .Where(a =>
-                        a.TemplateName != "Media folder"
-                        && a.Path.StartsWith(folderPath)
-                        && a.Language == languageCode)
+                    .Where(a => a.Language == languageCode)
                     .Select(b => b.GetItem())
+                    .ToList()
+                    .Where(a => a.Paths.FullPath.StartsWith(folderPath) && a.TemplateName != "Media folder")
                     .ToList();
             }
         }
