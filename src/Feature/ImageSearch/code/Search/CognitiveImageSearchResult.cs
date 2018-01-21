@@ -47,6 +47,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search
         [IndexField("Tags")]
         public string[] Tags { get; set; }
 
+        [IndexField("Colors")]
+        public string[] Colors { get; set; }
+
         [IndexField("AgeMin")]
         public double AgeMin { get; set; }
 

@@ -8,6 +8,7 @@ using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Text.RegularExpressions;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.Linq.Utilities;
 using Sitecore.ContentSearch.SearchTypes;
@@ -144,7 +145,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
             }
         }
 
-        public virtual List<ICognitiveImageSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, int size, string languageCode, string dbName)
+        public virtual List<ICognitiveImageSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, int size, string languageCode, string color, string dbName)
         {
             var index = ContentSearchManager.GetIndex(GetCognitiveIndexName(dbName));
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
@@ -152,23 +153,20 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
                 IQueryable<CognitiveImageSearchResult> queryable = context.GetQueryable<CognitiveImageSearchResult>()
                     .Where(a => a.Language == languageCode && !(a.Path.StartsWith("/sitecore/") || a.TemplateName.Equals("Media folder") || a.TemplateName.Equals("Node")));
 
+                if (!string.IsNullOrEmpty(color))
+                    queryable = queryable.Where(x => x.Colors.Contains(color));
+
                 if (gender != 0)
-                {
                     queryable = queryable.Where(x => x.Gender == gender);
-                }
-
+                
                 if (glasses >= 0)
-                {
                     queryable = queryable.Where(x => x.Glasses.Contains(glasses));
-                }
-
+                
                 foreach (var parameter in tagParameters)
                 {
                     var thisParamPredicate = GetDefaultFilter(parameter.Value, parameter.Key);
                     if (thisParamPredicate != null)
-                    {
                         queryable = queryable.Where(thisParamPredicate);
-                    }
                 }
 
                 var hasAge = rangeParameters.Keys.Any(k => k.StartsWith("age"));
@@ -190,17 +188,13 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
                 }
 
                 if (size > 0)
-                {
                     queryable = queryable.Where(r => r.Size >= size);
-                }
-
+                
                 foreach (var parameter in rangeParameters)
                 {
                     var thisParamPredicate = GetRangeFilter(parameter.Value, parameter.Key);
                     if (thisParamPredicate != null)
-                    {
                         queryable = queryable.Where(thisParamPredicate);
-                    }
                 }
 
                 return queryable.ToList<ICognitiveImageSearchResult>();
@@ -267,6 +261,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
                 var tags = results
                     .Where(x => x.Tags != null)
                     .SelectMany(x => x.Tags)
+                    .Select(a => a.Trim())
                     .ToArray();
 
                 return tags.GroupBy(x => x)
@@ -276,6 +271,27 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
             }
         }
 
+        public virtual List<string> GetColors(string languageCode, string dbName)
+        {
+            var index = ContentSearchManager.GetIndex(GetCognitiveIndexName(dbName));
+
+            using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
+            {
+                var results = context.GetQueryable<CognitiveImageSearchResult>()
+                    .Where(a => a.Language == languageCode)
+                    .ToArray();
+
+                var colors = results
+                    .Where(x => x.Colors != null)
+                    .SelectMany(x => x.Colors)
+                    .Distinct()
+                    .OrderBy(a => a)
+                    .ToList();
+
+                return colors;
+            }
+        }
+        
         #endregion
 
         #region Helpers

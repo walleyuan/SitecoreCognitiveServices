@@ -113,6 +113,7 @@
             <field fieldName="TextAnalysis" returnType="string">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.TextAnalysis,SitecoreCognitiveServices.Feature.ImageSearch</field>
             <field fieldName="VisionAnalysis" returnType="string">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.VisionAnalysis,SitecoreCognitiveServices.Feature.ImageSearch</field>
             <field fieldName="Tags" returnType="stringArray">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Tags,SitecoreCognitiveServices.Feature.ImageSearch</field>
+            <field fieldName="Colors" returnType="stringArray">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Colors,SitecoreCognitiveServices.Feature.ImageSearch</field>
             <field fieldName="Anger" returnType="double">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Emotions.Anger,SitecoreCognitiveServices.Feature.ImageSearch</field>
             <field fieldName="Contempt" returnType="double">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Emotions.Contempt,SitecoreCognitiveServices.Feature.ImageSearch</field>
             <field fieldName="Disgust" returnType="double">SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.Emotions.Disgust,SitecoreCognitiveServices.Feature.ImageSearch</field>

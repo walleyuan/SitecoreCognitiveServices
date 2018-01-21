@@ -27,6 +27,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
             r.Database = db;
             r.Language = language;
             r.Tags = searchService.GetTags(language, db);
+            r.Colors = searchService.GetColors(language, db);
 
             return r;
         }

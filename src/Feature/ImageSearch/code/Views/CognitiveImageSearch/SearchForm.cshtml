@@ -18,133 +18,146 @@
             <div class="message-store">
                 <div class="select-an-image">You need to select an image.</div>
             </div>
-
-            <div class="search-results">
-                <div class="result-filters">
-                    <div class="filter-wrap">
+            <div class="result-filters">
+                <div class="filter-wrap">
                         
-                        <div class="filter-section">
-                            <div class="emotion-items">
-                                <div class="emotion-item">
-                                    <div class="filter">
-                                        <select id="size">
-                                            <option value="0">Choose Image Size</option>
-                                            <option value="1">400 x 300</option>
-                                            <option value="2">640 x 480</option>
-                                            <option value="3">800 x 600</option>
-                                            <option value="4">1024 x 768</option>
-                                            <option value="4">2 MP (1600 x 1200)</option>
-                                            <option value="4">4 MP (2272 x 1704)</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="filter-section">
-                            <div class="emotion-items">
-
-                                <div class="emotion-item">
-                                    <div class="filter">
-                                        <select id="gender">
-                                            <option value="0">Choose Gender</option>
-                                            <option value="1">None</option>
-                                            <option value="2">Male and Female</option>
-                                            <option value="3">Male</option>
-                                            <option value="4">Female</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="emotion-item">
-                                    <div class="filter">
-                                        <select id="glasses">
-                                            <option value="-1">Choose Glasses</option>
-                                            <option value="0">No Glasses</option>
-                                            <option value="1">Sunglasses</option>
-                                            <option value="2">Reading Glasses</option>
-                                            <option value="3">Swimming Goggles</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="emotion-item">
-                                    <span class="filter-title">Age: </span>
-                                    <span class="filter-value" data-field="age"> </span>
-                                    <div class="slider-range"></div>
-                                </div>
-
-                                <div class="emotion-item">
-                                    <span class="filter-title">Anger: </span>
-                                    <span class="filter-value" data-field="anger"> </span>
-                                    <div class="slider-range"></div>
-                                </div>
-
-                                <div class="emotion-item">
-                                    <span class="filter-title">Contempt: </span>
-                                    <span class="filter-value" data-field="contempt"> </span>
-                                    <div class="slider-range"></div>
-                                </div>
-
-                                <div class="emotion-item">
-                                    <span class="filter-title">Disgust: </span>
-                                    <span class="filter-value" data-field="disgust"> </span>
-                                    <div class="slider-range"></div>
-                                </div>
-
-                                <div class="emotion-item">
-                                    <span class="filter-title">Fear: </span>
-                                    <span class="filter-value" data-field="fear"> </span>
-                                    <div class="slider-range"></div>
-                                </div>
-
-                                <div class="emotion-item">
-                                    <span class="filter-title">Happiness: </span>
-                                    <span class="filter-value" data-field="happiness"> </span>
-                                    <div class="slider-range"></div>
-                                </div>
-
-                                <div class="emotion-item">
-                                    <span class="filter-title">Neutral: </span>
-                                    <span class="filter-value" data-field="neutral"> </span>
-                                    <div class="slider-range"></div>
-                                </div>
-
-                                <div class="emotion-item">
-                                    <span class="filter-title">Sadness: </span>
-                                    <span class="filter-value" data-field="sadness"> </span>
-                                    <div class="slider-range"></div>
-                                </div>
-
-                                <div class="emotion-item">
-                                    <span class="filter-title">Surprise: </span>
-                                    <span class="filter-value" data-field="surprise"> </span>
-                                    <div class="slider-range"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="filter-section">
-                            <div class="emotion-items">
-
-                                <div class="emotion-item">
-                                    <span class="filter-title">Adult: </span>
-                                    <span class="filter-value" data-field="adult"> </span>
-                                    <div class="slider-range"></div>
-                                </div>
-
-                                <div class="emotion-item">
-                                    <span class="filter-title">Racy: </span>
-                                    <span class="filter-value" data-field="racy"> </span>
-                                    <div class="slider-range"></div>
+                    <div class="filter-section">
+                        <div class="emotion-items">
+                            <div class="emotion-item">
+                                <div class="filter">
+                                    <select id="size">
+                                        <option value="0">Choose Image Size</option>
+                                        <option value="1">400 x 300</option>
+                                        <option value="2">640 x 480</option>
+                                        <option value="3">800 x 600</option>
+                                        <option value="4">1024 x 768</option>
+                                        <option value="4">2 MP (1600 x 1200)</option>
+                                        <option value="4">4 MP (2272 x 1704)</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="filter-tab">
-                        @Html.Raw(ThemeManager.GetImage("Apps/32x32/Setting.png", 16, 16))
+                        
+                    <div class="filter-section">
+                        <div class="color-items">
+                            <div class="color-title">Choose Color</div>
+                            <div class="color-list">
+                                @for (int i = 0; i < Model.Colors.Count; i++)
+                                {
+                                    <div class="color-item" value="@Model.Colors[i]">
+                                        <div class="color-inner" style="background-color: @Model.Colors[i];"></div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <div class="emotion-items">
+
+                            <div class="emotion-item">
+                                <div class="filter">
+                                    <select id="gender">
+                                        <option value="0">Choose Gender</option>
+                                        <option value="1">None</option>
+                                        <option value="2">Male and Female</option>
+                                        <option value="3">Male</option>
+                                        <option value="4">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <div class="filter">
+                                    <select id="glasses">
+                                        <option value="-1">Choose Glasses</option>
+                                        <option value="0">No Glasses</option>
+                                        <option value="1">Sunglasses</option>
+                                        <option value="2">Reading Glasses</option>
+                                        <option value="3">Swimming Goggles</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Age: </span>
+                                <span class="filter-value" data-field="age"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Anger: </span>
+                                <span class="filter-value" data-field="anger"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Contempt: </span>
+                                <span class="filter-value" data-field="contempt"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Disgust: </span>
+                                <span class="filter-value" data-field="disgust"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Fear: </span>
+                                <span class="filter-value" data-field="fear"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Happiness: </span>
+                                <span class="filter-value" data-field="happiness"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Neutral: </span>
+                                <span class="filter-value" data-field="neutral"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Sadness: </span>
+                                <span class="filter-value" data-field="sadness"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Surprise: </span>
+                                <span class="filter-value" data-field="surprise"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <div class="emotion-items">
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Adult: </span>
+                                <span class="filter-value" data-field="adult"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Racy: </span>
+                                <span class="filter-value" data-field="racy"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="filter-tab">
+                    @Html.Raw(ThemeManager.GetImage("Apps/32x32/Setting.png", 16, 16))
+                </div>
+            </div>
+            <div class="search-results">
                 <div class="result-column">
                     <fieldset class="tag-filter">
                         <div class="form-row">

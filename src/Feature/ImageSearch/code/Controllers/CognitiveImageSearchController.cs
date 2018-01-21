@@ -73,7 +73,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             int gender, 
             int glasses,
             int size,
-            string language, 
+            string language,
+            string color, 
             string db,
             int page,
             int pageLength)
@@ -84,7 +85,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
                 gender, 
                 glasses,
                 size,
-                language, 
+                language,
+                color,
                 db);
 
             var skipCount = (page - 1) * pageLength;

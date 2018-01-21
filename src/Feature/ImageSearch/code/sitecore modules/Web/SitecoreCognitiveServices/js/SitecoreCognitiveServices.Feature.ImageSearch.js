@@ -83,6 +83,7 @@ jQuery(document).ready(function () {
 
 //image search
 jQuery(document).ready(function () {
+    
     var config = {
         '.chosen-select': { width: "100%" }
     }
@@ -151,6 +152,18 @@ jQuery(document).ready(function () {
     jQuery(imageSearchSelect).change(function () {
         RefreshQuery();
     });
+
+    var imageColor = ".color-item";
+    jQuery(imageColor).click(function () {
+
+        var isSelected = jQuery(this).hasClass("selected");
+
+        jQuery(imageColor).removeClass("selected");
+        if(!isSelected)
+            jQuery(this).addClass("selected");
+
+        RefreshQuery();
+    });
     
     jQuery(".slider-range, .chosen-results").mouseup(function (e) {
         if(e.which != 1) 
@@ -174,6 +187,7 @@ jQuery(document).ready(function () {
     var searchResults;
     function RunQuery() {
         var langValue = jQuery(imageSearchForm + " #language").attr("value");
+        var colorValue = jQuery(imageSearchForm + " .color-list .selected").attr("value");
         var dbValue = jQuery(imageSearchForm + " #database").attr("value");
         var gender = jQuery(imageSearchForm + " #gender").val();
         var glasses = jQuery(imageSearchForm + " #glasses").val();
@@ -195,6 +209,7 @@ jQuery(document).ready(function () {
                     glasses: glasses,
                     size: size,
                     language: langValue,
+                    color: colorValue,
                     db: dbValue,
                     page: pageNum,
                     pageLength: pageSize
