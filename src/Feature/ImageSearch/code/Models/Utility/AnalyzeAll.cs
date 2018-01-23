@@ -6,6 +6,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility
         public string ItemId { get; set; }
         public string Database { get; set; }
         public string Language { get; set; }
-        public int ItemCount { get; set; }
+        public string HandleName { get; set; }
     }
 }

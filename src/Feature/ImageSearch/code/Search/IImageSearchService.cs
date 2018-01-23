@@ -27,7 +27,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
         /// Cognitive image search result has custom index fields that store the analysis in computed fields
         /// </summary>
         ICognitiveImageSearchResult GetCognitiveSearchResult(string itemId, string language, string db);
-        List<ICognitiveImageSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, int size, string languageCode, string color, string dbName);
+        List<ICognitiveImageSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, int size, string languageCode, List<string> colors, string dbName);
         List<Item> GetMediaItems(string folderPath, string languageCode, string dbName);
         IImageDescription GetImageDescription(MediaItem m, string language);
         Caption GetTopImageCaption(MediaItem m, string language, double threshold);

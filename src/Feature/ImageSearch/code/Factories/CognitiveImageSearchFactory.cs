@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.Data.Items;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
@@ -27,7 +29,21 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
             r.Database = db;
             r.Language = language;
             r.Tags = searchService.GetTags(language, db);
-            r.Colors = searchService.GetColors(language, db);
+            var colors = searchService.GetColors(language, db);
+            r.Colors = new List<KeyValuePair<string, string>>();
+            var converter = new ColorConverter();
+            foreach (string c in colors)
+            {
+                var colorName = "";
+                var col = converter.ConvertFromString(c);
+                if (col != null)
+                {
+                    var colObj = (Color)col;
+                    if (colObj.IsNamedColor)
+                        colorName = colObj.Name;
+                }
+                r.Colors.Add(new KeyValuePair<string, string>(colorName, c));
+            }
 
             return r;
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Sitecore.Diagnostics;
@@ -6,7 +7,7 @@ using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 using Sitecore.Data.Items;
-using Sitecore.Security.Authentication;
+using Sitecore.Jobs;
 using SitecoreCognitiveServices.Feature.ImageSearch.Analysis;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
@@ -24,6 +25,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
         protected readonly ICognitiveImageAnalysisFactory ImageAnalysisFactory;
         protected readonly IAnalyzeAllFactory AnalyzeAllFactory;
         protected readonly IImageAnalysisService AnalysisService;
+        protected readonly IAnalysisJobResultFactory JobResultFactory;
 
         public CognitiveImageSearchController(
             IImageSearchService searchService,
@@ -33,7 +35,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             ISetAltTagsAllFactory satarFactory,
             ICognitiveImageAnalysisFactory iaFactory,
             IAnalyzeAllFactory pFactory,
-            IImageAnalysisService analysisService)
+            IImageAnalysisService analysisService,
+            IAnalysisJobResultFactory jobResultFactory)
         {
             Assert.IsNotNull(searchService, typeof(IImageSearchService));
             Assert.IsNotNull(dataWrapper, typeof(ISitecoreDataWrapper));
@@ -43,6 +46,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             Assert.IsNotNull(iaFactory, typeof(ICognitiveImageAnalysisFactory));
             Assert.IsNotNull(pFactory, typeof(IAnalyzeAllFactory));
             Assert.IsNotNull(analysisService, typeof(IImageAnalysisService));
+            Assert.IsNotNull(jobResultFactory, typeof(IAnalysisJobResultFactory));
 
             SearchService = searchService;
             DataWrapper = dataWrapper;
@@ -52,6 +56,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             ImageAnalysisFactory = iaFactory;
             AnalyzeAllFactory = pFactory;
             AnalysisService = analysisService;
+            JobResultFactory = jobResultFactory;
         }
 
         #endregion
@@ -78,7 +83,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             int glasses,
             int size,
             string language,
-            string color, 
+            List<string> colors, 
             string db,
             int page,
             int pageLength)
@@ -93,7 +98,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
                 glasses,
                 size,
                 language,
-                color,
+                colors,
                 db);
 
             var skipCount = (page - 1) * pageLength;
@@ -216,7 +221,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             if (!IsSitecoreUser())
                 return LoginPage();
 
-            var result = AnalyzeAllFactory.Create(id, db, language, 0);
+            var result = AnalyzeAllFactory.Create(id, db, language, "");
 
             return View("AnalyzeAll", result);
         }
@@ -230,14 +235,32 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             if (item == null)
                 return ViewAnalyzeAll(id, language, database);
 
-            AnalysisService.AnalyzeImagesRecursively(item, database);
-            var count = SearchService.UpdateItemInIndexRecursively(item, database);
+            string handleName = $"BatchImageAnalysis{new Random(DateTime.Now.Millisecond).Next(0, 100)}";
 
-            var result = AnalyzeAllFactory.Create(id, database, language, count);
+            var jobOptions = new Sitecore.Jobs.JobOptions(
+                handleName,
+                "Cognitive Image Analysis",
+                Sitecore.Context.Site.Name,
+                AnalysisService,
+                "AnalyzeImagesRecursively",
+                new object[] { item, database });
+
+            Sitecore.Jobs.JobManager.Start(jobOptions);
+
+            var result = AnalyzeAllFactory.Create(id, database, language, handleName);
 
             return Json(result);
         }
 
+        public ActionResult GetJobStatus(string handleName)
+        {
+            Job j = JobManager.GetJob(handleName);
+
+            var result = JobResultFactory.Create(j?.Status.Processed ?? 0, j?.Status.Total ?? 0, j?.IsDone ?? true);
+
+            return Json(result);
+        }
+        
         #endregion Analysis
 
         #region Shared

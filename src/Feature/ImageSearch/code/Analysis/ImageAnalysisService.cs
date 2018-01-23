@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using Newtonsoft.Json;
 using Sitecore.Data.Items;
+using Sitecore.Jobs;
 using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
 using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
@@ -85,9 +87,36 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
                 item.Paths.FullPath, 
                 item.Language.Name, 
                 item.Database.Name);
+            
+            int totalLines = list.Count;
+            long line = 0;
+            
+            if (Sitecore.Context.Job != null)
+            {
+                Sitecore.Context.Job.Options.Priority = ThreadPriority.Highest;
+                Sitecore.Context.Job.Status.Total = list.Count;
+            }
 
-            list.ForEach(b => AnalyzeImage(b));
+            foreach (Item i in list)
+            {
+                line++;
+                var analysis = _searchService.GetImageAnalysis(i.ID.ToString(), i.Language.Name, i.Database.Name);
+                if (analysis == null || analysis.HasNoAnalysis())
+                {
+                    AnalyzeImage(i);
+                    _searchService.UpdateItemInIndex(i, db);
+                }
 
+                if (Sitecore.Context.Job == null)
+                    continue;
+                
+                Sitecore.Context.Job.Status.Processed = line;
+                Sitecore.Context.Job.Status.Messages.Add($"Processed item {line} of {totalLines}");
+            }
+            
+            if (Sitecore.Context.Job != null)
+                Sitecore.Context.Job.Status.State = JobState.Finished;
+            
             return list.Count;
         }
 

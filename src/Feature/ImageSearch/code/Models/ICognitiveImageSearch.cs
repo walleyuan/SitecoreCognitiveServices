@@ -9,6 +9,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Models
         string Language { get; set; }
 
         List<KeyValuePair<string, int>> Tags { get; set; }
-        List<string> Colors { get; set; }
+        List<KeyValuePair<string, string>> Colors { get; set; }
     }
 }

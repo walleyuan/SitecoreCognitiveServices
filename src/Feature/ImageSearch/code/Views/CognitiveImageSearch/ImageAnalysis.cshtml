@@ -9,7 +9,25 @@
 <link rel="stylesheet" href="/sitecore modules/Shell/SitecoreCognitiveServices/css/SitecoreCognitiveServices.Feature.ImageSearch.css?x=@(new System.Random().Next())" />
 @if (Model.HasNoAnalysis())
 {
-    <div class="analysis-warning">There's no analysis for this item. It may not have been analyed yet or may not match the minimum size requirements of the Cognitive Services API.</div>
+    <div class="analyze-form-wrapper">
+        <div class="analysis-warning">There's no analysis for this item. It may not have been analyed yet or may not match the minimum size requirements of the Cognitive Services API.</div>
+    
+        <form class="form analyze-form" method="post" action="/SitecoreCognitiveServices/CognitiveImageSearch/Analyze">
+            <fieldset>
+                <div>
+                    <input type="hidden" name="id" value="@Request.QueryString["id"]"/>
+                    <input type="hidden" name="db" value="@Request.QueryString["db"]"/>
+                    <input type="hidden" name="language" value="@Request.QueryString["language"]"/>
+                </div>
+            </fieldset>
+            <div class="scWizardButtons">
+                <button class="form-submit scButton scButtonPrimary">Analyze Image</button>
+            </div>
+        </form>
+        <div class="progress-indicator">
+            <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
+        </div>
+    </div>
 } else { 
 <div class="frame">
     <div class="tabbed-nav">
@@ -120,6 +138,6 @@
         </div>
     </div>
 </div>
+}
 
 <script src="/sitecore modules/Shell/SitecoreCognitiveServices/js/SitecoreCognitiveServices.Feature.ImageSearch.js"></script>
-}

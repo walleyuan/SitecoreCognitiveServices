@@ -25,6 +25,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.App_Start
             serviceCollection.AddTransient<IImageDescription, ImageDescription>();
             serviceCollection.AddTransient<IAnalyzeAll, AnalyzeAll>();
             serviceCollection.AddTransient<ISetAltTagsAll, SetAltTagsAll>();
+            serviceCollection.AddTransient<IAnalysisJobResult, AnalysisJobResult>();
 
             //factories
             serviceCollection.AddTransient<ICognitiveImageSearchFactory, CognitiveImageSearchFactory>();
@@ -32,6 +33,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.App_Start
             serviceCollection.AddTransient<IImageDescriptionFactory, ImageDescriptionFactory>();
             serviceCollection.AddTransient<IAnalyzeAllFactory, AnalyzeAllFactory>();
             serviceCollection.AddTransient<ISetAltTagsAllFactory, SetAltTagsAllFactory>();
+            serviceCollection.AddTransient<IAnalysisJobResultFactory, AnalysisJobResultFactory>();
 
             //search
             serviceCollection.AddTransient<ICognitiveImageSearchResult, CognitiveImageSearchResult>();

@@ -14,6 +14,16 @@ jQuery(document).ready(function () {
         });
 });
 
+//analyze
+jQuery(document).ready(function() {
+    jQuery(".analyze-form button")
+        .click(function (event) {
+            jQuery(this).hide();
+            jQuery(".analysis-warning").hide();
+            jQuery(".progress-indicator").show();
+        });
+});
+
 //reanalyze
 jQuery(document).ready(function () {
     //handles analyze all form
@@ -28,7 +38,7 @@ jQuery(document).ready(function () {
 
             jQuery(".form").hide();
             jQuery(".progress-indicator").show();
-
+            
             jQuery.post(
                 jQuery(analyzeAllForm).attr("action"),
                 {
@@ -37,9 +47,22 @@ jQuery(document).ready(function () {
                     database: dbValue
                 }
             ).done(function (r) {
-                jQuery(".result-count").text(r.ItemCount);
-                jQuery(".progress-indicator").hide();
-                jQuery(".result-display").show();
+
+                var timer = setInterval(function () {
+                    jQuery.post("/SitecoreCognitiveServices/CognitiveImageSearch/GetJobStatus", { handleName: r.HandleName })
+                        .done(function (jobResult) {
+                            if (jobResult.Total < 0)
+                                return;
+
+                            jQuery(".result-count").text(jobResult.Current + " of " + jobResult.Total);
+                            jQuery(".result-display").show();
+
+                            if (jobResult.Completed) {
+                                jQuery(".progress-indicator").hide();
+                                clearInterval(timer);    
+                            }
+                        });
+                }, 1000);
             });
         });
 });
@@ -158,9 +181,10 @@ jQuery(document).ready(function () {
 
         var isSelected = jQuery(this).hasClass("selected");
 
-        jQuery(imageColor).removeClass("selected");
         if(!isSelected)
             jQuery(this).addClass("selected");
+        else 
+            jQuery(this).removeClass("selected");
 
         RefreshQuery();
     });
@@ -187,7 +211,6 @@ jQuery(document).ready(function () {
     var searchResults;
     function RunQuery() {
         var langValue = jQuery(imageSearchForm + " #language").attr("value");
-        var colorValue = jQuery(imageSearchForm + " .color-list .selected").attr("value");
         var dbValue = jQuery(imageSearchForm + " #database").attr("value");
         var gender = jQuery(imageSearchForm + " #gender").val();
         var glasses = jQuery(imageSearchForm + " #glasses").val();
@@ -196,6 +219,10 @@ jQuery(document).ready(function () {
         jQuery(rteSearchForm + " .progress-indicator").show();
         jQuery(".result-items").hide();
 
+        var colorValue = [];
+        jQuery(imageSearchForm + " .color-list .selected").each(function (index) {
+            colorValue.push(jQuery(this).attr("value"));
+        });
         var tags = GetTagParameters();
         var ranges = GetRangeParameters();
 
@@ -209,7 +236,7 @@ jQuery(document).ready(function () {
                     glasses: glasses,
                     size: size,
                     language: langValue,
-                    color: colorValue,
+                    colors: colorValue,
                     db: dbValue,
                     page: pageNum,
                     pageLength: pageSize

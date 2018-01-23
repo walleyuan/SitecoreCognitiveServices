@@ -13,14 +13,14 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
             Provider = provider;
         }
 
-        public virtual IAnalyzeAll Create(string itemId, string db, string language, int itemCount)
+        public virtual IAnalyzeAll Create(string itemId, string db, string language, string handleName)
         {
             var obj = Provider.GetService<IAnalyzeAll>();
 
             obj.ItemId = itemId;
             obj.Database = db;
             obj.Language = language;
-            obj.ItemCount = itemCount;
+            obj.HandleName = handleName;
 
             return obj;
         }

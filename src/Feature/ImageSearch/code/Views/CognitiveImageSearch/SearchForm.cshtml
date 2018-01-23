@@ -20,7 +20,21 @@
             </div>
             <div class="result-filters">
                 <div class="filter-wrap">
-                        
+                    
+                    <div class="filter-section">
+                        <div class="color-items">
+                            <div class="color-title">Choose Color</div>
+                            <div class="color-list">
+                                @for (int i = 0; i < Model.Colors.Count; i++)
+                                {
+                                    <div class="color-item" value="@Model.Colors[i].Value">
+                                        <div class="color-inner" style="background-color: @Model.Colors[i].Value;" title="@Model.Colors[i].Key"></div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="filter-section">
                         <div class="emotion-items">
                             <div class="emotion-item">
@@ -38,21 +52,7 @@
                             </div>
                         </div>
                     </div>
-                        
-                    <div class="filter-section">
-                        <div class="color-items">
-                            <div class="color-title">Choose Color</div>
-                            <div class="color-list">
-                                @for (int i = 0; i < Model.Colors.Count; i++)
-                                {
-                                    <div class="color-item" value="@Model.Colors[i]">
-                                        <div class="color-inner" style="background-color: @Model.Colors[i];"></div>
-                                    </div>
-                                }
-                            </div>
-                        </div>
-                    </div>
-
+                    
                     <div class="filter-section">
                         <div class="emotion-items">
 

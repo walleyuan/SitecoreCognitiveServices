@@ -145,7 +145,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
             }
         }
 
-        public virtual List<ICognitiveImageSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, int size, string languageCode, string color, string dbName)
+        public virtual List<ICognitiveImageSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, int size, string languageCode, List<string> colors, string dbName)
         {
             var index = ContentSearchManager.GetIndex(GetCognitiveIndexName(dbName));
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
@@ -153,8 +153,11 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
                 IQueryable<CognitiveImageSearchResult> queryable = context.GetQueryable<CognitiveImageSearchResult>()
                     .Where(a => a.Language == languageCode && !(a.Path.StartsWith("/sitecore/") || a.TemplateName.Equals("Media folder") || a.TemplateName.Equals("Node")));
 
-                if (!string.IsNullOrEmpty(color))
-                    queryable = queryable.Where(x => x.Colors.Contains(color));
+                if(colors != null) {
+                    var colorPredicate = GetDefaultFilter(colors.ToArray(), "Colors");
+                    if (colorPredicate != null)
+                        queryable = queryable.Where(colorPredicate);
+                }
 
                 if (gender != 0)
                     queryable = queryable.Where(x => x.Gender == gender);

@@ -215,6 +215,8 @@
     <Compile Include="Commands\BaseImageSearchCommand.cs" />
     <Compile Include="Commands\WebEditCognitiveAnalysis.cs" />
     <Compile Include="Commands\WebEditCognitiveImageSearch.cs" />
+    <Compile Include="Factories\AnalysisJobResultFactory.cs" />
+    <Compile Include="Factories\IAnalysisJobResultFactory.cs" />
     <Compile Include="Fields\CognitiveImage.cs" />
     <Compile Include="Commands\Reanalyze.cs" />
     <Compile Include="Commands\AnalyzeAll.cs" />
@@ -235,7 +237,9 @@
     <Compile Include="Factories\SetAltTagsAllFactory.cs" />
     <Compile Include="IImageSearchSettings.cs" />
     <Compile Include="ImageSearchSettings.cs" />
+    <Compile Include="Models\Analysis\AnalysisJobResult.cs" />
     <Compile Include="Models\Analysis\CognitiveImageAnalysis.cs" />
+    <Compile Include="Models\Analysis\IAnalysisJobResult.cs" />
     <Compile Include="Models\Analysis\ICognitiveImageAnalysis.cs" />
     <Compile Include="Models\CognitiveImageSearch.cs" />
     <Compile Include="Models\CognitiveImageSearchJsonResult.cs" />
