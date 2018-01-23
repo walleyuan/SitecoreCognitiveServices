@@ -247,7 +247,7 @@ fieldset legend { margin-bottom: 10px;}
 .rte-search-form .filter-title, .filter-value { font-size:10px; }
 .rte-search-form .section-title { padding-bottom: 4px; font-weight: bold; border-bottom: 1px solid #cccccc; margin:15px 10px 8px;}
 .rte-search-form .color-items { margin: 0 10px; background: #fff; border: 1px solid #ccc; padding: 0 3px;}
-.rte-search-form .color-title { margin: 3px 2px; }
+.rte-search-form .color-title { margin: 1px 2px; }
 .rte-search-form .color-list { opacity: 0; height: 0; overflow: hidden; }
 .rte-search-form .color-items:hover .color-list { opacity: 1; height: auto; transition: opacity .25s ease-in-out; }
 .rte-search-form .color-item { display: inline-block; margin: 2px; padding: 1px; }

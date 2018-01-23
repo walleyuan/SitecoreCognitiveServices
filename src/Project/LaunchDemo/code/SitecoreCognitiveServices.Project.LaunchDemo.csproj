@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -205,9 +206,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\SitecoreCognitiveServices.Project.LaunchDemo.css" />
-    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\SitecoreCognitiveServices.Project.LaunchDemo.js" />
-    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\jquery-1.10.2.min.js" />
+    <Content Include="sitecore modules\Shell\SitecoreCognitiveServices\css\SitecoreCognitiveServices.Project.LaunchDemo.css" />
+    <Content Include="sitecore modules\Shell\SitecoreCognitiveServices\js\SitecoreCognitiveServices.Project.LaunchDemo.js" />
+    <Content Include="sitecore modules\Shell\SitecoreCognitiveServices\js\jquery-1.10.2.min.js" />
     <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Project.LaunchDemo.config">
       <SubType>Designer</SubType>
     </Content>

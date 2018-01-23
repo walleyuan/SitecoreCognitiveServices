@@ -9,6 +9,8 @@ using Sitecore.SecurityModel;
 using Sitecore.Shell.Framework.Commands;
 using Sitecore.Data.Managers;
 using Sitecore.Globalization;
+using Sitecore.Security.Accounts;
+using Sitecore.Security.Domains;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
 {
@@ -30,6 +32,8 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
         IEnumerable<TemplateItem> GetBaseTemplates(TemplateItem t);
         void SetImageDescription(MediaItem mediaItem, string altDescription);
         IEnumerable<Language> GetLanguages(Database db);
+        User ContextUser { get; }
+        Domain ContextDomain { get; }
     }
 
     public class SitecoreDataWrapper : ISitecoreDataWrapper
@@ -181,5 +185,9 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
         {
             return LanguageManager.GetLanguages(db).ToList();
         }
+
+        public virtual User ContextUser => Sitecore.Context.User;
+
+        public virtual Domain ContextDomain => Sitecore.Context.Domain;
     }
 }

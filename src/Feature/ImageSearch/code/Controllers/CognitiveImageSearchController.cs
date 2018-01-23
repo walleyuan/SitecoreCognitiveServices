@@ -6,6 +6,7 @@ using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 using Sitecore.Data.Items;
+using Sitecore.Security.Authentication;
 using SitecoreCognitiveServices.Feature.ImageSearch.Analysis;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
@@ -59,6 +60,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
 
         public ActionResult SearchForm()
         {
+            if (!IsSitecoreUser())
+                return LoginPage();
+
             var lang = WebUtil.GetQueryString("lang");
             var db = WebUtil.GetQueryString("db", "master");
 
@@ -79,6 +83,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             int page,
             int pageLength)
         {
+            if (!IsSitecoreUser())
+                return new EmptyResult();
+
             List<ICognitiveImageSearchResult> csr = SearchService.GetMediaResults(
                 tagParameters, 
                 rangeParameters, 
@@ -103,7 +110,11 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
 
         #region Set Alt Tags
 
-        public ActionResult ViewImageDescription(string id, string language, string db) {
+        public ActionResult ViewImageDescription(string id, string language, string db)
+        {
+            if (!IsSitecoreUser())
+                return LoginPage();
+
             Item item = DataWrapper.GetItemByIdValue(id, db);
             if (item == null)
                 return View("ImageDescription");
@@ -116,7 +127,11 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateImageDescription(string descriptionOption, string id, string database, string language) {
+        public ActionResult UpdateImageDescription(string descriptionOption, string id, string database, string language)
+        {
+            if (!IsSitecoreUser())
+                return LoginPage();
+
             if (string.IsNullOrEmpty(descriptionOption))
                 return View("ImageDescription");
 
@@ -130,14 +145,22 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             return View("ImageDescription", SearchService.GetImageDescription(m, language));
         }
         
-        public ActionResult ViewImageDescriptionThreshold(string id, string language, string db) {
+        public ActionResult ViewImageDescriptionThreshold(string id, string language, string db)
+        {
+            if (!IsSitecoreUser())
+                return LoginPage();
+
             var result = SetAltTagsAllFactory.Create(id, db, language, 0, 0, 50, false);
 
             return View("ImageDescriptionThreshold", result);
         }
 
         [HttpPost]
-        public ActionResult UpdateImageDescriptionAll(string id, string language, string db, int threshold, bool overwrite) {
+        public ActionResult UpdateImageDescriptionAll(string id, string language, string db, int threshold, bool overwrite)
+        {
+            if (!IsSitecoreUser())
+                return LoginPage();
+
             IEnumerable<MediaItem> fullList = DataWrapper
                 .GetMediaFileDescendents(id, db)
                 .ToList();
@@ -167,12 +190,19 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
 
         public ActionResult ImageAnalysis(string id, string language, string db)
         {
+            if (!IsSitecoreUser())
+                return LoginPage();
+
             ICognitiveImageSearchResult csr = SearchService.GetCognitiveSearchResult(id, language, db);
 
             return View("ImageAnalysis", ImageAnalysisFactory.Create(csr));
         }
 
-        public ActionResult Analyze(string id, string language, string db) {
+        public ActionResult Analyze(string id, string language, string db)
+        {
+            if (!IsSitecoreUser())
+                return LoginPage();
+
             Item item = DataWrapper.GetItemByIdValue(id, db);
 
             AnalysisService.AnalyzeImage(item);
@@ -181,13 +211,21 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             return View("ImageAnalysis", SearchService.GetImageAnalysis(id, language, db));
         }
 
-        public ActionResult ViewAnalyzeAll(string id, string language, string db) {
+        public ActionResult ViewAnalyzeAll(string id, string language, string db)
+        {
+            if (!IsSitecoreUser())
+                return LoginPage();
+
             var result = AnalyzeAllFactory.Create(id, db, language, 0);
 
             return View("AnalyzeAll", result);
         }
 
-        public ActionResult AnalyzeAll(string id, string language, string database) {
+        public ActionResult AnalyzeAll(string id, string language, string database)
+        {
+            if (!IsSitecoreUser())
+                return LoginPage();
+
             Item item = DataWrapper.GetItemByIdValue(id, database);
             if (item == null)
                 return ViewAnalyzeAll(id, language, database);
@@ -201,6 +239,21 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
         }
 
         #endregion Analysis
+
+        #region Shared
+
+        public bool IsSitecoreUser()
+        {
+            return DataWrapper.ContextUser.IsAuthenticated 
+                && DataWrapper.ContextDomain.Name.ToLower().Equals("sitecore");
+        }
+
+        public ActionResult LoginPage()
+        {
+            return new RedirectResult("/sitecore/login");
+        }
+
+        #endregion
     }
 }
  

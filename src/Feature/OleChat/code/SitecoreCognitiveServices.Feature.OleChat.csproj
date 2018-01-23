@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -143,8 +144,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\css\SitecoreCognitiveServices.Feature.OleChat.css" />
-    <Content Include="sitecore modules\Web\SitecoreCognitiveServices\js\SitecoreCognitiveServices.Feature.OleChat.js" />
+    <Content Include="sitecore modules\Shell\SitecoreCognitiveServices\css\SitecoreCognitiveServices.Feature.OleChat.css" />
+    <Content Include="sitecore modules\Shell\SitecoreCognitiveServices\js\SitecoreCognitiveServices.Feature.OleChat.js" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <None Include="Web.config" />
   </ItemGroup>
