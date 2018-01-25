@@ -279,6 +279,22 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
 
             return View("Setup", info);
         }
+
+        public ActionResult SetupSubmit(string emotionApi, string faceApi, string textAnalyticsApi, string computerVisionApi)
+        {
+            if (!IsSitecoreUser())
+                return LoginPage();
+
+            //some service to do this
+            //return DataWrapper
+            //    .ContentDatabase
+            //    .GetItem(Settings.MSSDKId)
+            //    [fieldName];
+
+            ISetupInformation info = SetupFactory.Create();
+            
+            return View("Setup", info);
+        }
         
         #endregion
 
