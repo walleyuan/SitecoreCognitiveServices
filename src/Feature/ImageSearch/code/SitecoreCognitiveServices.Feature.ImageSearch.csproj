@@ -205,6 +205,7 @@
     <Content Include="Views\CognitiveImageSearch\Vision\Regions.cshtml" />
     <Content Include="Views\CognitiveImageSearch\Vision\Tags.cshtml" />
     <Content Include="Views\CognitiveImageSearch\Vision\Words.cshtml" />
+    <Content Include="Views\CognitiveImageSearch\Setup.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +218,8 @@
     <Compile Include="Commands\WebEditCognitiveImageSearch.cs" />
     <Compile Include="Factories\AnalysisJobResultFactory.cs" />
     <Compile Include="Factories\IAnalysisJobResultFactory.cs" />
+    <Compile Include="Factories\ISetupInformationFactory.cs" />
+    <Compile Include="Factories\SetupInformationFactory.cs" />
     <Compile Include="Fields\CognitiveImage.cs" />
     <Compile Include="Commands\Reanalyze.cs" />
     <Compile Include="Commands\AnalyzeAll.cs" />
@@ -245,6 +248,8 @@
     <Compile Include="Models\CognitiveImageSearchJsonResult.cs" />
     <Compile Include="Models\ICognitiveImageSearch.cs" />
     <Compile Include="Models\ICognitiveImageSearchJsonResult.cs" />
+    <Compile Include="Models\Setup\SetupInformation.cs" />
+    <Compile Include="Models\Setup\ISetupInformation.cs" />
     <Compile Include="Models\Utility\IImageDescription.cs" />
     <Compile Include="Models\Utility\ImageDescription.cs" />
     <Compile Include="Models\Utility\IAnalyzeAll.cs" />

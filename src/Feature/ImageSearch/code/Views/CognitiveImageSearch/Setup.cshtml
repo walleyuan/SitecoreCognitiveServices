@@ -1,0 +1,31 @@
+﻿@using Sitecore.Data.Managers
+@model SitecoreCognitiveServices.Feature.ImageSearch.Models.Setup.ISetupInformation
+
+@{
+    ViewBag.Title = "Cognitive Services: Image Search Setup";
+    Layout = "~/Views/CognitiveCommon/CognitiveLayout.cshtml";
+}
+
+<link rel="stylesheet" href="/sitecore modules/Shell/SitecoreCognitiveServices/css/SitecoreCognitiveServices.Feature.ImageSearch.css?x=@(new System.Random().Next())" />
+
+<div>
+    <form>
+        <div>
+            Emotion: @Model.EmotionApiKey
+        </div>
+        <div>
+            Face: @Model.FaceApiKey
+        </div>
+        <div>
+            Text Analytics: @Model.TextAnalyticsApiKey
+        </div>
+        <div>
+            Computer Vision: @Model.ComputerVisionApiKey
+        </div>
+        <div>
+            <button type="submit"></button>
+        </div>
+    </form>
+</div>
+
+<script src="/sitecore modules/Shell/SitecoreCognitiveServices/js/SitecoreCognitiveServices.Feature.ImageSearch.js"></script>

@@ -9,6 +9,7 @@ using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 using Sitecore.Data.Items;
 using Sitecore.Jobs;
 using SitecoreCognitiveServices.Feature.ImageSearch.Analysis;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models.Setup;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
@@ -26,6 +27,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
         protected readonly IAnalyzeAllFactory AnalyzeAllFactory;
         protected readonly IImageAnalysisService AnalysisService;
         protected readonly IAnalysisJobResultFactory JobResultFactory;
+        protected readonly ISetupInformationFactory SetupFactory;
 
         public CognitiveImageSearchController(
             IImageSearchService searchService,
@@ -36,7 +38,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             ICognitiveImageAnalysisFactory iaFactory,
             IAnalyzeAllFactory pFactory,
             IImageAnalysisService analysisService,
-            IAnalysisJobResultFactory jobResultFactory)
+            IAnalysisJobResultFactory jobResultFactory,
+            ISetupInformationFactory setupFactory)
         {
             Assert.IsNotNull(searchService, typeof(IImageSearchService));
             Assert.IsNotNull(dataWrapper, typeof(ISitecoreDataWrapper));
@@ -47,6 +50,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             Assert.IsNotNull(pFactory, typeof(IAnalyzeAllFactory));
             Assert.IsNotNull(analysisService, typeof(IImageAnalysisService));
             Assert.IsNotNull(jobResultFactory, typeof(IAnalysisJobResultFactory));
+            Assert.IsNotNull(setupFactory, typeof(ISetupInformationFactory));
 
             SearchService = searchService;
             DataWrapper = dataWrapper;
@@ -57,6 +61,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             AnalyzeAllFactory = pFactory;
             AnalysisService = analysisService;
             JobResultFactory = jobResultFactory;
+            SetupFactory = setupFactory;
         }
 
         #endregion
@@ -260,15 +265,29 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
 
             return Json(result);
         }
-        
+
         #endregion Analysis
+
+        #region Setup
+
+        public ActionResult Setup()
+        {
+            if (!IsSitecoreUser())
+                return LoginPage();
+            
+            ISetupInformation info = SetupFactory.Create();
+
+            return View("Setup", info);
+        }
+        
+        #endregion
 
         #region Shared
 
         public bool IsSitecoreUser()
         {
             return DataWrapper.ContextUser.IsAuthenticated 
-                && DataWrapper.ContextDomain.Name.ToLower().Equals("sitecore");
+                && DataWrapper.ContextUser.Domain.Name.ToLower().Equals("sitecore");
         }
 
         public ActionResult LoginPage()

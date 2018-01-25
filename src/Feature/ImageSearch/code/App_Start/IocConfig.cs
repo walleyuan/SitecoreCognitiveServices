@@ -7,6 +7,7 @@ using Sitecore.DependencyInjection;
 using System.Web.Mvc;
 using SitecoreCognitiveServices.Feature.ImageSearch.Analysis;
 using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
+using SitecoreCognitiveServices.Feature.ImageSearch.Models.Setup;
 using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.App_Start
@@ -26,6 +27,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.App_Start
             serviceCollection.AddTransient<IAnalyzeAll, AnalyzeAll>();
             serviceCollection.AddTransient<ISetAltTagsAll, SetAltTagsAll>();
             serviceCollection.AddTransient<IAnalysisJobResult, AnalysisJobResult>();
+            serviceCollection.AddTransient<ISetupInformation, SetupInformation>();
 
             //factories
             serviceCollection.AddTransient<ICognitiveImageSearchFactory, CognitiveImageSearchFactory>();
@@ -34,6 +36,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.App_Start
             serviceCollection.AddTransient<IAnalyzeAllFactory, AnalyzeAllFactory>();
             serviceCollection.AddTransient<ISetAltTagsAllFactory, SetAltTagsAllFactory>();
             serviceCollection.AddTransient<IAnalysisJobResultFactory, AnalysisJobResultFactory>();
+            serviceCollection.AddTransient<ISetupInformationFactory, SetupInformationFactory>();
 
             //search
             serviceCollection.AddTransient<ICognitiveImageSearchResult, CognitiveImageSearchResult>();
