@@ -51,7 +51,7 @@ jQuery(document).ready(function () {
             ).done(function (r) {
 
                 var timer = setInterval(function () {
-                    jQuery.post("/SitecoreCognitiveServices/CognitiveImageSearch/GetJobStatus", { handleName: r.HandleName })
+                    jQuery.post(jQuery(analyzeAllForm).attr("status"), { handleName: r.HandleName })
                         .done(function (jobResult) {
                             if (jobResult.Total < 0)
                                 return;
