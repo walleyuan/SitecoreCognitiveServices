@@ -231,7 +231,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             return View("AnalyzeAll", result);
         }
 
-        public ActionResult AnalyzeAll(string id, string language, string database)
+        public ActionResult AnalyzeAll(string id, string language, string database, bool overwrite)
         {
             if (!IsSitecoreUser())
                 return LoginPage();
@@ -248,7 +248,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
                 Sitecore.Context.Site.Name,
                 AnalysisService,
                 "AnalyzeImagesRecursively",
-                new object[] { item, database });
+                new object[] { item, database, overwrite });
 
             Sitecore.Jobs.JobManager.Start(jobOptions);
 

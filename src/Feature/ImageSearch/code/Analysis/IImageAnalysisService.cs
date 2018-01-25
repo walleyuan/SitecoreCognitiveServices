@@ -13,7 +13,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
     public interface IImageAnalysisService
     {
         ICognitiveImageAnalysis AnalyzeImage(Item imageItem);
-        int AnalyzeImagesRecursively(Item item, string db);
+        int AnalyzeImagesRecursively(Item item, string db, bool overwrite);
         Emotion[] GetEmotionalAnalysis(MediaItem m);
         Face[] GetFacialAnalysis(MediaItem m);
         AnalysisResult GetVisualAnalysis(MediaItem m);

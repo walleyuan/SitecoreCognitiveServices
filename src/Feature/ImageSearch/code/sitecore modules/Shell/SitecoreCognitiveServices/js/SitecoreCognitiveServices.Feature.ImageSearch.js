@@ -35,6 +35,7 @@ jQuery(document).ready(function () {
             var idValue = jQuery(analyzeAllForm + " #id").attr("value");
             var langValue = jQuery(analyzeAllForm + " #language").attr("value");
             var dbValue = jQuery(analyzeAllForm + " #database").attr("value");
+            var overwriteValue = jQuery(analyzeAllForm + " #overwrite").is(":checked");
 
             jQuery(".form").hide();
             jQuery(".progress-indicator").show();
@@ -44,7 +45,8 @@ jQuery(document).ready(function () {
                 {
                     id: idValue,
                     language: langValue,
-                    database: dbValue
+                    database: dbValue,
+                    overwrite: overwriteValue
                 }
             ).done(function (r) {
 

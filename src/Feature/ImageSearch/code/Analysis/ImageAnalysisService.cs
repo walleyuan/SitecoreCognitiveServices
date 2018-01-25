@@ -81,7 +81,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
             return imageAnalysis;
         }
 
-        public virtual int AnalyzeImagesRecursively(Item item, string db)
+        public virtual int AnalyzeImagesRecursively(Item item, string db, bool overwrite)
         {
             var list = _searchService.GetMediaItems(
                 item.Paths.FullPath, 
@@ -100,8 +100,10 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
             foreach (Item i in list)
             {
                 line++;
-                var analysis = _searchService.GetImageAnalysis(i.ID.ToString(), i.Language.Name, i.Database.Name);
-                if (analysis == null || analysis.HasNoAnalysis())
+                var analysis = (overwrite) 
+                    ? null 
+                    : _searchService.GetImageAnalysis(i.ID.ToString(), i.Language.Name, i.Database.Name);
+                if (overwrite || analysis == null || analysis.HasNoAnalysis())
                 {
                     AnalyzeImage(i);
                     _searchService.UpdateItemInIndex(i, db);
