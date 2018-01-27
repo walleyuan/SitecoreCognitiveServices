@@ -216,6 +216,7 @@
     <Compile Include="Commands\BaseImageSearchCommand.cs" />
     <Compile Include="Commands\WebEditCognitiveAnalysis.cs" />
     <Compile Include="Commands\WebEditCognitiveImageSearch.cs" />
+    <Compile Include="Events\MediaItemDeleted.cs" />
     <Compile Include="Factories\AnalysisJobResultFactory.cs" />
     <Compile Include="Factories\IAnalysisJobResultFactory.cs" />
     <Compile Include="Factories\ISetupInformationFactory.cs" />
