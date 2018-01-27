@@ -225,7 +225,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             Item item = DataWrapper.GetItemByIdValue(id, db);
 
             AnalysisService.AnalyzeImage(item);
-            SearchService.UpdateItemInIndex(item, db);
 
             return View("ImageAnalysis", SearchService.GetImageAnalysis(id, language, db));
         }

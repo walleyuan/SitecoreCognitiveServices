@@ -78,6 +78,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
                 analysisItem.Fields[_settings.AnalyzedImageField].Value = imageItem.ID.ToString();
             }
 
+            _searchService.UpdateItemInIndex(imageItem, imageItem.Database.Name);
+
             return imageAnalysis;
         }
 
