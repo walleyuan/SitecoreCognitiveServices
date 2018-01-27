@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.Data.Items;
+using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Analysis;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator;

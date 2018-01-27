@@ -1,0 +1,55 @@
+﻿@using Sitecore.Data.Managers
+@model SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Setup.ISetupInformation
+
+@{
+    ViewBag.Title = "Cognitive Services: Image Search Setup";
+    Layout = "~/Areas/SitecoreCognitiveServices/Views/CognitiveCommon/CognitiveLayout.cshtml";
+}
+
+<link rel="stylesheet" href="/Areas/SitecoreCognitiveServices/Assets/css/SitecoreCognitiveServices.Feature.ImageSearch.css?x=@(new System.Random().Next())" />
+
+<div class="frame editor-tab">
+    @if (Model != null)
+    {
+        <h2>Image Search Setup</h2>
+        <form class="form setup-form" method="post" action="/SitecoreCognitiveServices/CognitiveImageSearch/SetupSubmit">
+            <div class="form-scrollable">
+                <fieldset>
+                    <div class="form-row">
+                        <p>This is the setup page for the Cognitive Image Search. This form will help you get started quickly by asking you for the information required to start using the feature. </p>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="result-success">
+                        The keys have been saved and tested. Start your analysis!
+                    </div>
+                    <div class="result-failure">
+                        The keys have been saved but <span class="item-list"></span> failed the test. Make sure you copied the right API keys from Azure.
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Emotion API Key</legend>
+                    <div class="form-row">
+                        <input type="text" id="emotionApi" name="emotionApi" value="@Model.EmotionApiKey" />
+                    </div>
+                    <legend>Face API Key</legend>
+                    <div class="form-row">
+                        <input type="text" id="faceApi" name="faceApi" value="@Model.FaceApiKey" />
+                    </div>
+                    <legend>Computer Vision API Key</legend>
+                    <div class="form-row">
+                        <input type="text" id="computerVisionApi" name="computerVisionApi" value="@Model.ComputerVisionApiKey" />
+                    </div>
+                </fieldset>
+            </div>
+            <div class="scWizardButtons">
+                <button class="form-submit scButton scButtonPrimary">Save and Test API Keys</button>
+            </div>
+        </form>
+        <div class="progress-indicator">
+            <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
+        </div>
+    }
+</div>
+
+<script src="/Areas/SitecoreCognitiveServices/Assets/js/SitecoreCognitiveServices.Feature.ImageSearch.js"></script>

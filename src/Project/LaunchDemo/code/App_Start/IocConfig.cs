@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sitecore.DependencyInjection;
-using SitecoreCognitiveServices.Project.LaunchDemo.Controllers;
 using System.Web.Mvc;
+using SitecoreCognitiveServices.Project.LaunchDemo.Areas.SitecoreCognitiveServices.Controllers;
 
 namespace SitecoreCognitiveServices.Project.LaunchDemo.App_Start
 {

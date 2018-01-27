@@ -3,7 +3,7 @@
   <sitecore>
     <pipelines>
       <initialize>
-        <processor type="SitecoreCognitiveServices.Foundation.SCSDK.App_Start.LoadRoutes,SitecoreCognitiveServices.Foundation.SCSDK" patch:after="processor[@type='Sitecore.Pipelines.Loader.EnsureAnonymousUsers, Sitecore.Kernel']" />
+        <processor type="SitecoreCognitiveServices.Foundation.SCSDK.App_Start.RegisterArea,SitecoreCognitiveServices.Foundation.SCSDK" patch:before="processor[@type='Sitecore.Mvc.Pipelines.Loader.InitializeRoutes, Sitecore.Mvc']" />
       </initialize>
     </pipelines>
     <services>

@@ -3,8 +3,6 @@ using System.Linq;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -15,6 +13,8 @@ using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.ContentSearch.Security;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using Sitecore.Data;
+using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Analysis;
+using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Utility;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
     public class ImageSearchService : IImageSearchService 
@@ -213,7 +213,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
                     .Where(a => a.Language == languageCode)
                     .Select(b => b.GetItem())
                     .ToList()
-                    .Where(a => a.Paths.FullPath.StartsWith(folderPath) && a.TemplateName != "Media folder")
+                    .Where(a => a.Paths.FullPath.StartsWith(folderPath) && DataWrapper.IsMediaFile(a))
                     .ToList();
             }
         }

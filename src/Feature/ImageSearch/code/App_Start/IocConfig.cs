@@ -1,14 +1,14 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models;
 using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
-using SitecoreCognitiveServices.Feature.ImageSearch.Controllers;
 using Sitecore.DependencyInjection;
 using System.Web.Mvc;
 using SitecoreCognitiveServices.Feature.ImageSearch.Analysis;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models.Setup;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
+using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Controllers;
+using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models;
+using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Analysis;
+using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Setup;
+using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Utility;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.App_Start
 {

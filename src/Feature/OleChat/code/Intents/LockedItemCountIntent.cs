@@ -5,6 +5,7 @@ using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.ContentSearch.Security;
+using SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServices.Models;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;

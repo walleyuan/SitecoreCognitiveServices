@@ -7,6 +7,7 @@ using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Globalization;
+using SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServices.Models;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;

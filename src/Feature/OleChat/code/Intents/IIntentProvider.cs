@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServices.Models;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents

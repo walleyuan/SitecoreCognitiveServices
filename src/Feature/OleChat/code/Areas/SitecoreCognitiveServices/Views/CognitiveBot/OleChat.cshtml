@@ -1,0 +1,23 @@
+﻿@model SitecoreCognitiveServices.Feature.OleChat.Models.ItemContextParameters
+
+@{
+    ViewBag.Title = "Cognitive Services: Ole Chat";
+    Layout = "~/Areas/SitecoreCognitiveServices/Views/CognitiveCommon/CognitiveLayout.cshtml";
+}
+
+<link href="/Areas/SitecoreCognitiveServices/Assets/css/SitecoreCognitiveServices.Feature.OleChat.css?x=@(new System.Random().Next())" rel="stylesheet" type="text/css" />
+<script src="/Areas/SitecoreCognitiveServices/Assets/js/SitecoreCognitiveServices.Feature.OleChat.js"></script>
+
+<div class="frame">
+    <form class="form chat-form" method="post" action="/SitecoreCognitiveServices/CognitiveBot/Post">
+        @Html.AntiForgeryToken()
+        <div class="chat-conversation"></div>
+        <div class="chat-input-wrap">
+            <input class="chat-input" type="text"/>
+        </div>
+        <input type="hidden" name="chat-db" class="chat-db" value="@Model.Database"/>
+        <input type="hidden" name="chat-lang" class="chat-lang" value="@Model.Language"/>
+        <input type="hidden" name="chat-id" class="chat-id" value="@Model.Id"/>
+        <button class="chat-submit scButton">Send</button>
+    </form>
+</div>

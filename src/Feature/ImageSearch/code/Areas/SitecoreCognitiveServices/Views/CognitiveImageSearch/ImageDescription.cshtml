@@ -1,0 +1,46 @@
+﻿@model SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Utility.IImageDescription
+
+@{
+    ViewBag.Title = "Cognitive Services: Image Description";
+    Layout = "~/Areas/SitecoreCognitiveServices/Views/CognitiveCommon/CognitiveLayout.cshtml";
+}
+
+<link rel="stylesheet" href="/Areas/SitecoreCognitiveServices/Assets/css/SitecoreCognitiveServices.Feature.ImageSearch.css?x=@(new System.Random().Next())" />
+
+<div class="frame">
+    @if (Model != null)
+    {
+        <form class="form" method="post" action="/SitecoreCognitiveServices/CognitiveImageSearch/UpdateImageDescription">
+            <fieldset>
+                <legend>Current Description</legend>
+                <div class="info-row">@(string.IsNullOrEmpty(Model.AltDescription) ? "The alt description is empty." : Model.AltDescription)</div>
+            </fieldset>
+            <fieldset>
+                <legend>Options</legend>
+                <div class="form-row">
+                    @foreach (var cp in Model.CognitiveDescription.Captions)
+                {
+                        <div>
+                            <input type="radio" id="descriptionOption" name="descriptionOption" value="@cp.Text" />
+                            <label for="descriptionOption">@cp.Text</label>
+                        </div>
+                    }
+                </div>
+                <div>
+                    <input type="hidden" name="id" value="@Model.ItemId" />
+                    <input type="hidden" name="database" value="@Model.Database" />
+                    <input type="hidden" name="language" value="@Model.Language" />
+                </div>
+            </fieldset>
+            <div class="scWizardButtons">
+                <button class="form-submit scButton scButtonPrimary">Update Alt Tag</button>
+            </div>
+        </form>
+    } else {
+        <fieldset>
+            <div class="info-row">There is no image description.</div>
+        </fieldset>
+    }
+</div>
+
+<script src="/Areas/SitecoreCognitiveServices/Assets/js/SitecoreCognitiveServices.Feature.ImageSearch.js"></script>

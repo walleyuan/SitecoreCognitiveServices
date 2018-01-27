@@ -1,6 +1,5 @@
-﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
+﻿using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Utility;
+using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.Data.Items;
+using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories

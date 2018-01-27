@@ -1,5 +1,4 @@
-﻿using SitecoreCognitiveServices.Feature.ImageSearch.Models;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
+﻿using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Utility;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
 {

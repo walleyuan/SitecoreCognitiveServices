@@ -1,0 +1,54 @@
+﻿@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face.FaceAttributes
+
+@if (Model != null)
+{
+    <div class="attributes">
+        <div class="bg-layer"></div>
+        <div class="attr-set">
+            <label>Age: </label>
+            <span>@Model.Age.ToString("0")</span>
+        </div>
+        <div class="attr-set">
+            <label>Gender: </label>
+            <span>@Model.Gender</span>
+        </div>
+        <div class="attr-set">
+            <label>Glasses: </label>
+            <span>@Model.Glasses</span>
+        </div>
+        <div class="attr-set">
+            <label>Smile: </label>
+            @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", (float)Model.Smile)
+        </div>
+        <div class="bar-list">
+            <h4>Facial Hair</h4>
+            <div class="attr-set">
+                <label>Beard</label>
+                @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", (float)Model.FacialHair.Beard)
+            </div>
+            <div class="attr-set">
+                <label>Moustache</label>
+                @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", (float)Model.FacialHair.Moustache)
+            </div>
+            <div class="attr-set">
+                <label>Sideburns</label>
+                @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", (float)Model.FacialHair.Sideburns)
+            </div>
+        </div>
+        <div class="bar-list">
+            <h4>Head Pose</h4>
+            <div class="attr-set">
+                <label>Pitch</label>
+                @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", (float)Model.HeadPose.Pitch)
+            </div>
+            <div class="attr-set">
+                <label>Roll</label>
+                @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", (float)Model.HeadPose.Roll)
+            </div>
+            <div class="attr-set">
+                <label>Yaw</label>
+                @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", (float)Model.HeadPose.Yaw)
+            </div>
+        </div>
+    </div>
+}

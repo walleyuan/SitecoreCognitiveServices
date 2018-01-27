@@ -1,0 +1,228 @@
+﻿@using Sitecore.Data.Managers
+@model SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.ICognitiveImageSearch
+
+@{
+    ViewBag.Title = "Cognitive Services: Image Search";
+    Layout = "~/Areas/SitecoreCognitiveServices/Views/CognitiveCommon/CognitiveLayout.cshtml";
+}
+
+<link rel="stylesheet" href="/Areas/SitecoreCognitiveServices/Assets/css/jquery-ui-1.12.1.min.css">
+<link rel="stylesheet" href="/Areas/SitecoreCognitiveServices/Assets/js/Chosen/docsupport/prism.css">
+<link rel="stylesheet" href="/Areas/SitecoreCognitiveServices/Assets/js/Chosen/chosen.css">
+<link rel="stylesheet" href="/Areas/SitecoreCognitiveServices/Assets/css/SitecoreCognitiveServices.Feature.ImageSearch.css?x=@(new System.Random().Next())" />
+
+<h1 class="modal-heading">Image Search</h1>
+<div class="frame">
+    <div class="rte-search-form">
+        <form class="form image-search-form" method="post" action="/SitecoreCognitiveServices/CognitiveImageSearch/RTESearchQuery">
+            <div class="message-store">
+                <div class="select-an-image">You need to select an image.</div>
+            </div>
+            <div class="result-filters">
+                <div class="filter-wrap">
+                    
+                    <div class="filter-section">
+                        <div class="color-items">
+                            <div class="color-title">Choose Color</div>
+                            <div class="color-list">
+                                @for (int i = 0; i < Model.Colors.Count; i++)
+                                {
+                                    <div class="color-item" value="@Model.Colors[i].Value">
+                                        <div class="color-inner" style="background-color: @Model.Colors[i].Value;" title="@Model.Colors[i].Key"></div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <div class="emotion-items">
+                            <div class="emotion-item">
+                                <div class="filter">
+                                    <select id="size">
+                                        <option value="0">Choose Image Size</option>
+                                        <option value="1">400 x 300</option>
+                                        <option value="2">640 x 480</option>
+                                        <option value="3">800 x 600</option>
+                                        <option value="4">1024 x 768</option>
+                                        <option value="4">2 MP (1600 x 1200)</option>
+                                        <option value="4">4 MP (2272 x 1704)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <div class="emotion-items">
+
+                            <div class="emotion-item">
+                                <div class="filter">
+                                    <select id="gender">
+                                        <option value="0">Choose Gender</option>
+                                        <option value="1">None</option>
+                                        <option value="2">Male and Female</option>
+                                        <option value="3">Male</option>
+                                        <option value="4">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <div class="filter">
+                                    <select id="glasses">
+                                        <option value="-1">Choose Glasses</option>
+                                        <option value="0">No Glasses</option>
+                                        <option value="1">Sunglasses</option>
+                                        <option value="2">Reading Glasses</option>
+                                        <option value="3">Swimming Goggles</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Age: </span>
+                                <span class="filter-value" data-field="age"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Anger: </span>
+                                <span class="filter-value" data-field="anger"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Contempt: </span>
+                                <span class="filter-value" data-field="contempt"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Disgust: </span>
+                                <span class="filter-value" data-field="disgust"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Fear: </span>
+                                <span class="filter-value" data-field="fear"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Happiness: </span>
+                                <span class="filter-value" data-field="happiness"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Neutral: </span>
+                                <span class="filter-value" data-field="neutral"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Sadness: </span>
+                                <span class="filter-value" data-field="sadness"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Surprise: </span>
+                                <span class="filter-value" data-field="surprise"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <div class="emotion-items">
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Adult: </span>
+                                <span class="filter-value" data-field="adult"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+
+                            <div class="emotion-item">
+                                <span class="filter-title">Racy: </span>
+                                <span class="filter-value" data-field="racy"> </span>
+                                <div class="slider-range"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-tab">
+                    @Html.Raw(ThemeManager.GetImage("Apps/32x32/Setting.png", 16, 16))
+                </div>
+            </div>
+            <div class="search-results">
+                <div class="result-column">
+                    <fieldset class="tag-filter">
+                        <div class="form-row">
+                            <div style="display:none;">
+                                <input class="rte-search-input" type="text" />
+                                <input type="hidden" id="database" name="database" value="@Model.Database" />
+                                <input type="hidden" id="language" name="language" value="@Model.Language" />
+                            </div>
+                            <div class="filter">
+                                <select data-placeholder=" "
+                                        style="width: 200px;"
+                                        multiple=""
+                                        class="chosen-select"
+                                        tabindex="-1">
+                                    <option value=""></option>
+                                    @{
+                                        foreach (var tag in Model.Tags) {
+                                            char[] a = tag.Key.ToCharArray();
+                                            a[0] = char.ToUpper(a[0]);
+
+                                            var tagName = new string(a);
+
+                                            <option value="@tag.Key">@string.Format("{0} ({1})", tagName, tag.Value)</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="result-label">
+                        <span class="result-count"></span> Results
+                    </div>
+
+                    <div class="result-nav">
+                        <span class="result-nav-prev">
+                            @Html.Raw(ThemeManager.GetImage("Office/32x32/navigate_left.png", 16, 16))
+                        </span>
+                        <span class="result-nav-next">
+                            @Html.Raw(ThemeManager.GetImage("Office/32x32/navigate_right.png", 16, 16))
+                        </span>
+                        <span class="pager">
+                            Page <span class="pagenum"></span> of <span class="pagecount"></span>
+                        </span>
+                    </div>
+
+                    <div class="result-items"></div>
+                </div>
+            </div>
+            <div class="scWizardButtons">
+                <button class="search-submit scButton">Search</button>
+                <button class="scButton scButtonPrimary cognitiveSearchButton">Search</button>
+                <button class="form-submit scButton scButtonPrimary">Insert Image</button>
+                <button class="form-cancel scButton">Cancel</button>
+            </div>
+        </form>
+        <div class="progress-indicator">
+            <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
+        </div>
+    </div>
+
+    <script src="/sitecore/shell/Controls/Lib/Prototype/prototype.js" type="text/javascript"></script>
+    <script src="/Areas/SitecoreCognitiveServices/Assets/js/jquery-ui-1.12.1.min.js"></script>
+    <script src="/Areas/SitecoreCognitiveServices/Assets/js/Chosen/chosen.jquery.min.js"></script>
+    <script src="/Areas/SitecoreCognitiveServices/Assets/js/Chosen/chosen.proto.js"></script>
+    <script src="/Areas/SitecoreCognitiveServices/Assets/js/Chosen/docsupport/prism.js"></script>
+    <script src="/Areas/SitecoreCognitiveServices/Assets/js/SitecoreCognitiveServices.Feature.ImageSearch.js"></script>
+</div>

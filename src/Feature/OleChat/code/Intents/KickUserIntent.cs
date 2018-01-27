@@ -8,6 +8,7 @@ using Sitecore.Web.Authentication;
 using System.Collections.Generic;
 using Sitecore.Security.Accounts;
 using System.Text.RegularExpressions;
+using SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServices.Models;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {

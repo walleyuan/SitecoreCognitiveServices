@@ -8,6 +8,7 @@ using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.Maintenance;
+using SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServices.Models;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {

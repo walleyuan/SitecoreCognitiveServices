@@ -1,0 +1,51 @@
+﻿
+@model SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Utility.ISetAltTagsAll
+
+@{
+    ViewBag.Title = "Cognitive Services: Image Description Descendants";
+    Layout = "~/Areas/SitecoreCognitiveServices/Views/CognitiveCommon/CognitiveLayout.cshtml";
+}
+
+<link rel="stylesheet" href="/Areas/SitecoreCognitiveServices/Assets/css/SitecoreCognitiveServices.Feature.ImageSearch.css?x=@(new System.Random().Next())" />
+
+<div class="frame">
+    @if (Model != null)
+    {
+        <form class="form set-alt-all-form" method="post" action="/SitecoreCognitiveServices/CognitiveImageSearch/UpdateImageDescriptionAll">
+            <fieldset>
+                <legend>Update Alt Description For All Descendents</legend>
+                <div class="form-row">
+                    <p>This will update all the alt tag descriptions for all descendant items below this folder using the cognitive analysis description. </p>
+                    <p>You can use the threshold to specify the confidence level required to set the alt tag (0 would be always and 100 would have to be absolutely certain)</p>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Confidence Threshold</legend>
+                <div class="form-row">
+                    <input class="threshold-range" type="range" min="0" max="100" id="threshold" name="threshold" oninput="thresholdOutput.value = threshold.value" />
+                    <output class="threshold-range-output" name="thresholdOutput" id="thresholdOutput">50</output>
+                </div>
+                <legend>Overwrite Existing Alt Value</legend>
+                <div class="form-row">
+                    <input class="overwrite-value" type="checkbox" id="overwrite" name="overwrite" />
+                </div>
+                <div>
+                    <input type="hidden" id="id" name="id" value="@Model.ItemId" />
+                    <input type="hidden" id="database" name="database" value="@Model.Database" />
+                    <input type="hidden" id="language" name="language" value="@Model.Language" />
+                </div>
+            </fieldset>
+            <div class="scWizardButtons">
+                <button class="form-submit scButton scButtonPrimary">Update Alt Tags</button>
+            </div>
+        </form>
+        <div class="progress-indicator">
+            <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
+        </div>
+        <div class="result-display">
+            There were <span class="result-modified">@Model.ItemsModified</span> items updated out of <span class="result-count">@Model.ItemCount</span>.
+        </div>
+    }
+</div>
+
+<script src="/Areas/SitecoreCognitiveServices/Assets/js/SitecoreCognitiveServices.Feature.ImageSearch.js"></script>

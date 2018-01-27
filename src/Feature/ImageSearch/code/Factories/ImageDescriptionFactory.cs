@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
+using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Utility;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories

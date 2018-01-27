@@ -1,0 +1,17 @@
+﻿@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.Tag[]
+
+@if (Model != null)
+{
+    <div class="detail-box detail-tags">
+        <h3>Tags</h3>
+        <div class="detail-row">
+            @foreach (var t in Model)
+            {
+                <div class="tag-set">
+                    <label>@t.Name: </label>
+                    @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", (float)t.Confidence)
+                </div>
+            }
+        </div>
+    </div>
+}

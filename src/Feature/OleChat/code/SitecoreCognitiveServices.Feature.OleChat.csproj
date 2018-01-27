@@ -144,8 +144,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="sitecore modules\Shell\SitecoreCognitiveServices\css\SitecoreCognitiveServices.Feature.OleChat.css" />
-    <Content Include="sitecore modules\Shell\SitecoreCognitiveServices\js\SitecoreCognitiveServices.Feature.OleChat.js" />
+    <Content Include="Areas\SitecoreCognitiveServices\Assets\css\SitecoreCognitiveServices.Feature.OleChat.css" />
+    <Content Include="Areas\SitecoreCognitiveServices\Assets\js\SitecoreCognitiveServices.Feature.OleChat.js" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <None Include="Web.config" />
   </ItemGroup>
@@ -172,14 +172,14 @@
     <Compile Include="Intents\RebuildIndexIntent.cs" />
     <Compile Include="Intents\QuitIntent.cs" />
     <Compile Include="Intents\ThanksIntent.cs" />
-    <Compile Include="Models\ChannelData.cs" />
-    <Compile Include="Models\ConversationResponse.cs" />
-    <Compile Include="Models\IntentOptionSet.cs" />
-    <Compile Include="Models\IntentOption.cs" />
+    <Compile Include="Areas\SitecoreCognitiveServices\Models\ChannelData.cs" />
+    <Compile Include="Areas\SitecoreCognitiveServices\Models\ConversationResponse.cs" />
+    <Compile Include="Areas\SitecoreCognitiveServices\Models\IntentOptionSet.cs" />
+    <Compile Include="Areas\SitecoreCognitiveServices\Models\IntentOption.cs" />
     <Compile Include="OleSettings.cs" />
     <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="Commands\OleChat.cs" />
-    <Compile Include="Controllers\CognitiveBotController.cs" />
+    <Compile Include="Areas\SitecoreCognitiveServices\Controllers\CognitiveBotController.cs" />
     <Compile Include="Factories\AboutIntentFactory.cs" />
     <Compile Include="Factories\DefaultIntentFactory.cs" />
     <Compile Include="Factories\GreetIntentFactory.cs" />
@@ -191,7 +191,7 @@
     <Compile Include="Factories\UnlockItemsIntentFactory.cs" />
     <Compile Include="Factories\VersionIntentFactory.cs" />
     <Compile Include="IOleSettings.cs" />
-    <Compile Include="Models\ItemContextParameters.cs" />
+    <Compile Include="Areas\SitecoreCognitiveServices\Models\ItemContextParameters.cs" />
     <Compile Include="Intents\IIntentProvider.cs" />
     <Compile Include="Intents\IntentProvider.cs" />
     <Compile Include="Intents\AboutIntent.cs" />
@@ -207,12 +207,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Areas\SitecoreCognitiveServices\Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Feature.OleChat.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\CognitiveBot\OleChat.cshtml" />
+    <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveBot\OleChat.cshtml" />
     <Content Include="App_Config\Include\SitecoreCognitiveServices\Unicorn.Configs.SitecoreCognitiveServices.Feature.OleChat.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

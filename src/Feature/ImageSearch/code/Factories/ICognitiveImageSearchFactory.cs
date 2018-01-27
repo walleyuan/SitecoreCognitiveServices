@@ -1,5 +1,5 @@
-﻿using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models;
+﻿using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories

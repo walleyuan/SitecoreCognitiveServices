@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sitecore.DependencyInjection;
+using SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServices.Controllers;
 using SitecoreCognitiveServices.Feature.OleChat.Intents;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
-using SitecoreCognitiveServices.Feature.OleChat.Controllers;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.App_Start

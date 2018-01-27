@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using NSubstitute;
 using NUnit.Framework;
 using SitecoreCognitiveServices.Feature.ImageSearch.Analysis;
-using SitecoreCognitiveServices.Feature.ImageSearch.Controllers;
+using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Controllers;
 using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;

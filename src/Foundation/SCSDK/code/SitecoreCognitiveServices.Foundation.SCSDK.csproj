@@ -213,6 +213,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\RegisterArea.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Policies\IMSSDKPolicyService.cs" />
     <Compile Include="Policies\MSSDKPolicyService.cs" />
@@ -223,7 +224,6 @@
     <Compile Include="Wrappers\SitecoreDataWrapper.cs" />
     <Compile Include="Wrappers\TextTranslatorWrapper.cs" />
     <Compile Include="IApplicationSettings.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="Wrappers\WebUtilWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -288,9 +288,9 @@
     <Content Include="App_Config\Include\SitecoreCognitiveServices\UnicornSerializationRoot.config" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <Content Include="ReadMe.txt" />
-    <Content Include="Views\CognitiveCommon\CognitiveLayout.cshtml" />
+    <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveCommon\CognitiveLayout.cshtml" />
     <None Include="Web.config" />
-    <None Include="Views\Web.config">
+    <None Include="Areas\SitecoreCognitiveServices\Views\Web.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

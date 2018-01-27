@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Sitecore.Data.Items;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
+using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Analysis;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;

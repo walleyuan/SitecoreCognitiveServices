@@ -1,0 +1,44 @@
+﻿
+@model SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Utility.IAnalyzeAll
+
+@{
+    ViewBag.Title = "Cognitive Services: Analyze All";
+    Layout = "~/Areas/SitecoreCognitiveServices/Views/CognitiveCommon/CognitiveLayout.cshtml";
+}
+
+<link rel="stylesheet" href="/Areas/SitecoreCognitiveServices/Assets/css/SitecoreCognitiveServices.Feature.ImageSearch.css?x=@(new System.Random().Next())" />
+
+<div class="frame">
+    @if (Model != null)
+    {
+        <form class="form analyze-all-form" method="post" action="/SitecoreCognitiveServices/CognitiveImageSearch/AnalyzeAll" status="/SitecoreCognitiveServices/CognitiveImageSearch/GetJobStatus">
+            <fieldset>
+                <div class="form-row">
+                    This will analyze all the descendant media items
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Overwrite Existing Analysis</legend>
+                <div class="form-row">
+                    <input class="overwrite-value" type="checkbox" id="overwrite" name="overwrite" />
+                </div>
+                <div>
+                    <input type="hidden" id="id" name="id" value="@Model.ItemId" />
+                    <input type="hidden" id="database" name="database" value="@Model.Database" />
+                    <input type="hidden" id="language" name="language" value="@Model.Language" />
+                </div>
+            </fieldset>
+            <div class="scWizardButtons">
+                <button class="form-submit scButton scButtonPrimary">Analyze Descendents</button>
+            </div>
+        </form>
+        <div class="progress-indicator">
+            <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
+        </div>
+        <div class="result-display">
+            There are <span class="result-count"></span> items updated.
+        </div>
+    }
+</div>
+
+<script src="/Areas/SitecoreCognitiveServices/Assets/js/SitecoreCognitiveServices.Feature.ImageSearch.js"></script>

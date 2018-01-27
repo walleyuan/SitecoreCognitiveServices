@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using Sitecore.Data.Items;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models.Analysis;
-using SitecoreCognitiveServices.Feature.ImageSearch.Models.Utility;
+using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Analysis;
+using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Utility;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
     public interface IImageSearchService
