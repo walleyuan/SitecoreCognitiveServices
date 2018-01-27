@@ -151,8 +151,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
             {
                 IQueryable<CognitiveImageSearchResult> queryable = context.GetQueryable<CognitiveImageSearchResult>()
-                    .Where(a => a.Language == languageCode && !(a.Path.StartsWith("/sitecore/") || a.TemplateName.Equals("Media folder") || a.TemplateName.Equals("Node")));
-
+                    .Where(a => a.Language == languageCode);
+                
                 if(colors != null) {
                     var colorPredicate = GetDefaultFilter(colors.ToArray(), "Colors");
                     if (colorPredicate != null)
@@ -200,7 +200,10 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
                         queryable = queryable.Where(thisParamPredicate);
                 }
 
-                return queryable.ToList<ICognitiveImageSearchResult>();
+                return queryable
+                    .ToList()
+                    .Where(a => DataWrapper.IsMediaFile(a.TemplateId, dbName))
+                    .ToList<ICognitiveImageSearchResult>();
             }
         }
 

@@ -24,6 +24,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
         Item GetItemByUri(string itemUri);
         Item GetItemByIdValue(string itemId, string database);
         bool IsMediaFile(Item i);
+        bool IsMediaFile(ID templateId, string database);
         bool IsMediaFolder(Item i);
         IEnumerable<MediaItem> GetMediaFileDescendents(string id, string db);
         Item ExtractItem(CommandContext context);
@@ -99,6 +100,17 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
             return bases
                 .Any(a => 
                     a.ID.Guid.Equals(TemplateIDs.UnversionedFile.Guid) 
+                    || a.ID.Guid.Equals(TemplateIDs.VersionedFile.Guid));
+        }
+
+        public virtual bool IsMediaFile(ID templateId, string database)
+        {
+            TemplateItem templateItem = GetItemByIdValue(templateId.ToString(), database);
+            var bases = templateItem.BaseTemplates.SelectMany(GetBaseTemplates);
+
+            return bases
+                .Any(a =>
+                    a.ID.Guid.Equals(TemplateIDs.UnversionedFile.Guid)
                     || a.ID.Guid.Equals(TemplateIDs.VersionedFile.Guid));
         }
 
