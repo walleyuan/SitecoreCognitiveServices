@@ -18,5 +18,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
         public virtual string EmotionalAnalysisField => "Emotional Analysis";
         public virtual string AnalyzedImageField => "Analyzed Image";
         public virtual ID ImageAnalysisFolderId => new ID("{DCA68A11-8670-4B60-B752-F95CBBC14E97}");
+        public virtual ID SampleImage => new ID("{ADD6D028-AEB2-46DE-ACA0-972DCB83422F}");
     }
 }

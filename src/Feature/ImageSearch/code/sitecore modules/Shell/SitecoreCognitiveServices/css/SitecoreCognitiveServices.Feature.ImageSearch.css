@@ -191,7 +191,7 @@ h1.modal-heading { background: #2b2b2b none repeat scroll 0 0; color: #fff; font
 .tag-list span { background: #dc291e;border-radius: 3px;padding: 4px 6px;margin-bottom: 3px;display: inline-block;font-weight: normal;color: #fff;}
 
 .form { padding-top: 5px;}
-.form-scrollable { overflow: auto; position: absolute; top: 0; right: 0; left: 0; bottom: 65px; }
+.form-scrollable { overflow: auto; position: absolute; top: 56px; right: 0; left: 0; bottom: 56px; background-color: #eee; }
 .message-store { display: none; }
 .form fieldset { padding: 0px 10px; margin-top: 0px; }
 fieldset legend { margin-bottom: 10px;}
@@ -204,13 +204,15 @@ fieldset legend { margin-bottom: 10px;}
 .form-submit:hover { background-color: #595959;}
 .form p { margin-bottom: 10px;}
 
-.form fieldset.editor-tab-title { margin-top: 30px; }
-.editor-tab-title legend { font-size: 20px; font-family: arial; }
+.editor-tab.frame { padding: 0px; }
+.editor-tab h2 { background-color: #474747; line-height: 35px; color: #fff; font-weight: 600; cursor: pointer; border-bottom: 1px solid #474747; padding-left: 10px; border-left: 5px solid #dc291e; }
+.editor-tab form { background-color: #eee; padding: 10px; }
+.editor-tab .progress-indicator { top: 300px; }
 
 .progress-indicator { display: none; margin: 0 auto; position: absolute; top: 75px; width: 32px;left: 0; right: 0; }
 .result-display { display: none; position: relative; text-align: center; top: 30px; }
 .result-success, 
-.result-failure { display: none; color: #dc291e; position: relative; text-align: center; top: 0px; font-size: 18px; font-family: arial; }
+.result-failure { display: none; color: #dc291e; font-size: 12px; font-family: arial; margin-bottom: 15px; }
 .item-list { font-weight: bold; }
 .threshold-range { margin: 0 20px 0 0; vertical-align: middle; width: 250px; }
 .threshold-range-output { color: #2b2b2b; font-size: 25px; font-weight: bold; vertical-align: middle; }

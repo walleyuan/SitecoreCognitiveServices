@@ -10,6 +10,7 @@ using Sitecore.Data.Items;
 using Sitecore.Jobs;
 using SitecoreCognitiveServices.Feature.ImageSearch.Analysis;
 using SitecoreCognitiveServices.Feature.ImageSearch.Models.Setup;
+using SitecoreCognitiveServices.Foundation.MSSDK;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
@@ -28,6 +29,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
         protected readonly IImageAnalysisService AnalysisService;
         protected readonly IAnalysisJobResultFactory JobResultFactory;
         protected readonly ISetupInformationFactory SetupFactory;
+        protected readonly IMicrosoftCognitiveServicesApiKeys MSCSApiKeys;
+        protected readonly IImageSearchSettings SearchSettings;
 
         public CognitiveImageSearchController(
             IImageSearchService searchService,
@@ -39,7 +42,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             IAnalyzeAllFactory pFactory,
             IImageAnalysisService analysisService,
             IAnalysisJobResultFactory jobResultFactory,
-            ISetupInformationFactory setupFactory)
+            ISetupInformationFactory setupFactory,
+            IMicrosoftCognitiveServicesApiKeys mscsApiKeys,
+            IImageSearchSettings searchSettings)
         {
             Assert.IsNotNull(searchService, typeof(IImageSearchService));
             Assert.IsNotNull(dataWrapper, typeof(ISitecoreDataWrapper));
@@ -51,6 +56,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             Assert.IsNotNull(analysisService, typeof(IImageAnalysisService));
             Assert.IsNotNull(jobResultFactory, typeof(IAnalysisJobResultFactory));
             Assert.IsNotNull(setupFactory, typeof(ISetupInformationFactory));
+            Assert.IsNotNull(mscsApiKeys, typeof(IMicrosoftCognitiveServicesApiKeys));
+            Assert.IsNotNull(searchSettings, typeof(IImageSearchSettings));
 
             SearchService = searchService;
             DataWrapper = dataWrapper;
@@ -62,6 +69,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             AnalysisService = analysisService;
             JobResultFactory = jobResultFactory;
             SetupFactory = setupFactory;
+            MSCSApiKeys = mscsApiKeys;
+            SearchSettings = searchSettings;
         }
 
         #endregion
@@ -280,20 +289,36 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Controllers
             return View("Setup", info);
         }
 
-        public ActionResult SetupSubmit(string emotionApi, string faceApi, string textAnalyticsApi, string computerVisionApi)
+        public ActionResult SetupSubmit(string emotionApi, string faceApi, string computerVisionApi)
         {
             if (!IsSitecoreUser())
                 return LoginPage();
 
-            //some service to do this
-            //return DataWrapper
-            //    .ContentDatabase
-            //    .GetItem(Settings.MSSDKId)
-            //    [fieldName];
-
-            ISetupInformation info = SetupFactory.Create();
+            //save items to fields
+            if(MSCSApiKeys.Emotion != emotionApi)
+                MSCSApiKeys.Emotion = emotionApi;
+            if(MSCSApiKeys.Face != faceApi)
+                MSCSApiKeys.Face = faceApi;
+            if(MSCSApiKeys.ComputerVision != computerVisionApi)
+                MSCSApiKeys.ComputerVision = computerVisionApi;
             
-            return View("Setup", info);
+            //get the sample image
+            Item sampleImage = DataWrapper.ContentDatabase.GetItem(SearchSettings.SampleImage);
+
+            var analysis = AnalysisService.AnalyzeImage(sampleImage);
+            var items = new List<string>();
+            if (analysis == null || analysis.EmotionAnalysis?.Length < 1)
+                items.Add("Emotion API"); 
+            if (analysis == null || analysis.FacialAnalysis?.Length < 1)
+                items.Add("Face API");
+            if (analysis?.TextAnalysis?.Regions == null || analysis?.VisionAnalysis?.Description == null)
+                items.Add("Computer Vision API");
+            
+            return Json(new
+            {
+                Failed = (analysis == null || items.Count > 0),
+                Items = string.Join(",", items)
+            });
         }
         
         #endregion

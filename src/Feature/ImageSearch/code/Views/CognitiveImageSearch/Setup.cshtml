@@ -8,15 +8,23 @@
 
 <link rel="stylesheet" href="/sitecore modules/Shell/SitecoreCognitiveServices/css/SitecoreCognitiveServices.Feature.ImageSearch.css?x=@(new System.Random().Next())" />
 
-<div class="frame">
+<div class="frame editor-tab">
     @if (Model != null)
     {
+        <h2>Image Search Setup</h2>
         <form class="form setup-form" method="post" action="/SitecoreCognitiveServices/CognitiveImageSearch/SetupSubmit">
             <div class="form-scrollable">
-                <fieldset class="editor-tab-title">
-                    <legend>Image Search Setup</legend>
+                <fieldset>
                     <div class="form-row">
                         <p>This is the setup page for the Cognitive Image Search. This form will help you get started quickly by asking you for the information required to start using the feature. </p>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="result-success">
+                        The keys have been saved and tested. Start your analysis!
+                    </div>
+                    <div class="result-failure">
+                        The keys have been saved but <span class="item-list"></span> failed the test. Make sure you copied the right API keys from Azure.
                     </div>
                 </fieldset>
                 <fieldset>
@@ -27,10 +35,6 @@
                     <legend>Face API Key</legend>
                     <div class="form-row">
                         <input type="text" id="faceApi" name="faceApi" value="@Model.FaceApiKey" />
-                    </div>
-                    <legend>Text Analytics API Key</legend>
-                    <div class="form-row">
-                        <input type="text" id="textAnalyticsApi" name="textAnalyticsApi" value="@Model.TextAnalyticsApiKey" />
                     </div>
                     <legend>Computer Vision API Key</legend>
                     <div class="form-row">
@@ -44,12 +48,6 @@
         </form>
         <div class="progress-indicator">
             <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
-        </div>
-        <div class="result-success">
-            The keys have been saved and tested. Start your analysis!
-        </div>
-        <div class="result-failure">
-            The keys have been saved but <span class="item-list"></span> failed the test. Make sure you copied the right API keys from Azure. 
         </div>
     }
 </div>

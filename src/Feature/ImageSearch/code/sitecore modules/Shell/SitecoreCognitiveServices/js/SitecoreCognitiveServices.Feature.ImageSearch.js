@@ -24,32 +24,30 @@ jQuery(document).ready(function () {
 
             var emotionValue = jQuery(setupForm + " #emotionApi").val();
             var faceValue = jQuery(setupForm + " #faceApi").val();
-            var textAnalyticsValue = jQuery(setupForm + " #textAnalyticsApi").val();
             var computerVisionValue = jQuery(setupForm + " #computerVisionApi").val();
 
+            jQuery(".result-failure").hide();
+            jQuery(".result-success").hide();
             jQuery(".form").hide();
             jQuery(".progress-indicator").show();
-
+            
             jQuery.post(
                 jQuery(setupForm).attr("action"),
                 {
                     emotionApi: emotionValue,
                     faceApi: faceValue,
-                    textAnalyticsApi: textAnalyticsValue,
                     computerVisionApi: computerVisionValue
                 }
-            ).done(function (r)
-            {
-                jQuery(setupForm + " #emotionApi").val(r.EmotionApiKey);
-                jQuery(setupForm + " #faceApi").val(r.FaceApiKey);
-                jQuery(setupForm + " #textAnalyticsApi").val(r.TextAnalyticsApiKey);
-                jQuery(setupForm + " #computerVisionApi").val(r.ComputerVisionApiKey);
+            ).done(function (r) {
+                if (r.Failed) {
+                    jQuery(".result-failure .item-list").text(r.Items);
+                    jQuery(".result-failure").show();
+                } else {
+                    jQuery(".result-success").show();
+                }
 
                 jQuery(".progress-indicator").hide();
                 jQuery(".form").show();
-                jQuery(".result-failure .item-list").text("some api and some other api");
-                jQuery(".result-failure").show();
-                jQuery(".result-success").show();
             });
         });
 });

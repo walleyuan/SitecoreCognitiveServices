@@ -17,5 +17,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
         string EmotionalAnalysisField { get; }
         string AnalyzedImageField { get; }
         ID ImageAnalysisFolderId { get; }
+        ID SampleImage { get; }
     }
 }
