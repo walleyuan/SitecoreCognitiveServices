@@ -6,6 +6,7 @@ using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.Jobs;
 using SitecoreCognitiveServices.Feature.ImageSearch.Analysis;
+using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Analysis;
 using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Setup;
 using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
@@ -24,7 +25,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
         protected readonly IWebUtilWrapper WebUtil;
         protected readonly ICognitiveImageSearchFactory MediaSearchFactory;
         protected readonly ISetAltTagsAllFactory SetAltTagsAllFactory;
-        protected readonly ICognitiveImageAnalysisFactory ImageAnalysisFactory;
         protected readonly IAnalyzeAllFactory AnalyzeAllFactory;
         protected readonly IImageAnalysisService AnalysisService;
         protected readonly IAnalysisJobResultFactory JobResultFactory;
@@ -38,7 +38,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             IWebUtilWrapper webUtil,
             ICognitiveImageSearchFactory msFactory,
             ISetAltTagsAllFactory satarFactory,
-            ICognitiveImageAnalysisFactory iaFactory,
             IAnalyzeAllFactory pFactory,
             IImageAnalysisService analysisService,
             IAnalysisJobResultFactory jobResultFactory,
@@ -51,7 +50,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             Assert.IsNotNull(webUtil, typeof(IWebUtilWrapper));
             Assert.IsNotNull(msFactory, typeof(ICognitiveImageSearchFactory));
             Assert.IsNotNull(satarFactory, typeof(ISetAltTagsAllFactory));
-            Assert.IsNotNull(iaFactory, typeof(ICognitiveImageAnalysisFactory));
             Assert.IsNotNull(pFactory, typeof(IAnalyzeAllFactory));
             Assert.IsNotNull(analysisService, typeof(IImageAnalysisService));
             Assert.IsNotNull(jobResultFactory, typeof(IAnalysisJobResultFactory));
@@ -64,7 +62,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             WebUtil = webUtil;
             MediaSearchFactory = msFactory;
             SetAltTagsAllFactory = satarFactory;
-            ImageAnalysisFactory = iaFactory;
             AnalyzeAllFactory = pFactory;
             AnalysisService = analysisService;
             JobResultFactory = jobResultFactory;
@@ -212,9 +209,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             if (!IsSitecoreUser())
                 return LoginPage();
 
-            ICognitiveImageSearchResult csr = SearchService.GetCognitiveSearchResult(id, language, db);
+            ICognitiveImageAnalysis cia = SearchService.GetImageAnalysis(id, language, db);
 
-            return View("ImageAnalysis", ImageAnalysisFactory.Create(csr));
+            return View("ImageAnalysis", cia);
         }
 
         public ActionResult Analyze(string id, string language, string db)
