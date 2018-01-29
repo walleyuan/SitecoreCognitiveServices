@@ -102,7 +102,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             if (!IsSitecoreUser())
                 return new EmptyResult();
 
-            List<ICognitiveImageSearchResult> csr = SearchService.GetMediaResults(
+            List<ICognitiveImageSearchResult> csr = SearchService.GetFilteredCognitiveSearchResults(
                 tagParameters, 
                 rangeParameters, 
                 gender, 
@@ -290,17 +290,19 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             if (!IsSitecoreUser())
                 return LoginPage();
 
+            //get the congitive indexes build for the first time
+            SearchService.RebuildCognitiveIndexes();
+
             //save items to fields
-            if(MSCSApiKeys.Emotion != emotionApi)
+            if (MSCSApiKeys.Emotion != emotionApi)
                 MSCSApiKeys.Emotion = emotionApi;
             if(MSCSApiKeys.Face != faceApi)
                 MSCSApiKeys.Face = faceApi;
             if(MSCSApiKeys.ComputerVision != computerVisionApi)
                 MSCSApiKeys.ComputerVision = computerVisionApi;
             
-            //get the sample image
+            //get the sample image and analyze it to test responses
             Item sampleImage = DataWrapper.ContentDatabase.GetItem(SearchSettings.SampleImage);
-
             var analysis = AnalysisService.AnalyzeImage(sampleImage);
             var items = new List<string>();
             if (analysis == null || analysis.EmotionAnalysis?.Length < 1)

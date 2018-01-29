@@ -7,8 +7,10 @@ using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
+using System.Xml;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.Linq.Utilities;
+using Sitecore.ContentSearch.Maintenance;
 using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.ContentSearch.Security;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
@@ -21,17 +23,20 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
     {
         #region Constructor
 
+        protected readonly IContentSearchWrapper ContentSearch;
         protected readonly ISitecoreDataWrapper DataWrapper;
         protected readonly IImageSearchSettings ImageSearchSettings;
         protected readonly IImageDescriptionFactory ImageDescriptionFactory;
         protected readonly ICognitiveImageAnalysisFactory ImageAnalysisFactory;
 
         public ImageSearchService(
+            IContentSearchWrapper contentSearch,
             ISitecoreDataWrapper dataWrapper,
             IImageSearchSettings imageSearchSettings,
             IImageDescriptionFactory imageDescriptionFactory,
             ICognitiveImageAnalysisFactory imageAnalysisFactory)
         {
+            ContentSearch = contentSearch;
             DataWrapper = dataWrapper;
             ImageSearchSettings = imageSearchSettings;
             ImageDescriptionFactory = imageDescriptionFactory;
@@ -61,7 +66,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
                 return;
 
             var tempItem = (SitecoreIndexableItem)item;
-            ContentSearchManager.GetIndex(GetCognitiveIndexName(dbName)).Refresh(tempItem);
+            ContentSearch.GetIndex(GetCognitiveIndexName(dbName)).Refresh(tempItem);
         }
 
         public virtual void UpdateItemInIndex(string itemId, string dbName)
@@ -84,7 +89,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
 
             var tempItem = (SitecoreIndexableItem)item;
 
-            var index = ContentSearchManager.GetIndex(GetCognitiveIndexName(dbName));
+            var index = ContentSearch.GetIndex(GetCognitiveIndexName(dbName));
 
             index.Update(tempItem.UniqueId);
         }
@@ -101,6 +106,31 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
             return list.Count;
         }
 
+        public virtual void RebuildCognitiveIndexes()
+        {
+            List<string> cogIndexes = new List<string>();
+            var nodes = Sitecore.Configuration.Factory.GetConfigNodes("contentSearch/configuration/indexes/index");
+            foreach (XmlNode n in nodes)
+            {
+                var id = n.Attributes?["id"];
+                if (id == null || !id.Value.StartsWith("cognitive"))
+                    continue;
+                
+                var dbNode = n.SelectSingleNode("locations/crawler/Database");
+                var value = dbNode?.FirstChild?.InnerText;
+                if (string.IsNullOrEmpty(value))
+                    continue;
+
+                cogIndexes.Add(value);    
+            }
+            
+            foreach(var dbName in cogIndexes)
+            { 
+                var searchIndex = ContentSearch.GetIndex(GetCognitiveIndexName(dbName));
+                IndexCustodian.FullRebuild(searchIndex);
+            }
+        }
+
         #endregion
 
         #region Querying
@@ -112,19 +142,37 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
             return ImageAnalysisFactory.Create(csr);
         }
 
-        public virtual Item GetImageAnalysisItem(string itemName, string languageCode, string dbName)
+        public virtual IImageDescription GetImageDescription(MediaItem m, string language)
         {
-            var index = ContentSearchManager.GetIndex(GetSitecoreIndexName(dbName));
-            using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
+
+            ICognitiveImageSearchResult csr = GetCognitiveSearchResult(m.ID.ToString(), language, m.Database.Name);
+
+            Description d = csr
+                ?.VisionAnalysis
+                ?.Description;
+
+            if (d == null)
+                return null;
+
+            return ImageDescriptionFactory.Create(d, m.Alt, m.ID.ToString(), m.Database.Name, language);
+        }
+
+        public virtual Caption GetTopImageCaption(MediaItem m, string language, double threshold)
+        {
+            var csr = GetCognitiveSearchResult(m.ID.ToString(), language, m.Database.Name);
+
+            try
             {
-                return context.GetQueryable<CognitiveImageSearchResult>()
-                    .Where(a =>
-                        a.Paths.Contains(ImageSearchSettings.ImageAnalysisFolderId)
-                        && a.Name == itemName
-                        && a.Language == languageCode)
-                    .Take(1)
-                    .FirstOrDefault()
-                    ?.GetItem();
+                return csr
+                    .VisionAnalysis
+                    .Description
+                    .Captions
+                    .OrderByDescending(a => a.Confidence)
+                    .First(c => c.Confidence >= threshold);
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
 
@@ -133,7 +181,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
             Assert.IsTrue(!string.IsNullOrEmpty(language), "The language parameter is required");
             Assert.IsTrue(!string.IsNullOrEmpty(dbName), "The database parameter is required");
 
-            var index = ContentSearchManager.GetIndex(GetCognitiveIndexName(dbName));
+            var index = ContentSearch.GetIndex(GetCognitiveIndexName(dbName));
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
             {
                 return context.GetQueryable<CognitiveImageSearchResult>()
@@ -145,9 +193,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
             }
         }
 
-        public virtual List<ICognitiveImageSearchResult> GetMediaResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, int size, string languageCode, List<string> colors, string dbName)
+        public virtual List<ICognitiveImageSearchResult> GetFilteredCognitiveSearchResults(Dictionary<string, string[]> tagParameters, Dictionary<string, string[]> rangeParameters, int gender, int glasses, int size, string languageCode, List<string> colors, string dbName)
         {
-            var index = ContentSearchManager.GetIndex(GetCognitiveIndexName(dbName));
+            var index = ContentSearch.GetIndex(GetCognitiveIndexName(dbName));
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
             {
                 IQueryable<CognitiveImageSearchResult> queryable = context.GetQueryable<CognitiveImageSearchResult>()
@@ -200,16 +248,34 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
                         queryable = queryable.Where(thisParamPredicate);
                 }
 
-                return queryable
+                var results = queryable
                     .ToList()
                     .Where(a => DataWrapper.IsMediaFile(a.TemplateId, dbName))
                     .ToList<ICognitiveImageSearchResult>();
+
+                return results;
+            }
+        }
+
+        public virtual Item GetImageAnalysisItem(string itemName, string languageCode, string dbName)
+        {
+            var index = ContentSearch.GetIndex(GetSitecoreIndexName(dbName));
+            using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
+            {
+                return context.GetQueryable<CognitiveImageSearchResult>()
+                    .Where(a =>
+                        a.Paths.Contains(ImageSearchSettings.ImageAnalysisFolderId)
+                        && a.Name == itemName
+                        && a.Language == languageCode)
+                    .Take(1)
+                    .FirstOrDefault()
+                    ?.GetItem();
             }
         }
 
         public virtual List<Item> GetMediaItems(string folderPath, string languageCode, string dbName)
         {
-            var index = ContentSearchManager.GetIndex(GetSitecoreIndexName(dbName));
+            var index = ContentSearch.GetIndex(GetSitecoreIndexName(dbName));
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
             {
                 return context.GetQueryable<CognitiveImageSearchResult>()
@@ -221,42 +287,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
             }
         }
 
-        public virtual IImageDescription GetImageDescription(MediaItem m, string language) {
-
-            ICognitiveImageSearchResult csr = GetCognitiveSearchResult(m.ID.ToString(), language, m.Database.Name);
-            
-            Description d = csr
-                ?.VisionAnalysis
-                ?.Description;
-
-            if (d == null)
-                return null;
-
-            return ImageDescriptionFactory.Create(d, m.Alt, m.ID.ToString(), m.Database.Name, language);
-        }
-
-        public virtual Caption GetTopImageCaption(MediaItem m, string language, double threshold)
-        {
-            var csr = GetCognitiveSearchResult(m.ID.ToString(), language, m.Database.Name);
-
-            try
-            {
-                return csr
-                    .VisionAnalysis
-                    .Description
-                    .Captions
-                    .OrderByDescending(a => a.Confidence)
-                    .First(c => c.Confidence >= threshold);
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-        
         public virtual List<KeyValuePair<string, int>> GetTags(string languageCode, string dbName)
         {
-            var index = ContentSearchManager.GetIndex(GetCognitiveIndexName(dbName));
+            var index = ContentSearch.GetIndex(GetCognitiveIndexName(dbName));
 
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
             {
@@ -279,7 +312,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
 
         public virtual List<string> GetColors(string languageCode, string dbName)
         {
-            var index = ContentSearchManager.GetIndex(GetCognitiveIndexName(dbName));
+            var index = ContentSearch.GetIndex(GetCognitiveIndexName(dbName));
 
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
             {

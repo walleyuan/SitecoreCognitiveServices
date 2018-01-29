@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Sitecore.ContentSearch;
+using Sitecore.ContentSearch.Maintenance;
+using Sitecore.Jobs;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
 {
@@ -10,10 +12,12 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
     {
         ISearchIndex GetIndex(string indexName);
         IEnumerable<string> GetIndexNames();
+        Job FullRebuild(ISearchIndex searchIndex);
     }
+
     public class ContentSearchWrapper : IContentSearchWrapper
     {
-        public ISearchIndex GetIndex(string indexName)
+        public virtual ISearchIndex GetIndex(string indexName)
         {
             return ContentSearchManager.GetIndex(indexName);
         }
@@ -21,6 +25,11 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
         public virtual IEnumerable<string> GetIndexNames()
         {
             return ContentSearchManager.SearchConfiguration.Indexes.Select(a => a.Key);
+        }
+
+        public virtual Job FullRebuild(ISearchIndex searchIndex)
+        {
+            return IndexCustodian.FullRebuild(searchIndex);
         }
     }
 }

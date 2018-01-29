@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using Sitecore.Data.Items;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image
 {
     public class Colors : BaseComputedField
     {
-        protected override object GetFieldValue(CognitiveIndexableImageItem cognitiveIndexable)
+        protected override object GetFieldValue(Item cognitiveIndexable)
         {
-            var color = cognitiveIndexable.Visions?.Color;
+            var color = Visions?.Color;
             if (color == null)
                 return null;
 

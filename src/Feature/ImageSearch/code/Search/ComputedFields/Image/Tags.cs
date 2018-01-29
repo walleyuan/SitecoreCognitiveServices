@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Sitecore.Data.Items;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image
 {
     public class Tags : BaseComputedField
     {
-        protected override object GetFieldValue(CognitiveIndexableImageItem cognitiveIndexable)
+        protected override object GetFieldValue(Item cognitiveIndexable)
         {
-            var regions = cognitiveIndexable.Text?.Regions;
+            var regions = Text?.Regions;
             if (regions == null)
                 return null;
 
@@ -21,11 +22,11 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Im
                         select w.Text.Trim()
             );
             
-            var tags = cognitiveIndexable.Visions?.Description?.Tags.Select(t => t.Trim()).ToList();
+            var tags = Visions?.Description?.Tags.Select(t => t.Trim()).ToList();
             if(tags != null && tags.Any())
                 words = words.Concat(tags);
 
-            words = words.Concat(new [] { cognitiveIndexable.Item.DisplayName });
+            words = words.Concat(new [] { cognitiveIndexable.DisplayName });
 
             List<string> charList = new List<string>() { ":", ";", "~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "=", "_", "-", "|", "\\", "{", "}", "[", "]", "\"", "'", "?", "/", ">", ".", "<", ","};
             var results = words.Where(w => !charList.Contains(w)).Distinct().ToArray();

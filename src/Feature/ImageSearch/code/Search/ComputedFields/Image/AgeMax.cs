@@ -1,12 +1,13 @@
 ﻿using System.Linq;
+using Sitecore.Data.Items;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image
 {
     public class AgeMax : BaseComputedField
     {
-        protected override object GetFieldValue(CognitiveIndexableImageItem cognitiveIndexable)
+        protected override object GetFieldValue(Item cognitiveIndexable)
         {
-            return cognitiveIndexable?.Faces?.Select(x => x.FaceAttributes.Age).OrderByDescending(a => a).FirstOrDefault() ?? 100d;
+            return Faces?.Select(x => x.FaceAttributes.Age).OrderByDescending(a => a).FirstOrDefault() ?? 100d;
         }
     }
 }

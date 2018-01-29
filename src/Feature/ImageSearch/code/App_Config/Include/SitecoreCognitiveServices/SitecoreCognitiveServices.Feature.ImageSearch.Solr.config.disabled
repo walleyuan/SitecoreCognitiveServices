@@ -13,11 +13,7 @@
               <strategy ref="contentSearch/indexConfigurations/indexUpdateStrategies/syncMaster" />
             </strategies>
             <locations hint="list:AddCrawler">
-              <!--<crawler type="Sitecore.ContentSearch.SitecoreItemCrawler, Sitecore.ContentSearch">
-                <Database>master</Database>
-                <Root>/sitecore/content</Root>
-              </crawler>-->
-              <crawler type="SitecoreCognitiveServices.Feature.ImageSearch.Search.Crawlers.CognitiveCrawler, SitecoreCognitiveServices.Feature.ImageSearch">
+              <crawler type="Sitecore.ContentSearch.SitecoreItemCrawler, Sitecore.ContentSearch">
                 <Database>master</Database>
                 <Root>/sitecore/media library</Root>
               </crawler>
@@ -34,10 +30,6 @@
             <locations hint="list:AddCrawler">
               <crawler type="Sitecore.ContentSearch.SitecoreItemCrawler, Sitecore.ContentSearch">
                 <Database>web</Database>
-                <Root>/sitecore/content</Root>
-              </crawler>
-              <crawler type="Sitecore.ContentSearch.SitecoreItemCrawler, Sitecore.ContentSearch">
-                <Database>web</Database>
                 <Root>/sitecore/media library</Root>
               </crawler>
             </locations>
@@ -47,6 +39,10 @@
       <indexConfigurations>
         <cognitiveSearchConfiguration type="Sitecore.ContentSearch.SolrProvider.SolrIndexConfiguration, Sitecore.ContentSearch.SolrProvider">
           <indexAllFields>false</indexAllFields>
+          <include hint="list:AddIncludedTemplate">
+              <VersionedImage>{C97BA923-8009-4858-BDD5-D8BE5FCCECF7}</VersionedImage>
+              <UnversionedImage>{F1828A2C-7E5D-4BBD-98CA-320474871548}</UnversionedImage>
+          </include>
           <initializeOnAdd>false</initializeOnAdd>
 
           <!-- DEFAULT FIELD MAPPING 
