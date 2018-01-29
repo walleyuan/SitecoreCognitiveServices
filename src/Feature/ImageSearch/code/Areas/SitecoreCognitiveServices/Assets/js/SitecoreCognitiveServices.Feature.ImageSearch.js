@@ -216,6 +216,15 @@ jQuery(document).ready(function () {
         RefreshQuery();
     });
 
+    var colorTitle = ".color-title";
+    jQuery(colorTitle).click(function () {
+        var colorList = jQuery(this).parent();
+        if (colorList.hasClass("open"))
+            colorList.removeClass("open");
+        else 
+            colorList.addClass("open");
+    });
+
     var imageColor = ".color-item";
     jQuery(imageColor).click(function () {
 
