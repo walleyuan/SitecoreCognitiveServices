@@ -19,13 +19,13 @@ h1.modal-heading { background: #2b2b2b none repeat scroll 0 0; color: #fff; font
 .rectangle { border: 4px solid #dc291e; position: absolute;border-radius: 10px; }
 .bg-layer { background-color: #fff;opacity: 0.9;position: absolute;top: 0;right: 0;left: 0;bottom: 0;z-index: 0;border-radius: 5px;border: 1px solid #ccc;}
 .face-block{ position: relative;}
-.face-block:hover .face-wrap { opacity: 1;width: 94px; }
+.face-block:hover .face-wrap { opacity: 1;width: 100px; }
 .face-wrap {z-index: 1; position: absolute;padding: 8px;width:0px;overflow: hidden;
          opacity: 0; 
          transition: opacity .25s ease-in-out, width .25s ease-in-out; 
          -moz-transition: opacity .25s ease-in-out, width .25s ease-in-out; 
          -webkit-transition: opacity .25s ease-in-out, width .25s ease-in-out;}
-.faces { width: 94px;}
+.faces { width: 100px;}
 .face-set { position: relative;z-index: 1;margin-bottom: 2px; }
 .face-set label { display: inline-block; text-align: right; width: 45px; }
 .face-set span { font-weight: bold;}
