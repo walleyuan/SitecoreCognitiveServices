@@ -31,7 +31,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
         string GetFieldDimension(Item i, string fieldName, int minimum, int offset);
         IEnumerable<TemplateItem> GetBaseTemplates(Item i);
         IEnumerable<TemplateItem> GetBaseTemplates(TemplateItem t);
-        void SetImageDescription(MediaItem mediaItem, string altDescription);
+        void SetImageAlt(MediaItem mediaItem, string altDescription);
         IEnumerable<Language> GetLanguages(Database db);
         User ContextUser { get; }
         Domain ContextDomain { get; }
@@ -179,7 +179,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
                     .Concat(t.BaseTemplates.SelectMany(GetBaseTemplates));
         }
 
-        public virtual void SetImageDescription(MediaItem mediaItem, string altDescription) {
+        public virtual void SetImageAlt(MediaItem mediaItem, string altDescription) {
             Assert.IsNotNull(mediaItem, GetType());
 
             using (new SecurityDisabler()) {
@@ -187,7 +187,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
                     try {
                         mediaItem.Alt = altDescription;
                     } catch (Exception ex) {
-                        Logger.Error("Set Image Description: " + ex.Message, this, ex);
+                        Logger.Error("Set Image Alt: " + ex.Message, this, ex);
                     }
                 }
             }

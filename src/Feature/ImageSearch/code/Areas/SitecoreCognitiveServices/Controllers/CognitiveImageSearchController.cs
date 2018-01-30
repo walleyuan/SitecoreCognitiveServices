@@ -156,7 +156,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
                 return View("ImageDescription");
 
             MediaItem m = item;
-            DataWrapper.SetImageDescription(m, descriptionOption);
+            DataWrapper.SetImageAlt(m, descriptionOption);
 
             return View("ImageDescription", SearchService.GetImageDescription(m, language));
         }
@@ -192,7 +192,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             foreach (var m in list) {
                 Caption cap = SearchService.GetTopImageCaption(m, language, thresholdDouble);
                 if (cap != null)
-                    DataWrapper.SetImageDescription(m, cap.Text);
+                    DataWrapper.SetImageAlt(m, cap.Text);
             }
 
             var result = SetAltTagsAllFactory.Create(id, db, language, fullList.Count(), list.Count(), threshold, overwrite);
