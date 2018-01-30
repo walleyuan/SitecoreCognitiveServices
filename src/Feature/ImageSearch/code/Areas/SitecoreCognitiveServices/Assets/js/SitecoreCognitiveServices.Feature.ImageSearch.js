@@ -232,6 +232,10 @@ jQuery(document).ready(function () {
             colorList.addClass("open");
     });
 
+    jQuery(".color-items").mouseleave(function () {
+        jQuery(this).removeClass("open");
+    });
+
     var imageColor = ".color-item";
     jQuery(imageColor).click(function () {
 
