@@ -296,11 +296,17 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             //save items to fields
             if (MSCSApiKeys.Emotion != emotionApi)
                 MSCSApiKeys.Emotion = emotionApi;
-            if(MSCSApiKeys.Face != faceApi)
+            if (MSCSApiKeys.EmotionEndpoint != emotionApiEndpoint)
+                MSCSApiKeys.EmotionEndpoint = emotionApiEndpoint;
+            if (MSCSApiKeys.Face != faceApi)
                 MSCSApiKeys.Face = faceApi;
-            if(MSCSApiKeys.ComputerVision != computerVisionApi)
+            if (MSCSApiKeys.FaceEndpoint != faceApiEndpoint)
+                MSCSApiKeys.FaceEndpoint = faceApiEndpoint;
+            if (MSCSApiKeys.ComputerVision != computerVisionApi)
                 MSCSApiKeys.ComputerVision = computerVisionApi;
-            
+            if (MSCSApiKeys.ComputerVisionEndpoint != computerVisionApiEndpoint)
+                MSCSApiKeys.ComputerVisionEndpoint = computerVisionApiEndpoint;
+
             //get the sample image and analyze it to test responses
             Item sampleImage = DataWrapper.ContentDatabase.GetItem(SearchSettings.SampleImage);
             var analysis = AnalysisService.AnalyzeImage(sampleImage);
