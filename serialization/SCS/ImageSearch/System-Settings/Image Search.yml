@@ -12,3 +12,7 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20171108T215723Z
+    - ID: "99b4cb00-a21a-43cb-a6fb-c17c11567f82"
+      Hint: Analyze New Images
+      Type: Checkbox
+      Value: 0

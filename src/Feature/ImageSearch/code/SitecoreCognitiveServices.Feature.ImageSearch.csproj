@@ -257,6 +257,7 @@
     <Compile Include="Areas\SitecoreCognitiveServices\Models\Utility\ISetAltTagsAll.cs" />
     <Compile Include="Areas\SitecoreCognitiveServices\Models\Utility\AnalyzeAll.cs" />
     <Compile Include="Areas\SitecoreCognitiveServices\Models\Utility\SetAltTagsAll.cs" />
+    <Compile Include="Pipelines\Upload\Analyze.cs" />
     <Compile Include="Pipelines\RenderField\GetImageFieldValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search\CognitiveImageSearchResult.cs" />
