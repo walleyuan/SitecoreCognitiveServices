@@ -100,6 +100,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Foundation\MSSDK\code\SitecoreCognitiveServices.Foundation.MSSDK.csproj">
+      <Project>{13ECB0DB-E99D-4D05-97E8-138EB3884353}</Project>
+      <Name>SitecoreCognitiveServices.Foundation.MSSDK</Name>
+    </ProjectReference>
     <ProjectReference Include="..\code\SitecoreCognitiveServices.Feature.ImageSearch.csproj">
       <Project>{449ce943-4ef2-4ddf-ad16-37dcc62cfcfd}</Project>
       <Name>SitecoreCognitiveServices.Feature.ImageSearch</Name>

@@ -7,6 +7,7 @@ using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServi
 using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
+using SitecoreCognitiveServices.Foundation.MSSDK;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Tests.Controllers
 {
@@ -21,6 +22,10 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Tests.Controllers
         protected ICognitiveImageAnalysisFactory ImageAnalysisFactory;
         protected IAnalyzeAllFactory AnalyzeAllFactory;
         protected IImageAnalysisService ImageAnalysisService;
+        protected IAnalysisJobResultFactory JobResultFactory;
+        protected ISetupInformationFactory SetupInformationFactory;
+        protected IMicrosoftCognitiveServicesApiKeys MicrosoftCognitiveServicesApiKeys;
+        protected IImageSearchSettings ImageSearchSettings;
 
         [SetUp]
         public void Setup()
@@ -37,22 +42,24 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Tests.Controllers
         [Test]
         public void Constructor_NullParameters_Throws()
         {
-            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(null, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, ImageAnalysisFactory, AnalyzeAllFactory, ImageAnalysisService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, ImageAnalysisFactory, AnalyzeAllFactory, ImageAnalysisService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, null, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, ImageAnalysisFactory, AnalyzeAllFactory, ImageAnalysisService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, null, MediaSearchFactory, SetAltTagsAllFactory, ImageAnalysisFactory, AnalyzeAllFactory, ImageAnalysisService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, null, SetAltTagsAllFactory, ImageAnalysisFactory, AnalyzeAllFactory, ImageAnalysisService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, null, ImageAnalysisFactory, AnalyzeAllFactory, ImageAnalysisService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, null, AnalyzeAllFactory, ImageAnalysisService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, ImageAnalysisFactory, null, ImageAnalysisService));
-            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, ImageAnalysisFactory, AnalyzeAllFactory, null));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(null, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, AnalyzeAllFactory, ImageAnalysisService, JobResultFactory, SetupInformationFactory, MicrosoftCognitiveServicesApiKeys, ImageSearchSettings));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, null, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, AnalyzeAllFactory, ImageAnalysisService, JobResultFactory, SetupInformationFactory, MicrosoftCognitiveServicesApiKeys, ImageSearchSettings));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, null, MediaSearchFactory, SetAltTagsAllFactory, AnalyzeAllFactory, ImageAnalysisService, JobResultFactory, SetupInformationFactory, MicrosoftCognitiveServicesApiKeys, ImageSearchSettings));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, null, SetAltTagsAllFactory, AnalyzeAllFactory, ImageAnalysisService, JobResultFactory, SetupInformationFactory, MicrosoftCognitiveServicesApiKeys, ImageSearchSettings));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, null, AnalyzeAllFactory, ImageAnalysisService, JobResultFactory, SetupInformationFactory, MicrosoftCognitiveServicesApiKeys, ImageSearchSettings));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, null, ImageAnalysisService, JobResultFactory, SetupInformationFactory, MicrosoftCognitiveServicesApiKeys, ImageSearchSettings));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, AnalyzeAllFactory, null, JobResultFactory, SetupInformationFactory, MicrosoftCognitiveServicesApiKeys, ImageSearchSettings));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, AnalyzeAllFactory, ImageAnalysisService, null, SetupInformationFactory, MicrosoftCognitiveServicesApiKeys, ImageSearchSettings));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, AnalyzeAllFactory, ImageAnalysisService, JobResultFactory, null, MicrosoftCognitiveServicesApiKeys, ImageSearchSettings));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, AnalyzeAllFactory, ImageAnalysisService, JobResultFactory, SetupInformationFactory, null, ImageSearchSettings));
+            Assert.Throws<InvalidOperationException>(() => new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, AnalyzeAllFactory, ImageAnalysisService, JobResultFactory, SetupInformationFactory, MicrosoftCognitiveServicesApiKeys, null));
         }
 
         [Test]
         public void ID_Empty_Returns_NullModel()
         {
             //arrange
-            CognitiveImageSearchController controller = new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, ImageAnalysisFactory, AnalyzeAllFactory, ImageAnalysisService);
+            CognitiveImageSearchController controller = new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, AnalyzeAllFactory, ImageAnalysisService, JobResultFactory, SetupInformationFactory, MicrosoftCognitiveServicesApiKeys, ImageSearchSettings);
 
             //act
             var result = controller.Analyze(string.Empty, "en", "master") as ViewResult;
@@ -66,7 +73,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Tests.Controllers
         public void ValidID_Returns_NoChoices()
         {
             //arrange
-            CognitiveImageSearchController controller = new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, ImageAnalysisFactory, AnalyzeAllFactory, ImageAnalysisService);
+            CognitiveImageSearchController controller = new CognitiveImageSearchController(SearchService, DataWrapper, WebUtil, MediaSearchFactory, SetAltTagsAllFactory, AnalyzeAllFactory, ImageAnalysisService, JobResultFactory, SetupInformationFactory, MicrosoftCognitiveServicesApiKeys, ImageSearchSettings);
 
             //act
             var result = controller.Analyze(string.Empty, "en", "master") as ViewResult;

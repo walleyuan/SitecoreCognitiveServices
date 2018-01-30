@@ -31,7 +31,6 @@ jQuery(document).ready(function () {
 
             jQuery(".result-failure").hide();
             jQuery(".result-success").hide();
-            jQuery(".form").hide();
             jQuery(".progress-indicator").show();
             
             jQuery.post(
@@ -53,7 +52,6 @@ jQuery(document).ready(function () {
                 }
 
                 jQuery(".progress-indicator").hide();
-                jQuery(".form").show();
             });
         });
 });
@@ -68,7 +66,7 @@ jQuery(document).ready(function() {
         });
 });
 
-//reanalyze
+//analyze all
 jQuery(document).ready(function () {
     //handles analyze all form
     var analyzeAllForm = ".analyze-all-form";
@@ -93,15 +91,18 @@ jQuery(document).ready(function () {
                     overwrite: overwriteValue
                 }
             ).done(function (r) {
-
                 var timer = setInterval(function () {
                     jQuery.post(jQuery(analyzeAllForm).attr("status"), { handleName: r.HandleName })
                         .done(function (jobResult) {
-                            if (jobResult.Total < 0)
+                            if (jobResult.Total < 0) {
+                                jQuery(".result-waiting").show();
+                                
                                 return;
+                            }
 
                             jQuery(".result-count").text(jobResult.Current + " of " + jobResult.Total);
                             jQuery(".result-display").show();
+                            jQuery(".result-waiting").hide();
 
                             if (jobResult.Completed) {
                                 jQuery(".progress-indicator").hide();
