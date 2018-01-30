@@ -3,8 +3,10 @@
     public interface ISetupInformation
     {        
         string FaceApiKey { get; set; }
+        string FaceApiEndpoint { get; set; }
         string EmotionApiKey { get; set; }
-        string TextAnalyticsApiKey { get; set; }
+        string EmotionApiEndpoint { get; set; }
         string ComputerVisionApiKey { get; set; }
+        string ComputerVisionApiEndpoint { get; set; }
     }
 }

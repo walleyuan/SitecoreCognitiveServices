@@ -21,9 +21,11 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
             var obj = Provider.GetService<ISetupInformation>();
 
             obj.FaceApiKey = ApiKeys.Face;
+            obj.FaceApiEndpoint = ApiKeys.FaceEndpoint;
             obj.EmotionApiKey = ApiKeys.Emotion;
-            obj.TextAnalyticsApiKey = ApiKeys.TextAnalytics;
+            obj.EmotionApiEndpoint = ApiKeys.EmotionEndpoint;
             obj.ComputerVisionApiKey = ApiKeys.ComputerVision;
+            obj.ComputerVisionApiEndpoint = ApiKeys.ComputerVisionEndpoint;
 
             return obj;
         }

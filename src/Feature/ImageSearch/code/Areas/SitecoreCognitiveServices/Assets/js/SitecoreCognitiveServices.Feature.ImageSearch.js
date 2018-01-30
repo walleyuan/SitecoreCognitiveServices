@@ -23,8 +23,11 @@ jQuery(document).ready(function () {
             event.preventDefault();
 
             var emotionValue = jQuery(setupForm + " #emotionApi").val();
+            var emotionEndpointValue = jQuery(setupForm + " #emotionApiEndpoint").val();
             var faceValue = jQuery(setupForm + " #faceApi").val();
+            var faceEndpointValue = jQuery(setupForm + " #faceApiEndpoint").val();
             var computerVisionValue = jQuery(setupForm + " #computerVisionApi").val();
+            var computerVisionEndpointValue = jQuery(setupForm + " #computerVisionApiEndpoint").val();
 
             jQuery(".result-failure").hide();
             jQuery(".result-success").hide();
@@ -35,8 +38,11 @@ jQuery(document).ready(function () {
                 jQuery(setupForm).attr("action"),
                 {
                     emotionApi: emotionValue,
+                    emotionApiEndpoint: emotionEndpointValue,
                     faceApi: faceValue,
-                    computerVisionApi: computerVisionValue
+                    faceApiEndpoint: faceEndpointValue,
+                    computerVisionApi: computerVisionValue,
+                    computerVisionApiEndpoint: computerVisionEndpointValue
                 }
             ).done(function (r) {
                 if (r.Failed) {

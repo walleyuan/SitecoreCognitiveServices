@@ -213,6 +213,7 @@ fieldset legend { margin-bottom: 10px;}
 .result-display { display: none; position: relative; text-align: center; top: 30px; }
 .result-success, 
 .result-failure { display: none; color: #dc291e; font-size: 12px; font-family: arial; margin-bottom: 15px; }
+.result-success { color: green; }
 .item-list { font-weight: bold; }
 .threshold-range { margin: 0 20px 0 0; vertical-align: middle; width: 250px; }
 .threshold-range-output { color: #2b2b2b; font-size: 25px; font-weight: bold; vertical-align: middle; }

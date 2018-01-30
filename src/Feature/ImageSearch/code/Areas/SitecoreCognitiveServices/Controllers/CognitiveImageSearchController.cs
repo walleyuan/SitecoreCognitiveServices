@@ -247,7 +247,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
 
             string handleName = $"BatchImageAnalysis{new Random(DateTime.Now.Millisecond).Next(0, 100)}";
 
-            var jobOptions = new Sitecore.Jobs.JobOptions(
+            var jobOptions = new JobOptions(
                 handleName,
                 "Cognitive Image Analysis",
                 Sitecore.Context.Site.Name,
@@ -255,7 +255,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
                 "AnalyzeImagesRecursively",
                 new object[] { item, database, overwrite });
 
-            Sitecore.Jobs.JobManager.Start(jobOptions);
+            JobManager.Start(jobOptions);
 
             var result = AnalyzeAllFactory.Create(id, database, language, handleName);
 
@@ -285,7 +285,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             return View("Setup", info);
         }
 
-        public ActionResult SetupSubmit(string emotionApi, string faceApi, string computerVisionApi)
+        public ActionResult SetupSubmit(string emotionApi, string emotionApiEndpoint, string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint)
         {
             if (!IsSitecoreUser())
                 return LoginPage();
