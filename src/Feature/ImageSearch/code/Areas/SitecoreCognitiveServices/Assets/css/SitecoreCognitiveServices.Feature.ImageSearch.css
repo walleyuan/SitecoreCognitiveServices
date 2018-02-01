@@ -195,6 +195,8 @@ h1.modal-heading { background: #2b2b2b none repeat scroll 0 0; color: #fff; font
 .message-store { display: none; }
 .form fieldset { padding: 0px 10px; margin-top: 0px; }
 fieldset legend { margin-bottom: 10px;}
+fieldset a { text-decoration: underline; font-weight: bold; }
+fieldset a:hover { text-decoration: none; }
 .form h2 { margin: 0 0 10px; }
 .info-row { margin-bottom: 15px;color: #dc291e;}
 .form-row { margin-bottom: 15px;}
