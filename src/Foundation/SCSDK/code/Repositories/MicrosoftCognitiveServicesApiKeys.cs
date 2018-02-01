@@ -1,5 +1,4 @@
 ﻿using System;
-using Newtonsoft.Json;
 using SitecoreCognitiveServices.Foundation.MSSDK;
 using Sitecore.Configuration;
 using Sitecore.Data.Items;

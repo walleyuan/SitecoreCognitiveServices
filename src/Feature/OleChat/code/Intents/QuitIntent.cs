@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.ClientServices.Providers;
 using Microsoft.Extensions.DependencyInjection;
 using SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServices.Models;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
