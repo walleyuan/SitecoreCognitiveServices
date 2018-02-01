@@ -10,7 +10,6 @@ using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Common;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator;
 using System.Linq;
-using Chronic;
 
 namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Vision {
     public class ContentModeratorRepository : IContentModeratorRepository
