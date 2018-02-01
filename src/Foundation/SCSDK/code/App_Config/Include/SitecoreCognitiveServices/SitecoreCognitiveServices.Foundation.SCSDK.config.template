@@ -11,6 +11,8 @@
     </services>
     <settings>
       <!-- Module Settings-->
+      <setting name="CognitiveService.IBMSDK.ID" value="{503A5B1D-6F2F-41EC-9A77-AE1DAA37A987}" />
+      <setting name="CognitiveService.MSSDK.ID" value="{03BAF8AE-03CB-4E30-875C-0901EBA6A163}" />
       <setting name="CognitiveService.CatchAndReleaseExceptions" value="${CognitiveService.CatchAndReleaseExceptions}" />
     </settings>
   </sitecore>
