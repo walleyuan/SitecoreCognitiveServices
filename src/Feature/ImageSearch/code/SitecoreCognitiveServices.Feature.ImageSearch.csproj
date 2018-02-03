@@ -160,7 +160,7 @@
     <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Feature.ImageSearch.Solr.config.disabled" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveImageSearch\SearchForm.cshtml" />
-    <Content Include="Areas\SitecoreCognitiveServices\Views\web.config" />
+    <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveImageSearch\web.config" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveImageSearch\ImageDescription.cshtml" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveImageSearch\ImageDescriptionThreshold.cshtml" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveImageSearch\Common\MeasureBar.cshtml" />
