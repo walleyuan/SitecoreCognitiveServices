@@ -20,6 +20,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
     [Serializable]
     public class WebEditCognitiveAnalysis : WebEditImageCommand
     {
+        protected static IImageSearchSettings _settings => DependencyResolver.Current.GetService<IImageSearchSettings>();
         protected static ISitecoreDataWrapper DataWrapper => DependencyResolver.Current.GetService<ISitecoreDataWrapper>();
 
         public override void Execute(CommandContext context)
@@ -65,7 +66,10 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
 
         public override CommandState QueryState(CommandContext context)
         {
-            if(!context.Items.Any())
+            if (_settings.MissingKeys())
+                return CommandState.Disabled;
+
+            if (!context.Items.Any())
                 return CommandState.Disabled;
 
             var ctxItem = context.Items[0];

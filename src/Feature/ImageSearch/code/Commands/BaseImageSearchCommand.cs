@@ -6,16 +6,19 @@ using System.Web.Mvc;
 using Sitecore.Data.Items;
 using Sitecore.Shell.Framework.Commands;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
+using SitecoreCognitiveServices.Foundation.MSSDK;
 using SitecoreCognitiveServices.Foundation.SCSDK.Commands;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
 {
     public class BaseImageSearchCommand : BaseCommand
     {
+        protected readonly IImageSearchSettings _settings;
         protected readonly IImageSearchService _searchService;
         
         public BaseImageSearchCommand()
         {
+            _settings = DependencyResolver.Current.GetService<IImageSearchSettings>();
             _searchService = DependencyResolver.Current.GetService<IImageSearchService>();
         }
 

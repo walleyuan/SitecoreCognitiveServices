@@ -2,12 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Sitecore.Configuration;
 using Sitecore.Data;
+using SitecoreCognitiveServices.Foundation.MSSDK;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch {
     public class ImageSearchSettings : IImageSearchSettings
     {
+        protected readonly IMicrosoftCognitiveServicesApiKeys _msApiKeys;
+       
+        public ImageSearchSettings(IMicrosoftCognitiveServicesApiKeys msApiKeys)
+        {
+            _msApiKeys = msApiKeys;
+        }
+
         public virtual string SitecoreIndexNameFormat => Settings.GetSetting("CognitiveService.ImageSearch.SitecoreIndexNameFormat");
         public virtual string CognitiveIndexNameFormat => Settings.GetSetting("CognitiveService.ImageSearch.CognitiveIndexNameFormat");
         public virtual string ImageAnalysisFolder => Settings.GetSetting("CognitiveService.ImageSearch.ImageAnalysisFolder");
@@ -23,5 +32,21 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
         public virtual string AnalyzeNewImageField => "Analyze New Images";
         public virtual ID BlogFieldId => new ID("{40E50ED9-BA07-4702-992E-A912738D32DC}");
         public virtual string DictionaryDomain => "Image Search Dictionary";
+        public bool MissingKeys()
+        {
+            if (_msApiKeys == null)
+                return true;
+
+            return HasNoValue(_msApiKeys.Emotion)
+                   || HasNoValue(_msApiKeys.EmotionEndpoint)
+                   || HasNoValue(_msApiKeys.Face)
+                   || HasNoValue(_msApiKeys.FaceEndpoint)
+                   || HasNoValue(_msApiKeys.ComputerVision)
+                   || HasNoValue(_msApiKeys.ComputerVisionEndpoint);
+        }
+        public bool HasNoValue(string str)
+        {
+            return string.IsNullOrWhiteSpace(str.Trim());
+        }
     }
 }

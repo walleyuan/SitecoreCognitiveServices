@@ -33,6 +33,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
 
         public override CommandState QueryState(CommandContext context)
         {
+            if(_settings.MissingKeys())
+                return CommandState.Disabled;
+
             Item ctxItem = DataWrapper?.ExtractItem(context);
             if (ctxItem == null || !DataWrapper.IsMediaFile(ctxItem))
                 return CommandState.Hidden;

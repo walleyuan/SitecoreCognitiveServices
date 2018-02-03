@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Mvc;
 using Sitecore;
 using Sitecore.Diagnostics;
 using Sitecore.Shell.Applications.WebEdit.Commands;
@@ -11,6 +12,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
     [Serializable]
     public class WebEditCognitiveImageSearch : WebEditImageCommand
     {
+        protected static IImageSearchSettings _settings => DependencyResolver.Current.GetService<IImageSearchSettings>();
+
         public override void Execute(CommandContext context)
         {
             Assert.ArgumentNotNull((object)context, "context");
@@ -46,6 +49,13 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Commands
 
             SheerResponse.ShowModalDialog("/SitecoreCognitiveServices/CognitiveImageSearch/SearchForm?src=FieldEditor&lang=" + langParam + "&db=" + Client.ContentDatabase.Name, "1000px", "600px", string.Empty, true);
             args.WaitForPostBack();
+        }
+
+        public override CommandState QueryState(CommandContext context)
+        {
+            return _settings.MissingKeys()
+                ? CommandState.Disabled
+                : CommandState.Enabled;
         }
     }
 }
