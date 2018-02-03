@@ -1,39 +1,40 @@
-﻿@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion.Scores
+﻿@using SitecoreCognitiveServices.Feature.ImageSearch.Statics
+@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion.Scores
 
 @if (Model != null)
 {
     <div class="scores">
         <div class="bg-layer"></div>
         <div class="score-set">
-            <label>Anger: </label>
+            <label>@Translator.Text("Emotion.Scores.AngerLabel"): </label>
             @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Anger)
         </div>
         <div class="score-set">
-            <label>Contempt: </label>
+            <label>@Translator.Text("Emotion.Scores.ContemptLabel"): </label>
             @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Contempt)
         </div>
         <div class="score-set">
-            <label>Disgust: </label>
+            <label>@Translator.Text("Emotion.Scores.DisgustLabel"): </label>
             @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Disgust)
         </div>
         <div class="score-set">
-            <label>Fear: </label>
+            <label>@Translator.Text("Emotion.Scores.FearLabel"): </label>
             @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Fear)
         </div>
         <div class="score-set">
-            <label>Happiness: </label>
+            <label>@Translator.Text("Emotion.Scores.HappinessLabel"): </label>
             @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Happiness)
         </div>
         <div class="score-set">
-            <label>Neutral: </label>
+            <label>@Translator.Text("Emotion.Scores.NeutralLabel"): </label>
             @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Neutral)
         </div>
         <div class="score-set">
-            <label>Sadness: </label>
+            <label>@Translator.Text("Emotion.Scores.SadnessLabel"): </label>
             @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Sadness)
         </div>
         <div class="score-set">
-            <label>Surprise: </label>
+            <label>@Translator.Text("Emotion.Scores.SurpriseLabel"): </label>
             @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", Model.Surprise)
         </div>
     </div>

@@ -1,9 +1,10 @@
-﻿@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.Category[]
+﻿@using SitecoreCognitiveServices.Feature.ImageSearch.Statics
+@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.Category[]
 
 @if (Model != null)
 {
     <div class="detail-box detail-categories">
-        <h3>Categories</h3>
+        <h3>@Translator.Text("Vision.Categories.CategoriesHeading")</h3>
         <div class="detail-row">
             @foreach (var c in Model)
             {

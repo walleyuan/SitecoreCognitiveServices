@@ -1,8 +1,8 @@
-﻿
+﻿@using SitecoreCognitiveServices.Feature.ImageSearch.Statics
 @model SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Utility.ISetAltTagsAll
 
 @{
-    ViewBag.Title = "Cognitive Services: Image Description Descendants";
+    ViewBag.Title = Translator.Text("ImageDescriptionThreshold.ViewTitle");
     Layout = "~/Areas/SitecoreCognitiveServices/Views/CognitiveCommon/CognitiveLayout.cshtml";
 }
 
@@ -13,19 +13,18 @@
     {
         <form class="form set-alt-all-form" method="post" action="/SitecoreCognitiveServices/CognitiveImageSearch/UpdateImageDescriptionAll">
             <fieldset>
-                <legend>Update Alt Description For All Descendents</legend>
+                <legend>@Translator.Text("ImageDescriptionThreshold.UpdateAltLabel")</legend>
                 <div class="form-row">
-                    <p>This will update all the alt tag descriptions for all descendant items below this folder using the cognitive analysis description. </p>
-                    <p>You can use the threshold to specify the confidence level required to set the alt tag (0 would be always and 100 would have to be absolutely certain)</p>
+                    <p>@Translator.Text("ImageDescriptionThreshold.UpdateAltDescription")</p>
                 </div>
             </fieldset>
             <fieldset>
-                <legend>Confidence Threshold</legend>
+                <legend>@Translator.Text("ImageDescriptionThreshold.ConfidenceLabel")</legend>
                 <div class="form-row">
                     <input class="threshold-range" type="range" min="0" max="100" id="threshold" name="threshold" oninput="thresholdOutput.value = threshold.value" />
                     <output class="threshold-range-output" name="thresholdOutput" id="thresholdOutput">50</output>
                 </div>
-                <legend>Overwrite Existing Alt Value</legend>
+                <legend>@Translator.Text("ImageDescriptionThreshold.OverwriteLabel")</legend>
                 <div class="form-row">
                     <input class="overwrite-value" type="checkbox" id="overwrite" name="overwrite" />
                 </div>
@@ -36,14 +35,14 @@
                 </div>
             </fieldset>
             <div class="scWizardButtons">
-                <button class="form-submit scButton scButtonPrimary">Update Alt Tags</button>
+                <button class="form-submit scButton scButtonPrimary">@Translator.Text("ImageDescriptionThreshold.ButtonText")</button>
             </div>
         </form>
         <div class="progress-indicator">
             <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
         </div>
         <div class="result-display">
-            There were <span class="result-modified">@Model.ItemsModified</span> items updated out of <span class="result-count">@Model.ItemCount</span>.
+            @Html.Raw(Translator.Text("ImageDescriptionThreshold.ResultMessage").Replace("{0}", "<span class=\"result-modified\">" + Model.ItemsModified + "</span>").Replace("{1}", "<span class=\"result-count\">" + Model.ItemCount + "</span>"))
         </div>
     }
 </div>

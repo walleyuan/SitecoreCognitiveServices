@@ -1,4 +1,5 @@
-﻿@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.Word[]
+﻿@using SitecoreCognitiveServices.Feature.ImageSearch.Statics
+@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.Word[]
 
 @if (Model != null)
 {
@@ -7,18 +8,18 @@
         {
             <div class="word-block">
                 <div class="word-wrap" style="top: @{@w.Rectangle.Top}px; left: @{@(w.Rectangle.Left + w.Rectangle.Width + 10)}px">
-                    <div class="bg-layer"></div>                                                                  
+                    <div class="bg-layer"></div>
                     <div class="word">
-                        <label>Text: </label>
+                        <label>@Translator.Text("Vision.Words.TextLabel"): </label>
                         <span>@w.Text</span>
                     </div>
                     @*<div>
-                        <label>Bounding Box: </label>
-                        <span>@w.BoundingBox</span>
-                    </div>*@
+                            <label>@Translator.Text("Vision.Words.BoundingBoxLabel"): </label>
+                            <span>@w.BoundingBox</span>
+                        </div>*@
                 </div>
                 @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Vision/Rectangle.cshtml", w.Rectangle)
             </div>
-    }
+        }
     </div>
 }

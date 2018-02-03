@@ -262,6 +262,7 @@
     <Compile Include="Search\ICognitiveImageSearchResult.cs" />
     <Compile Include="Search\IImageSearchService.cs" />
     <Compile Include="Search\ImageSearchService.cs" />
+    <Compile Include="Statics\Translator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

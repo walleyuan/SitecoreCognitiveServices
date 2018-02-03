@@ -1,8 +1,9 @@
-﻿@using Sitecore.Data.Managers
+﻿@using SitecoreCognitiveServices.Feature.ImageSearch.Statics
+@using Sitecore.Data.Managers
 @model SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.ICognitiveImageSearch
 
 @{
-    ViewBag.Title = "Cognitive Services: Image Search";
+    ViewBag.Title = Translator.Text("SearchForm.ViewTitle");
     Layout = "~/Areas/SitecoreCognitiveServices/Views/CognitiveCommon/CognitiveLayout.cshtml";
 }
 
@@ -11,19 +12,19 @@
 <link rel="stylesheet" href="/Areas/SitecoreCognitiveServices/Assets/js/Chosen/chosen.css">
 <link rel="stylesheet" href="/Areas/SitecoreCognitiveServices/Assets/css/SitecoreCognitiveServices.Feature.ImageSearch.css?x=@(new System.Random().Next())" />
 
-<h1 class="modal-heading">Image Search</h1>
+<h1 class="modal-heading">@Translator.Text("SearchForm.ModalTitle")</h1>
 <div class="frame">
     <div class="rte-search-form">
         <form class="form image-search-form" method="post" action="/SitecoreCognitiveServices/CognitiveImageSearch/RTESearchQuery">
             <div class="message-store">
-                <div class="select-an-image">You need to select an image.</div>
+                <div class="select-an-image">@Translator.Text("SearchForm.SelectMessage")</div>
             </div>
             <div class="result-filters">
                 <div class="filter-wrap">
-                    
+
                     <div class="filter-section">
                         <div class="color-items">
-                            <div class="color-title">Choose Color</div>
+                            <div class="color-title">@Translator.Text("SearchForm.ChooseColorLabel")</div>
                             <div class="color-list">
                                 @for (int i = 0; i < Model.Colors.Count; i++)
                                 {
@@ -40,7 +41,7 @@
                             <div class="emotion-item">
                                 <div class="filter">
                                     <select id="size">
-                                        <option value="0">Choose Image Size</option>
+                                        <option value="0">@Translator.Text("SearchForm.ChooseImageSizeLabel")</option>
                                         <option value="1">400 x 300</option>
                                         <option value="2">640 x 480</option>
                                         <option value="3">800 x 600</option>
@@ -52,18 +53,18 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="filter-section">
                         <div class="emotion-items">
 
                             <div class="emotion-item">
                                 <div class="filter">
                                     <select id="gender">
-                                        <option value="0">Choose Gender</option>
-                                        <option value="1">None</option>
-                                        <option value="2">Male and Female</option>
-                                        <option value="3">Male</option>
-                                        <option value="4">Female</option>
+                                        <option value="0">@Translator.Text("SearchForm.Gender.ChooseLabel")</option>
+                                        <option value="1">@Translator.Text("SearchForm.Gender.None")</option>
+                                        <option value="2">@Translator.Text("SearchForm.Gender.MaleFemale")</option>
+                                        <option value="3">@Translator.Text("SearchForm.Gender.Male")</option>
+                                        <option value="4">@Translator.Text("SearchForm.Gender.Female")</option>
                                     </select>
                                 </div>
                             </div>
@@ -71,65 +72,65 @@
                             <div class="emotion-item">
                                 <div class="filter">
                                     <select id="glasses">
-                                        <option value="-1">Choose Glasses</option>
-                                        <option value="0">No Glasses</option>
-                                        <option value="1">Sunglasses</option>
-                                        <option value="2">Reading Glasses</option>
-                                        <option value="3">Swimming Goggles</option>
+                                        <option value="-1">@Translator.Text("SearchForm.Glasses.ChooseLabel")</option>
+                                        <option value="0">@Translator.Text("SearchForm.Glasses.NoGlasses")</option>
+                                        <option value="1">@Translator.Text("SearchForm.Glasses.Sunglasses")</option>
+                                        <option value="2">@Translator.Text("SearchForm.Glasses.ReadingGlasses")</option>
+                                        <option value="3">@Translator.Text("SearchForm.Glasses.SwimmingGoggles")</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="emotion-item">
-                                <span class="filter-title">Age: </span>
+                                <span class="filter-title">@Translator.Text("SearchForm.AgeLabel"): </span>
                                 <span class="filter-value" data-field="age"> </span>
                                 <div class="slider-range"></div>
                             </div>
 
                             <div class="emotion-item">
-                                <span class="filter-title">Anger: </span>
+                                <span class="filter-title">@Translator.Text("SearchForm.AngerLabel"): </span>
                                 <span class="filter-value" data-field="anger"> </span>
                                 <div class="slider-range"></div>
                             </div>
 
                             <div class="emotion-item">
-                                <span class="filter-title">Contempt: </span>
+                                <span class="filter-title">@Translator.Text("SearchForm.ContemptLabel"): </span>
                                 <span class="filter-value" data-field="contempt"> </span>
                                 <div class="slider-range"></div>
                             </div>
 
                             <div class="emotion-item">
-                                <span class="filter-title">Disgust: </span>
+                                <span class="filter-title">@Translator.Text("SearchForm.DisgustLabel"): </span>
                                 <span class="filter-value" data-field="disgust"> </span>
                                 <div class="slider-range"></div>
                             </div>
 
                             <div class="emotion-item">
-                                <span class="filter-title">Fear: </span>
+                                <span class="filter-title">@Translator.Text("SearchForm.FearLabel"): </span>
                                 <span class="filter-value" data-field="fear"> </span>
                                 <div class="slider-range"></div>
                             </div>
 
                             <div class="emotion-item">
-                                <span class="filter-title">Happiness: </span>
+                                <span class="filter-title">@Translator.Text("SearchForm.HappinessLabel"): </span>
                                 <span class="filter-value" data-field="happiness"> </span>
                                 <div class="slider-range"></div>
                             </div>
 
                             <div class="emotion-item">
-                                <span class="filter-title">Neutral: </span>
+                                <span class="filter-title">@Translator.Text("SearchForm.NeutralLabel"): </span>
                                 <span class="filter-value" data-field="neutral"> </span>
                                 <div class="slider-range"></div>
                             </div>
 
                             <div class="emotion-item">
-                                <span class="filter-title">Sadness: </span>
+                                <span class="filter-title">@Translator.Text("SearchForm.SadnessLabel"): </span>
                                 <span class="filter-value" data-field="sadness"> </span>
                                 <div class="slider-range"></div>
                             </div>
 
                             <div class="emotion-item">
-                                <span class="filter-title">Surprise: </span>
+                                <span class="filter-title">@Translator.Text("SearchForm.SurpriseLabel"): </span>
                                 <span class="filter-value" data-field="surprise"> </span>
                                 <div class="slider-range"></div>
                             </div>
@@ -140,13 +141,13 @@
                         <div class="emotion-items">
 
                             <div class="emotion-item">
-                                <span class="filter-title">Adult: </span>
+                                <span class="filter-title">@Translator.Text("SearchForm.AdultLabel"): </span>
                                 <span class="filter-value" data-field="adult"> </span>
                                 <div class="slider-range"></div>
                             </div>
 
                             <div class="emotion-item">
-                                <span class="filter-title">Racy: </span>
+                                <span class="filter-title">@Translator.Text("SearchForm.RacyLabel"): </span>
                                 <span class="filter-value" data-field="racy"> </span>
                                 <div class="slider-range"></div>
                             </div>
@@ -174,7 +175,8 @@
                                         tabindex="-1">
                                     <option value=""></option>
                                     @{
-                                        foreach (var tag in Model.Tags) {
+                                        foreach (var tag in Model.Tags)
+                                        {
                                             char[] a = tag.Key.ToCharArray();
                                             a[0] = char.ToUpper(a[0]);
 
@@ -189,7 +191,7 @@
                     </fieldset>
 
                     <div class="result-label">
-                        <span class="result-count"></span> Results
+                        <span class="result-count"></span> @Translator.Text("SearchForm.ResultsLabel")
                     </div>
 
                     <div class="result-nav">
@@ -200,7 +202,7 @@
                             @Html.Raw(ThemeManager.GetImage("Office/32x32/navigate_right.png", 16, 16))
                         </span>
                         <span class="pager">
-                            Page <span class="pagenum"></span> of <span class="pagecount"></span>
+                            @Translator.Text("SearchForm.PageLabel") <span class="pagenum"></span> of <span class="pagecount"></span>
                         </span>
                     </div>
 
@@ -208,10 +210,10 @@
                 </div>
             </div>
             <div class="scWizardButtons">
-                <button class="search-submit scButton">Search</button>
-                <button class="scButton scButtonPrimary cognitiveSearchButton">Search</button>
-                <button class="form-submit scButton scButtonPrimary">Insert Image</button>
-                <button class="form-cancel scButton">Cancel</button>
+                <button class="search-submit scButton">@Translator.Text("SearchForm.SearchButtonText")</button>
+                <button class="scButton scButtonPrimary cognitiveSearchButton">@Translator.Text("SearchForm.SearchButtonText")</button>
+                <button class="form-submit scButton scButtonPrimary">@Translator.Text("SearchForm.InsertImageButtonText")</button>
+                <button class="form-cancel scButton">@Translator.Text("SearchForm.CancelButtonText")</button>
             </div>
         </form>
         <div class="progress-indicator">

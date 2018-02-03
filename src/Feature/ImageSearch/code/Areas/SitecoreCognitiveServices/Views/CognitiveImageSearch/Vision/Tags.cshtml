@@ -1,9 +1,10 @@
-﻿@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.Tag[]
+﻿@using SitecoreCognitiveServices.Feature.ImageSearch.Statics
+@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.Tag[]
 
 @if (Model != null)
 {
     <div class="detail-box detail-tags">
-        <h3>Tags</h3>
+        <h3>@Translator.Text("Vision.Tags.TagsHeading")</h3>
         <div class="detail-row">
             @foreach (var t in Model)
             {

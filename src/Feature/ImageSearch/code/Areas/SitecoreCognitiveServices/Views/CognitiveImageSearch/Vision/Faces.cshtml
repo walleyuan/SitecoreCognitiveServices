@@ -1,7 +1,8 @@
-﻿@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.SimpleFace[]
+﻿@using SitecoreCognitiveServices.Feature.ImageSearch.Statics
+@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.SimpleFace[]
 
 @if (Model != null)
-{   
+{
     foreach (var f in Model)
     {
         <div class="face-block">
@@ -10,11 +11,11 @@
                 <div class="faces">
                     <div class="bg-layer"></div>
                     <div class="face-set">
-                        <label>Age: </label>
+                        <label>@Translator.Text("Vision.Faces.AgeLabel"): </label>
                         <span>@f.Age</span>
                     </div>
                     <div class="face-set">
-                        <label>Gender: </label>
+                        <label>@Translator.Text("Vision.Faces.GenderLabel"): </label>
                         <span>@f.Gender</span>
                     </div>
                 </div>

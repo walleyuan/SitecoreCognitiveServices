@@ -21,5 +21,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
         ID ImageSearchFolderId { get; }
         string AnalyzeNewImageField { get; }
         ID BlogFieldId { get; }
+        string DictionaryDomain { get; }
     }
 }

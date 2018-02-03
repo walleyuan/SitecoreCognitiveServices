@@ -1,39 +1,40 @@
-﻿@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.Color
+﻿@using SitecoreCognitiveServices.Feature.ImageSearch.Statics
+@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.Color
 
 @if (Model != null)
 {
-    <div class="detail-box detail-color">
-        <h3>Colors</h3>
-        <div class="color-group detail-row">
-            <label>Accent: </label>
-            <div class="color-set">
-                <div class="color-box" style="background-color: @Model.AccentColor"></div>
-            </div>
+<div class="detail-box detail-color">
+    <h3>@Translator.Text("Vision.Color.ColorsHeading")</h3>
+    <div class="color-group detail-row">
+        <label>@Translator.Text("Vision.Color.AccentLabel"): </label>
+        <div class="color-set">
+            <div class="color-box" style="background-color: @Model.AccentColor"></div>
         </div>
-        <div class="color-group detail-row">
-            <label>Background: </label>
-            <div class="color-set">
-                <div class="color-box" style="background-color: @Model.DominantColorBackground"></div>
-            </div>
+    </div>
+    <div class="color-group detail-row">
+        <label>@Translator.Text("Vision.Color.BackgroundLabel"): </label>
+        <div class="color-set">
+            <div class="color-box" style="background-color: @Model.DominantColorBackground"></div>
         </div>
-        <div class="color-group detail-row">
-            <label>Foreground: </label>
-            <div class="color-set">
-                <div class="color-box" style="background-color: @Model.DominantColorForeground"></div>
-            </div>
+    </div>
+    <div class="color-group detail-row">
+        <label>@Translator.Text("Vision.Color.ForegroundLabel"): </label>
+        <div class="color-set">
+            <div class="color-box" style="background-color: @Model.DominantColorForeground"></div>
         </div>
-        <div class="color-group detail-row">
-            <label>Dominant: </label>
-            <div class="color-set">
-                @foreach (var c2 in @Model.DominantColors)
-                {
-                    <div class="color-box" style="background-color: @c2"></div>
-                }
-            </div>
+    </div>
+    <div class="color-group detail-row">
+        <label>@Translator.Text("Vision.Color.DominantLabel"): </label>
+        <div class="color-set">
+            @foreach (var c2 in @Model.DominantColors)
+            {
+                <div class="color-box" style="background-color: @c2"></div>
+            }
         </div>
-        @*<div class="detail-row">
-            <label>Is Black White Image: </label>
+    </div>
+    @*<div class="detail-row">
+            <label>@Translator.Text("Vision.Color.IsBlackWhiteImageLabel"): </label>
             <span>@Model.IsBWImg</span>
         </div>*@
-    </div>
+</div>
 }

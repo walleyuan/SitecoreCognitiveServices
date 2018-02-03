@@ -1,8 +1,8 @@
-﻿
+﻿@using SitecoreCognitiveServices.Feature.ImageSearch.Statics
 @model SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Utility.IAnalyzeAll
 
 @{
-    ViewBag.Title = "Cognitive Services: Analyze All";
+    ViewBag.Title = Translator.Text("AnalyzeAll.Title");
     Layout = "~/Areas/SitecoreCognitiveServices/Views/CognitiveCommon/CognitiveLayout.cshtml";
 }
 
@@ -14,13 +14,15 @@
         <form class="form analyze-all-form" method="post" action="/SitecoreCognitiveServices/CognitiveImageSearch/AnalyzeAll" status="/SitecoreCognitiveServices/CognitiveImageSearch/GetJobStatus">
             <fieldset>
                 <div class="form-row">
-                    This will analyze all the descendant media items
+                    @Translator.Text("AnalyzeAll.Description")
                 </div>
             </fieldset>
             <fieldset>
                 <div class="form-row">
                     <input class="overwrite-value" type="checkbox" id="overwrite" name="overwrite" />
-                    <label for="overwrite">Overwrite Existing Analysis</label>
+                    <label for="overwrite">
+                        @Translator.Text("AnalyzeAll.Overwrite")
+                    </label>
                 </div>
                 <div>
                     <input type="hidden" id="id" name="id" value="@Model.ItemId" />
@@ -29,17 +31,17 @@
                 </div>
             </fieldset>
             <div class="scWizardButtons">
-                <button class="form-submit scButton scButtonPrimary">Analyze Descendents</button>
+                <button class="form-submit scButton scButtonPrimary">@Translator.Text("AnalyzeAll.ButtonText")</button>
             </div>
         </form>
         <div class="progress-indicator">
             <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
         </div>
         <div class="result-waiting">
-            Finding images to analyze...
+            @Translator.Text("AnalyzeAll.WaitingMessage")
         </div>
         <div class="result-display">
-            There are <span class="result-count"></span> items updated.
+            @Html.Raw(Translator.Text("AnalyzeAll.ResultMessage").Replace("{0}", "<span class=\"result-count\"></span>"))
         </div>
     }
 </div>

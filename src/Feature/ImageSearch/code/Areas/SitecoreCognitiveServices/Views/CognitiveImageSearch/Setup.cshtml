@@ -1,8 +1,8 @@
-﻿@using Sitecore.Data.Managers
+﻿@using SitecoreCognitiveServices.Feature.ImageSearch.Statics
 @model SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Setup.ISetupInformation
 
 @{
-    ViewBag.Title = "Cognitive Services: Image Search Setup";
+    ViewBag.Title = Translator.Text("Setup.ViewTitle");
     Layout = "~/Areas/SitecoreCognitiveServices/Views/CognitiveCommon/CognitiveLayout.cshtml";
 }
 
@@ -11,59 +11,59 @@
 <div class="frame editor-tab">
     @if (Model != null)
     {
-        <h2>Image Search Setup</h2>
+        <h2>@Translator.Text("Setup.FormHeading")</h2>
         <form class="form setup-form" method="post" action="/SitecoreCognitiveServices/CognitiveImageSearch/SetupSubmit">
             <div class="form-scrollable">
                 <fieldset>
                     <div class="form-row">
-                        <p>This is the setup page for the Cognitive Image Search. This form will help you get started quickly by asking you for the information required to start using the feature. </p>
+                        <p>@Translator.Text("Setup.Description")</p>
                     </div>
                     <div class="form-row">
-                        <p>To create the Cognitive Resources or get your existing keys, jump over to <a href="https://portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryFeaturedMenuItemBlade/selectedMenuItemId/CognitiveServices_MP/resetMenuId/" target="_blank">Azure Portal</a></p>
+                        <p>@Html.Raw(Translator.Text("Setup.AzureLink").Replace("{0}", "<a href=\"https://portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryFeaturedMenuItemBlade/selectedMenuItemId/CognitiveServices_MP/resetMenuId/\" target=\"_blank\">Azure Portal</a>"))</p>
                     </div>
                 </fieldset>
                 <fieldset>
                     <div class="result-success">
-                        The keys have been saved and tested. Start your analysis!
+                        @Translator.Text("Setup.SuccessMessage")
                     </div>
                     <div class="result-failure">
-                        The keys have been saved but <span class="item-list"></span> failed the test. Make sure you copied the right API keys from Azure.
+                        @Html.Raw(Translator.Text("Setup.FailureMessage").Replace("{0}", "<span class=\"item-list\"></span>"))
                     </div>
                 </fieldset>
                 <fieldset>
-                    <legend>Emotion API Key</legend>
+                    <legend>@Translator.Text("Setup.EmotionApiLabel")</legend>
                     <div class="form-row">
                         <input type="text" id="emotionApi" name="emotionApi" value="@Model.EmotionApiKey" />
                     </div>
-                    <legend>Emotion API Endpoint</legend>
+                    <legend>@Translator.Text("Setup.EmotionApiEndpointLabel")</legend>
                     <div class="form-row">
                         <input type="text" id="emotionApiEndpoint" name="emotionApiEndpoint" value="@Model.EmotionApiEndpoint" />
                     </div>
-                    <legend>Face API Key</legend>
+                    <legend>@Translator.Text("Setup.FaceApiLabel")</legend>
                     <div class="form-row">
                         <input type="text" id="faceApi" name="faceApi" value="@Model.FaceApiKey" />
                     </div>
-                    <legend>Face API Endpoint</legend>
+                    <legend>@Translator.Text("Setup.FaceApiEndpointLabel")</legend>
                     <div class="form-row">
                         <input type="text" id="faceApiEndpoint" name="faceApiEndpoint" value="@Model.FaceApiEndpoint" />
                     </div>
-                    <legend>Computer Vision API Key</legend>
+                    <legend>@Translator.Text("Setup.ComputerVisionApiLabel")</legend>
                     <div class="form-row">
                         <input type="text" id="computerVisionApi" name="computerVisionApi" value="@Model.ComputerVisionApiKey" />
                     </div>
-                    <legend>Computer Vision API Endpoint</legend>
+                    <legend>@Translator.Text("Setup.ComputerVisionApiEndpointLabel")</legend>
                     <div class="form-row">
                         <input type="text" id="computerVisionApiEndpoint" name="computerVisionApiEndpoint" value="@Model.ComputerVisionApiEndpoint" />
                     </div>
                 </fieldset>
             </div>
             <div class="scWizardButtons">
-                <button class="form-submit scButton scButtonPrimary">Save and Test API Keys</button>
+                <button class="form-submit scButton scButtonPrimary">@Translator.Text("Setup.ButtonText")</button>
             </div>
             <div class="progress-indicator">
                 <div class="progress-bg"></div>
                 <div class="progress-image">
-                    <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif"/>
+                    <img src="/sitecore/shell/themes/standard/Images/ProgressIndicator/sc-spinner32.gif" />
                 </div>
             </div>
         </form>

@@ -1,11 +1,12 @@
-﻿@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.Description
+﻿@using SitecoreCognitiveServices.Feature.ImageSearch.Statics
+@model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.Description
 
 @if (Model != null)
 {
     <div class="detail-box detail-description">
-        <h3>Description</h3>
+        <h3>@Translator.Text("Vision.Description.DescriptionHeading")</h3>
         <div class="detail-row">
-            <h4>Captions</h4>
+            <h4>@Translator.Text("Vision.Description.CaptionsHeading")</h4>
             <div>
                 @foreach (var cp in Model.Captions)
                 {
@@ -17,7 +18,7 @@
             </div>
         </div>
         <div class="detail-row">
-            <h4>Tags</h4>
+            <h4>@Translator.Text("Vision.Description.TagsHeading")</h4>
             <div class="tag-list">
                 <span>
                     @Html.Raw(string.Join("</span>, <span>", Model.Tags))

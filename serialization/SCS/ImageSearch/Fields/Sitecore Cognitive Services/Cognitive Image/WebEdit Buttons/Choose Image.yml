@@ -7,7 +7,7 @@ DB: core
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: Apps/32x32/dna.png
+  Value: office/32x32/eye_scan.png
 - ID: "1bb289d6-44d7-4fcc-af15-db32b841f957"
   Hint: Click
   Value: |
@@ -17,7 +17,7 @@ SharedFields:
   Value: 0
 - ID: "e8cc41c7-c304-4282-b782-e21ca32d324c"
   Hint: Icon
-  Value: Apps/32x32/dna.png
+  Value: office/32x32/eye_scan.png
 Languages:
 - Language: da
   Fields:

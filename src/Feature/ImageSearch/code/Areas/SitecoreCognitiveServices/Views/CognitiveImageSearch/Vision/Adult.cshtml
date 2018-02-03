@@ -1,12 +1,13 @@
-﻿@using Sitecore.Data.Managers
+﻿@using SitecoreCognitiveServices.Feature.ImageSearch.Statics
+@using Sitecore.Data.Managers
 @model SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer.Adult
 
 @if (Model != null)
 {
     <div class="detail-box detail-adult">
-        <h3>Adult</h3>
+        <h3>@Translator.Text("Vision.Adult.AdultHeading")</h3>
         <div class="detail-row">
-            <label>Adult: </label>
+            <label>@Translator.Text("Vision.Adult.AdultLabel"): </label>
             @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", (float)Model.AdultScore)
             <span class="tf-icon">
                 @if (Model.IsAdultContent)
@@ -20,7 +21,7 @@
             </span>
         </div>
         <div class="detail-row">
-            <label>Racy: </label>
+            <label>@Translator.Text("Vision.Adult.RacyLabel"): </label>
             @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml", (float)Model.RacyScore)
             <span class="tf-icon">
                 @if (Model.IsRacyContent)
