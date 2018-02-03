@@ -198,9 +198,9 @@
     <None Include="ReadMe.txt" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveCommon\CognitiveLayout.cshtml" />
     <None Include="Web.config" />
-    <None Include="Areas\SitecoreCognitiveServices\Views\CognitiveCommon\Web.config">
+    <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveCommon\Web.config">
       <SubType>Designer</SubType>
-    </None>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\IBMSDK\code\SitecoreCognitiveServices.Foundation.IBMSDK.csproj">
