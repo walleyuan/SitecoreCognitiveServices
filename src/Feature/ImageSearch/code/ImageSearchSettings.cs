@@ -10,13 +10,8 @@ using SitecoreCognitiveServices.Foundation.MSSDK;
 namespace SitecoreCognitiveServices.Feature.ImageSearch {
     public class ImageSearchSettings : IImageSearchSettings
     {
-        protected readonly IMicrosoftCognitiveServicesApiKeys _msApiKeys;
-       
-        public ImageSearchSettings(IMicrosoftCognitiveServicesApiKeys msApiKeys)
-        {
-            _msApiKeys = msApiKeys;
-        }
-
+        protected static IMicrosoftCognitiveServicesApiKeys _msApiKeys => DependencyResolver.Current.GetService<IMicrosoftCognitiveServicesApiKeys>();
+        
         public virtual string SitecoreIndexNameFormat => Settings.GetSetting("CognitiveService.ImageSearch.SitecoreIndexNameFormat");
         public virtual string CognitiveIndexNameFormat => Settings.GetSetting("CognitiveService.ImageSearch.CognitiveIndexNameFormat");
         public virtual string ImageAnalysisFolder => Settings.GetSetting("CognitiveService.ImageSearch.ImageAnalysisFolder");

@@ -290,6 +290,10 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             if (!IsSitecoreUser())
                 return LoginPage();
 
+            //publish the installed content
+            var imageSearchFolder = DataWrapper.ContentDatabase.GetItem(SearchSettings.ImageSearchFolderId);
+            SearchService.UpdateItemInIndex(imageSearchFolder, DataWrapper.ContentDatabase.Name);
+
             //get the congitive indexes build for the first time
             SearchService.RebuildCognitiveIndexes();
 

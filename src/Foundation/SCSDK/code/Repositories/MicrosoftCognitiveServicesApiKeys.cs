@@ -442,10 +442,10 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Repositories
 
         public string GetStringValue(string fieldName)
         {
-            return DataWrapper
-                .ContentDatabase
-                .GetItem(Settings.MSSDKId)
-                [fieldName];
+            return DataWrapper?
+                .ContentDatabase?
+                .GetItem(Settings.MSSDKId)?
+                [fieldName] ?? string.Empty;
         }
 
         public void SetValue(string fieldName, object value)
