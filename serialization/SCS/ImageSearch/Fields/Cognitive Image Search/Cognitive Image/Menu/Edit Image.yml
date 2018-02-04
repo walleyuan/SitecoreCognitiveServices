@@ -1,8 +1,8 @@
 ﻿---
-ID: "511f2b2d-1f69-4742-b45d-f738a3b4bfa9"
+ID: "4e3cc2fd-8165-4084-8e64-ce809ca3e5c1"
 Parent: "0bdb82f4-32b9-404b-b514-56a158e5f142"
 Template: "998b965e-6ab8-4568-810f-8101d60d0cc3"
-Path: /sitecore/system/Field types/Sitecore Cognitive Services/Cognitive Image/Menu/Open Media Library
+Path: /sitecore/system/Field types/Cognitive Image Search/Cognitive Image/Menu/Edit Image
 DB: core
 BranchID: "09b0eb6b-b6b6-4e40-8804-137a4cc14074"
 SharedFields:
@@ -16,25 +16,25 @@ SharedFields:
   Value: 0
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 300
+  Value: 400
 - ID: "cab694fc-e37c-44eb-9012-488b775cf638"
   Hint: Message
-  Value: "contentimage:load(id=$Target)"
+  Value: "contentimage:edit(id=$Target)"
 Languages:
 - Language: da
   Fields:
   - ID: "9b72a62b-2775-423d-b17a-ec34a9f31af8"
     Hint: Display name
-    Value: Åbn mediebibliotek
+    Value: Rediger billede
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Åbn mediebibliotek
+    Value: Rediger billede
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170614T103549Z
+      Value: 20170614T103656Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -43,16 +43,16 @@ Languages:
   Fields:
   - ID: "9b72a62b-2775-423d-b17a-ec34a9f31af8"
     Hint: Display name
-    Value: "Medien-Bibliothek öffnen"
+    Value: Bild bearbeiten
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: "Medien-Bibliothek öffnen"
+    Value: Bild bearbeiten
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170614T104058Z
+      Value: 20170614T104207Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -61,13 +61,13 @@ Languages:
   Fields:
   - ID: "9b72a62b-2775-423d-b17a-ec34a9f31af8"
     Hint: Display name
-    Value: Open media library
+    Value: Edit image
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20070416T093600Z
+      Value: 20070416T093653Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -76,16 +76,16 @@ Languages:
   Fields:
   - ID: "9b72a62b-2775-423d-b17a-ec34a9f31af8"
     Hint: Display name
-    Value: メディア ライブラリを開く
+    Value: 画像を編集する
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: メディア ライブラリを開く
+    Value: 画像を編集する
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170614T104444Z
+      Value: 20170614T104552Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

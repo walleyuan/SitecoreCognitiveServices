@@ -1,28 +1,31 @@
 ﻿---
-ID: "ac590d86-9f8b-4cf9-831d-b489cafdf982"
-Parent: "fb56b264-ea80-4616-9024-6e8938857021"
-Template: "f8a17d6a-118e-4cd7-b5f5-88ff37a4f237"
-Path: /sitecore/system/Field types/Sitecore Cognitive Services/Cognitive Image
+ID: "0bdb82f4-32b9-404b-b514-56a158e5f142"
+Parent: "ac590d86-9f8b-4cf9-831d-b489cafdf982"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/system/Field types/Cognitive Image Search/Cognitive Image/Menu
 DB: core
 SharedFields:
-- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
-  Hint: __Icon
-  Value: Applications/16x16/photo_scenery.png
-- ID: "0f0a5388-0467-4a45-95c0-729b1d6db9fd"
-  Hint: Control
-  Value: "cognitive:CognitiveImage"
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Type: tree list
+  Value: |
+    {09B0EB6B-B6B6-4E40-8804-137A4CC14074}
+    {52DECC09-A36C-465A-B532-4186ADA9C731}
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 0
 Languages:
 - Language: da
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Billede
+    Value: Menu
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170614T103620Z
+      Value: 20170614T103517Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -31,13 +34,13 @@ Languages:
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Bild
+    Value: Menü
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170614T104128Z
+      Value: 20170614T104028Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -53,17 +56,26 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\admin
+  - Version: 2
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20060410T155847
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
 - Language: "ja-JP"
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Image
+    Value: メニュー
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170614T104515Z
+      Value: 20170614T104414Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

@@ -1,0 +1,294 @@
+<project>
+  <Metadata>
+    <metadata>
+      <PackageName>Sitecore Cognitive Services: Image Search</PackageName>
+      <Author>Mark Stiles</Author>
+      <Version>8-1.0</Version>
+      <Revision />
+      <License />
+      <Comment />
+      <Attributes />
+      <Readme />
+      <Publisher />
+      <PostStep />
+      <PackageID />
+    </metadata>
+  </Metadata>
+  <SaveProject>True</SaveProject>
+  <Sources>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Image Search/{31FC1C9A-AA42-4710-B6E3-AB6028E867AD}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Image Search/Image Analysis Folder/__Standard Values/{C54B8DD9-69A8-41AA-9505-070ACCC9E4CE}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Image Search/Image Analysis Folder/{70130296-969D-44B3-B370-BCA46924D2B5}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Image Search/Image Analysis/__Standard Values/{77E59988-E198-47DD-BD60-04EE8E9EFC8D}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Image Search/Image Analysis/{84379FC9-E395-470F-9D6B-EA4A2654AE86}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Image Search/Image Analysis/Data/{9D8B0BA2-1455-4BFD-B469-627BCD2B371E}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Image Search/Image Analysis/Data/Analyzed Image/{39F1E0D0-78C7-4789-92E5-38F7CD1EE5FF}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Image Search/Image Analysis/Data/Emotional Analysis/{FCFA0E84-3F52-47A8-B2E2-715AD3FBD117}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Image Search/Image Analysis/Data/Facial Analysis/{31302037-4E73-4FF0-BB5C-70EFB6C8A22C}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Image Search/Image Analysis/Data/Textual Analysis/{BE68E325-972E-4E49-B2B7-6A0DAEC07714}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Image Search/Image Analysis/Data/Visual Analysis/{6CD3C4A7-4066-4E9F-AC54-77235545165E}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Image Search/Image Search Settings/__Standard Values/{07D335F9-3C05-41F2-934B-C5FC8866F98A}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Image Search/Image Search Settings/{715D655A-5F9D-41AD-B4D0-6B1A79A51EB9}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Image Search/Image Search Settings/Image Search Settings/{404D62D3-378D-4076-9D41-058960DD1548}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Image Search/Image Search Settings/Image Search Settings/Analyze New Images/{99B4CB00-A21A-43CB-A6FB-C17C11567F82}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms />
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>templates</Name>
+    </xitems>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/system/Modules/Sitecore Cognitive Services/Image Search/{8DE01E53-9B77-456E-AC39-E5A4104DA38C}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/Sitecore Cognitive Services/Image Search/Image Analysis/{DCA68A11-8670-4B60-B752-F95CBBC14E97}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/Sitecore Cognitive Services/Image Search/setup sample image/{ADD6D028-AEB2-46DE-ACA0-972DCB83422F}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms />
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>system</Name>
+    </xitems>
+    <xitems>
+      <Entries>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Chunks/Analysis/{447BB51F-5B3F-49F0-9516-53670091AC0B}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Chunks/Analysis/Analyze All Descendants/{8F3F9F34-BB4D-4D83-88B1-01E4839ED812}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Chunks/Analysis/Analyze/{E6F580AA-BD66-4B8A-B889-880A69C5A929}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Chunks/Analysis/Reanalyze/{45CEE63E-C484-4120-AAFA-6CFF9F8AD98C}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Chunks/Analysis/View Analysis/{06F3E7A2-3760-4D2F-8DB2-204BFACA681D}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Chunks/Utility/{E0160B8F-1E4B-48A6-8094-60FC97131623}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Chunks/Utility/Set Alt Tag/{22A4C53A-26F6-44AA-9B04-AD9DDFD492A3}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Chunks/Utility/Set Alt Tags On All Descendants/{85F4AB58-F1BB-4092-B96B-01C4ADBD2CEC}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Strips/Cognitive/Analysis/{BB7CB173-2878-4A38-878A-CDDB32B7683D}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Strips/Cognitive/Utility/{AAA42737-0B47-4E74-971F-91229394C679}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms />
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>ribbon</Name>
+    </xitems>
+    <xitems>
+      <Entries>
+        <x-item>/core/sitecore/system/Settings/Html Editor Profiles/Rich Text Default/Toolbar 1/Insert Image with Cognitive Search/{9EB9704A-40D1-45EE-8419-B4FF3B8C9CDD}/invariant/0</x-item>
+        <x-item>/core/sitecore/system/Settings/Html Editor Profiles/Rich Text Full/Toolbar 1/Insert Image with Cognitive Search/{9C074209-5D61-4F07-AEE0-40D0D83715AC}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>rich text editor button</Name>
+    </xitems>
+    <xitems>
+      <Entries>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Editors/Image Search/{9B084A61-EC71-4095-AF42-725C49A8135B}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Editors/Image Search/Setup/{5FF670F0-0170-480A-90F9-7EE75FB8A834}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms />
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>editor tab</Name>
+    </xitems>
+    <xfiles>
+      <Entries>
+        <x-item>/App_Config/Include/SitecoreCognitiveServices/SitecoreCognitiveServices.Feature.ImageSearch.config</x-item>
+        <x-item>/App_Config/Include/SitecoreCognitiveServices/SitecoreCognitiveServices.Feature.ImageSearch.Lucene.config</x-item>
+        <x-item>/App_Config/Include/SitecoreCognitiveServices/SitecoreCognitiveServices.Feature.ImageSearch.Solr.config.disabled</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>config</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/bin/SitecoreCognitiveServices.Feature.ImageSearch.dll</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>bin</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/css/chosen-sprite.png</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/css/chosen-sprite@2x.png</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/css/chosen.css</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/css/jquery-ui-1.12.1.min.css</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/css/SitecoreCognitiveServices.Feature.ImageSearch.css</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/jquery-ui-1.12.1.min.js</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/SitecoreCognitiveServices.Feature.ImageSearch.js</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/bower.json</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/chosen-sprite.png</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/chosen-sprite@2x.png</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/chosen.css</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/chosen.jquery.js</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/chosen.jquery.min.js</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/chosen.min.css</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/chosen.proto.js</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/chosen.proto.min.js</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/docsupport/</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/docsupport/chosen.png</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/docsupport/event.simulate.js</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/docsupport/oss-credit.png</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/docsupport/prism.css</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/docsupport/prism.js</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/docsupport/style.css</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/index.html</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/index.proto.html</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/options.html</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Assets/js/Chosen/package.json</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/AnalyzeAll.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/Rectangle.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Emotion/</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Emotion/Scores.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Face/</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Face/Attributes.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Face/Landmarks.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Face/Rectangle.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/ImageAnalysis.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/ImageDescription.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/ImageDescriptionThreshold.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/SearchForm.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Setup.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Vision/</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Vision/Adult.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Vision/Categories.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Vision/Color.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Vision/Description.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Vision/FaceRectangle.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Vision/Faces.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Vision/Rectangle.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Vision/Regions.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Vision/Tags.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Vision/Words.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/web.config</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>area</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/sitecore/shell/Controls/Rich Text Editor/RichText Commands.js</x-item>
+        <x-item>/sitecore/shell/Themes/Standard/Default/Content Manager.css</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>sitecore</Name>
+    </xfiles>
+    <xitems>
+      <Entries>
+        <x-item>/core/sitecore/system/Field types/Cognitive Image Search/{A2C231EF-95F2-40C9-B969-E72F288B28A7}/invariant/0</x-item>
+        <x-item>/core/sitecore/system/Field types/Cognitive Image Search/Cognitive Image/{AC590D86-9F8B-4CF9-831D-B489CAFDF982}/invariant/0</x-item>
+        <x-item>/core/sitecore/system/Field types/Cognitive Image Search/Cognitive Image/Menu/{0BDB82F4-32B9-404B-B514-56A158E5F142}/invariant/0</x-item>
+        <x-item>/core/sitecore/system/Field types/Cognitive Image Search/Cognitive Image/Menu/Browse/{01B0E16B-7B2D-4665-AB7B-00DD654EB120}/invariant/0</x-item>
+        <x-item>/core/sitecore/system/Field types/Cognitive Image Search/Cognitive Image/Menu/Clear/{3C3DAB6C-D150-45AB-9456-11A0F5184588}/invariant/0</x-item>
+        <x-item>/core/sitecore/system/Field types/Cognitive Image Search/Cognitive Image/Menu/Edit Image/{4E3CC2FD-8165-4084-8E64-CE809CA3E5C1}/invariant/0</x-item>
+        <x-item>/core/sitecore/system/Field types/Cognitive Image Search/Cognitive Image/Menu/Open Media Library/{511F2B2D-1F69-4742-B45D-F738A3B4BFA9}/invariant/0</x-item>
+        <x-item>/core/sitecore/system/Field types/Cognitive Image Search/Cognitive Image/Menu/Properties/{1D0BA8D1-F8A0-4830-96A6-71AC11D3708A}/invariant/0</x-item>
+        <x-item>/core/sitecore/system/Field types/Cognitive Image Search/Cognitive Image/Menu/Refresh/{611FE1E7-F554-430A-A920-78F1F197CCFF}/invariant/0</x-item>
+        <x-item>/core/sitecore/system/Field types/Cognitive Image Search/Cognitive Image/Menu/View Analysis/{2C497799-D07F-421F-BAD7-D4A1FB5B3222}/invariant/0</x-item>
+        <x-item>/core/sitecore/system/Field types/Cognitive Image Search/Cognitive Image/WebEdit Buttons/{B1EFA69E-8653-4E51-991C-E4ECF24EA30B}/invariant/0</x-item>
+        <x-item>/core/sitecore/system/Field types/Cognitive Image Search/Cognitive Image/WebEdit Buttons/Choose Image/{FA132569-83CE-407F-A93A-8F941688CB03}/invariant/0</x-item>
+        <x-item>/core/sitecore/system/Field types/Cognitive Image Search/Cognitive Image/WebEdit Buttons/Clear Image/{0331AFF6-4420-4157-8945-1B21AABDC5D5}/invariant/0</x-item>
+        <x-item>/core/sitecore/system/Field types/Cognitive Image Search/Cognitive Image/WebEdit Buttons/Image Properties/{2E010F04-13AD-4DFB-80B6-B6411A05431A}/invariant/0</x-item>
+        <x-item>/core/sitecore/system/Field types/Cognitive Image Search/Cognitive Image/WebEdit Buttons/View Analysis/{2E838BD6-BDAD-47A8-8F72-8B4A8F4290BB}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms />
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>field</Name>
+    </xitems>
+  </Sources>
+  <Converter>
+    <TrivialConverter>
+      <Transforms />
+    </TrivialConverter>
+  </Converter>
+  <Include />
+  <Exclude />
+  <Name />
+</project>

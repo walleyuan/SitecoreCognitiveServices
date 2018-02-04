@@ -1,63 +1,48 @@
 ﻿---
-ID: "1d0ba8d1-f8a0-4830-96a6-71ac11d3708a"
-Parent: "0bdb82f4-32b9-404b-b514-56a158e5f142"
-Template: "998b965e-6ab8-4568-810f-8101d60d0cc3"
-Path: /sitecore/system/Field types/Sitecore Cognitive Services/Cognitive Image/Menu/Properties
+ID: "ac590d86-9f8b-4cf9-831d-b489cafdf982"
+Parent: "a2c231ef-95f2-40c9-b969-e72f288b28a7"
+Template: "f8a17d6a-118e-4cd7-b5f5-88ff37a4f237"
+Path: /sitecore/system/Field types/Cognitive Image Search/Cognitive Image
 DB: core
-BranchID: "09b0eb6b-b6b6-4e40-8804-137a4cc14074"
 SharedFields:
-- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
-  Hint: __Masters
-  Type: tree list
-  Value: "{09B0EB6B-B6B6-4E40-8804-137A4CC14074}"
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 200
-- ID: "cab694fc-e37c-44eb-9012-488b775cf638"
-  Hint: Message
-  Value: "contentimage:properties(id=$Target)"
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Applications/16x16/photo_scenery.png
+- ID: "0f0a5388-0467-4a45-95c0-729b1d6db9fd"
+  Hint: Control
+  Value: "cognitive:CognitiveImage"
 Languages:
 - Language: da
   Fields:
-  - ID: "9b72a62b-2775-423d-b17a-ec34a9f31af8"
-    Hint: Display name
-    Value: Egenskaber
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Egenskaber
+    Value: Billede
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170614T103613Z
+      Value: 20170614T103620Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
         sitecore\admin
 - Language: "de-DE"
   Fields:
-  - ID: "9b72a62b-2775-423d-b17a-ec34a9f31af8"
-    Hint: Display name
-    Value: Eigenschaften
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Eigenschaften
+    Value: Bild
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170614T104121Z
+      Value: 20170614T104128Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
         sitecore\admin
 - Language: en
-  Fields:
-  - ID: "9b72a62b-2775-423d-b17a-ec34a9f31af8"
-    Hint: Display name
-    Value: Properties
   Versions:
   - Version: 1
     Fields:
@@ -70,18 +55,15 @@ Languages:
         sitecore\admin
 - Language: "ja-JP"
   Fields:
-  - ID: "9b72a62b-2775-423d-b17a-ec34a9f31af8"
-    Hint: Display name
-    Value: プロパティ
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: プロパティ
+    Value: Image
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170614T104507Z
+      Value: 20170614T104515Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

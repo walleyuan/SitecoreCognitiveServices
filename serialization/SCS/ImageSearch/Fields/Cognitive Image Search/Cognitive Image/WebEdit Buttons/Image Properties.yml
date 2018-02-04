@@ -1,41 +1,42 @@
 ﻿---
-ID: "2e838bd6-bdad-47a8-8f72-8b4a8f4290bb"
+ID: "2e010f04-13ad-4dfb-80b6-b6411a05431a"
 Parent: "b1efa69e-8653-4e51-991c-e4ecf24ea30b"
 Template: "02404208-46d4-49bf-988b-eb363a52a1c9"
-Path: /sitecore/system/Field types/Sitecore Cognitive Services/Cognitive Image/WebEdit Buttons/View Analysis
+Path: /sitecore/system/Field types/Cognitive Image Search/Cognitive Image/WebEdit Buttons/Image Properties
 DB: core
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: Apps/32x32/Investigation.png
+  Value: SoftwareV2/16x16/palette_preferences.png
 - ID: "1bb289d6-44d7-4fcc-af15-db32b841f957"
   Hint: Click
   Value: |
-    chrome:field:editcontrol({command:"cognitive:webeditviewanalysis"})
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 0
+    chrome:field:editcontrol({command:"webedit:editimage"})
+- ID: "dec8d2d5-e3cf-48b6-a653-8e69e2716641"
+  Hint: __Security
+  Value: |
+    ar|sitecore\Sitecore Minimal Page Editor|pd|-item:read|pe|-item:read|
 - ID: "e8cc41c7-c304-4282-b782-e21ca32d324c"
   Hint: Icon
-  Value: Apps/32x32/Investigation.png
+  Value: custom/16x16/photo_landscape2_edit.png
 Languages:
 - Language: da
   Fields:
   - ID: "371e0d96-4f00-4b80-ad14-6284e00493ba"
     Hint: Tooltip
-    Value: Vælg et billede
+    Value: Rediger billedets udseende.
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Vælg billede
+    Value: Egenskaber for billede
   - ID: "c523aba8-d1a1-4dcb-aeee-52635a4ab2ae"
     Hint: Header
-    Value: Vælg billede
+    Value: Egenskaber
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170614T103629Z
+      Value: 20170614T103608Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -44,19 +45,19 @@ Languages:
   Fields:
   - ID: "371e0d96-4f00-4b80-ad14-6284e00493ba"
     Hint: Tooltip
-    Value: Ein Bild auswählen
+    Value: Bilddarstellung anpassen
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Bild auswählen
+    Value: Eigenschaften importieren
   - ID: "c523aba8-d1a1-4dcb-aeee-52635a4ab2ae"
     Hint: Header
-    Value: Bild auswählen
+    Value: Eigenschaften
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170614T104137Z
+      Value: 20170614T104116Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -65,37 +66,37 @@ Languages:
   Fields:
   - ID: "371e0d96-4f00-4b80-ad14-6284e00493ba"
     Hint: Tooltip
-    Value: View Analysis
+    Value: Modify image appearance.
   - ID: "c523aba8-d1a1-4dcb-aeee-52635a4ab2ae"
     Hint: Header
-    Value: View Analysis
+    Value: Properties
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20080109T161000Z
+      Value: 20071015T142200
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\Admin
+        sitecore\admin
 - Language: "ja-JP"
   Fields:
   - ID: "371e0d96-4f00-4b80-ad14-6284e00493ba"
     Hint: Tooltip
-    Value: 画像を選択します
+    Value: 画像のプロパティを変更します
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: 画像を選択する
+    Value: 画像のプロパティ
   - ID: "c523aba8-d1a1-4dcb-aeee-52635a4ab2ae"
     Hint: Header
-    Value: 画像を選択する
+    Value: プロパティ
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170614T104523Z
+      Value: 20170614T104503Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

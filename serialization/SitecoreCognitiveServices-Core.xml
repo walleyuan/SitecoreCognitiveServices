@@ -1,0 +1,242 @@
+<project>
+  <Metadata>
+    <metadata>
+      <PackageName>Sitecore Cognitive Services: Core</PackageName>
+      <Author>Mark Stiles</Author>
+      <Version>8-1.0</Version>
+      <Revision />
+      <License />
+      <Comment />
+      <Attributes />
+      <Readme />
+      <Publisher />
+      <PostStep />
+      <PackageID />
+    </metadata>
+  </Metadata>
+  <SaveProject>True</SaveProject>
+  <Sources>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/{D7F5E50E-808F-4E71-9EAD-F8CE26CE49A8}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/{68ECA993-3CB0-414F-9B8C-070C38D692AC}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/API Folder/__Standard Values/{9747FF80-B53B-4581-B2F7-993299E2B510}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/API Folder/{3B515C61-9A23-46A6-8A57-4E7747DF9324}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/IBMSDK/__Standard Values/{02711023-99C8-4B96-B61B-01CF7D9A9D4B}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/IBMSDK/{1BF5B824-D391-4EAC-B33B-9DD514DCEC86}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/IBMSDK/Natural Language Classifier/{5CF155A1-9148-4E4A-B78A-C9C4FC2E6F72}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/IBMSDK/Natural Language Classifier/Natural Language Classifier Endpoint/{C3E64633-5F61-4FBB-8E3F-B9FACFA42CA0}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/IBMSDK/Natural Language Classifier/Natural Language Classifier Password/{F75DA91B-FFDE-41B5-9B8E-54CE9E0C5251}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/IBMSDK/Natural Language Classifier/Natural Language Classifier Retry In Seconds/{304BE91F-3A79-47A4-9BCF-A141D9FB4010}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/IBMSDK/Natural Language Classifier/Natural Language Classifier Username/{6B41BD56-8CBC-4BF7-9892-699B2882AE06}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/IBMSDK/Natural Language Classifier/Natural Language Classifier/{DA40BBC5-AFA3-4F4E-9CE3-E7626C4163EC}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/__Standard Values/{4CA9A0B5-B783-4299-A8C9-FB776375C40D}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/{8934C2B6-9C60-4E19-A03A-C09A991BD3E3}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Academic/{B7388993-FB06-48EA-B41F-40D6CEE1B678}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Academic/Academic Endpoint/{3EBA4A15-B69A-4ABF-9990-786787F9D083}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Academic/Academic Retry In Seconds/{E0C4F635-DAF8-4D1A-88D1-6D0E10446E88}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Academic/Academic/{76603B88-8571-4E62-A45F-90DE5C58F3B5}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Autosuggest/{FE3A2780-5014-4A67-8025-DC70E8AD481B}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Autosuggest/Bing Autosuggest Endpoint/{E84B41CD-CF03-47E7-A108-5A802F1B96BD}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Autosuggest/Bing Autosuggest Retry In Seconds/{F83EE498-051A-42B7-889F-6FE0129ADE44}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Autosuggest/Bing Autosuggest/{6A9CC2E1-739E-4B97-8FC8-27359B0C54AE}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Search/{C6E8CFD4-D682-4459-AB30-6AA706DBF8A7}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Search/Bing Search Endpoint/{8B3EEFAC-D464-47A9-92A6-EAE52B7343F4}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Search/Bing Search Retry In Seconds/{3DD8B523-F7CB-4C58-BCC1-EF563942CBD2}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Search/Bing Search/{5C57316F-765C-40EE-82C1-62417BE7FE71}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Speech/{4E786201-1299-4905-ABEB-96C3416895A4}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Speech/Bing Speech Enpoint/{B16BD9A1-1749-4240-B971-673B7742C3AB}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Speech/Bing Speech Retry In Seconds/{7CD0E9EB-A524-4423-8263-37F25BA340BE}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Speech/Bing Speech/{3C6D676A-3B25-4C65-86F6-A54AB489BA78}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Spell Check/{A076D8E4-6711-4906-A027-36BD1F3A3D41}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Spell Check/Bing Spell Check Endpoint/{19280BBA-089C-46BD-A26F-844F84E684AD}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Spell Check/Bing Spell Check Retry In Seconds/{63795EEF-0D7B-4C96-95AB-E5DC85C45C95}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Bing Spell Check/Bing Spell Check/{7542BDA3-15B0-464A-9013-CD2A5D4001F8}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Computer Vision/{8C03F07D-18AA-4C68-A587-F1C383A455BC}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Computer Vision/Computer Vision Endpoint/{0B065ECF-2040-47B0-8613-2FB956C46085}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Computer Vision/Computer Vision Retry In Seconds/{6B7CBCD9-09F6-4BB8-A0F2-8E6D5204F088}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Computer Vision/Computer Vision/{5B0A8E62-3E77-4EF8-98C3-1E754D9B3570}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Content Moderator/{A1DFD7C6-C0F0-4A40-9F78-BA520211E934}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Content Moderator/Content Moderator Client Id/{3A52B153-F1C7-4EB1-AF7A-DEC164630314}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Content Moderator/Content Moderator Endpoint/{CC2F753D-2F02-4DF1-B282-FD0119F70A1F}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Content Moderator/Content Moderator Private Key/{353604A1-617F-4375-92FE-2D20F1919C8F}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Content Moderator/Content Moderator Retry In Seconds/{48B97C2C-F601-4D2A-B97B-F36E19B8E182}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Content Moderator/Content Moderator/{F27C051D-FF17-4FE9-A16C-FC0F923F44BC}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Emotion/{7B5D10A0-161E-456E-9202-A0D115FCADCB}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Emotion/Emotion Endpoint/{DD55DB0C-E0F0-49AB-979A-63A465C1A94C}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Emotion/Emotion Retry In Seconds/{DFF1950C-EAC6-4C5C-98E6-E76F98684CB9}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Emotion/Emotion/{B0022739-2EC8-448B-B63A-3DD90C014419}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Entity Linking/{8BB8F274-CC8B-46B9-B61F-7D31FDF7F33F}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Entity Linking/Entity Linking Endpoint/{C0934F14-FCF4-46FB-9BF4-F7681736CFD7}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Entity Linking/Entity Linking Retry In Seconds/{D3A017FC-E32F-4636-BC87-FBA7EA5EAA92}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Entity Linking/Entity Linking/{EE67B88F-A4F9-4FA1-95EC-3FB0B23534B6}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Face/{9163AEC7-AFC1-4717-8518-D8D893BDE10E}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Face/Face Endpoint/{EA157DD1-3978-4F40-B99A-020DD8F38EC6}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Face/Face Retry In Seconds/{8FE5D953-7CE1-4A15-B226-91763C4F0E3A}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Face/Face/{382B7F16-CF03-426C-89DF-A4AF7909B49A}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Linguistic Analysis/{BFEA5125-8B99-40A2-89BB-13ECFB76345B}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Linguistic Analysis/Linguistic Analysis Endpoint/{88996F15-9A11-4B4E-B486-D1593A0BA38A}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Linguistic Analysis/Linguistic Analysis Retry In Seconds/{7E7AB32F-04D8-4E1E-8E14-A8A88A686C4D}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Linguistic Analysis/Linguistic Analysis/{7DFDC980-F998-4135-ABFD-8491D6E5F329}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Luis/{6E05BE53-63D2-417F-9E1D-7249E4FFD1E8}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Luis/Luis Endpoint/{E5202D27-3E41-492D-958C-192D201FB15A}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Luis/Luis Retry In Seconds/{2A55F21B-A603-4DB5-AFF9-31AD63DE1179}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Luis/Luis/{33343AC0-0F3B-44D1-8131-F8832A184059}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Q n A/{522AB6E1-9E99-4B79-B24F-E70B4A35ED8A}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Q n A/Q n A Endpoint/{B4128F27-9669-44E1-9DA8-F7A503AB1B92}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Q n A/Q n A Retry In Seconds/{6ACBFBB7-11A8-4AA5-BF27-D37BF3E5311B}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Q n A/Q n A/{0585E379-D2AD-43E3-96C3-48102524F0FC}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Recommendations/{F0F7A54A-97D0-4CF9-8BA0-D5A70D35087A}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Recommendations/Recommendations Endpoint/{3F4382F3-F4CE-418A-BA84-F5A1C897F037}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Recommendations/Recommendations Retry In Seconds/{73E90D65-9402-4242-9040-DE777B5AADC2}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Recommendations/Recommendations/{E0562F48-1AFA-42A2-86A6-1AA99B369EC6}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Speaker Recognition/{6D1D4E04-35B0-4ED5-A50C-9F6201382DF4}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Speaker Recognition/Speaker Recognition Endpoint/{0367E70A-0DA5-44CC-8B3D-C1AD46E29235}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Speaker Recognition/Speaker Recognition Retry In Seconds/{B8BBF469-0D09-4957-BE69-856028DE28AB}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Speaker Recognition/Speaker Recognition/{7864B951-EF10-4711-905B-761FB3EC193A}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Text Analytics/{6D233BC4-F83D-4C5B-8D73-926122314CE9}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Text Analytics/Text Analytics Endpoint/{395E3222-8CAD-4B63-9967-C5E6F689FE45}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Text Analytics/Text Analytics Retry In Seconds/{97B271E6-D3E9-42DE-9BE7-F1B789AB2E3E}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Text Analytics/Text Analytics/{27C94D4C-0AF9-4101-9369-103C601B3657}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Video/{230545A7-65C1-4F90-B108-CFAF9FCA8149}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Video/Video Endpoint/{C5942F90-FD38-4E30-85B0-BE3A6A8CA164}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Video/Video Retry In Seconds/{D0B75D66-B5C1-4540-90A0-2F83FC531369}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/Video/Video/{085F7F9C-67EC-4D22-AE14-A7FE806C1F21}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/WebLM/{3AC97453-479B-426C-AF4F-8DC6E290D4F0}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/WebLM/WebLM Endpoint/{556A994C-24B2-4810-AABA-F83C0A63AD9C}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/WebLM/WebLM Retry In Seconds/{AE429B42-3211-4BAA-B1F2-C17045C53ED5}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/APIs/MSSDK/WebLM/WebLM/{1324521E-BD2A-4153-BB88-E71451A2B654}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/Sitecore Cognitive Services Settings Folder/__Standard Values/{89E7BEEF-9A55-44C6-8E25-5A9C70A6A069}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/SCSDK/Sitecore Cognitive Services Settings Folder/{487DE98D-61B3-4053-A65C-3A22F3AF730B}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms />
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>templates</Name>
+    </xitems>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/system/Modules/Sitecore Cognitive Services/{00E3DE41-11A3-4295-9767-9DD3DC832C02}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/Sitecore Cognitive Services/APIs/{A5B69884-D96C-4394-BB4D-0D1711E0B0E8}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/Sitecore Cognitive Services/APIs/IBMSDK/{503A5B1D-6F2F-41EC-9A77-AE1DAA37A987}/invariant/0</x-item>
+        <x-item>/master/sitecore/system/Modules/Sitecore Cognitive Services/APIs/MSSDK/{03BAF8AE-03CB-4E30-875C-0901EBA6A163}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms />
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>system</Name>
+    </xitems>
+    <xitems>
+      <Entries>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Ribbons/Default/Cognitive/{A32B5FCE-3C8D-455B-BB10-DD520E296725}/invariant/0</x-item>
+        <x-item>/core/sitecore/content/Applications/Content Editor/Ribbons/Strips/Cognitive/{BA403DC2-D8EE-49BA-96A0-A841596FA221}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms />
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>ribbon</Name>
+    </xitems>
+    <xfiles>
+      <Entries>
+        <x-item>/App_Config/Include/SitecoreCognitiveServices/SitecoreCognitiveServices.Foundation.SCSDK.config</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>config</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/bin/Polly.dll</x-item>
+        <x-item>/bin/SitecoreCognitiveServices.Foundation.IBMSDK.dll</x-item>
+        <x-item>/bin/SitecoreCognitiveServices.Foundation.MSSDK.dll</x-item>
+        <x-item>/bin/SitecoreCognitiveServices.Foundation.SCSDK.dll</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>bins</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveCommon/CognitiveLayout.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveCommon/Web.config</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>area</Name>
+    </xfiles>
+    <xitems>
+      <Entries>
+        <x-item>/core/sitecore/templates/Sitecore Cognitive Services/{63BA4CFC-F394-4EC1-911D-4FC50E7B417B}/invariant/0</x-item>
+        <x-item>/core/sitecore/templates/Sitecore Cognitive Services/Field Folder/{E326D431-0B80-48AE-B881-65DB8C9477A8}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>templates - core</Name>
+    </xitems>
+  </Sources>
+  <Converter>
+    <TrivialConverter>
+      <Transforms />
+    </TrivialConverter>
+  </Converter>
+  <Include />
+  <Exclude />
+  <Name />
+</project>
