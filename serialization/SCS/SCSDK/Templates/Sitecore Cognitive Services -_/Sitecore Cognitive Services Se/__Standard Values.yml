@@ -1,0 +1,18 @@
+﻿---
+ID: "89e7beef-9a55-44c6-8e25-5a9c70a6a069"
+Parent: "487de98d-61b3-4053-a65c-3a22f3af730b"
+Template: "487de98d-61b3-4053-a65c-3a22f3af730b"
+Path: "/sitecore/templates/Sitecore Cognitive Services - SCSDK/Sitecore Cognitive Services Settings Folder/__Standard Values"
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180101T183030Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin

@@ -1,0 +1,22 @@
+﻿---
+ID: "02711023-99c8-4b96-b61b-01cf7d9a9d4b"
+Parent: "1bf5b824-d391-4eac-b33b-9dd514dcec86"
+Template: "1bf5b824-d391-4eac-b33b-9dd514dcec86"
+Path: "/sitecore/templates/Sitecore Cognitive Services - SCSDK/APIs/IBMSDK/__Standard Values"
+DB: master
+SharedFields:
+- ID: "c3e64633-5f61-4fbb-8e3f-b9facfa42ca0"
+  Hint: Natural Language Classifier Endpoint
+  Value: "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180101T193345Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
