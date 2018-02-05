@@ -206,30 +206,6 @@
       <Exclude />
       <Name>area</Name>
     </xfiles>
-    <xitems>
-      <Entries>
-        <x-item>/core/sitecore/templates/Sitecore Cognitive Services/{63BA4CFC-F394-4EC1-911D-4FC50E7B417B}/invariant/0</x-item>
-        <x-item>/core/sitecore/templates/Sitecore Cognitive Services/Field Folder/{E326D431-0B80-48AE-B881-65DB8C9477A8}/invariant/0</x-item>
-      </Entries>
-      <SkipVersions>False</SkipVersions>
-      <Converter>
-        <ItemToEntryConverter>
-          <Transforms>
-            <InstallerConfigurationTransform>
-              <Options>
-                <BehaviourOptions>
-                  <ItemMode>Undefined</ItemMode>
-                  <ItemMergeMode>Undefined</ItemMergeMode>
-                </BehaviourOptions>
-              </Options>
-            </InstallerConfigurationTransform>
-          </Transforms>
-        </ItemToEntryConverter>
-      </Converter>
-      <Include />
-      <Exclude />
-      <Name>templates - core</Name>
-    </xitems>
   </Sources>
   <Converter>
     <TrivialConverter>
