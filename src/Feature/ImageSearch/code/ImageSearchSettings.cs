@@ -27,7 +27,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
         public virtual ID ImageSearchFolderId => new ID("{8DE01E53-9B77-456E-AC39-E5A4104DA38C}");
         public virtual string AnalyzeNewImageField => "Analyze New Images";
         public virtual ID BlogFieldId => new ID("{40E50ED9-BA07-4702-992E-A912738D32DC}");
-        public virtual ID ImageSearchFieldFolderId => new ID("{0588AE4D-A0F4-446E-A4DB-7FB65DCD4183}");
+        public virtual ID ImageSearchFieldFolderId => new ID("{A2C231EF-95F2-40C9-B969-E72F288B28A7}");
         public virtual string DictionaryDomain => "Image Search Dictionary";
         public bool MissingKeys()
         {
