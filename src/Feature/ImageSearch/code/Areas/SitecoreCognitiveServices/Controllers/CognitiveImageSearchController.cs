@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.Jobs;
@@ -298,18 +299,22 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             SearchService.RebuildCognitiveIndexes();
 
             //save items to fields
-            if (MSCSApiKeys.Emotion != emotionApi)
-                MSCSApiKeys.Emotion = emotionApi;
-            if (MSCSApiKeys.EmotionEndpoint != emotionApiEndpoint)
-                MSCSApiKeys.EmotionEndpoint = emotionApiEndpoint;
-            if (MSCSApiKeys.Face != faceApi)
-                MSCSApiKeys.Face = faceApi;
-            if (MSCSApiKeys.FaceEndpoint != faceApiEndpoint)
-                MSCSApiKeys.FaceEndpoint = faceApiEndpoint;
-            if (MSCSApiKeys.ComputerVision != computerVisionApi)
-                MSCSApiKeys.ComputerVision = computerVisionApi;
-            if (MSCSApiKeys.ComputerVisionEndpoint != computerVisionApiEndpoint)
-                MSCSApiKeys.ComputerVisionEndpoint = computerVisionApiEndpoint;
+            var db = Sitecore.Configuration.Factory.GetDatabase(SearchSettings.ContentDatabase);
+            using (new DatabaseSwitcher(db))
+            {
+                if (MSCSApiKeys.Emotion != emotionApi)
+                    MSCSApiKeys.Emotion = emotionApi;
+                if (MSCSApiKeys.EmotionEndpoint != emotionApiEndpoint)
+                    MSCSApiKeys.EmotionEndpoint = emotionApiEndpoint;
+                if (MSCSApiKeys.Face != faceApi)
+                    MSCSApiKeys.Face = faceApi;
+                if (MSCSApiKeys.FaceEndpoint != faceApiEndpoint)
+                    MSCSApiKeys.FaceEndpoint = faceApiEndpoint;
+                if (MSCSApiKeys.ComputerVision != computerVisionApi)
+                    MSCSApiKeys.ComputerVision = computerVisionApi;
+                if (MSCSApiKeys.ComputerVisionEndpoint != computerVisionApiEndpoint)
+                    MSCSApiKeys.ComputerVisionEndpoint = computerVisionApiEndpoint;
+            }
 
             //get the sample image and analyze it to test responses
             Item sampleImage = DataWrapper.ContentDatabase.GetItem(SearchSettings.SampleImage);

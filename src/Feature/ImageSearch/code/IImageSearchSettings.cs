@@ -7,6 +7,7 @@ using Sitecore.Data;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch {
     public interface IImageSearchSettings {
+        string ContentDatabase { get; }
         string SitecoreIndexNameFormat { get; }
         string CognitiveIndexNameFormat { get; }
         string ImageAnalysisFolder { get; }

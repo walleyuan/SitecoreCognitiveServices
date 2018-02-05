@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Sitecore.Data;
+using Sitecore.Globalization;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Statics
 {
@@ -9,7 +11,13 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Statics
     {
         public static string Text(string key)
         {
-            return Sitecore.Globalization.Translate.TextByDomain(new ImageSearchSettings().DictionaryDomain, key) ?? string.Empty;
+            var settings = new ImageSearchSettings();
+            var db = Sitecore.Configuration.Factory.GetDatabase(settings.ContentDatabase);
+
+            using (new DatabaseSwitcher(db))
+            {
+                return Translate.TextByDomain(settings.DictionaryDomain, key) ?? string.Empty;
+            }
         }
     }
 }

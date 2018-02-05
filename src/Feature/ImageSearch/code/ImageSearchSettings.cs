@@ -11,7 +11,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
     public class ImageSearchSettings : IImageSearchSettings
     {
         protected static IMicrosoftCognitiveServicesApiKeys _msApiKeys => DependencyResolver.Current.GetService<IMicrosoftCognitiveServicesApiKeys>();
-        
+
+        public virtual string ContentDatabase => Settings.GetSetting("CognitiveService.ImageSearch.ContentDatabase");
         public virtual string SitecoreIndexNameFormat => Settings.GetSetting("CognitiveService.ImageSearch.SitecoreIndexNameFormat");
         public virtual string CognitiveIndexNameFormat => Settings.GetSetting("CognitiveService.ImageSearch.CognitiveIndexNameFormat");
         public virtual string ImageAnalysisFolder => Settings.GetSetting("CognitiveService.ImageSearch.ImageAnalysisFolder");

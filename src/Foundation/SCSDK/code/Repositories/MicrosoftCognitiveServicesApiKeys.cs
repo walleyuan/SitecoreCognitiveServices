@@ -1,6 +1,7 @@
 ﻿using System;
 using SitecoreCognitiveServices.Foundation.MSSDK;
 using Sitecore.Configuration;
+using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
@@ -442,10 +443,17 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Repositories
 
         public string GetStringValue(string fieldName)
         {
-            return DataWrapper?
+            Item i = DataWrapper?
                 .ContentDatabase?
-                .GetItem(Settings.MSSDKId)?
-                [fieldName] ?? string.Empty;
+                .GetItem(Settings.MSSDKId);
+            if (i == null)
+                return string.Empty;
+
+            Field f = i.Fields[fieldName];
+            if(f == null)
+                return string.Empty;
+
+            return f.Value;
         }
 
         public void SetValue(string fieldName, object value)
