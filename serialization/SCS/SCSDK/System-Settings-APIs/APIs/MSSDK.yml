@@ -4,6 +4,16 @@ Parent: "a5b69884-d96c-4394-bb4d-0d1711e0b0e8"
 Template: "8934c2b6-9c60-4e19-a03a-c09a991bd3e3"
 Path: /sitecore/system/Modules/Sitecore Cognitive Services/APIs/MSSDK
 DB: master
+SharedFields:
+- ID: "0b065ecf-2040-47b0-8613-2fb956c46085"
+  Hint: Computer Vision Endpoint
+  Value: "https://westus.api.cognitive.microsoft.com/vision/v1.0/"
+- ID: "dd55db0c-e0f0-49ab-979a-63a465c1a94c"
+  Hint: Emotion Endpoint
+  Value: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/"
+- ID: "ea157dd1-3978-4f40-b99a-020dd8f38ec6"
+  Hint: Face Endpoint
+  Value: "https://eastus2.api.cognitive.microsoft.com/face/v1.0/"
 Languages:
 - Language: en
   Versions:
