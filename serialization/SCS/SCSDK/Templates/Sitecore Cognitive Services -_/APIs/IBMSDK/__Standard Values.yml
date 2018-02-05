@@ -5,6 +5,9 @@ Template: "1bf5b824-d391-4eac-b33b-9dd514dcec86"
 Path: "/sitecore/templates/Sitecore Cognitive Services - SCSDK/APIs/IBMSDK/__Standard Values"
 DB: master
 SharedFields:
+- ID: "304be91f-3a79-47a4-9bcf-a141d9fb4010"
+  Hint: Natural Language Classifier Retry In Seconds
+  Value: 0
 - ID: "c3e64633-5f61-4fbb-8e3f-b9facfa42ca0"
   Hint: Natural Language Classifier Endpoint
   Value: "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/"

@@ -14,6 +14,9 @@ SharedFields:
 - ID: "ea157dd1-3978-4f40-b99a-020dd8f38ec6"
   Hint: Face Endpoint
   Value: "https://eastus2.api.cognitive.microsoft.com/face/v1.0/"
+- ID: "f83ee498-051a-42b7-889f-6fe0129ade44"
+  Hint: Bing Autosuggest Retry In Seconds
+  Value: 0
 Languages:
 - Language: en
   Versions:
