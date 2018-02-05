@@ -280,10 +280,15 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
         {
             if (!IsSitecoreUser())
                 return LoginPage();
-            
-            ISetupInformation info = SetupFactory.Create();
 
-            return View("Setup", info);
+
+            var db = Sitecore.Configuration.Factory.GetDatabase(SearchSettings.ContentDatabase);
+            using (new DatabaseSwitcher(db))
+            {
+                ISetupInformation info = SetupFactory.Create();
+
+                return View("Setup", info);
+            }
         }
 
         public ActionResult SetupSubmit(string emotionApi, string emotionApiEndpoint, string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint)
@@ -291,14 +296,15 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             if (!IsSitecoreUser())
                 return LoginPage();
 
-            //publish the installed content
-            var imageSearchFolder = DataWrapper.ContentDatabase.GetItem(SearchSettings.ImageSearchFolderId);
-            SearchService.UpdateItemInIndex(imageSearchFolder, DataWrapper.ContentDatabase.Name);
-
-            //get the congitive indexes build for the first time
-            SearchService.RebuildCognitiveIndexes();
+            //change the field folder to a sitecore folder from a node
+            var coreDb = Sitecore.Configuration.Factory.GetDatabase("core");
+            var template = coreDb.Templates["common/folder"];
+            var fieldFolderItem = coreDb.GetItem(SearchSettings.ImageSearchFieldFolderId);
+            fieldFolderItem.ChangeTemplate(template);
 
             //save items to fields
+            ICognitiveImageAnalysis analysis = null;
+            var items = new List<string>();
             var db = Sitecore.Configuration.Factory.GetDatabase(SearchSettings.ContentDatabase);
             using (new DatabaseSwitcher(db))
             {
@@ -314,19 +320,25 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
                     MSCSApiKeys.ComputerVision = computerVisionApi;
                 if (MSCSApiKeys.ComputerVisionEndpoint != computerVisionApiEndpoint)
                     MSCSApiKeys.ComputerVisionEndpoint = computerVisionApiEndpoint;
+                
+                //get the sample image and analyze it to test responses
+                Item sampleImage = DataWrapper.ContentDatabase.GetItem(SearchSettings.SampleImage);
+                analysis = AnalysisService.AnalyzeImage(sampleImage);
+                if (analysis == null || analysis.EmotionAnalysis?.Length < 1)
+                    items.Add("Emotion API"); 
+                if (analysis == null || analysis.FacialAnalysis?.Length < 1)
+                    items.Add("Face API");
+                if (analysis?.TextAnalysis?.Regions == null || analysis?.VisionAnalysis?.Description == null)
+                    items.Add("Computer Vision API");
             }
 
-            //get the sample image and analyze it to test responses
-            Item sampleImage = DataWrapper.ContentDatabase.GetItem(SearchSettings.SampleImage);
-            var analysis = AnalysisService.AnalyzeImage(sampleImage);
-            var items = new List<string>();
-            if (analysis == null || analysis.EmotionAnalysis?.Length < 1)
-                items.Add("Emotion API"); 
-            if (analysis == null || analysis.FacialAnalysis?.Length < 1)
-                items.Add("Face API");
-            if (analysis?.TextAnalysis?.Regions == null || analysis?.VisionAnalysis?.Description == null)
-                items.Add("Computer Vision API");
-            
+            //publish the installed content
+            var imageSearchFolder = DataWrapper.ContentDatabase.GetItem(SearchSettings.ImageSearchFolderId);
+            SearchService.UpdateItemInIndex(imageSearchFolder, DataWrapper.ContentDatabase.Name);
+
+            //get the congitive indexes build for the first time
+            SearchService.RebuildCognitiveIndexes();
+
             return Json(new
             {
                 Failed = (analysis == null || items.Count > 0),

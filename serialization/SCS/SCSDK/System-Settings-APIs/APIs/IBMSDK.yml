@@ -4,6 +4,10 @@ Parent: "a5b69884-d96c-4394-bb4d-0d1711e0b0e8"
 Template: "1bf5b824-d391-4eac-b33b-9dd514dcec86"
 Path: /sitecore/system/Modules/Sitecore Cognitive Services/APIs/IBMSDK
 DB: master
+SharedFields:
+- ID: "304be91f-3a79-47a4-9bcf-a141d9fb4010"
+  Hint: Natural Language Classifier Retry In Seconds
+  Value: 1
 Languages:
 - Language: en
   Versions:

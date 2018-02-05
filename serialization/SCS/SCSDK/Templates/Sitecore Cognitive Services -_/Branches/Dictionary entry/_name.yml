@@ -2,7 +2,7 @@
 ID: "a473f5da-770d-4ce6-a868-450d6dfcab24"
 Parent: "25672703-93bd-4056-88a4-9c20ec501967"
 Template: "6d1cd897-1936-4a3a-a511-289a94c2a7b1"
-Path: /sitecore/templates/Sitecore Cognitive Services/SCSDK/Branches/Dictionary entry/$name
+Path: /sitecore/templates/Sitecore Cognitive Services - SCSDK/Branches/Dictionary entry/$name
 DB: master
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
