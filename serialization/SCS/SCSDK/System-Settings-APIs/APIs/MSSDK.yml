@@ -8,6 +8,15 @@ SharedFields:
 - ID: "0b065ecf-2040-47b0-8613-2fb956c46085"
   Hint: Computer Vision Endpoint
   Value: "https://westus.api.cognitive.microsoft.com/vision/v1.0/"
+- ID: "382b7f16-cf03-426c-89df-a4af7909b49a"
+  Hint: Face
+  Value: 
+- ID: "5b0a8e62-3e77-4ef8-98c3-1e754d9b3570"
+  Hint: Computer Vision
+  Value: 
+- ID: "b0022739-2ec8-448b-b63a-3dd90c014419"
+  Hint: Emotion
+  Value: 
 - ID: "dd55db0c-e0f0-49ab-979a-63a465c1a94c"
   Hint: Emotion Endpoint
   Value: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/"
