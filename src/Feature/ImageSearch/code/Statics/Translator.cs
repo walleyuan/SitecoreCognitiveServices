@@ -12,7 +12,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Statics
         public static string Text(string key)
         {
             var settings = new ImageSearchSettings();
-            var db = Sitecore.Configuration.Factory.GetDatabase(settings.ContentDatabase);
+            var db = Sitecore.Configuration.Factory.GetDatabase(settings.MasterDatabase);
 
             using (new DatabaseSwitcher(db))
             {

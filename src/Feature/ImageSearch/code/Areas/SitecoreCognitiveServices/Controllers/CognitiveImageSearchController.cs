@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Sitecore.Configuration;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
@@ -282,7 +283,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
                 return LoginPage();
 
 
-            var db = Sitecore.Configuration.Factory.GetDatabase(SearchSettings.ContentDatabase);
+            var db = Sitecore.Configuration.Factory.GetDatabase(SearchSettings.MasterDatabase);
             using (new DatabaseSwitcher(db))
             {
                 ISetupInformation info = SetupFactory.Create();
@@ -295,17 +296,11 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
         {
             if (!IsSitecoreUser())
                 return LoginPage();
-
-            //change the field folder to a sitecore folder from a node
-            var coreDb = Sitecore.Configuration.Factory.GetDatabase("core");
-            var template = coreDb.Templates["common/folder"];
-            var fieldFolderItem = coreDb.GetItem(SearchSettings.ImageSearchFieldFolderId);
-            fieldFolderItem.ChangeTemplate(template);
-
+            
             //save items to fields
             ICognitiveImageAnalysis analysis = null;
             var items = new List<string>();
-            var db = Sitecore.Configuration.Factory.GetDatabase(SearchSettings.ContentDatabase);
+            var db = Factory.GetDatabase(SearchSettings.MasterDatabase);
             using (new DatabaseSwitcher(db))
             {
                 if (MSCSApiKeys.Emotion != emotionApi)
@@ -322,7 +317,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
                     MSCSApiKeys.ComputerVisionEndpoint = computerVisionApiEndpoint;
                 
                 //get the sample image and analyze it to test responses
-                Item sampleImage = DataWrapper.ContentDatabase.GetItem(SearchSettings.SampleImage);
+                Item sampleImage = DataWrapper.ContentDatabase.GetItem(SearchSettings.SampleImageId);
                 analysis = AnalysisService.AnalyzeImage(sampleImage);
                 if (analysis == null || analysis.EmotionAnalysis?.Length < 1)
                     items.Add("Emotion API"); 
@@ -331,6 +326,23 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
                 if (analysis?.TextAnalysis?.Regions == null || analysis?.VisionAnalysis?.Description == null)
                     items.Add("Computer Vision API");
             }
+
+            //change the field folder to a sitecore folder from a node
+            var coreDb = Factory.GetDatabase(SearchSettings.CoreDatabase);
+            if (coreDb != null)
+            {
+                var template = coreDb.Templates["common/folder"];
+                var fieldFolderItem = coreDb.GetItem(SearchSettings.ImageSearchFieldFolderId);
+                if (fieldFolderItem != null)
+                    fieldFolderItem.ChangeTemplate(template);
+                else
+                    items.Add("Field Folder in Core");
+            }
+            else
+            {
+                items.Add($"{SearchSettings.CoreDatabase} database");
+            }
+            
 
             //publish the installed content
             var imageSearchFolder = DataWrapper.ContentDatabase.GetItem(SearchSettings.ImageSearchFolderId);

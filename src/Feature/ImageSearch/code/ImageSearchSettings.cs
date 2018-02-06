@@ -12,23 +12,24 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
     {
         protected static IMicrosoftCognitiveServicesApiKeys _msApiKeys => DependencyResolver.Current.GetService<IMicrosoftCognitiveServicesApiKeys>();
 
-        public virtual string ContentDatabase => Settings.GetSetting("CognitiveService.ImageSearch.ContentDatabase");
+        public virtual string MasterDatabase => Settings.GetSetting("CognitiveService.ImageSearch.MasterDatabase");
+        public virtual string CoreDatabase => Settings.GetSetting("CognitiveService.ImageSearch.CoreDatabase");
         public virtual string SitecoreIndexNameFormat => Settings.GetSetting("CognitiveService.ImageSearch.SitecoreIndexNameFormat");
         public virtual string CognitiveIndexNameFormat => Settings.GetSetting("CognitiveService.ImageSearch.CognitiveIndexNameFormat");
+        public virtual string VisualAnalysisField => Settings.GetSetting("CognitiveService.ImageSearch.VisualAnalysisField");
+        public virtual string TextualAnalysisField => Settings.GetSetting("CognitiveService.ImageSearch.TextualAnalysisField");
+        public virtual string FacialAnalysisField => Settings.GetSetting("CognitiveService.ImageSearch.FacialAnalysisField");
+        public virtual string EmotionalAnalysisField => Settings.GetSetting("CognitiveService.ImageSearch.EmotionalAnalysisField");
+        public virtual string AnalyzedImageField => Settings.GetSetting("CognitiveService.ImageSearch.AnalyzedImageField");
+        public virtual string AnalyzeNewImageField => Settings.GetSetting("CognitiveService.ImageSearch.AnalyzeNewImageField");
         public virtual string ImageAnalysisFolder => Settings.GetSetting("CognitiveService.ImageSearch.ImageAnalysisFolder");
         public virtual string ImageAnalysisTemplate => Settings.GetSetting("CognitiveService.ImageSearch.ImageAnalysisTemplate");
-        public virtual string VisualAnalysisField => "Visual Analysis";
-        public virtual string TextualAnalysisField => "Textual Analysis";
-        public virtual string FacialAnalysisField => "Facial Analysis";
-        public virtual string EmotionalAnalysisField => "Emotional Analysis";
-        public virtual string AnalyzedImageField => "Analyzed Image";
-        public virtual ID ImageAnalysisFolderId => new ID("{DCA68A11-8670-4B60-B752-F95CBBC14E97}");
-        public virtual ID SampleImage => new ID("{ADD6D028-AEB2-46DE-ACA0-972DCB83422F}");
-        public virtual ID ImageSearchFolderId => new ID("{8DE01E53-9B77-456E-AC39-E5A4104DA38C}");
-        public virtual string AnalyzeNewImageField => "Analyze New Images";
-        public virtual ID BlogFieldId => new ID("{40E50ED9-BA07-4702-992E-A912738D32DC}");
-        public virtual ID ImageSearchFieldFolderId => new ID("{A2C231EF-95F2-40C9-B969-E72F288B28A7}");
-        public virtual string DictionaryDomain => "Image Search Dictionary";
+        public virtual ID ImageAnalysisFolderId => new ID(Settings.GetSetting("CognitiveService.ImageSearch.ImageAnalysisFolder"));
+        public virtual ID SampleImageId => new ID(Settings.GetSetting("CognitiveService.ImageSearch.SampleImage"));
+        public virtual ID ImageSearchFolderId => new ID(Settings.GetSetting("CognitiveService.ImageSearch.ImageSearchFolder"));
+        public virtual ID BlogFieldId => new ID(Settings.GetSetting("CognitiveService.ImageSearch.BlogField"));
+        public virtual ID ImageSearchFieldFolderId => new ID(Settings.GetSetting("CognitiveService.ImageSearch.ImageSearchFieldFolder"));
+        public virtual string DictionaryDomain => Settings.GetSetting("CognitiveService.ImageSearch.DictionaryDomain");
         public bool MissingKeys()
         {
             if (_msApiKeys == null)
