@@ -31,6 +31,23 @@
                     </div>
                 </fieldset>
                 <fieldset>
+                    <legend>@Translator.Text("Setup.IndexTypeLabel")</legend>
+                    <div class="form-row">
+                        <div>
+                            <input type="radio" id="indexOption-skip" name="indexOption" value="Skip" checked="checked" />
+                            <label for="indexOption-skip">Skip</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="indexOption-lucene" name="indexOption" value="Lucene" />
+                            <label for="indexOption-lucene">Lucene</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="indexOption-solr" name="indexOption" value="Solr" />
+                            <label for="indexOption-solr">Solr</label>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
                     <legend>@Translator.Text("Setup.EmotionApiLabel")</legend>
                     <div class="form-row">
                         <input type="text" id="emotionApi" name="emotionApi" value="@Model.EmotionApiKey" />

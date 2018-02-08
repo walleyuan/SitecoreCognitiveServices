@@ -22,6 +22,7 @@ jQuery(document).ready(function () {
         .click(function (event) {
             event.preventDefault();
 
+            var indexOptionValue = jQuery(setupForm + " input[name='indexOption']:checked").val();
             var emotionValue = jQuery(setupForm + " #emotionApi").val();
             var emotionEndpointValue = jQuery(setupForm + " #emotionApiEndpoint").val();
             var faceValue = jQuery(setupForm + " #faceApi").val();
@@ -36,6 +37,7 @@ jQuery(document).ready(function () {
             jQuery.post(
                 jQuery(setupForm).attr("action"),
                 {
+                    indexOption: indexOptionValue,
                     emotionApi: emotionValue,
                     emotionApiEndpoint: emotionEndpointValue,
                     faceApi: faceValue,

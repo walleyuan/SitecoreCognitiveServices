@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using Sitecore.Configuration;
 using Sitecore.Data;
@@ -33,6 +34,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
         protected readonly ISetupInformationFactory SetupFactory;
         protected readonly IMicrosoftCognitiveServicesApiKeys MSCSApiKeys;
         protected readonly IImageSearchSettings SearchSettings;
+        protected readonly HttpContextBase Context;
 
         public CognitiveImageSearchController(
             IImageSearchService searchService,
@@ -45,7 +47,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             IAnalysisJobResultFactory jobResultFactory,
             ISetupInformationFactory setupFactory,
             IMicrosoftCognitiveServicesApiKeys mscsApiKeys,
-            IImageSearchSettings searchSettings)
+            IImageSearchSettings searchSettings,
+            HttpContextBase context)
         {
             Assert.IsNotNull(searchService, typeof(IImageSearchService));
             Assert.IsNotNull(dataWrapper, typeof(ISitecoreDataWrapper));
@@ -70,6 +73,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             SetupFactory = setupFactory;
             MSCSApiKeys = mscsApiKeys;
             SearchSettings = searchSettings;
+            Context = context;
         }
 
         #endregion
@@ -90,13 +94,13 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
         }
 
         public ActionResult RTESearchQuery(
-            Dictionary<string, string[]> tagParameters, 
-            Dictionary<string, string[]> rangeParameters, 
-            int gender, 
+            Dictionary<string, string[]> tagParameters,
+            Dictionary<string, string[]> rangeParameters,
+            int gender,
             int glasses,
             int size,
             string language,
-            List<string> colors, 
+            List<string> colors,
             string db,
             int page,
             int pageLength)
@@ -105,9 +109,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
                 return new EmptyResult();
 
             List<ICognitiveImageSearchResult> csr = SearchService.GetFilteredCognitiveSearchResults(
-                tagParameters, 
-                rangeParameters, 
-                gender, 
+                tagParameters,
+                rangeParameters,
+                gender,
                 glasses,
                 size,
                 language,
@@ -140,12 +144,13 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             MediaItem m = item;
 
             var desc = SearchService.GetImageDescription(m, language);
-            
+
             return View("ImageDescription", desc);
         }
 
         [HttpPost]
-        public ActionResult UpdateImageDescription(string descriptionOption, string id, string database, string language)
+        public ActionResult UpdateImageDescription(string descriptionOption, string id, string database,
+            string language)
         {
             if (!IsSitecoreUser())
                 return LoginPage();
@@ -162,7 +167,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
 
             return View("ImageDescription", SearchService.GetImageDescription(m, language));
         }
-        
+
         public ActionResult ViewImageDescriptionThreshold(string id, string language, string db)
         {
             if (!IsSitecoreUser())
@@ -174,7 +179,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
         }
 
         [HttpPost]
-        public ActionResult UpdateImageDescriptionAll(string id, string language, string db, int threshold, bool overwrite)
+        public ActionResult UpdateImageDescriptionAll(string id, string language, string db, int threshold,
+            bool overwrite)
         {
             if (!IsSitecoreUser())
                 return LoginPage();
@@ -190,14 +196,16 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             if (!list.Any())
                 return Json(SetAltTagsAllFactory.Create(id, db, language, 0, 0, 50, false));
 
-            var thresholdDouble = (double)threshold / 100;
-            foreach (var m in list) {
+            var thresholdDouble = (double) threshold / 100;
+            foreach (var m in list)
+            {
                 Caption cap = SearchService.GetTopImageCaption(m, language, thresholdDouble);
                 if (cap != null)
                     DataWrapper.SetImageAlt(m, cap.Text);
             }
 
-            var result = SetAltTagsAllFactory.Create(id, db, language, fullList.Count(), list.Count(), threshold, overwrite);
+            var result = SetAltTagsAllFactory.Create(id, db, language, fullList.Count(), list.Count(), threshold,
+                overwrite);
 
             return Json(result);
         }
@@ -255,7 +263,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
                 Sitecore.Context.Site.Name,
                 AnalysisService,
                 "AnalyzeImagesRecursively",
-                new object[] { item, database, overwrite });
+                new object[] {item, database, overwrite});
 
             JobManager.Start(jobOptions);
 
@@ -292,17 +300,41 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             }
         }
 
-        public ActionResult SetupSubmit(string emotionApi, string emotionApiEndpoint, string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint)
+        public ActionResult SetupSubmit(string indexOption, string emotionApi, string emotionApiEndpoint,
+            string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint)
         {
             if (!IsSitecoreUser())
                 return LoginPage();
-            
-            //save items to fields
-            ICognitiveImageAnalysis analysis = null;
+
+            ICognitiveImageAnalysis analysis = SaveKeysAndAnalyze(emotionApi, emotionApiEndpoint, faceApi, faceApiEndpoint, computerVisionApi, computerVisionApiEndpoint);
             var items = new List<string>();
+            if (analysis == null || analysis.EmotionAnalysis?.Length < 1)
+                items.Add("Emotion API");
+            if (analysis == null || analysis.FacialAnalysis?.Length < 1)
+                items.Add("Face API");
+            if (analysis?.TextAnalysis?.Regions == null || analysis?.VisionAnalysis?.Description == null)
+                items.Add("Computer Vision API");
+
+            string err = SetFieldsFolderTemplate();
+            if(!string.IsNullOrEmpty(err))
+                items.Add(err);
+
+            if(!indexOption.Equals("Skip"))
+                ConfigureIndexes(indexOption);
+            
+            return Json(new
+            {
+                Failed = (analysis == null || items.Count > 0),
+                Items = string.Join(",", items)
+            });
+        }
+
+        public ICognitiveImageAnalysis SaveKeysAndAnalyze(string emotionApi, string emotionApiEndpoint, string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint)
+        {
             var db = Factory.GetDatabase(SearchSettings.MasterDatabase);
             using (new DatabaseSwitcher(db))
             {
+                //save items to fields
                 if (MSCSApiKeys.Emotion != emotionApi)
                     MSCSApiKeys.Emotion = emotionApi;
                 if (MSCSApiKeys.EmotionEndpoint != emotionApiEndpoint)
@@ -315,34 +347,59 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
                     MSCSApiKeys.ComputerVision = computerVisionApi;
                 if (MSCSApiKeys.ComputerVisionEndpoint != computerVisionApiEndpoint)
                     MSCSApiKeys.ComputerVisionEndpoint = computerVisionApiEndpoint;
-                
+
                 //get the sample image and analyze it to test responses
                 Item sampleImage = DataWrapper.ContentDatabase.GetItem(SearchSettings.SampleImageId);
-                analysis = AnalysisService.AnalyzeImage(sampleImage);
-                if (analysis == null || analysis.EmotionAnalysis?.Length < 1)
-                    items.Add("Emotion API"); 
-                if (analysis == null || analysis.FacialAnalysis?.Length < 1)
-                    items.Add("Face API");
-                if (analysis?.TextAnalysis?.Regions == null || analysis?.VisionAnalysis?.Description == null)
-                    items.Add("Computer Vision API");
+                return AnalysisService.AnalyzeImage(sampleImage);
+            }
+        }
+
+        /// <summary>
+        /// change the field folder to a sitecore folder from a node
+        /// </summary>
+        public string SetFieldsFolderTemplate()
+        {
+            var coreDb = Factory.GetDatabase(SearchSettings.CoreDatabase);
+            if (coreDb == null)
+                return $"{SearchSettings.CoreDatabase} database";
+            
+            var template = coreDb.Templates["common/folder"];
+            var fieldFolderItem = coreDb.GetItem(SearchSettings.ImageSearchFieldFolderId);
+            if (fieldFolderItem == null) 
+                return "Field Folder in Core";
+
+            fieldFolderItem.ChangeTemplate(template);
+
+            return string.Empty;
+        }
+
+        public void ConfigureIndexes(string indexOption) { 
+            
+            //enable index config
+            var configFormat = "~/App_Config/Include/SitecoreCognitiveServices/SitecoreCognitiveServices.Feature.ImageSearch.{0}.config";
+
+            //disable the unselected option config
+            var unselectedPath = string.Format(configFormat, indexOption == "Lucene" ? "Solr" : "Lucene");
+            var unselectedDisabledFile = Context.Server.MapPath($"{unselectedPath}.disabled");
+            var unselectedEnabledFile = Context.Server.MapPath(unselectedPath);
+            if (System.IO.File.Exists(unselectedEnabledFile))
+            {
+                System.IO.File.Copy(unselectedEnabledFile, unselectedDisabledFile, true);
+                System.IO.File.Delete(unselectedEnabledFile);
             }
 
-            //change the field folder to a sitecore folder from a node
-            var coreDb = Factory.GetDatabase(SearchSettings.CoreDatabase);
-            if (coreDb != null)
+            //enable selected config
+            var selectedPath = string.Format(configFormat, indexOption);
+            var selectedDisabledFile = Context.Server.MapPath($"{selectedPath}.disabled");
+            var selectedEnabledFile = Context.Server.MapPath(selectedPath);
+            if (System.IO.File.Exists(selectedDisabledFile))
             {
-                var template = coreDb.Templates["common/folder"];
-                var fieldFolderItem = coreDb.GetItem(SearchSettings.ImageSearchFieldFolderId);
-                if (fieldFolderItem != null)
-                    fieldFolderItem.ChangeTemplate(template);
-                else
-                    items.Add("Field Folder in Core");
+                System.IO.File.Copy(selectedDisabledFile, selectedEnabledFile, true);
+                System.IO.File.Delete(selectedDisabledFile);
             }
-            else
-            {
-                items.Add($"{SearchSettings.CoreDatabase} database");
-            }
-            
+
+            if (indexOption.Equals("Solr"))
+                return;
 
             //publish the installed content
             var imageSearchFolder = DataWrapper.ContentDatabase.GetItem(SearchSettings.ImageSearchFolderId);
@@ -350,14 +407,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
 
             //get the congitive indexes build for the first time
             SearchService.RebuildCognitiveIndexes();
-
-            return Json(new
-            {
-                Failed = (analysis == null || items.Count > 0),
-                Items = string.Join(",", items)
-            });
         }
-        
+
         #endregion
 
         #region Shared
