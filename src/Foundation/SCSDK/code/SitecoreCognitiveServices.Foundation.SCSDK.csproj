@@ -201,6 +201,7 @@
     <Content Include="App_Config\Include\SitecoreCognitiveServices\UnicornSerializationRoot.config" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <None Include="ReadMe.txt" />
+    <Content Include="Areas\SitecoreCognitiveServices\Assets\xml\SitecoreCognitiveServices.Foundation.SCSDK.xml" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveCommon\CognitiveLayout.cshtml" />
     <None Include="Web.config" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveCommon\Web.config">

@@ -120,6 +120,7 @@
   <ItemGroup>
     <Content Include="Areas\SitecoreCognitiveServices\Assets\css\SitecoreCognitiveServices.Feature.OleChat.css" />
     <Content Include="Areas\SitecoreCognitiveServices\Assets\js\SitecoreCognitiveServices.Feature.OleChat.js" />
+    <Content Include="Areas\SitecoreCognitiveServices\Assets\json\SitecoreCognitiveServices.Feature.OleChat.json" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <None Include="Web.config" />
   </ItemGroup>

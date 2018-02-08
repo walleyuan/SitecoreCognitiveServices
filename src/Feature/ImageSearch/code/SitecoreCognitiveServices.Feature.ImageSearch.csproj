@@ -159,9 +159,10 @@
     <Content Include="Areas\SitecoreCognitiveServices\Assets\js\Chosen\package.json" />
     <Content Include="Areas\SitecoreCognitiveServices\Assets\js\jquery-ui-1.12.1.min.js" />
     <Content Include="Areas\SitecoreCognitiveServices\Assets\js\SitecoreCognitiveServices.Feature.ImageSearch.js" />
+    <Content Include="Areas\SitecoreCognitiveServices\Assets\xml\SitecoreCognitiveServices.Feature.ImageSearch.xml" />
     <Content Include="sitecore\shell\Controls\Rich Text Editor\RichText Commands.js" />
     <Content Include="sitecore\shell\Themes\Standard\Default\Content Manager.css" />
-    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Feature.ImageSearch.Lucene.config" />
+    <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Feature.ImageSearch.Lucene.config.disabled" />
     <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Feature.ImageSearch.Solr.config.disabled" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveImageSearch\SearchForm.cshtml" />

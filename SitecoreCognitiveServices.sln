@@ -19,9 +19,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageSearch", "ImageSearch", "{C92BB4E6-842A-438A-8700-1FCE50AD123A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OleChat", "OleChat", "{D1A512A3-DD04-4E9C-B758-4C7953EE3606}"
-	ProjectSection(SolutionItems) = preProject
-		serialization\ole-chat.json = serialization\ole-chat.json
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSSDK", "MSSDK", "{F630EF68-B9D0-4993-B47E-25374CF51C0A}"
 EndProject
@@ -81,12 +78,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIs", "APIs", "{7793F3F0-1
 	ProjectSection(SolutionItems) = preProject
 		serialization\SCS\SCSDK\System-Settings-APIs\APIs\IBMSDK.yml.template = serialization\SCS\SCSDK\System-Settings-APIs\APIs\IBMSDK.yml.template
 		serialization\SCS\SCSDK\System-Settings-APIs\APIs\MSSDK.yml.template = serialization\SCS\SCSDK\System-Settings-APIs\APIs\MSSDK.yml.template
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packages", "Packages", "{2122E4E2-80B5-4061-B8A3-97E5666E7960}"
-	ProjectSection(SolutionItems) = preProject
-		serialization\SitecoreCognitiveServices-Core.xml = serialization\SitecoreCognitiveServices-Core.xml
-		serialization\SitecoreCognitiveServices-ImageSearch.xml = serialization\SitecoreCognitiveServices-ImageSearch.xml
 	EndProjectSection
 EndProject
 Global
@@ -155,10 +146,9 @@ Global
 		{91665DC0-B470-488C-9047-A89614668F85} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
 		{369FD581-2F6F-47F0-80F3-25F8209FFDD0} = {91665DC0-B470-488C-9047-A89614668F85}
 		{7793F3F0-1D38-495B-8E47-2F1F94C37D3F} = {4784AB7A-0B87-436A-8E96-D4D63BB9C0E2}
-		{2122E4E2-80B5-4061-B8A3-97E5666E7960} = {BB8368FA-BE14-4A3A-8FAD-BDA6CBDB8C64}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {4A78DFE2-98F5-44B4-B405-3993A6D3CFC3}
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
+		SolutionGuid = {4A78DFE2-98F5-44B4-B405-3993A6D3CFC3}
 	EndGlobalSection
 EndGlobal
