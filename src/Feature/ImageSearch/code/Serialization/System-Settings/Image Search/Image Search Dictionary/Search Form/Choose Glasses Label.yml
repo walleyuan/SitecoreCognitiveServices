@@ -1,0 +1,18 @@
+﻿---
+ID: "42ea7116-1bde-4111-ac67-34c90bbdc10e"
+Parent: "d3e239b8-511d-4430-afee-e6e56830191e"
+Template: "6d1cd897-1936-4a3a-a511-289a94c2a7b1"
+Path: /sitecore/system/Modules/Sitecore Cognitive Services/Image Search/Image Search Dictionary/Search Form/Choose Glasses Label
+DB: master
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Office/32x32/document_text.png
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180202T210933Z
