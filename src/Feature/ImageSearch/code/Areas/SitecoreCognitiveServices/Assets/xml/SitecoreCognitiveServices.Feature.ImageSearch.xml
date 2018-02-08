@@ -1,7 +1,7 @@
 <project>
   <Metadata>
     <metadata>
-      <PackageName>Sitecore Cognitive Services: Image Search</PackageName>
+      <PackageName>SitecoreCognitiveServices.ImageSearch</PackageName>
       <Author>Mark Stiles</Author>
       <Version>8-1.0</Version>
       <Revision />
@@ -90,13 +90,22 @@
     <xfiles>
       <Entries>
         <x-item>/App_Config/Include/SitecoreCognitiveServices/SitecoreCognitiveServices.Feature.ImageSearch.config</x-item>
-        <x-item>/App_Config/Include/SitecoreCognitiveServices/SitecoreCognitiveServices.Feature.ImageSearch.Lucene.config</x-item>
         <x-item>/App_Config/Include/SitecoreCognitiveServices/SitecoreCognitiveServices.Feature.ImageSearch.Solr.config.disabled</x-item>
+        <x-item>/App_Config/Include/SitecoreCognitiveServices/SitecoreCognitiveServices.Feature.ImageSearch.Lucene.config.disabled</x-item>
       </Entries>
       <Converter>
         <FileToEntryConverter>
           <Root>/</Root>
-          <Transforms />
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
         </FileToEntryConverter>
       </Converter>
       <Include />

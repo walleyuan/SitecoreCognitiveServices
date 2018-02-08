@@ -1,7 +1,7 @@
 <project>
   <Metadata>
     <metadata>
-      <PackageName>Sitecore Cognitive Services: Core</PackageName>
+      <PackageName>SitecoreCognitiveServices.Core</PackageName>
       <Author>Mark Stiles</Author>
       <Version>8-1.0</Version>
       <Revision />
@@ -51,7 +51,16 @@
       <Converter>
         <FileToEntryConverter>
           <Root>/</Root>
-          <Transforms />
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
         </FileToEntryConverter>
       </Converter>
       <Include />
