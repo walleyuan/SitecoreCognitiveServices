@@ -121,6 +121,7 @@
     <Content Include="Areas\SitecoreCognitiveServices\Assets\css\SitecoreCognitiveServices.Feature.OleChat.css" />
     <Content Include="Areas\SitecoreCognitiveServices\Assets\js\SitecoreCognitiveServices.Feature.OleChat.js" />
     <Content Include="Areas\SitecoreCognitiveServices\Assets\json\SitecoreCognitiveServices.Feature.OleChat.json" />
+    <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveOleChat\Setup.cshtml" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <None Include="Web.config" />
   </ItemGroup>
@@ -154,7 +155,7 @@
     <Compile Include="OleSettings.cs" />
     <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="Commands\OleChat.cs" />
-    <Compile Include="Areas\SitecoreCognitiveServices\Controllers\CognitiveBotController.cs" />
+    <Compile Include="Areas\SitecoreCognitiveServices\Controllers\CognitiveOleChatController.cs" />
     <Compile Include="Factories\AboutIntentFactory.cs" />
     <Compile Include="Factories\DefaultIntentFactory.cs" />
     <Compile Include="Factories\GreetIntentFactory.cs" />
@@ -180,14 +181,15 @@
     <Compile Include="Intents\UnlockItemsIntent.cs" />
     <Compile Include="Intents\VersionIntent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statics\Translator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveBot\web.config" />
+    <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveOleChat\web.config" />
     <None Include="packages.config" />
     <Content Include="App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Feature.OleChat.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveBot\OleChat.cshtml" />
+    <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveOleChat\OleChat.cshtml" />
     <Content Include="App_Config\Include\SitecoreCognitiveServices\Unicorn.Configs.SitecoreCognitiveServices.Feature.OleChat.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

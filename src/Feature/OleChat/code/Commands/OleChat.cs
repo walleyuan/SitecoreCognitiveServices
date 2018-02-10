@@ -34,7 +34,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Commands
             string height = args.Parameters[heightParam];
             string width = args.Parameters[widthParam];
             
-            ModalDialogOptions mdo = new ModalDialogOptions($"/SitecoreCognitiveServices/CognitiveBot/OleChat?id={id}&language={langCode}&db={db}")
+            ModalDialogOptions mdo = new ModalDialogOptions($"/SitecoreCognitiveServices/CognitiveOleChat/OleChat?id={id}&language={langCode}&db={db}")
             {
                 Header = "Chat with Ole",
                 Height = height,

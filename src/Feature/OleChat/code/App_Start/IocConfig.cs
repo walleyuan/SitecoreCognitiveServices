@@ -58,7 +58,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.App_Start
             serviceCollection.AddTransient<IConversationHistory, ConversationHistory>();
             serviceCollection.AddTransient<IConversationService, ConversationService>();
             
-            serviceCollection.AddTransient(typeof(CognitiveBotController));
+            serviceCollection.AddTransient(typeof(CognitiveOleChatController));
         }
     }
 }
