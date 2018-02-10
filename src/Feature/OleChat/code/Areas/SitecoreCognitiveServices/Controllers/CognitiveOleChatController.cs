@@ -98,34 +98,38 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServi
             }
         }
 
-        //public ActionResult SetupSubmit(string indexOption, string emotionApi, string emotionApiEndpoint,
-        //    string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint)
-        //{
-        //    if (!IsSitecoreUser())
-        //        return LoginPage();
+        public ActionResult SetupSubmit(string indexOption, string emotionApi, string emotionApiEndpoint,
+            string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint)
+        {
+            if (!IsSitecoreUser())
+                return LoginPage();
 
-        //    ICognitiveImageAnalysis analysis = SaveKeysAndAnalyze(emotionApi, emotionApiEndpoint, faceApi, faceApiEndpoint, computerVisionApi, computerVisionApiEndpoint);
-        //    var items = new List<string>();
-        //    if (analysis == null || analysis.EmotionAnalysis?.Length < 1)
-        //        items.Add("Emotion API");
-        //    if (analysis == null || analysis.FacialAnalysis?.Length < 1)
-        //        items.Add("Face API");
-        //    if (analysis?.TextAnalysis?.Regions == null || analysis?.VisionAnalysis?.Description == null)
-        //        items.Add("Computer Vision API");
+            //try to query version to see if keys work
 
-        //    string err = SetFieldsFolderTemplate();
-        //    if (!string.IsNullOrEmpty(err))
-        //        items.Add(err);
+            //upload the json to service
 
-        //    if (!indexOption.Equals("Skip"))
-        //        ConfigureIndexes(indexOption);
+            //ICognitiveImageAnalysis analysis = SaveKeysAndAnalyze(emotionApi, emotionApiEndpoint, faceApi, faceApiEndpoint, computerVisionApi, computerVisionApiEndpoint);
+            //var items = new List<string>();
+            //if (analysis == null || analysis.EmotionAnalysis?.Length < 1)
+            //    items.Add("Emotion API");
+            //if (analysis == null || analysis.FacialAnalysis?.Length < 1)
+            //    items.Add("Face API");
+            //if (analysis?.TextAnalysis?.Regions == null || analysis?.VisionAnalysis?.Description == null)
+            //    items.Add("Computer Vision API");
 
-        //    return Json(new
-        //    {
-        //        Failed = (analysis == null || items.Count > 0),
-        //        Items = string.Join(",", items)
-        //    });
-        //}
+            //string err = SetFieldsFolderTemplate();
+            //if (!string.IsNullOrEmpty(err))
+            //    items.Add(err);
+
+            //if (!indexOption.Equals("Skip"))
+            //    ConfigureIndexes(indexOption);
+
+            return Json(new
+            {
+                Failed = false,//(analysis == null || items.Count > 0),
+                Items = ""//string.Join(",", items)
+            });
+        }
 
         //public ICognitiveImageAnalysis SaveKeysAndAnalyze(string emotionApi, string emotionApiEndpoint, string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint)
         //{

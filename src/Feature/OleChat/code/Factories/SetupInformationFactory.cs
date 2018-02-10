@@ -23,10 +23,10 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Factories
         {
             var obj = Provider.GetService<ISetupInformation>();
 
-            //obj.LuisApiKey = ApiKeys.Face;
-            //obj.LuisApiEndpoint = ApiKeys.FaceEndpoint;
-            //obj.EmotionApiKey = ApiKeys.Emotion;
-            //obj.EmotionApiEndpoint = ApiKeys.EmotionEndpoint;
+            obj.LuisApiKey = ApiKeys.Luis;
+            obj.LuisApiEndpoint = ApiKeys.LuisEndpoint;
+            obj.TextAnalyticsApiKey = ApiKeys.TextAnalytics;
+            obj.TextAnalyticsApiEndpoint = ApiKeys.TextAnalyticsEndpoint;
 
             return obj;
         }
