@@ -209,6 +209,8 @@
     <Compile Include="Intents\UnlockItemsIntent.cs" />
     <Compile Include="Intents\VersionIntent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Setup\ISetupService.cs" />
+    <Compile Include="Setup\SetupService.cs" />
     <Compile Include="Statics\Translator.cs" />
   </ItemGroup>
   <ItemGroup>
