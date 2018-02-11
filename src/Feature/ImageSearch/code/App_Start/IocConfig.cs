@@ -9,6 +9,7 @@ using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServi
 using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Analysis;
 using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Setup;
 using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Utility;
+using SitecoreCognitiveServices.Feature.ImageSearch.Setup;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.App_Start
 {
@@ -44,6 +45,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.App_Start
             
             //analysis
             serviceCollection.AddTransient<IImageAnalysisService, ImageAnalysisService>();
+
+            //setup
+            serviceCollection.AddTransient<ISetupService, SetupService>();
 
             //controllers
             serviceCollection.AddTransient(typeof(CognitiveImageSearchController));
