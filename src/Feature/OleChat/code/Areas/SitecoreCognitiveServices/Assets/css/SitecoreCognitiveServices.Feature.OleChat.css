@@ -264,3 +264,10 @@ fieldset legend { margin-bottom: 10px;}
 .chat-form .bot span.icon { background:url('/~/icon/Office/24x24/man_8.png.aspx') top left no-repeat; border-radius: 12px; position:absolute; top:4px; left:7px; height: 24px; width: 24px; }
 .chat-form ul { list-style-type: disc; padding-left:26px; font-size:16px; }
 .chat-form li {}
+
+.editor-tab.frame { padding: 0px; }
+.editor-tab h2 { background-color: #474747; line-height: 35px; color: #fff; font-weight: 600; cursor: pointer; border-bottom: 1px solid #474747; padding-left: 10px; border-left: 5px solid #dc291e; }
+.editor-tab form { background-color: #eee; padding: 10px; }
+.editor-tab .progress-indicator { width: 100%; height: 100%; top: 36px; }
+.editor-tab .progress-bg { top: 0px; bottom: 0px; right: 0px; left: 0px; background-color: #000; opacity: .2; position: absolute; }
+.editor-tab .progress-image { background-color: #fff; border-radius: 10px; top: 180px; margin: 0px auto; width: 32px; height: 32px; padding: 20px; position: absolute; right: 0px; left: 0px; }

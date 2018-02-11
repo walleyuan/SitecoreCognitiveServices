@@ -5,6 +5,7 @@ using SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServices.
 using SitecoreCognitiveServices.Feature.OleChat.Intents;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
+using SitecoreCognitiveServices.Feature.OleChat.Setup;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.App_Start
 {
@@ -64,7 +65,10 @@ namespace SitecoreCognitiveServices.Feature.OleChat.App_Start
             serviceCollection.AddTransient<IConversationFactory, ConversationFactory>();
             serviceCollection.AddTransient<IConversationHistory, ConversationHistory>();
             serviceCollection.AddTransient<IConversationService, ConversationService>();
-            
+
+            //setup
+            serviceCollection.AddTransient<ISetupService, SetupService>();
+
             serviceCollection.AddTransient(typeof(CognitiveOleChatController));
         }
     }

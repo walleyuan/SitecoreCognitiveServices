@@ -32,6 +32,19 @@
                     </div>
                 </fieldset>
                 <fieldset>
+                    <legend>@Translator.Text("Setup.OverwriteLabel")</legend>
+                    <div class="form-row">
+                        <div>
+                            <input type="radio" id="overwriteOption-no" name="overwriteOption" value="false" checked="checked" />
+                            <label for="overwriteOption-no">No</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="overwriteOption-yes" name="overwriteOption" value="true" />
+                            <label for="overwriteOption-yes">Yes</label>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
                     <legend>@Translator.Text("Setup.LuisApiLabel")</legend>
                     <div class="form-row">
                         <input type="text" id="luisApi" name="luisApi" value="@Model.LuisApiKey" />
