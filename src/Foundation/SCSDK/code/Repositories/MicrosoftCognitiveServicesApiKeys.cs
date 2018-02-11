@@ -462,6 +462,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Repositories
 
             using (new EditContext(settingsItem, true, false))
             {
+                settingsItem.Fields.ReadAll();
                 settingsItem.Fields[fieldName].Value = value.ToString();
             }
         }

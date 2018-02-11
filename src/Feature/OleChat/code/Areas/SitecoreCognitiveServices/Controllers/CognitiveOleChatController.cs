@@ -111,7 +111,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServi
             if (!IsSitecoreUser())
                 return LoginPage();
 
-            var pingResult = SetupService.PingLuis();
+            var pingResult = SetupService.SaveKeysAndPingLuis(luisApi, luisApiEndpoint, textAnalyticsApi, textAnalyticsApiEndpoint);
 
             var restoreResult = SetupService.RestoreOle(overwriteOption);
 
