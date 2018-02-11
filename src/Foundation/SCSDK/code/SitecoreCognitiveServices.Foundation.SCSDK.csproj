@@ -307,6 +307,8 @@
     <Content Include="Serialization\Templates\Sitecore Cognitive Services -_\Branches\Dictionary folder\_name.yml" />
     <Content Include="Serialization\Templates\Sitecore Cognitive Services -_\Sitecore Cognitive Services Se.yml" />
     <Content Include="Serialization\Templates\Sitecore Cognitive Services -_\Sitecore Cognitive Services Se\__Standard Values.yml" />
+    <Content Include="Serialization\System-Settings-APIs\APIs\IBMSDK.yml.template" />
+    <Content Include="Serialization\System-Settings-APIs\APIs\MSSDK.yml.template" />
     <None Include="Web.config" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveCommon\Web.config">
       <SubType>Designer</SubType>

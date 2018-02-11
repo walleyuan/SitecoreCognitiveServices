@@ -123,6 +123,30 @@
     <Content Include="Areas\SitecoreCognitiveServices\Assets\json\SitecoreCognitiveServices.Feature.OleChat.json" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveOleChat\Setup.cshtml" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
+    <Content Include="Serialization\Editor-Tab\Ole Chat.yml" />
+    <Content Include="Serialization\Editor-Tab\Ole Chat\Setup.yml" />
+    <Content Include="Serialization\Launchpad-Button\Ole.yml" />
+    <Content Include="Serialization\RibbonChunk-Chat\Chat.yml" />
+    <Content Include="Serialization\RibbonChunk-Chat\Chat\Ole.yml" />
+    <Content Include="Serialization\System-Settings\Ole Chat.yml" />
+    <Content Include="Serialization\System-Settings\Ole Chat.yml.template" />
+    <Content Include="Serialization\System-Settings\Ole Chat\Ole Chat Dictionary.yml" />
+    <Content Include="Serialization\System-Settings\Ole Chat\Ole Chat Dictionary\Setup.yml" />
+    <Content Include="Serialization\System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Azure Link.yml" />
+    <Content Include="Serialization\System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Button Text.yml" />
+    <Content Include="Serialization\System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Description.yml" />
+    <Content Include="Serialization\System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Failure Message.yml" />
+    <Content Include="Serialization\System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Luis Api Endpoint Label.yml" />
+    <Content Include="Serialization\System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Luis Api Label.yml" />
+    <Content Include="Serialization\System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Success Message.yml" />
+    <Content Include="Serialization\System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Text Analytics API Endpo.yml" />
+    <Content Include="Serialization\System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Text Analytics Api Label.yml" />
+    <Content Include="Serialization\System-Settings\Ole Chat\Ole Chat Dictionary\Setup\View Title.yml" />
+    <Content Include="Serialization\Templates\Sitecore Cognitive Services -_.yml" />
+    <Content Include="Serialization\Templates\Sitecore Cognitive Services -_\Ole Chat Settings.yml" />
+    <Content Include="Serialization\Templates\Sitecore Cognitive Services -_\Ole Chat Settings\Ole Chat.yml" />
+    <Content Include="Serialization\Templates\Sitecore Cognitive Services -_\Ole Chat Settings\Ole Chat\Application Id.yml" />
+    <Content Include="Serialization\Templates\Sitecore Cognitive Services -_\Ole Chat Settings\__Standard Values.yml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -213,9 +237,7 @@
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Serialization\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

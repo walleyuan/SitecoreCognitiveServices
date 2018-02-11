@@ -34,14 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gulp", "Gulp", "{751C49B8-4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{4784AB7A-0B87-436A-8E96-D4D63BB9C0E2}"
 	ProjectSection(SolutionItems) = preProject
-		src\Feature\ImageSearch\code\Properties\PublishProfiles\deploy.pubxml.template = src\Feature\ImageSearch\code\Properties\PublishProfiles\deploy.pubxml.template
-		src\Feature\LaunchDemo\code\Properties\PublishProfiles\deploy.pubxml.template = src\Feature\LaunchDemo\code\Properties\PublishProfiles\deploy.pubxml.template
-		src\Feature\OleChat\code\Properties\PublishProfiles\deploy.pubxml.template = src\Feature\OleChat\code\Properties\PublishProfiles\deploy.pubxml.template
-		src\Foundation\SCSDK\code\Properties\PublishProfiles\deploy.pubxml.template = src\Foundation\SCSDK\code\Properties\PublishProfiles\deploy.pubxml.template
 		gulp-config.js.template = gulp-config.js.template
 		publishsettings.targets.template = publishsettings.targets.template
-		src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Foundation.SCSDK.config.template = src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Foundation.SCSDK.config.template
-		src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\UnicornSerializationRoot.config.template = src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\UnicornSerializationRoot.config.template
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Feature.ImageSearch", "src\Feature\ImageSearch\code\SitecoreCognitiveServices.Feature.ImageSearch.csproj", "{449CE943-4EF2-4DDF-AD16-37DCC62CFCFD}"
@@ -74,10 +68,34 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IBMSDK", "IBMSDK", "{91665D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.IBMSDK", "src\Foundation\IBMSDK\code\SitecoreCognitiveServices.Foundation.IBMSDK.csproj", "{369FD581-2F6F-47F0-80F3-25F8209FFDD0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIs", "APIs", "{7793F3F0-1D38-495B-8E47-2F1F94C37D3F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SCSDK", "SCSDK", "{7793F3F0-1D38-495B-8E47-2F1F94C37D3F}"
 	ProjectSection(SolutionItems) = preProject
-		serialization\SCS\SCSDK\System-Settings-APIs\APIs\IBMSDK.yml.template = serialization\SCS\SCSDK\System-Settings-APIs\APIs\IBMSDK.yml.template
-		serialization\SCS\SCSDK\System-Settings-APIs\APIs\MSSDK.yml.template = serialization\SCS\SCSDK\System-Settings-APIs\APIs\MSSDK.yml.template
+		src\Feature\LaunchDemo\code\Properties\PublishProfiles\deploy.pubxml.template = src\Feature\LaunchDemo\code\Properties\PublishProfiles\deploy.pubxml.template
+		src\Foundation\SCSDK\code\Serialization\System-Settings-APIs\APIs\IBMSDK.yml.template = src\Foundation\SCSDK\code\Serialization\System-Settings-APIs\APIs\IBMSDK.yml.template
+		src\Foundation\SCSDK\code\Serialization\System-Settings-APIs\APIs\MSSDK.yml.template = src\Foundation\SCSDK\code\Serialization\System-Settings-APIs\APIs\MSSDK.yml.template
+		src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Foundation.SCSDK.config.template = src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\SitecoreCognitiveServices.Foundation.SCSDK.config.template
+		src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\UnicornSerializationRoot.config.template = src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\UnicornSerializationRoot.config.template
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ole Chat", "Ole Chat", "{1B7AFC7D-E60D-48F3-B7D0-D1869DD8E7D3}"
+	ProjectSection(SolutionItems) = preProject
+		src\Feature\OleChat\code\Properties\PublishProfiles\deploy.pubxml.template = src\Feature\OleChat\code\Properties\PublishProfiles\deploy.pubxml.template
+		src\Feature\OleChat\code\Serialization\System-Settings\Ole Chat.yml.template = src\Feature\OleChat\code\Serialization\System-Settings\Ole Chat.yml.template
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image Search", "Image Search", "{18DA0360-A99F-4EF8-894E-BA9E4B1C4D43}"
+	ProjectSection(SolutionItems) = preProject
+		src\Feature\ImageSearch\code\Properties\PublishProfiles\deploy.pubxml.template = src\Feature\ImageSearch\code\Properties\PublishProfiles\deploy.pubxml.template
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSSDK", "MSSDK", "{DB096D2B-721A-46BB-A281-A8980F46C071}"
+	ProjectSection(SolutionItems) = preProject
+		src\Foundation\MSSDK\code\Properties\PublishProfiles\deploy.pubxml.template = src\Foundation\MSSDK\code\Properties\PublishProfiles\deploy.pubxml.template
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IBMSDK", "IBMSDK", "{611332BA-887F-4B6E-BD58-6A3039BDC98E}"
+	ProjectSection(SolutionItems) = preProject
+		src\Foundation\IBMSDK\code\Properties\PublishProfiles\deploy.pubxml.template = src\Foundation\IBMSDK\code\Properties\PublishProfiles\deploy.pubxml.template
 	EndProjectSection
 EndProject
 Global
@@ -146,6 +164,10 @@ Global
 		{91665DC0-B470-488C-9047-A89614668F85} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
 		{369FD581-2F6F-47F0-80F3-25F8209FFDD0} = {91665DC0-B470-488C-9047-A89614668F85}
 		{7793F3F0-1D38-495B-8E47-2F1F94C37D3F} = {4784AB7A-0B87-436A-8E96-D4D63BB9C0E2}
+		{1B7AFC7D-E60D-48F3-B7D0-D1869DD8E7D3} = {4784AB7A-0B87-436A-8E96-D4D63BB9C0E2}
+		{18DA0360-A99F-4EF8-894E-BA9E4B1C4D43} = {4784AB7A-0B87-436A-8E96-D4D63BB9C0E2}
+		{DB096D2B-721A-46BB-A281-A8980F46C071} = {4784AB7A-0B87-436A-8E96-D4D63BB9C0E2}
+		{611332BA-887F-4B6E-BD58-6A3039BDC98E} = {4784AB7A-0B87-436A-8E96-D4D63BB9C0E2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
