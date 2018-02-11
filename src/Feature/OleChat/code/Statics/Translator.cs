@@ -11,7 +11,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Statics
     {
         public static string Text(string key)
         {
-            var settings = new OleSettings(null);
+            var settings = new OleSettings();
             var db = Sitecore.Configuration.Factory.GetDatabase(settings.MasterDatabase);
 
             using (new DatabaseSwitcher(db))
