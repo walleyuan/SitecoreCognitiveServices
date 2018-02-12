@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{15BEDAD5-D4F0-46C6-BCAD-F61D5E0A4EB2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SitecoreCognitiveServices.Feature.ImageSearchSerialization</RootNamespace>
+    <AssemblyName>SitecoreCognitiveServices.Feature.ImageSearchSerialization</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Editor-Tab\Image Search.yml" />
+    <None Include="Editor-Tab\Image Search\Setup.yml" />
+    <None Include="Fields\Cognitive Image Search.yml" />
+    <None Include="Fields\Cognitive Image Search\Cognitive Image.yml" />
+    <None Include="Fields\Cognitive Image Search\Cognitive Image\Menu.yml" />
+    <None Include="Fields\Cognitive Image Search\Cognitive Image\Menu\Browse.yml" />
+    <None Include="Fields\Cognitive Image Search\Cognitive Image\Menu\Clear.yml" />
+    <None Include="Fields\Cognitive Image Search\Cognitive Image\Menu\Edit Image.yml" />
+    <None Include="Fields\Cognitive Image Search\Cognitive Image\Menu\Open Media Library.yml" />
+    <None Include="Fields\Cognitive Image Search\Cognitive Image\Menu\Properties.yml" />
+    <None Include="Fields\Cognitive Image Search\Cognitive Image\Menu\Refresh.yml" />
+    <None Include="Fields\Cognitive Image Search\Cognitive Image\Menu\View Analysis.yml" />
+    <None Include="Fields\Cognitive Image Search\Cognitive Image\WebEdit Buttons.yml" />
+    <None Include="Fields\Cognitive Image Search\Cognitive Image\WebEdit Buttons\Choose Image.yml" />
+    <None Include="Fields\Cognitive Image Search\Cognitive Image\WebEdit Buttons\Clear Image.yml" />
+    <None Include="Fields\Cognitive Image Search\Cognitive Image\WebEdit Buttons\Image Properties.yml" />
+    <None Include="Fields\Cognitive Image Search\Cognitive Image\WebEdit Buttons\View Analysis.yml" />
+    <None Include="RibbonChunk-Analysis\Analysis.yml" />
+    <None Include="RibbonChunk-Analysis\Analysis\Analyze All Descendants.yml" />
+    <None Include="RibbonChunk-Analysis\Analysis\Analyze.yml" />
+    <None Include="RibbonChunk-Analysis\Analysis\Reanalyze.yml" />
+    <None Include="RibbonChunk-Analysis\Analysis\View Analysis.yml" />
+    <None Include="RibbonChunk-Utility\Utility.yml" />
+    <None Include="RibbonChunk-Utility\Utility\Set Alt Tag.yml" />
+    <None Include="RibbonChunk-Utility\Utility\Set Alt Tags On All Descendant.yml" />
+    <None Include="RTE-Button\Insert Image with Cognitive Se.yml" />
+    <None Include="RTE-Full-Button\Insert Image with Cognitive Se.yml" />
+    <None Include="System-Settings\faa66ac7-6ed8-4155-956e-14153ade5f70\Update Alt Description.yml" />
+    <None Include="System-Settings\Image Search.yml" />
+    <None Include="System-Settings\Image Search\Image Analysis.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Analyze All.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Analyze All\Button Text.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Analyze All\Description.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Analyze All\Overwrite.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Analyze All\Result Message.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Analyze All\View Title.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Analyze All\Waiting Text.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Emotion.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Emotion\Scores.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Emotion\Scores\Anger Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Emotion\Scores\Contempt Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Emotion\Scores\Disgust Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Emotion\Scores\Fear Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Emotion\Scores\Happiness Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Emotion\Scores\Neutral Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Emotion\Scores\Sadness Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Emotion\Scores\Surprise Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Face.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Face\Attributes.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Face\Attributes\Age Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Face\Attributes\Beard Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Face\Attributes\Facial Hair Heading.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Face\Attributes\Gender Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Face\Attributes\Glasses Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Face\Attributes\Head Pose Heading.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Face\Attributes\Moustache Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Face\Attributes\Pitch Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Face\Attributes\Roll Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Face\Attributes\Sideburns Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Face\Attributes\Smile Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Face\Attributes\Yaw Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Analysis.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Analysis\Angle Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Analysis\Button Text.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Analysis\Emotional Analysis Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Analysis\Facial Analysis Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Analysis\Language Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Analysis\Orientation Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Analysis\Text Heading.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Analysis\Textual Analysis Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Analysis\View Title.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Analysis\Visual Analysis  Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Analysis\Warning.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Description Threshold.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Description Threshold\Button Text.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Description Threshold\Confidence Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Description Threshold\Overwrite Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Description Threshold\Result Message.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Description Threshold\Update Alt Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Description Threshold\View Title.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Description.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Description\Alt Empty Message.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Description\Button Text.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Description\Current Description Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Description\No Description Message.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Description\Options Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Image Description\View Title.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Adult Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Age Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Anger Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Cancel Button Text.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Choose Color Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Choose Glasses Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Choose Image Size Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Contempt Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Disgust Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Fear Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Gender.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Gender\Choose Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Gender\Female.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Gender\Male and Female.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Gender\Male.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Gender\None.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Glasses.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Glasses\Choose Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Glasses\No Glasses.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Glasses\Reading Glasses.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Glasses\Sunglasses.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Glasses\Swimming Goggles.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Happiness Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Insert Image Button Text.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Modal Title.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Neutral Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Page Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Racy Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Results Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Sadness.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Search Button Text.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Select Message.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\Surprise.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Search Form\View Title.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Azure Link.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Button Text.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Computer Vision Api Endpoint L.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Computer Vision Api Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Description.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Emotion Api Endpoint Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Emotion Api Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Face Api Endpoint Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Face Api Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Failure Message.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Form Heading.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Index Type Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Success Message.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\View Title.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Adult.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Adult\Adult Heading.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Adult\Adult Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Adult\Racy Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Categories.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Categories\Categories Heading.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Color.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Color\Accent Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Color\Background Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Color\Colors Heading.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Color\Dominant Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Color\Foreground Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Color\Is Black White Image Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Description.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Description\Captions Heading.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Description\Description Heading.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Description\Tags Heading.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Faces.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Faces\Age Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Faces\Gender Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Tags.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Tags\Tags Heading.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Words.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Words\Bounding Box Label.yml" />
+    <None Include="System-Settings\Image Search\Image Search Dictionary\Vision\Words\Text Label.yml" />
+    <None Include="System-Settings\Image Search\setup sample image.yml" />
+    <None Include="Templates\404d62d3-378d-4076-9d41-058960dd1548\Analyze New Images.yml" />
+    <None Include="Templates\Sitecore Cognitive Services -_.yml" />
+    <None Include="Templates\Sitecore Cognitive Services -_\Image Analysis Folder.yml" />
+    <None Include="Templates\Sitecore Cognitive Services -_\Image Analysis Folder\__Standard Values.yml" />
+    <None Include="Templates\Sitecore Cognitive Services -_\Image Analysis.yml" />
+    <None Include="Templates\Sitecore Cognitive Services -_\Image Analysis\Data.yml" />
+    <None Include="Templates\Sitecore Cognitive Services -_\Image Analysis\Data\Analyzed Image.yml" />
+    <None Include="Templates\Sitecore Cognitive Services -_\Image Analysis\Data\Emotional Analysis.yml" />
+    <None Include="Templates\Sitecore Cognitive Services -_\Image Analysis\Data\Facial Analysis.yml" />
+    <None Include="Templates\Sitecore Cognitive Services -_\Image Analysis\Data\Textual Analysis.yml" />
+    <None Include="Templates\Sitecore Cognitive Services -_\Image Analysis\Data\Visual Analysis.yml" />
+    <None Include="Templates\Sitecore Cognitive Services -_\Image Analysis\__Standard Values.yml" />
+    <None Include="Templates\Sitecore Cognitive Services -_\Image Search Settings.yml" />
+    <None Include="Templates\Sitecore Cognitive Services -_\Image Search Settings\Image Search Settings.yml" />
+    <None Include="Templates\Sitecore Cognitive Services -_\Image Search Settings\__Standard Values.yml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

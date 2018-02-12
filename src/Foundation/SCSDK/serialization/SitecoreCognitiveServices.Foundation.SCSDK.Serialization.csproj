@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5220CD2E-72B4-4A2B-BD46-800844F18394}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SitecoreCognitiveServices.Foundation.SCSDK.Serialization</RootNamespace>
+    <AssemblyName>SitecoreCognitiveServices.Foundation.SCSDK.Serialization</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ribbon\Cognitive.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RibbonStrip\Cognitive\Analysis.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RibbonStrip\Cognitive\Utility.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RibbonStrip\Cognitive.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="System-Settings-APIs\APIs\IBMSDK.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="System-Settings-APIs\APIs\IBMSDK.yml.template" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="System-Settings-APIs\APIs\MSSDK.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="System-Settings-APIs\APIs\MSSDK.yml.template" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="System-Settings-APIs\APIs.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\5cf155a1-9148-4e4a-b78a-c9c4fc2e6f72\Natural Language Classifier En.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\5cf155a1-9148-4e4a-b78a-c9c4fc2e6f72\Natural Language Classifier Pa.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\5cf155a1-9148-4e4a-b78a-c9c4fc2e6f72\Natural Language Classifier Re.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\5cf155a1-9148-4e4a-b78a-c9c4fc2e6f72\Natural Language Classifier Us.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\5cf155a1-9148-4e4a-b78a-c9c4fc2e6f72\Natural Language Classifier.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\6d1d4e04-35b0-4ed5-a50c-9f6201382df4\Speaker Recognition Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\6d1d4e04-35b0-4ed5-a50c-9f6201382df4\Speaker Recognition Retry In S.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\6d233bc4-f83d-4c5b-8d73-926122314ce9\Text Analytics Retry In Second.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\8bb8f274-cc8b-46b9-b61f-7d31fdf7f33f\Entity Linking Retry In Second.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\8c03f07d-18aa-4c68-a587-f1c383a455bc\Computer Vision Retry In Secon.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\a076d8e4-6711-4906-a027-36bd1f3a3d41\Bing Spell Check Retry In Seco.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\a1dfd7c6-c0f0-4a40-9f78-ba520211e934\Content Moderator Client Id.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\a1dfd7c6-c0f0-4a40-9f78-ba520211e934\Content Moderator Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\a1dfd7c6-c0f0-4a40-9f78-ba520211e934\Content Moderator Private Key.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\a1dfd7c6-c0f0-4a40-9f78-ba520211e934\Content Moderator Retry In Sec.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\bfea5125-8b99-40a2-89bb-13ecfb76345b\Linguistic Analysis Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\bfea5125-8b99-40a2-89bb-13ecfb76345b\Linguistic Analysis Retry In S.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\f0f7a54a-97d0-4cf9-8ba0-d5a70d35087a\Recommendations Retry In Secon.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\fe3a2780-5014-4a67-8025-dc70e8ad481b\Bing Autosuggest Retry In Seco.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\API Folder\__Standard Values.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\API Folder.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\IBMSDK\__Standard Values.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\IBMSDK\Natural Language Classifier.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\IBMSDK.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\__Standard Values.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Academic\Academic Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Academic\Academic Retry In Seconds.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Academic\Academic.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Academic.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Bing Autosuggest\Bing Autosuggest Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Bing Autosuggest\Bing Autosuggest.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Bing Autosuggest.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Bing Search\Bing Search Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Bing Search\Bing Search Retry In Seconds.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Bing Search\Bing Search.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Bing Search.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Bing Speech\Bing Speech Enpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Bing Speech\Bing Speech Retry In Seconds.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Bing Speech\Bing Speech.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Bing Speech.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Bing Spell Check\Bing Spell Check Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Bing Spell Check\Bing Spell Check.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Bing Spell Check.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Computer Vision\Computer Vision Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Computer Vision\Computer Vision.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Computer Vision.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Content Moderator\Content Moderator.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Content Moderator.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Emotion\Emotion Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Emotion\Emotion Retry In Seconds.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Emotion\Emotion.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Emotion.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Entity Linking\Entity Linking Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Entity Linking\Entity Linking.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Entity Linking.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Face\Face Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Face\Face Retry In Seconds.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Face\Face.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Face.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Linguistic Analysis\Linguistic Analysis.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Linguistic Analysis.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Luis\Luis Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Luis\Luis Retry In Seconds.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Luis\Luis.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Luis.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Q n A\Q n A Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Q n A\Q n A Retry In Seconds.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Q n A\Q n A.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Q n A.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Recommendations\Recommendations Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Recommendations\Recommendations.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Recommendations.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Speaker Recognition\Speaker Recognition.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Speaker Recognition.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Text Analytics\Text Analytics Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Text Analytics\Text Analytics.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Text Analytics.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Video\Video Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Video\Video Retry In Seconds.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Video\Video.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Video.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\WebLM\WebLM Endpoint.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\WebLM\WebLM Retry In Seconds.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\WebLM\WebLM.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\WebLM.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\APIs.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\Branches\Dictionary Domain\_name.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\Branches\Dictionary Domain.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\Branches\Dictionary entry\_name.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\Branches\Dictionary entry.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\Branches\Dictionary folder\_name.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\Branches\Dictionary folder.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\Branches.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\Sitecore Cognitive Services Se\__Standard Values.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_\Sitecore Cognitive Services Se.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\Sitecore Cognitive Services -_.yml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
