@@ -49,52 +49,25 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
 
         public virtual void AddItemToIndex(string itemId, string dbName)
         {
-            ID id = DataWrapper.GetID(itemId);
-            if (id.IsNull)
-                return;
-
-            Item i = DataWrapper.GetDatabase(dbName).GetItem(id);
-            if (i == null)
-                return;
-
-            AddItemToIndex(i, dbName);
+            ContentSearch.AddItemToIndex(itemId, dbName, GetCognitiveIndexName(dbName));
         }
 
         public virtual void AddItemToIndex(Item item, string dbName)
         {
-            if (item == null)
-                return;
-
-            var tempItem = (SitecoreIndexableItem)item;
-            ContentSearch.GetIndex(GetCognitiveIndexName(dbName)).Refresh(tempItem);
+            ContentSearch.AddItemToIndex(item, GetCognitiveIndexName(dbName));
         }
 
         public virtual void UpdateItemInIndex(string itemId, string dbName)
         {
-            ID id = DataWrapper.GetID(itemId);
-            if (id.IsNull)
-                return;
-
-            Item i = DataWrapper.GetDatabase(dbName).GetItem(id);
-            if (i == null)
-                return;
-
-            UpdateItemInIndex(i, dbName);
+            ContentSearch.UpdateItemInIndex(itemId, dbName, GetCognitiveIndexName(dbName));
         }
 
         public virtual void UpdateItemInIndex(Item item, string dbName)
         {
-            if (item == null)
-                return;
-
-            var tempItem = (SitecoreIndexableItem)item;
-
-            var index = ContentSearch.GetIndex(GetCognitiveIndexName(dbName));
-
-            index.Update(tempItem.UniqueId);
+            ContentSearch.UpdateItemInIndex(item, GetCognitiveIndexName(dbName));
         }
         
-        public virtual int UpdateItemInIndexRecursively(Item item, string db)
+        public virtual int UpdateMediaItemsInIndexRecursively(Item item, string db)
         {
             var list = GetMediaItems(
                 item.Paths.FullPath, 
@@ -259,7 +232,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
 
         public virtual Item GetImageAnalysisItem(string itemName, string languageCode, string dbName)
         {
-            var index = ContentSearch.GetIndex(GetSitecoreIndexName(dbName));
+            var index = ContentSearch.GetIndex(ContentSearch.GetSitecoreIndexName(dbName));
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
             {
                 return context.GetQueryable<CognitiveImageSearchResult>()
@@ -275,7 +248,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
 
         public virtual List<Item> GetMediaItems(string folderPath, string languageCode, string dbName)
         {
-            var index = ContentSearch.GetIndex(GetSitecoreIndexName(dbName));
+            var index = ContentSearch.GetIndex(ContentSearch.GetSitecoreIndexName(dbName));
             using (var context = index.CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck))
             {
                 return context.GetQueryable<CognitiveImageSearchResult>()
@@ -334,12 +307,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
         #endregion
 
         #region Helpers
-
-        public virtual string GetSitecoreIndexName(string dbName)
-        {
-            return string.Format(ImageSearchSettings.SitecoreIndexNameFormat, dbName ?? "master");
-        }
-
+        
         public virtual string GetCognitiveIndexName(string dbName)
         {
             return string.Format(ImageSearchSettings.CognitiveIndexNameFormat, dbName ?? "master");

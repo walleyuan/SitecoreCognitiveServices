@@ -9,5 +9,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK {
         ID MSSDKId { get; }
         ID IBMSDKId { get; }
         bool CatchAndReleaseExceptions { get; }
+        string SitecoreIndexNameFormat { get; }
     }
 }

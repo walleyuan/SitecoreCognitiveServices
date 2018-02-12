@@ -20,5 +20,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK {
                 return (bool.TryParse(value, out boolValue)) && boolValue;
             }
         }
+
+        public virtual string SitecoreIndexNameFormat => Settings.GetSetting("CognitiveService.SitecoreIndexNameFormat");
     }
 }

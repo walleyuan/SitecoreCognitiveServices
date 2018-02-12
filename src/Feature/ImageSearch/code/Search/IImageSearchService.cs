@@ -13,7 +13,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
         void AddItemToIndex(Item item, string dbName);
         void UpdateItemInIndex(string itemId, string dbName);
         void UpdateItemInIndex(Item item, string dbName);
-        int UpdateItemInIndexRecursively(Item item, string db);
+        int UpdateMediaItemsInIndexRecursively(Item item, string db);
         void RebuildCognitiveIndexes();
         /// <summary>
         /// Converts a cognitive search result into an image analysis
@@ -64,7 +64,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search {
         List<string> GetColors(string languageCode, string dbName);
         Expression<Func<CognitiveImageSearchResult, bool>> GetDefaultFilter(string[] parameterValues, string fieldName);
         Expression<Func<CognitiveImageSearchResult, bool>> GetRangeFilter(string[] parameterValues, string fieldName);
-        string GetSitecoreIndexName(string dbName);
         string GetCognitiveIndexName(string dbName);
     }
 }

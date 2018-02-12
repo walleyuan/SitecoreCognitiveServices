@@ -122,6 +122,5 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Setup
             //get the congitive indexes build for the first time
             SearchService.RebuildCognitiveIndexes();
         }
-
     }
 }
