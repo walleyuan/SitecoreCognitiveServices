@@ -98,7 +98,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IBMSDK", "IBMSDK", "{611332
 		src\Foundation\IBMSDK\code\Properties\PublishProfiles\deploy.pubxml.template = src\Foundation\IBMSDK\code\Properties\PublishProfiles\deploy.pubxml.template
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Feature.ImageSearchSerialization", "src\Feature\ImageSearch\serialization\SitecoreCognitiveServices.Feature.ImageSearchSerialization.csproj", "{15BEDAD5-D4F0-46C6-BCAD-F61D5E0A4EB2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Feature.ImageSearch.Serialization", "src\Feature\ImageSearch\serialization\SitecoreCognitiveServices.Feature.ImageSearch.Serialization.csproj", "{15BEDAD5-D4F0-46C6-BCAD-F61D5E0A4EB2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Feature.OleChat.Serialization", "src\Feature\OleChat\serialization\SitecoreCognitiveServices.Feature.OleChat.Serialization.csproj", "{23AF27EC-D15D-44C8-A939-082C2EC3FC46}"
 EndProject

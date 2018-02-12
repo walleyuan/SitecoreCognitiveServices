@@ -7,8 +7,8 @@
     <ProjectGuid>{15BEDAD5-D4F0-46C6-BCAD-F61D5E0A4EB2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SitecoreCognitiveServices.Feature.ImageSearchSerialization</RootNamespace>
-    <AssemblyName>SitecoreCognitiveServices.Feature.ImageSearchSerialization</AssemblyName>
+    <RootNamespace>SitecoreCognitiveServices.Feature.ImageSearch.Serialization</RootNamespace>
+    <AssemblyName>SitecoreCognitiveServices.Feature.ImageSearch.Serialization</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
