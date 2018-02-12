@@ -177,15 +177,15 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language {
         {
             var appQS = GetImportQuerystring(appName);
             var response = RepositoryClient.SendJsonPost(ApiKeys.Luis, $"{ApiKeys.LuisEndpoint}{luisUrl}import{appQS}", JsonConvert.SerializeObject(request));
-
-            return response;
+            
+            return JsonConvert.DeserializeObject<string>(response);
         }
 
         public virtual async Task<string> ImportApplicationAsync(ApplicationDefinition request, string appName = "") {
             var appQS = GetImportQuerystring(appName);
             var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.Luis, $"{ApiKeys.LuisEndpoint}{luisUrl}import{appQS}", JsonConvert.SerializeObject(request));
 
-            return response;
+            return JsonConvert.DeserializeObject<string>(response);
         }
 
         public virtual PublishResponse PublishApplication(Guid appId, PublishRequest request) {
@@ -838,12 +838,12 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language {
 
         public virtual void TrainApplicationVersion(Guid appId, string versionId) {
 
-            var response = RepositoryClient.SendJsonPost(ApiKeys.Luis, ApiKeys.Luis, $"{ApiKeys.LuisEndpoint}{luisUrl}{appId}/versions/{versionId}/train");
+            var response = RepositoryClient.SendJsonPost(ApiKeys.Luis, $"{ApiKeys.LuisEndpoint}{luisUrl}{appId}/versions/{versionId}/train", "{}");
         }
 
         public virtual async Task TrainApplicationVersionAsync(Guid appId, string versionId) {
 
-            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.Luis, ApiKeys.Luis, $"{ApiKeys.LuisEndpoint}{luisUrl}{appId}/versions/{versionId}/train");
+            var response = await RepositoryClient.SendJsonPostAsync(ApiKeys.Luis, $"{ApiKeys.LuisEndpoint}{luisUrl}{appId}/versions/{versionId}/train", "{}");
         }
 
         #endregion Train

@@ -9,6 +9,7 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis {
         public string EndpointUrl { get; set; }
         [JsonProperty(PropertyName = "subscription-key")]
         public string SubscriptionKey { get; set; }
+        public string EndpointRegion { get; set; }
         public bool IsStaging { get; set; }
     }
 }

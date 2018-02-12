@@ -10,6 +10,7 @@ using Sitecore.Data.Items;
 using SitecoreCognitiveServices.Foundation.MSSDK;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language;
+using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Setup
 {
@@ -18,12 +19,16 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Setup
         protected readonly IMicrosoftCognitiveServicesApiKeys MSCSApiKeys;
         protected readonly ILuisService LuisService;
         protected readonly IOleSettings OleSettings;
+        protected readonly ISitecoreDataWrapper DataWrapper;
+        protected readonly IContentSearchWrapper ContentSearch;
         protected readonly HttpContextBase Context;
 
         public SetupService(
             IMicrosoftCognitiveServicesApiKeys mscsApiKeys,
             ILuisService luisService,
             IOleSettings oleSettings,
+            ISitecoreDataWrapper dataWrapper,
+            IContentSearchWrapper contentSearch,
             HttpContextBase context
             )
         {
@@ -31,9 +36,11 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Setup
             LuisService = luisService;
             OleSettings = oleSettings;
             Context = context;
+            DataWrapper = dataWrapper;
+            ContentSearch = contentSearch;
         }
 
-        public bool SaveKeysAndPingLuis(string luisApi, string luisApiEndpoint, string textAnalyticsApi,
+        public void SaveKeys(string luisApi, string luisApiEndpoint, string textAnalyticsApi,
             string textAnalyticsApiEndpoint)
         {
             var db = Factory.GetDatabase(OleSettings.MasterDatabase);
@@ -48,32 +55,60 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Setup
                     MSCSApiKeys.TextAnalytics = textAnalyticsApi;
                 if (MSCSApiKeys.TextAnalyticsEndpoint != textAnalyticsApiEndpoint)
                     MSCSApiKeys.TextAnalyticsEndpoint = textAnalyticsApiEndpoint;
-                
-                var subKeyResponse = LuisService.GetSubscriptionKey();
-                var extKeyResponse = LuisService.GetExternalApiKey();
             }
-
-            return true;
         }
 
         public bool RestoreOle(bool overwrite)
         {
-            //if exists skip
-            var infoResponse = LuisService.GetApplicationInfo(OleSettings.OleApplicationId);
-            if (infoResponse == null)
-                return true;
-
-            var jsonFile = Context.Server.MapPath("~/Areas/SitecoreCognitiveServices/Assets/json/SitecoreCognitiveServices.Feature.OleChat.json");
-            if (File.Exists(jsonFile))
+            var db = Factory.GetDatabase(OleSettings.MasterDatabase);
+            using (new DatabaseSwitcher(db))
             {
+                var jsonFile = Context.Server.MapPath("~/Areas/SitecoreCognitiveServices/Assets/json/SitecoreCognitiveServices.Feature.OleChat.json");
+                if (!File.Exists(jsonFile))
+                    return false;
+                
                 var jsonText = File.ReadAllText(jsonFile);
                 var appDefinition = JsonConvert.DeserializeObject<ApplicationDefinition>(jsonText);
-                //var importResponse = LuisService.ImportApplication(appDefinition);
-                //LuisService.TrainApplicationVersion(OleSettings.OleApplicationId, appDefinition.VersionId);
-                PublishRequest pr = new PublishRequest();
-                pr.VersionId = appDefinition.VersionId;
-                pr.IsStaging = "false";
-                //LuisService.PublishApplication(OleSettings.OleApplicationId, pr);
+
+                var infoResponse = LuisService.GetApplicationInfo(OleSettings.OleApplicationId);
+                bool shouldOverwrite = infoResponse != null && overwrite;
+                bool isNoApp = infoResponse == null;
+                if (shouldOverwrite)
+                    LuisService.DeleteApplication(new Guid(infoResponse.Id));
+
+                Guid appId;
+                if (shouldOverwrite || isNoApp)
+                {
+                    var importResponse = LuisService.ImportApplication(appDefinition, appDefinition.Name);
+                    if (!Guid.TryParse(importResponse, out appId))
+                        return false;
+
+                    OleSettings.OleApplicationId = Guid.Parse(importResponse);
+                }
+                else
+                {
+                    appId = OleSettings.OleApplicationId;
+                }
+                    
+                LuisService.TrainApplicationVersion(appId, appDefinition.VersionId);
+                var hasResponse = false;
+                do
+                {
+                    System.Threading.Thread.Sleep(1000);
+                        
+                    var trainResponse = LuisService.GetApplicationVersionTrainingStatus(appId, appDefinition.VersionId);
+                    if (trainResponse != null && trainResponse.Count > 0)
+                        hasResponse = true;
+                }
+                while (!hasResponse);
+
+                PublishRequest pr = new PublishRequest()
+                {
+                    VersionId = appDefinition.VersionId,
+                    IsStaging = false,
+                    EndpointRegion = "westus"
+                };
+                var publishResponse = LuisService.PublishApplication(appId, pr);
             }
 
             return true;
@@ -81,11 +116,22 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Setup
 
         public bool QueryOle()
         {
-            var response = LuisService.Query(OleSettings.OleApplicationId, "Hello");
-            if (response == null)
-                return false;
+            var db = Factory.GetDatabase(OleSettings.MasterDatabase);
+            using (new DatabaseSwitcher(db))
+            {
+                var response = LuisService.Query(OleSettings.OleApplicationId, "Hello");
+                if (response == null)
+                    return false;
+            }
 
             return true;
+        }
+
+        public void PublishOleContent()
+        { 
+            //publish the installed content
+            var imageSearchFolder = DataWrapper.ContentDatabase.GetItem(OleSettings.OleChatSettingsId);
+            ContentSearch.UpdateItemInIndex(imageSearchFolder, ContentSearch.GetSitecoreIndexName(OleSettings.MasterDatabase));
         }
     }
 }

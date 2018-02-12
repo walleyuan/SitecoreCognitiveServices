@@ -113,17 +113,17 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServi
 
             List<string> items = new List<string>();
 
-            var pingResult = SetupService.SaveKeysAndPingLuis(luisApi, luisApiEndpoint, textAnalyticsApi, textAnalyticsApiEndpoint);
-            if(!pingResult)
-                items.Add("Ping Luis");
-
+            SetupService.SaveKeys(luisApi, luisApiEndpoint, textAnalyticsApi, textAnalyticsApiEndpoint);
+            
             var restoreResult = SetupService.RestoreOle(overwriteOption);
             if(!restoreResult)
                 items.Add("Restore Ole");
 
             var queryResult = SetupService.QueryOle();
             if(!queryResult)
-                items.Add("Ping Ole");
+                items.Add("Query Ole");
+
+            SetupService.PublishOleContent();
 
             return Json(new
             {

@@ -16,7 +16,7 @@ SharedFields:
   Value: "https://api.cognitive.microsoft.com/bing/v5.0/spellcheck/"
 - ID: "2a55f21b-a603-4db5-aff9-31ad63de1179"
   Hint: Luis Retry In Seconds
-  Value: 0
+  Value: 1
 - ID: "395e3222-8cad-4b63-9967-c5e6f689fe45"
   Hint: Text Analytics Endpoint
   Value: "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/"
