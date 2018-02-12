@@ -925,7 +925,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language {
                 false);
         }
 
-        public virtual ExternalApiKeySet GetExternalApiKey()
+        public virtual List<ExternalApiKeySet> GetExternalApiKey()
         {
             return PolicyService.ExecuteRetryAndCapture400Errors(
                 "LuisService.GetExternalApiKey",

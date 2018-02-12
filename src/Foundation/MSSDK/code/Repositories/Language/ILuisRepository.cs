@@ -144,8 +144,8 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language {
         Task DeleteExternalApiKeyAsync(string externalApiKey);
         void DeleteSubscriptionKey(string subscriptionKey);
         Task DeleteSubscriptionKeyAsync(string subscriptionKey);
-        ExternalApiKeySet GetExternalApiKey();
-        Task<ExternalApiKeySet> GetExternalApiKeyAsync();
+        List<ExternalApiKeySet> GetExternalApiKey();
+        Task<List<ExternalApiKeySet>> GetExternalApiKeyAsync();
         List<SubscriptionKeySet> GetSubscriptionKey();
         Task<List<SubscriptionKeySet>> GetSubscriptionKeyAsync();
         string ResetProgrammaticKey();

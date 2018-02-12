@@ -890,18 +890,18 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Repositories.Language {
             var response = await RepositoryClient.SendJsonDeleteAsync(ApiKeys.Luis, $"{ApiKeys.LuisEndpoint}{luisSubKeyUrl}{subscriptionKey}");
         }
 
-        public virtual ExternalApiKeySet GetExternalApiKey() {
+        public virtual List<ExternalApiKeySet> GetExternalApiKey() {
 
             var response = RepositoryClient.SendGet(ApiKeys.Luis, $"{ApiKeys.LuisEndpoint}{luisApiKeyUrl}");
 
-            return JsonConvert.DeserializeObject<ExternalApiKeySet>(response);
+            return JsonConvert.DeserializeObject<List<ExternalApiKeySet>>(response);
         }
 
-        public virtual async Task<ExternalApiKeySet> GetExternalApiKeyAsync() {
+        public virtual async Task<List<ExternalApiKeySet>> GetExternalApiKeyAsync() {
 
             var response = await RepositoryClient.SendGetAsync(ApiKeys.Luis, $"{ApiKeys.LuisEndpoint}{luisApiKeyUrl}");
 
-            return JsonConvert.DeserializeObject<ExternalApiKeySet>(response);
+            return JsonConvert.DeserializeObject<List<ExternalApiKeySet>>(response);
         }
 
         public virtual List<SubscriptionKeySet> GetSubscriptionKey() {

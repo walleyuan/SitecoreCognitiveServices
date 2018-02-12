@@ -74,7 +74,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language {
         void AddSubscriptionKey(SubscriptionKeySet request);
         void DeleteExternalApiKey(string externalApiKey);
         void DeleteSubscriptionKey(string subscriptionKey);
-        ExternalApiKeySet GetExternalApiKey();
+        List<ExternalApiKeySet> GetExternalApiKey();
         List<SubscriptionKeySet> GetSubscriptionKey();
         string ResetProgrammaticKey();
         void AssignSubscriptionKeyToVersion(Guid appId, string versionId, string subscriptionKey);
