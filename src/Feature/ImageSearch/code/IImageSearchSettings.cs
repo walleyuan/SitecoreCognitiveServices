@@ -7,6 +7,7 @@ using Sitecore.Data;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch {
     public interface IImageSearchSettings {
+        string WebDatabase { get; }
         string MasterDatabase { get; }
         string CoreDatabase { get; }
         string SitecoreIndexNameFormat { get; }
@@ -24,6 +25,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
         ID ImageSearchFolderId { get; }
         ID BlogFieldId { get; }
         ID ImageSearchFieldFolderId { get; }
+        ID SCSDKTemplatesFolderId { get; }
+        ID ImageSearchTemplatesFolderId { get; }
+        ID SCSModulesFolderId { get; }
         string DictionaryDomain { get; }
         bool MissingKeys();
         bool HasNoValue(string str);

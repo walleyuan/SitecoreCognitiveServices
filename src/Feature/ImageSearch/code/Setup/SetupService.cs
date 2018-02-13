@@ -16,12 +16,15 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Setup
 {
     public class SetupService : ISetupService
     {
+        #region Constructor
+
         protected readonly ISitecoreDataWrapper DataWrapper;
         protected readonly ISetupInformationFactory SetupFactory;
         protected readonly IMicrosoftCognitiveServicesApiKeys MSCSApiKeys;
         protected readonly IImageSearchSettings SearchSettings;
         protected readonly IImageAnalysisService AnalysisService;
         protected readonly IImageSearchService SearchService;
+        protected readonly IPublishWrapper PublishWrapper;
         protected readonly HttpContextBase Context;
 
         public SetupService(
@@ -31,6 +34,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Setup
             IImageSearchSettings searchSettings,
             IImageAnalysisService analysisService,
             IImageSearchService searchService,
+            IPublishWrapper publishWrapper,
             HttpContextBase context)
         {
             DataWrapper = dataWrapper;
@@ -40,7 +44,10 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Setup
             AnalysisService = analysisService;
             SearchService = searchService;
             Context = context;
+            PublishWrapper = publishWrapper;
         }
+
+        #endregion
 
         public ICognitiveImageAnalysis SaveKeysAndAnalyze(string emotionApi, string emotionApiEndpoint, string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint)
         {
@@ -115,9 +122,21 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Setup
             if (indexOption.Equals("Solr"))
                 return;
 
-            //publish the installed content
-            var imageSearchFolder = DataWrapper.ContentDatabase.GetItem(SearchSettings.ImageSearchFolderId);
-            SearchService.UpdateItemInIndex(imageSearchFolder, DataWrapper.ContentDatabase.Name);
+            //publish templates folder for yourself and core, and publish scs root in modules
+            List<ID> itemGuids = new List<ID>() {
+                SearchSettings.SCSDKTemplatesFolderId,
+                SearchSettings.ImageSearchTemplatesFolderId,
+                SearchSettings.SCSModulesFolderId
+            };
+
+            Database fromDb = DataWrapper.GetDatabase(SearchSettings.MasterDatabase);
+            Database toDb = DataWrapper.GetDatabase(SearchSettings.WebDatabase);
+            foreach (var g in itemGuids)
+            {
+                var folder = fromDb.GetItem(g);
+
+                PublishWrapper.PublishItem(folder, new[] { toDb }, new[] { folder.Language }, true, false);
+            }
 
             //get the congitive indexes build for the first time
             SearchService.RebuildCognitiveIndexes();

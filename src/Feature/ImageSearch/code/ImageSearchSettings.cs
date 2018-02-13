@@ -12,6 +12,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
     {
         protected static IMicrosoftCognitiveServicesApiKeys _msApiKeys => DependencyResolver.Current.GetService<IMicrosoftCognitiveServicesApiKeys>();
 
+        public virtual string WebDatabase => Settings.GetSetting("CognitiveService.ImageSearch.WebDatabase");
         public virtual string MasterDatabase => Settings.GetSetting("CognitiveService.ImageSearch.MasterDatabase");
         public virtual string CoreDatabase => Settings.GetSetting("CognitiveService.ImageSearch.CoreDatabase");
         public virtual string SitecoreIndexNameFormat => Settings.GetSetting("CognitiveService.ImageSearch.SitecoreIndexNameFormat");
@@ -29,6 +30,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
         public virtual ID ImageSearchFolderId => new ID(Settings.GetSetting("CognitiveService.ImageSearch.ImageSearchFolder"));
         public virtual ID BlogFieldId => new ID(Settings.GetSetting("CognitiveService.ImageSearch.BlogField"));
         public virtual ID ImageSearchFieldFolderId => new ID(Settings.GetSetting("CognitiveService.ImageSearch.ImageSearchFieldFolder"));
+        public virtual ID SCSDKTemplatesFolderId => new ID(Settings.GetSetting("CognitiveService.ImageSearch.SCSDKTemplatesFolder"));
+        public virtual ID ImageSearchTemplatesFolderId => new ID(Settings.GetSetting("CognitiveService.ImageSearch.ImageSearchTemplatesFolder"));
+        public virtual ID SCSModulesFolderId => new ID(Settings.GetSetting("CognitiveService.ImageSearch.SCSModulesFolder"));
         public virtual string DictionaryDomain => Settings.GetSetting("CognitiveService.ImageSearch.DictionaryDomain");
         public bool MissingKeys()
         {
