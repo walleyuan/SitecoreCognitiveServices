@@ -16,11 +16,14 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Setup
 {
     public class SetupService : ISetupService
     {
+        #region Constructor
+
         protected readonly IMicrosoftCognitiveServicesApiKeys MSCSApiKeys;
         protected readonly ILuisService LuisService;
         protected readonly IOleSettings OleSettings;
         protected readonly ISitecoreDataWrapper DataWrapper;
         protected readonly IContentSearchWrapper ContentSearch;
+        protected readonly IPublishWrapper PublishWrapper;
         protected readonly HttpContextBase Context;
 
         public SetupService(
@@ -29,6 +32,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Setup
             IOleSettings oleSettings,
             ISitecoreDataWrapper dataWrapper,
             IContentSearchWrapper contentSearch,
+            IPublishWrapper publishWrapper,
             HttpContextBase context
             )
         {
@@ -38,7 +42,10 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Setup
             Context = context;
             DataWrapper = dataWrapper;
             ContentSearch = contentSearch;
+            PublishWrapper = publishWrapper;
         }
+
+        #endregion
 
         public void SaveKeys(string luisApi, string luisApiEndpoint, string textAnalyticsApi,
             string textAnalyticsApiEndpoint)
@@ -128,10 +135,22 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Setup
         }
 
         public void PublishOleContent()
-        { 
-            //publish the installed content
-            var imageSearchFolder = DataWrapper.ContentDatabase.GetItem(OleSettings.OleChatSettingsId);
-            ContentSearch.UpdateItemInIndex(imageSearchFolder, ContentSearch.GetSitecoreIndexName(OleSettings.MasterDatabase));
+        {
+            //start at templates folder for yourself and core, and publish scs root in modules
+            List<ID> itemGuids = new List<ID>() {
+                OleSettings.SCSDKTemplatesFolderId,
+                OleSettings.OleTemplatesFolderId,
+                OleSettings.SCSModulesFolderId
+            };
+            
+            Database fromDb = DataWrapper.GetDatabase(OleSettings.MasterDatabase);
+            Database toDb = DataWrapper.GetDatabase(OleSettings.WebDatabase);
+            foreach (var g in itemGuids)
+            {
+                var folder = fromDb.GetItem(g);
+
+                PublishWrapper.PublishItem(folder, new[] { toDb }, new[] { folder.Language }, true, false);
+            }
         }
     }
 }

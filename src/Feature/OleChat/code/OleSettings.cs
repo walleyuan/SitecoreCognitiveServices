@@ -20,11 +20,11 @@ namespace SitecoreCognitiveServices.Feature.OleChat {
         {
             get
             {
-                Item folderItem = DataWrapper.GetDatabase(MasterDatabase).GetItem(OleChatSettingsId);
+                Item folderItem = DataWrapper.GetDatabase(MasterDatabase).GetItem(OleSettingsFolderId);
                 if (folderItem == null)
                     return Guid.Empty;
 
-                Field f =folderItem.Fields[OleChatAppIdField];
+                Field f =folderItem.Fields[OleAppIdField];
                 if (f == null)
                     return Guid.Empty;
 
@@ -35,20 +35,24 @@ namespace SitecoreCognitiveServices.Feature.OleChat {
             }
             set
             {
-                var settingsItem = DataWrapper.GetDatabase(MasterDatabase).GetItem(OleChatSettingsId);
+                var settingsItem = DataWrapper.GetDatabase(MasterDatabase).GetItem(OleSettingsFolderId);
                 if (settingsItem == null)
                     return;
 
                 using (new EditContext(settingsItem, true, false))
                 {
                     settingsItem.Fields.ReadAll();
-                    settingsItem.Fields[OleChatAppIdField].Value = value.ToString();
+                    settingsItem.Fields[OleAppIdField].Value = value.ToString();
                 }
             }
         } 
         public virtual string MasterDatabase => Settings.GetSetting("CognitiveService.OleChat.MasterDatabase");
+        public virtual string WebDatabase => Settings.GetSetting("CognitiveService.OleChat.WebDatabase");
         public virtual string DictionaryDomain => Settings.GetSetting("CognitiveService.OleChat.DictionaryDomain");
-        public virtual ID OleChatSettingsId => new ID(Settings.GetSetting("CognitiveService.OleChat.OleChatSettingsFolder"));
-        public virtual string OleChatAppIdField => Settings.GetSetting("CognitiveService.OleChat.OleChatAppIdField");
+        public virtual ID OleSettingsFolderId => new ID(Settings.GetSetting("CognitiveService.OleChat.OleSettingsFolder"));
+        public virtual ID OleTemplatesFolderId => new ID(Settings.GetSetting("CognitiveService.OleChat.OleTemplatesFolder"));
+        public virtual ID SCSDKTemplatesFolderId => new ID(Settings.GetSetting("CognitiveService.OleChat.SCSDKTemplatesFolder"));
+        public virtual ID SCSModulesFolderId => new ID(Settings.GetSetting("CognitiveService.OleChat.SCSModulesFolder"));
+        public virtual string OleAppIdField => Settings.GetSetting("CognitiveService.OleChat.OleAppIdField");
     }
 }
