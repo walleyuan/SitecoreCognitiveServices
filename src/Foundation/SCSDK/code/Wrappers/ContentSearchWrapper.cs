@@ -32,11 +32,11 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
         #region Constructor 
 
         protected readonly ISitecoreDataWrapper DataWrapper;
-        protected readonly IApplicationSettings ApplicationSettings;
+        protected readonly ISCSDKSettings ApplicationSettings;
 
         public ContentSearchWrapper(
             ISitecoreDataWrapper dataWrapper,
-            IApplicationSettings applicationSettings)
+            ISCSDKSettings applicationSettings)
         {
             DataWrapper = dataWrapper;
             ApplicationSettings = applicationSettings;

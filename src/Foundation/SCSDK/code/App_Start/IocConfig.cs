@@ -25,7 +25,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.App_Start
         public void Configure(IServiceCollection serviceCollection)
         {
             //system
-            serviceCollection.AddSingleton<IApplicationSettings, ApplicationSettings>();
+            serviceCollection.AddSingleton<ISCSDKSettings, SCSDKSettings>();
             serviceCollection.AddSingleton<IMicrosoftCognitiveServicesApiKeys, MicrosoftCognitiveServicesApiKeys>();
             serviceCollection.AddSingleton<IIBMWatsonApiKeys, IBMWatsonApiKeys>();
             serviceCollection.AddTransient<IMicrosoftCognitiveServicesRepositoryClient, MicrosoftCognitiveServicesRepositoryClient>();

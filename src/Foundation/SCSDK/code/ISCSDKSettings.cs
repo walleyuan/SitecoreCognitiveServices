@@ -5,7 +5,7 @@ using System.Web;
 using Sitecore.Data;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK {
-    public interface IApplicationSettings {
+    public interface ISCSDKSettings {
         ID MSSDKId { get; }
         ID IBMSDKId { get; }
         bool CatchAndReleaseExceptions { get; }

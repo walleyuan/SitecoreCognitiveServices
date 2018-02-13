@@ -13,11 +13,11 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Repositories
         #region Constructor 
 
         protected readonly ISitecoreDataWrapper DataWrapper;
-        protected readonly IApplicationSettings Settings;
+        protected readonly ISCSDKSettings Settings;
 
         public IBMWatsonApiKeys(
             ISitecoreDataWrapper dataWrapper,
-            IApplicationSettings settings)
+            ISCSDKSettings settings)
         {
             DataWrapper = dataWrapper;
             Settings = settings;

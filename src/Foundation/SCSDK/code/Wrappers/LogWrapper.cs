@@ -16,9 +16,9 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
 
     public class LogWrapper : ILogWrapper
     {
-        protected readonly IApplicationSettings Settings;
+        protected readonly ISCSDKSettings Settings;
 
-        public LogWrapper(IApplicationSettings settings)
+        public LogWrapper(ISCSDKSettings settings)
         {
             Settings = settings;
         }
