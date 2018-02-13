@@ -58,7 +58,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.App_Start
             serviceCollection.AddTransient<ISetupInformationFactory, SetupInformationFactory>();
 
             //intent provider
-            serviceCollection.AddSingleton<IIntentProvider, IntentProvider>();
+            serviceCollection.AddScoped<IIntentProvider, IntentProvider>();
 
             //conversation
             serviceCollection.AddTransient<IConversation, Conversation>();

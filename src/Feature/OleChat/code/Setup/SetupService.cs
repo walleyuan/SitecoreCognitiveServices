@@ -98,16 +98,33 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Setup
                 }
                     
                 LuisService.TrainApplicationVersion(appId, appDefinition.VersionId);
+                int trainCount = 1;
+                int loopCount = 0;
                 var hasResponse = false;
                 do
                 {
                     System.Threading.Thread.Sleep(1000);
-                        
+                    
                     var trainResponse = LuisService.GetApplicationVersionTrainingStatus(appId, appDefinition.VersionId);
-                    if(trainResponse.Any(a => a.Details.Status.Equals("Fail")))
+                    var statusList = trainResponse.Select(a => a.Details.Status).ToList();
+                    var anyFailed = statusList.Any(a => a.Equals("Fail"));
+                    var anyInProgress = statusList.Any(b => b.Equals("InProgress"));
+                    if (anyFailed)
+                    {
+                        if (trainCount > 3)
+                            return false;
+
                         LuisService.TrainApplicationVersion(appId, appDefinition.VersionId);
-                    else if (trainResponse.All(a => a.Details.Status.Equals("Success")))
+                        trainCount++;
+                    }
+                    else if (!anyInProgress) { 
                         hasResponse = true;
+                    }
+
+                    if (loopCount > 100)
+                        return false;
+
+                    loopCount++;
                 }
                 while (!hasResponse);
 
