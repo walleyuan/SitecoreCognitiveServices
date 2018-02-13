@@ -54,5 +54,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat {
         public virtual ID SCSDKTemplatesFolderId => new ID(Settings.GetSetting("CognitiveService.OleChat.SCSDKTemplatesFolder"));
         public virtual ID SCSModulesFolderId => new ID(Settings.GetSetting("CognitiveService.OleChat.SCSModulesFolder"));
         public virtual string OleAppIdField => Settings.GetSetting("CognitiveService.OleChat.OleAppIdField");
+        public virtual string TestMessage => Settings.GetSetting("CognitiveService.OleChat.TestMessage");
+        public virtual string LuisPublishResource => Settings.GetSetting("CognitiveService.OleChat.LuisPublishResource");
     }
 }

@@ -104,7 +104,9 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Setup
                     System.Threading.Thread.Sleep(1000);
                         
                     var trainResponse = LuisService.GetApplicationVersionTrainingStatus(appId, appDefinition.VersionId);
-                    if (trainResponse != null && trainResponse.Count > 0)
+                    if(trainResponse.Any(a => a.Details.Status.Equals("Fail")))
+                        LuisService.TrainApplicationVersion(appId, appDefinition.VersionId);
+                    else if (trainResponse.All(a => a.Details.Status.Equals("Success")))
                         hasResponse = true;
                 }
                 while (!hasResponse);
@@ -113,7 +115,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Setup
                 {
                     VersionId = appDefinition.VersionId,
                     IsStaging = false,
-                    EndpointRegion = "westus"
+                    EndpointRegion = OleSettings.LuisPublishResource
                 };
                 var publishResponse = LuisService.PublishApplication(appId, pr);
             }
@@ -126,7 +128,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Setup
             var db = Factory.GetDatabase(OleSettings.MasterDatabase);
             using (new DatabaseSwitcher(db))
             {
-                var response = LuisService.Query(OleSettings.OleApplicationId, "Hello");
+                var response = LuisService.Query(OleSettings.OleApplicationId, OleSettings.TestMessage);
                 if (response == null)
                     return false;
             }

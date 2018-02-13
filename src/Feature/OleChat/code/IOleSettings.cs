@@ -12,5 +12,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat {
         ID SCSDKTemplatesFolderId { get; }
         ID SCSModulesFolderId { get; }
         string OleAppIdField { get; }
+        string TestMessage { get; }
+        string LuisPublishResource { get; }
     }
 }
