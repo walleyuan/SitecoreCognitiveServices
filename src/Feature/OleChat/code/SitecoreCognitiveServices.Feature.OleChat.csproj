@@ -150,7 +150,6 @@
     <Compile Include="Areas\SitecoreCognitiveServices\Models\ChannelData.cs" />
     <Compile Include="Areas\SitecoreCognitiveServices\Models\ConversationResponse.cs" />
     <Compile Include="Areas\SitecoreCognitiveServices\Models\IntentOptionSet.cs" />
-    <Compile Include="Areas\SitecoreCognitiveServices\Models\IntentOption.cs" />
     <Compile Include="OleSettings.cs" />
     <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="Commands\OleChat.cs" />
