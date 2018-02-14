@@ -19,6 +19,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public override string Description => "";
 
+        public override bool RequiresConfirmation => false;
+
         public ThanksIntent(
             ITextTranslatorWrapper translator,
             IIntentOptionSetFactory optionSetFactory,

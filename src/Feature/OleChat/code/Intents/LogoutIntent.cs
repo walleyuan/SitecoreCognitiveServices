@@ -20,7 +20,9 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
         public override string Name => "logout";
 
         public override string Description => "Logout the current user from Sitecore";
-        
+
+        public override bool RequiresConfirmation => false;
+
         public LogoutIntent(
             ITextTranslatorWrapper translator,
             HttpContextBase context,

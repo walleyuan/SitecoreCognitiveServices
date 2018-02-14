@@ -76,8 +76,17 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
                 inConversation = true;
             }
 
-            if (inConversation) { 
-                
+            if (inConversation)
+            {
+                if (activity.Text.StartsWith("Clear "))
+                {
+                    var clearParam = activity.Text.Replace("Clear ", "");
+                    if (conversation.Context.ContainsKey(clearParam))
+                        conversation.Context.Remove(clearParam);
+                    if(conversation.Data.ContainsKey(clearParam))
+                        conversation.Data.Remove(clearParam);
+                }
+
                 // check and request all required parameters of a conversation
                 foreach (ConversationParameter p in conversation.Intent.RequiredParameters)
                 {
@@ -85,6 +94,14 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
                         return RequestParam(p, conversation, parameters);
                 }
 
+                // save confirmation
+                if (conversation.Intent.RequiresConfirmation && activity.Text.Equals("Continue"))
+                    conversation.IsConfirmed = true;
+
+                // confirm selected options with user 
+                if (conversation.Intent.RequiresConfirmation && !conversation.IsConfirmed)
+                    return ConversationResponseFactory.Create("Please confirm your options or click selection to make changes", "confirm", conversation.Context);
+                
                 conversation.IsEnded = true;
 
                 return conversation.Intent.Respond(result, parameters, conversation);
@@ -102,6 +119,10 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
                 : IntentProvider.GetDefaultResponse(AppId);
         }
         
+        /// <summary>
+        /// Api call to determine the sentiment of the user input
+        /// </summary>
+        /// <param name="text">user input</param>
         public virtual SentimentResponse GetSentiment(string text)
         {
             var sr = new SentimentRequest();
@@ -110,6 +131,15 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
             return TextAnalyticsService.GetSentiment(sr);
         }
 
+        /// <summary>
+        /// get a valid parameter object by checking for it in the previously retrieved data store or by finding it based on the information provided by the user
+        /// </summary>
+        /// <param name="paramName">the parameter to retrieve</param>
+        /// <param name="result">the luis response that provides intent and entity information provided by the user</param>
+        /// <param name="c">the current conversation</param>
+        /// <param name="parameters">the context paramters</param>
+        /// <param name="GetValidParameter">the method that can retrieve the valid parameters for a valid user input</param>
+        /// <returns></returns>
         public virtual bool TryGetParam(string paramName, LuisResult result, IConversation c, ItemContextParameters parameters, Func<string, ItemContextParameters, IConversation, object> GetValidParameter)
         {
             var storedValue = c.Data.ContainsKey(paramName)
@@ -135,6 +165,13 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
             return true;
         }
 
+        /// <summary>
+        /// tries to determine a value for the requested parameter from a number of possible locations; current response entities, current response, previously provided information (context), or previously provided entities
+        /// </summary>
+        /// <param name="paramName">the parameter to be searching for</param>
+        /// <param name="result">the luis query result that identities the intent and entities</param>
+        /// <param name="c">the current conversation</param>
+        /// <returns></returns>
         public virtual string GetValue(string paramName, LuisResult result, IConversation c)
         {
             var currentEntity = result?.Entities?.FirstOrDefault(x => x.Type.Equals(paramName))?.Entity;
@@ -154,11 +191,24 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
             return string.Empty;
         }
 
+        /// <summary>
+        /// Is the currently requested parameter the one I'm checking
+        /// </summary>
+        /// <param name="paramName">the parameter to check</param>
+        /// <param name="c">the conversation it's occurring in</param>
+        /// <returns></returns>
         public virtual bool IsParamRequest(string paramName, IConversation c)
         {
             return c.Context.ContainsKey(ReqParam) && c.Context[ReqParam].Equals(paramName);
         }
 
+        /// <summary>
+        /// Create a response to the user requesting a specific parameter
+        /// </summary>
+        /// <param name="param">the parameter details</param>
+        /// <param name="c">the conversation it occurs in</param>
+        /// <param name="parameters">context parameters</param>
+        /// <returns></returns>
         public virtual ConversationResponse RequestParam(ConversationParameter param, IConversation c, ItemContextParameters parameters)
         {
             c.Context[ReqParam] = param.ParamName;

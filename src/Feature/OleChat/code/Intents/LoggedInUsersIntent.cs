@@ -18,6 +18,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public override string Description => "List the logged in users";
 
+        public override bool RequiresConfirmation => false;
+
         public LoggedInUsersIntent(
             ITextTranslatorWrapper translator,
             IAuthenticationWrapper authWrapper,

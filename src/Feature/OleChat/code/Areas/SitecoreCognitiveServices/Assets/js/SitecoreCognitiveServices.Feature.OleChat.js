@@ -33,7 +33,7 @@ jQuery(document).ready(function () {
         var idValue = jQuery(".chat-id").val();
 
         jQuery(".message ul").removeClass("enabled").addClass("disabled");
-        jQuery(".message .user-option").off("click");
+        jQuery(".message .user-option, .message .user-selection").off("click");
         
         jQuery
             .post(jQuery(chatForm).attr("action"), GenerateActivity(queryValue, langValue, dbValue, idValue))
@@ -57,47 +57,75 @@ jQuery(document).ready(function () {
         if (channelData != null) {
             //options
             var optionSet = channelData.OptionSet;
-            if (optionSet != null && optionSet.Options != null && optionSet.Options.length > 0) {
-                var optionList = "";
-
-                if (optionSet.OptionType === "Link") {
-                    for (i = 0; i < optionSet.Options.length; i++) {
-                        optionList += "<li class='user-option' data-option='" + optionSet.Options[i] + "'>" + optionSet.Options[i] + "</li>";
-                    }
-                    convoBox.append("<div class='" + type + "'><span class='message'><ul class='enabled'>" + optionList + "</ul><span class='icon'></span></span></div>");
-
-                    jQuery(".enabled .user-option")
-                        .on('click', function () {
-                            
-                            var optionValue = jQuery(this).data("option");
-                            UpdateChatWindow(optionValue, null, "user");
-                            SendChatRequest(optionValue);
-                        });
-                }
-                if (optionSet.OptionType === "Radio") {
-
-                }
-                if (optionSet.OptionType === "Checkbox") {
-
-                }
-            }
+            if (optionSet != null && optionSet.Options != null && optionSet.Options.length > 0)
+                HandleOptions(type, optionSet, convoBox);
 
             //actions
             var action = channelData.Action;
-            if (action != null && action === "logout") {
-
-                var formData = {};
-                formData.__RequestVerificationToken = jQuery("input[name=__RequestVerificationToken]").val();
-                
-                jQuery
-                    .post("/sitecore/shell/api/sitecore/Authentication/Logout?sc_database=master", formData)
-                    .done(function(msg) {
-                        location.href = "/sitecore/login";   
-                    });
-            }    
+            var selections = channelData.Selections;
+            if (action != null && selections != null)
+                HandlActions(type, action, selections, convoBox);
         }
         
         convoBox.scrollTop(convoBox[0].scrollHeight - convoBox.height());
+    }
+
+    function HandleOptions(type, optionSet, convoBox)
+    {
+        var optionList = "";
+        if (optionSet.OptionType === "Link") {
+            for (i = 0; i < optionSet.Options.length; i++) {
+                optionList += "<li class='user-option' data-option='" + optionSet.Options[i] + "'>" + optionSet.Options[i] + "</li>";
+            }
+            convoBox.append("<div class='" + type + "'><span class='message'><ul class='enabled'>" + optionList + "</ul><span class='icon'></span></span></div>");
+
+            jQuery(".enabled .user-option")
+                .on('click', function ()
+                {
+                    var optionValue = jQuery(this).data("option");
+                    UpdateChatWindow(optionValue, null, "user");
+                    SendChatRequest(optionValue);
+                });
+        }
+        if (optionSet.OptionType === "Radio") {
+
+        }
+        if (optionSet.OptionType === "Checkbox") {
+
+        }
+    }
+
+    function HandlActions(type, action, selections, convoBox)
+    {
+        if (action === "logout")
+        {
+            var formData = {};
+            formData.__RequestVerificationToken = jQuery("input[name=__RequestVerificationToken]").val();
+
+            jQuery
+                .post("/sitecore/shell/api/sitecore/Authentication/Logout?sc_database=master", formData)
+                .done(function (msg) {
+                    location.href = "/sitecore/login";
+                });
+        }
+        else if (action === "confirm")
+        {
+            var selectionList = "";
+            for (var i in selections) {
+                selectionList += "<li class='user-selection' data-selection='Clear " + i + "'><b>" + i + "</b>: " + selections[i] + "</li>";
+            }
+            selectionList += "<li class='user-selection confirm-continue' data-selection='Continue'>Continue</li>";
+            selectionList += "<li class='user-selection confirm-cancel' data-selection='Cancel'>Cancel</li>";
+            convoBox.append("<div class='" + type + "'><span class='message'><ul class='enabled'>" + selectionList + "</ul><span class='icon'></span></span></div>");
+
+            //click to clear a selection
+            jQuery(".enabled .user-selection")
+                .on('click', function () {
+                    var selectionValue = jQuery(this).data("selection");
+                    UpdateChatWindow(selectionValue, null, "user");
+                    SendChatRequest(selectionValue);
+                });
+        }
     }
 
     function GenerateActivity(query, langValue, dbValue, idValue) {

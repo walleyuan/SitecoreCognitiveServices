@@ -19,6 +19,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public override string Description => "Tell you about my abilities";
 
+        public override bool RequiresConfirmation => false;
+
         public AboutIntent(
             ITextTranslatorWrapper translator,
             IOleSettings settings,

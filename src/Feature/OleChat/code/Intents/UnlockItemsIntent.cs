@@ -24,6 +24,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public override string Description => "Unlock your items";
 
+        public override bool RequiresConfirmation => false;
+
         public UnlockItemsIntent(
             ITextTranslatorWrapper translator,
             IAuthenticationWrapper authWrapper,

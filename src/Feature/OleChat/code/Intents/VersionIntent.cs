@@ -21,6 +21,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public override string Description => "Provide my version information";
 
+        public override bool RequiresConfirmation => false;
+
         public VersionIntent(
             ITextTranslatorWrapper translator,
             HttpContextBase context,

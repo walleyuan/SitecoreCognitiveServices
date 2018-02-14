@@ -22,6 +22,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public override string Description => "Count your locked items";
 
+        public override bool RequiresConfirmation => false;
+
         public LockedItemCountIntent(
             ITextTranslatorWrapper translator,
             IAuthenticationWrapper authWrapper,

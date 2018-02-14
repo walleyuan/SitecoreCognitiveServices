@@ -24,6 +24,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public override string Description => "Publish content";
 
+        public override bool RequiresConfirmation => true;
+
         public override List<ConversationParameter> RequiredParameters => new List<ConversationParameter>()
         {
             new ConversationParameter(ItemKey, "What was the item path you wanted to publish?", GetValidPath, null),
@@ -37,7 +39,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
         protected string DBKey = "Database Name";
         protected string ItemKey = "Item Path";
         protected string LangKey = "Language";
-        protected string RecursionKey = "Recursion";
+        protected string RecursionKey = "Descendants";
         
         #endregion
         

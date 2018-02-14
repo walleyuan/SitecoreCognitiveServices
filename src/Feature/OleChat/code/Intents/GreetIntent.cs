@@ -18,6 +18,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public override string Description => "Greet a user";
 
+        public override bool RequiresConfirmation => false;
+
         public GreetIntent(
             ITextTranslatorWrapper translator,
             IAuthenticationWrapper authWrapper,

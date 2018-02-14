@@ -22,6 +22,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public override string Description => "Rebuild an Index";
 
+        public override bool RequiresConfirmation => false;
+
         public override List<ConversationParameter> RequiredParameters => new List<ConversationParameter>()
         {
             new ConversationParameter(IndexKey, "What index do you want to rebuild?", GetValidIndex, IndexOptions)

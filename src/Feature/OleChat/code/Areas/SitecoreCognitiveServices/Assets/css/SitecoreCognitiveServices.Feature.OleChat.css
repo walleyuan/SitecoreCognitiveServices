@@ -257,13 +257,17 @@ fieldset legend { margin-bottom: 10px;}
 .chat-form .message ul { }
 .chat-form .message ul .user-option { text-decoration: underline; cursor: pointer; font-size: 19px; }
 .chat-form .message ul.disabled .user-option { text-decoration: none; cursor: default; }
+.chat-form .message ul .user-selection { text-decoration: underline; cursor: pointer; font-size: 19px; }
+.chat-form .message ul.disabled .user-selection { text-decoration: none; cursor: default; }
+.chat-form .message .confirm-continue,
+.chat-form .message .confirm-cancel { margin: 10px 0px; }
 .chat-form .user { text-align:right; padding-left:32px; }
 .chat-form .bot { text-align:left; }
 .chat-form .user span.message { background-color:#474747;}
 .chat-form .bot span.message { background:#dc291e; padding-left:40px; }
 .chat-form .bot span.icon { background:url('/~/icon/Office/24x24/man_8.png.aspx') top left no-repeat; border-radius: 12px; position:absolute; top:4px; left:7px; height: 24px; width: 24px; }
 .chat-form ul { list-style-type: disc; padding-left:26px; font-size:16px; }
-.chat-form li {}
+.chat-form li { margin-bottom: 5px; }
 
 .editor-tab.frame { padding: 0px; }
 .editor-tab h2 { background-color: #474747; line-height: 35px; color: #fff; font-weight: 600; cursor: pointer; border-bottom: 1px solid #474747; padding-left: 10px; border-left: 5px solid #dc291e; }

@@ -79,6 +79,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServi
                 reply.ChannelData = new ChannelData
                 {
                     OptionSet = response.OptionsSet,
+                    Selections = response.Selections,
                     Action = response.Action
                 };
 

@@ -12,6 +12,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Factories
         ConversationResponse Create(string message);
         ConversationResponse Create(string message, IntentOptionSet options);
         ConversationResponse Create(string message, string action);
+        ConversationResponse Create(string message, string action, Dictionary<string, string> selections);
     }
 
     public class ConversationResponseFactory : IConversationResponseFactory
@@ -45,6 +46,16 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Factories
             var response = Create(message);
             response.Action = action;
             response.OptionsSet = IntentOptionSetFactory.Create(IntentOptionType.None);
+
+            return response;
+        }
+
+        public ConversationResponse Create(string message, string action, Dictionary<string, string> selections)
+        {
+            var response = Create(message);
+            response.Action = action;
+            response.OptionsSet = IntentOptionSetFactory.Create(IntentOptionType.None);
+            response.Selections = selections;
 
             return response;
         }

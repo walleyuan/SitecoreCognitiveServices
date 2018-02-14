@@ -10,6 +10,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
         Guid ApplicationId { get; }
         string Name { get; }
         string Description { get; }
+        bool RequiresConfirmation { get; }
         List<ConversationParameter> RequiredParameters { get; }
         ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation);
     }

@@ -22,6 +22,8 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public override string Description => "Kick a user from the system";
 
+        public override bool RequiresConfirmation => true;
+
         public override List<ConversationParameter> RequiredParameters => new List<ConversationParameter>()
         {
             new ConversationParameter(UserKey, "What user do you want to kick? (ie: domain\\username)", GetValidUser, null)
