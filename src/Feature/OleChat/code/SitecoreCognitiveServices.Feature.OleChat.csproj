@@ -121,6 +121,7 @@
     <Content Include="Areas\SitecoreCognitiveServices\Assets\css\SitecoreCognitiveServices.Feature.OleChat.css" />
     <Content Include="Areas\SitecoreCognitiveServices\Assets\js\SitecoreCognitiveServices.Feature.OleChat.js" />
     <Content Include="Areas\SitecoreCognitiveServices\Assets\json\SitecoreCognitiveServices.Feature.OleChat.json" />
+    <Content Include="Areas\SitecoreCognitiveServices\Assets\xml\SitecoreCognitiveServices.Feature.OleChat.xml" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveOleChat\Setup.cshtml" />
     <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <None Include="Web.config" />
