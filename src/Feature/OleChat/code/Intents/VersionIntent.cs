@@ -12,9 +12,9 @@ using SitecoreCognitiveServices.Feature.OleChat.Models;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
-    public interface IVersionIntent : IIntent { }
+    public interface IVersionIntent : IOleIntent { }
 
-    public class VersionIntent : BaseIntent, IVersionIntent 
+    public class VersionIntent : BaseOleIntent, IVersionIntent 
     {
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly HttpContextBase Context;

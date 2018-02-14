@@ -14,9 +14,9 @@ using SitecoreCognitiveServices.Feature.OleChat.Models;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
-    public interface IPublishIntent : IIntent { }
+    public interface IPublishIntent : IOleIntent { }
 
-    public class PublishIntent : BaseIntent, IPublishIntent
+    public class PublishIntent : BaseOleIntent, IPublishIntent
     {
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly ISitecoreDataWrapper DataWrapper;

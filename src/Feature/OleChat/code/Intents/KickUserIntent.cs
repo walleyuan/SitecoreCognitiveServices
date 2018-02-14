@@ -13,9 +13,9 @@ using SitecoreCognitiveServices.Feature.OleChat.Factories;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
-    public interface IKickUserIntent : IIntent { }
+    public interface IKickUserIntent : IOleIntent { }
 
-    public class KickUserIntent : BaseIntent, IKickUserIntent 
+    public class KickUserIntent : BaseOleIntent, IKickUserIntent 
     {
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly IAuthenticationWrapper AuthenticationWrapper;

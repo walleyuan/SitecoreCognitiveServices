@@ -14,9 +14,9 @@ using SitecoreCognitiveServices.Feature.OleChat.Models;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
-    public interface IUnlockItemsIntent : IIntent { }
+    public interface IUnlockItemsIntent : IOleIntent { }
 
-    public class UnlockItemsIntent : BaseIntent, IUnlockItemsIntent {
+    public class UnlockItemsIntent : BaseOleIntent, IUnlockItemsIntent {
 
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly IAuthenticationWrapper AuthenticationWrapper;

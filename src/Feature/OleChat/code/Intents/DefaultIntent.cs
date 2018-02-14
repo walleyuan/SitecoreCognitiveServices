@@ -8,9 +8,9 @@ using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
-    public interface IDefaultIntent : IIntent { }
+    public interface IDefaultIntent : IOleIntent { }
 
-    public class DefaultIntent : BaseIntent, IDefaultIntent
+    public class DefaultIntent : BaseOleIntent, IDefaultIntent
     {
         protected readonly ITextTranslatorWrapper Translator;
         

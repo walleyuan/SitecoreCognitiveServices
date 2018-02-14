@@ -11,9 +11,9 @@ using SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServices.
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
-    public interface IFrustratedUserIntent : IIntent { }
+    public interface IFrustratedUserIntent : IOleIntent { }
 
-    public class FrustratedUserIntent : BaseIntent, IFrustratedUserIntent
+    public class FrustratedUserIntent : BaseOleIntent, IFrustratedUserIntent
     {
         protected readonly ITextTranslatorWrapper Translator;
 

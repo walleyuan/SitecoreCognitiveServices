@@ -16,45 +16,26 @@ namespace SitecoreCognitiveServices.Feature.OleChat.App_Start
             //system
             serviceCollection.AddTransient<IOleSettings, OleSettings>();
 
-            //intents
-            serviceCollection.AddTransient<IDefaultIntent, DefaultIntent>();
-            serviceCollection.AddTransient<IGreetIntent, GreetIntent>();
-            serviceCollection.AddTransient<IKickUserIntent, KickUserIntent>();
-            serviceCollection.AddTransient<ILoggedInUsersIntent, LoggedInUsersIntent>();
-            serviceCollection.AddTransient<IPublishIntent, PublishIntent>();
-            serviceCollection.AddTransient<IVersionIntent, VersionIntent>();
-            serviceCollection.AddTransient<IAboutIntent, AboutIntent>();
-            serviceCollection.AddTransient<IUnlockItemsIntent, UnlockItemsIntent>();
-            serviceCollection.AddTransient<ILockedItemCountIntent, LockedItemCountIntent>();
-            serviceCollection.AddTransient<IQuitIntent, QuitIntent>();
-            serviceCollection.AddTransient<IThanksIntent, ThanksIntent>();
-            serviceCollection.AddTransient<ILogoutIntent, LogoutIntent>();
-            serviceCollection.AddTransient<IRebuildIndexIntent, RebuildIndexIntent>();
-            serviceCollection.AddTransient<IFrustratedUserIntent, FrustratedUserIntent>();
-
-            //intent factories
-            serviceCollection.AddTransient<IIntentFactory<IIntent>, DefaultIntentFactory>();
-            serviceCollection.AddTransient<IIntentFactory<IIntent>, GreetIntentFactory>();
-            serviceCollection.AddTransient<IIntentFactory<IIntent>, KickUserIntentFactory>();
-            serviceCollection.AddTransient<IIntentFactory<IIntent>, LoggedInUsersIntentFactory>();
-            serviceCollection.AddTransient<IIntentFactory<IIntent>, PublishIntentFactory>();
-            serviceCollection.AddTransient<IIntentFactory<IIntent>, VersionIntentFactory>();
-            serviceCollection.AddTransient<IIntentFactory<IIntent>, AboutIntentFactory>();
-            serviceCollection.AddTransient<IIntentFactory<IIntent>, UnlockItemsIntentFactory>();
-            serviceCollection.AddTransient<IIntentFactory<IIntent>, LockedItemCountIntentFactory>();
-            serviceCollection.AddTransient<IIntentFactory<IIntent>, QuitIntentFactory>();
-            serviceCollection.AddTransient<IIntentFactory<IIntent>, ThanksIntentFactory>();
-            serviceCollection.AddTransient<IIntentFactory<IIntent>, LogoutIntentFactory>();
-            serviceCollection.AddTransient<IIntentFactory<IIntent>, RebuildIndexIntentFactory>();
-            serviceCollection.AddTransient<IIntentFactory<IIntent>, FrustratedUserIntentFactory>();
-
-            serviceCollection.AddTransient<IConversationResponseFactory, ConversationResponseFactory>();
-            serviceCollection.AddTransient<IIntentOptionSetFactory, IntentOptionSetFactory>();
-
             //models
             serviceCollection.AddTransient<ISetupInformation, SetupInformation>();
 
-            //model factories
+            //intents
+            serviceCollection.AddTransient<IOleIntent, DefaultIntent>();
+            serviceCollection.AddTransient<IOleIntent, GreetIntent>();
+            serviceCollection.AddTransient<IOleIntent, KickUserIntent>();
+            serviceCollection.AddTransient<IOleIntent, LoggedInUsersIntent>();
+            serviceCollection.AddTransient<IOleIntent, PublishIntent>();
+            serviceCollection.AddTransient<IOleIntent, VersionIntent>();
+            serviceCollection.AddTransient<IOleIntent, AboutIntent>();
+            serviceCollection.AddTransient<IOleIntent, UnlockItemsIntent>();
+            serviceCollection.AddTransient<IOleIntent, LockedItemCountIntent>();
+            serviceCollection.AddTransient<IOleIntent, QuitIntent>();
+            serviceCollection.AddTransient<IOleIntent, ThanksIntent>();
+            serviceCollection.AddTransient<IOleIntent, LogoutIntent>();
+            serviceCollection.AddTransient<IOleIntent, RebuildIndexIntent>();
+            serviceCollection.AddTransient<IOleIntent, FrustratedUserIntent>();
+
+            //factories
             serviceCollection.AddTransient<ISetupInformationFactory, SetupInformationFactory>();
 
             //intent provider
@@ -65,7 +46,9 @@ namespace SitecoreCognitiveServices.Feature.OleChat.App_Start
             serviceCollection.AddTransient<IConversationFactory, ConversationFactory>();
             serviceCollection.AddTransient<IConversationHistory, ConversationHistory>();
             serviceCollection.AddTransient<IConversationService, ConversationService>();
-
+            serviceCollection.AddTransient<IIntentOptionSetFactory, IntentOptionSetFactory>();
+            serviceCollection.AddTransient<IConversationResponseFactory, ConversationResponseFactory>();
+            
             //setup
             serviceCollection.AddTransient<ISetupService, SetupService>();
 

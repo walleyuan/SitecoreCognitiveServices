@@ -10,7 +10,7 @@ using SitecoreCognitiveServices.Feature.OleChat.Models;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
-    public abstract class BaseIntent : IIntent
+    public abstract class BaseOleIntent : IOleIntent
     {
         public abstract string Name { get; }
         public abstract string Description { get; }
@@ -27,7 +27,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public virtual List<ConversationParameter> RequiredParameters => new List<ConversationParameter>();
         
-        protected BaseIntent(
+        protected BaseOleIntent(
             IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
             IOleSettings settings)

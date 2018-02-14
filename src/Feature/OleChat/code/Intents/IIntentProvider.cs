@@ -7,9 +7,9 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
     public interface IIntentProvider
     {
-        Dictionary<string, IIntent> GetAllIntents(Guid appId);
+        Dictionary<string, IOleIntent> GetAllIntents(Guid appId);
 
-        IIntent GetIntent(Guid appId, string intentName);
+        IOleIntent GetIntent(Guid appId, string intentName);
 
         ConversationResponse GetDefaultResponse(Guid appId);
     }

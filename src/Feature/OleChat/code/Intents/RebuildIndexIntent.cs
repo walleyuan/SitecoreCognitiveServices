@@ -13,9 +13,9 @@ using SitecoreCognitiveServices.Feature.OleChat.Factories;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
-    public interface IRebuildIndexIntent : IIntent { }
+    public interface IRebuildIndexIntent : IOleIntent { }
 
-    public class RebuildIndexIntent : BaseIntent, IRebuildIndexIntent
+    public class RebuildIndexIntent : BaseOleIntent, IRebuildIndexIntent
     {
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly IContentSearchWrapper ContentSearchWrapper;

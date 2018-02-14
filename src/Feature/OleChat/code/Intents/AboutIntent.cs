@@ -10,9 +10,9 @@ using SitecoreCognitiveServices.Feature.OleChat.Models;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
-    public interface IAboutIntent : IIntent { }
+    public interface IAboutIntent : IOleIntent { }
 
-    public class AboutIntent : BaseIntent, IAboutIntent
+    public class AboutIntent : BaseOleIntent, IAboutIntent
     {
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly IServiceProvider Provider;
@@ -33,8 +33,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
         
         public override ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
-            var intents = Provider.GetServices<IIntentFactory<IIntent>>()
-                .Select(a => a.Create())
+            var intents = Provider.GetServices<IOleIntent>()
                 .Where(g => g.ApplicationId.Equals(ApplicationId) && !g.Description.Equals(""));
                 
             var list = intents.Select(i => $"<li>{i.Description}</li>");

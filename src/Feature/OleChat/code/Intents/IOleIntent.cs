@@ -6,7 +6,7 @@ using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
-    public interface IIntent {
+    public interface IOleIntent {
         Guid ApplicationId { get; }
         string Name { get; }
         string Description { get; }

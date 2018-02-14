@@ -11,7 +11,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Factories
 {
     public interface IConversationFactory
     {
-        IConversation Create(LuisResult result, IIntent intent);
+        IConversation Create(LuisResult result, IOleIntent intent);
     }
 
     public class ConversationFactory : IConversationFactory
@@ -23,7 +23,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Factories
             Provider = provider;
         }
 
-        public virtual IConversation Create(LuisResult result, IIntent intent)
+        public virtual IConversation Create(LuisResult result, IOleIntent intent)
         {
             var convo = Provider.GetService<IConversation>();
             convo.Result = result;

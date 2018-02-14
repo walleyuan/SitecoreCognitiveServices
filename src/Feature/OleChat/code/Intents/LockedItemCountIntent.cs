@@ -12,9 +12,9 @@ using SitecoreCognitiveServices.Feature.OleChat.Models;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
-    public interface ILockedItemCountIntent : IIntent { }
+    public interface ILockedItemCountIntent : IOleIntent { }
 
-    public class LockedItemCountIntent : BaseIntent, ILockedItemCountIntent {
+    public class LockedItemCountIntent : BaseOleIntent, ILockedItemCountIntent {
 
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly IAuthenticationWrapper AuthenticationWrapper;

@@ -10,7 +10,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
     public interface IConversation
     {
         bool IsEnded { get; set; }
-        IIntent Intent { get; set; }
+        IOleIntent Intent { get; set; }
         LuisResult Result { get; set; }
         Dictionary<string, string> Context { get; set; }
         Dictionary<string, object> Data { get; set; }

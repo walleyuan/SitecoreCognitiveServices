@@ -9,9 +9,9 @@ using SitecoreCognitiveServices.Feature.OleChat.Models;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
 
-    public interface ILoggedInUsersIntent : IIntent { }
+    public interface ILoggedInUsersIntent : IOleIntent { }
 
-    public class LoggedInUsersIntent : BaseIntent, ILoggedInUsersIntent 
+    public class LoggedInUsersIntent : BaseOleIntent, ILoggedInUsersIntent 
     {
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly IAuthenticationWrapper AuthenticationWrapper;
