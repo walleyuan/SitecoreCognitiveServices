@@ -12,12 +12,10 @@ using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 
-namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
-
-    public interface IUnlockItemsIntent : IOleIntent { }
-
-    public class UnlockItemsIntent : BaseOleIntent, IUnlockItemsIntent {
-
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents
+{
+    public class UnlockItemsIntent : BaseOleIntent
+    {
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly IAuthenticationWrapper AuthenticationWrapper;
         protected readonly IContentSearchWrapper ContentSearchWrapper;

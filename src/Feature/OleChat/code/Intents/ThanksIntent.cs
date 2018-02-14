@@ -11,9 +11,7 @@ using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
-    public interface IThanksIntent : IOleIntent { }
-
-    public class ThanksIntent : BaseOleIntent, IThanksIntent
+    public class ThanksIntent : BaseOleIntent
     {
         protected readonly ITextTranslatorWrapper Translator;
 

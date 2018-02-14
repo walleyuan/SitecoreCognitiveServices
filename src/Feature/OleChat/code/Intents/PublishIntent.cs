@@ -12,11 +12,9 @@ using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 
-namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
-
-    public interface IPublishIntent : IOleIntent { }
-
-    public class PublishIntent : BaseOleIntent, IPublishIntent
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents
+{
+    public class PublishIntent : BaseOleIntent
     {
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly ISitecoreDataWrapper DataWrapper;

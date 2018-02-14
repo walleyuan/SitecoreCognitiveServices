@@ -11,11 +11,9 @@ using System.Text.RegularExpressions;
 using SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServices.Models;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 
-namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
-
-    public interface IKickUserIntent : IOleIntent { }
-
-    public class KickUserIntent : BaseOleIntent, IKickUserIntent 
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents
+{
+    public class KickUserIntent : BaseOleIntent
     {
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly IAuthenticationWrapper AuthenticationWrapper;

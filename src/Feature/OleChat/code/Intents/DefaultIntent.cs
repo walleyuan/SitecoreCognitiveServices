@@ -6,11 +6,9 @@ using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
-namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
-
-    public interface IDefaultIntent : IOleIntent { }
-
-    public class DefaultIntent : BaseOleIntent, IDefaultIntent
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents
+{
+    public class DefaultIntent : BaseOleIntent
     {
         protected readonly ITextTranslatorWrapper Translator;
         

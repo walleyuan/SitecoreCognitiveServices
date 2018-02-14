@@ -7,11 +7,9 @@ using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 
-namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
-
-    public interface ILoggedInUsersIntent : IOleIntent { }
-
-    public class LoggedInUsersIntent : BaseOleIntent, ILoggedInUsersIntent 
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents
+{
+    public class LoggedInUsersIntent : BaseOleIntent
     {
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly IAuthenticationWrapper AuthenticationWrapper;

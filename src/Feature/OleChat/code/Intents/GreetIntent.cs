@@ -7,10 +7,9 @@ using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
-namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
-    public interface IGreetIntent : IOleIntent { }
-
-    public class GreetIntent : BaseOleIntent, IGreetIntent
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents
+{
+    public class GreetIntent : BaseOleIntent
     {
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly IAuthenticationWrapper AuthenticationWrapper;

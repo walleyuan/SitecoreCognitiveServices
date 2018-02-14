@@ -9,11 +9,9 @@ using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 
-namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
-
-    public interface ILogoutIntent : IOleIntent { }
-
-    public class LogoutIntent : BaseOleIntent, ILogoutIntent
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents
+{
+    public class LogoutIntent : BaseOleIntent
     {
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly HttpContextBase Context;

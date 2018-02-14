@@ -11,11 +11,9 @@ using Sitecore.ContentSearch.Maintenance;
 using SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServices.Models;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 
-namespace SitecoreCognitiveServices.Feature.OleChat.Intents {
-
-    public interface IRebuildIndexIntent : IOleIntent { }
-
-    public class RebuildIndexIntent : BaseOleIntent, IRebuildIndexIntent
+namespace SitecoreCognitiveServices.Feature.OleChat.Intents
+{
+    public class RebuildIndexIntent : BaseOleIntent
     {
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly IContentSearchWrapper ContentSearchWrapper;

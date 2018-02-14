@@ -12,9 +12,7 @@ using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
-    public interface IQuitIntent : IOleIntent { }
-
-    public class QuitIntent : BaseOleIntent, IQuitIntent
+    public class QuitIntent : BaseOleIntent
     {
         protected readonly ITextTranslatorWrapper Translator;
         protected readonly IServiceProvider Provider;
