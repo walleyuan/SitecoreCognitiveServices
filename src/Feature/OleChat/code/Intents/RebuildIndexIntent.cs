@@ -10,39 +10,38 @@ using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.Maintenance;
 using SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServices.Models;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
+using SitecoreCognitiveServices.Feature.OleChat.Statics;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
     public class RebuildIndexIntent : BaseOleIntent
     {
-        protected readonly ITextTranslatorWrapper Translator;
         protected readonly IContentSearchWrapper ContentSearchWrapper;
         
         public override string Name => "rebuild index";
 
-        public override string Description => "Rebuild an Index";
+        public override string Description => Translator.Text("Chat.Intents.RebuildIndex.Name");
 
         public override bool RequiresConfirmation => false;
 
         public override List<ConversationParameter> RequiredParameters => new List<ConversationParameter>()
         {
-            new ConversationParameter(IndexKey, "What index do you want to rebuild?", GetValidIndex, IndexOptions)
+            new ConversationParameter(IndexKey, Translator.Text("Chat.Intents.RebuildIndex.IndexParameterRequest"), GetValidIndex, IndexOptions)
         };
 
         #region Local Properties
 
         protected string IndexKey = "Index Name";
-        
+        protected string AllOption = Translator.Text("Chat.Intents.RebuildIndex.All");
+
         #endregion
-        
+
         public RebuildIndexIntent(
-            ITextTranslatorWrapper translator,
             IContentSearchWrapper searchWrapper,
             IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
             IOleSettings settings) : base(optionSetFactory, responseFactory, settings)
         {
-            Translator = translator;
             ContentSearchWrapper = searchWrapper;
         }
         
@@ -50,16 +49,16 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
         {
             var message = "";
             var index = (string)conversation.Data[IndexKey];
-            if (index == "All")
+            if (index == AllOption)
             {
                 IndexCustodian.RebuildAll(new [] { IndexGroup.Experience });
-                message = "All indexes are being rebuilt";
+                message = Translator.Text("Chat.Intents.RebuildIndex.AllRebuiltMessage");
             }
             else
             {
                 var searchIndex = ContentSearchWrapper.GetIndex(index);
                 IndexCustodian.FullRebuild(searchIndex);
-                message = $"The {index} index is being rebuilt";
+                message = string.Format(Translator.Text("Chat.Intents.RebuildIndex.RebuildIndexMessage"), index);
             }
 
             return ConversationResponseFactory.Create(message);
@@ -82,7 +81,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public virtual IntentOptionSet IndexOptions(ItemContextParameters parameters)
         {
-            var indexes = ContentSearchWrapper.GetIndexNames().Concat(new [] { "All" });
+            var indexes = ContentSearchWrapper.GetIndexNames().Concat(new [] { AllOption });
             
             return IntentOptionSetFactory.Create(IntentOptionType.Link, indexes.ToList());
         }

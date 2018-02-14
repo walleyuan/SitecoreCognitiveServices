@@ -11,27 +11,27 @@ using SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServices.
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
+using SitecoreCognitiveServices.Feature.OleChat.Statics;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
     public class PublishIntent : BaseOleIntent
     {
-        protected readonly ITextTranslatorWrapper Translator;
         protected readonly ISitecoreDataWrapper DataWrapper;
         protected readonly IPublishWrapper PublishWrapper;
         
         public override string Name => "publish";
 
-        public override string Description => "Publish content";
+        public override string Description => Translator.Text("Chat.Intents.Publish.Name");
 
         public override bool RequiresConfirmation => true;
 
         public override List<ConversationParameter> RequiredParameters => new List<ConversationParameter>()
         {
-            new ConversationParameter(ItemKey, "What was the item path you wanted to publish?", GetValidPath, null),
-            new ConversationParameter(DBKey, "What database did you want to publish to?", GetValidDb, DbOptions),
-            new ConversationParameter(LangKey, "What language(s) should I publish to?", GetValidLanguage, LanguageOptions),
-            new ConversationParameter(RecursionKey, "Do you want to publish all children?", GetValidRecursion, RecursionOptions)
+            new ConversationParameter(ItemKey, Translator.Text("Chat.Intents.Publish.ItemParameterRequest"), GetValidPath, null),
+            new ConversationParameter(DBKey, Translator.Text("Chat.Intents.Publish.DBParameterRequest"), GetValidDb, DbOptions),
+            new ConversationParameter(LangKey, Translator.Text("Chat.Intents.Publish.LangParameterRequest"), GetValidLanguage, LanguageOptions),
+            new ConversationParameter(RecursionKey, Translator.Text("Chat.Intents.Publish.RecursionParameterRequest"), GetValidRecursion, RecursionOptions)
         };
 
         #region Local Properties
@@ -44,14 +44,12 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
         #endregion
         
         public PublishIntent(
-            ITextTranslatorWrapper translator,
             IOleSettings settings,
             ISitecoreDataWrapper dataWrapper,
             IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
             IPublishWrapper publishWrapper) : base(optionSetFactory, responseFactory, settings)
         {
-            Translator = translator;
             DataWrapper = dataWrapper;
             PublishWrapper = publishWrapper;
         }
@@ -64,7 +62,11 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
             var recursion = (string) conversation.Data[RecursionKey];
             PublishWrapper.PublishItem(rootItem, new[] { toDb }, new[] { langItem }, recursion.Equals("y"), false);
 
-            return ConversationResponseFactory.Create($"I've published {rootItem.DisplayName} to the {toDb.Name} database in {rootItem.Language.Name.ToUpper()} {(recursion.Equals("y") ? " with it's children" : string.Empty)}");
+            var recursionMessage = recursion.Equals("y") 
+                ? Translator.Text("Chat.Intents.Publish.ResponseRecursion") 
+                : string.Empty;
+            
+            return ConversationResponseFactory.Create(string.Format(Translator.Text("Chat.Intents.Publish.Response"), rootItem.DisplayName, toDb.Name, rootItem.Language.Name.ToUpper(), recursionMessage));
         }
 
         #region DB
@@ -81,7 +83,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public virtual IntentOptionSet DbOptions(ItemContextParameters parameters)
         {
-            var dbName = (!string.IsNullOrEmpty(parameters.Database)) ? parameters.Database : "master";
+            var dbName = (!string.IsNullOrEmpty(parameters.Database)) ? parameters.Database : Settings.MasterDatabase;
             var publishingTargets = PublishWrapper.GetPublishingTargets(dbName);
             
             return IntentOptionSetFactory.Create(IntentOptionType.Link, publishingTargets.ToList());
@@ -103,25 +105,12 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public virtual string GetValidRecursion(string paramValue, ItemContextParameters parameters, IConversation conversation)
         {
-            List<string> responses = new List<string>()
-            {
-                "recursive",
-                "recursively",
-                "uh huh",
-                "yeah",
-                "yes",
-                "ok",
-                "yep",
-                "true",
-                "y"
-            };
-            
-            return responses.Contains(paramValue.ToLower()) ? "y" : "n";
+            return Translator.Text("Chat.Intents.Publish.Yes").Equals(paramValue) ? "y" : "n";
         }
 
         public virtual IntentOptionSet RecursionOptions(ItemContextParameters parameters)
         {
-            var options = new List<string>{ "Yes", "No" };
+            var options = new List<string>{ Translator.Text("Chat.Intents.Publish.Yes"), Translator.Text("Chat.Intents.Publish.No") };
 
             return IntentOptionSetFactory.Create(IntentOptionType.Link, options);
         }
@@ -132,7 +121,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public virtual Language GetValidLanguage(string paramValue, ItemContextParameters parameters, IConversation conversation)
         {
-            var dbName = (!string.IsNullOrEmpty(parameters.Database)) ? parameters.Database : "master";
+            var dbName = (!string.IsNullOrEmpty(parameters.Database)) ? parameters.Database : Settings.MasterDatabase;
             var db = DataWrapper.GetDatabase(dbName);
             var langs = DataWrapper.GetLanguages(db).Where(a => a.Name.Equals(paramValue)).ToList();
 
@@ -141,7 +130,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
         public virtual IntentOptionSet LanguageOptions(ItemContextParameters parameters)
         {
-            var dbName = (!string.IsNullOrEmpty(parameters.Database)) ? parameters.Database : "master";
+            var dbName = (!string.IsNullOrEmpty(parameters.Database)) ? parameters.Database : Settings.MasterDatabase;
             var db = DataWrapper.GetDatabase(dbName);
              
             var options = DataWrapper.GetLanguages(db).Select(a => a.Name).ToList();

@@ -10,23 +10,23 @@ using Sitecore.Security.Accounts;
 using System.Text.RegularExpressions;
 using SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServices.Models;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
+using SitecoreCognitiveServices.Feature.OleChat.Statics;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
     public class KickUserIntent : BaseOleIntent
     {
-        protected readonly ITextTranslatorWrapper Translator;
         protected readonly IAuthenticationWrapper AuthenticationWrapper;
 
         public override string Name => "kick user";
 
-        public override string Description => "Kick a user from the system";
+        public override string Description => Translator.Text("Chat.Intents.KickUser.Name");
 
         public override bool RequiresConfirmation => true;
 
         public override List<ConversationParameter> RequiredParameters => new List<ConversationParameter>()
         {
-            new ConversationParameter(UserKey, "What user do you want to kick? (ie: domain\\username)", GetValidUser, null)
+            new ConversationParameter(UserKey, Translator.Text("Chat.Intents.KickUser.UserParameterRequest"), GetValidUser, null)
         };
 
         #region Local Properties
@@ -36,25 +36,23 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
         #endregion
 
         public KickUserIntent(
-            ITextTranslatorWrapper translator,
             IAuthenticationWrapper authWrapper,
             IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
             IOleSettings settings) : base(optionSetFactory, responseFactory, settings) {
-            Translator = translator;
             AuthenticationWrapper = authWrapper;
         }
 
         public override ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation) {
             
             if (!AuthenticationWrapper.IsCurrentUserAdministrator())
-                return ConversationResponseFactory.Create("Sorry, you can only perform this action if you're an admin");
+                return ConversationResponseFactory.Create(Translator.Text("Chat.Intents.KickUser.MustBeAdminMessage"));
 
             var userSession = (DomainAccessGuard.Session)conversation.Data[UserKey];
             var name = userSession.UserName;
             AuthenticationWrapper.Kick(userSession.SessionID);
             
-            return ConversationResponseFactory.Create($"The user {name} has been kicked out.");
+            return ConversationResponseFactory.Create(string.Format(Translator.Text("Chat.Intents.KickUser.Response"), name));
         }
 
         public virtual DomainAccessGuard.Session GetValidUser(string paramValue, ItemContextParameters parameters, IConversation conversation)

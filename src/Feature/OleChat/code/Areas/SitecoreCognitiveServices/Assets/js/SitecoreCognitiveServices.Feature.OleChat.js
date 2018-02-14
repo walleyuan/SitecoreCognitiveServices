@@ -6,12 +6,13 @@ jQuery(document).ready(function () {
     var chatInput = ".chat-input";
     var chatForm = ".chat-form";
     var chatConversation = ".chat-conversation";
+    var initText = ".init-text";
     var chatConversationData = {};
 
     jQuery(chatInput).focus();
 
     //initiate conversation
-    SendChatRequest("Hello");
+    SendChatRequest(jQuery(initText).text());
 
     //sends chat text on 'enter-press' on the form
     jQuery(chatForm + " .chat-submit")
@@ -46,7 +47,8 @@ jQuery(document).ready(function () {
                     ? xhr.status + ":" + error
                     : error;
 
-                UpdateChatWindow("I'm having some trouble connecting...<br/><br/>" + statusMsg, null, "bot");
+                var troubleText = jQuery(".trouble-message").text();
+                UpdateChatWindow(troubleText + "...<br/><br/>" + statusMsg, null, "bot");
             });
     }
 
@@ -110,12 +112,16 @@ jQuery(document).ready(function () {
         }
         else if (action === "confirm")
         {
+            var clearText = jQuery(".clear-message").text();
+            var continueText = jQuery(".continue-message").text();
+            var cancelText = jQuery(".cancel-message").text();
+
             var selectionList = "";
             for (var i in selections) {
-                selectionList += "<li class='user-selection' data-selection='Clear " + i + "'><b>" + i + "</b>: " + selections[i] + "</li>";
+                selectionList += "<li class='user-selection' data-selection='" + clearText + " " + i + "'><b>" + i + "</b>: " + selections[i] + "</li>";
             }
-            selectionList += "<li class='user-selection confirm-continue' data-selection='Continue'>Continue</li>";
-            selectionList += "<li class='user-selection confirm-cancel' data-selection='Cancel'>Cancel</li>";
+            selectionList += "<li class='user-selection confirm-continue' data-selection='" + continueText + "'>" + continueText + "</li>";
+            selectionList += "<li class='user-selection confirm-cancel' data-selection='" + cancelText + "'>" + cancelText + "</li>";
             convoBox.append("<div class='" + type + "'><span class='message'><ul class='enabled'>" + selectionList + "</ul><span class='icon'></span></span></div>");
 
             //click to clear a selection

@@ -8,13 +8,13 @@ using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
+using SitecoreCognitiveServices.Feature.OleChat.Statics;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
     public class QuitIntent : BaseOleIntent
     {
-        protected readonly ITextTranslatorWrapper Translator;
         protected readonly IServiceProvider Provider;
 
         public override string Name => "quit";
@@ -24,19 +24,17 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
         public override bool RequiresConfirmation => false;
 
         public QuitIntent(
-            ITextTranslatorWrapper translator,
             IOleSettings settings,
             IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
             IServiceProvider provider) : base(optionSetFactory, responseFactory, settings)
         {
-            Translator = translator;
             Provider = provider;
         }
 
         public override ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation)
         {
-            return ConversationResponseFactory.Create("Alright let's move on.");
+            return ConversationResponseFactory.Create(Translator.Text("Chat.Intents.Quit.Response"));
         }
     }
 }

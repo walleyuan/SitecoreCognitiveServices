@@ -8,6 +8,11 @@ using SitecoreCognitiveServices.Foundation.MSSDK;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Factories
 {
+    public interface ISetupInformationFactory
+    {
+        ISetupInformation Create();
+    }
+
     public class SetupInformationFactory : ISetupInformationFactory
     {
         protected readonly IServiceProvider Provider;

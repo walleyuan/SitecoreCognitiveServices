@@ -7,6 +7,7 @@ using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis.Connector;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Intents;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
+using SitecoreCognitiveServices.Feature.OleChat.Statics;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Text;
@@ -78,9 +79,9 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
 
             if (inConversation)
             {
-                if (activity.Text.StartsWith("Clear "))
+                if (activity.Text.StartsWith($"{Translator.Text("Chat.Clear")} "))
                 {
-                    var clearParam = activity.Text.Replace("Clear ", "");
+                    var clearParam = activity.Text.Replace($"{Translator.Text("Chat.Clear")} ", "");
                     if (conversation.Context.ContainsKey(clearParam))
                         conversation.Context.Remove(clearParam);
                     if(conversation.Data.ContainsKey(clearParam))
@@ -95,12 +96,12 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Dialog
                 }
 
                 // save confirmation
-                if (conversation.Intent.RequiresConfirmation && activity.Text.Equals("Continue"))
+                if (conversation.Intent.RequiresConfirmation && activity.Text.Equals($"{Translator.Text("Chat.Continue")} "))
                     conversation.IsConfirmed = true;
 
                 // confirm selected options with user 
                 if (conversation.Intent.RequiresConfirmation && !conversation.IsConfirmed)
-                    return ConversationResponseFactory.Create("Please confirm your options or click selection to make changes", "confirm", conversation.Context);
+                    return ConversationResponseFactory.Create(Translator.Text("Chat.ConfirmMessage"), "confirm", conversation.Context);
                 
                 conversation.IsEnded = true;
 

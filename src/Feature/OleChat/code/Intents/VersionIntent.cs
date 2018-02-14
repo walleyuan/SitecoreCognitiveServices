@@ -9,27 +9,25 @@ using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
+using SitecoreCognitiveServices.Feature.OleChat.Statics;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
     public class VersionIntent : BaseOleIntent
     {
-        protected readonly ITextTranslatorWrapper Translator;
         protected readonly HttpContextBase Context;
 
         public override string Name => "version";
 
-        public override string Description => "Provide my version information";
+        public override string Description => Translator.Text("Chat.Intents.Version.Name");
 
         public override bool RequiresConfirmation => false;
 
         public VersionIntent(
-            ITextTranslatorWrapper translator,
             HttpContextBase context,
             IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
             IOleSettings settings) : base(optionSetFactory, responseFactory, settings) {
-            Translator = translator;
             Context = context;
         }
 
@@ -47,7 +45,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
             var minor = version.Descendants("minor").First().Value;
             var revision = version.Descendants("revision").First().Value;
             
-            return ConversationResponseFactory.Create($"My version is {major}.{minor} rev {revision}");
+            return ConversationResponseFactory.Create(string.Format(Translator.Text("Chat.Intents.Version.Response"), major, minor, revision));
         }
     }
 }

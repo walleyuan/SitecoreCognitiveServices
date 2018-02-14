@@ -1,4 +1,5 @@
-﻿@model SitecoreCognitiveServices.Feature.OleChat.Models.ItemContextParameters
+﻿@using SitecoreCognitiveServices.Feature.OleChat.Statics
+@model SitecoreCognitiveServices.Feature.OleChat.Models.ItemContextParameters
 
 @{
     ViewBag.Title = "Cognitive Services: Ole Chat";
@@ -9,15 +10,22 @@
 <script src="/Areas/SitecoreCognitiveServices/Assets/js/SitecoreCognitiveServices.Feature.OleChat.js"></script>
 
 <div class="frame">
+    <div class="hidden">
+        <div class="init-text">@Translator.Text("Chat.Hello")</div>
+        <div class="trouble-message">@Translator.Text("Chat.Trouble")</div>
+        <div class="clear-message">@Translator.Text("Chat.Clear")</div>
+        <div class="continue-message">@Translator.Text("Chat.Continue")</div>
+        <div class="cancel-message">@Translator.Text("Chat.Cancel")</div>
+    </div>
     <form class="form chat-form" method="post" action="/SitecoreCognitiveServices/CognitiveOleChat/Post">
         @Html.AntiForgeryToken()
         <div class="chat-conversation"></div>
         <div class="chat-input-wrap">
-            <input class="chat-input" type="text"/>
+            <input class="chat-input" type="text" />
         </div>
-        <input type="hidden" name="chat-db" class="chat-db" value="@Model.Database"/>
-        <input type="hidden" name="chat-lang" class="chat-lang" value="@Model.Language"/>
-        <input type="hidden" name="chat-id" class="chat-id" value="@Model.Id"/>
-        <button class="chat-submit scButton">Send</button>
+        <input type="hidden" name="chat-db" class="chat-db" value="@Model.Database" />
+        <input type="hidden" name="chat-lang" class="chat-lang" value="@Model.Language" />
+        <input type="hidden" name="chat-id" class="chat-id" value="@Model.Id" />
+        <button class="chat-submit scButton">@Translator.Text("Chat.Send")</button>
     </form>
 </div>

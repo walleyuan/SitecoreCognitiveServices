@@ -11,29 +11,27 @@ using SitecoreCognitiveServices.Feature.OleChat.Areas.SitecoreCognitiveServices.
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
+using SitecoreCognitiveServices.Feature.OleChat.Statics;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
     public class UnlockItemsIntent : BaseOleIntent
     {
-        protected readonly ITextTranslatorWrapper Translator;
         protected readonly IAuthenticationWrapper AuthenticationWrapper;
         protected readonly IContentSearchWrapper ContentSearchWrapper;
 
         public override string Name => "unlock items";
 
-        public override string Description => "Unlock your items";
+        public override string Description => Translator.Text("Chat.Intents.UnlockItems.Name");
 
         public override bool RequiresConfirmation => false;
 
         public UnlockItemsIntent(
-            ITextTranslatorWrapper translator,
             IAuthenticationWrapper authWrapper,
             IContentSearchWrapper searchWrapper,
             IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
             IOleSettings settings) : base(optionSetFactory, responseFactory, settings) {
-            Translator = translator;
             AuthenticationWrapper = authWrapper;
             ContentSearchWrapper = searchWrapper;
         }
@@ -53,14 +51,14 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
                 }
             }
             
-            return ConversationResponseFactory.Create($"I've unlocked {items.Count} for you");
+            return ConversationResponseFactory.Create(string.Format(Translator.Text("Chat.Intents.UnlockItems.Response"), items.Count));
         }
 
         protected List<SearchResultItem> GetCurrentUserUnlockedItems(string db)
         {
             var userMod = AuthenticationWrapper.GetCurrentUser().DisplayName.Replace("\\", "").ToLower();
 
-            using (var context = ContentSearchWrapper.GetIndex($"sitecore_{db}_index").CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck)) {
+            using (var context = ContentSearchWrapper.GetIndex(ContentSearchWrapper.GetSitecoreIndexName(db)).CreateSearchContext(SearchSecurityOptions.DisableSecurityCheck)) {
                 return context
                     .GetQueryable<SearchResultItem>()
                     .Where(a => a.LockOwner.Equals(userMod)).ToList();

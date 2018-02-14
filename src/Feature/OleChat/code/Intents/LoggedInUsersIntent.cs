@@ -6,27 +6,25 @@ using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
+using SitecoreCognitiveServices.Feature.OleChat.Statics;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
     public class LoggedInUsersIntent : BaseOleIntent
     {
-        protected readonly ITextTranslatorWrapper Translator;
         protected readonly IAuthenticationWrapper AuthenticationWrapper;
         
         public override string Name => "logged in users";
 
-        public override string Description => "List the logged in users";
+        public override string Description => Translator.Text("Chat.Intents.LoggedInUsers.Name");
 
         public override bool RequiresConfirmation => false;
 
         public LoggedInUsersIntent(
-            ITextTranslatorWrapper translator,
             IAuthenticationWrapper authWrapper,
             IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
             IOleSettings settings) : base(optionSetFactory, responseFactory, settings) {
-            Translator = translator;
             AuthenticationWrapper = authWrapper;
         }
 
@@ -35,10 +33,10 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
             var sessions = AuthenticationWrapper.GetDomainAccessSessions().OrderByDescending(s => s.LastRequest);
             var sessionCount = sessions.Count();
             var userNames = sessions.Select(a => a.UserName);
-            var conjunction = (sessionCount != 1) ? "are" : "is";
-            var plurality = (sessionCount != 1) ? "s" : "";
+            var conjunction = (sessionCount != 1) ? Translator.Text("Chat.Intents.LoggedInUsers.PluralConjunction") : Translator.Text("Chat.Intents.LoggedInUsers.SingularConjuntion");
+            var plurality = (sessionCount != 1) ? Translator.Text("Chat.Intents.LoggedInUsers.PluralLetter") : "";
             
-            return ConversationResponseFactory.Create($"There {conjunction} {sessionCount} user{plurality}. <br/><ul><li>{string.Join("</li><li>", userNames)}</li></ul>");
+            return ConversationResponseFactory.Create($"{string.Format(Translator.Text("Chat.Intents.LoggedInUsers.Response"), conjunction, sessionCount, plurality)} <br/><ul><li>{string.Join("</li><li>", userNames)}</li></ul>");
         }
     }
 }

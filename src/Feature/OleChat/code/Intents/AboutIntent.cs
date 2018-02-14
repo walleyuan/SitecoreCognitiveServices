@@ -7,27 +7,25 @@ using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
+using SitecoreCognitiveServices.Feature.OleChat.Statics;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
     public class AboutIntent : BaseOleIntent
     {
-        protected readonly ITextTranslatorWrapper Translator;
         protected readonly IServiceProvider Provider;
         
         public override string Name => "about";
 
-        public override string Description => "Tell you about my abilities";
+        public override string Description => Translator.Text("Chat.Intents.About.Name");
 
         public override bool RequiresConfirmation => false;
 
         public AboutIntent(
-            ITextTranslatorWrapper translator,
             IOleSettings settings,
             IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
             IServiceProvider provider) : base(optionSetFactory, responseFactory, settings) {
-            Translator = translator;
             Provider = provider;
         }
         
@@ -40,7 +38,7 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
             var str = string.Join("", list);
 
-            return ConversationResponseFactory.Create($"Here's the list of things I can do: <br/><ul>{str}</ul>");
+            return ConversationResponseFactory.Create($"{Translator.Text("Chat.Intents.About.Response")}: <br/><ul>{str}</ul>");
         }
     }
 }

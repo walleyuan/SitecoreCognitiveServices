@@ -5,28 +5,26 @@ using SitecoreCognitiveServices.Foundation.MSSDK.Models.Language.Luis;
 using SitecoreCognitiveServices.Feature.OleChat.Dialog;
 using SitecoreCognitiveServices.Feature.OleChat.Factories;
 using SitecoreCognitiveServices.Feature.OleChat.Models;
+using SitecoreCognitiveServices.Feature.OleChat.Statics;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 
 namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 {
     public class GreetIntent : BaseOleIntent
     {
-        protected readonly ITextTranslatorWrapper Translator;
         protected readonly IAuthenticationWrapper AuthenticationWrapper;
 
         public override string Name => "greet";
 
-        public override string Description => "Greet a user";
+        public override string Description => Translator.Text("Chat.Intents.Greet.Name");
 
         public override bool RequiresConfirmation => false;
 
         public GreetIntent(
-            ITextTranslatorWrapper translator,
             IAuthenticationWrapper authWrapper,
             IIntentOptionSetFactory optionSetFactory,
             IConversationResponseFactory responseFactory,
             IOleSettings settings) : base(optionSetFactory, responseFactory, settings) {
-            Translator = translator;
             AuthenticationWrapper = authWrapper;
         }
 
@@ -36,12 +34,12 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Intents
 
             List<string> responses = new List<string>()
             {
-                $"Hi {fullName}, how can I help you?",
-                "What's up?",
-                "What can I do for you?",
-                "Hey.",
-                "Hi.",
-                "Can I help you with something?"
+                string.Format(Translator.Text("Chat.Intents.Greet.1"), fullName),
+                Translator.Text("Chat.Intents.Greet.2"),
+                Translator.Text("Chat.Intents.Greet.3"),
+                Translator.Text("Chat.Intents.Greet.4"),
+                Translator.Text("Chat.Intents.Greet.5"),
+                Translator.Text("Chat.Intents.Greet.6")
             };
 
             return ConversationResponseFactory.Create(responses[new Random().Next(0, responses.Count)]);
