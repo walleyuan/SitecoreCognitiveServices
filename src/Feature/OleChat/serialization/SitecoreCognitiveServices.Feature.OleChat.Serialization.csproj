@@ -58,33 +58,6 @@
     <Content Include="RibbonChunk-Chat\Chat.yml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Azure Link.yml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Button Text.yml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Description.yml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Failure Message.yml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Luis Api Endpoint Label.yml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Luis Api Label.yml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Success Message.yml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Text Analytics API Endpo.yml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Setup Text Analytics Api Label.yml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\View Title.yml" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +86,99 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Templates\Sitecore Cognitive Services -_.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Cancel.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Clear.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Confirm Message.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Continue.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Hello.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\About.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\About\Name.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\About\Response.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Default.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Default\Response.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Frustrated User.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Frustrated User\1.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Frustrated User\2.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Frustrated User\3.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Frustrated User\4.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Frustrated User\5.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Frustrated User\6.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Greet.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Greet\1.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Greet\2.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Greet\3.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Greet\4.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Greet\5.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Greet\6.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Greet\Name.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Kick User.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Kick User\Must Be Admin Message.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Kick User\Name.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Kick User\Response.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Kick User\User Parameter Request.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Locked Item Count.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Locked Item Count\Name.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Locked Item Count\Response.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Logged In Users.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Logged In Users\Name.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Logged In Users\Plural Conjunction.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Logged In Users\Plural Letter.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Logged In Users\Response.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Logged In Users\Singular Conjunction.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Logout.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Logout\Name.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Logout\Response.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Publish.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Publish\Database Parameter Request.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Publish\Item Parameter Request.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Publish\Language Parameter Request.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Publish\Name.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Publish\No.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Publish\Recursion Parameter Request.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Publish\Response Recursion.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Publish\Response.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Publish\Yes.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Quit.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Quit\Response.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Rebuild Index.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Rebuild Index\All Option.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Rebuild Index\All Rebuilt Message.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Rebuild Index\Index Parameter Request.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Rebuild Index\Name.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Rebuild Index\Rebuild Index Message.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Thanks.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Thanks\1.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Thanks\2.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Thanks\3.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Thanks\4.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Thanks\5.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Thanks\6.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Thanks\7.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Unlock Items.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Unlock Items\Name.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Unlock Items\Response.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Version.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Version\Name.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Intents\Version\Response.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Send.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Chat\Trouble.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Azure Link.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Button Text.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Description.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Failure Message.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Form Heading.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Luis Api Endpoint Label.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Luis Api Label.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\No Option.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Overwrite Label.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Success Message.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Text Analytics API Endpoint La.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Text Analytics Api Label.yml" />
+    <None Include="System-Settings\Ole Chat\Ole Chat Dictionary\Setup\Yes Option.yml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

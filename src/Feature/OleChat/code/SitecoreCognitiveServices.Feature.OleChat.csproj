@@ -138,7 +138,6 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Factories\ConversationResponseFactory.cs" />
     <Compile Include="Factories\IntentOptionSetFactory.cs" />
-    <Compile Include="Factories\ISetupInformationFactory.cs" />
     <Compile Include="Factories\ConversationFactory.cs" />
     <Compile Include="Factories\SetupInformationFactory.cs" />
     <Compile Include="Intents\BaseOleIntent.cs" />
