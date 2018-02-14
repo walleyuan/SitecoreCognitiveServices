@@ -51,27 +51,23 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Setup
 
         public ICognitiveImageAnalysis SaveKeysAndAnalyze(string emotionApi, string emotionApiEndpoint, string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint)
         {
-            var db = Factory.GetDatabase(SearchSettings.MasterDatabase);
-            using (new DatabaseSwitcher(db))
-            {
-                //save items to fields
-                if (MSCSApiKeys.Emotion != emotionApi)
-                    MSCSApiKeys.Emotion = emotionApi;
-                if (MSCSApiKeys.EmotionEndpoint != emotionApiEndpoint)
-                    MSCSApiKeys.EmotionEndpoint = emotionApiEndpoint;
-                if (MSCSApiKeys.Face != faceApi)
-                    MSCSApiKeys.Face = faceApi;
-                if (MSCSApiKeys.FaceEndpoint != faceApiEndpoint)
-                    MSCSApiKeys.FaceEndpoint = faceApiEndpoint;
-                if (MSCSApiKeys.ComputerVision != computerVisionApi)
-                    MSCSApiKeys.ComputerVision = computerVisionApi;
-                if (MSCSApiKeys.ComputerVisionEndpoint != computerVisionApiEndpoint)
-                    MSCSApiKeys.ComputerVisionEndpoint = computerVisionApiEndpoint;
+            //save items to fields
+            if (MSCSApiKeys.Emotion != emotionApi)
+                MSCSApiKeys.Emotion = emotionApi;
+            if (MSCSApiKeys.EmotionEndpoint != emotionApiEndpoint)
+                MSCSApiKeys.EmotionEndpoint = emotionApiEndpoint;
+            if (MSCSApiKeys.Face != faceApi)
+                MSCSApiKeys.Face = faceApi;
+            if (MSCSApiKeys.FaceEndpoint != faceApiEndpoint)
+                MSCSApiKeys.FaceEndpoint = faceApiEndpoint;
+            if (MSCSApiKeys.ComputerVision != computerVisionApi)
+                MSCSApiKeys.ComputerVision = computerVisionApi;
+            if (MSCSApiKeys.ComputerVisionEndpoint != computerVisionApiEndpoint)
+                MSCSApiKeys.ComputerVisionEndpoint = computerVisionApiEndpoint;
 
-                //get the sample image and analyze it to test responses
-                Item sampleImage = DataWrapper.ContentDatabase.GetItem(SearchSettings.SampleImageId);
-                return AnalysisService.AnalyzeImage(sampleImage);
-            }
+            //get the sample image and analyze it to test responses
+            Item sampleImage = DataWrapper.GetDatabase(SearchSettings.MasterDatabase).GetItem(SearchSettings.SampleImageId);
+            return AnalysisService.AnalyzeImage(sampleImage);
         }
 
         /// <summary>
@@ -95,7 +91,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Setup
 
         public void ConfigureIndexes(string indexOption)
         {
-
             //enable index config
             var configFormat = "~/App_Config/Include/SitecoreCognitiveServices/SitecoreCognitiveServices.Feature.ImageSearch.{0}.config";
 

@@ -50,106 +50,94 @@ namespace SitecoreCognitiveServices.Feature.OleChat.Setup
         public void SaveKeys(string luisApi, string luisApiEndpoint, string textAnalyticsApi,
             string textAnalyticsApiEndpoint)
         {
-            var db = Factory.GetDatabase(OleSettings.MasterDatabase);
-            using (new DatabaseSwitcher(db))
-            {
-                //save items to fields
-                if (MSCSApiKeys.Luis != luisApi)
-                    MSCSApiKeys.Luis = luisApi;
-                if (MSCSApiKeys.LuisEndpoint != luisApiEndpoint)
-                    MSCSApiKeys.LuisEndpoint = luisApiEndpoint;
-                if (MSCSApiKeys.TextAnalytics != textAnalyticsApi)
-                    MSCSApiKeys.TextAnalytics = textAnalyticsApi;
-                if (MSCSApiKeys.TextAnalyticsEndpoint != textAnalyticsApiEndpoint)
-                    MSCSApiKeys.TextAnalyticsEndpoint = textAnalyticsApiEndpoint;
-            }
+            //save items to fields
+            if (MSCSApiKeys.Luis != luisApi)
+                MSCSApiKeys.Luis = luisApi;
+            if (MSCSApiKeys.LuisEndpoint != luisApiEndpoint)
+                MSCSApiKeys.LuisEndpoint = luisApiEndpoint;
+            if (MSCSApiKeys.TextAnalytics != textAnalyticsApi)
+                MSCSApiKeys.TextAnalytics = textAnalyticsApi;
+            if (MSCSApiKeys.TextAnalyticsEndpoint != textAnalyticsApiEndpoint)
+                MSCSApiKeys.TextAnalyticsEndpoint = textAnalyticsApiEndpoint;
         }
 
         public bool RestoreOle(bool overwrite)
         {
-            var db = Factory.GetDatabase(OleSettings.MasterDatabase);
-            using (new DatabaseSwitcher(db))
-            {
-                var jsonFile = Context.Server.MapPath("~/Areas/SitecoreCognitiveServices/Assets/json/SitecoreCognitiveServices.Feature.OleChat.json");
-                if (!File.Exists(jsonFile))
-                    return false;
+            var jsonFile = Context.Server.MapPath("~/Areas/SitecoreCognitiveServices/Assets/json/SitecoreCognitiveServices.Feature.OleChat.json");
+            if (!File.Exists(jsonFile))
+                return false;
                 
-                var jsonText = File.ReadAllText(jsonFile);
-                var appDefinition = JsonConvert.DeserializeObject<ApplicationDefinition>(jsonText);
+            var jsonText = File.ReadAllText(jsonFile);
+            var appDefinition = JsonConvert.DeserializeObject<ApplicationDefinition>(jsonText);
 
-                var infoResponse = LuisService.GetApplicationInfo(OleSettings.OleApplicationId);
-                bool shouldOverwrite = infoResponse != null && overwrite;
-                bool isNoApp = infoResponse == null;
-                if (shouldOverwrite)
-                    LuisService.DeleteApplication(new Guid(infoResponse.Id));
+            var infoResponse = LuisService.GetApplicationInfo(OleSettings.OleApplicationId);
+            bool shouldOverwrite = infoResponse != null && overwrite;
+            bool isNoApp = infoResponse == null;
+            if (shouldOverwrite)
+                LuisService.DeleteApplication(new Guid(infoResponse.Id));
 
-                Guid appId;
-                if (shouldOverwrite || isNoApp)
-                {
-                    var importResponse = LuisService.ImportApplication(appDefinition, appDefinition.Name);
-                    if (!Guid.TryParse(importResponse, out appId))
-                        return false;
+            Guid appId;
+            if (shouldOverwrite || isNoApp)
+            {
+                var importResponse = LuisService.ImportApplication(appDefinition, appDefinition.Name);
+                if (!Guid.TryParse(importResponse, out appId))
+                    return false;
 
-                    OleSettings.OleApplicationId = Guid.Parse(importResponse);
-                }
-                else
-                {
-                    appId = OleSettings.OleApplicationId;
-                }
-                    
-                LuisService.TrainApplicationVersion(appId, appDefinition.VersionId);
-                int trainCount = 1;
-                int loopCount = 0;
-                var hasResponse = false;
-                do
-                {
-                    System.Threading.Thread.Sleep(1000);
-                    
-                    var trainResponse = LuisService.GetApplicationVersionTrainingStatus(appId, appDefinition.VersionId);
-                    var statusList = trainResponse.Select(a => a.Details.Status).ToList();
-                    var anyFailed = statusList.Any(a => a.Equals("Fail"));
-                    var anyInProgress = statusList.Any(b => b.Equals("InProgress"));
-                    if (anyFailed)
-                    {
-                        if (trainCount > 3)
-                            return false;
-
-                        LuisService.TrainApplicationVersion(appId, appDefinition.VersionId);
-                        trainCount++;
-                    }
-                    else if (!anyInProgress) { 
-                        hasResponse = true;
-                    }
-
-                    if (loopCount > 100)
-                        return false;
-
-                    loopCount++;
-                }
-                while (!hasResponse);
-
-                PublishRequest pr = new PublishRequest()
-                {
-                    VersionId = appDefinition.VersionId,
-                    IsStaging = false,
-                    EndpointRegion = OleSettings.LuisPublishResource
-                };
-                var publishResponse = LuisService.PublishApplication(appId, pr);
+                OleSettings.OleApplicationId = Guid.Parse(importResponse);
             }
+            else
+            {
+                appId = OleSettings.OleApplicationId;
+            }
+                    
+            LuisService.TrainApplicationVersion(appId, appDefinition.VersionId);
+            int trainCount = 1;
+            int loopCount = 0;
+            var hasResponse = false;
+            do
+            {
+                System.Threading.Thread.Sleep(1000);
+                    
+                var trainResponse = LuisService.GetApplicationVersionTrainingStatus(appId, appDefinition.VersionId);
+                var statusList = trainResponse.Select(a => a.Details.Status).ToList();
+                var anyFailed = statusList.Any(a => a.Equals("Fail"));
+                var anyInProgress = statusList.Any(b => b.Equals("InProgress"));
+                if (anyFailed)
+                {
+                    if (trainCount > 3)
+                        return false;
 
+                    LuisService.TrainApplicationVersion(appId, appDefinition.VersionId);
+                    trainCount++;
+                }
+                else if (!anyInProgress) { 
+                    hasResponse = true;
+                }
+
+                if (loopCount > 100)
+                    return false;
+
+                loopCount++;
+            }
+            while (!hasResponse);
+
+            PublishRequest pr = new PublishRequest()
+            {
+                VersionId = appDefinition.VersionId,
+                IsStaging = false,
+                EndpointRegion = OleSettings.LuisPublishResource
+            };
+            var publishResponse = LuisService.PublishApplication(appId, pr);
+            
             return true;
         }
 
         public bool QueryOle()
         {
-            var db = Factory.GetDatabase(OleSettings.MasterDatabase);
-            using (new DatabaseSwitcher(db))
-            {
-                var response = LuisService.Query(OleSettings.OleApplicationId, OleSettings.TestMessage);
-                if (response == null)
-                    return false;
-            }
-
+            var response = LuisService.Query(OleSettings.OleApplicationId, OleSettings.TestMessage);
+            if (response == null)
+                return false;
+            
             return true;
         }
 
