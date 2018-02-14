@@ -4,6 +4,7 @@ using Sitecore.Data;
 namespace SitecoreCognitiveServices.Feature.OleChat {
     public interface IOleSettings {
         Guid OleApplicationId { get; set; }
+        string CoreDatabase { get; }
         string MasterDatabase { get; }
         string WebDatabase { get; }
         string DictionaryDomain { get; }

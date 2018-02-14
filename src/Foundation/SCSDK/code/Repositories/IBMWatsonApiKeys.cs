@@ -34,7 +34,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Repositories
         public string GetStringValue(string fieldName)
         {
             return DataWrapper
-                .ContentDatabase
+                .GetDatabase(Settings.MasterDatabase)
                 .GetItem(Settings.IBMSDKId)
                 [fieldName];
         }

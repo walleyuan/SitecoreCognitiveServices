@@ -81,7 +81,4 @@ and running. There are additional default properties from dev.properties that yo
   <property name="CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Password" value="" />
   <property name="CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.RetryInSeconds" value="1" />
     
-  <!-- Module Settings-->
-  <property name="CognitiveService.CatchAndReleaseExceptions" value="false" />
-
 </project>

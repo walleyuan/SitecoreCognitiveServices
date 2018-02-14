@@ -45,9 +45,10 @@ namespace SitecoreCognitiveServices.Feature.OleChat {
                     settingsItem.Fields[OleAppIdField].Value = value.ToString();
                 }
             }
-        } 
-        public virtual string MasterDatabase => Settings.GetSetting("CognitiveService.OleChat.MasterDatabase");
-        public virtual string WebDatabase => Settings.GetSetting("CognitiveService.OleChat.WebDatabase");
+        }
+        public virtual string CoreDatabase => Settings.GetSetting("CognitiveService.CoreDatabase");
+        public virtual string MasterDatabase => Settings.GetSetting("CognitiveService.MasterDatabase");
+        public virtual string WebDatabase => Settings.GetSetting("CognitiveService.WebDatabase");
         public virtual string DictionaryDomain => Settings.GetSetting("CognitiveService.OleChat.DictionaryDomain");
         public virtual ID OleSettingsFolderId => new ID(Settings.GetSetting("CognitiveService.OleChat.OleSettingsFolder"));
         public virtual ID OleTemplatesFolderId => new ID(Settings.GetSetting("CognitiveService.OleChat.OleTemplatesFolder"));

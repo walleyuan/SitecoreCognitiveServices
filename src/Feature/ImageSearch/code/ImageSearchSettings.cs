@@ -12,9 +12,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
     {
         protected static IMicrosoftCognitiveServicesApiKeys _msApiKeys => DependencyResolver.Current.GetService<IMicrosoftCognitiveServicesApiKeys>();
 
-        public virtual string WebDatabase => Settings.GetSetting("CognitiveService.ImageSearch.WebDatabase");
-        public virtual string MasterDatabase => Settings.GetSetting("CognitiveService.ImageSearch.MasterDatabase");
-        public virtual string CoreDatabase => Settings.GetSetting("CognitiveService.ImageSearch.CoreDatabase");
+        public virtual string WebDatabase => Settings.GetSetting("CognitiveService.WebDatabase");
+        public virtual string MasterDatabase => Settings.GetSetting("CognitiveService.MasterDatabase");
+        public virtual string CoreDatabase => Settings.GetSetting("CognitiveService.CoreDatabase");
         public virtual string SitecoreIndexNameFormat => Settings.GetSetting("CognitiveService.ImageSearch.SitecoreIndexNameFormat");
         public virtual string CognitiveIndexNameFormat => Settings.GetSetting("CognitiveService.ImageSearch.CognitiveIndexNameFormat");
         public virtual string VisualAnalysisField => Settings.GetSetting("CognitiveService.ImageSearch.VisualAnalysisField");

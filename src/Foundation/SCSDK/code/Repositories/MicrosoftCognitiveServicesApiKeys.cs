@@ -444,7 +444,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Repositories
         public string GetStringValue(string fieldName)
         {
             Item i = DataWrapper?
-                .ContentDatabase?
+                .GetDatabase(Settings.MasterDatabase)
                 .GetItem(Settings.MSSDKId);
             if (i == null)
                 return string.Empty;
@@ -458,7 +458,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Repositories
 
         public void SetValue(string fieldName, object value)
         {
-            var settingsItem = DataWrapper.ContentDatabase.GetItem(Settings.MSSDKId);
+            var settingsItem = DataWrapper.GetDatabase(Settings.MasterDatabase).GetItem(Settings.MSSDKId);
 
             using (new EditContext(settingsItem, true, false))
             {
