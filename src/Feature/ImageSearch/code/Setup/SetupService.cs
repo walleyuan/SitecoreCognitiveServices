@@ -49,13 +49,9 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Setup
 
         #endregion
 
-        public ICognitiveImageAnalysis SaveKeysAndAnalyze(string emotionApi, string emotionApiEndpoint, string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint)
+        public ICognitiveImageAnalysis SaveKeysAndAnalyze(string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint)
         {
             //save items to fields
-            if (MSCSApiKeys.Emotion != emotionApi)
-                MSCSApiKeys.Emotion = emotionApi;
-            if (MSCSApiKeys.EmotionEndpoint != emotionApiEndpoint)
-                MSCSApiKeys.EmotionEndpoint = emotionApiEndpoint;
             if (MSCSApiKeys.Face != faceApi)
                 MSCSApiKeys.Face = faceApi;
             if (MSCSApiKeys.FaceEndpoint != faceApiEndpoint)

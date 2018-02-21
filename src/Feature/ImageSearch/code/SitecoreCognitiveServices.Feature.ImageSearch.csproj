@@ -171,7 +171,7 @@
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveImageSearch\ImageDescriptionThreshold.cshtml" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveImageSearch\Common\MeasureBar.cshtml" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveImageSearch\Common\Rectangle.cshtml" />
-    <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveImageSearch\Emotion\Scores.cshtml" />
+    <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveImageSearch\Face\Scores.cshtml" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveImageSearch\Face\Attributes.cshtml" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveImageSearch\Face\Landmarks.cshtml" />
     <Content Include="Areas\SitecoreCognitiveServices\Views\CognitiveImageSearch\Face\Rectangle.cshtml" />
@@ -249,7 +249,6 @@
     <Compile Include="Search\ComputedFields\Image\AgeMax.cs" />
     <Compile Include="Search\ComputedFields\Image\AgeMin.cs" />
     <Compile Include="Search\ComputedFields\Image\Colors.cs" />
-    <Compile Include="Search\ComputedFields\Image\EmotionAnalysis.cs" />
     <Compile Include="Search\ComputedFields\Image\Emotions\Anger.cs" />
     <Compile Include="Search\ComputedFields\Image\Emotions\Contempt.cs" />
     <Compile Include="Search\ComputedFields\Image\Emotions\Disgust.cs" />

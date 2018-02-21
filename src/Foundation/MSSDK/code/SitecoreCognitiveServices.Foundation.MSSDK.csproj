@@ -418,9 +418,7 @@
     <Compile Include="Models\Vision\ContentModerator\VideoModerationOptions.cs" />
     <Compile Include="Models\Vision\ContentModerator\WorkflowExpression.cs" />
     <Compile Include="Models\Vision\ContentModerator\WorkflowExpressionResponse.cs" />
-    <Compile Include="Models\Vision\Emotion\Asset.cs" />
-    <Compile Include="Models\Vision\Emotion\Emotion.cs" />
-    <Compile Include="Models\Vision\Emotion\Scores.cs" />
+    <Compile Include="Models\Vision\Face\Scores.cs" />
     <Compile Include="Models\Common\VideoOperation.cs" />
     <Compile Include="Models\Common\VideoOperationResult.cs" />
     <Compile Include="Models\Vision\Face\AddPersistedFaceResult.cs" />
@@ -497,10 +495,8 @@
     <Compile Include="Repositories\Speech\SpeakerIdentificationRepository.cs" />
     <Compile Include="Repositories\Speech\SpeakerVerificationRepository.cs" />
     <Compile Include="Repositories\Vision\ContentModeratorRepository.cs" />
-    <Compile Include="Repositories\Vision\EmotionRepository.cs" />
     <Compile Include="Repositories\Vision\FaceRepository.cs" />
     <Compile Include="Repositories\Vision\IContentModeratorRepository.cs" />
-    <Compile Include="Repositories\Vision\IEmotionRepository.cs" />
     <Compile Include="Repositories\Vision\IFaceRepository.cs" />
     <Compile Include="Repositories\Vision\IVideoRepository.cs" />
     <Compile Include="Repositories\Vision\IVisionRepository.cs" />

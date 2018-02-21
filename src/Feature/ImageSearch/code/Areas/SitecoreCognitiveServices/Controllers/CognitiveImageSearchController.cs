@@ -298,16 +298,13 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
             }
         }
 
-        public ActionResult SetupSubmit(string indexOption, string emotionApi, string emotionApiEndpoint,
-            string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint)
+        public ActionResult SetupSubmit(string indexOption, string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint)
         {
             if (!IsSitecoreUser())
                 return LoginPage();
 
-            ICognitiveImageAnalysis analysis = SetupService.SaveKeysAndAnalyze(emotionApi, emotionApiEndpoint, faceApi, faceApiEndpoint, computerVisionApi, computerVisionApiEndpoint);
+            ICognitiveImageAnalysis analysis = SetupService.SaveKeysAndAnalyze(faceApi, faceApiEndpoint, computerVisionApi, computerVisionApiEndpoint);
             var items = new List<string>();
-            if (analysis == null || analysis.EmotionAnalysis?.Length < 1)
-                items.Add("Emotion API");
             if (analysis == null || analysis.FacialAnalysis?.Length < 1)
                 items.Add("Face API");
             if (analysis?.TextAnalysis?.Regions == null || analysis?.VisionAnalysis?.Description == null)

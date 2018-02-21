@@ -7,8 +7,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Im
     {
         protected override object GetFieldValue(Item cognitiveIndexable)
         {
-            return (Emotions != null && Emotions.Length > 0)
-                ? (object)Emotions?.Average(x => x.Scores.Contempt)
+            return (Faces != null && Faces.Length > 0)
+                ? (object)Faces?.Average(x => x.FaceAttributes.Emotion.Contempt)
                 : null;
         }
     }

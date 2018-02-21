@@ -154,10 +154,6 @@
         <x-item>/master/sitecore/templates/Sitecore Cognitive Services - SCSDK/APIs/MSSDK/Content Moderator/Content Moderator Private Key/{353604A1-617F-4375-92FE-2D20F1919C8F}/invariant/0</x-item>
         <x-item>/master/sitecore/templates/Sitecore Cognitive Services - SCSDK/APIs/MSSDK/Content Moderator/Content Moderator Retry In Seconds/{48B97C2C-F601-4D2A-B97B-F36E19B8E182}/invariant/0</x-item>
         <x-item>/master/sitecore/templates/Sitecore Cognitive Services - SCSDK/APIs/MSSDK/Content Moderator/Content Moderator/{F27C051D-FF17-4FE9-A16C-FC0F923F44BC}/invariant/0</x-item>
-        <x-item>/master/sitecore/templates/Sitecore Cognitive Services - SCSDK/APIs/MSSDK/Emotion/{7B5D10A0-161E-456E-9202-A0D115FCADCB}/invariant/0</x-item>
-        <x-item>/master/sitecore/templates/Sitecore Cognitive Services - SCSDK/APIs/MSSDK/Emotion/Emotion Endpoint/{DD55DB0C-E0F0-49AB-979A-63A465C1A94C}/invariant/0</x-item>
-        <x-item>/master/sitecore/templates/Sitecore Cognitive Services - SCSDK/APIs/MSSDK/Emotion/Emotion Retry In Seconds/{DFF1950C-EAC6-4C5C-98E6-E76F98684CB9}/invariant/0</x-item>
-        <x-item>/master/sitecore/templates/Sitecore Cognitive Services - SCSDK/APIs/MSSDK/Emotion/Emotion/{B0022739-2EC8-448B-B63A-3DD90C014419}/invariant/0</x-item>
         <x-item>/master/sitecore/templates/Sitecore Cognitive Services - SCSDK/APIs/MSSDK/Entity Linking/{8BB8F274-CC8B-46B9-B61F-7D31FDF7F33F}/invariant/0</x-item>
         <x-item>/master/sitecore/templates/Sitecore Cognitive Services - SCSDK/APIs/MSSDK/Entity Linking/Entity Linking Endpoint/{C0934F14-FCF4-46FB-9BF4-F7681736CFD7}/invariant/0</x-item>
         <x-item>/master/sitecore/templates/Sitecore Cognitive Services - SCSDK/APIs/MSSDK/Entity Linking/Entity Linking Retry In Seconds/{D3A017FC-E32F-4636-BC87-FBA7EA5EAA92}/invariant/0</x-item>

@@ -11,7 +11,6 @@ using SitecoreCognitiveServices.Feature.ImageSearch.Factories;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
-using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
 using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision;
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
@@ -25,7 +24,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
         protected readonly IImageSearchSettings _settings;
         protected readonly IImageSearchService _searchService;
         protected readonly ISitecoreDataWrapper _dataWrapper;
-        protected readonly IEmotionService _emotionService;
         protected readonly IFaceService _faceService;
         protected readonly IVisionService _visionService;
         protected readonly ICognitiveImageAnalysisFactory _imageAnalysisFactory;
@@ -34,7 +32,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
             IImageSearchSettings settings,
             IImageSearchService searchService,
             ISitecoreDataWrapper dataWrapper,
-            IEmotionService emotionService,
             IFaceService faceService,
             IVisionService visionService,
             ICognitiveImageAnalysisFactory imageAnalysisFactory)
@@ -42,7 +39,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
             _settings = settings;
             _searchService = searchService;
             _dataWrapper = dataWrapper;
-            _emotionService = emotionService;
             _faceService = faceService;
             _visionService = visionService;
             _imageAnalysisFactory = imageAnalysisFactory;
@@ -55,7 +51,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
             MediaItem m = imageItem;
             var imageAnalysis = _imageAnalysisFactory.Create(
                 m, 
-                GetEmotionalAnalysis(m), 
                 GetFacialAnalysis(m),
                 GetTextualAnalysis(m),
                 GetVisualAnalysis(m));
@@ -74,7 +69,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
                 analysisItem.Fields[_settings.VisualAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.VisionAnalysis);
                 analysisItem.Fields[_settings.TextualAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.TextAnalysis);
                 analysisItem.Fields[_settings.FacialAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.FacialAnalysis);
-                analysisItem.Fields[_settings.EmotionalAnalysisField].Value = JsonConvert.SerializeObject(imageAnalysis.EmotionAnalysis);
                 analysisItem.Fields[_settings.AnalyzedImageField].Value = imageItem.ID.ToString();
             }
 
@@ -125,11 +119,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
         }
 
         #region API Calls
-
-        public virtual Emotion[] GetEmotionalAnalysis(MediaItem m)
-        {
-            return _emotionService.Recognize(m.GetMediaStream());
-        }
         
         public virtual Face[] GetFacialAnalysis(MediaItem m)
         {
@@ -140,7 +129,8 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Analysis
                 FaceAttributeType.Gender,
                 FaceAttributeType.Glasses,
                 FaceAttributeType.HeadPose,
-                FaceAttributeType.Smile
+                FaceAttributeType.Smile,
+                FaceAttributeType.Emotion
             });
         }
 

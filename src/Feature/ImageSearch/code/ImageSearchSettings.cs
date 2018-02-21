@@ -20,7 +20,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
         public virtual string VisualAnalysisField => Settings.GetSetting("CognitiveService.ImageSearch.VisualAnalysisField");
         public virtual string TextualAnalysisField => Settings.GetSetting("CognitiveService.ImageSearch.TextualAnalysisField");
         public virtual string FacialAnalysisField => Settings.GetSetting("CognitiveService.ImageSearch.FacialAnalysisField");
-        public virtual string EmotionalAnalysisField => Settings.GetSetting("CognitiveService.ImageSearch.EmotionalAnalysisField");
         public virtual string AnalyzedImageField => Settings.GetSetting("CognitiveService.ImageSearch.AnalyzedImageField");
         public virtual string AnalyzeNewImageField => Settings.GetSetting("CognitiveService.ImageSearch.AnalyzeNewImageField");
         public virtual string ImageAnalysisFolder => Settings.GetSetting("CognitiveService.ImageSearch.ImageAnalysisFolder");
@@ -39,9 +38,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
             if (_msApiKeys == null)
                 return true;
 
-            return HasNoValue(_msApiKeys.Emotion)
-                   || HasNoValue(_msApiKeys.EmotionEndpoint)
-                   || HasNoValue(_msApiKeys.Face)
+            return HasNoValue(_msApiKeys.Face)
                    || HasNoValue(_msApiKeys.FaceEndpoint)
                    || HasNoValue(_msApiKeys.ComputerVision)
                    || HasNoValue(_msApiKeys.ComputerVisionEndpoint);

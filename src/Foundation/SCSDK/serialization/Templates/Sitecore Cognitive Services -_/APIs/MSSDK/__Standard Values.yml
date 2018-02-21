@@ -92,12 +92,6 @@ SharedFields:
 - ID: "d3a017fc-e32f-4636-bc87-fba7ea5eaa92"
   Hint: Entity Linking Retry In Seconds
   Value: 1
-- ID: "dd55db0c-e0f0-49ab-979a-63a465c1a94c"
-  Hint: Emotion Endpoint
-  Value: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/"
-- ID: "dff1950c-eac6-4c5c-98e6-e76f98684cb9"
-  Hint: Emotion Retry In Seconds
-  Value: 3
 - ID: "e0c4f635-daf8-4d1a-88d1-6d0e10446e88"
   Hint: Academic Retry In Seconds
   Value: 1

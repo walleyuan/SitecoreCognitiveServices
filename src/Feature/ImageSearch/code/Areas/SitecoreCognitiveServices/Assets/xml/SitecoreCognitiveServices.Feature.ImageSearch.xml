@@ -161,12 +161,11 @@
         <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/</x-item>
         <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/MeasureBar.cshtml</x-item>
         <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/Rectangle.cshtml</x-item>
-        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Emotion/</x-item>
-        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Emotion/Scores.cshtml</x-item>
         <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Face/</x-item>
         <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Face/Attributes.cshtml</x-item>
         <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Face/Landmarks.cshtml</x-item>
         <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Face/Rectangle.cshtml</x-item>
+        <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Face/Scores.cshtml</x-item>
         <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/ImageAnalysis.cshtml</x-item>
         <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/ImageDescription.cshtml</x-item>
         <x-item>/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/ImageDescriptionThreshold.cshtml</x-item>

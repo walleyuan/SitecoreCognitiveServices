@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SitecoreCognitiveServices.Feature.ImageSearchS")]
+[assembly: AssemblyTitle("SitecoreCognitiveServices.Feature.ImageSearch.Serialization")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SitecoreCognitiveServices.Feature.ImageSearchS")]
+[assembly: AssemblyProduct("SitecoreCognitiveServices.Feature.ImageSearch.Serialization")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

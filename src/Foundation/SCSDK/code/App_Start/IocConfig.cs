@@ -42,7 +42,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.App_Start
             serviceCollection.AddTransient<IContentSearchWrapper, ContentSearchWrapper>();
 
             //mssdk repositories
-            serviceCollection.AddTransient<IEmotionRepository, EmotionRepository>();
             serviceCollection.AddTransient<IEntityLinkingRepository, EntityLinkingRepository>();
             serviceCollection.AddTransient<IFaceRepository, FaceRepository>();
             serviceCollection.AddTransient<ILinguisticRepository, LinguisticRepository>();
@@ -66,7 +65,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.App_Start
             serviceCollection.AddTransient<IQnAMakerRepository, QnAMakerRepository>();
             
             //mssdk services
-            serviceCollection.AddTransient<IEmotionService, EmotionService>();
             serviceCollection.AddTransient<IEntityLinkingService, EntityLinkingService>();
             serviceCollection.AddTransient<IFaceService, FaceService>();
             serviceCollection.AddTransient<ILinguisticService, LinguisticService>();

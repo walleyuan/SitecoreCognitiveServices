@@ -89,12 +89,12 @@ else
                 </nav>
             </div>
             <div class="tab-content emotional">
-                @foreach (var ea in Model.EmotionAnalysis)
+                @foreach (var ea in Model.FacialAnalysis)
                 {
                     <div class="emotion-block">
                         @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Common/Rectangle.cshtml", ea.FaceRectangle)
                         <div class="score-wrap" style="top: @{@ea.FaceRectangle.Top}px; left: @{@(ea.FaceRectangle.Left + ea.FaceRectangle.Width + 15)}px">
-                            @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Emotion/Scores.cshtml", ea.Scores)
+                            @Html.Partial("~/Areas/SitecoreCognitiveServices/Views/CognitiveImageSearch/Face/Scores.cshtml", ea.FaceAttributes.Emotion)
                         </div>
                     </div>
                 }

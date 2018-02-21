@@ -1,5 +1,4 @@
 ﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
-using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
 using System.Collections.Generic;
 
@@ -7,8 +6,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search
 {
     public interface ICognitiveImageSearchResult
     {
-        string EmotionAnalysisValue { get; set; }
-        Emotion[] EmotionAnalysis { get; }
         string FacialAnalysisValue { get; set; }
         Face[] FacialAnalysis { get; }
         string TextAnalysisValue { get; set; }

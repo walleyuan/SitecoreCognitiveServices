@@ -29,9 +29,6 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK
         string EntityLinking { get; set; }
         string EntityLinkingEndpoint { get; set; }
         int EntityLinkingRetryInSeconds { get; }
-        string Emotion { get; set; }
-        string EmotionEndpoint { get; set; }
-        int EmotionRetryInSeconds { get; }
         string Face { get; set; }
         string FaceEndpoint { get; set; }
         int FaceRetryInSeconds { get; }

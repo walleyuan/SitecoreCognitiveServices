@@ -116,9 +116,6 @@ SharedFields:
 - ID: "ae429b42-3211-4baa-b1f2-c17045c53ed5"
   Hint: WebLM Retry In Seconds
   Value: ${CognitiveService.ApiKey.MSSDK.WebLM.RetryInSeconds}
-- ID: "b0022739-2ec8-448b-b63a-3dd90c014419"
-  Hint: Emotion
-  Value: "${CognitiveService.ApiKey.MSSDK.Emotion}"
 - ID: "b16bd9a1-1749-4240-b971-673b7742c3ab"
   Hint: Bing Speech Enpoint
   Value: "${CognitiveService.ApiKey.MSSDK.BingSpeech.Endpoint}"
@@ -143,12 +140,6 @@ SharedFields:
 - ID: "d3a017fc-e32f-4636-bc87-fba7ea5eaa92"
   Hint: Entity Linking Retry In Seconds
   Value: ${CognitiveService.ApiKey.MSSDK.EntityLinking.RetryInSeconds}
-- ID: "dd55db0c-e0f0-49ab-979a-63a465c1a94c"
-  Hint: Emotion Endpoint
-  Value: "${CognitiveService.ApiKey.MSSDK.Emotion.Endpoint}"
-- ID: "dff1950c-eac6-4c5c-98e6-e76f98684cb9"
-  Hint: Emotion Retry In Seconds
-  Value: ${CognitiveService.ApiKey.MSSDK.Emotion.RetryInSeconds}
 - ID: "e0562f48-1afa-42a2-86a6-1aa99b369ec6"
   Hint: Recommendations
   Value: "${CognitiveService.ApiKey.MSSDK.Recommendations}"

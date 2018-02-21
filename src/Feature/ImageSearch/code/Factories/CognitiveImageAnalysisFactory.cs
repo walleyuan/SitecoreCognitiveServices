@@ -5,8 +5,6 @@ using SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServi
 using SitecoreCognitiveServices.Foundation.SCSDK.Wrappers;
 using SitecoreCognitiveServices.Feature.ImageSearch.Search;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
-using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.ContentModerator;
-using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
@@ -35,8 +33,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
             var analysis = Create();
             if (result == null)
                 return analysis;
-
-            analysis.EmotionAnalysis = result.EmotionAnalysis;
+            
             analysis.FacialAnalysis = result.FacialAnalysis;
             analysis.TextAnalysis = result.TextAnalysis;
             analysis.VisionAnalysis = result.VisionAnalysis;
@@ -52,11 +49,10 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Factories
             return analysis;
         }
 
-        public virtual ICognitiveImageAnalysis Create(MediaItem mediaItem, Emotion[] emotionAnalysis, Face[] facialAnalysis, OcrResults textAnalysis, AnalysisResult visionAnalysis)
+        public virtual ICognitiveImageAnalysis Create(MediaItem mediaItem, Face[] facialAnalysis, OcrResults textAnalysis, AnalysisResult visionAnalysis)
         {
             var analysis = Create();
             
-            analysis.EmotionAnalysis = emotionAnalysis ?? new Emotion[0];
             analysis.FacialAnalysis = facialAnalysis ?? new Face[0];
             analysis.TextAnalysis = textAnalysis ?? new OcrResults();
             analysis.VisionAnalysis = visionAnalysis ?? new AnalysisResult();

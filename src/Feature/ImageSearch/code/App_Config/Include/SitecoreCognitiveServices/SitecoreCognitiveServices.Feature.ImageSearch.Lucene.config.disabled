@@ -62,7 +62,6 @@
             </include>
             <fields hint="raw:AddComputedIndexField">
               <!-- primary media fields that require web service calls -->
-              <field fieldName="EmotionAnalysis"     >SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.EmotionAnalysis,SitecoreCognitiveServices.Feature.ImageSearch</field>
               <field fieldName="FacialAnalysis"      >SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.FacialAnalysis,SitecoreCognitiveServices.Feature.ImageSearch</field>
               <field fieldName="TextAnalysis"        >SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.TextAnalysis,SitecoreCognitiveServices.Feature.ImageSearch</field>
               <field fieldName="VisionAnalysis"      >SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields.Image.VisionAnalysis,SitecoreCognitiveServices.Feature.ImageSearch</field>

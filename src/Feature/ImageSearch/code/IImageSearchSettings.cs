@@ -15,7 +15,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch {
         string VisualAnalysisField { get; }
         string TextualAnalysisField { get; }
         string FacialAnalysisField { get; }
-        string EmotionalAnalysisField { get; }
         string AnalyzedImageField { get; }
         string AnalyzeNewImageField { get; }
         string ImageAnalysisFolder { get; }

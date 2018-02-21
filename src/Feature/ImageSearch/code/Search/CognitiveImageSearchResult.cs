@@ -2,7 +2,6 @@
 using Sitecore.ContentSearch;
 using System.Web.Script.Serialization;
 using Sitecore.ContentSearch.SearchTypes;
-using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
 
@@ -12,11 +11,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search
 
         #region properties
         
-        [IndexField("EmotionAnalysis")]
-        public string EmotionAnalysisValue { get; set; }
-
-        public Emotion[] EmotionAnalysis => SaturateValue<Emotion[]>(EmotionAnalysisValue) ?? new Emotion[0];
-
         [IndexField("FacialAnalysis")]
         public string FacialAnalysisValue { get; set; }
 

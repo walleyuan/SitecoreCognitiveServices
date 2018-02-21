@@ -8,7 +8,7 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Setup
 {
     public interface ISetupService
     {
-        ICognitiveImageAnalysis SaveKeysAndAnalyze(string emotionApi, string emotionApiEndpoint, string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint);
+        ICognitiveImageAnalysis SaveKeysAndAnalyze(string faceApi, string faceApiEndpoint, string computerVisionApi, string computerVisionApiEndpoint);
         string SetFieldsFolderTemplate();
         void ConfigureIndexes(string indexOption);
     }

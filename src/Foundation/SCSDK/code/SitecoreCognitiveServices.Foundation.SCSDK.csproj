@@ -172,11 +172,9 @@
     <Compile Include="Services\MSSDK\Language\ILinguisticService.cs" />
     <Compile Include="Services\MSSDK\Language\LinguisticService.cs" />
     <Compile Include="Services\MSSDK\Vision\ContentModeratorService.cs" />
-    <Compile Include="Services\MSSDK\Vision\EmotionService.cs" />
     <Compile Include="Services\MSSDK\Knowledge\EntityLinkingService.cs" />
     <Compile Include="Services\MSSDK\Vision\FaceService.cs" />
     <Compile Include="Services\MSSDK\Vision\IContentModeratorService.cs" />
-    <Compile Include="Services\MSSDK\Vision\IEmotionService.cs" />
     <Compile Include="Services\MSSDK\Knowledge\IEntityLinkingService.cs" />
     <Compile Include="Services\MSSDK\Vision\IFaceService.cs" />
     <Compile Include="Services\MSSDK\Language\ITextAnalyticsService.cs" />

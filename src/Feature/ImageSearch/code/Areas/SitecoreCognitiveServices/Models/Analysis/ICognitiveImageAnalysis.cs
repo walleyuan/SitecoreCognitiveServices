@@ -1,5 +1,4 @@
 ﻿using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
-using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveServices.Models.Analysis
@@ -8,7 +7,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Areas.SitecoreCognitiveS
     {
         AnalysisResult VisionAnalysis { get; set; }
         OcrResults TextAnalysis { get; set; }
-        Emotion[] EmotionAnalysis { get; set; }
         Face[] FacialAnalysis { get; set; }
         string ImageUrl { get; set; }
         int ImageHeight { get; set; }

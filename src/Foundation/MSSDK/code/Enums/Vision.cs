@@ -81,5 +81,6 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Enums
         Smile,
         HeadPose,
         Glasses,
+        Emotion
     }
 }

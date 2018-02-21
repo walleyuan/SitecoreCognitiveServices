@@ -210,29 +210,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Repositories
             }
         }
         public virtual int EntityLinkingRetryInSeconds => GetIntValue("Entity Linking Retry In Seconds");
-        public virtual string Emotion
-        {
-            get
-            {
-                return GetStringValue("Emotion");
-            }
-            set
-            {
-                SetValue("Emotion", value);
-            }
-            }
-        public virtual string EmotionEndpoint
-        {
-            get
-            {
-                return GetStringValue("Emotion Endpoint");
-            }
-            set
-            {
-                SetValue("Emotion Endpoint", value);
-            }
-        }
-        public virtual int EmotionRetryInSeconds => GetIntValue("Emotion Retry In Seconds");
         public virtual string Face
         {
             get

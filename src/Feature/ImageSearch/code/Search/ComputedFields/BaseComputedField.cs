@@ -14,7 +14,6 @@ using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Computer;
-using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Emotion;
 using SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face;
 
 namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields
@@ -26,7 +25,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields
         public OcrResults Text { get; set; }
         public AnalysisResult Visions { get; set; }
         public Face[] Faces { get; set; }
-        public Emotion[] Emotions { get; set; }
 
         public object ComputeFieldValue(IIndexable indexable)
         {
@@ -51,7 +49,6 @@ namespace SitecoreCognitiveServices.Feature.ImageSearch.Search.ComputedFields
             Visions = JsonConvert.DeserializeObject<AnalysisResult>(analysisItem.Fields[settings.VisualAnalysisField]?.Value ?? string.Empty);
             Text = JsonConvert.DeserializeObject<OcrResults>(analysisItem.Fields[settings.TextualAnalysisField]?.Value ?? string.Empty);
             Faces = JsonConvert.DeserializeObject<Face[]>(analysisItem.Fields[settings.FacialAnalysisField]?.Value ?? string.Empty);
-            Emotions = JsonConvert.DeserializeObject<Emotion[]>(analysisItem.Fields[settings.EmotionalAnalysisField]?.Value ?? string.Empty);
 
             return GetFieldValue(indexItem);
         }

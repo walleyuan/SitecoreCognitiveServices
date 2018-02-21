@@ -23,8 +23,6 @@ jQuery(document).ready(function () {
             event.preventDefault();
 
             var indexOptionValue = jQuery(setupForm + " input[name='indexOption']:checked").val();
-            var emotionValue = jQuery(setupForm + " #emotionApi").val();
-            var emotionEndpointValue = jQuery(setupForm + " #emotionApiEndpoint").val();
             var faceValue = jQuery(setupForm + " #faceApi").val();
             var faceEndpointValue = jQuery(setupForm + " #faceApiEndpoint").val();
             var computerVisionValue = jQuery(setupForm + " #computerVisionApi").val();
@@ -38,8 +36,6 @@ jQuery(document).ready(function () {
                 jQuery(setupForm).attr("action"),
                 {
                     indexOption: indexOptionValue,
-                    emotionApi: emotionValue,
-                    emotionApiEndpoint: emotionEndpointValue,
                     faceApi: faceValue,
                     faceApiEndpoint: faceEndpointValue,
                     computerVisionApi: computerVisionValue,

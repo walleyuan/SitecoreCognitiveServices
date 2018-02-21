@@ -21,5 +21,6 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Models.Vision.Face {
 
         [JsonConverter(typeof(StringEnumConverter))]
         public Glasses Glasses { get; set; }
+        public Scores Emotion { get; set; }
     }
 }

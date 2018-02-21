@@ -172,8 +172,6 @@
     <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Computer Vision Api Endpoint L.yml" />
     <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Computer Vision Api Label.yml" />
     <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Description.yml" />
-    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Emotion Api Endpoint Label.yml" />
-    <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Emotion Api Label.yml" />
     <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Face Api Endpoint Label.yml" />
     <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Face Api Label.yml" />
     <None Include="System-Settings\Image Search\Image Search Dictionary\Setup\Failure Message.yml" />
