@@ -214,18 +214,6 @@
     <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Content Moderator.yml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Emotion\Emotion Endpoint.yml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Emotion\Emotion Retry In Seconds.yml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Emotion\Emotion.yml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Emotion.yml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Templates\Sitecore Cognitive Services -_\APIs\MSSDK\Entity Linking\Entity Linking Endpoint.yml" />
   </ItemGroup>
   <ItemGroup>
